@@ -1,0 +1,24 @@
+@charset "utf-8";
+/* CSS Document */
+#boxSobreEstab{ background:#EBF5FF; width:125px; height:200px; padding:20px 12.5px;  margin:0px auto;}
+#boxSobreEstab div.marca{width:115px; height:115px; border:1px solid #06C; background:#fff!important;}
+#boxSobreEstab p{ text-align:center; font-size:12px; font-family:'titilliumtext22l_ltthin'; color:#F30; line-height:36px;}
+#boxSobreEstab div#ranking{color:#900;font-family: 'titilliumtext22l_ltmedium'; font-size:12px; text-align:center; padding-left:20px; }
+#boxSobreEstab div#ranking .medalha{background-position:-104px -123px; height:45px; width:30px;}
+#boxSobreEstab div#ranking span{font-size:24px!important;}
+
+.ftoLocal{width:150px; height:auto;  margin:30px auto;}
+.ftoLocal span.ftoGrande{ width:150px; height:125px; background:#000; display:block; margin-bottom:20px;}
+.ftoLocal span.ftoPeq{ width:65px; height:65px; background:#000; display:block;}
+
+.boxInfo{ background:#F5F5FB; border:1px solid #CCCCEB; width:567px; height:15px; padding:10px; color:#00009A; font-family:'titilliumtext22l_ltmedium'; font-size:12px; line-height:20px;}
+#destaque blockquote{ width:580px; margin-left:10px; margin-top:20px; clear:both;}
+
+
+#outroDados{border-top:1px solid #0066CC; width:570px; padding:20px 10px; height:auto; margin-top:20px;}
+address{ font-style:normal; color:#fff; background:#0066CC; padding:10px 20px!important; width:550px; height:15px; display:block; font-size:12px!important; font-family:'titilliumtext22l_ltmedium'!important;}
+#comentarioFb{width:600px; height:auto; margin-top:20px;}
+#comentarioFb p.tituloComent{font-size:24px; color:#F30; font-family: 'titilliumtext22l_ltmedium';}
+
+
+#map_canvas_estab{width:590px; height:250px;}
