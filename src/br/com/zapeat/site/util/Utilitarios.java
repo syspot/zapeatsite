@@ -7,59 +7,63 @@ import java.util.Calendar;
 
 public final class Utilitarios {
 
-    public static String tratarString(String valor) {
-        if (!TSUtil.isEmpty(valor)) {
-            valor = valor.trim().replaceAll("  ", " ");
-        }
+	private Utilitarios() {
 
-        return valor;
-    }
+	}
 
-    public static Long tratarLong(Long valor) {
-        if ((!TSUtil.isEmpty(valor)) && (valor.equals(Long.valueOf(0L)))) {
-            valor = null;
-        }
+	public static String tratarString(String valor) {
+		if (!TSUtil.isEmpty(valor)) {
+			valor = valor.trim().replaceAll("  ", " ");
+		}
 
-        return valor;
-    }
+		return valor;
+	}
 
-    public static String removerAcentos(String palavra) {
-        if (TSUtil.isEmpty(palavra)) {
-            return null;
-        }
+	public static Long tratarLong(Long valor) {
+		if ((!TSUtil.isEmpty(valor)) && (valor.equals(Long.valueOf(0L)))) {
+			valor = null;
+		}
 
-        return Normalizer.normalize(new StringBuilder(palavra), Normalizer.Form.NFKD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
-    }
+		return valor;
+	}
 
-    public static String gerarHash(String valor) {
-        if (!TSUtil.isEmpty(valor)) {
-            valor = TSCryptoUtil.gerarHash(valor, "md5");
-        }
+	public static String removerAcentos(String palavra) {
+		if (TSUtil.isEmpty(palavra)) {
+			return null;
+		}
 
-        return valor;
-    }
+		return Normalizer.normalize(new StringBuilder(palavra), Normalizer.Form.NFKD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
+	}
 
-    public static String gerarSenha() {
-        Calendar rightNow = Calendar.getInstance();
+	public static String gerarHash(String valor) {
+		if (!TSUtil.isEmpty(valor)) {
+			valor = TSCryptoUtil.gerarHash(valor, "md5");
+		}
 
-        int diaAtual = rightNow.get(5);
-        int mesAtual = rightNow.get(2) + 1;
-        int anoAtual = rightNow.get(1);
-        int horaAtual = rightNow.get(11);
-        int minutoAtual = rightNow.get(12);
-        int segAtual = rightNow.get(13);
-        int miliAtual = rightNow.get(14);
+		return valor;
+	}
 
-        String senha = anoAtual + mesAtual + diaAtual + horaAtual + minutoAtual + segAtual + miliAtual + "";
+	public static String gerarSenha() {
+		Calendar rightNow = Calendar.getInstance();
 
-        return senha;
-    }
+		int diaAtual = rightNow.get(5);
+		int mesAtual = rightNow.get(2) + 1;
+		int anoAtual = rightNow.get(1);
+		int horaAtual = rightNow.get(11);
+		int minutoAtual = rightNow.get(12);
+		int segAtual = rightNow.get(13);
+		int miliAtual = rightNow.get(14);
 
-    public static String getSituacao(Boolean flagAtivo) {
-        if ((!TSUtil.isEmpty(flagAtivo)) && (flagAtivo.booleanValue())) {
-            return "Ativo";
-        }
+		String senha = anoAtual + mesAtual + diaAtual + horaAtual + minutoAtual + segAtual + miliAtual + "";
 
-        return "Inativo";
-    }
+		return senha;
+	}
+
+	public static String getSituacao(Boolean flagAtivo) {
+		if ((!TSUtil.isEmpty(flagAtivo)) && (flagAtivo.booleanValue())) {
+			return "Ativo";
+		}
+
+		return "Inativo";
+	}
 }
