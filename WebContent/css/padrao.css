@@ -10,12 +10,11 @@
 	}/* #FFC926 > #D9A300 */
 .barraBusca{ width:100%; height:50px; clear:both; border-bottom:1px solid #fff;}
 #rodape .barraBusca{background:#ff6600;}
-.barraBusca form{ width:990px; height:auto; margin:0 auto; }
-.barraBusca form label{ float: left; background:rgba(205,157,49,.5); color:#FFCC33; height:20px;
-			margin-right:10px; margin-top:5px; padding-top:5px; padding-bottom:15px; padding-left:10px; padding-right:10px;
-			border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;	
+.barraBusca form{ width:760px; height:auto; margin:0 auto; padding-left:230px; }
+.barraBusca form label{ float: left; background:rgba(205,157,49,.5); color:#FFCC33; height:20px; font-family: 'titilliumtext22l_ltmedium'; margin-right:10px; margin-top:5px; padding-top:5px; padding-bottom:15px; padding-left:10px; padding-right:10px;	border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;	
 			}
 .barraBusca form label input[type=text]{background:none; border:none; color:#fff!important; font-size:20px; margin-left:5px;}
+.barraBusca form input[type=submit]{border:1px solid rgba(205,157,49,1); border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;background:rgba(205,157,49,.1); background-image:url(../img/spriteIcons.png); background-repeat:no-repeat; height:38px; width:38px; background-position:-165px -138px; margin-top:5px;}
 #marcaPublicidade{ width:990px; height:110px; margin:0 auto; }
 #marcaPublicidade h1{width:210px; height:110px; margin-right:20px; float:left; background:#ccc;}
 #marcaPublicidade .superbanner{ width:728px; height:90px; float:left; margin:10px 0px; background:#f2f2f2;}
@@ -33,7 +32,7 @@
 			background-image:-moz-linear-gradient(top, #FFBF00, #FF9900);
 			background-image:-o-linear-gradient(top, #FFBF00, #FF9900);
 			}		
-#menu nav #cadastro #facebook{ border-right:1px solid #fff; float:left; width:170px; height:30px; padding:10px 20px; margin:5px 0px;}
+#menu nav #cadastro #facebook{ border-right:1px solid #fff; float:left; width:170px; height:20px; padding:15px 20px; margin:5px 0px;}
 #menu nav #cadastro #local{ width:174px; float:left; color:#fff; font-size:10px; height:30px; margin:5px 0px;}
 #menu nav#categorias ul#principal{ width:600px; float:right;} 
 
@@ -54,10 +53,10 @@
 						background-position:center bottom;
 						background-repeat:no-repeat;
 						}
-#menu nav#categorias ul li > ul#sub{ background:#FFC42B; width:595px; visibility:hidden; position:absolute; top:62px; display:inline; z-index:99999; border-bottom:2px solid #F93; border-left:2px solid #F93; border-right:2px solid #F93;}
+#menu nav#categorias ul li > ul#sub{ background:#FFC42B; width:640px; visibility:hidden; position:absolute; top:62px; display:inline; z-index:99999; border-bottom:2px solid #F93; border-left:2px solid #F93; border-right:2px solid #F93;}
 #menu nav#categorias ul li ul#sub > li{float:left;  height:20px; width:auto!important; margin:5px 10px; padding-top:10px;}
 #menu nav#categorias ul li ul#sub > li a{ color:#333;}
-#menu nav#categorias ul li ul#sub > li a:hover{ color:#F30;}
+#menu nav#categorias ul li ul#sub > li a:hover{ color:#fff;}
 #menu nav#categorias ul li:hover ul#sub{ visibility:visible;}
 
 span.iconMenu{ display:block; width:100%; height:20px; margin:5px 0px;}
@@ -71,20 +70,20 @@ div#local div a:hover{ color:#CC0000;}
 div#local div{ margin-left:10px!important; float:left!important; }
 div#local div span{float:left!important;}
 
-#id-Breadcrumb{ width:990px; height:10px; margin:10px auto; font-size:12px; color:#666; font-family:'titilliumtext22l_ltthin';}
+#id-Breadcrumb{ width:990px; height:auto; overflow:hidden; padding:10px 0px; margin:0px auto; font-size:12px; color:#666; font-family:'titilliumtext22l_ltthin';}
 
 
 /*--==MIOLO==--*/
 #central		{ width:100%; height:auto; margin-top:25px;}
-#conteudo		{ width:990px; height:500px; margin:0 auto; margin-top:25px;}
+#conteudo		{ width:990px; height:500px; margin:0 auto; margin-top:35px;}
 
 .boxSubCat		{ border-bottom:2px solid #FF7100; padding-bottom:10px; margin-bottom:20px; clear:both; overflow:hidden;}
 .boxSubCat h2	{ font-size:14px; color:#fff; background:#FF7100; padding:3px 5px; margin-bottom:5px; font-family: 'titilliumtext22l_ltmedium';}
 .boxSubCat img	{ margin-bottom:15px;}
-.boxSubCat .titulo	 { font-family: 'titilliumtext22l_rgbold'; font-size:15px;}
+.boxSubCat .titulo	 { font-family: 'titilliumtext22l_rgbold'; font-size:15px; color:#0066CC;}
 .boxSubCat .categoria{ font-family: 'titilliumtext22l_ltthin'; font-size:13px;}
 .boxSubCat .item,
-ul#listagem .item	  { font-family: 'titilliumtext22l_ltthin'; font-size:13px; color:#f00; line-height:24px;}
+ul#listagem .item	  { font-family: 'titilliumtext22l_ltthin'; font-size:13px; color:#f00; line-height:16px; padding-bottom:5px;}
 .boxSubCat .precoDe,
 ul#listagem .precoDe  { font-family: 'titilliumtext22l_ltmedium'; font-size:12px; color:#000; line-height:16px;}
 .boxSubCat .precoPor,
@@ -106,7 +105,9 @@ ul#listagem  .precoPor{ font-family: 'titilliumtext22l_ltmedium'; font-size:16px
 #faixa{ position:absolute; top:-10px; right:30px; width:90px; max-height:180px; padding:5px; background:#ffcc00;
 	  box-shadow:0px 5px 3px 3px #ccc; -moz-box-shadow:0px 5px 3px 3px #ccc; -webkit-box-shadow:0px 5px 3px 3px #ccc;
 	  color:#fff; text-transform:uppercase; text-align:center;	  }	  
-.percentual{ font-size:40px;}
+.percentual{ font-size:40px; font-family: 'titilliumtext22l_rgbold';}
+#faixa .precoDe{ color:#fff; font-size:12px;font-family: 'titilliumtext22l_ltmedium'; text-align:left!important; margin:15px 5px 5px 5px;}
+#faixa .precoPor{ color:#F30; font-size:12px;font-family: 'titilliumtext22l_rgbold'; text-align:left!important;margin:5px 5px 15px 5px;}
 /*--==RODAPE==--*/
 #rodape	{ width:100%; height:auto;}
 #infos	{ width:100%; height:auto; background:#DAA300;}
@@ -118,15 +119,19 @@ ul#listagem  .precoPor{ font-family: 'titilliumtext22l_ltmedium'; font-size:16px
 .floatRight{ float:right;}
 .posRel{position:relative;}
 .marginLeft{margin-left:35px;}
-.marca{border-right:2px solid #999; border-bottom:2px solid #999; background:#f2f2f2; width:80px; height:80px; overflow:hidden; text-align:center; font-size:9px; margin:4px;}
+.marginBottom15px{margin-bottom:15px;}
+.marginBottom5px{margin-bottom:5px;}
+.marca{border-right:2px solid #999; border-bottom:2px solid #999; background:#f2f2f2; width:80px; height:80px; overflow:hidden; text-align:center; font-size:9px; margin:4px; alignment-adjust:central;}
 ul#listagem{ width:100%; height:auto;}
-ul#listagem li{ width:100%; height:80px; margin:5px 0px 15px 0px; padding:10px 0px;}
+ul#listagem li{ width:100%; min-height:80px; margin:5px 0px 15px 0px; padding:10px 0px;}
 ul#listagem li .info{ float:left; width:330px; padding-left:15px;}
 ul#listagem li .marca{ margin:0px 10px!important;}
-li .info .titulo{ font-family: 'titilliumtext22l_rgbold'; font-size:15px; line-height:18px; color:#0066CC;}
+li .info .titulo,
+#boxSobreEstab .titulo{ font-family: 'titilliumtext22l_rgbold'; font-size:15px; line-height:18px; color:#0066CC;}
 li .info .resumo{ font-size:16px; color:#000;}
 ul#listagem li .dados{ float:right; width:130px;}
-.dados p{ margin-bottom:15px; font-size:10px; line-height:14px; color:#0066CC;}
+.dados p{ margin-bottom:15px; font-size:10px; line-height:14px; color:#0066CC;font-family: 'titilliumtext22l_ltmedium';}
+.dados a p{color:#0066CC;}
 .banner{ width:170px; height:260px; background:#666; margin:0 auto;}
 .titulo{ font-size:16px; font-weight:bold;}
 .fontYi{font-family: 'microsoft_yi_baitiregular';}
@@ -135,20 +140,34 @@ ul#listagem li .dados{ float:right; width:130px;}
 
 /*--==SPRITES==--*/
 .icons{ background-image:url(../img/spriteIcons.png); background-repeat:no-repeat; height:20px; width:20px; margin-right:5px; display:block; float:left;}
+.iconCard {background-image:url(../img/spriteIcons.png); background-repeat:no-repeat; height:18px; width:25px; margin-right:5px; display:block; float:left;}
 .tel{ background-position:-80px -20px;}
+.telAzul{ background-position:-200px -120px;}
 .iconBares{ background-position:-20px -147px;}
 .iconRestaurante{ background-position:-40px -147px;}
 .iconBaladas{ background-position:-140px -100px;}
 .maisIndicados{ background-position:-160px -20px;}
 .outrasCat{ background-position:-80px -100px;}
 .iconPizzaria{ background-position:-81px -147px; width:23px!important;}
-.iconLanchonete{ background-position:-60px -147px;}
+.iconLanchonete{ background-position:-61px -146px;}
 .site{ background-position:0px -20px;}
-.indicacao{ background-position:0px -20px;}
+.indicacao{ background-position:-180px -120px;}
+.indicacaoAzul{ background-position:-160px -120px;}
+.indicacaoRed{ background-position:-140px -120px;}
 .info{ background-position:-20px 0px;}
-.iconLogin{background-position:0px -40px;}
-.iconCadastrar{background-position:0px -147px;}
-
+.iconLogin{background-position:-160px -103px;}
+.iconCadastrar{background-position:0px -145px;}
+.iconBusca{background-position:-300px 0px;}
+.daHora{background-position:-240px 0px;}
+.doDia{background-position:-300px -20px;}
+.daSemana{background-position:-320px -20px;}
+#btnInit{background-position:-138px -142px; width:25px!important; float:right!important; margin-top:5px; margin-left:5px; cursor:pointer;}
+.pagInicio{background-position:-202px -146px;}
+.pagFim{background-position:-173px -146px;}
+.iconVisa{background-position:-232px -124px;}
+.iconMaster{background-position:-260px -124px;}
+.iconDiners{background-position:-260px -146px;}
+.iconAmex{background-position:-232px -146px;}
 
 
 /*--== LOGIN ==--*/
