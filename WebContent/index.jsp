@@ -157,9 +157,10 @@
     <div id="menu">
             <nav id="categorias">
             	<div id="cadastro">
-                    <div id="facebook">
+            		<div id="facebook">
                         <div class="fb-login-button" data-show-faces="false" data-width="200" data-max-rows="1">Entrar usando Facebook</div>
                     </div>
+                    
                     <div id="local">
                         <span class="chamadaCadastro">Não tem Facebook?</span>
                         <div><a href="" class="modal" rel="modal" title="Cadastrar"><span class="icons iconCadastrar"></span>cadastrar</a></div>

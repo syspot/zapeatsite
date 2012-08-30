@@ -155,7 +155,7 @@
                     <div id="local">
                         <span class="chamadaCadastro">Não tem Facebook?</span>
                         <div><a href="" class="modal" rel="modal" title="Cadastrar"><span class="icons iconCadastrar"></span>cadastrar</a></div>
-                        <div><a id="modal" href="inc/login.html" class="modal" rel="modal" title="Cadastrar"><span class="icons iconLogin"></span>login</a></div>
+                        <div><a id="modal" href="inc/login.jsf" class="modal" rel="modal" title="Cadastrar"><span class="icons iconLogin"></span>login</a></div>
                     </div>
             	</div>
                 <%@ include file="/categorias.jsp" %>
@@ -211,7 +211,7 @@
                         </div>
                     </li>
                 	<li>
-                    <a href="promocao.html" title="">
+                    <a href="promocao.jsf" title="">
                     	<div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
                         <div class="info">
                         	<p class="titulo">Rodízio dos Amantes</p><!-- SE ITEM FOR PROMOÇÃO OU CARRO-CHEFE, NOME DO PRODUTO-->
@@ -230,7 +230,7 @@
                         </div>
                     </li>
                 	<li>
-                    <a href="estabelecimento.html" title="">
+                    <a href="estabelecimento.jsf" title="">
                     	<div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
                         <div class="info">
                         	<p class="titulo">Restaurante Yemanjá</p><!-- SE ITEM FOR ESTABELECIMENTO, NOME DO ESTABELECIMENTO-->
