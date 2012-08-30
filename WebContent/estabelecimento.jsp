@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
+<%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+
+<f:view>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -9,7 +15,12 @@
 <link href="css/cssReset.css" rel="stylesheet" type="text/css" />
 <link href="css/fontface.css" rel="stylesheet" type="text/css" />
 
-
+<!--<meta property="og:site_name" content="Zapeat">
+<meta property="og:image" content="http://img.zapeat.com/icon/icone-68px.png">
+<meta property="geo.position" content="-13.548547000;-38.638272000">
+<meta property="geo.position" conterty="ICBM" content="-13.548547000,-38.638272000">
+<meta property="geo.region" content="BR-BA">
+<meta property="geo.placename" content="Salvador">  -->                                                              
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"> </script>
 <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
 <script src="js/jquery-latest.js"></script>
@@ -27,7 +38,7 @@
 	  })
 </script>
 <!--=============MODAL=============-->
-	<script type="text/javascript" src="http://fw2.atarde.com.br/fw/js/modal.js">
+	<script type="text/javascript" src="js/modal.js">
     $(document).ready(function(){
 		$('a.modal').modal({
 			closeClickOut:true,
@@ -109,25 +120,16 @@
 		function error(msg){
 			alert(msg);
 		}
-</script>
+</script> 
 </head>
 
-<body onload="initialize()">
+<body>
 
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 
 <!-- COMECA TOPO -->
 <div id="topo">
 	<!-- COMECA BUSCA -->
 	<div class="barraBusca">
-
     	<form>
         	<label>Buscar<input type="text" /></label>
             <label>em<input type="text" value="" id="info" /><span id="btnInit" class="icons" ></span></label>
@@ -146,7 +148,7 @@
             <nav id="categorias">
             	<div id="cadastro">
                     <div id="facebook">
-                        <div class="fb-login-button" data-show-faces="false" data-width="200" data-max-rows="1"></div>
+                        <div class="fb-login-button" data-show-faces="false" data-width="200" data-max-rows="1">Entrar usando Facebook</div>
                     </div>
                     <div id="local">
                         <span class="chamadaCadastro">Não tem Facebook?</span>
@@ -169,7 +171,7 @@
                         <span class="icons maisIndicados"></span>
                         <span class="titMenu">mais indicados</span>
                         <ul id="sub">
-                            <li><a href="listagem.html" title="promoção da semana1">promoção da semana</a></li>
+                            <li><a href="listagem.html" title="promoção da semana">promoção da semana</a></li>
                             <li><a href="listagem.html" title="promoção do dia">promoção do dia</a></li>
                             <li><a href="listagem.html" title="promoção da hora">promoção da hora</a></li>
                             <li><a href="listagem.html" title="promoção da hora">ranking</a></li>
@@ -181,7 +183,7 @@
                         <span class="icons iconBaladas"></span>
                         <span class="titMenu">baladas</span>
                         <ul id="sub">
-                            <li><a href="listagem.html" title="promoção da semana1">promoção da semana</a></li>
+                            <li><a href="listagem.html" title="promoção da semana">promoção da semana</a></li>
                             <li><a href="listagem.html" title="promoção do dia">promoção do dia</a></li>
                             <li><a href="listagem.html" title="promoção da hora">promoção da hora</a></li>
                             <li><a href="listagem.html" title="promoção da hora">ranking</a></li>
@@ -193,7 +195,7 @@
                         <span class="icons iconBares"></span>
                         <span class="titMenu">bares</span>
                         <ul id="sub">
-                            <li><a href="listagem.html" title="promoção da semana1">promoção da semana</a></li>
+                            <li><a href="listagem.html" title="promoção da semana">promoção da semana</a></li>
                             <li><a href="listagem.html" title="promoção do dia">promoção do dia</a></li>
                             <li><a href="listagem.html" title="promoção da hora">promoção da hora</a></li>
                             <li><a href="listagem.html" title="promoção da hora">ranking</a></li>
@@ -205,7 +207,7 @@
                         <span class="icons iconDelivery"></span>
                         <span class="titMenu">delivery</span>
                         <ul id="sub">
-                            <li><a href="listagem.html" title="promoção da semana1">promoção da semana</a></li>
+                            <li><a href="listagem.html" title="promoção da semana">promoção da semana</a></li>
                             <li><a href="listagem.html" title="promoção do dia">promoção do dia</a></li>
                             <li><a href="listagem.html" title="promoção da hora">promoção da hora</a></li>
                             <li><a href="listagem.html" title="promoção da hora">ranking</a></li>
@@ -217,7 +219,7 @@
                         <span class="icons iconLanchonete"></span>
                         <span class="titMenu">lanchonetes</span>
                         <ul id="sub">
-                            <li><a href="listagem.html" title="promoção da semana1">promoção da semana</a></li>
+                            <li><a href="listagem.html" title="promoção da semana">promoção da semana</a></li>
                             <li><a href="listagem.html" title="promoção do dia">promoção do dia</a></li>
                             <li><a href="listagem.html" title="promoção da hora">promoção da hora</a></li>
                             <li><a href="listagem.html" title="promoção da hora">ranking</a></li>
@@ -229,7 +231,7 @@
                         <span class="icons iconPizzaria"></span>
                         <span class="titMenu">pizzarias</span>
                         <ul id="sub">
-                            <li><a href="listagem.html" title="promoção da semana1">promoção da semana</a></li>
+                            <li><a href="listagem.html" title="promoção da semana">promoção da semana</a></li>
                             <li><a href="listagem.html" title="promoção do dia">promoção do dia</a></li>
                             <li><a href="listagem.html" title="promoção da hora">promoção da hora</a></li>
                             <li><a href="listagem.html" title="promoção da hora">ranking</a></li>
@@ -241,7 +243,7 @@
                         <span class="icons iconRestaurante"></span>
                         <span class="titMenu">restaurantes</span>
                         <ul id="sub">
-                            <li><a href="listagem.html" title="promoção da semana1">promoção da semana</a></li>
+                            <li><a href="listagem.html" title="promoção da semana">promoção da semana</a></li>
                             <li><a href="listagem.html" title="promoção do dia">promoção do dia</a></li>
                             <li><a href="listagem.html" title="promoção da hora">promoção da hora</a></li>
                             <li><a href="listagem.html" title="promoção da hora">ranking</a></li>
@@ -253,7 +255,7 @@
                         <span class="icons outrasCat"></span>
                         <span class="titMenu">outras categorias</span>
                         <ul id="sub">
-                            <li><a href="listagem.html" title="promoção da semana1">promoção da semana</a></li>
+                            <li><a href="listagem.html" title="promoção da semana">promoção da semana</a></li>
                             <li><a href="listagem.html" title="promoção do dia">promoção do dia</a></li>
                             <li><a href="listagem.html" title="promoção da hora">promoção da hora</a></li>
                             <li><a href="listagem.html" title="promoção da hora">ranking</a></li>
@@ -286,11 +288,17 @@
     	<div id="esqInt">
         	<div id="boxSobreEstab">
             	<div class="marca"></div>
-                <p class="titulo marginBottom15px">Nome local</p>
-                <div class="marginBottom5px">
-                	<a href="" title="Indico"><span class="icons indicacaoAzul"></span>Eu Indico [100]</a>
+                <p>Ranking na categoria</p>
+                <div id="ranking">
+                	<span class="icons medalha"></span>
+                    <span>473º</span><br />lugar
                 </div>
-                <div><span class="icons telAzul"></span>(71) 9876.5432]</div>
+            </div>
+            <div class="boxSubCat ftoLocal">
+            	<h2>Fotos do ambiente</h2>
+                <span class="ftoGrande"><img src="estabelecimento/img/model/180x79.jpg" alt="" title="" /></span>
+                <span class="ftoPeq floatLeft"><img src="estabelecimento/img/model/180x79.jpg" alt="" title="" /></span>
+                <span class="ftoPeq floatRight"><img src="estabelecimento/img/model/180x79.jpg" alt="" title="" /></span>
             </div>
                 	
         </div>
@@ -302,52 +310,49 @@
             	<div id="fotoDestaque">
 	                <a href=""><img src="img/model/590x260.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a>
                     <div class="tituloPromo">
-                    	<p><span class="tipoPromo">Promoção da hora</span></p>
-                        <p><span class="nomePromo">Nome da Promoção</span></p>
+                        <p><span class="nomePromo">Nome do estabelecimento</span></p>
                     </div>
                 </div>
-                <div id="faixa">
-                	<p class="precoDe">De: R$ 200,00</p>
-                    <p class="precoPor">Por: R$ 120,00</p>
-                   	<p class="percentual">40%</p>
-                   	<p class="fontYi font10px">desconto</p>
-                </div>
                 <div class="boxInfo">
-                	<a href="LINK RESTAURANTE > ESTABELECIMENTO" title="" class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: Restaurante</a>
+                	<a href="estabelecimento/LINK RESTAURANTE > ESTABELECIMENTO" title="" class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: Restaurante</a>
+                    <a href="estabelecimento/LINK RESTAURANTE > ESTABELECIMENTO" title="" class="floatLeft marginLeft"><span class="icons tel"></span>(71) 9876.5432</a>
                 </div>
                 <blockquote class="fontYi">
-                	<p>Casais de namorados tem promoção especial. Venha comemorar aniversário de namoro e a companheira não paga o rodízio.</p>
+                	<p>Rod&iacute;zio de carnes com grande variedade de Frutos do Mar como: Camar&atilde;o &agrave; Paulista, Ostras, Lula, Polvo, Salm&atilde;o Defumado e Marinado, Bacalhau Gratinado, Paella e outros. Buffet de saladas, Sushis e Recheauds repletos de variedades, aliados ao conforto e requinte de um ambiente climatizado. O que &eacute; bom est&aacute; aqui!</p>
                 </blockquote>
-                <div class="clear"></div>
-                <div class="barraCompartilhamento">
-	                <a href="http://www.facebook.com/sharer.php?u=URL_da_promocao" target="_blank" title="Facebook"><img src="img/btnFb.jpg" title="Recomendar" /></a>
-                    <div class="fb-like" data-href="http://www.zapeat.com.br" data-send="false" data-layout="button_count" data-width="200" data-show-faces="false"></div>
-                </div> 
+                
                 <div id="outroDados">
                 	<ul>
                     	<li>
-                        	<p class="titOtherInfo">horário da promoção</p>
-                            <p>texto da informação</p>
+                        	<p class="titOtherInfo">horário de funcionamento</p>
+                            <p>Terça a Quinta das 19h às 2 horas</p>
+                            
+                            <p>Sexta e Sábado das 18h às 3 horas</p>
+                            
+                            <p>Domingo das 18h as 00 horas</p>
                         </li>
                     	<li>
-                        	<p class="titOtherInfo">O local</p>
-                            <p>texto da informação</p>
+                        	<p class="titOtherInfo">Redes sociais</p>
+                            <p>@estabelecimento</p>
+                            <p>facebook.com/fanpage</p>
                         </li>
                         <li>
                         	<p class="titOtherInfo">Outros</p>
-                            <p>Formas de Pagamento</p>
+                            <p>www.seusite.com.br</p>
+                            <p>Formas de Pagamento:</p>
                             <p>
                                 <span class="iconCard iconVisa"></span>
                                 <span class="iconCard iconAmex"></span>
                                 <span class="iconCard iconDiners"></span>
                                 <span class="iconCard iconMaster"></span>
                             </p>
+                            <p><span class="icons indicacao"></span> 100 pessoas indicam o ambiente</p>
+                            <p><span class="icons indicacao"></span> 70 pessoas indicam a comida</p>
                         </li>
                     </ul>
                 </div>
                 
                 <address>Aqui entra o endereço do estabelecimento</address>
-                
                 <script>
 				  var map;
 				  function initialize() {
@@ -371,8 +376,12 @@
 				  google.maps.event.addDomListener(window, 'load', initialize);
 				</script>
                 <div id="map_canvas_estab"></div>
-            </div>
-
+                
+                <div class="clear"></div>
+                <div class="barraCompartilhamento">
+	                <a href="http://www.facebook.com/sharer.php?u=URL_da_materia" target="_blank" title="Facebook"><img src="img/btnFb.jpg" title="Recomendar" /></a>
+                    <div class="fb-like" data-href="http://www.zapeat.com.br" data-send="false" data-layout="button_count" data-width="200" data-show-faces="false"></div>
+                </div>
                 
                 <!-- COMENTÁRIOS FACEBOOK -->
                 <div id="comentarioFb">
@@ -381,6 +390,8 @@
                 </div>
             </div>
             
+        
+        </div>
         
         
         <!-- COMECA COLUNA DIREITA -->
@@ -445,4 +456,4 @@
 }(document, 'script', 'facebook-jssdk'));
 </script>
 </body>
-</html>
+</html></f:view>

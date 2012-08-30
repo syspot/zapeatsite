@@ -4,7 +4,8 @@
   <display-name>ZapeatSite</display-name>
   
   <welcome-file-list>
-    <welcome-file>/index.html</welcome-file>
+  	<welcome-file>index.jsp</welcome-file>
+  	<welcome-file>index.jsf</welcome-file>
   </welcome-file-list>
    
   <context-param>
@@ -20,7 +21,7 @@
   
   <servlet-mapping>
     <servlet-name>Faces Servlet</servlet-name>
-    <url-pattern>*.xhtml</url-pattern>
+    <url-pattern>*.jsf</url-pattern>
   </servlet-mapping>
  
   <filter>

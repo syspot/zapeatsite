@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
+<%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+
+<f:view>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -9,18 +15,19 @@
 <link href="css/cssReset.css" rel="stylesheet" type="text/css" />
 <link href="css/fontface.css" rel="stylesheet" type="text/css" />
 
-<!--<meta property="og:site_name" content="Zapeat">
+<meta property="og:site_name" content="Zapeat">
 <meta property="og:image" content="http://img.zapeat.com/icon/icone-68px.png">
 <meta property="geo.position" content="-13.548547000;-38.638272000">
 <meta property="geo.position" conterty="ICBM" content="-13.548547000,-38.638272000">
 <meta property="geo.region" content="BR-BA">
-<meta property="geo.placename" content="Salvador">  -->                                                              
+<meta property="geo.placename" content="Salvador">                                                                
+
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"> </script>
 <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
 <script src="js/jquery-latest.js"></script>
-<script type="text/javascript" src="js/geometa.js"></script>
 <script type="text/javascript">
       $(document).ready(function() {
+		$('#outrosDestaques > #listagem > li:even').css('background', '#CCE5FF');
 		$('#principal ul:eq(0)').css('left','-45px');
 		$('#principal ul:eq(1)').css('left','-120px');
 		$('#principal ul:eq(2)').css('left','-195px');
@@ -31,8 +38,9 @@
 		$('#principal ul:eq(7)').css('right','-0px');
 	  })
 </script>
+
 <!--=============MODAL=============-->
-	<script type="text/javascript" src="js/modal.js">
+	<script type="text/javascript" src="http://fw2.atarde.com.br/fw/js/modal.js">
     $(document).ready(function(){
 		$('a.modal').modal({
 			closeClickOut:true,
@@ -114,10 +122,10 @@
 		function error(msg){
 			alert(msg);
 		}
-</script> 
+</script>     
 </head>
 
-<body>
+<body onload="initialize()">
 
 
 <!-- COMECA TOPO -->
@@ -278,148 +286,218 @@
 	<!-- COMECA CONTEUDO -->
 	<div id="conteudo">
     
-    	<!-- COMECA COLUNA ESQUERDA -->
-    	<div id="esqInt">
-        	<div id="boxSobreEstab">
-            	<div class="marca"></div>
-                <p>Ranking na categoria</p>
-                <div id="ranking">
-                	<span class="icons medalha"></span>
-                    <span>473º</span><br />lugar
-                </div>
-            </div>
-            <div class="boxSubCat ftoLocal">
-            	<h2>Fotos do ambiente</h2>
-                <span class="ftoGrande"><img src="estabelecimento/img/model/180x79.jpg" alt="" title="" /></span>
-                <span class="ftoPeq floatLeft"><img src="estabelecimento/img/model/180x79.jpg" alt="" title="" /></span>
-                <span class="ftoPeq floatRight"><img src="estabelecimento/img/model/180x79.jpg" alt="" title="" /></span>
-            </div>
-                	
-        </div>
-
         
         <!-- COMECA COLUNA MEIO -->
         <div id="meio">
-        	<div id="destaque">
-            	<div id="fotoDestaque">
-	                <a href=""><img src="img/model/590x260.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a>
-                    <div class="tituloPromo">
-                        <p><span class="nomePromo">Nome do estabelecimento</span></p>
-                    </div>
-                </div>
-                <div class="boxInfo">
-                	<a href="estabelecimento/LINK RESTAURANTE > ESTABELECIMENTO" title="" class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: Restaurante</a>
-                    <a href="estabelecimento/LINK RESTAURANTE > ESTABELECIMENTO" title="" class="floatLeft marginLeft"><span class="icons tel"></span>(71) 9876.5432</a>
-                </div>
-                <blockquote class="fontYi">
-                	<p>Rod&iacute;zio de carnes com grande variedade de Frutos do Mar como: Camar&atilde;o &agrave; Paulista, Ostras, Lula, Polvo, Salm&atilde;o Defumado e Marinado, Bacalhau Gratinado, Paella e outros. Buffet de saladas, Sushis e Recheauds repletos de variedades, aliados ao conforto e requinte de um ambiente climatizado. O que &eacute; bom est&aacute; aqui!</p>
-                </blockquote>
-                
-                <div id="outroDados">
-                	<ul>
-                    	<li>
-                        	<p class="titOtherInfo">horário de funcionamento</p>
-                            <p>Terça a Quinta das 19h às 2 horas</p>
-                            
-                            <p>Sexta e Sábado das 18h às 3 horas</p>
-                            
-                            <p>Domingo das 18h as 00 horas</p>
-                        </li>
-                    	<li>
-                        	<p class="titOtherInfo">Redes sociais</p>
-                            <p>@estabelecimento</p>
-                            <p>facebook.com/fanpage</p>
-                        </li>
-                        <li>
-                        	<p class="titOtherInfo">Outros</p>
-                            <p>www.seusite.com.br</p>
-                            <p>Formas de Pagamento:</p>
-                            <p>
-                                <span class="iconCard iconVisa"></span>
-                                <span class="iconCard iconAmex"></span>
-                                <span class="iconCard iconDiners"></span>
-                                <span class="iconCard iconMaster"></span>
-                            </p>
-                            <p><span class="icons indicacao"></span> 100 pessoas indicam o ambiente</p>
-                            <p><span class="icons indicacao"></span> 70 pessoas indicam a comida</p>
-                        </li>
-                    </ul>
-                </div>
-                
-                <address>Aqui entra o endereço do estabelecimento</address>
-                <script>
-				  var map;
-				  function initialize() {
-					// Creating a map
-					var latlng = new google.maps.LatLng(-12.973393753658488, -38.51103549999999); 
-					var map = new google.maps.Map(document.getElementById('map_canvas_estab'), {  
-					  zoom: 17,
-					  center: latlng,
-					  mapTypeId: google.maps.MapTypeId.ROADMAP
-					});
-					
-					// Creating a marker and positioning it on the map
-					var marker = new google.maps.Marker({
-					  position: latlng, 
-					  map: map,
-					  clickable: false,
-					  icon: 'img/markerAzul.png'
-					});
-				  }
-			
-				  google.maps.event.addDomListener(window, 'load', initialize);
-				</script>
-                <div id="map_canvas_estab"></div>
-                
-                <div class="clear"></div>
-                <div class="barraCompartilhamento">
-	                <a href="http://www.facebook.com/sharer.php?u=URL_da_materia" target="_blank" title="Facebook"><img src="img/btnFb.jpg" title="Recomendar" /></a>
-                    <div class="fb-like" data-href="http://www.zapeat.com.br" data-send="false" data-layout="button_count" data-width="200" data-show-faces="false"></div>
-                </div>
-                
-                <!-- COMENTÁRIOS FACEBOOK -->
-                <div id="comentarioFb">
-                <p class="tituloComent">Deixe seu comentário</p>
-	                <div class="fb-comments" data-href="http://example.com" data-num-posts="5" data-width="600"></div>
-                </div>
+        	<div id="tituloSessao">
+            	<span class="icons maisIndicados"></span>
+            	<h2>Mais Indicados</h2>
+                <!--==
+                <p>Promoção da hora</p>
+                <p>Promoção do dia</p>
+                <p>Promoção da semana</p>                
+                <p>Carro-chefe</p>
+                ==-->
+                <p>Estabelecimentos</p>
             </div>
-            
-        
+            <ul id="listagem">
+            		<!-- SE LISTAGEM POR PROMOÇÃO -->
+                	<li>
+                    <a href="" title="">
+                    	<div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
+                        <!-- SE PROMOÇÃO EM PRODUTO -->
+                        <div class="info">
+                        	<p class="titulo">Cheiro de Pizza</p>
+                            <p class="item">Rodízio dos Amantes</p>                            
+                            <p class="resumo fontYi">
+                            Casais de namorados tem promoção especial. Venha comemorar aniversário de namoro e a companheira não paga o rodízio.</p>
+                        </div>
+                    </a>
+                        <!-- SE LISTAGEM POR PROMOÇÃO, RETIRA DIV A SEGUIR -->
+                        <div class="sessao"><span class="icons doDia"></span>Promoção do Dia</div>
+                        
+                        <br clear="all" />
+                        <div class="boxInfo">
+                            <div class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: Restaurante</div>
+                            <div class="floatLeft marginLeft"><span class="icons tel"></span>(71) 9876.5432</div>
+                            <div class="floatLeft marginLeft"><span class="icons site"></span>daboxpizza.com.br</div>
+                            <div class="floatLeft marginLeft"><span class="icons indicacao"></span>10 indicam</div>
+                        </div>
+                    </li>
+                    <li>
+                    <a href="" title="">
+                    	<div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
+                        <!-- SE PROMOÇÃO EM DESCONTO -->
+                        <div class="info">
+                        	<p class="titulo">DaBox Pizzaria</p>
+                            <p class="resumo fontYi">Toda terça qualquer pizza tem preço único. Exceto Royalite Box e Sixbox.</p>
+                            <p><span class="precoPor">Por: R$25,00</span> </p>
+                        </div>
+                    </a>
+                        <!-- SE LISTAGEM POR PROMOÇÃO, RETIRA DIV A SEGUIR -->
+                        <div class="sessao"><span class="icons daSemana"></span>Promoção da Semana</div>
+
+                        <br clear="all" />
+                        <div class="boxInfo">
+                            <div class="floatLeft"><span class="icons iconPizzaria"></span>Categoria: Pizzaria</div>
+                            <div class="floatLeft marginLeft"><span class="icons tel"></span>(71) 9876.5432</div>
+                            <div class="floatLeft marginLeft"><span class="icons site"></span>daboxpizza.com.br</div>
+                            <div class="floatLeft marginLeft"><span class="icons indicacao"></span>10 indicam</div>
+                        </div>
+                    </li>
+                    <li>
+                    <a href="" title="">
+                    	<div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
+                        <div class="info">
+                        	<p class="titulo">Cheiro de Pizza</p>
+                            <p class="item">Casadinha Gaúcha</p>                            
+                            <p class="resumo fontYi">Pedindo 2 Moquecas de peguari, das 18h as 19 horas, o produto terá 40% de desconto</p>
+                            <p><span class="precoDe">Por: R$100,00</span> &nbsp;&nbsp; <span class="precoPor">Por: R$60,00</span></p>
+                        </div>
+                     </a>
+                        <!-- SE LISTAGEM POR PROMOÇÃO, RETIRA DIV A SEGUIR -->
+                        <div class="sessao"><span class="icons daHora"></span>Promoção da Hora</div>
+
+                        <br clear="all" />
+                        <div class="boxInfo">
+                            <div class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: Restaurante</div>
+                            <div class="floatLeft marginLeft"><span class="icons tel"></span>(71) 9876.5432</div>
+                            <div class="floatLeft marginLeft">
+                                <a href="LINK RESTAURANTE > ESTABELECIMENTO" title="Site do estabelecimento">
+                                    <span class="icons site"></span>daboxpizza.com.br
+                                </a>
+                            </div>
+                            <!-- SE LISTAGEM POR PROMOÇÃO, RETIRA DIV A SEGUIR -->
+                            <div class="floatLeft marginLeft"><span class="icons indicacao"></span>10 indicam</div>
+                        </div>
+
+                    </li>
+                    
+                    <!-- SE LISTAGEM POR PROMOÇÃO -->
+                    <li>
+                    <a href="" title="">
+                    	<div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="IMAGEM 80x80px" title="IMAGEM DA PROMOÇÃO" /></div>
+                        <div class="info">
+                        	<p class="titulo">NOME DA PROMOÇÃO</p>
+                            <p class="item">Estabelecimento</p>                            
+                            <p class="resumo fontYi">Pedindo 2 Moquecas de peguari, das 18h as 19 horas, o produto terá 40% de desconto</p>
+                            <p><span class="precoDe">Por: R$100,00</span> &nbsp;&nbsp; <span class="precoPor">Por: R$60,00</span></p>
+                        </div>
+                    </a>
+                        <!-- SE LISTAGEM POR PROMOÇÃO, RETIRA DIV A SEGUIR -->
+                        <div class="sessao"><span class="icons daHora"></span>Promoção da Hora</div>
+
+                        <br clear="all" />
+                        <div class="boxInfo">
+                            <div class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: Restaurante</div>
+                            <div class="floatLeft marginLeft"><span class="icons tel"></span>(71) 9876.5432</div>
+                            <div class="floatLeft marginLeft">
+                                <a href="LINK RESTAURANTE > ESTABELECIMENTO" title="Site do estabelecimento">
+                                    <span class="icons site"></span>daboxpizza.com.br
+                                </a>
+                            </div>
+                            <div class="floatLeft marginLeft"><span class="icons indicacao"></span>10 indicam</div>
+                        </div>
+                    </li>
+                    <li>
+                    	<div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
+                        <div class="info">
+                        	<p class="titulo">DaBox Pizzaria</p>
+                            <p class="resumo fontYi">Toda terça qualquer pizza tem preço único. Exceto Royalite Box e Sixbox.</p>
+                            <p><span class="precoPor">Por: R$25,00</span> </p>
+                        </div>
+                        <!-- SE LISTAGEM POR PROMOÇÃO, RETIRA DIV A SEGUIR -->
+                        <div class="sessao"><span class="icons daHora"></span>Promoção da Hora</div>
+
+                        <br clear="all" />
+                        <div class="boxInfo">
+                            <div class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: Restaurante</div>
+                            <div class="floatLeft marginLeft"><span class="icons tel"></span>(71) 9876.5432</div>
+                            <div class="floatLeft marginLeft">
+                                <a href="LINK RESTAURANTE > ESTABELECIMENTO" title="Site do estabelecimento">
+                                    <span class="icons site"></span>daboxpizza.com.br
+                                </a>
+                            </div>
+                            <div class="floatLeft marginLeft"><span class="icons indicacao"></span>10 indicam</div>
+                        </div>
+                    </li>
+                    <li>
+                    	<div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="IMAGEM 80x80px" title="IMAGEM DA PROMOÇÃO" /></div>
+                        <!-- SE PROMOÇÃO EM PRODUTO -->
+                        <div class="info">
+                        	<p class="titulo">Rodízio dos Amantes</p>
+                            <p class="item">Cheiro de Pizza</p>                            
+                            <p class="resumo fontYi">
+                            Casais de namorados tem promoção especial. Venha comemorar aniversário de namoro e a companheira não paga o rodízio.</p>
+                        </div>
+                        <!-- SE LISTAGEM POR PROMOÇÃO, RETIRA DIV A SEGUIR -->
+                        <div class="sessao"><span class="icons doDia"></span>Promoção do Dia</div>
+                        
+                        <br clear="all" />
+                        <div class="boxInfo">
+                            <div class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: Restaurante</div>
+                            <div class="floatLeft marginLeft"><span class="icons tel"></span>(71) 9876.5432</div>
+                            <div class="floatLeft marginLeft"><span class="icons site"></span>daboxpizza.com.br</div>
+                            <div class="floatLeft marginLeft"><span class="icons indicacao"></span>10 indicam</div>
+                        </div>
+                    </li>
+                </ul>
+                
+                <div id="paginacao">
+                	<span class="inicio"><a href="" title=""><span class="icons pagInicio"></span></a></span>
+                    <span class="pagina"><a href="" title="">1</a></span>
+                    <span class="pagina"><a href="" title="">2</a></span>
+                    <span class="pagina"><a href="" title="">3</a></span>
+                    <span class="pagina"><a href="" title="">4</a></span>
+                    <span class="pagina"><a href="" title="">...</a></span>
+                    <span class="pagina"><a href="" title="">5</a></span>
+                    <span class="pagina"><a href="" title="">6</a></span>
+                    <span class="pagina"><a href="" title="">7</a></span>
+                    <span class="fim"><a href="" title=""><span class="icons pagFim"></span></a></span>
+                </div>
+
         </div>
         
         
         <!-- COMECA COLUNA DIREITA -->
-        <div id="dir">
-        	<div class="boxSubCat">
-            	<h2>Promoção do dia</h2>
-                <img src="img/model/180x79.jpg" alt="" title="" />
-                <p class="titulo">Nome da promo</p>
-                <!-- SE PROMOÇÃO EM DESCONTO -->
-                <p><span class="precoDe">De: R$700,00</span>&nbsp;&nbsp;<span class="precoPor">Por: R$500,00</span> 
-            </div>
-        	<div class="boxSubCat">
-            	<h2>Promoção da semana</h2>
-                <img src="img/model/180x79.jpg" alt="" title="" />
-                <p class="titulo">Nome da promo</p>
-                <!-- SE PROMOÇÃO EM PRODUTO -->
-                <p><span class="fontYi">Na Cheiro de Pizza comprando uma pizza grande você leva outra pizza do mesmo tamanho e sabor totalmente grátis.</span></p>
-            </div>
-            <div class="boxSubCat">
-            	<h2>Carro-chefe</h2>
-                <img src="img/model/180x79.jpg" alt="" title="" />
-                <p class="titulo">Nome do estab</p>
-                <p class="categoria">categoria</p>
-                <p class="item">nome do prod</p>
-                <p><span class="precoDe">De: R$789,00</span>&nbsp;&nbsp;<span class="precoPor">Por: R$254,00</span> 
-            </div>
-            
-            <div class="boxSubCat">
-            	<div class="banner">banner</div>
-            </div>
-            
-            
-            
+        <div id="colunaMapa">
+        	  <div id="map" style="width: 350px; height: 700px;"></div>
+              <script type="text/javascript">
+				var locations = [
+				  ['DaBox PIzzaria', -33.890542, 151.274856, 4],
+				  ['Restaurante Yemanjá', -33.923036, 151.259052, 5],
+				  ['Porto Brasil', -34.028249, 151.157507, 3],
+				  ['DOC', -33.80010128657071, 151.28747820854187, 2],
+				  ['071 Music Bar', -33.950198, 151.259302, 1]
+				];
+			
+				var map = new google.maps.Map(document.getElementById('map'), {
+				  zoom: 10,
+				  center: new google.maps.LatLng(-33.92, 151.25),
+				  mapTypeId: google.maps.MapTypeId.ROADMAP
+				});
+			
+				var infowindow = new google.maps.InfoWindow();
+			
+				var marker, i;
+			
+				for (i = 0; i < locations.length; i++) {  
+				  marker = new google.maps.Marker({
+					position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+					map: map
+				  });
+			
+				  google.maps.event.addListener(marker, 'click', (function(marker, i) {
+					return function() {
+					  infowindow.setContent(locations[i][0]);
+					  infowindow.open(map, marker);
+					}
+				  })(marker, i));
+				}
+			  </script>
+
         </div>
+        
     </div>
     <!-- TERMINA CONTEUDO -->
 </div>
@@ -451,3 +529,4 @@
 </script>
 </body>
 </html>
+</f:view>

@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
+<%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -127,7 +132,7 @@
 		}
 </script>   
 </head>
-
+<f:view>
 <body onload="initialize()">
 
 
@@ -158,7 +163,7 @@
                     <div id="local">
                         <span class="chamadaCadastro">Não tem Facebook?</span>
                         <div><a href="" class="modal" rel="modal" title="Cadastrar"><span class="icons iconCadastrar"></span>cadastrar</a></div>
-                        <div><a id="modal" href="inc/login.html" class="modal" rel="modal" title="Cadastrar"><span class="icons iconLogin"></span>login</a></div>
+                        <div><a id="modal" href="inc/login.jsf" class="modal" rel="modal" title="Cadastrar"><span class="icons iconLogin"></span>login</a></div>
                     </div>
             	</div>
                 <ul id="principal">
@@ -176,96 +181,96 @@
                         <span class="icons maisIndicados"></span>
                         <span class="titMenu">mais indicados</span>
                         <ul id="sub">
-                            <li><a href="listagem.html" title="promoção da semana">promoção da semana</a></li>
-                            <li><a href="listagem.html" title="promoção do dia">promoção do dia</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">promoção da hora</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">ranking</a></li>
-                            <li><a href="listagem.html" title="carro-chefe">carro-chefe</a></li>
-                            <li><a href="estabelecimento.html" title="estabelecimentos">estabelecimentos</a></li>
+                            <li><a href="listagem.jsf" title="promoção da semana">promoção da semana</a></li>
+                            <li><a href="listagem.jsf" title="promoção do dia">promoção do dia</a></li>
+                            <li><a href="listagem.jsf" title="promoção da hora">promoção da hora</a></li>
+                            <li><a href="listagem.jsf" title="promoção da hora">ranking</a></li>
+                            <li><a href="listagem.jsf" title="carro-chefe">carro-chefe</a></li>
+                            <li><a href="estabelecimento.jsf" title="estabelecimentos">estabelecimentos</a></li>
                         </ul>
                     </li>
                     <li>
                         <span class="icons iconBaladas"></span>
                         <span class="titMenu">baladas</span>
                         <ul id="sub">
-                            <li><a href="listagem.html" title="promoção da semana">promoção da semana</a></li>
-                            <li><a href="listagem.html" title="promoção do dia">promoção do dia</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">promoção da hora</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">ranking</a></li>
-                            <li><a href="listagem.html" title="carro-chefe">carro-chefe</a></li>
-                            <li><a href="estabelecimento.html" title="estabelecimentos">estabelecimentos</a></li>
+                            <li><a href="listagem.jsf" title="promoção da semana">promoção da semana</a></li>
+                            <li><a href="listagem.jsf" title="promoção do dia">promoção do dia</a></li>
+                            <li><a href="listagem.jsf" title="promoção da hora">promoção da hora</a></li>
+                            <li><a href="listagem.jsf" title="promoção da hora">ranking</a></li>
+                            <li><a href="listagem.jsf" title="carro-chefe">carro-chefe</a></li>
+                            <li><a href="estabelecimento.jsf" title="estabelecimentos">estabelecimentos</a></li>
                         </ul>
                     </li>
                     <li>
                         <span class="icons iconBares"></span>
                         <span class="titMenu">bares</span>
                         <ul id="sub">
-                            <li><a href="listagem.html" title="promoção da semana">promoção da semana</a></li>
-                            <li><a href="listagem.html" title="promoção do dia">promoção do dia</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">promoção da hora</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">ranking</a></li>
-                            <li><a href="listagem.html" title="carro-chefe">carro-chefe</a></li>
-                            <li><a href="estabelecimento.html" title="estabelecimentos">estabelecimentos</a></li>
+                            <li><a href="listagem.jsf" title="promoção da semana">promoção da semana</a></li>
+                            <li><a href="listagem.jsf" title="promoção do dia">promoção do dia</a></li>
+                            <li><a href="listagem.jsf" title="promoção da hora">promoção da hora</a></li>
+                            <li><a href="listagem.jsf" title="promoção da hora">ranking</a></li>
+                            <li><a href="listagem.jsf" title="carro-chefe">carro-chefe</a></li>
+                            <li><a href="estabelecimento.jsf" title="estabelecimentos">estabelecimentos</a></li>
                         </ul>
                     </li>
                     <li>
                         <span class="icons iconDelivery"></span>
                         <span class="titMenu">delivery</span>
                         <ul id="sub">
-                            <li><a href="listagem.html" title="promoção da semana">promoção da semana</a></li>
-                            <li><a href="listagem.html" title="promoção do dia">promoção do dia</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">promoção da hora</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">ranking</a></li>
-                            <li><a href="listagem.html" title="carro-chefe">carro-chefe</a></li>
-                            <li><a href="estabelecimento.html" title="estabelecimentos">estabelecimentos</a></li>
+                            <li><a href="listagem.jsf" title="promoção da semana">promoção da semana</a></li>
+                            <li><a href="listagem.jsf" title="promoção do dia">promoção do dia</a></li>
+                            <li><a href="listagem.jsf" title="promoção da hora">promoção da hora</a></li>
+                            <li><a href="listagem.jsf" title="promoção da hora">ranking</a></li>
+                            <li><a href="listagem.jsf" title="carro-chefe">carro-chefe</a></li>
+                            <li><a href="estabelecimento.jsf" title="estabelecimentos">estabelecimentos</a></li>
                         </ul>
                     </li>
                     <li>
                         <span class="icons iconLanchonete"></span>
                         <span class="titMenu">lanchonetes</span>
                         <ul id="sub">
-                            <li><a href="listagem.html" title="promoção da semana">promoção da semana</a></li>
-                            <li><a href="listagem.html" title="promoção do dia">promoção do dia</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">promoção da hora</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">ranking</a></li>
-                            <li><a href="listagem.html" title="carro-chefe">carro-chefe</a></li>
-                            <li><a href="estabelecimento.html" title="estabelecimentos">estabelecimentos</a></li>
+                            <li><a href="listagem.jsf" title="promoção da semana">promoção da semana</a></li>
+                            <li><a href="listagem.jsf" title="promoção do dia">promoção do dia</a></li>
+                            <li><a href="listagem.jsf" title="promoção da hora">promoção da hora</a></li>
+                            <li><a href="listagem.jsf" title="promoção da hora">ranking</a></li>
+                            <li><a href="listagem.jsf" title="carro-chefe">carro-chefe</a></li>
+                            <li><a href="estabelecimento.jsf" title="estabelecimentos">estabelecimentos</a></li>
                         </ul>
                     </li>
                     <li>
                         <span class="icons iconPizzaria"></span>
                         <span class="titMenu">pizzarias</span>
                         <ul id="sub">
-                            <li><a href="listagem.html" title="promoção da semana">promoção da semana</a></li>
-                            <li><a href="listagem.html" title="promoção do dia">promoção do dia</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">promoção da hora</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">ranking</a></li>
-                            <li><a href="listagem.html" title="carro-chefe">carro-chefe</a></li>
-                            <li><a href="estabelecimento.html" title="estabelecimentos">estabelecimentos</a></li>
+                            <li><a href="listagem.jsf" title="promoção da semana">promoção da semana</a></li>
+                            <li><a href="listagem.jsf" title="promoção do dia">promoção do dia</a></li>
+                            <li><a href="listagem.jsf" title="promoção da hora">promoção da hora</a></li>
+                            <li><a href="listagem.jsf" title="promoção da hora">ranking</a></li>
+                            <li><a href="listagem.jsf" title="carro-chefe">carro-chefe</a></li>
+                            <li><a href="estabelecimento.jsf" title="estabelecimentos">estabelecimentos</a></li>
                         </ul>
                     </li>
                     <li>
                         <span class="icons iconRestaurante"></span>
                         <span class="titMenu">restaurantes</span>
                         <ul id="sub">
-                            <li><a href="listagem.html" title="promoção da semana">promoção da semana</a></li>
-                            <li><a href="listagem.html" title="promoção do dia">promoção do dia</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">promoção da hora</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">ranking</a></li>
-                            <li><a href="listagem.html" title="carro-chefe">carro-chefe</a></li>
-                            <li><a href="estabelecimento.html" title="estabelecimentos">estabelecimentos</a></li>
+                            <li><a href="listagem.jsf" title="promoção da semana">promoção da semana</a></li>
+                            <li><a href="listagem.jsf" title="promoção do dia">promoção do dia</a></li>
+                            <li><a href="listagem.jsf" title="promoção da hora">promoção da hora</a></li>
+                            <li><a href="listagem.jsf" title="promoção da hora">ranking</a></li>
+                            <li><a href="listagem.jsf" title="carro-chefe">carro-chefe</a></li>
+                            <li><a href="estabelecimento.jsf" title="estabelecimentos">estabelecimentos</a></li>
                         </ul>
                     </li>
                     <li>
                         <span class="icons outrasCat"></span>
                         <span class="titMenu">outras categorias</span>
                         <ul id="sub">
-                            <li><a href="listagem.html" title="promoção da semana">promoção da semana</a></li>
-                            <li><a href="listagem.html" title="promoção do dia">promoção do dia</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">promoção da hora</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">ranking</a></li>
-                            <li><a href="listagem.html" title="carro-chefe">carro-chefe</a></li>
-                            <li><a href="estabelecimento.html" title="estabelecimentos">estabelecimentos</a></li>
+                            <li><a href="listagem.jsf" title="promoção da semana">promoção da semana</a></li>
+                            <li><a href="listagem.jsf" title="promoção do dia">promoção do dia</a></li>
+                            <li><a href="listagem.jsf" title="promoção da hora">promoção da hora</a></li>
+                            <li><a href="listagem.jsf" title="promoção da hora">ranking</a></li>
+                            <li><a href="listagem.jsf" title="carro-chefe">carro-chefe</a></li>
+                            <li><a href="estabelecimento.jsf" title="estabelecimentos">estabelecimentos</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -286,7 +291,7 @@
     	<div id="esq">
         	<div class="boxSubCat">
             	<h2>Promoção do dia</h2>
-                <a href="promocao.html" title=""><img src="img/model/180x79.jpg" alt="" title="" />
+                <a href="promocao.jsf" title=""><img src="img/model/180x79.jpg" alt="" title="" />
                     <p class="titulo">Nome do estab</p>
                     <p class="categoria">categoria</p>
                     <p class="item">nome do prod</p>
@@ -296,7 +301,7 @@
             </div>
         	<div class="boxSubCat">
             	<h2>Promoção da semana</h2>
-                <a href="promocao.html" title=""><img src="img/model/180x79.jpg" alt="" title="" /></a>
+                <a href="promocao.jsf" title=""><img src="img/model/180x79.jpg" alt="" title="" /></a>
                     <p class="titulo">Cheiro de Pizza</p>
                     <p class="categoria">Pizzaria</p>
                     <p class="item">Pague 1 leve 2</p>
@@ -306,7 +311,7 @@
             </div>
             <div class="boxSubCat">
             	<h2>Carro-chefe</h2>
-                <a href="promocao.html" title=""><img src="img/model/180x79.jpg" alt="" title="" /></a>
+                <a href="promocao.jsf" title=""><img src="img/model/180x79.jpg" alt="" title="" /></a>
                     <p class="titulo">Nome do estab</p>
                     <p class="categoria">categoria</p>
                     <p class="item">nome do prod</p>
@@ -319,7 +324,7 @@
         <div id="meio">
         	<div id="destaque">
             	<div id="fotoDestaque">
-	                <a href="promocao.html"><img src="img/model/590x260.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a>
+	                <a href="promocao.jsf"><img src="img/model/590x260.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a>
                     <div class="tituloPromo">
                     	<p><span class="tipoPromo">Promoção da hora</span></p>
                         <p><span class="nomePromo">Nome da Promoção/estabelecimento</span></p>
@@ -372,7 +377,7 @@
             	<h2>Outras Promoções da Hora</h2>
             	<ul id="listagem">
                 	<li>
-                    	<a href="promocao.html" title="">
+                    	<a href="promocao.jsf" title="">
                             <div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
                             <!-- SE PROMOÇÃO EM PRODUTO -->
                             <div class="info">
@@ -395,7 +400,7 @@
                         </div>
                     </li>
                     <li>
-                    	<a href="promocao.html" title="">
+                    	<a href="promocao.jsf" title="">
                             <div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
                             <!-- SE PROMOÇÃO EM DESCONTO -->
                             <div class="info">
@@ -419,7 +424,7 @@
 
                     </li>
                     <li>
-                    	<a href="promocao.html" title="">
+                    	<a href="promocao.jsf" title="">
                             <div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
                             <div class="info">
                                 <p class="titulo">.titulo</p>
@@ -440,7 +445,7 @@
 
                     </li>
                     <li>
-                    	<a href="promocao.html" title="">
+                    	<a href="promocao.jsf" title="">
                             <div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
                             <div class="info">
                                 <p class="titulo">.titulo</p>
@@ -461,7 +466,7 @@
 
                     </li>
                     <li>
-                    	<a href="promocao.html" title="">
+                    	<a href="promocao.jsf" title="">
                             <div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
                             <div class="info">
                                 <p class="titulo">.titulo</p>
@@ -493,31 +498,31 @@
             	<h2>Top Geral</h2>
                 <ul id="topGeral">
                     <li class="hum">
-                    	<a href="estabelecimento.html" title="">
+                    	<a href="estabelecimento.jsf" title="">
                             <p class="titulo">Nome do estab</p>
                             <p class="categoria">categoria</p>
                         </a>
                     </li>
                     <li class="dois">
-                    	<a href="estabelecimento.html" title="">
+                    	<a href="estabelecimento.jsf" title="">
                             <p class="titulo">Nome do estab</p>
                             <p class="categoria">categoria</p>
                         </a>
                     </li>
                     <li class="tres">
-                    	<a href="estabelecimento.html" title="">
+                    	<a href="estabelecimento.jsf" title="">
                             <p class="titulo">Nome do estab</p>
                             <p class="categoria">categoria</p>
                         </a>
                     </li>
                     <li class="quatro">
-                    	<a href="estabelecimento.html" title="">
+                    	<a href="estabelecimento.jsf" title="">
                             <p class="titulo">Nome do estab</p>
                             <p class="categoria">categoria</p>
                         </a>
                     </li>
                     <li class="cinco">
-                    	<a href="estabelecimento.html" title="">
+                    	<a href="estabelecimento.jsf" title="">
                             <p class="titulo">Nome do estab</p>
                             <p class="categoria">categoria</p>
                         </a>
@@ -531,18 +536,18 @@
             
             <div class="boxSubCat">
             	<h2>Estabelecimentos</h2>
-                <div class="marca floatLeft"><a href="estabelecimento.html" title=""><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a></div>
-                <div class="marca floatLeft"><a href="estabelecimento.html" title=""><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a></div>
-                <div class="marca floatLeft"><a href="estabelecimento.html" title=""><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a></div>
-                <div class="marca floatLeft"><a href="estabelecimento.html" title=""><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a></div>
-                <div class="marca floatLeft"><a href="estabelecimento.html" title=""><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a></div>
-                <div class="marca floatLeft"><a href="estabelecimento.html" title=""><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a></div>
+                <div class="marca floatLeft"><a href="estabelecimento.jsf" title=""><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a></div>
+                <div class="marca floatLeft"><a href="estabelecimento.jsf" title=""><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a></div>
+                <div class="marca floatLeft"><a href="estabelecimento.jsf" title=""><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a></div>
+                <div class="marca floatLeft"><a href="estabelecimento.jsf" title=""><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a></div>
+                <div class="marca floatLeft"><a href="estabelecimento.jsf" title=""><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a></div>
+                <div class="marca floatLeft"><a href="estabelecimento.jsf" title=""><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a></div>
             </div>
             
             <div class="boxSubCat">
             	<h2>Quem Indica</h2>
                 <span class="imgDestaque-peq posRel">
-                	<a href="estabelecimento.html" title="">
+                	<a href="estabelecimento.jsf" title="">
                         <img src="img/model/180x79.jpg" alt="" title="" />
                         <p class="tituloIndica">Nome do estabelecimento</p>
                     </a>
@@ -583,4 +588,5 @@
 }(document, 'script', 'facebook-jssdk'));
 </script>
 </body>
+</f:view>
 </html>
