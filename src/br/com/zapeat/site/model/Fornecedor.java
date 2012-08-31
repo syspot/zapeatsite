@@ -1,8 +1,5 @@
 package br.com.zapeat.site.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,12 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import br.com.topsys.database.hibernate.TSActiveRecordAb;
 import br.com.topsys.util.TSUtil;
-import br.com.zapeat.site.util.Constantes;
-import br.com.zapeat.site.util.ZapeatUtil;
 
 @SuppressWarnings("serial")
 @Entity
@@ -65,24 +59,7 @@ public class Fornecedor extends TSActiveRecordAb<Fornecedor> {
 
 	@ManyToOne
 	private Cidade cidade;
-
-	@Transient
-	private String caminhoLogoMarca;
-
-	public String getCaminhoLogoMarca() {
-
-		if (!TSUtil.isEmpty(this.logoMarca)) {
-
-			this.caminhoLogoMarca = Constantes.PASTA_DOWNLOAD_TEMP + this.logoMarca;
-		}
-
-		return caminhoLogoMarca;
-	}
-
-	public void setCaminhoLogoMarca(String caminhoLogoMarca) {
-		this.caminhoLogoMarca = caminhoLogoMarca;
-	}
-
+	
 	public Long getId() {
 		return TSUtil.tratarLong(id);
 	}
@@ -116,82 +93,7 @@ public class Fornecedor extends TSActiveRecordAb<Fornecedor> {
 		return true;
 	}
 
-	@Override
-	public List<Fornecedor> findByModel(String... fieldsOrderBy) {
-
-		StringBuilder query = new StringBuilder();
-
-		query.append(" from Fornecedor f where 1 = 1 ");
-
-		if (!TSUtil.isEmpty(razaoSocial)) {
-			query.append("and ").append(ZapeatUtil.semAcento("f.razaoSocial")).append(" like ").append(ZapeatUtil.semAcento("?")).append(" ");
-		}
-
-		if (!TSUtil.isEmpty(cnpj)) {
-			query.append("and ").append(ZapeatUtil.semAcento("f.cnpj")).append(" like ").append(ZapeatUtil.semAcento("?")).append(" ");
-		}
-
-		if (!TSUtil.isEmpty(nomeFantasia)) {
-			query.append("and ").append(ZapeatUtil.semAcento("f.nomeFantasia")).append(" like ").append(ZapeatUtil.semAcento("?")).append(" ");
-		}
-
-		if (!TSUtil.isEmpty(cidade) && !TSUtil.isEmpty(cidade.getId())) {
-			query.append("and f.cidade = ?").append(" ");
-		}
-
-		if (!TSUtil.isEmpty(bairro)) {
-			query.append("and ").append(ZapeatUtil.semAcento("f.bairro")).append(" like ").append(ZapeatUtil.semAcento("?")).append(" ");
-		}
-
-		if (!TSUtil.isEmpty(logradouro)) {
-			query.append("and ").append(ZapeatUtil.semAcento("f.logradouro")).append(" like ").append(ZapeatUtil.semAcento("?")).append(" ");
-		}
-
-		if (!TSUtil.isEmpty(numero)) {
-			query.append("and ").append(ZapeatUtil.semAcento("f.numero")).append(" = ").append(ZapeatUtil.semAcento("?")).append(" ");
-		}
-
-		if (!TSUtil.isEmpty(cep)) {
-			query.append("and ").append(ZapeatUtil.semAcento("f.cep")).append(" = ").append(ZapeatUtil.semAcento("?")).append(" ");
-		}
-
-		List<Object> params = new ArrayList<Object>();
-
-		if (!TSUtil.isEmpty(razaoSocial)) {
-			params.add(ZapeatUtil.tratarString(razaoSocial));
-		}
-
-		if (!TSUtil.isEmpty(cnpj)) {
-			params.add(ZapeatUtil.tratarString(cnpj));
-		}
-
-		if (!TSUtil.isEmpty(nomeFantasia)) {
-			params.add(ZapeatUtil.tratarString(nomeFantasia));
-		}
-
-		if (!TSUtil.isEmpty(cidade) && !TSUtil.isEmpty(cidade.getId())) {
-			params.add(cidade);
-		}
-
-		if (!TSUtil.isEmpty(bairro)) {
-			params.add(ZapeatUtil.tratarString(bairro));
-		}
-
-		if (!TSUtil.isEmpty(logradouro)) {
-			params.add(ZapeatUtil.tratarString(logradouro));
-		}
-
-		if (!TSUtil.isEmpty(numero)) {
-			params.add(ZapeatUtil.tratarString(numero));
-		}
-
-		if (!TSUtil.isEmpty(cep)) {
-			params.add(ZapeatUtil.tratarString(cep));
-		}
-
-		return super.find(query.toString(), params.toArray());
-
-	}
+	
 
 	public String getCnpj() {
 		return cnpj;
