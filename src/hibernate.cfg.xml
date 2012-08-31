@@ -17,8 +17,10 @@
 
 		<property name="hibernate.show_sql">true</property>
 
+
  		<mapping class="br.com.zapeat.site.model.Banner" />
  		<mapping class="br.com.zapeat.site.model.Categoria" />
+
  		<mapping class="br.com.zapeat.site.model.Cidade" />
  		<mapping class="br.com.zapeat.site.model.Estado" />
  		<mapping class="br.com.zapeat.site.model.Fornecedor" />

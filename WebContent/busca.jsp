@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
+<%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+
+<f:view>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -149,117 +155,10 @@
                     <div id="local">
                         <span class="chamadaCadastro">Não tem Facebook?</span>
                         <div><a href="" class="modal" rel="modal" title="Cadastrar"><span class="icons iconCadastrar"></span>cadastrar</a></div>
-                        <div><a id="modal" href="inc/login.html" class="modal" rel="modal" title="Cadastrar"><span class="icons iconLogin"></span>login</a></div>
+                        <div><a id="modal" href="inc/login.jsf" class="modal" rel="modal" title="Cadastrar"><span class="icons iconLogin"></span>login</a></div>
                     </div>
             	</div>
-                <ul id="principal">
-                    <li>
-                    	<!-- SE CATEGORIA:
-                        - Mais Indicados:<span class="icons maisIndicados"></span>
-                        - Baladas:<span class="icons iconBaladas"></span>
-                        - Bares:<span class="icons iconBares"></span>
-                        - Delivery:<span class="icons iconDelivery"></span>
-                        - Lanchonetes:<span class="icons iconLanchonete"></span>
-                        - Pizzarias:<span class="icons iconPizzaria"></span>
-                        - Restaurantes:<span class="icons iconRestaurante"></span>
-                        - Outras Categorias:<span class="icons outrasCat"></span>
-                        -->
-                        <span class="icons maisIndicados"></span>
-                        <span class="titMenu">mais indicados</span>
-                        <ul id="sub">
-                            <li><a href="listagem.html" title="promoção da semana">promoção da semana</a></li>
-                            <li><a href="listagem.html" title="promoção do dia">promoção do dia</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">promoção da hora</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">ranking</a></li>
-                            <li><a href="listagem.html" title="carro-chefe">carro-chefe</a></li>
-                            <li><a href="estabelecimento.html" title="estabelecimentos">estabelecimentos</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <span class="icons iconBaladas"></span>
-                        <span class="titMenu">baladas</span>
-                        <ul id="sub">
-                            <li><a href="listagem.html" title="promoção da semana">promoção da semana</a></li>
-                            <li><a href="listagem.html" title="promoção do dia">promoção do dia</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">promoção da hora</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">ranking</a></li>
-                            <li><a href="listagem.html" title="carro-chefe">carro-chefe</a></li>
-                            <li><a href="estabelecimento.html" title="estabelecimentos">estabelecimentos</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <span class="icons iconBares"></span>
-                        <span class="titMenu">bares</span>
-                        <ul id="sub">
-                            <li><a href="listagem.html" title="promoção da semana">promoção da semana</a></li>
-                            <li><a href="listagem.html" title="promoção do dia">promoção do dia</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">promoção da hora</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">ranking</a></li>
-                            <li><a href="listagem.html" title="carro-chefe">carro-chefe</a></li>
-                            <li><a href="estabelecimento.html" title="estabelecimentos">estabelecimentos</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <span class="icons iconDelivery"></span>
-                        <span class="titMenu">delivery</span>
-                        <ul id="sub">
-                            <li><a href="listagem.html" title="promoção da semana">promoção da semana</a></li>
-                            <li><a href="listagem.html" title="promoção do dia">promoção do dia</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">promoção da hora</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">ranking</a></li>
-                            <li><a href="listagem.html" title="carro-chefe">carro-chefe</a></li>
-                            <li><a href="estabelecimento.html" title="estabelecimentos">estabelecimentos</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <span class="icons iconLanchonete"></span>
-                        <span class="titMenu">lanchonetes</span>
-                        <ul id="sub">
-                            <li><a href="listagem.html" title="promoção da semana">promoção da semana</a></li>
-                            <li><a href="listagem.html" title="promoção do dia">promoção do dia</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">promoção da hora</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">ranking</a></li>
-                            <li><a href="listagem.html" title="carro-chefe">carro-chefe</a></li>
-                            <li><a href="estabelecimento.html" title="estabelecimentos">estabelecimentos</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <span class="icons iconPizzaria"></span>
-                        <span class="titMenu">pizzarias</span>
-                        <ul id="sub">
-                            <li><a href="listagem.html" title="promoção da semana">promoção da semana</a></li>
-                            <li><a href="listagem.html" title="promoção do dia">promoção do dia</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">promoção da hora</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">ranking</a></li>
-                            <li><a href="listagem.html" title="carro-chefe">carro-chefe</a></li>
-                            <li><a href="estabelecimento.html" title="estabelecimentos">estabelecimentos</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <span class="icons iconRestaurante"></span>
-                        <span class="titMenu">restaurantes</span>
-                        <ul id="sub">
-                            <li><a href="listagem.html" title="promoção da semana">promoção da semana</a></li>
-                            <li><a href="listagem.html" title="promoção do dia">promoção do dia</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">promoção da hora</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">ranking</a></li>
-                            <li><a href="listagem.html" title="carro-chefe">carro-chefe</a></li>
-                            <li><a href="estabelecimento.html" title="estabelecimentos">estabelecimentos</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <span class="icons outrasCat"></span>
-                        <span class="titMenu">outras categorias</span>
-                        <ul id="sub">
-                            <li><a href="listagem.html" title="promoção da semana">promoção da semana</a></li>
-                            <li><a href="listagem.html" title="promoção do dia">promoção do dia</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">promoção da hora</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">ranking</a></li>
-                            <li><a href="listagem.html" title="carro-chefe">carro-chefe</a></li>
-                            <li><a href="estabelecimento.html" title="estabelecimentos">estabelecimentos</a></li>
-                        </ul>
-                    </li>
-                </ul>
+                <%@ include file="/categorias.jsp" %>
             </nav>
         </div>
     <!-- TERMINA MENU -->
@@ -312,7 +211,7 @@
                         </div>
                     </li>
                 	<li>
-                    <a href="promocao.html" title="">
+                    <a href="promocao.jsf" title="">
                     	<div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
                         <div class="info">
                         	<p class="titulo">Rodízio dos Amantes</p><!-- SE ITEM FOR PROMOÇÃO OU CARRO-CHEFE, NOME DO PRODUTO-->
@@ -331,7 +230,7 @@
                         </div>
                     </li>
                 	<li>
-                    <a href="estabelecimento.html" title="">
+                    <a href="estabelecimento.jsf" title="">
                     	<div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
                         <div class="info">
                         	<p class="titulo">Restaurante Yemanjá</p><!-- SE ITEM FOR ESTABELECIMENTO, NOME DO ESTABELECIMENTO-->
@@ -496,3 +395,4 @@
 </script>
 </body>
 </html>
+</f:view>
