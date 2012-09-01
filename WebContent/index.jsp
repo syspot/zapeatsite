@@ -238,7 +238,7 @@
 					  var map;
 					  function initializeMap() {
 						// Creating a map
-						var latlng = new google.maps.LatLng(37.771008, -122.41175); 
+						var latlng = new google.maps.LatLng(-12.954146, -38.496281); 
 						var map = new google.maps.Map(document.getElementById('map_canvas'), {  
 						  zoom: 17,
 						  center: latlng,
