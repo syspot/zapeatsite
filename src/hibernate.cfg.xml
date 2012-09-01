@@ -12,16 +12,27 @@
 		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 		<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/zapeat</property>
 		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-		<property name="hibernate.connection.username">zapeat</property>
-		<property name="hibernate.connection.password">15rt01</property>
+		<property name="hibernate.connection.username">postgres</property>
+		<property name="hibernate.connection.password">nayara</property>
 
 		<property name="hibernate.show_sql">true</property>
-		<property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
-		 		
+
+
+ 		<mapping class="br.com.zapeat.site.model.Banner" />
+ 		<mapping class="br.com.zapeat.site.model.Categoria" />
+
  		<mapping class="br.com.zapeat.site.model.Cidade" />
  		<mapping class="br.com.zapeat.site.model.Estado" />
  		<mapping class="br.com.zapeat.site.model.Fornecedor" />
- 		
+ 		<mapping class="br.com.zapeat.site.model.Grupo" />
+ 		<mapping class="br.com.zapeat.site.model.ImagemPromocao" />
+ 		<mapping class="br.com.zapeat.site.model.Menu" />
+ 		<mapping class="br.com.zapeat.site.model.Permissao" />
+ 		<mapping class="br.com.zapeat.site.model.Promocao" />
+ 		<mapping class="br.com.zapeat.site.model.TipoPromocao" />
+ 		<mapping class="br.com.zapeat.site.model.TipoBanner" />
+ 
+
 	</session-factory>
 
 </hibernate-configuration>
