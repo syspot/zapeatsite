@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -186,10 +187,12 @@
     	<div id="esq">
         	<div class="boxSubCat">
             	<h2>Promoção do dia</h2>
-                <a href="promocao.jsf" title=""><img src="img/model/180x79.jpg" alt="" title="" />
-                    <p class="titulo">Nome do estab</p>
+                
+                <a href="promocao.jsf" title="">
+                    <img src="img/model/180x79.jpg" alt="" title="" />
+                    <p class="titulo">${indexFaces.promocaoDia.fornecedor.nomeFantasia}</p>
                     <p class="categoria">categoria</p>
-                    <p class="item">nome do prod</p>
+                    <p class="item">${indexFaces.promocaoDia.descricao}</p>
                     <!-- SE PROMOÇÃO EM DESCONTO -->
                     <p><span class="precoDe">De: R$700,00</span>&nbsp;&nbsp;<span class="precoPor">Por: R$500,00</span> 
                 </a>
@@ -271,116 +274,31 @@
             <div id="outrosDestaques">
             	<h2>Outras Promoções da Hora</h2>
             	<ul id="listagem">
-                	<li>
-                    	<a href="promocao.jsf" title="">
-                            <div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
-                            <!-- SE PROMOÇÃO EM PRODUTO -->
-                            <div class="info">
-                                <p class="titulo">Rodízio dos Amantes</p>
-                                <p class="resumo fontYi">
-                                Casais de namorados tem promoção especial. Venha comemorar aniversário de namoro e a companheira não paga o rodízio.
-                                </p>
-                            </div>
-                        </a>
-                        <div class="dados">
-                            <p>
-                            	<span class="icons tel"></span>(71) 9876-5432
-                            </p>
-                            <p>
-                            	<a href="link para o site do cliente" title="" target="_blank"><span class="icons site"></span>site.com.br</a>
-                            </p>
-                            <p>
-                            	<span class="icons indicacao"></span>10 indicam
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                    	<a href="promocao.jsf" title="">
-                            <div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
-                            <!-- SE PROMOÇÃO EM DESCONTO -->
-                            <div class="info">
-                                <p class="titulo">DaBox Pizzaria</p>
-                                <p class="resumo fontYi">Pizzaria</p>
-                                <p class="item">Pizza E.C Bahia</p>
-                                <p><span class="precoDe">De: R$789,00</span>&nbsp;&nbsp;<span class="precoPor">Por: R$254,00</span></p>
-                            </div>
-                        </a>
-                        <div class="dados">
-                            <p>
-                            	<span class="icons tel"></span>(71) 3379.3663
-                            </p>
-                            <p>
-                            	<a href="link para o site do cliente" title="" target="_blank"><span class="icons site"></span>daboxpizza.com.br</a>
-                            </p>
-                            <p>
-                            	<span class="icons indicacao"></span>10 indicam
-                            </p>
-                        </div>
-
-                    </li>
-                    <li>
-                    	<a href="promocao.jsf" title="">
-                            <div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
-                            <div class="info">
-                                <p class="titulo">.titulo</p>
-                                <p class="resumo">.resumo</p>
-                            </div>
-                        </a>
-                        <div class="dados">
-                            <p>
-                            	<span class="icons tel"></span>(71) 9876-5432
-                            </p>
-                            <p>
-                            	<a href="link para o site do cliente" title="" target="_blank"><span class="icons site"></span>site.com.br</a>
-                            </p>
-                            <p>
-                            	<span class="icons indicacao"></span>10 indicam
-                            </p>
-                        </div>
-
-                    </li>
-                    <li>
-                    	<a href="promocao.jsf" title="">
-                            <div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
-                            <div class="info">
-                                <p class="titulo">.titulo</p>
-                                <p class="resumo">.resumo</p>
-                            </div>
-                        </a>
-                        <div class="dados">
-                            <p>
-                            	<span class="icons tel"></span>(71) 9876-5432
-                            </p>
-                            <p>
-                            	<a href="link para o site do cliente" title="" target="_blank"><span class="icons site"></span>site.com.br</a>
-                            </p>
-                            <p>
-                            	<span class="icons indicacao"></span>10 indicam
-                            </p>
-                        </div>
-
-                    </li>
-                    <li>
-                    	<a href="promocao.jsf" title="">
-                            <div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
-                            <div class="info">
-                                <p class="titulo">.titulo</p>
-                                <p class="resumo">.resumo</p>
-                            </div>
-                        </a>
-                        <div class="dados">
-                            <p>
-                            	<span class="icons tel"></span>(71) 9876-5432
-                            </p>
-                            <p>
-                            	<a href="link para o site do cliente" title="" target="_blank"><span class="icons site"></span>site.com.br</a>
-                            </p>
-                            <p>
-                            	<span class="icons indicacao"></span>10 indicam
-                            </p>
-                        </div>
-
-                    </li>
+                	<c:forEach items="${promocaoFaces.promocoesHora}" var="promocao">
+	                	<li>
+	                    	<a href="promocao.jsf" title="">
+	                            <div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
+	                            <!-- SE PROMOÇÃO EM PRODUTO -->
+	                            <div class="info">
+	                                <p class="titulo">Rodízio dos Amantes</p>
+	                                <p class="resumo fontYi">
+	                                Casais de namorados tem promoção especial. Venha comemorar aniversário de namoro e a companheira não paga o rodízio.
+	                                </p>
+	                            </div>
+	                        </a>
+	                        <div class="dados">
+	                            <p>
+	                            	<span class="icons tel"></span>(71) 9876-5432
+	                            </p>
+	                            <p>
+	                            	<a href="link para o site do cliente" title="" target="_blank"><span class="icons site"></span>site.com.br</a>
+	                            </p>
+	                            <p>
+	                            	<span class="icons indicacao"></span>10 indicam
+	                            </p>
+	                        </div>
+	                    </li>
+                </c:forEach>    
                 </ul>
             </div>
         

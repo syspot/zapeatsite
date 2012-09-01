@@ -204,6 +204,16 @@ public class Promocao extends TSActiveRecordAb<Promocao> {
 		return true;
 	}
 
+	public Promocao getPromocaoDia(){
+		return this.get("from Promocao p where p.tipoPromocao.id= 2 and p.inicio <= ? and p.fim >= ? order by random()", new Date(), new Date());
+	}
 	
+	public List<Promocao> findPromocoesSemana(){
+		return this.find("from Promocao p where p.tipoPromocao.id= 3 and p.inicio <= ? and p.fim >= ? order by random()", new Date(), new Date());
+	}
+	
+	public List<Promocao> findPromocoesHora(){
+		return this.find("from Promocao p where p.tipoPromocao.id= 1 and p.inicio <= ? and p.fim >= ? order by random()", new Date(), new Date());
+	}
 
 }

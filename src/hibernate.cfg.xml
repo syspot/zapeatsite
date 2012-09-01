@@ -31,8 +31,7 @@
  		<mapping class="br.com.zapeat.site.model.Promocao" />
  		<mapping class="br.com.zapeat.site.model.TipoPromocao" />
  		<mapping class="br.com.zapeat.site.model.TipoBanner" />
- 		<mapping class="br.com.zapeat.site.model.Usuario" />
- 		<mapping class="br.com.zapeat.site.model.UsuarioAdm" />
+ 
 
 	</session-factory>
 
