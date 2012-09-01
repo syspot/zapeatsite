@@ -51,7 +51,7 @@ public class ZapeatUtil {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "AVISO", msg));
 	}
 
-	public static String tratarString(String str) {
+	public static String tratarStringILike(String str) {
 		return (str == null) ? "%" : "%" + str.toLowerCase() + "%";
 	}
 

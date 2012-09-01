@@ -95,7 +95,7 @@ public class Cidade extends TSActiveRecordAb<Cidade> {
 		List<Object> params = new ArrayList<Object>();
 
 		if (!TSUtil.isEmpty(nome)) {
-			params.add(ZapeatUtil.tratarString(nome));
+			params.add(ZapeatUtil.tratarStringILike(nome));
 		}
 
 		if (!TSUtil.isEmpty(estado) && !TSUtil.isEmpty(estado.getId())) {

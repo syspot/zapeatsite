@@ -83,7 +83,7 @@ public class Estado extends TSActiveRecordAb<Estado> {
 		List<Object> params = new ArrayList<Object>();
 
 		if (!TSUtil.isEmpty(sigla)) {
-			params.add(ZapeatUtil.tratarString(sigla));
+			params.add(ZapeatUtil.tratarStringILike(sigla));
 		}
 
 		return super.find(query.toString(), params.toArray());

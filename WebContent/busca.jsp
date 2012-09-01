@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
 
-<f:view>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
@@ -124,7 +124,7 @@
 		}
 </script>     
 </head>
-
+<f:view>
 <body onload="initialize()">
 
 
@@ -132,11 +132,7 @@
 <div id="topo">
 	<!-- COMECA BUSCA -->
 	<div class="barraBusca">
-    	<form>
-        	<label>Buscar<input type="text" /></label>
-            <label>em<input type="text" value="" id="info" /><span id="btnInit" class="icons" ></span></label>
-            <input type="submit" value="" />
-        </form>
+		<%@ include file="/include_busca_topo.jsp" %>
     </div>
     <!-- TERMINA BUSCA -->
     <!-- COMECA PUBLICIDADE/MARCA -->
@@ -182,35 +178,37 @@
         	<div id="tituloSessao">
             	<span class="icons iconBusca"></span>
             	<h2>Resultado da Busca</h2>
-                <p>TERMO BUSCADO</p>
+                <p>${buscaFaces.termoBuscado}</p>
             </div>
             <ul id="listagem">
             		<!-- SE LISTAGEM POR PROMOÇÃO -->
-                	<li>
-                    <a href="" title="">
-                    	<div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
-                        <!-- SE PROMOÇÃO EM PRODUTO -->
-                        <div class="info">
-                        	<p class="titulo">Nome do estabelecimento, promoção ou carro-chefe</p>
-                            <!-- SE ESTABELECIMENTO, ENDEREÇO -->
-                            <p class="item">ENDEREÇO DO ESTABELECIMENTO OU NOME DO ESTABELECIMENTO</p>                            
-                            <!-- SE PROMOÇÃO OU CARRO-CHEFE
-                            <p class="item">NOME DA PROMOÇÃO OU CARRO-CHEFE</p>
-                            -->
-                            <p class="resumo fontYi">
-                            DESCRIÇÃO DA PROMOÇÃO, ESTABELECIMENTO OU CARRO-CHEFE</p>
-                        </div>
-                    </a>
-                        
-                        <br clear="all" />
-                        <div class="boxInfo">
-                            <div class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: Restaurante</div>
-                            <div class="floatLeft marginLeft"><span class="icons tel"></span>(71) 9876.5432</div>
-                            <div class="floatLeft marginLeft"><span class="icons site"></span>daboxpizza.com.br</div>
-                            <div class="floatLeft marginLeft"><span class="icons indicacao"></span>10 indicam</div>
-                        </div>
-                    </li>
-                	<li>
+            		<c:forEach items="#{buscaFaces.promocoes}" var="promocao">
+	                	<li>
+	                    <a href="" title="">
+	                    	<div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
+	                        <!-- SE PROMOÇÃO EM PRODUTO -->
+	                        <div class="info">
+	                        	<p class="titulo">Nome do estabelecimento, promoção ou carro-chefe</p>
+	                            <!-- SE ESTABELECIMENTO, ENDEREÇO -->
+	                            <p class="item">ENDEREÇO DO ESTABELECIMENTO OU NOME DO ESTABELECIMENTO</p>                            
+	                            <!-- SE PROMOÇÃO OU CARRO-CHEFE
+	                            <p class="item">NOME DA PROMOÇÃO OU CARRO-CHEFE</p>
+	                            -->
+	                            <p class="resumo fontYi">
+	                            DESCRIÇÃO DA PROMOÇÃO, ESTABELECIMENTO OU CARRO-CHEFE</p>
+	                        </div>
+	                    </a>
+	                        
+	                        <br clear="all" />
+	                        <div class="boxInfo">
+	                            <div class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: Restaurante</div>
+	                            <div class="floatLeft marginLeft"><span class="icons tel"></span>(71) 9876.5432</div>
+	                            <div class="floatLeft marginLeft"><span class="icons site"></span>daboxpizza.com.br</div>
+	                            <div class="floatLeft marginLeft"><span class="icons indicacao"></span>10 indicam</div>
+	                        </div>
+	                    </li>
+	                	<li>
+                	</c:forEach>
                     <a href="promocao.jsf" title="">
                     	<div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
                         <div class="info">
@@ -394,5 +392,5 @@
 }(document, 'script', 'facebook-jssdk'));
 </script>
 </body>
-</html>
 </f:view>
+</html>

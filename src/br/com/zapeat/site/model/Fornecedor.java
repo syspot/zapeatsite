@@ -1,5 +1,7 @@
 package br.com.zapeat.site.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -221,6 +223,10 @@ public class Fornecedor extends TSActiveRecordAb<Fornecedor> {
 
 	public void setRazaoSocial(String razaoSocial) {
 		this.razaoSocial = razaoSocial;
+	}
+	
+	public List<Fornecedor> findFornecedoresMaisIndicados(){
+		return super.find(" from Fornecedor f");
 	}
 
 }

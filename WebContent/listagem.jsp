@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<f:view>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
@@ -124,7 +124,7 @@
 		}
 </script>     
 </head>
-
+<f:view>
 <body onload="initialize()">
 
 
@@ -132,11 +132,7 @@
 <div id="topo">
 	<!-- COMECA BUSCA -->
 	<div class="barraBusca">
-    	<form>
-        	<label>Buscar<input type="text" /></label>
-            <label>em<input type="text" value="" id="info" /><span id="btnInit" class="icons" ></span></label>
-            <input type="submit" value="" />
-        </form>
+    	<%@ include file="/include_busca_topo.jsp" %>
     </div>
     <!-- TERMINA BUSCA -->
     <!-- COMECA PUBLICIDADE/MARCA -->
@@ -195,145 +191,31 @@
             </div>
             <ul id="listagem">
             		<!-- SE LISTAGEM POR PROMOÇÃO -->
-                	<li>
-                    <a href="" title="">
-                    	<div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
-                        <!-- SE PROMOÇÃO EM PRODUTO -->
-                        <div class="info">
-                        	<p class="titulo">Cheiro de Pizza</p>
-                            <p class="item">Rodízio dos Amantes</p>                            
-                            <p class="resumo fontYi">
-                            Casais de namorados tem promoção especial. Venha comemorar aniversário de namoro e a companheira não paga o rodízio.</p>
-                        </div>
-                    </a>
-                        <!-- SE LISTAGEM POR PROMOÇÃO, RETIRA DIV A SEGUIR -->
-                        <div class="sessao"><span class="icons doDia"></span>Promoção do Dia</div>
-                        
-                        <br clear="all" />
-                        <div class="boxInfo">
-                            <div class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: Restaurante</div>
-                            <div class="floatLeft marginLeft"><span class="icons tel"></span>(71) 9876.5432</div>
-                            <div class="floatLeft marginLeft"><span class="icons site"></span>daboxpizza.com.br</div>
-                            <div class="floatLeft marginLeft"><span class="icons indicacao"></span>10 indicam</div>
-                        </div>
-                    </li>
-                    <li>
-                    <a href="" title="">
-                    	<div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
-                        <!-- SE PROMOÇÃO EM DESCONTO -->
-                        <div class="info">
-                        	<p class="titulo">DaBox Pizzaria</p>
-                            <p class="resumo fontYi">Toda terça qualquer pizza tem preço único. Exceto Royalite Box e Sixbox.</p>
-                            <p><span class="precoPor">Por: R$25,00</span> </p>
-                        </div>
-                    </a>
-                        <!-- SE LISTAGEM POR PROMOÇÃO, RETIRA DIV A SEGUIR -->
-                        <div class="sessao"><span class="icons daSemana"></span>Promoção da Semana</div>
-
-                        <br clear="all" />
-                        <div class="boxInfo">
-                            <div class="floatLeft"><span class="icons iconPizzaria"></span>Categoria: Pizzaria</div>
-                            <div class="floatLeft marginLeft"><span class="icons tel"></span>(71) 9876.5432</div>
-                            <div class="floatLeft marginLeft"><span class="icons site"></span>daboxpizza.com.br</div>
-                            <div class="floatLeft marginLeft"><span class="icons indicacao"></span>10 indicam</div>
-                        </div>
-                    </li>
-                    <li>
-                    <a href="" title="">
-                    	<div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
-                        <div class="info">
-                        	<p class="titulo">Cheiro de Pizza</p>
-                            <p class="item">Casadinha Gaúcha</p>                            
-                            <p class="resumo fontYi">Pedindo 2 Moquecas de peguari, das 18h as 19 horas, o produto terá 40% de desconto</p>
-                            <p><span class="precoDe">Por: R$100,00</span> &nbsp;&nbsp; <span class="precoPor">Por: R$60,00</span></p>
-                        </div>
-                     </a>
-                        <!-- SE LISTAGEM POR PROMOÇÃO, RETIRA DIV A SEGUIR -->
-                        <div class="sessao"><span class="icons daHora"></span>Promoção da Hora</div>
-
-                        <br clear="all" />
-                        <div class="boxInfo">
-                            <div class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: Restaurante</div>
-                            <div class="floatLeft marginLeft"><span class="icons tel"></span>(71) 9876.5432</div>
-                            <div class="floatLeft marginLeft">
-                                <a href="LINK RESTAURANTE > ESTABELECIMENTO" title="Site do estabelecimento">
-                                    <span class="icons site"></span>daboxpizza.com.br
-                                </a>
-                            </div>
-                            <!-- SE LISTAGEM POR PROMOÇÃO, RETIRA DIV A SEGUIR -->
-                            <div class="floatLeft marginLeft"><span class="icons indicacao"></span>10 indicam</div>
-                        </div>
-
-                    </li>
-                    
-                    <!-- SE LISTAGEM POR PROMOÇÃO -->
-                    <li>
-                    <a href="" title="">
-                    	<div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="IMAGEM 80x80px" title="IMAGEM DA PROMOÇÃO" /></div>
-                        <div class="info">
-                        	<p class="titulo">NOME DA PROMOÇÃO</p>
-                            <p class="item">Estabelecimento</p>                            
-                            <p class="resumo fontYi">Pedindo 2 Moquecas de peguari, das 18h as 19 horas, o produto terá 40% de desconto</p>
-                            <p><span class="precoDe">Por: R$100,00</span> &nbsp;&nbsp; <span class="precoPor">Por: R$60,00</span></p>
-                        </div>
-                    </a>
-                        <!-- SE LISTAGEM POR PROMOÇÃO, RETIRA DIV A SEGUIR -->
-                        <div class="sessao"><span class="icons daHora"></span>Promoção da Hora</div>
-
-                        <br clear="all" />
-                        <div class="boxInfo">
-                            <div class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: Restaurante</div>
-                            <div class="floatLeft marginLeft"><span class="icons tel"></span>(71) 9876.5432</div>
-                            <div class="floatLeft marginLeft">
-                                <a href="LINK RESTAURANTE > ESTABELECIMENTO" title="Site do estabelecimento">
-                                    <span class="icons site"></span>daboxpizza.com.br
-                                </a>
-                            </div>
-                            <div class="floatLeft marginLeft"><span class="icons indicacao"></span>10 indicam</div>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
-                        <div class="info">
-                        	<p class="titulo">DaBox Pizzaria</p>
-                            <p class="resumo fontYi">Toda terça qualquer pizza tem preço único. Exceto Royalite Box e Sixbox.</p>
-                            <p><span class="precoPor">Por: R$25,00</span> </p>
-                        </div>
-                        <!-- SE LISTAGEM POR PROMOÇÃO, RETIRA DIV A SEGUIR -->
-                        <div class="sessao"><span class="icons daHora"></span>Promoção da Hora</div>
-
-                        <br clear="all" />
-                        <div class="boxInfo">
-                            <div class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: Restaurante</div>
-                            <div class="floatLeft marginLeft"><span class="icons tel"></span>(71) 9876.5432</div>
-                            <div class="floatLeft marginLeft">
-                                <a href="LINK RESTAURANTE > ESTABELECIMENTO" title="Site do estabelecimento">
-                                    <span class="icons site"></span>daboxpizza.com.br
-                                </a>
-                            </div>
-                            <div class="floatLeft marginLeft"><span class="icons indicacao"></span>10 indicam</div>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="IMAGEM 80x80px" title="IMAGEM DA PROMOÇÃO" /></div>
-                        <!-- SE PROMOÇÃO EM PRODUTO -->
-                        <div class="info">
-                        	<p class="titulo">Rodízio dos Amantes</p>
-                            <p class="item">Cheiro de Pizza</p>                            
-                            <p class="resumo fontYi">
-                            Casais de namorados tem promoção especial. Venha comemorar aniversário de namoro e a companheira não paga o rodízio.</p>
-                        </div>
-                        <!-- SE LISTAGEM POR PROMOÇÃO, RETIRA DIV A SEGUIR -->
-                        <div class="sessao"><span class="icons doDia"></span>Promoção do Dia</div>
-                        
-                        <br clear="all" />
-                        <div class="boxInfo">
-                            <div class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: Restaurante</div>
-                            <div class="floatLeft marginLeft"><span class="icons tel"></span>(71) 9876.5432</div>
-                            <div class="floatLeft marginLeft"><span class="icons site"></span>daboxpizza.com.br</div>
-                            <div class="floatLeft marginLeft"><span class="icons indicacao"></span>10 indicam</div>
-                        </div>
-                    </li>
+            		<c:forEach items="${listagemFaces.promocoes}" var="promocao">
+	                	<li>
+	                    <a href="" title="">
+	                    	<div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
+	                        <!-- SE PROMOÇÃO EM PRODUTO -->
+	                        <div class="info">
+	                        	<p class="titulo"><c:out value="${promocao.fornecedor.nomeFantasia}"/>  </p>
+	                            <p class="item"><c:out value="${promocao.titulo}" /></p>                            
+	                            <p class="resumo fontYi">
+	                            <c:out value="${promocao.descricao}"/>
+	                            </p>
+	                        </div>
+	                    </a>
+	                        <!-- SE LISTAGEM POR PROMOÇÃO, RETIRA DIV A SEGUIR -->
+	                        <div class="sessao"><span class="icons doDia"></span>Promoção do Dia</div>
+	                        
+	                        <br clear="all" />
+	                        <div class="boxInfo">
+	                            <div class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: <h:outputText value="#{promocao.fornecedor.categoria.descricao}" /></div>
+	                            <div class="floatLeft marginLeft"><span class="icons tel"></span><h:outputText value="#{promocao.fornecedor.numero}" /></div>
+	                            <div class="floatLeft marginLeft"><span class="icons site"></span>daboxpizza.com.br</div>
+	                            <div class="floatLeft marginLeft"><span class="icons indicacao"></span>10 indicam</div>
+	                        </div>
+	                    </li>
+                    </c:forEach>
                 </ul>
                 
                 <div id="paginacao">
@@ -421,5 +303,5 @@
 }(document, 'script', 'facebook-jssdk'));
 </script>
 </body>
-</html>
 </f:view>
+</html>

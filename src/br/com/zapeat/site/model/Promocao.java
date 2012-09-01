@@ -17,6 +17,7 @@ import javax.persistence.Table;
 
 import br.com.topsys.database.hibernate.TSActiveRecordAb;
 import br.com.topsys.util.TSUtil;
+import br.com.zapeat.site.util.ZapeatUtil;
 
 
 @Entity
@@ -35,6 +36,8 @@ public class Promocao extends TSActiveRecordAb<Promocao> {
 	
 	@ManyToOne
 	private Fornecedor fornecedor;
+	
+	private String titulo;
 	
 	private String descricao;
 	
@@ -69,6 +72,14 @@ public class Promocao extends TSActiveRecordAb<Promocao> {
 
 	public void setFornecedor(Fornecedor fornecedor) {
 		this.fornecedor = fornecedor;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
 	public String getDescricao() {
@@ -214,6 +225,14 @@ public class Promocao extends TSActiveRecordAb<Promocao> {
 	
 	public List<Promocao> findPromocoesHora(){
 		return this.find("from Promocao p where p.tipoPromocao.id= 1 and p.inicio <= ? and p.fim >= ? order by random()", new Date(), new Date());
+	}
+	
+	public List<Promocao> findPromocoes(String texto){
+		return this.find("from Promocao p where p.descricao like ? order by p.inicio", ZapeatUtil.tratarStringILike(texto));
+	}
+	
+	public List<Promocao> findPromocoesMaisIndicadas(){
+		return this.find("from Promocao p order by p.inicio");
 	}
 
 }
