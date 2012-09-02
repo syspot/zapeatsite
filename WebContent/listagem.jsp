@@ -193,17 +193,17 @@
             		<!-- SE LISTAGEM POR PROMOÇÃO -->
             		<c:forEach items="${listagemFaces.promocoes}" var="promocao">
 	                	<li>
-	                    <a href="" title="">
-	                    	<div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
-	                        <!-- SE PROMOÇÃO EM PRODUTO -->
-	                        <div class="info">
-	                        	<p class="titulo"><c:out value="${promocao.fornecedor.nomeFantasia}"/>  </p>
-	                            <p class="item"><c:out value="${promocao.titulo}" /></p>                            
-	                            <p class="resumo fontYi">
-	                            <c:out value="${promocao.descricao}"/>
-	                            </p>
-	                        </div>
-	                    </a>
+		                    <a href="" title="">
+		                    	<div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
+		                        <!-- SE PROMOÇÃO EM PRODUTO -->
+		                        <div class="info">
+		                        	<p class="titulo"><c:out value="${promocao.fornecedor.nomeFantasia}"/>  </p>
+		                            <p class="item"><c:out value="${promocao.titulo}" /></p>                            
+		                            <p class="resumo fontYi">
+		                            <c:out value="${promocao.descricao}"/>
+		                            </p>
+		                        </div>
+		                    </a>
 	                        <!-- SE LISTAGEM POR PROMOÇÃO, RETIRA DIV A SEGUIR -->
 	                        <div class="sessao"><span class="icons doDia"></span>Promoção do Dia</div>
 	                        

@@ -7,12 +7,12 @@ import javax.faces.bean.ManagedBean;
 
 import br.com.topsys.web.faces.TSMainFaces;
 import br.com.zapeat.site.model.BuscaModel;
-import br.com.zapeat.site.model.Promocao;
+import br.com.zapeat.site.model.PromocaoModel;
 
 @ManagedBean
 public class BuscaFaces extends TSMainFaces {
 
-	private Promocao promocaoBusca;
+	private PromocaoModel promocaoBusca;
 	
 	private String termoBuscado;
 	private String localBuscado;
@@ -21,7 +21,7 @@ public class BuscaFaces extends TSMainFaces {
 	
 	public BuscaFaces(){
 		
-		this.promocaoBusca = new Promocao();
+		this.promocaoBusca = new PromocaoModel();
 		this.listagem = new ArrayList<BuscaModel>();
 		
 	}

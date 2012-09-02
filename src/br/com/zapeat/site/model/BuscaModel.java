@@ -10,7 +10,7 @@ public class BuscaModel {
 	
 	private Integer tipo;
 	
-	private Categoria categoria;
+	private CategoriaModel categoriaModel;
 	
 	private String telefone;
 	
@@ -50,12 +50,12 @@ public class BuscaModel {
 		this.tipo = tipo;
 	}
 
-	public Categoria getCategoria() {
-		return categoria;
+	public CategoriaModel getCategoriaModel() {
+		return categoriaModel;
 	}
 
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
+	public void setCategoriaModel(CategoriaModel categoriaModel) {
+		this.categoriaModel = categoriaModel;
 	}
 
 	public String getTelefone() {

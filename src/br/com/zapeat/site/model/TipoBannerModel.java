@@ -1,29 +1,13 @@
 package br.com.zapeat.site.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-
-import br.com.topsys.database.hibernate.TSActiveRecordAb;
 import br.com.topsys.util.TSUtil;
 
-@Entity
-@SuppressWarnings("serial")
-@Table(name = "tipos_banners")
-public class TipoBanner extends TSActiveRecordAb<TipoBanner> {
+public class TipoBannerModel {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="tipos_banners_id")
-	@SequenceGenerator(name="tipos_banners_id", sequenceName="tipos_banners_id_seq")
 	private Long id;
 
 	private String descricao;
 
-	@Column(name = "flag_ativo")
 	private Boolean flagAtivo;
 
 	public Long getId() {
@@ -66,7 +50,7 @@ public class TipoBanner extends TSActiveRecordAb<TipoBanner> {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		TipoBanner other = (TipoBanner) obj;
+		TipoBannerModel other = (TipoBannerModel) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

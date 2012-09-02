@@ -1,33 +1,32 @@
 package br.com.zapeat.site.faces;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 
 import br.com.topsys.web.faces.TSMainFaces;
-import br.com.zapeat.site.model.Promocao;
+import br.com.zapeat.site.dao.PromocaoDAO;
+import br.com.zapeat.site.model.PromocaoModel;
 
 @ManagedBean
 public class ListagemFaces extends TSMainFaces {
 
-	private Promocao promocaoBusca;
+	private PromocaoDAO promocaoDAO;
 	
-	private List<Promocao> promocoes;
+	private List<PromocaoModel> promocoes;
 	
 	public ListagemFaces(){
 		
-		this.promocaoBusca = new Promocao();
-		this.promocoes = new ArrayList<Promocao>();
-		this.promocoes = this.promocaoBusca.findPromocoesMaisIndicadas();
+		this.promocaoDAO = new PromocaoDAO();
+		this.promocoes = this.promocaoDAO.pesquisarPorIndicacoes();
 		
 	}
 
-	public List<Promocao> getPromocoes() {
+	public List<PromocaoModel> getPromocoes() {
 		return promocoes;
 	}
 
-	public void setPromocoes(List<Promocao> promocoes) {
+	public void setPromocoes(List<PromocaoModel> promocoes) {
 		this.promocoes = promocoes;
 	}
 	

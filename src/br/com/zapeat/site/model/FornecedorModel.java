@@ -1,35 +1,15 @@
 package br.com.zapeat.site.model;
 
-import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-
-import br.com.topsys.database.hibernate.TSActiveRecordAb;
 import br.com.topsys.util.TSUtil;
 
-@SuppressWarnings("serial")
-@Entity
-@Table(name = "fornecedores")
-public class Fornecedor extends TSActiveRecordAb<Fornecedor> {
+public class FornecedorModel {
 
-	@Id
-	@SequenceGenerator(name = "FORNECEDORES_ID_SEQ", sequenceName = "fornecedores_id_seq", allocationSize = 1)
-	@GeneratedValue(generator = "FORNECEDORES_ID_SEQ", strategy = GenerationType.SEQUENCE)
 	private Long id;
 
-	@Column(name = "razao_social")
 	private String razaoSocial;
 
 	private String cnpj;
 
-	@Column(name = "nome_fantasia")
 	private String nomeFantasia;
 
 	private String cep;
@@ -44,23 +24,19 @@ public class Fornecedor extends TSActiveRecordAb<Fornecedor> {
 
 	private Integer longitude;
 
-	@Column(name = "logomarca")
 	private String logoMarca;
 
-	@Column(name = "flag_ativo")
 	private Boolean flagAtivo;
 
 	private String descricao;
 
-	@Column(name = "horarios_funcionamento")
 	private String horariosFuncionamento;
 
 	private String twitter;
 
 	private String facebook;
 
-	@ManyToOne
-	private Cidade cidade;
+	private CidadeModel cidadeModel;
 	
 	public Long getId() {
 		return TSUtil.tratarLong(id);
@@ -70,32 +46,13 @@ public class Fornecedor extends TSActiveRecordAb<Fornecedor> {
 		this.id = id;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
+	public String getRazaoSocial() {
+		return razaoSocial;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Fornecedor other = (Fornecedor) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
+	public void setRazaoSocial(String razaoSocial) {
+		this.razaoSocial = razaoSocial;
 	}
-
-	
 
 	public String getCnpj() {
 		return cnpj;
@@ -209,24 +166,37 @@ public class Fornecedor extends TSActiveRecordAb<Fornecedor> {
 		this.facebook = facebook;
 	}
 
-	public Cidade getCidade() {
-		return cidade;
+	public CidadeModel getCidadeModel() {
+		return cidadeModel;
 	}
 
-	public void setCidade(Cidade cidade) {
-		this.cidade = cidade;
-	}
-
-	public String getRazaoSocial() {
-		return razaoSocial;
-	}
-
-	public void setRazaoSocial(String razaoSocial) {
-		this.razaoSocial = razaoSocial;
+	public void setCidadeModel(CidadeModel cidadeModel) {
+		this.cidadeModel = cidadeModel;
 	}
 	
-	public List<Fornecedor> findFornecedoresMaisIndicados(){
-		return super.find(" from Fornecedor f");
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		FornecedorModel other = (FornecedorModel) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
 	}
 
 }

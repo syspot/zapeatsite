@@ -2,35 +2,15 @@ package br.com.zapeat.site.model;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-
-import br.com.topsys.database.hibernate.TSActiveRecordAb;
 import br.com.topsys.util.TSUtil;
 
-@Entity
-@SuppressWarnings("serial")
-@Table(name = "banners")
-public class Banner extends TSActiveRecordAb<Banner> {
+public class BannerModel {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="banners_id")
-	@SequenceGenerator(name="banners_id", sequenceName="banners_id_seq")
 	private Long id;
 
-	@ManyToOne
-	@JoinColumn(name = "tipo_banner_id")
-	private TipoBanner tipoBanner;
+	private TipoBannerModel tipoBannerModel;
 	
-	@ManyToOne
-	private Fornecedor fornecedor;
+	private FornecedorModel fornecedorModel;
 	
 	private String imagem;
 	
@@ -38,13 +18,10 @@ public class Banner extends TSActiveRecordAb<Banner> {
 	
 	private Date fim;
 	
-	@Column(name = "taxa_prioridade")
 	private Integer taxaPrioridade;
 	
-	@Column(name = "qdo_cliques")
 	private Integer qdoCliques;
 	
-	@Column(name = "flag_ativo")
 	private Boolean flagAtivo;
 	
 	
@@ -56,20 +33,20 @@ public class Banner extends TSActiveRecordAb<Banner> {
 		this.id = id;
 	}
 
-	public TipoBanner getTipoBanner() {
-		return tipoBanner;
+	public TipoBannerModel getTipoBannerModel() {
+		return tipoBannerModel;
 	}
 
-	public void setTipoBanner(TipoBanner tipoBanner) {
-		this.tipoBanner = tipoBanner;
+	public void setTipoBannerModel(TipoBannerModel tipoBannerModel) {
+		this.tipoBannerModel = tipoBannerModel;
 	}
 
-	public Fornecedor getFornecedor() {
-		return fornecedor;
+	public FornecedorModel getFornecedorModel() {
+		return fornecedorModel;
 	}
 
-	public void setFornecedor(Fornecedor fornecedor) {
-		this.fornecedor = fornecedor;
+	public void setFornecedorModel(FornecedorModel fornecedorModel) {
+		this.fornecedorModel = fornecedorModel;
 	}
 
 	public String getImagem() {
@@ -137,7 +114,7 @@ public class Banner extends TSActiveRecordAb<Banner> {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Banner other = (Banner) obj;
+		BannerModel other = (BannerModel) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
