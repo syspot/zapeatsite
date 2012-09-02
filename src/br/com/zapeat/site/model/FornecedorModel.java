@@ -38,6 +38,8 @@ public class FornecedorModel {
 
 	private CidadeModel cidadeModel;
 	
+	private String imagem;
+	
 	public Long getId() {
 		return TSUtil.tratarLong(id);
 	}
@@ -174,6 +176,14 @@ public class FornecedorModel {
 		this.cidadeModel = cidadeModel;
 	}
 	
+	public String getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
