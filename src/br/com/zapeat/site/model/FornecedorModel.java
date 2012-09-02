@@ -1,6 +1,7 @@
 package br.com.zapeat.site.model;
 
 import br.com.topsys.util.TSUtil;
+import br.com.zapeat.site.util.Constantes;
 
 public class FornecedorModel {
 
@@ -20,9 +21,13 @@ public class FornecedorModel {
 
 	private String bairro;
 
-	private Integer latitude;
+	private String site;
 
-	private Integer longitude;
+	private String telefone;
+
+	private Double latitude;
+
+	private Double longitude;
 
 	private String logoMarca;
 
@@ -38,7 +43,9 @@ public class FornecedorModel {
 
 	private CidadeModel cidadeModel;
 	
-	private String imagem;
+	private String imagemThumb;
+	
+	private CategoriaModel categoriaPrincipal;
 	
 	public Long getId() {
 		return TSUtil.tratarLong(id);
@@ -104,19 +111,35 @@ public class FornecedorModel {
 		this.bairro = bairro;
 	}
 
-	public Integer getLatitude() {
+	public String getSite() {
+		return site;
+	}
+
+	public void setSite(String site) {
+		this.site = site;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public Double getLatitude() {
 		return latitude;
 	}
 
-	public void setLatitude(Integer latitude) {
+	public void setLatitude(Double latitude) {
 		this.latitude = latitude;
 	}
 
-	public Integer getLongitude() {
+	public Double getLongitude() {
 		return longitude;
 	}
 
-	public void setLongitude(Integer longitude) {
+	public void setLongitude(Double longitude) {
 		this.longitude = longitude;
 	}
 
@@ -176,12 +199,24 @@ public class FornecedorModel {
 		this.cidadeModel = cidadeModel;
 	}
 	
-	public String getImagem() {
-		return imagem;
+	public String getImagemThumb() {
+		return imagemThumb;
 	}
 
-	public void setImagem(String imagem) {
-		this.imagem = imagem;
+	public void setImagemThumb(String imagemThumb) {
+		this.imagemThumb = imagemThumb;
+	}
+	
+	public CategoriaModel getCategoriaPrincipal() {
+		return categoriaPrincipal;
+	}
+
+	public void setCategoriaPrincipal(CategoriaModel categoriaPrincipal) {
+		this.categoriaPrincipal = categoriaPrincipal;
+	}
+
+	public String getImagemThumbView() {
+		return Constantes.PASTA_DOWNLOAD_FORNECEDOR + Constantes.PREFIXO_IMAGEM_FORNECEDOR_THUMB + getImagemThumb(); 
 	}
 
 	@Override

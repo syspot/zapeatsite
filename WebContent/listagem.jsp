@@ -194,7 +194,7 @@
             		<c:forEach items="${listagemFaces.promocoes}" var="promocao">
 	                	<li>
 		                    <a href="" title="">
-		                    	<div class="marca floatLeft"><img src="${promocao.fornecedorModel.imagem}" alt="Marca 80x80px" title="${promocao.fornecedorModel.nomeFantasia}" /></div>
+		                    	<div class="marca floatLeft"><img src="${promocao.fornecedorModel.imagemThumbView}" alt="Marca 80x80px" title="${promocao.fornecedorModel.nomeFantasia}" /></div>
 		                        <!-- SE PROMOÇÃO EM PRODUTO -->
 		                        <div class="info">
 		                        	<p class="titulo"><c:out value="${promocao.fornecedorModel.nomeFantasia}"/>  </p>
@@ -205,14 +205,14 @@
 		                        </div>
 		                    </a>
 	                        <!-- SE LISTAGEM POR PROMOÇÃO, RETIRA DIV A SEGUIR -->
-	                        <div class="sessao"><span class="icons doDia"></span>Promoção do Dia</div>
+	                        <div class="sessao"><span class="${promocao.cssSessao}"></span><c:out value="${promocao.tipoPromocaoModel.descricao}" /></div>
 	                        
 	                        <br clear="all" />
 	                        <div class="boxInfo">
-	                            <div class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: <h:outputText value="#{promocao.fornecedor.categoria.descricao}" /></div>
-	                            <div class="floatLeft marginLeft"><span class="icons tel"></span><h:outputText value="#{promocao.fornecedor.numero}" /></div>
-	                            <div class="floatLeft marginLeft"><span class="icons site"></span>daboxpizza.com.br</div>
-	                            <div class="floatLeft marginLeft"><span class="icons indicacao"></span>10 indicam</div>
+	                            <div class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: <c:out value="${promocao.fornecedorModel.categoriaPrincipal.descricao}" /></div>
+	                            <div class="floatLeft marginLeft"><span class="icons tel"></span><c:out value="${promocao.fornecedorModel.telefone}" /></div>
+	                            <div class="floatLeft marginLeft"><span class="icons site"></span><c:out value="${promocao.fornecedorModel.site}"/></div>
+	                            <div class="floatLeft marginLeft"><span class="icons indicacao"></span><c:out value="${promocao.indicacoes}"/> indicam</div>
 	                        </div>
 	                    </li>
                     </c:forEach>

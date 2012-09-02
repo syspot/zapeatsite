@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import br.com.topsys.util.TSUtil;
+import br.com.zapeat.site.util.Constantes;
 
 
 public class PromocaoModel {
@@ -116,6 +117,11 @@ public class PromocaoModel {
 
 	public void setIndicacoes(Integer indicacoes) {
 		this.indicacoes = indicacoes;
+	}
+	
+	public String getCssSessao(){
+		return getTipoPromocaoModel().getId().equals(Constantes.TIPO_PROMOCAO_SEMANA) ? "icons daSemana" : 
+			getTipoPromocaoModel().getId().equals(Constantes.TIPO_PROMOCAO_DIA) ? "icons doDia" : "icons daHora";  
 	}
 
 	@Override

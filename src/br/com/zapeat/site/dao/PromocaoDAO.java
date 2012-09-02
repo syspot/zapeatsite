@@ -16,7 +16,7 @@ public class PromocaoDAO {
         
         broker.setPropertySQL("promocaodao.pesquisarporindicacoes");
         
-        return broker.getCollectionBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "descricao", "titulo", "indicacoes", "fornecedorModel.imagem");
+        return broker.getCollectionBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia",  "fornecedorModel.imagemThumb", "fornecedorModel.telefone", "fornecedorModel.site", "fornecedorModel.categoriaPrincipal.id", "fornecedorModel.categoriaPrincipal.descricao", "descricao", "titulo", "indicacoes");
                 
     }
 
