@@ -194,7 +194,7 @@
             		<c:forEach items="${listagemFaces.promocoes}" var="promocao">
 	                	<li>
 		                    <a href="" title="">
-		                    	<div class="marca floatLeft"><img src="${promocao.fornecedorModel.imagemThumbView}" alt="Marca 80x80px" title="${promocao.fornecedorModel.nomeFantasia}" /></div>
+		                    	<div class="marca floatLeft"><img src="${promocao.fornecedorModel.logoMarca}" alt="Marca 80x80px" title="${promocao.fornecedorModel.nomeFantasia}" /></div>
 		                        <!-- SE PROMOÇÃO EM PRODUTO -->
 		                        <div class="info">
 		                        	<p class="titulo"><c:out value="${promocao.fornecedorModel.nomeFantasia}"/>  </p>

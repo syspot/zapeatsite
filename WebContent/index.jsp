@@ -274,7 +274,7 @@
             <div id="outrosDestaques">
             	<h2>Outras Promoções da Hora</h2>
             	<ul id="listagem">
-                	<c:forEach items="${promocaoFaces.promocoesHora}" var="promocao">
+                	
 	                	<li>
 	                    	<a href="promocao.jsf" title="">
 	                            <div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
@@ -298,7 +298,7 @@
 	                            </p>
 	                        </div>
 	                    </li>
-                </c:forEach>    
+                
                 </ul>
             </div>
         
