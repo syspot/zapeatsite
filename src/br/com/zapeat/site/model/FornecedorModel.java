@@ -46,6 +46,8 @@ public class FornecedorModel {
 	private String imagemThumb;
 
 	private CategoriaModel categoriaPrincipal;
+	
+	private Integer quantidadeIndicacoes;
 
 	public Long getId() {
 		return TSUtil.tratarLong(id);
@@ -248,6 +250,14 @@ public class FornecedorModel {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public Integer getQuantidadeIndicacoes() {
+		return quantidadeIndicacoes;
+	}
+
+	public void setQuantidadeIndicacoes(Integer quantidadeIndicacoes) {
+		this.quantidadeIndicacoes = quantidadeIndicacoes;
 	}
 
 }

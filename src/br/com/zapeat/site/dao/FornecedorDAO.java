@@ -18,7 +18,7 @@ public class FornecedorDAO {
 		return broker.getCollectionBean(FornecedorModel.class, "id", "logoMarca", "nomeFantasia");
 
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<FornecedorModel> pesquisarTopGeral() {
 
@@ -26,7 +26,7 @@ public class FornecedorDAO {
 
 		broker.setPropertySQL("fornecedordao.pesquisarTopGeral");
 
-		return broker.getCollectionBean(FornecedorModel.class, "id", "logoMarca", "nomeFantasia");
+		return broker.getCollectionBean(FornecedorModel.class, "id", "nomeFantasia", "quantidadeIndicacoes");
 
 	}
 
