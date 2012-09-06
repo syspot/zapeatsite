@@ -16,5 +16,6 @@ public class Constantes {
 	public static Long TIPO_PROMOCAO_HORA = 1L;
 	public static Long TIPO_PROMOCAO_DIA = 2L;
 	public static Long TIPO_PROMOCAO_SEMANA = 3L;
-
+	
+	public static final String USUARIO_LOGADO = "usuarioLogado";
 }

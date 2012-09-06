@@ -15,7 +15,7 @@ import br.com.zapeat.site.model.CarroChefeModel;
 import br.com.zapeat.site.model.FornecedorModel;
 import br.com.zapeat.site.model.PromocaoModel;
 
-@ManagedBean
+@ManagedBean(name = "indexFaces")
 public class IndexFaces extends TSMainFaces {
 
 	private PromocaoModel promocaoDia;

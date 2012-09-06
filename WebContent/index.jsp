@@ -3,9 +3,11 @@
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
 
+<f:view>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#" xmlns:p="http://primefaces.org/ui">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
@@ -132,8 +134,9 @@
 			alert(msg);
 		}
 </script>   
+
 </head>
-<f:view>
+
 <body onload="initialize()">
 
 
@@ -182,16 +185,16 @@
 <div id="central">
 	<!-- COMECA CONTEUDO -->
 	<div id="conteudo">
-    
+    			
     	<!-- COMECA COLUNA ESQUERDA -->
     	<div id="esq">
         	<div class="boxSubCat">
             	<h2>Promoção do dia</h2>
-                
-                <a href="promocao.jsf" title="">
+            	
+            	<a href="promocao.jsf" title="">
                     <img src="img/model/180x79.jpg" alt="" title="" />
                     <p class="titulo">${indexFaces.promocaoDia.fornecedor.nomeFantasia}</p>
-                    <p class="categoria">categoria</p>
+                    <!-- <p class="categoria">categoria</p>-->
                     <p class="item">${indexFaces.promocaoDia.descricao}</p>
                     <!-- SE PROMOÇÃO EM DESCONTO -->
                     <p><span class="precoDe">De: R$700,00</span>&nbsp;&nbsp;<span class="precoPor">Por: R$500,00</span> 
@@ -401,6 +404,6 @@
 }(document, 'script', 'facebook-jssdk'));
 </script>
 </body>
-</f:view>
+
 </html>
->>>>>>> branch 'master' of git@github.com:syspot/zapeatsite.git
+</f:view>
