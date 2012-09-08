@@ -6,13 +6,13 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 
 import br.com.topsys.web.faces.TSMainFaces;
+import br.com.zapeat.site.dao.BuscaDAO;
 import br.com.zapeat.site.model.BuscaModel;
-import br.com.zapeat.site.model.PromocaoModel;
 
 @ManagedBean
 public class BuscaFaces extends TSMainFaces {
 
-	private PromocaoModel promocaoBusca;
+	private BuscaDAO buscaDAO;
 	
 	private String termoBuscado;
 	private String localBuscado;
@@ -21,16 +21,17 @@ public class BuscaFaces extends TSMainFaces {
 	
 	public BuscaFaces(){
 		
-		this.promocaoBusca = new PromocaoModel();
+		this.buscaDAO = new BuscaDAO();
 		this.listagem = new ArrayList<BuscaModel>();
 		
 	}
 	
 	public String buscar(){
 		
-		System.out.println("teste");
-		
-		//this.promocoes = this.promocaoBusca.findPromocoes(termoBuscado);
+		this.listagem = new ArrayList<BuscaModel>();
+		this.listagem.addAll(this.buscaDAO.pesquisarPromocaoPorTexto(termoBuscado));
+		this.listagem.addAll(this.buscaDAO.pesquisarCarroChefePorTexto(termoBuscado));
+		this.listagem.addAll(this.buscaDAO.pesquisarEstabelecimentoPorTexto(termoBuscado));
 		
 		return null;
 		
