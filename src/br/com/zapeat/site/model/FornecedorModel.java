@@ -42,11 +42,13 @@ public class FornecedorModel {
 	private String facebook;
 
 	private CidadeModel cidadeModel;
-	
+
 	private String imagemThumb;
-	
+
 	private CategoriaModel categoriaPrincipal;
 	
+	private Integer quantidadeIndicacoes;
+
 	public Long getId() {
 		return TSUtil.tratarLong(id);
 	}
@@ -144,6 +146,12 @@ public class FornecedorModel {
 	}
 
 	public String getLogoMarca() {
+
+		if (!TSUtil.isEmpty(this.logoMarca)) {
+
+			this.logoMarca = Constantes.PASTA_DOWNLOAD_FORNECEDOR + Constantes.PREFIXO_IMAGEM_FORNECEDOR_THUMB + this.logoMarca;
+		}
+
 		return logoMarca;
 	}
 
@@ -198,7 +206,7 @@ public class FornecedorModel {
 	public void setCidadeModel(CidadeModel cidadeModel) {
 		this.cidadeModel = cidadeModel;
 	}
-	
+
 	public String getImagemThumb() {
 		return imagemThumb;
 	}
@@ -206,7 +214,7 @@ public class FornecedorModel {
 	public void setImagemThumb(String imagemThumb) {
 		this.imagemThumb = imagemThumb;
 	}
-	
+
 	public CategoriaModel getCategoriaPrincipal() {
 		return categoriaPrincipal;
 	}
@@ -216,7 +224,7 @@ public class FornecedorModel {
 	}
 
 	public String getImagemThumbView() {
-		return Constantes.PASTA_DOWNLOAD_FORNECEDOR + Constantes.PREFIXO_IMAGEM_FORNECEDOR_THUMB + getImagemThumb(); 
+		return Constantes.PASTA_DOWNLOAD_FORNECEDOR + Constantes.PREFIXO_IMAGEM_FORNECEDOR_THUMB + getImagemThumb();
 	}
 
 	@Override
@@ -242,6 +250,14 @@ public class FornecedorModel {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public Integer getQuantidadeIndicacoes() {
+		return quantidadeIndicacoes;
+	}
+
+	public void setQuantidadeIndicacoes(Integer quantidadeIndicacoes) {
+		this.quantidadeIndicacoes = quantidadeIndicacoes;
 	}
 
 }

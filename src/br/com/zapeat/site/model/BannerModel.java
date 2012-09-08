@@ -24,7 +24,6 @@ public class BannerModel {
 	
 	private Boolean flagAtivo;
 	
-	
 	public Long getId() {
 		return TSUtil.tratarLong(id);
 	}

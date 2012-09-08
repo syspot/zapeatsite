@@ -18,6 +18,8 @@ public class UsuarioModel {
 	
 	private Boolean flagAtivo;	
 	
+	private String imagem;
+	
 	public UsuarioModel() {
 
 	}
@@ -76,6 +78,14 @@ public class UsuarioModel {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
 	}
 
 }
