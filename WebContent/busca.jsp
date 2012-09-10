@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -182,129 +182,34 @@
             </div>
             <ul id="listagem">
             		<!-- SE LISTAGEM POR PROMOÇÃO -->
-            		<c:forEach items="#{buscaFaces.promocoes}" var="promocao">
+            		
+            		<c:forEach items="${buscaFaces.listagem}" var="result">
+            		
 	                	<li>
 	                    <a href="" title="">
-	                    	<div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
+	                    	<div class="marca floatLeft"><img src="${result.imagemView}" alt="" title="${result.titulo}" /></div>
 	                        <!-- SE PROMOÇÃO EM PRODUTO -->
 	                        <div class="info">
-	                        	<p class="titulo">Nome do estabelecimento, promoção ou carro-chefe</p>
+	                        	<p class="titulo">${result.titulo}</p>
 	                            <!-- SE ESTABELECIMENTO, ENDEREÇO -->
-	                            <p class="item">ENDEREÇO DO ESTABELECIMENTO OU NOME DO ESTABELECIMENTO</p>                            
+	                            <p class="item">${result.nome}</p>                            
 	                            <!-- SE PROMOÇÃO OU CARRO-CHEFE
 	                            <p class="item">NOME DA PROMOÇÃO OU CARRO-CHEFE</p>
 	                            -->
-	                            <p class="resumo fontYi">
-	                            DESCRIÇÃO DA PROMOÇÃO, ESTABELECIMENTO OU CARRO-CHEFE</p>
+	                            <p class="resumo fontYi">${result.descricao}</p>
 	                        </div>
 	                    </a>
 	                        
 	                        <br clear="all" />
 	                        <div class="boxInfo">
-	                            <div class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: Restaurante</div>
-	                            <div class="floatLeft marginLeft"><span class="icons tel"></span>(71) 9876.5432</div>
-	                            <div class="floatLeft marginLeft"><span class="icons site"></span>daboxpizza.com.br</div>
-	                            <div class="floatLeft marginLeft"><span class="icons indicacao"></span>10 indicam</div>
+	                            <div class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: ${result.categoria}</div>
+	                            <div class="floatLeft marginLeft"><span class="icons tel"></span>${result.telefone}</div>
+	                            <div class="floatLeft marginLeft"><span class="icons site"></span>${result.site}</div>
+	                            <div class="floatLeft marginLeft"><span class="icons indicacao"></span>${result.indicacoes} indicam</div>
 	                        </div>
 	                    </li>
-	                	<li>
                 	</c:forEach>
-                    <a href="promocao.jsf" title="">
-                    	<div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
-                        <div class="info">
-                        	<p class="titulo">Rodízio dos Amantes</p><!-- SE ITEM FOR PROMOÇÃO OU CARRO-CHEFE, NOME DO PRODUTO-->
-                            <p class="item">Cheiro de Pizza</p><!-- SE ITEM FOR PROMOÇÃO OU CARRO-CHEFE, NOME DO ESTABELECIMENTO-->
-                            <p class="resumo fontYi">
-                            Casais de namorados tem promoção especial. Venha comemorar aniversário de namoro e a companheira não paga o rodízio.</p>
-                        </div>
-                    </a>
-                        
-                        <br clear="all" />
-                        <div class="boxInfo">
-                            <div class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: Restaurante</div>
-                            <div class="floatLeft marginLeft"><span class="icons tel"></span>(71) 9876.5432</div>
-                            <div class="floatLeft marginLeft"><span class="icons site"></span>daboxpizza.com.br</div>
-                            <div class="floatLeft marginLeft"><span class="icons indicacao"></span>10 indicam</div>
-                        </div>
-                    </li>
-                	<li>
-                    <a href="estabelecimento.jsf" title="">
-                    	<div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
-                        <div class="info">
-                        	<p class="titulo">Restaurante Yemanjá</p><!-- SE ITEM FOR ESTABELECIMENTO, NOME DO ESTABELECIMENTO-->
-                            <p class="item">Avenida Otávio Mangabeira, 0000, Boca do Rio, Salvador/Ba</p><!-- SE ITEM FOR ESTABELECIMENTO, ENDEREÇO-->
-                            <p class="resumo fontYi">
-                            Restaurante típico da bahia com culinária voltada exclusivamente aos sabores baianos. Requinte, bom gosto e preço alto.</p>
-                        </div>
-                    </a>
-                        
-                        <br clear="all" />
-                        <div class="boxInfo">
-                            <div class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: Restaurante</div>
-                            <div class="floatLeft marginLeft"><span class="icons tel"></span>(71) 9876.5432</div>
-                            <div class="floatLeft marginLeft"><span class="icons site"></span>daboxpizza.com.br</div>
-                            <div class="floatLeft marginLeft"><span class="icons indicacao"></span>10 indicam</div>
-                        </div>
-                    </li>
                     
-                	<li>
-                    <a href="" title="">
-                    	<div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
-                        <div class="info">
-                        	<p class="titulo">Cheiro de Pizza</p>
-                            <p class="item">Rodízio dos Amantes</p>                            
-                            <p class="resumo fontYi">
-                            Casais de namorados tem promoção especial. Venha comemorar aniversário de namoro e a companheira não paga o rodízio.</p>
-                        </div>
-                    </a>
-                        
-                        <br clear="all" />
-                        <div class="boxInfo">
-                            <div class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: Restaurante</div>
-                            <div class="floatLeft marginLeft"><span class="icons tel"></span>(71) 9876.5432</div>
-                            <div class="floatLeft marginLeft"><span class="icons site"></span>daboxpizza.com.br</div>
-                            <div class="floatLeft marginLeft"><span class="icons indicacao"></span>10 indicam</div>
-                        </div>
-                    </li>
-                	<li>
-                    <a href="" title="">
-                    	<div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
-                        <div class="info">
-                        	<p class="titulo">Cheiro de Pizza</p>
-                            <p class="item">Rodízio dos Amantes</p>                            
-                            <p class="resumo fontYi">
-                            Casais de namorados tem promoção especial. Venha comemorar aniversário de namoro e a companheira não paga o rodízio.</p>
-                        </div>
-                    </a>
-                        
-                        <br clear="all" />
-                        <div class="boxInfo">
-                            <div class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: Restaurante</div>
-                            <div class="floatLeft marginLeft"><span class="icons tel"></span>(71) 9876.5432</div>
-                            <div class="floatLeft marginLeft"><span class="icons site"></span>daboxpizza.com.br</div>
-                            <div class="floatLeft marginLeft"><span class="icons indicacao"></span>10 indicam</div>
-                        </div>
-                    </li>
-                	<li>
-                    <a href="" title="">
-                    	<div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
-                        <!-- SE PROMOÇÃO EM PRODUTO -->
-                        <div class="info">
-                        	<p class="titulo">Cheiro de Pizza</p>
-                            <p class="item">Rodízio dos Amantes</p>                            
-                            <p class="resumo fontYi">
-                            Casais de namorados tem promoção especial. Venha comemorar aniversário de namoro e a companheira não paga o rodízio.</p>
-                        </div>
-                    </a>
-                        
-                        <br clear="all" />
-                        <div class="boxInfo">
-                            <div class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: Restaurante</div>
-                            <div class="floatLeft marginLeft"><span class="icons tel"></span>(71) 9876.5432</div>
-                            <div class="floatLeft marginLeft"><span class="icons site"></span>daboxpizza.com.br</div>
-                            <div class="floatLeft marginLeft"><span class="icons indicacao"></span>10 indicam</div>
-                        </div>
-                    </li>
                 </ul>
                 
                 <div id="paginacao">

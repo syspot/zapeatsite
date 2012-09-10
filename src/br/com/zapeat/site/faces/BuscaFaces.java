@@ -23,6 +23,7 @@ public class BuscaFaces extends TSMainFaces {
 		
 		this.buscaDAO = new BuscaDAO();
 		this.listagem = new ArrayList<BuscaModel>();
+		this.buscar();
 		
 	}
 	

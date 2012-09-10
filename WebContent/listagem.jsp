@@ -39,6 +39,8 @@
 	  })
 </script>
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+
 <!--=============MODAL=============-->
 	<script type="text/javascript" src="http://fw2.atarde.com.br/fw/js/modal.js">
     $(document).ready(function(){
@@ -218,18 +220,21 @@
                     </c:forEach>
                 </ul>
                 
-                <div id="paginacao">
-                	<span class="inicio"><a href="" title=""><span class="icons pagInicio"></span></a></span>
-                    <span class="pagina"><a href="" title="">1</a></span>
-                    <span class="pagina"><a href="" title="">2</a></span>
-                    <span class="pagina"><a href="" title="">3</a></span>
-                    <span class="pagina"><a href="" title="">4</a></span>
-                    <span class="pagina"><a href="" title="">...</a></span>
-                    <span class="pagina"><a href="" title="">5</a></span>
-                    <span class="pagina"><a href="" title="">6</a></span>
-                    <span class="pagina"><a href="" title="">7</a></span>
-                    <span class="fim"><a href="" title=""><span class="icons pagFim"></span></a></span>
-                </div>
+                <ul id="paginacao">
+                
+           			<c:if test="${listagemFaces.qtdPaginas > 1}">
+                		<li class="inicio"><a href="" title=""><span class="icons pagInicio"></span></a></li>
+           			</c:if>
+                
+               		<c:forEach begin="1" end="${listagemFaces.qtdPaginas}" var="pagina">
+	                    <li class="pagina"><a href="listagem.jsf?page=${pagina}" title="">${pagina}</a></li>
+	                </c:forEach>
+	                
+					<c:if test="${listagemFaces.qtdPaginas > 1}">
+						<li class="fim"><a href="listagem.jsf?page=${listagemFaces.qtdPaginas}" title=""><span class="icons pagFim"></span></a></li>
+           			</c:if>
+           			
+                </ul>
 
         </div>
         
@@ -270,6 +275,12 @@
 				  })(marker, i));
 				}
 			  </script>
+			  
+			  <script type="text/javascript"> 
+					$(document).ready(function() { 
+						$("ul.paginacao").quickPagination({pagerLocation:"both",pageSize:"2"}); 
+					}); 
+			  </script> 
 
         </div>
         

@@ -1,5 +1,7 @@
 package br.com.zapeat.site.model;
 
+import br.com.zapeat.site.util.Constantes;
+
 public class BuscaModel {
 
 	private String titulo;
@@ -17,6 +19,8 @@ public class BuscaModel {
 	private String site;
 	
 	private Integer indicacoes;
+	
+	private String imagem;
 
 	public String getTitulo() {
 		return titulo;
@@ -81,5 +85,18 @@ public class BuscaModel {
 	public void setIndicacoes(Integer indicacoes) {
 		this.indicacoes = indicacoes;
 	}
+
+	public String getImagem() {
+		return imagem;
+	}
+	
+	public String getImagemView() {
+		return Constantes.PASTA_DOWNLOAD + imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
+	}
+	
 
 }
