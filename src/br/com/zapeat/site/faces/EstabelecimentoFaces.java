@@ -46,19 +46,24 @@ public class EstabelecimentoFaces extends TSMainFaces {
 
 			this.initDAO();
 
-			this.fornecedorModel = new FornecedorModel(new Long(fornecedorId));
+			this.fornecedorModel = this.fornecedorDAO.obter(new FornecedorModel(new Long(fornecedorId)));
 
-			this.fotosEstabelecimento = this.imagemFornecedorDAO.pesquisar(this.fornecedorModel);
+			if (!TSUtil.isEmpty(this.fornecedorModel) && !TSUtil.isEmpty(this.fornecedorModel.getId())) {
 
-			this.promocaoDia = this.promocaoDAO.obterPromocaoDia(this.fornecedorModel);
+				this.fotosEstabelecimento = this.imagemFornecedorDAO.pesquisar(this.fornecedorModel);
 
-			this.promocaoSemana = this.promocaoDAO.obterPromocaoSemana(this.fornecedorModel);
+				this.promocaoDia = this.promocaoDAO.obterPromocaoDia(this.fornecedorModel);
 
-			this.bannerModel = this.bannerDAO.pesquisar(new BannerModel(this.fornecedorModel));
+				this.promocaoSemana = this.promocaoDAO.obterPromocaoSemana(this.fornecedorModel);
 
-			this.carroChefeModel = this.carroChefeDAO.pesquisar(new CarroChefeModel(this.fornecedorModel));
+				this.bannerModel = this.bannerDAO.pesquisar(new BannerModel(this.fornecedorModel));
 
-			this.fornecedorModel = this.fornecedorDAO.obter(this.fornecedorModel);
+				this.carroChefeModel = this.carroChefeDAO.pesquisar(new CarroChefeModel(this.fornecedorModel));
+			
+			} /*else{
+				
+				this.redirect();
+			}*/
 
 		} else {
 

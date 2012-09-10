@@ -1,5 +1,7 @@
 package br.com.zapeat.site.model;
 
+import br.com.zapeat.site.util.Constantes;
+
 public class BuscaModel {
 
 	private String titulo;
@@ -10,13 +12,15 @@ public class BuscaModel {
 	
 	private Integer tipo;
 	
-	private CategoriaModel categoriaModel;
+	private String categoria;
 	
 	private String telefone;
 	
 	private String site;
 	
-	private Integer qtdIndicacoes;
+	private Integer indicacoes;
+	
+	private String imagem;
 
 	public String getTitulo() {
 		return titulo;
@@ -50,12 +54,12 @@ public class BuscaModel {
 		this.tipo = tipo;
 	}
 
-	public CategoriaModel getCategoriaModel() {
-		return categoriaModel;
+	public String getCategoria() {
+		return categoria;
 	}
 
-	public void setCategoriaModel(CategoriaModel categoriaModel) {
-		this.categoriaModel = categoriaModel;
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
 	}
 
 	public String getTelefone() {
@@ -74,12 +78,25 @@ public class BuscaModel {
 		this.site = site;
 	}
 
-	public Integer getQtdIndicacoes() {
-		return qtdIndicacoes;
+	public Integer getIndicacoes() {
+		return indicacoes;
 	}
 
-	public void setQtdIndicacoes(Integer qtdIndicacoes) {
-		this.qtdIndicacoes = qtdIndicacoes;
+	public void setIndicacoes(Integer indicacoes) {
+		this.indicacoes = indicacoes;
 	}
+
+	public String getImagem() {
+		return imagem;
+	}
+	
+	public String getImagemView() {
+		return Constantes.PASTA_DOWNLOAD + imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
+	}
+	
 
 }
