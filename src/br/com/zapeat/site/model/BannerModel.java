@@ -9,21 +9,30 @@ public class BannerModel {
 	private Long id;
 
 	private TipoBannerModel tipoBannerModel;
-	
+
 	private FornecedorModel fornecedorModel;
-	
+
 	private String imagem;
-	
+
 	private Date inicio;
-	
+
 	private Date fim;
-	
+
 	private Integer taxaPrioridade;
-	
+
 	private Integer qdoCliques;
-	
+
 	private Boolean flagAtivo;
-	
+
+	public BannerModel() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public BannerModel(FornecedorModel fornecedorModel) {
+
+		this.fornecedorModel = fornecedorModel;
+	}
+
 	public Long getId() {
 		return TSUtil.tratarLong(id);
 	}
@@ -96,7 +105,6 @@ public class BannerModel {
 		this.flagAtivo = flagAtivo;
 	}
 
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -121,6 +129,5 @@ public class BannerModel {
 			return false;
 		return true;
 	}
-
 
 }

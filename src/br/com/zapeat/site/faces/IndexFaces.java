@@ -63,9 +63,9 @@ public class IndexFaces extends TSMainFaces {
 
 	private void carregaDados() {
 
-		this.promocaoDia = this.promocaoDAO.obterPromocaoDia();
+		this.promocaoDia = this.promocaoDAO.obterPromocaoDia(new FornecedorModel());
 		
-		this.promocaoSemana = this.promocaoDAO.obterPromocaoSemana();
+		this.promocaoSemana = this.promocaoDAO.obterPromocaoSemana(new FornecedorModel());
 
 		this.promocaoHora = this.promocaoDAO.obterPromocaoHora();
 

@@ -30,4 +30,16 @@ public class FornecedorDAO {
 
 	}
 
+	public FornecedorModel obter(FornecedorModel model) {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+		broker.setPropertySQL("fornecedordao.obter", model.getId());
+
+		return (FornecedorModel) broker.getObjectBean(FornecedorModel.class,
+
+		"id", "razaoSocial", "cnpj", "nomeFantasia", "cep", "logradouro", "numero", "bairro", "cidadeModel.id", "latitude", "longitude", "logoMarca", "flagAtivo", "descricao", "horariosFuncionamento", "twitter", "facebook", "site", "telefone");
+
+	}
+
 }

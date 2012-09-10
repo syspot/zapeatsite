@@ -3,28 +3,13 @@ package br.com.zapeat.site.model;
 import java.io.Serializable;
 
 @SuppressWarnings("serial")
-public class CarroChefeModel implements Serializable {
+public class ImagemFornecedorModel implements Serializable {
 
 	private Long id;
 
 	private FornecedorModel fornecedorModel;
 
-	private Boolean flagAtivo;
-
-	private String descricao;
-
-	private String titulo;
-
 	private String imagem;
-
-	public CarroChefeModel() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public CarroChefeModel(FornecedorModel fornecedorModel) {
-
-		this.fornecedorModel = fornecedorModel;
-	}
 
 	public Long getId() {
 		return id;
@@ -42,28 +27,12 @@ public class CarroChefeModel implements Serializable {
 		this.fornecedorModel = fornecedorModel;
 	}
 
-	public Boolean getFlagAtivo() {
-		return flagAtivo;
+	public String getImagem() {
+		return imagem;
 	}
 
-	public void setFlagAtivo(Boolean flagAtivo) {
-		this.flagAtivo = flagAtivo;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
-	public String getTitulo() {
-		return titulo;
-	}
-
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
 	}
 
 	@Override
@@ -82,7 +51,7 @@ public class CarroChefeModel implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		CarroChefeModel other = (CarroChefeModel) obj;
+		ImagemFornecedorModel other = (ImagemFornecedorModel) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -91,11 +60,4 @@ public class CarroChefeModel implements Serializable {
 		return true;
 	}
 
-	public String getImagem() {
-		return imagem;
-	}
-
-	public void setImagem(String imagem) {
-		this.imagem = imagem;
-	}
 }

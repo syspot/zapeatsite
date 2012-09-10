@@ -81,7 +81,7 @@ div#local div span{float:left!important;}
 .boxSubCat h2	{ font-size:14px; color:#fff; background:#FF7100; padding:3px 5px; margin-bottom:5px; font-family: 'titilliumtext22l_ltmedium';}
 .boxSubCat img	{ margin-bottom:15px;}
 .boxSubCat .titulo	 { font-family: 'titilliumtext22l_rgbold'; font-size:15px; color:#0066CC;}
-.boxSubCat .categoria{ font-family: 'titilliumtext22l_ltthin'; font-size:13px;}
+.boxSubCat .categoria{ font-family: 'titilliumtext22l_ltthin'; font-size:13px; color:#666;}
 .boxSubCat .item,
 ul#listagem .item	  { font-family: 'titilliumtext22l_ltthin'; font-size:13px; color:#f00; line-height:16px; padding-bottom:5px;}
 .boxSubCat .precoDe,
@@ -171,7 +171,7 @@ ul#listagem li .dados{ float:right; width:130px;}
 
 
 /*--== LOGIN ==--*/
-.container {    width: 406px;    max-width: 406px;    margin: 0 auto; position:relative;}
+.container {    min-width: 406px;    max-width: 406px;    margin: 0 auto; position:relative;}
 .btnFechar{width:15px; height:15px; position:absolute; top:10px; right:10px; cursor:pointer;}
 
 #signup {
@@ -199,10 +199,10 @@ input::-webkit-input-placeholder {    color:    #b5b5b5;}
 
 input:-moz-placeholder {    color:    #b5b5b5;}
 
-#signup .inputs input[type=email], input[type=password] {
+#signup .inputs input[type=email], #signup .inputs input[type=password], #signup .inputs input[type=text], #signup .inputs input[type=file] {
     background: #f5f5f5;    font-size: 0.8rem;    -moz-border-radius: 3px;    -webkit-border-radius: 3px;
     border-radius: 3px;    border: none;    padding: 13px 10px;    width: 330px;    margin-bottom: 20px;
-    box-shadow: inset 0px 2px 3px rgba( 0,0,0,0.1 );    clear: both;
+    box-shadow: inset 0px 2px 3px rgba( 0,0,0,0.1 );    clear: both; border: 1px solid #BBB;
 }
 
 #signup .inputs input[type=email]:focus, input[type=password]:focus {
@@ -241,3 +241,77 @@ input:-moz-placeholder {    color:    #b5b5b5;}
 .bg_modal 	{ position: absolute; top: 0; left: 0; z-index: 99999999998; }
 .view_modal { position: absolute; left: 50%; top: 50%; text-align: left; z-index: 99999999998; }
 .modal		{ visibility: hidden; cursor:pointer; }
+
+/*-- customização de file upload --*/
+div.custom_file_upload {
+	width: 230px;
+	height: 20px;
+	margin-bottom: 40px ;
+}
+
+input.file {
+	width: 209px;
+	height: 20px;
+	border: 1px solid #BBB;
+	border-right: 0;
+	color: #888;
+	padding: 13px 10px;
+	
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	
+	box-shadow: inset 0px 2px 3px rgba( 0,0,0,0.1 );  background: #f5f5f5;
+	
+	outline: none;
+}
+
+div.file_upload {
+	width: 120px;
+	height: 18px;
+	background: #7abcff;
+	background: -moz-linear-gradient(top,  #7abcff 0%, #60abf8 44%, #4096ee 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7abcff), color-stop(44%,#60abf8), color-stop(100%,#4096ee));
+	background: -webkit-linear-gradient(top,  #7abcff 0%,#60abf8 44%,#4096ee 100%);
+	background: -o-linear-gradient(top,  #7abcff 0%,#60abf8 44%,#4096ee 100%);
+	background: -ms-linear-gradient(top,  #7abcff 0%,#60abf8 44%,#4096ee 100%);
+	background: linear-gradient(top,  #7abcff 0%,#60abf8 44%,#4096ee 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7abcff', endColorstr='#4096ee',GradientType=0 );
+	padding: 15px 3px;
+	display: inline;
+	position: absolute;
+	overflow: hidden;
+	cursor: pointer;
+	
+	-webkit-border-top-right-radius: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	-moz-border-radius-topright: 5px;
+	-moz-border-radius-bottomright: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	
+	font-weight: bold;
+	color: #FFF;
+	text-align: center;
+}
+div.file_upload:before {
+	content: 'ARQUIVO';
+	position: absolute;
+	left: 0; right: 0;
+	text-align: center;
+	font-family: 'microsoft_yi_baitiregular';
+	cursor: pointer;
+}
+
+div.file_upload input {
+	position: relative;
+	height: 0px;
+	width: 250px;
+	display: inline;
+	cursor: pointer;
+	opacity: 0;
+}
+/*----------------------------------*/

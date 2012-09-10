@@ -46,8 +46,17 @@ public class FornecedorModel {
 	private String imagemThumb;
 
 	private CategoriaModel categoriaPrincipal;
-	
+
 	private Integer quantidadeIndicacoes;
+
+	public FornecedorModel() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public FornecedorModel(Long id) {
+
+		this.id = id;
+	}
 
 	public Long getId() {
 		return TSUtil.tratarLong(id);

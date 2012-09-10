@@ -4,6 +4,7 @@ import java.util.List;
 
 import br.com.topsys.database.TSDataBaseBrokerIf;
 import br.com.topsys.database.factory.TSDataBaseBrokerFactory;
+import br.com.zapeat.site.model.FornecedorModel;
 import br.com.zapeat.site.model.PromocaoModel;
 
 public class PromocaoDAO {
@@ -40,21 +41,21 @@ public class PromocaoDAO {
 
 	}
 
-	public PromocaoModel obterPromocaoDia() {
+	public PromocaoModel obterPromocaoDia(FornecedorModel model) {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("promocaodao.obterPromocaoDia");
+		broker.setPropertySQL("promocaodao.obterPromocaoDia", model.getId());
 
 		return (PromocaoModel) broker.getObjectBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "descricao", "inicio", "fim", "precoOriginal", "precoPromocional", "titulo");
 
 	}
 
-	public PromocaoModel obterPromocaoSemana() {
+	public PromocaoModel obterPromocaoSemana(FornecedorModel model) {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("promocaodao.obterPromocaoSemana");
+		broker.setPropertySQL("promocaodao.obterPromocaoSemana", model.getId());
 
 		return (PromocaoModel) broker.getObjectBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "descricao", "inicio", "fim", "precoOriginal", "precoPromocional", "titulo");
 
