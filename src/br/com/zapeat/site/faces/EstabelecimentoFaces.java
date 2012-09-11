@@ -65,11 +65,10 @@ public class EstabelecimentoFaces extends TSMainFaces {
 
 				this.carroChefeModel = this.carroChefeDAO.pesquisar(new CarroChefeModel(this.fornecedorModel));
 
-			} /*
-			 * else{
-			 * 
-			 * this.redirect(); }
-			 */
+			} else {
+
+				this.redirect();
+			}
 
 		} else {
 

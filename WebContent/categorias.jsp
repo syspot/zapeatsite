@@ -8,7 +8,7 @@
                             <li><a href="listagem.jsf?categoriaId=7&tipo=1" title="promoção da hora">promoção da hora</a></li>
                             <li><a href="listagem.jsf?categoriaId=7&tipo=4" title="ranking">ranking</a></li>
                             <li><a href="listagem.jsf?categoriaId=7&tipo=5" title="carro-chefe">carro-chefe</a></li>
-                            <li><a href="estabelecimento.jsf?categoriaId=7" title="estabelecimentos">estabelecimentos</a></li>
+                            
                         </ul>
                     </li>
                     <li>
@@ -20,7 +20,6 @@
                             <li><a href="listagem.jsf?categoriaId=1&tipo=1" title="promoção da hora">promoção da hora</a></li>
                             <li><a href="listagem.jsf?categoriaId=1&tipo=4" title="ranking">ranking</a></li>
                             <li><a href="listagem.jsf?categoriaId=1&tipo=5" title="carro-chefe">carro-chefe</a></li>
-                            <li><a href="estabelecimento.jsf?categoriaId=1" title="estabelecimentos">estabelecimentos</a></li>
                         </ul>
                     </li>
                     <li>
@@ -32,7 +31,6 @@
                             <li><a href="listagem.jsf?categoriaId=2&tipo=1" title="promoção da hora">promoção da hora</a></li>
                             <li><a href="listagem.jsf?categoriaId=2&tipo=4" title="ranking">ranking</a></li>
                             <li><a href="listagem.jsf?categoriaId=2&tipo=5" title="carro-chefe">carro-chefe</a></li>
-                            <li><a href="estabelecimento.jsf?categoriaId=2" title="estabelecimentos">estabelecimentos</a></li>
                         </ul>
                     </li>
                     <li>
@@ -44,7 +42,6 @@
                             <li><a href="listagem.jsf?categoriaId=3&tipo=1" title="promoção da hora">promoção da hora</a></li>
                             <li><a href="listagem.jsf?categoriaId=3&tipo=4" title="ranking">ranking</a></li>
                             <li><a href="listagem.jsf?categoriaId=3&tipo=5" title="carro-chefe">carro-chefe</a></li>
-                            <li><a href="estabelecimento.jsf?categoriaId=3" title="estabelecimentos">estabelecimentos</a></li>
                         </ul>
                     </li>
                     <li>
@@ -56,7 +53,6 @@
                             <li><a href="listagem.jsf?categoriaId=4&tipo=1" title="promoção da hora">promoção da hora</a></li>
                             <li><a href="listagem.jsf?categoriaId=4&tipo=4" title="ranking">ranking</a></li>
                             <li><a href="listagem.jsf?categoriaId=4&tipo=5" title="carro-chefe">carro-chefe</a></li>
-                            <li><a href="estabelecimento.jsf?categoriaId=4" title="estabelecimentos">estabelecimentos</a></li>
                         </ul>
                     </li>
                     <li>
@@ -68,7 +64,6 @@
                             <li><a href="listagem.jsf?categoriaId=5&tipo=1" title="promoção da hora">promoção da hora</a></li>
                             <li><a href="listagem.jsf?categoriaId=5&tipo=4" title="ranking">ranking</a></li>
                             <li><a href="listagem.jsf?categoriaId=5&tipo=5" title="carro-chefe">carro-chefe</a></li>
-                            <li><a href="estabelecimento.jsf?categoriaId=5" title="estabelecimentos">estabelecimentos</a></li>
                         </ul>
                     </li>
                     <li>
@@ -80,7 +75,6 @@
                             <li><a href="listagem.jsf?categoriaId=6&tipo=1" title="promoção da hora">promoção da hora</a></li>
                             <li><a href="listagem.jsf?categoriaId=6&tipo=4" title="ranking">ranking</a></li>
                             <li><a href="listagem.jsf?categoriaId=6&tipo=5" title="carro-chefe">carro-chefe</a></li>
-                            <li><a href="estabelecimento.jsf?categoriaId=6" title="estabelecimentos">estabelecimentos</a></li>
                         </ul>
                     </li>
                     

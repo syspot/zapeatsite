@@ -376,17 +376,19 @@
             </div>
             </c:if>
             
+            <c:if test="${!empty indexFaces.comentarioModel.id}">
             <div class="boxSubCat">
             	<h2>Quem Indica</h2>
                 <span class="imgDestaque-peq posRel">
-                	<a href="estabelecimento.jsf" title="">
+                	<a href="estabelecimento.jsf?id=${indexFaces.comentarioModel.fornecedorModel.id}" title="">
                         <img src="img/model/180x79.jpg" alt="" title="" />
-                        <p class="tituloIndica">Nome do estabelecimento</p>
+                        <p class="tituloIndica">${indexFaces.comentarioModel.fornecedorModel.nomeFantasia}</p>
                     </a>
                 </span>
-                <p class="comment">O lugar é espaçoso e tem uma decoração temática muito bem feita. Não fica muito cheia e todas as sextas que fui a música estava excelente. As bebidas são boas e o atendimento é muito bom.</p>
-                <p class="autor">Fulana de Tal</p>
+                <p class="comment">${indexFaces.comentarioModel.descricao}</p>
+                <p class="autor">${indexFaces.comentarioModel.usuarioModel.nome}</p>
             </div>
+            </c:if>
             
         </div>
     </div>

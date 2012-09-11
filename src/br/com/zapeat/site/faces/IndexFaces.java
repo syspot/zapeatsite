@@ -8,10 +8,12 @@ import javax.faces.bean.ManagedBean;
 import br.com.topsys.web.faces.TSMainFaces;
 import br.com.zapeat.site.dao.BannerDAO;
 import br.com.zapeat.site.dao.CarroChefeDAO;
+import br.com.zapeat.site.dao.ComentarioDAO;
 import br.com.zapeat.site.dao.FornecedorDAO;
 import br.com.zapeat.site.dao.PromocaoDAO;
 import br.com.zapeat.site.model.BannerModel;
 import br.com.zapeat.site.model.CarroChefeModel;
+import br.com.zapeat.site.model.ComentarioModel;
 import br.com.zapeat.site.model.FornecedorModel;
 import br.com.zapeat.site.model.PromocaoModel;
 
@@ -23,6 +25,7 @@ public class IndexFaces extends TSMainFaces {
 	private PromocaoModel promocaoSemana;
 	private BannerModel bannerModel;
 	private CarroChefeModel carroChefeModel;
+	private ComentarioModel comentarioModel;
 
 	private List<PromocaoModel> promocoesHora;
 	private List<FornecedorModel> estabelecimentos;
@@ -32,6 +35,7 @@ public class IndexFaces extends TSMainFaces {
 	private FornecedorDAO fornecedorDAO;
 	private BannerDAO bannerDAO;
 	private CarroChefeDAO carroChefeDAO;
+	private ComentarioDAO comentarioDAO;
 
 	public IndexFaces() {
 
@@ -47,6 +51,7 @@ public class IndexFaces extends TSMainFaces {
 		this.bannerDAO = new BannerDAO();
 		this.fornecedorDAO = new FornecedorDAO();
 		this.carroChefeDAO = new CarroChefeDAO();
+		this.comentarioDAO = new ComentarioDAO();
 	}
 
 	private void initObjetos() {
@@ -58,6 +63,7 @@ public class IndexFaces extends TSMainFaces {
 		this.promocoesHora = new ArrayList<PromocaoModel>();
 		this.estabelecimentos = new ArrayList<FornecedorModel>();
 		this.topGeral = new ArrayList<FornecedorModel>();
+		this.comentarioModel = new ComentarioModel();
 
 	}
 
@@ -78,6 +84,8 @@ public class IndexFaces extends TSMainFaces {
 		this.estabelecimentos = this.fornecedorDAO.pesquisarHome();
 
 		this.topGeral = this.fornecedorDAO.pesquisarTopGeral();
+		
+		this.comentarioModel = this.comentarioDAO.obterIndicacao();
 		
 		this.setarCssTopGeral();
 
@@ -208,6 +216,22 @@ public class IndexFaces extends TSMainFaces {
 
 	public void setPromocaoHora(PromocaoModel promocaoHora) {
 		this.promocaoHora = promocaoHora;
+	}
+
+	public ComentarioModel getComentarioModel() {
+		return comentarioModel;
+	}
+
+	public void setComentarioModel(ComentarioModel comentarioModel) {
+		this.comentarioModel = comentarioModel;
+	}
+
+	public ComentarioDAO getComentarioDAO() {
+		return comentarioDAO;
+	}
+
+	public void setComentarioDAO(ComentarioDAO comentarioDAO) {
+		this.comentarioDAO = comentarioDAO;
 	}
 
 }
