@@ -10,9 +10,9 @@ public class ComentarioDAO {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("comentariodao.obterIndicacao");
+		broker.setPropertySQL("comentariodao.obterIndicacaoEstabelecimento");
 
-		return (ComentarioModel) broker.getObjectBean(ComentarioModel.class, "descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.logoMarca", "usuarioModel.nome");
+		return (ComentarioModel) broker.getObjectBean(ComentarioModel.class, "id", "descricao", "usuarioModel.nome", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.logoMarca");
 
 	}
 

@@ -15,7 +15,7 @@ public class BannerDAO {
 
 		if (!TSUtil.isEmpty(model) && !TSUtil.isEmpty(model.getFornecedorModel()) && !TSUtil.isEmpty(model.getFornecedorModel().getId())) {
 
-			sql.append(" AND CF.FORNECEDOR = ?");
+			sql.append(" AND B.FORNECEDOR_ID = ?");
 		}
 
 		sql.append(" ORDER BY RANDOM() LIMIT 1");

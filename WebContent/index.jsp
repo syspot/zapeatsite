@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <f:view>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#" xmlns:p="http://primefaces.org/ui">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
@@ -167,8 +167,8 @@
                     
                     <div id="local">
                         <span class="chamadaCadastro">Não tem Facebook?</span>
-                        <div><a href="" class="modal" rel="modal" title="Cadastrar"><span class="icons iconCadastrar"></span>cadastrar</a></div>
-                        <div><a id="modal" href="inc/login.jsf" class="modal" rel="modal" title="Cadastrar"><span class="icons iconLogin"></span>login</a></div>
+                        <div><a class="modal" title="Cadastrar" rel="modal" href="inc/cadastro.jsf"><span class="icons iconCadastrar"></span>cadastrar</a></div>
+                        <div><a id="modal" href="inc/login.jsf" class="modal" rel="modal" title="Login"><span class="icons iconLogin"></span>login</a></div>
                     </div>
             	</div>
                 
@@ -188,47 +188,70 @@
     			
     	<!-- COMECA COLUNA ESQUERDA -->
     	<div id="esq">
+    		<c:if test="${!empty indexFaces.promocaoDia.id}">
         	<div class="boxSubCat">
             	<h2>Promoção do dia</h2>
-            	
-            	<a href="promocao.jsf" title="">
+            	<a href="promocao.jsf?id=${indexFaces.promocaoDia.id}" title="">
                     <img src="img/model/180x79.jpg" alt="" title="" />
-                    <p class="titulo">${indexFaces.promocaoDia.fornecedor.nomeFantasia}</p>
-                    <!-- <p class="categoria">categoria</p>-->
-                    <p class="item">${indexFaces.promocaoDia.descricao}</p>
+                    <p class="titulo">${indexFaces.promocaoDia.fornecedorModel.nomeFantasia}</p>
+                    <p class="item">
+                    ${indexFaces.promocaoDia.descricao}</p>
                     <!-- SE PROMOÇÃO EM DESCONTO -->
-                    <p><span class="precoDe">De: R$700,00</span>&nbsp;&nbsp;<span class="precoPor">Por: R$500,00</span> 
+                    <p><span class="precoDe">
+                    De: <h:outputText value="#{indexFaces.promocaoDia.precoOriginal}">
+                    		<f:convertNumber type="currency" currencySymbol="R$"/>
+                    	</h:outputText></span>&nbsp;&nbsp;
+                    	<span class="precoPor">
+                    Por: 
+                    	<h:outputText value="#{indexFaces.promocaoDia.precoPromocional}">
+                    		<f:convertNumber type="currency" currencySymbol="R$"/>
+                    	</h:outputText></span>
+                    	<p><span class="fontYi">${indexFaces.promocaoDia.descricao}</span></p>
                 </a>
             </div>
+            </c:if>
+            
+            <c:if test="${!empty indexFaces.promocaoSemana.id}">
         	<div class="boxSubCat">
             	<h2>Promoção da semana</h2>
-                <a href="promocao.jsf" title=""><img src="img/model/180x79.jpg" alt="" title="" /></a>
-                    <p class="titulo">Cheiro de Pizza</p>
-                    <p class="categoria">Pizzaria</p>
-                    <p class="item">Pague 1 leve 2</p>
-                    <!-- SE PROMOÇÃO EM PRODUTO -->
-                    <p><span class="fontYi">Na Cheiro de Pizza comprando uma pizza grande você leva outra pizza do mesmo tamanho e sabor totalmente grátis.</span></p>
-                </a>
+                <a href="promocao.jsf?id=${indexFaces.promocaoSemana.id}" title="">
+                	<img src="img/model/180x79.jpg" alt="" title="" />
+               
+                    <p class="titulo">${indexFaces.promocaoSemana.fornecedorModel.nomeFantasia}</p>
+                    <p><span class="precoDe">
+                    De: <h:outputText value="#{indexFaces.promocaoSemana.precoOriginal}">
+                    		<f:convertNumber type="currency" currencySymbol="R$"/>
+                    	</h:outputText></span>&nbsp;&nbsp;
+                    	<span class="precoPor">
+                    Por: 
+                    	<h:outputText value="#{indexFaces.promocaoSemana.precoPromocional}">
+                    		<f:convertNumber type="currency" currencySymbol="R$"/>
+                    	</h:outputText></span>
+                    	
+                    	<p><span class="fontYi">${indexFaces.promocaoSemana.descricao}</span></p>
+                  </a>   
             </div>
+            </c:if>
+            
+            <c:if test="${!empty indexFaces.carroChefeModel.id}">
             <div class="boxSubCat">
             	<h2>Carro-chefe</h2>
-                <a href="promocao.jsf" title=""><img src="img/model/180x79.jpg" alt="" title="" /></a>
-                    <p class="titulo">Nome do estab</p>
-                    <p class="categoria">categoria</p>
-                    <p class="item">nome do prod</p>
-                    <p><span class="precoDe">De: R$789,00</span>&nbsp;&nbsp;<span class="precoPor">Por: R$254,00</span> 
+                <a href="promocao.jsf?carroChefeId=${indexFaces.carroChefeModel.id}" title=""><img src="img/model/180x79.jpg" alt="" title="" /></a>
+                    <p class="titulo">${indexFaces.carroChefeModel.fornecedorModel.nomeFantasia}</p>
+                    <p><span class="item">${indexFaces.carroChefeModel.descricao}</span></p>
                 </a>
             </div>
+            </c:if>
         </div>
         
         <!-- COMECA COLUNA MEIO -->
         <div id="meio">
         	<div id="destaque">
             	<div id="fotoDestaque">
-	                <a href="promocao.jsf"><img src="img/model/590x260.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a>
+	                <a href="promocao.jsf/?id=${indexFaces.promocaoHora.id}"><img src="img/model/590x260.jpg" alt="Marca 80x80px" title="${indexFaces.promocaoSemana.fornecedorModel.nomeFantasia}" /></a>
                     <div class="tituloPromo">
                     	<p><span class="tipoPromo">Promoção da hora</span></p>
-                        <p><span class="nomePromo">Nome da Promoção/estabelecimento</span></p>
+                        <p><span class="nomePromo"><c:out value="${indexFaces.promocaoHora.titulo}"/>/${indexFaces.promocaoSemana.fornecedorModel.nomeFantasia}</span></p>
                     </div>
                 </div>
                 <div id="faixa">
@@ -237,14 +260,17 @@
                    <p class="fontYi font10px">desconto</p>
                 </div>
                 <blockquote class="fontYi">
-                	<p>Casais de namorados tem promoção especial. Venha comemorar aniversário de namoro e a companheira não paga o rodízio.</p>
+                	<p>${indexFaces.promocaoHora.descricao}</p>
                 </blockquote>
                 <div class="map">
                 	<script>
 					  var map;
+					  
 					  function initializeMap() {
 						// Creating a map
-						var latlng = new google.maps.LatLng(37.771008, -122.41175); 
+						var lat = ${indexFaces.promocaoHora.fornecedorModel.latitude}
+						var lng = ${indexFaces.promocaoHora.fornecedorModel.longitude}
+						var latlng = new google.maps.LatLng(lat, lng); 
 						var map = new google.maps.Map(document.getElementById('map_canvas'), {  
 						  zoom: 17,
 						  center: latlng,
@@ -276,33 +302,39 @@
             </div>
             <div id="outrosDestaques">
             	<h2>Outras Promoções da Hora</h2>
-            	<ul id="listagem">
-                	
-	                	<li>
-	                    	<a href="promocao.jsf" title="">
-	                            <div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
-	                            <!-- SE PROMOÇÃO EM PRODUTO -->
-	                            <div class="info">
-	                                <p class="titulo">Rodízio dos Amantes</p>
-	                                <p class="resumo fontYi">
-	                                Casais de namorados tem promoção especial. Venha comemorar aniversário de namoro e a companheira não paga o rodízio.
-	                                </p>
-	                            </div>
-	                        </a>
-	                        <div class="dados">
-	                            <p>
-	                            	<span class="icons tel"></span>(71) 9876-5432
-	                            </p>
-	                            <p>
-	                            	<a href="link para o site do cliente" title="" target="_blank"><span class="icons site"></span>site.com.br</a>
-	                            </p>
-	                            <p>
-	                            	<span class="icons indicacao"></span>10 indicam
-	                            </p>
-	                        </div>
-	                    </li>
-                
+            		
+                   <ul id="listagem">
+                   
+                   <c:forEach var="promocao" items="${indexFaces.promocoesHora}">
+                	<li>
+                    	<a href="promocao.jsf?id=${promocao.id}" title="">
+                            <div class="marca floatLeft">
+                            	<img src="img/model/80x80.jpg" alt="Marca 80x80px" title="${promocao.fornecedorModel.nomeFantasia}" />
+                           </div>
+                            <!-- SE PROMOÇÃO EM PRODUTO -->
+                            <div class="info">
+                                <p class="titulo">${promocao.titulo}</p>
+                                <p class="resumo fontYi">
+                                ${promocao.descricao}
+                                </p>
+                            </div>
+                        </a>
+                        <div class="dados">
+                            <p>
+                            	<span class="icons tel"></span>${promocao.fornecedorModel.telefone}
+                            </p>
+                            <p>
+                            	<a href="http://${promocao.fornecedorModel.site}" title="" target="_blank"><span class="icons site"></span>${promocao.fornecedorModel.site}</a>
+                            </p>
+                            <p>
+                            	<span class="icons indicacao"></span>${promocao.indicacoes}
+                            </p>
+                        </div>
+                    </li>
+                    
+                </c:forEach>
                 </ul>
+            	
             </div>
         
         </div>
@@ -310,67 +342,53 @@
         
         <!-- COMECA COLUNA DIREITA -->
         <div id="dir">
+        	<c:if test="${!empty indexFaces.topGeral}">
         	<div class="boxSubCat">
             	<h2>Top Geral</h2>
                 <ul id="topGeral">
-                    <li class="hum">
-                    	<a href="estabelecimento.jsf" title="">
-                            <p class="titulo">Nome do estab</p>
-                            <p class="categoria">categoria</p>
+                	<c:forEach items="${indexFaces.topGeral}" var="top">
+                    <li class="${top.cssTopGeral}">
+                    	<a href="estabelecimento.jsf?id=${top.id}" title="">
+                            <p class="titulo">${top.nomeFantasia}</p>
                         </a>
                     </li>
-                    <li class="dois">
-                    	<a href="estabelecimento.jsf" title="">
-                            <p class="titulo">Nome do estab</p>
-                            <p class="categoria">categoria</p>
-                        </a>
-                    </li>
-                    <li class="tres">
-                    	<a href="estabelecimento.jsf" title="">
-                            <p class="titulo">Nome do estab</p>
-                            <p class="categoria">categoria</p>
-                        </a>
-                    </li>
-                    <li class="quatro">
-                    	<a href="estabelecimento.jsf" title="">
-                            <p class="titulo">Nome do estab</p>
-                            <p class="categoria">categoria</p>
-                        </a>
-                    </li>
-                    <li class="cinco">
-                    	<a href="estabelecimento.jsf" title="">
-                            <p class="titulo">Nome do estab</p>
-                            <p class="categoria">categoria</p>
-                        </a>
-                    </li>
+                    </c:forEach>
                 </ul>
             </div>
+            </c:if>
             
+            <c:if test="${!empty indexFaces.bannerModel.imagem}">
             <div class="boxSubCat">
             	<div class="banner">banner</div>
             </div>
+            </c:if>
             
+            <c:if test="${!empty indexFaces.estabelecimentos}">
             <div class="boxSubCat">
             	<h2>Estabelecimentos</h2>
-                <div class="marca floatLeft"><a href="estabelecimento.jsf" title=""><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a></div>
-                <div class="marca floatLeft"><a href="estabelecimento.jsf" title=""><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a></div>
-                <div class="marca floatLeft"><a href="estabelecimento.jsf" title=""><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a></div>
-                <div class="marca floatLeft"><a href="estabelecimento.jsf" title=""><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a></div>
-                <div class="marca floatLeft"><a href="estabelecimento.jsf" title=""><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a></div>
-                <div class="marca floatLeft"><a href="estabelecimento.jsf" title=""><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a></div>
+            	<c:forEach items="${indexFaces.estabelecimentos}" var="estabelecimento">
+                	<div class="marca floatLeft">
+                		<a href="estabelecimento.jsf?id=${estabelecimento.id}" title="${estabelecimento.nomeFantasia}">
+                			<img src="img/model/80x80.jpg" alt="Marca 80x80px" title="${estabelecimento.nomeFantasia}" />
+                		</a>
+                	</div>
+                </c:forEach>
             </div>
+            </c:if>
             
+            <c:if test="${!empty indexFaces.comentarioModel.id}">
             <div class="boxSubCat">
             	<h2>Quem Indica</h2>
                 <span class="imgDestaque-peq posRel">
-                	<a href="estabelecimento.jsf" title="">
+                	<a href="estabelecimento.jsf?id=${indexFaces.comentarioModel.fornecedorModel.id}" title="">
                         <img src="img/model/180x79.jpg" alt="" title="" />
-                        <p class="tituloIndica">Nome do estabelecimento</p>
+                        <p class="tituloIndica">${indexFaces.comentarioModel.fornecedorModel.nomeFantasia}</p>
                     </a>
                 </span>
-                <p class="comment">O lugar é espaçoso e tem uma decoração temática muito bem feita. Não fica muito cheia e todas as sextas que fui a música estava excelente. As bebidas são boas e o atendimento é muito bom.</p>
-                <p class="autor">Fulana de Tal</p>
+                <p class="comment">${indexFaces.comentarioModel.descricao}</p>
+                <p class="autor">${indexFaces.comentarioModel.usuarioModel.nome}</p>
             </div>
+            </c:if>
             
         </div>
     </div>

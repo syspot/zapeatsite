@@ -46,8 +46,19 @@ public class FornecedorModel {
 	private String imagemThumb;
 
 	private CategoriaModel categoriaPrincipal;
-	
+
 	private Integer quantidadeIndicacoes;
+	
+	private String cssTopGeral;
+
+	public FornecedorModel() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public FornecedorModel(Long id) {
+
+		this.id = id;
+	}
 
 	public Long getId() {
 		return TSUtil.tratarLong(id);
@@ -258,6 +269,14 @@ public class FornecedorModel {
 
 	public void setQuantidadeIndicacoes(Integer quantidadeIndicacoes) {
 		this.quantidadeIndicacoes = quantidadeIndicacoes;
+	}
+
+	public String getCssTopGeral() {
+		return cssTopGeral;
+	}
+
+	public void setCssTopGeral(String cssTopGeral) {
+		this.cssTopGeral = cssTopGeral;
 	}
 
 }

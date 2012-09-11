@@ -152,8 +152,8 @@
                     </div>
                     <div id="local">
                         <span class="chamadaCadastro">Não tem Facebook?</span>
-                        <div><a href="" class="modal" rel="modal" title="Cadastrar"><span class="icons iconCadastrar"></span>cadastrar</a></div>
-                        <div><a id="modal" href="inc/login.jsf" class="modal" rel="modal" title="Cadastrar"><span class="icons iconLogin"></span>login</a></div>
+                        <div><a class="modal" title="Cadastrar" rel="modal" href="inc/cadastro.jsf"><span class="icons iconCadastrar"></span>cadastrar</a></div>
+                        <div><a id="modal" href="inc/login.jsf" class="modal" rel="modal" title="Login"><span class="icons iconLogin"></span>login</a></div>
                     </div>
             	</div>
                 <%@ include file="/categorias.jsp" %>
