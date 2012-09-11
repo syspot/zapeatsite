@@ -5,21 +5,32 @@ import java.util.List;
 import br.com.topsys.database.TSDataBaseBrokerIf;
 import br.com.topsys.database.factory.TSDataBaseBrokerFactory;
 import br.com.zapeat.site.model.BuscaModel;
+import br.com.zapeat.site.model.Model;
 import br.com.zapeat.site.util.ZapeatUtil;
 
 public class BuscaDAO {
 
 
     @SuppressWarnings("unchecked")
-    public List<BuscaModel> pesquisarPromocaoPorTexto(String texto){
+    public List<BuscaModel> pesquisarPorTexto(String texto, Integer page){
     	
     	TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
     	
-    	broker.setPropertySQL("buscadao.pesquisarpromocaoportexto", ZapeatUtil.tratarStringILike(texto));
+    	broker.setPropertySQL("buscadao.pesquisarportexto", ZapeatUtil.tratarStringILike(texto), page);
     	
-    	return broker.getCollectionBean(BuscaModel.class, "titulo", "nome", "descricao", "tipo", "categoria",  "telefone", "site", "indicacoes");
+    	return broker.getCollectionBean(BuscaModel.class, "titulo", "nome", "descricao", "tipo", "categoria",  "telefone", "site", "indicacoes", "imagem");
     	
     }
+    
+    public Model obterQtdPaginasPorTexto(String texto) {
+		
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		
+		broker.setPropertySQL("buscadao.obterqtdpaginasportexto", ZapeatUtil.tratarStringILike(texto));
+		
+		return (Model) broker.getObjectBean(Model.class, "value");
+		
+	}
     
     @SuppressWarnings("unchecked")
     public List<BuscaModel> pesquisarCarroChefePorTexto(String texto){

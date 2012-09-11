@@ -213,16 +213,17 @@
                 </ul>
                 
                 <div id="paginacao">
-                	<span class="inicio"><a href="" title=""><span class="icons pagInicio"></span></a></span>
-                    <span class="pagina"><a href="" title="">1</a></span>
-                    <span class="pagina"><a href="" title="">2</a></span>
-                    <span class="pagina"><a href="" title="">3</a></span>
-                    <span class="pagina"><a href="" title="">4</a></span>
-                    <span class="pagina"><a href="" title="">...</a></span>
-                    <span class="pagina"><a href="" title="">5</a></span>
-                    <span class="pagina"><a href="" title="">6</a></span>
-                    <span class="pagina"><a href="" title="">7</a></span>
-                    <span class="fim"><a href="" title=""><span class="icons pagFim"></span></a></span>
+					<c:if test="${buscaFaces.qtdPaginas > 1}">
+                		<li class="inicio"><a href="" title=""><span class="icons pagInicio"></span></a></li>
+           			</c:if>
+                
+               		<c:forEach begin="1" end="${buscaFaces.qtdPaginas}" var="pagina">
+	                    <li class="pagina"><a href="busca.jsf?page=${pagina}" title="">${pagina}</a></li>
+	                </c:forEach>
+	                
+					<c:if test="${buscaFaces.qtdPaginas > 1}">
+						<li class="fim"><a href="busca.jsf?page=${buscaFaces.qtdPaginas}" title=""><span class="icons pagFim"></span></a></li>
+           			</c:if>
                 </div>
 
         </div>

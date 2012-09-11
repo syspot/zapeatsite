@@ -9,6 +9,13 @@ public class CidadeModel {
 	private String nome;
 
 	private EstadoModel estadoModel;
+	
+	public CidadeModel() {
+	}
+	
+	public CidadeModel(Long id) {
+		this.id = id;
+	}
 
 	public Long getId() {
 		return TSUtil.tratarLong(id);
