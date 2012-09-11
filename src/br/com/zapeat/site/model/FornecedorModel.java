@@ -48,6 +48,8 @@ public class FornecedorModel {
 	private CategoriaModel categoriaPrincipal;
 
 	private Integer quantidadeIndicacoes;
+	
+	private String cssTopGeral;
 
 	public FornecedorModel() {
 		// TODO Auto-generated constructor stub
@@ -267,6 +269,14 @@ public class FornecedorModel {
 
 	public void setQuantidadeIndicacoes(Integer quantidadeIndicacoes) {
 		this.quantidadeIndicacoes = quantidadeIndicacoes;
+	}
+
+	public String getCssTopGeral() {
+		return cssTopGeral;
+	}
+
+	public void setCssTopGeral(String cssTopGeral) {
+		this.cssTopGeral = cssTopGeral;
 	}
 
 }

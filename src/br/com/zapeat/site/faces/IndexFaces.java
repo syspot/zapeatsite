@@ -64,7 +64,7 @@ public class IndexFaces extends TSMainFaces {
 	private void carregaDados() {
 
 		this.promocaoDia = this.promocaoDAO.obterPromocaoDia(new FornecedorModel());
-		
+
 		this.promocaoSemana = this.promocaoDAO.obterPromocaoSemana(new FornecedorModel());
 
 		this.promocaoHora = this.promocaoDAO.obterPromocaoHora();
@@ -78,6 +78,40 @@ public class IndexFaces extends TSMainFaces {
 		this.estabelecimentos = this.fornecedorDAO.pesquisarHome();
 
 		this.topGeral = this.fornecedorDAO.pesquisarTopGeral();
+		
+		this.setarCssTopGeral();
+
+	}
+
+	private void setarCssTopGeral() {
+
+		int count = 1;
+
+		for (FornecedorModel item : this.topGeral) {
+
+			if (count == 1) {
+
+				item.setCssTopGeral("hum");
+				
+			} else if (count == 2) {
+
+				item.setCssTopGeral("dois");
+				
+			} else if (count == 3) {
+
+				item.setCssTopGeral("tres");
+			
+			} else if (count == 4) {
+
+				item.setCssTopGeral("quatro");
+				
+			} else {
+				
+				item.setCssTopGeral("cinco");
+			}
+
+			count++;
+		}
 	}
 
 	public PromocaoModel getPromocaoDia() {

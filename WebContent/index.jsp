@@ -302,33 +302,39 @@
             </div>
             <div id="outrosDestaques">
             	<h2>Outras Promoções da Hora</h2>
-            	<ul id="listagem">
-                	
-	                	<li>
-	                    	<a href="promocao.jsf" title="">
-	                            <div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
-	                            <!-- SE PROMOÇÃO EM PRODUTO -->
-	                            <div class="info">
-	                                <p class="titulo">Rodízio dos Amantes</p>
-	                                <p class="resumo fontYi">
-	                                Casais de namorados tem promoção especial. Venha comemorar aniversário de namoro e a companheira não paga o rodízio.
-	                                </p>
-	                            </div>
-	                        </a>
-	                        <div class="dados">
-	                            <p>
-	                            	<span class="icons tel"></span>(71) 9876-5432
-	                            </p>
-	                            <p>
-	                            	<a href="link para o site do cliente" title="" target="_blank"><span class="icons site"></span>site.com.br</a>
-	                            </p>
-	                            <p>
-	                            	<span class="icons indicacao"></span>10 indicam
-	                            </p>
-	                        </div>
-	                    </li>
-                
+            		
+                   <ul id="listagem">
+                   
+                   <c:forEach var="promocao" items="${indexFaces.promocoesHora}">
+                	<li>
+                    	<a href="promocao.jsf?id=${promocao.id}" title="">
+                            <div class="marca floatLeft">
+                            	<img src="img/model/80x80.jpg" alt="Marca 80x80px" title="${promocao.fornecedorModel.nomeFantasia}" />
+                           </div>
+                            <!-- SE PROMOÇÃO EM PRODUTO -->
+                            <div class="info">
+                                <p class="titulo">${promocao.titulo}</p>
+                                <p class="resumo fontYi">
+                                ${promocao.descricao}
+                                </p>
+                            </div>
+                        </a>
+                        <div class="dados">
+                            <p>
+                            	<span class="icons tel"></span>${promocao.fornecedorModel.telefone}
+                            </p>
+                            <p>
+                            	<a href="http://${promocao.fornecedorModel.site}" title="" target="_blank"><span class="icons site"></span>${promocao.fornecedorModel.site}</a>
+                            </p>
+                            <p>
+                            	<span class="icons indicacao"></span>${promocao.indicacoes}
+                            </p>
+                        </div>
+                    </li>
+                    
+                </c:forEach>
                 </ul>
+            	
             </div>
         
         </div>
@@ -336,55 +342,39 @@
         
         <!-- COMECA COLUNA DIREITA -->
         <div id="dir">
+        	<c:if test="${!empty indexFaces.topGeral}">
         	<div class="boxSubCat">
             	<h2>Top Geral</h2>
                 <ul id="topGeral">
-                    <li class="hum">
-                    	<a href="estabelecimento.jsf" title="">
-                            <p class="titulo">Nome do estab</p>
-                            <p class="categoria">categoria</p>
+                	<c:forEach items="${indexFaces.topGeral}" var="top">
+                    <li class="${top.cssTopGeral}">
+                    	<a href="estabelecimento.jsf?id=${top.id}" title="">
+                            <p class="titulo">${top.nomeFantasia}</p>
                         </a>
                     </li>
-                    <li class="dois">
-                    	<a href="estabelecimento.jsf" title="">
-                            <p class="titulo">Nome do estab</p>
-                            <p class="categoria">categoria</p>
-                        </a>
-                    </li>
-                    <li class="tres">
-                    	<a href="estabelecimento.jsf" title="">
-                            <p class="titulo">Nome do estab</p>
-                            <p class="categoria">categoria</p>
-                        </a>
-                    </li>
-                    <li class="quatro">
-                    	<a href="estabelecimento.jsf" title="">
-                            <p class="titulo">Nome do estab</p>
-                            <p class="categoria">categoria</p>
-                        </a>
-                    </li>
-                    <li class="cinco">
-                    	<a href="estabelecimento.jsf" title="">
-                            <p class="titulo">Nome do estab</p>
-                            <p class="categoria">categoria</p>
-                        </a>
-                    </li>
+                    </c:forEach>
                 </ul>
             </div>
+            </c:if>
             
+            <c:if test="${!empty indexFaces.bannerModel.imagem}">
             <div class="boxSubCat">
             	<div class="banner">banner</div>
             </div>
+            </c:if>
             
+            <c:if test="${!empty indexFaces.estabelecimentos}">
             <div class="boxSubCat">
             	<h2>Estabelecimentos</h2>
-                <div class="marca floatLeft"><a href="estabelecimento.jsf" title=""><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a></div>
-                <div class="marca floatLeft"><a href="estabelecimento.jsf" title=""><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a></div>
-                <div class="marca floatLeft"><a href="estabelecimento.jsf" title=""><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a></div>
-                <div class="marca floatLeft"><a href="estabelecimento.jsf" title=""><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a></div>
-                <div class="marca floatLeft"><a href="estabelecimento.jsf" title=""><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a></div>
-                <div class="marca floatLeft"><a href="estabelecimento.jsf" title=""><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a></div>
+            	<c:forEach items="${indexFaces.estabelecimentos}" var="estabelecimento">
+                	<div class="marca floatLeft">
+                		<a href="estabelecimento.jsf?id=${estabelecimento.id}" title="${estabelecimento.nomeFantasia}">
+                			<img src="img/model/80x80.jpg" alt="Marca 80x80px" title="${estabelecimento.nomeFantasia}" />
+                		</a>
+                	</div>
+                </c:forEach>
             </div>
+            </c:if>
             
             <div class="boxSubCat">
             	<h2>Quem Indica</h2>
