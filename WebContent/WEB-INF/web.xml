@@ -14,7 +14,12 @@
 		<param-name>com.sun.faces.enableRestoreView11Compatibility</param-name>
 		<param-value>true</param-value>
 	</context-param>
-	
+
+	<context-param>
+		<param-name>javax.faces.PROJECT_STAGE</param-name>
+		<param-value>Production</param-value>
+	</context-param>
+
 	<filter>
 		<filter-name>extensionsFilter</filter-name>
 		<filter-class>org.apache.myfaces.webapp.filter.ExtensionsFilter</filter-class>
@@ -32,6 +37,10 @@
 			<param-value>100k</param-value>
 		</init-param>
 	</filter>
+	<filter-mapping>
+		<filter-name>extensionsFilter</filter-name>
+		<servlet-name>Faces Servlet</servlet-name>
+	</filter-mapping>
 
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
@@ -42,6 +51,15 @@
 	<servlet-mapping>
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.jsf</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Resource Servlet</servlet-name>
+		<servlet-class>org.primefaces.resource.ResourceServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Resource Servlet</servlet-name>
+		<url-pattern>/primefaces_resource/*</url-pattern>
 	</servlet-mapping>
 
 	<session-config>

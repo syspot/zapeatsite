@@ -125,7 +125,7 @@
 
 <body>
 
-
+<h:inputHidden value="#{estabelecimentoFaces}"/>
 <!-- COMECA TOPO -->
 <div id="topo">
 	<!-- COMECA BUSCA -->

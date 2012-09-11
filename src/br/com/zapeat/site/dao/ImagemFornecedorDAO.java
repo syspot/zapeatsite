@@ -14,7 +14,7 @@ public class ImagemFornecedorDAO {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("imagemfornecedordao.pesquisar");
+		broker.setPropertySQL("imagemfornecedordao.pesquisar", model.getId());
 
 		return broker.getCollectionBean(ImagemFornecedorModel.class, "id", "fornecedorModel.id", "imagem");
 

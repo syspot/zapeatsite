@@ -34,17 +34,47 @@ public class LoginFaces extends TSMainFaces {
 		this.usuarioModel = new UsuarioModel();
 	}
 
+	private boolean validaCampos() {
+
+		boolean validado = true;
+
+		if (TSUtil.isEmpty(this.usuarioModel.getEmail())) {
+
+			validado = false;
+
+			super.addErrorMessage("E-mail: campo obrigatório.");
+
+		} else if (!TSUtil.isEmailValid(this.usuarioModel.getEmail())) {
+
+			validado = false;
+
+			super.addErrorMessage("E-mail: campo inválido.");
+		}
+
+		if (TSUtil.isEmpty(this.usuarioModel.getSenha())) {
+
+			validado = false;
+
+			super.addErrorMessage("Senha: campo obrigatório.");
+		}
+
+		return validado;
+	}
+
 	public String autenticar() {
 
-		UsuarioModel model = this.usuarioDAO.obter(this.usuarioModel);
+		if (this.validaCampos()) {
 
-		if (!TSUtil.isEmpty(model.getId()) && model.getSenha().equals(TSCryptoUtil.gerarHash(this.usuarioModel.getSenha(), "MD5"))) {
+			UsuarioModel model = this.usuarioDAO.obter(this.usuarioModel);
 
-			TSFacesUtil.addObjectInSession(br.com.zapeat.site.util.Constantes.USUARIO_LOGADO, model);
+			if (!TSUtil.isEmpty(model.getId()) && model.getSenha().equals(TSCryptoUtil.gerarHash(this.usuarioModel.getSenha(), "MD5"))) {
 
-		} else {
+				TSFacesUtil.addObjectInSession(br.com.zapeat.site.util.Constantes.USUARIO_LOGADO, model);
 
-			TSFacesUtil.addErrorMessage("Dados inválidos.");
+			} else {
+
+				TSFacesUtil.addErrorMessage("Dados inválidos.");
+			}
 		}
 
 		return null;

@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <f:view>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#" xmlns:p="http://primefaces.org/ui">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
@@ -188,47 +188,70 @@
     			
     	<!-- COMECA COLUNA ESQUERDA -->
     	<div id="esq">
+    		<c:if test="${!empty indexFaces.promocaoDia.id}">
         	<div class="boxSubCat">
             	<h2>Promoção do dia</h2>
-            	
-            	<a href="promocao.jsf" title="">
+            	<a href="promocao.jsf?id=${indexFaces.promocaoDia.id}" title="">
                     <img src="img/model/180x79.jpg" alt="" title="" />
-                    <p class="titulo">${indexFaces.promocaoDia.fornecedor.nomeFantasia}</p>
-                    <!-- <p class="categoria">categoria</p>-->
-                    <p class="item">${indexFaces.promocaoDia.descricao}</p>
+                    <p class="titulo">${indexFaces.promocaoDia.fornecedorModel.nomeFantasia}</p>
+                    <p class="item">
+                    ${indexFaces.promocaoDia.descricao}</p>
                     <!-- SE PROMOÇÃO EM DESCONTO -->
-                    <p><span class="precoDe">De: R$700,00</span>&nbsp;&nbsp;<span class="precoPor">Por: R$500,00</span> 
+                    <p><span class="precoDe">
+                    De: <h:outputText value="#{indexFaces.promocaoDia.precoOriginal}">
+                    		<f:convertNumber type="currency" currencySymbol="R$"/>
+                    	</h:outputText></span>&nbsp;&nbsp;
+                    	<span class="precoPor">
+                    Por: 
+                    	<h:outputText value="#{indexFaces.promocaoDia.precoPromocional}">
+                    		<f:convertNumber type="currency" currencySymbol="R$"/>
+                    	</h:outputText></span>
+                    	<p><span class="fontYi">${indexFaces.promocaoDia.descricao}</span></p>
                 </a>
             </div>
+            </c:if>
+            
+            <c:if test="${!empty indexFaces.promocaoSemana.id}">
         	<div class="boxSubCat">
             	<h2>Promoção da semana</h2>
-                <a href="promocao.jsf" title=""><img src="img/model/180x79.jpg" alt="" title="" /></a>
-                    <p class="titulo">Cheiro de Pizza</p>
-                    <p class="categoria">Pizzaria</p>
-                    <p class="item">Pague 1 leve 2</p>
-                    <!-- SE PROMOÇÃO EM PRODUTO -->
-                    <p><span class="fontYi">Na Cheiro de Pizza comprando uma pizza grande você leva outra pizza do mesmo tamanho e sabor totalmente grátis.</span></p>
-                </a>
+                <a href="promocao.jsf?id=${indexFaces.promocaoSemana.id}" title="">
+                	<img src="img/model/180x79.jpg" alt="" title="" />
+               
+                    <p class="titulo">${indexFaces.promocaoSemana.fornecedorModel.nomeFantasia}</p>
+                    <p><span class="precoDe">
+                    De: <h:outputText value="#{indexFaces.promocaoSemana.precoOriginal}">
+                    		<f:convertNumber type="currency" currencySymbol="R$"/>
+                    	</h:outputText></span>&nbsp;&nbsp;
+                    	<span class="precoPor">
+                    Por: 
+                    	<h:outputText value="#{indexFaces.promocaoSemana.precoPromocional}">
+                    		<f:convertNumber type="currency" currencySymbol="R$"/>
+                    	</h:outputText></span>
+                    	
+                    	<p><span class="fontYi">${indexFaces.promocaoSemana.descricao}</span></p>
+                  </a>   
             </div>
+            </c:if>
+            
+            <c:if test="${!empty indexFaces.carroChefeModel.id}">
             <div class="boxSubCat">
             	<h2>Carro-chefe</h2>
-                <a href="promocao.jsf" title=""><img src="img/model/180x79.jpg" alt="" title="" /></a>
-                    <p class="titulo">Nome do estab</p>
-                    <p class="categoria">categoria</p>
-                    <p class="item">nome do prod</p>
-                    <p><span class="precoDe">De: R$789,00</span>&nbsp;&nbsp;<span class="precoPor">Por: R$254,00</span> 
+                <a href="promocao.jsf?carroChefeId=${indexFaces.carroChefeModel.id}" title=""><img src="img/model/180x79.jpg" alt="" title="" /></a>
+                    <p class="titulo">${indexFaces.carroChefeModel.fornecedorModel.nomeFantasia}</p>
+                    <p><span class="item">${indexFaces.carroChefeModel.descricao}</span></p>
                 </a>
             </div>
+            </c:if>
         </div>
         
         <!-- COMECA COLUNA MEIO -->
         <div id="meio">
         	<div id="destaque">
             	<div id="fotoDestaque">
-	                <a href="promocao.jsf"><img src="img/model/590x260.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a>
+	                <a href="promocao.jsf/?id=${indexFaces.promocaoHora.id}"><img src="img/model/590x260.jpg" alt="Marca 80x80px" title="${indexFaces.promocaoSemana.fornecedorModel.nomeFantasia}" /></a>
                     <div class="tituloPromo">
                     	<p><span class="tipoPromo">Promoção da hora</span></p>
-                        <p><span class="nomePromo">Nome da Promoção/estabelecimento</span></p>
+                        <p><span class="nomePromo"><c:out value="${indexFaces.promocaoHora.titulo}"/>/${indexFaces.promocaoSemana.fornecedorModel.nomeFantasia}</span></p>
                     </div>
                 </div>
                 <div id="faixa">
@@ -237,14 +260,17 @@
                    <p class="fontYi font10px">desconto</p>
                 </div>
                 <blockquote class="fontYi">
-                	<p>Casais de namorados tem promoção especial. Venha comemorar aniversário de namoro e a companheira não paga o rodízio.</p>
+                	<p>${indexFaces.promocaoHora.descricao}</p>
                 </blockquote>
                 <div class="map">
                 	<script>
 					  var map;
+					  
 					  function initializeMap() {
 						// Creating a map
-						var latlng = new google.maps.LatLng(37.771008, -122.41175); 
+						var lat = ${indexFaces.promocaoHora.fornecedorModel.latitude}
+						var lng = ${indexFaces.promocaoHora.fornecedorModel.longitude}
+						var latlng = new google.maps.LatLng(lat, lng); 
 						var map = new google.maps.Map(document.getElementById('map_canvas'), {  
 						  zoom: 17,
 						  center: latlng,

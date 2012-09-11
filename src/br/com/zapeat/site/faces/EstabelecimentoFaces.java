@@ -3,6 +3,9 @@ package br.com.zapeat.site.faces;
 import java.io.IOException;
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+
 import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.faces.TSMainFaces;
 import br.com.topsys.web.util.TSFacesUtil;
@@ -17,6 +20,8 @@ import br.com.zapeat.site.model.FornecedorModel;
 import br.com.zapeat.site.model.ImagemFornecedorModel;
 import br.com.zapeat.site.model.PromocaoModel;
 
+@RequestScoped
+@ManagedBean(name = "estabelecimentoFaces")
 public class EstabelecimentoFaces extends TSMainFaces {
 
 	private FornecedorModel fornecedorModel;
@@ -40,7 +45,7 @@ public class EstabelecimentoFaces extends TSMainFaces {
 
 	private void carregaDados() {
 
-		String fornecedorId = TSFacesUtil.getRequestParameter("fornecedorId");
+		String fornecedorId = TSFacesUtil.getRequestParameter("id");
 
 		if (!TSUtil.isEmpty(fornecedorId) && TSUtil.isNumeric(fornecedorId)) {
 
@@ -59,11 +64,12 @@ public class EstabelecimentoFaces extends TSMainFaces {
 				this.bannerModel = this.bannerDAO.pesquisar(new BannerModel(this.fornecedorModel));
 
 				this.carroChefeModel = this.carroChefeDAO.pesquisar(new CarroChefeModel(this.fornecedorModel));
-			
-			} /*else{
-				
-				this.redirect();
-			}*/
+
+			} /*
+			 * else{
+			 * 
+			 * this.redirect(); }
+			 */
 
 		} else {
 
