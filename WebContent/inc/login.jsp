@@ -3,6 +3,8 @@
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
 
+<%@ taglib uri="http://primefaces.prime.com.tr/ui" prefix="p" %>
+
 <f:view>
 
 <div class="container">
@@ -26,8 +28,8 @@
         	
         	<!-- <input type="email" placeholder="E-mail" autofocus /> -->
         	
-        	<h:inputText title="E-mail" value="#{loginFaces.usuarioModel.email}" tabindex="1" maxlength="100"/>
-            
+        	<h:inputText title="E-mail" id="email" value="#{loginFaces.usuarioModel.email}" tabindex="1" maxlength="100"/>
+            <p:watermark value="E-mail" for="email"></p:watermark>
         	<h:inputSecret title="Senha" redisplay="true" value="#{loginFaces.usuarioModel.senha}" maxlength="100" tabindex="2"/>
             
             <!-- <input type="password" placeholder="Password" /> -->

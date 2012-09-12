@@ -16,7 +16,7 @@
 <link href="css/home.css" rel="stylesheet" type="text/css" />
 <link href="css/cssReset.css" rel="stylesheet" type="text/css" />
 <link href="css/fontface.css" rel="stylesheet" type="text/css" />
-<p:resources/>
+
 </head>
 <body>
 <div class="container">
