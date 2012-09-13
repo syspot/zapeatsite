@@ -240,13 +240,6 @@
                             <p>
                             <a href="${estabelecimentoFaces.fornecedorModel.site}" title="" target="_blank">${estabelecimentoFaces.fornecedorModel.site}</a></p>
                             </c:if>
-                            <p>Formas de Pagamento: PERGUNTAR A TOPÁZIO/ ROQUE</p>
-                            <p>
-                                <span class="iconCard iconVisa"></span>
-                                <span class="iconCard iconAmex"></span>
-                                <span class="iconCard iconDiners"></span>
-                                <span class="iconCard iconMaster"></span>
-                            </p>
                             <p><span class="icons indicacao"></span> ${estabelecimentoFaces.fornecedorModel.quantidadeIndicacoes} pessoas indicam o ambiente</p>
                             
                         </li>
@@ -357,8 +350,6 @@
             <div class="boxSubCat">
             	<div class="banner">banner</div>
             </div>
-            
-            
             
         </div>
     </div>
