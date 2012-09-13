@@ -324,7 +324,7 @@
                             	<span class="icons tel"></span>${promocao.fornecedorModel.telefone}
                             </p>
                             <p>
-                            	<a href="http://${promocao.fornecedorModel.site}" title="" target="_blank"><span class="icons site"></span>${promocao.fornecedorModel.site}</a>
+                            	<a href="${promocao.fornecedorModel.site}" title="" target="_blank"><span class="icons site"></span>${promocao.fornecedorModel.site}</a>
                             </p>
                             <p>
                             	<span class="icons indicacao"></span>${promocao.indicacoes}
