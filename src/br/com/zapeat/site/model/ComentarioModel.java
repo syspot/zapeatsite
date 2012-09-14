@@ -2,6 +2,8 @@ package br.com.zapeat.site.model;
 
 import java.util.Date;
 
+import br.com.topsys.util.TSUtil;
+
 public class ComentarioModel{
 
 	private Long id;
@@ -17,9 +19,11 @@ public class ComentarioModel{
 	private Boolean flagIndicaAtendimento;
 	
 	private Boolean flagIndicaPromocao;
+	
+	private Long posicao;
 
 	public Long getId() {
-		return id;
+		return TSUtil.tratarLong(id);
 	}
 
 	public void setId(Long id) {
@@ -97,6 +101,14 @@ public class ComentarioModel{
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public Long getPosicao() {
+		return posicao;
+	}
+
+	public void setPosicao(Long posicao) {
+		this.posicao = posicao;
 	}
 	
 }

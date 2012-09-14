@@ -11,11 +11,13 @@ import br.com.topsys.web.faces.TSMainFaces;
 import br.com.topsys.web.util.TSFacesUtil;
 import br.com.zapeat.site.dao.BannerDAO;
 import br.com.zapeat.site.dao.CarroChefeDAO;
+import br.com.zapeat.site.dao.ComentarioDAO;
 import br.com.zapeat.site.dao.FornecedorDAO;
 import br.com.zapeat.site.dao.ImagemFornecedorDAO;
 import br.com.zapeat.site.dao.PromocaoDAO;
 import br.com.zapeat.site.model.BannerModel;
 import br.com.zapeat.site.model.CarroChefeModel;
+import br.com.zapeat.site.model.ComentarioModel;
 import br.com.zapeat.site.model.FornecedorModel;
 import br.com.zapeat.site.model.ImagemFornecedorModel;
 import br.com.zapeat.site.model.PromocaoModel;
@@ -30,12 +32,14 @@ public class EstabelecimentoFaces extends TSMainFaces {
 	private PromocaoModel promocaoSemana;
 	private BannerModel bannerModel;
 	private CarroChefeModel carroChefeModel;
+	private ComentarioModel ranking;
 
 	private PromocaoDAO promocaoDAO;
 	private FornecedorDAO fornecedorDAO;
 	private BannerDAO bannerDAO;
 	private CarroChefeDAO carroChefeDAO;
 	private ImagemFornecedorDAO imagemFornecedorDAO;
+	private ComentarioDAO comentarioDAO;
 
 	public EstabelecimentoFaces() {
 
@@ -64,6 +68,8 @@ public class EstabelecimentoFaces extends TSMainFaces {
 				this.bannerModel = this.bannerDAO.pesquisar(new BannerModel(this.fornecedorModel));
 
 				this.carroChefeModel = this.carroChefeDAO.pesquisar(new CarroChefeModel(this.fornecedorModel));
+
+				this.ranking = this.comentarioDAO.rankingEstabelecimento(this.fornecedorModel);
 
 			} else {
 
@@ -96,6 +102,7 @@ public class EstabelecimentoFaces extends TSMainFaces {
 		this.fornecedorDAO = new FornecedorDAO();
 		this.carroChefeDAO = new CarroChefeDAO();
 		this.imagemFornecedorDAO = new ImagemFornecedorDAO();
+		this.comentarioDAO = new ComentarioDAO();
 	}
 
 	public PromocaoModel getPromocaoDia() {
@@ -184,6 +191,22 @@ public class EstabelecimentoFaces extends TSMainFaces {
 
 	public void setFornecedorModel(FornecedorModel fornecedorModel) {
 		this.fornecedorModel = fornecedorModel;
+	}
+
+	public ComentarioDAO getComentarioDAO() {
+		return comentarioDAO;
+	}
+
+	public void setComentarioDAO(ComentarioDAO comentarioDAO) {
+		this.comentarioDAO = comentarioDAO;
+	}
+
+	public ComentarioModel getRanking() {
+		return ranking;
+	}
+
+	public void setRanking(ComentarioModel ranking) {
+		this.ranking = ranking;
 	}
 
 }

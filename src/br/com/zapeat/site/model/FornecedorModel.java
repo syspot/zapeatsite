@@ -125,6 +125,11 @@ public class FornecedorModel {
 	}
 
 	public String getSite() {
+		
+		if(!TSUtil.isEmpty(this.site) && !this.site.contains("http://")){
+			
+			this.site = "http://" + this.site;
+		}
 		return site;
 	}
 

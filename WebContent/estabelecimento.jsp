@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <f:view>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -124,8 +125,6 @@
 </head>
 
 <body>
-
-<h:inputHidden value="#{estabelecimentoFaces}"/>
 <!-- COMECA TOPO -->
 <div id="topo">
 	<!-- COMECA BUSCA -->
@@ -163,6 +162,7 @@
 </div>
 <!-- TERMINA TOPO -->
 
+<!-- 
 <div id="id-Breadcrumb">
     <span class="migalha"><a href="" title="">Página Inicial</a></span>    »    
     <span class="migalha"><a href="" title="">Restaurantes</a></span>    »   
@@ -171,7 +171,7 @@
     <span class="migalha"><a href="" title="">Yemanjá</a></span>    »   
     <span class="migalha"><a href="" title="">Muqueca a Moda TopSys</a></span>
 </div>
-
+ -->
 <!-- COMECA CENTRAL -->
 <div id="central">
 	<!-- COMECA CONTEUDO -->
@@ -181,10 +181,10 @@
     	<div id="esqInt">
         	<div id="boxSobreEstab">
             	<div class="marca"></div>
-                <p>Ranking na categoria</p>
+                <p>Ranking</p>
                 <div id="ranking">
                 	<span class="icons medalha"></span>
-                    <span>473º</span><br />lugar
+                    <span>${estabelecimentoFaces.ranking.posicao}º</span><br />lugar
                 </div>
             </div>
             <div class="boxSubCat ftoLocal">
@@ -195,7 +195,6 @@
             </div>
                 	
         </div>
-
         
         <!-- COMECA COLUNA MEIO -->
         <div id="meio">
@@ -203,54 +202,58 @@
             	<div id="fotoDestaque">
 	                <a href=""><img src="img/model/590x260.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a>
                     <div class="tituloPromo">
-                        <p><span class="nomePromo">Nome do estabelecimento</span></p>
+                        <p><span class="nomePromo">${estabelecimentoFaces.fornecedorModel.nomeFantasia}</span></p>
                     </div>
                 </div>
                 <div class="boxInfo">
-                	<a href="estabelecimento/LINK RESTAURANTE > ESTABELECIMENTO" title="" class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: Restaurante</a>
-                    <a href="estabelecimento/LINK RESTAURANTE > ESTABELECIMENTO" title="" class="floatLeft marginLeft"><span class="icons tel"></span>(71) 9876.5432</a>
+                	<!-- <a href="estabelecimento/LINK RESTAURANTE > ESTABELECIMENTO" title="" class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: Restaurante</a> -->
+                    <!-- <a href="estabelecimento/LINK RESTAURANTE > ESTABELECIMENTO" title="" class="floatLeft"></a>-->
+                    <span class="icons tel"></span>${estabelecimentoFaces.fornecedorModel.telefone}
+                    
                 </div>
                 <blockquote class="fontYi">
-                	<p>Rod&iacute;zio de carnes com grande variedade de Frutos do Mar como: Camar&atilde;o &agrave; Paulista, Ostras, Lula, Polvo, Salm&atilde;o Defumado e Marinado, Bacalhau Gratinado, Paella e outros. Buffet de saladas, Sushis e Recheauds repletos de variedades, aliados ao conforto e requinte de um ambiente climatizado. O que &eacute; bom est&aacute; aqui!</p>
+                	<p>${estabelecimentoFaces.fornecedorModel.descricao}</p>
                 </blockquote>
                 
                 <div id="outroDados">
                 	<ul>
                     	<li>
                         	<p class="titOtherInfo">horário de funcionamento</p>
-                            <p>Terça a Quinta das 19h às 2 horas</p>
+                            <p>${estabelecimentoFaces.fornecedorModel.horariosFuncionamento}</p>
                             
-                            <p>Sexta e Sábado das 18h às 3 horas</p>
-                            
-                            <p>Domingo das 18h as 00 horas</p>
                         </li>
+                        <c:if test="${!empty estabelecimentoFaces.fornecedorModel.twitter and !empty estabelecimentoFaces.fornecedorModel.facebook}">
                     	<li>
                         	<p class="titOtherInfo">Redes sociais</p>
-                            <p>@estabelecimento</p>
-                            <p>facebook.com/fanpage</p>
+                        	<c:if test="${!empty estabelecimentoFaces.fornecedorModel.twitter}">
+                        	<p>@${estabelecimentoFaces.fornecedorModel.twitter}</p>
+                            </c:if>
+                            <c:if test="${!empty estabelecimentoFaces.fornecedorModel.facebook}">
+                            <p><a href="http://facebook.com/${estabelecimentoFaces.fornecedorModel.facebook}" title="" target="_blank">facebook.com/${estabelecimentoFaces.fornecedorModel.facebook}</a></p>
+                            
+                            </c:if>
                         </li>
+                        </c:if>
                         <li>
                         	<p class="titOtherInfo">Outros</p>
-                            <p>www.seusite.com.br</p>
-                            <p>Formas de Pagamento:</p>
+                            <c:if test="${!empty estabelecimentoFaces.fornecedorModel.site}">
                             <p>
-                                <span class="iconCard iconVisa"></span>
-                                <span class="iconCard iconAmex"></span>
-                                <span class="iconCard iconDiners"></span>
-                                <span class="iconCard iconMaster"></span>
-                            </p>
-                            <p><span class="icons indicacao"></span> 100 pessoas indicam o ambiente</p>
-                            <p><span class="icons indicacao"></span> 70 pessoas indicam a comida</p>
+                            <a href="${estabelecimentoFaces.fornecedorModel.site}" title="" target="_blank">${estabelecimentoFaces.fornecedorModel.site}</a></p>
+                            </c:if>
+                            <p><span class="icons indicacao"></span> ${estabelecimentoFaces.fornecedorModel.quantidadeIndicacoes} pessoas indicam o ambiente</p>
+                            
                         </li>
                     </ul>
                 </div>
                 
-                <address>Aqui entra o endereço do estabelecimento</address>
+                <address>${estabelecimentoFaces.fornecedorModel.logradouro} / ${estabelecimentoFaces.fornecedorModel.bairro}</address>
                 <script>
 				  var map;
+				  var lat = ${estabelecimentoFaces.fornecedorModel.latitude}
+				  var lng = ${estabelecimentoFaces.fornecedorModel.longitude}
 				  function initialize() {
 					// Creating a map
-					var latlng = new google.maps.LatLng(-12.973393753658488, -38.51103549999999); 
+					var latlng = new google.maps.LatLng(lat, lng); 
 					var map = new google.maps.Map(document.getElementById('map_canvas_estab'), {  
 					  zoom: 17,
 					  center: latlng,
@@ -289,34 +292,64 @@
         
         <!-- COMECA COLUNA DIREITA -->
         <div id="dir">
+        	<c:if test="${!empty estabelecimentoFaces.promocaoDia.id}">
         	<div class="boxSubCat">
             	<h2>Promoção do dia</h2>
-                <img src="img/model/180x79.jpg" alt="" title="" />
-                <p class="titulo">Nome da promo</p>
-                <!-- SE PROMOÇÃO EM DESCONTO -->
-                <p><span class="precoDe">De: R$700,00</span>&nbsp;&nbsp;<span class="precoPor">Por: R$500,00</span> 
+            	<a href="promocao.jsf?id=${estabelecimentoFaces.promocaoDia.id}" title="">
+                    <img src="img/model/180x79.jpg" alt="" title="" />
+                    <p class="titulo">${estabelecimentoFaces.promocaoDia.fornecedorModel.nomeFantasia}</p>
+                    <p class="item">
+                    ${estabelecimentoFaces.promocaoDia.descricao}</p>
+                    <!-- SE PROMOÇÃO EM DESCONTO -->
+                    <p><span class="precoDe">
+                    De: <h:outputText value="#{estabelecimentoFaces.promocaoDia.precoOriginal}">
+                    		<f:convertNumber type="currency" currencySymbol="R$"/>
+                    	</h:outputText></span>&nbsp;&nbsp;
+                    	<span class="precoPor">
+                    Por: 
+                    	<h:outputText value="#{estabelecimentoFaces.promocaoDia.precoPromocional}">
+                    		<f:convertNumber type="currency" currencySymbol="R$"/>
+                    	</h:outputText></span>
+                    	<p><span class="fontYi">${estabelecimentoFaces.promocaoDia.descricao}</span></p>
+                </a>
             </div>
+            </c:if>
+            
+            <c:if test="${!empty estabelecimentoFaces.promocaoSemana.id}">
         	<div class="boxSubCat">
             	<h2>Promoção da semana</h2>
-                <img src="img/model/180x79.jpg" alt="" title="" />
-                <p class="titulo">Nome da promo</p>
-                <!-- SE PROMOÇÃO EM PRODUTO -->
-                <p><span class="fontYi">Na Cheiro de Pizza comprando uma pizza grande você leva outra pizza do mesmo tamanho e sabor totalmente grátis.</span></p>
+                <a href="promocao.jsf?id=${estabelecimentoFaces.promocaoSemana.id}" title="">
+                	<img src="img/model/180x79.jpg" alt="" title="" />
+               
+                    <p class="titulo">${estabelecimentoFaces.promocaoSemana.fornecedorModel.nomeFantasia}</p>
+                    <p><span class="precoDe">
+                    De: <h:outputText value="#{estabelecimentoFaces.promocaoSemana.precoOriginal}">
+                    		<f:convertNumber type="currency" currencySymbol="R$"/>
+                    	</h:outputText></span>&nbsp;&nbsp;
+                    	<span class="precoPor">
+                    Por: 
+                    	<h:outputText value="#{estabelecimentoFaces.promocaoSemana.precoPromocional}">
+                    		<f:convertNumber type="currency" currencySymbol="R$"/>
+                    	</h:outputText></span>
+                    	
+                    	<p><span class="fontYi">${estabelecimentoFaces.promocaoSemana.descricao}</span></p>
+                  </a>   
             </div>
+            </c:if>
+            
+            <c:if test="${!empty estabelecimentoFaces.carroChefeModel.id}">
             <div class="boxSubCat">
             	<h2>Carro-chefe</h2>
-                <img src="img/model/180x79.jpg" alt="" title="" />
-                <p class="titulo">Nome do estab</p>
-                <p class="categoria">categoria</p>
-                <p class="item">nome do prod</p>
-                <p><span class="precoDe">De: R$789,00</span>&nbsp;&nbsp;<span class="precoPor">Por: R$254,00</span> 
+                <a href="promocao.jsf?carroChefeId=${estabelecimentoFaces.carroChefeModel.id}" title=""><img src="img/model/180x79.jpg" alt="" title="" /></a>
+                    <p class="titulo">${estabelecimentoFaces.carroChefeModel.fornecedorModel.nomeFantasia}</p>
+                    <p><span class="item">${estabelecimentoFaces.carroChefeModel.descricao}</span></p>
+                </a>
             </div>
+            </c:if>
             
             <div class="boxSubCat">
             	<div class="banner">banner</div>
             </div>
-            
-            
             
         </div>
     </div>

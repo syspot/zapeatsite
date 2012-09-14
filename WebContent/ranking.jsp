@@ -1,34 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <f:view>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 <title>Zapeat</title>
 <link href="css/padrao.css" rel="stylesheet" type="text/css" />
-<link href="css/home.css" rel="stylesheet" type="text/css" />
+<link href="css/interna.css" rel="stylesheet" type="text/css" />
 <link href="css/cssReset.css" rel="stylesheet" type="text/css" />
 <link href="css/fontface.css" rel="stylesheet" type="text/css" />
+                                                             
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1&appId=329697663791960";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
-<!--<meta property="og:site_name" content="Zapeat">
-<meta property="og:image" content="http://img.zapeat.com/icon/icone-68px.png">
-<meta property="geo.position" content="-13.548547000;-38.638272000">
-<meta property="geo.position" conterty="ICBM" content="-13.548547000,-38.638272000">
-<meta property="geo.region" content="BR-BA">
-<meta property="geo.placename" content="Salvador">-->                                                                
 
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"> </script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"> </script>
 <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
 <script src="js/jquery-latest.js"></script>
 <script type="text/javascript" src="js/geometa.js"></script>
 <script type="text/javascript">
       $(document).ready(function() {
-		$('#outrosDestaques > #listagem > li:even').css('background', '#CCE5FF');
 		$('#principal ul:eq(0)').css('left','-45px');
 		$('#principal ul:eq(1)').css('left','-120px');
 		$('#principal ul:eq(2)').css('left','-195px');
@@ -39,10 +41,8 @@
 		$('#principal ul:eq(7)').css('right','-0px');
 	  })
 </script>
-
 <!--=============MODAL=============-->
-	<script type="text/javascript" src="js/modal.js"></script>
-    <script type="text/javascript">
+	<script type="text/javascript" src="http://fw2.atarde.com.br/fw/js/modal.js">
     $(document).ready(function(){
 		$('a.modal').modal({
 			closeClickOut:true,
@@ -52,25 +52,18 @@
 <!--=============GEOLOCATION=============--> 
 <script type="text/javascript">
 		//função para botão de acionar geolocation
- 		jQuery(window).ready(function(){  
-            jQuery("#btnInit").click(function(){
-				$('#info').val(initialize);
-				}); 			
-        })
-		
-		//inicia o geolocation
-		function initialize() {
-			// teste para a presença do geolocation
+	$(document).ready(function () {
+		// wire up button click
+		$('#btnInit').click(function () {
+				// teste para a presença do geolocation
 			if (navigator && navigator.geolocation) {
-				// faz a requisição da posição do usuário
 				navigator.geolocation.getCurrentPosition(geo_success, geo_error);
 			} else {
-				// use MaxMind IP to location API fallback
-				printAddress(geoip_latitude(), geoip_longitude(), true);
+				error('Geolocation is not supported.');
 			}
-		}
-	
-
+		});
+	});	
+		
 
 	function geo_success(position) {
     	printAddress(position.coords.latitude, position.coords.longitude);
@@ -131,10 +124,11 @@
 		function error(msg){
 			alert(msg);
 		}
-</script>   
+		
+</script> 
 </head>
 
-<body onload="initialize()">
+<body>
 
 
 <!-- COMECA TOPO -->
@@ -163,10 +157,11 @@
                     </div>
                     <div id="local">
                         <span class="chamadaCadastro">Não tem Facebook?</span>
-                        <div><a class="modal" title="Cadastrar" rel="modal" href="inc/cadastro.jsf"><span class="icons iconCadastrar"></span>cadastrar</a></div>
-                        <div><a id="modal" href="inc/login.jsf" class="modal" rel="modal" title="Login"><span class="icons iconLogin"></span>login</a></div>
+                        <div><a class="modal" title="Cadastrar" rel="modal" href="<%= request.getContextPath() %>/inc/cadastro.jsf"><span class="icons iconCadastrar"></span>cadastrar</a></div>
+                        <div><a id="modal" href="<%= request.getContextPath() %>/inc/login.jsf" class="modal" rel="modal" title="Login"><span class="icons iconLogin"></span>login</a></div>
                     </div>
             	</div>
+                
                 <%@ include file="/categorias.jsp" %>
             </nav>
         </div>
@@ -174,288 +169,325 @@
 </div>
 <!-- TERMINA TOPO -->
 
-<div id="id-Breadcrumb"><span id="status"></span></div>
+<div id="id-Breadcrumb">
+    <span class="migalha"><a href="index.html" title="">Página Inicial</a></span>    »    
+    <span class="migalha">Mais Indicados</span>    »   
+    <span class="migalha"><a href="categoria/ranking.html" title="">Ranking	</a></span>   
+</div>
 
 <!-- COMECA CENTRAL -->
 <div id="central">
 	<!-- COMECA CONTEUDO -->
 	<div id="conteudo">
     
-    	<!-- COMECA COLUNA ESQUERDA -->
-    	<div id="esq">
+    	<!-- COMECA COLUNA PRINCIPAL  -->
+    	<div id="conteudoRanking">
+        	<div id="tituloSessao">
+            	<span class="icons maisIndicados"></span>
+            	<h2>Ranking</h2>
+                <!--==
+                <p>Promoção da hora</p>
+                <p>Promoção do dia</p>
+                <p>Promoção da semana</p>                
+                <p>Carro-chefe</p>
+                ==-->
+                <p>Mais Indicados</p>
+            </div>
+        	<div class="coluna">
+            	<h2>Melhor Comida</h2>
+                <div class="boxRanking">
+                	<span class="position1"></span>
+                	<blockquote>
+                    	<a href="" title="">
+                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
+                            <div class="info">
+                                <p class="titulo">Nome da comida</p>
+                                <p class="dados">Nome do estabelecimento</p>
+                            </div>
+                        </a>
+                    </blockquote>
+                    <div class="indico">
+                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
+                    </div>
+                </div>
+                
+                <div class="boxRanking">
+                	<span class="position2"></span>
+                	<blockquote>
+                    	<a href="" title="">
+                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
+                            <div class="info">
+                                <p class="titulo">Nome da comida</p>
+                                <p class="dados">Nome do estabelecimento</p>
+                            </div>
+                        </a>
+                    </blockquote>
+                    <div class="indico">
+                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
+                    </div>
+                </div>
+                
+                <div class="boxRanking">
+                	<span class="position3"></span>
+                	<blockquote>
+                    	<a href="" title="">
+                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
+                            <div class="info">
+                                <p class="titulo">Nome da comida</p>
+                                <p class="dados">Nome do estabelecimento</p>
+                            </div>
+                        </a>
+                    </blockquote>
+                    <div class="indico">
+                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
+                    </div>
+                </div>
+                
+                <div class="boxRanking">
+                	<span class="position4"></span>
+                	<blockquote>
+                    	<a href="" title="">
+                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
+                            <div class="info">
+                                <p class="titulo">Nome da comida</p>
+                                <p class="dados">Nome do estabelecimento</p>
+                            </div>
+                        </a>
+                    </blockquote>
+                    <div class="indico">
+                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
+                    </div>
+                </div>
+                
+                <div class="boxRanking">
+                	<span class="position5"></span>
+                	<blockquote>
+                    	<a href="" title="">
+                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
+                            <div class="info">
+                                <p class="titulo">Nome da comida</p>
+                                <p class="dados">Nome do estabelecimento</p>
+                            </div>
+                        </a>
+                    </blockquote>
+                    <div class="indico">
+                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="coluna">
+            	<h2>Ambiente</h2>
+                <div class="boxRanking">
+                	<span class="position1"></span>
+                	<blockquote>
+                    	<a href="" title="">
+                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
+                            <div class="info">
+                                <p class="titulo">Nome do estabelecimento</p>
+                                <p class="dados">Categoria</p>
+                            </div>
+                        </a>
+                    </blockquote>
+                    <div class="indico">
+                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
+                    </div>
+                </div>
+                
+                <div class="boxRanking">
+                	<span class="position2"></span>
+                	<blockquote>
+                    	<a href="" title="">
+                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
+                            <div class="info">
+                                <p class="titulo">Nome do estabelecimento</p>
+                                <p class="dados">Categoria</p>
+                            </div>
+                        </a>
+                    </blockquote>
+                    <div class="indico">
+                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
+                    </div>
+                </div>
+                
+                <div class="boxRanking">
+                	<span class="position3"></span>
+                	<blockquote>
+                    	<a href="" title="">
+                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
+                            <div class="info">
+                                <p class="titulo">Nome do estabelecimento</p>
+                                <p class="dados">Categoria</p>
+                            </div>
+                        </a>
+                    </blockquote>
+                    <div class="indico">
+                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
+                    </div>
+                </div>
+                
+                <div class="boxRanking">
+                	<blockquote>
+                    	<a href="" title="">
+                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
+                            <div class="info">
+                                <p class="titulo">Nome do estabelecimento</p>
+                                <p class="dados">Categoria</p>
+                            </div>
+                        </a>
+                    </blockquote>
+                    <div class="indico">
+                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
+                    </div>
+                </div>
+                
+                <div class="boxRanking">
+                	<span class="position5"></span>
+                	<blockquote>
+                    	<a href="" title="">
+                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
+                            <div class="info">
+                                <p class="titulo">Nome do estabelecimento</p>
+                                <p class="dados">Categoria</p>
+                            </div>
+                        </a>
+                    </blockquote>
+                    <div class="indico">
+                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="coluna">
+            	<h2>Carro-chefe</h2>
+                <div class="boxRanking">
+                	<span class="position1"></span>
+                	<blockquote>
+                    	<a href="" title="">
+                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
+                            <div class="info">
+                                <p class="titulo">Nome da comida</p>
+                                <p class="dados">Nome do estabelecimento</p>
+                            </div>
+                        </a>
+                    </blockquote>
+                    <div class="indico">
+                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
+                    </div>
+                </div>
+                
+                <div class="boxRanking">
+                	<span class="position2"></span>
+                	<blockquote>
+                    	<a href="" title="">
+                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
+                            <div class="info">
+                                <p class="titulo">Nome da comida</p>
+                                <p class="dados">Nome do estabelecimento</p>
+                            </div>
+                        </a>
+                    </blockquote>
+                    <div class="indico">
+                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
+                    </div>
+                </div>
+                
+                <div class="boxRanking">
+                	<span class="position3"></span>
+                	<blockquote>
+                    	<a href="" title="">
+                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
+                            <div class="info">
+                                <p class="titulo">Nome da comida</p>
+                                <p class="dados">Nome do estabelecimento</p>
+                            </div>
+                        </a>
+                    </blockquote>
+                    <div class="indico">
+                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
+                    </div>
+                </div>
+                
+                <div class="boxRanking">
+                	<span class="position4"></span>
+                	<blockquote>
+                    	<a href="" title="">
+                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
+                            <div class="info">
+                                <p class="titulo">Nome da comida</p>
+                                <p class="dados">Nome do estabelecimento</p>
+                            </div>
+                        </a>
+                    </blockquote>
+                    <div class="indico">
+                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
+                    </div>
+                </div>
+                
+                <div class="boxRanking">
+                	<span class="position5"></span>
+                	<blockquote>
+                    	<a href="" title="">
+                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
+                            <div class="info">
+                                <p class="titulo">Nome da comida</p>
+                                <p class="dados">Nome do estabelecimento</p>
+                            </div>
+                        </a>
+                    </blockquote>
+                    <div class="indico">
+                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
+                    </div>
+                </div>
+            </div>
+
+        
+        </div>
+        
+        <!-- COMECA COLUNA DIREITA -->
+        <div id="dir">
         	<div class="boxSubCat">
             	<h2>Promoção do dia</h2>
-                <a href="promocao.html" title=""><img src="img/model/180x79.jpg" alt="" title="" />
-                    <p class="titulo">Nome do estab</p>
-                    <p class="categoria">categoria</p>
-                    <p class="item">nome do prod</p>
+                <a href="" title="">
+                    <img src="img/model/180x79.jpg" alt="" title="" />
+                    <p class="titulo">Nome da promo</p>
                     <!-- SE PROMOÇÃO EM DESCONTO -->
-                    <p><span class="precoDe">De: R$700,00</span>&nbsp;&nbsp;<span class="precoPor">Por: R$500,00</span> 
+                    <p><span class="precoDe">De: R$700,00</span>&nbsp;&nbsp;<span class="precoPor">Por: R$500,00</span> </p>
                 </a>
             </div>
         	<div class="boxSubCat">
             	<h2>Promoção da semana</h2>
-                <a href="promocao.html" title=""><img src="img/model/180x79.jpg" alt="" title="" /></a>
-                    <p class="titulo">Cheiro de Pizza</p>
-                    <p class="categoria">Pizzaria</p>
-                    <p class="item">Pague 1 leve 2</p>
+                <a href="" title="">
+                    <img src="img/model/180x79.jpg" alt="" title="" />
+                    <p class="titulo">Nome da promo</p>
                     <!-- SE PROMOÇÃO EM PRODUTO -->
                     <p><span class="fontYi">Na Cheiro de Pizza comprando uma pizza grande você leva outra pizza do mesmo tamanho e sabor totalmente grátis.</span></p>
                 </a>
             </div>
             <div class="boxSubCat">
             	<h2>Carro-chefe</h2>
-                <a href="promocao.html" title=""><img src="img/model/180x79.jpg" alt="" title="" /></a>
+                <a href="" title="">
+                    <img src="img/model/180x79.jpg" alt="" title="" />
                     <p class="titulo">Nome do estab</p>
                     <p class="categoria">categoria</p>
                     <p class="item">nome do prod</p>
-                    <p><span class="precoDe">De: R$789,00</span>&nbsp;&nbsp;<span class="precoPor">Por: R$254,00</span> 
+                    <p><span class="precoDe">De: R$789,00</span>&nbsp;&nbsp;<span class="precoPor">Por: R$254,00</span> </p>
                 </a>
-            </div>
-        </div>
-        
-        <!-- COMECA COLUNA MEIO -->
-        <div id="meio">
-        	<div id="destaque">
-            	<div id="fotoDestaque">
-	                <a href="promocao.html"><img src="img/model/590x260.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a>
-                    <div class="tituloPromo">
-                    	<p><span class="tipoPromo">Promoção da hora</span></p>
-                        <p><span class="nomePromo">Nome da Promoção/estabelecimento</span></p>
-                    </div>
-                </div>
-                <div id="faixa">
- 	               <div class="marca"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
-                   <p class="percentual">40%</p>
-                   <p class="fontYi font10px">desconto</p>
-                </div>
-                <blockquote class="fontYi">
-                	<p>Casais de namorados tem promoção especial. Venha comemorar aniversário de namoro e a companheira não paga o rodízio.</p>
-                </blockquote>
-                <div class="map">
-                	<script>
-					  var map;
-					  function initializeMap() {
-						// Creating a map
-						var latlng = new google.maps.LatLng(37.771008, -122.41175); 
-						var map = new google.maps.Map(document.getElementById('map_canvas'), {  
-						  zoom: 17,
-						  center: latlng,
-						  mapTypeId: google.maps.MapTypeId.ROADMAP
-						});
-						
-						// Creating a marker and positioning it on the map
-						var marker = new google.maps.Marker({
-						  position: latlng, 
-						  map: map,
-						  clickable: false,
-						  icon: 'img/markerAzul.png'
-						});
-					  }
-				
-					  google.maps.event.addDomListener(window, 'load', initializeMap);
-				</script>
-                	<div id="map_canvas"></div>
-                    <div class="shadow1"></div>
-                    <div class="shadow2"></div>
-                    <div class="shadow3"></div>
-                    <div class="shadow4"></div>
-                </div>
-                <div class="clear"></div>
-                <div class="barraCompartilhamento">
-	                <a href="http://www.facebook.com/sharer.php?u=URL_da_materia" target="_blank" title="Facebook"><img src="img/btnFb.jpg" title="Recomendar" /></a>
-                    <div class="fb-like" data-href="http://www.zapeat.com.br" data-send="false" data-layout="button_count" data-width="200" data-show-faces="false"></div>
-                </div> 
-            </div>
-            <div id="outrosDestaques">
-            	<h2>Outras Promoções da Hora</h2>
-            	<ul id="listagem">
-                	<li>
-                    	<a href="promocao.html" title="">
-                            <div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
-                            <!-- SE PROMOÇÃO EM PRODUTO -->
-                            <div class="info">
-                                <p class="titulo">Rodízio dos Amantes</p>
-                                <p class="resumo fontYi">
-                                Casais de namorados tem promoção especial. Venha comemorar aniversário de namoro e a companheira não paga o rodízio.
-                                </p>
-                            </div>
-                        </a>
-                        <div class="dados">
-                            <p>
-                            	<span class="icons tel"></span>(71) 9876-5432
-                            </p>
-                            <p>
-                            	<a href="link para o site do cliente" title="" target="_blank"><span class="icons site"></span>site.com.br</a>
-                            </p>
-                            <p>
-                            	<span class="icons indicacao"></span>10 indicam
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                    	<a href="promocao.html" title="">
-                            <div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
-                            <!-- SE PROMOÇÃO EM DESCONTO -->
-                            <div class="info">
-                                <p class="titulo">DaBox Pizzaria</p>
-                                <p class="resumo fontYi">Pizzaria</p>
-                                <p class="item">Pizza E.C Bahia</p>
-                                <p><span class="precoDe">De: R$789,00</span>&nbsp;&nbsp;<span class="precoPor">Por: R$254,00</span></p>
-                            </div>
-                        </a>
-                        <div class="dados">
-                            <p>
-                            	<span class="icons tel"></span>(71) 3379.3663
-                            </p>
-                            <p>
-                            	<a href="link para o site do cliente" title="" target="_blank"><span class="icons site"></span>daboxpizza.com.br</a>
-                            </p>
-                            <p>
-                            	<span class="icons indicacao"></span>10 indicam
-                            </p>
-                        </div>
-
-                    </li>
-                    <li>
-                    	<a href="promocao.html" title="">
-                            <div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
-                            <div class="info">
-                                <p class="titulo">.titulo</p>
-                                <p class="resumo">.resumo</p>
-                            </div>
-                        </a>
-                        <div class="dados">
-                            <p>
-                            	<span class="icons tel"></span>(71) 9876-5432
-                            </p>
-                            <p>
-                            	<a href="link para o site do cliente" title="" target="_blank"><span class="icons site"></span>site.com.br</a>
-                            </p>
-                            <p>
-                            	<span class="icons indicacao"></span>10 indicam
-                            </p>
-                        </div>
-
-                    </li>
-                    <li>
-                    	<a href="promocao.html" title="">
-                            <div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
-                            <div class="info">
-                                <p class="titulo">.titulo</p>
-                                <p class="resumo">.resumo</p>
-                            </div>
-                        </a>
-                        <div class="dados">
-                            <p>
-                            	<span class="icons tel"></span>(71) 9876-5432
-                            </p>
-                            <p>
-                            	<a href="link para o site do cliente" title="" target="_blank"><span class="icons site"></span>site.com.br</a>
-                            </p>
-                            <p>
-                            	<span class="icons indicacao"></span>10 indicam
-                            </p>
-                        </div>
-
-                    </li>
-                    <li>
-                    	<a href="promocao.html" title="">
-                            <div class="marca floatLeft"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
-                            <div class="info">
-                                <p class="titulo">.titulo</p>
-                                <p class="resumo">.resumo</p>
-                            </div>
-                        </a>
-                        <div class="dados">
-                            <p>
-                            	<span class="icons tel"></span>(71) 9876-5432
-                            </p>
-                            <p>
-                            	<a href="link para o site do cliente" title="" target="_blank"><span class="icons site"></span>site.com.br</a>
-                            </p>
-                            <p>
-                            	<span class="icons indicacao"></span>10 indicam
-                            </p>
-                        </div>
-
-                    </li>
-                </ul>
-            </div>
-        
-        </div>
-        
-        
-        <!-- COMECA COLUNA DIREITA -->
-        <div id="dir">
-        	<div class="boxSubCat">
-            	<h2>Top Geral</h2>
-                <ul id="topGeral">
-                    <li class="hum">
-                    	<a href="estabelecimento.html" title="">
-                            <p class="titulo">Nome do estab</p>
-                            <p class="categoria">categoria</p>
-                        </a>
-                    </li>
-                    <li class="dois">
-                    	<a href="estabelecimento.html" title="">
-                            <p class="titulo">Nome do estab</p>
-                            <p class="categoria">categoria</p>
-                        </a>
-                    </li>
-                    <li class="tres">
-                    	<a href="estabelecimento.html" title="">
-                            <p class="titulo">Nome do estab</p>
-                            <p class="categoria">categoria</p>
-                        </a>
-                    </li>
-                    <li class="quatro">
-                    	<a href="estabelecimento.html" title="">
-                            <p class="titulo">Nome do estab</p>
-                            <p class="categoria">categoria</p>
-                        </a>
-                    </li>
-                    <li class="cinco">
-                    	<a href="estabelecimento.html" title="">
-                            <p class="titulo">Nome do estab</p>
-                            <p class="categoria">categoria</p>
-                        </a>
-                    </li>
-                </ul>
             </div>
             
             <div class="boxSubCat">
             	<div class="banner">banner</div>
             </div>
             
-            <div class="boxSubCat">
-            	<h2>Estabelecimentos</h2>
-                <div class="marca floatLeft"><a href="estabelecimento.html" title=""><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a></div>
-                <div class="marca floatLeft"><a href="estabelecimento.html" title=""><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a></div>
-                <div class="marca floatLeft"><a href="estabelecimento.html" title=""><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a></div>
-                <div class="marca floatLeft"><a href="estabelecimento.html" title=""><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a></div>
-                <div class="marca floatLeft"><a href="estabelecimento.html" title=""><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a></div>
-                <div class="marca floatLeft"><a href="estabelecimento.html" title=""><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a></div>
-            </div>
             
-            <div class="boxSubCat">
-            	<h2>Quem Indica</h2>
-                <span class="imgDestaque-peq posRel">
-                	<a href="estabelecimento.html" title="">
-                        <img src="img/model/180x79.jpg" alt="" title="" />
-                        <p class="tituloIndica">Nome do estabelecimento</p>
-                    </a>
-                </span>
-                <p class="comment">O lugar é espaçoso e tem uma decoração temática muito bem feita. Não fica muito cheia e todas as sextas que fui a música estava excelente. As bebidas são boas e o atendimento é muito bom.</p>
-                <p class="autor">Fulana de Tal</p>
-            </div>
             
         </div>
     </div>
     <!-- TERMINA CONTEUDO -->
 </div>
 <!-- TERMINA CENTRAL -->
-<!-- COMECA RODAPE -->
 <div id="rodape">
 	<!-- COMECA BUSCA -->
 	<div class="barraBusca">
