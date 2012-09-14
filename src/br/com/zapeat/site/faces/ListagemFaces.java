@@ -8,6 +8,7 @@ import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.faces.TSMainFaces;
 import br.com.zapeat.site.dao.PromocaoDAO;
 import br.com.zapeat.site.model.PromocaoModel;
+import br.com.zapeat.site.util.ZapeatUtil;
 
 @ManagedBean
 public class ListagemFaces extends TSMainFaces {
@@ -20,27 +21,23 @@ public class ListagemFaces extends TSMainFaces {
 	
 	public ListagemFaces(){
 		
-		String page = super.getRequestParameter("page");
+		Integer page = ZapeatUtil.getParamFormatado(super.getRequestParameter("page"));
+		Integer tipoPromocao = ZapeatUtil.getParamFormatado(super.getRequestParameter("tipo"));
+		Integer categoriaId = ZapeatUtil.getParamFormatado(super.getRequestParameter("categoriaId"));
 		
 		this.promocaoDAO = new PromocaoDAO();
 		
 		if(!TSUtil.isEmpty(page)){
 			
-			Integer pagina = null;
-			
-			try{
-				pagina = Integer.valueOf(page);
-			} catch(NumberFormatException e){}
-			
-			this.promocoes = this.promocaoDAO.pesquisarPorIndicacoes(pagina);
+			this.promocoes = this.promocaoDAO.pesquisarPorIndicacoes(page, tipoPromocao, categoriaId);
 			
 		} else{
 			
-			this.promocoes = this.promocaoDAO.pesquisarPorIndicacoes(null);
+			this.promocoes = this.promocaoDAO.pesquisarPorIndicacoes(null, tipoPromocao, categoriaId);
 			
 		}
 		
-		this.qtdPaginas = this.promocaoDAO.obterQtdPaginasPorIndicacoes().getValue();
+		this.qtdPaginas = this.promocaoDAO.obterQtdPaginasPorIndicacoes(tipoPromocao, categoriaId).getValue();
 		
 	}
 

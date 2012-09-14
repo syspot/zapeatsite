@@ -30,6 +30,8 @@ public class PromocaoModel {
 	private List<ImagemPromocaoModel> imagensPromocoes;
 	
 	private Integer indicacoes;
+	
+	private String imagemThumb;
 
 	public Long getId() {
 		return TSUtil.tratarLong(id);
@@ -119,6 +121,14 @@ public class PromocaoModel {
 		this.indicacoes = indicacoes;
 	}
 	
+	public String getImagemThumb() {
+		return imagemThumb;
+	}
+
+	public void setImagemThumb(String imagemThumb) {
+		this.imagemThumb = imagemThumb;
+	}
+
 	public String getCssSessao(){
 		return getTipoPromocaoModel().getId().equals(Constantes.TIPO_PROMOCAO_SEMANA) ? "icons daSemana" : 
 			getTipoPromocaoModel().getId().equals(Constantes.TIPO_PROMOCAO_DIA) ? "icons doDia" : "icons daHora";  

@@ -72,5 +72,16 @@ public class ZapeatUtil {
 	public static long gerarNumeroAleatorio() {
 		return (long) ((10000 * Math.random()) * (100 * Math.random()));
 	}
+	
+	public static Integer getParamFormatado(String param){
+		
+		Integer inteiro = null;
+		
+		try{
+			inteiro = Integer.valueOf(param);
+		} catch(NumberFormatException e){}
+		
+		return inteiro;
+	}
 
 }

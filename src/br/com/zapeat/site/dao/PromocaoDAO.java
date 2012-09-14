@@ -11,21 +11,21 @@ import br.com.zapeat.site.model.PromocaoModel;
 public class PromocaoDAO {
 
 	@SuppressWarnings("unchecked")
-	public List<PromocaoModel> pesquisarPorIndicacoes(Integer page) {
+	public List<PromocaoModel> pesquisarPorIndicacoes(Integer page, Integer tipoPromocao, Integer categoriaId) {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("promocaodao.pesquisarporindicacoes", page);
+		broker.setPropertySQL("promocaodao.pesquisarporindicacoes", page, tipoPromocao, categoriaId);
 
 		return broker.getCollectionBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.logoMarca", "fornecedorModel.telefone", "fornecedorModel.site", "fornecedorModel.categoriaPrincipal.id", "fornecedorModel.categoriaPrincipal.descricao", "descricao", "titulo", "indicacoes");
 
 	}
 
-	public Model obterQtdPaginasPorIndicacoes() {
+	public Model obterQtdPaginasPorIndicacoes(Integer tipoPromocao, Integer categoriaId) {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("promocaodao.pesquisarqtdpaginasporindicacoes");
+		broker.setPropertySQL("promocaodao.pesquisarqtdpaginasporindicacoes", tipoPromocao, categoriaId);
 
 		return (Model) broker.getObjectBean(Model.class, "value");
 

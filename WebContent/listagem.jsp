@@ -213,7 +213,7 @@
 	                        <div class="boxInfo">
 	                            <div class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: <c:out value="${promocao.fornecedorModel.categoriaPrincipal.descricao}" /></div>
 	                            <div class="floatLeft marginLeft"><span class="icons tel"></span><c:out value="${promocao.fornecedorModel.telefone}" /></div>
-	                            <div class="floatLeft marginLeft"><span class="icons site"></span><c:out value="${promocao.fornecedorModel.site}"/></div>
+	                            <div class="floatLeft marginLeft"><span class="icons site"></span> <a href="" target="_blank" title="Visite o site">Visite o site</a> <c:out value="${promocao.fornecedorModel.site}"/></div>
 	                            <div class="floatLeft marginLeft"><span class="icons indicacao"></span><c:out value="${promocao.indicacoes}"/> indicam</div>
 	                        </div>
 	                    </li>
