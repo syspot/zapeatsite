@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
+<%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<f:view>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -8,13 +15,7 @@
 <link href="css/interna.css" rel="stylesheet" type="text/css" />
 <link href="css/cssReset.css" rel="stylesheet" type="text/css" />
 <link href="css/fontface.css" rel="stylesheet" type="text/css" />
-
-<!--<meta property="og:site_name" content="Zapeat">
-<meta property="og:image" content="http://img.zapeat.com/icon/icone-68px.png">
-<meta property="geo.position" content="-13.548547000;-38.638272000">
-<meta property="geo.position" conterty="ICBM" content="-13.548547000,-38.638272000">
-<meta property="geo.region" content="BR-BA">
-<meta property="geo.placename" content="Salvador">  -->                                                              
+                                                             
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
@@ -50,11 +51,11 @@
 	</script>
 <!--=============GEOLOCATION=============--> 
 <script type="text/javascript">
-		//funÁ„o para bot„o de acionar geolocation
+		//fun√ß√£o para bot√£o de acionar geolocation
 	$(document).ready(function () {
 		// wire up button click
 		$('#btnInit').click(function () {
-				// teste para a presenÁa do geolocation
+				// teste para a presen√ßa do geolocation
 			if (navigator && navigator.geolocation) {
 				navigator.geolocation.getCurrentPosition(geo_success, geo_error);
 			} else {
@@ -73,7 +74,7 @@
     	printAddress(geoip_latitude(), geoip_longitude(), true);
 	}
 
-	// usa Google Maps API para revers„o da sua localizaÁ„o do geocode
+	// usa Google Maps API para revers√£o da sua localiza√ß√£o do geocode
 	function printAddress(latitude, longitude, isMaxMind) {
 		// set up the Geocoder object
 		var geocoder = new google.maps.Geocoder();
@@ -87,7 +88,7 @@
 				if (results[0]) {
 					
 					//--
-					//captura infomaÁ„o requisitada do endereÁo
+					//captura infoma√ß√£o requisitada do endere√ßo
 					for (var i=0; i<results[0].address_components.length; i++) {
 					for (var b=0; b<results[0].address_components[i].types.length;b++) {
 		
@@ -106,7 +107,7 @@
 					//---
 					//aplica dados no input
 					$('#info').val(city.long_name + ", " + state.long_name);
-					//$('body').append('<p>Seu endereÁo:<br />' +
+					//$('body').append('<p>Seu endere√ßo:<br />' +
 					//	city.long_name + " / " + state.long_name + '</p>');						
 				} else {
 					error('Nenhum resultado foi encontrado.');
@@ -155,7 +156,7 @@
                         <div class="fb-login-button" data-show-faces="false" data-width="200" data-max-rows="1">Entrar usando Facebook</div>
                     </div>
                     <div id="local">
-                        <span class="chamadaCadastro">N„o tem Facebook?</span>
+                        <span class="chamadaCadastro">N√£o tem Facebook?</span>
                         <div><a class="modal" title="Cadastrar" rel="modal" href="<%= request.getContextPath() %>/inc/cadastro.jsf"><span class="icons iconCadastrar"></span>cadastrar</a></div>
                         <div><a id="modal" href="<%= request.getContextPath() %>/inc/login.jsf" class="modal" rel="modal" title="Login"><span class="icons iconLogin"></span>login</a></div>
                     </div>
@@ -169,8 +170,8 @@
 <!-- TERMINA TOPO -->
 
 <div id="id-Breadcrumb">
-    <span class="migalha"><a href="index.html" title="">P·gina Inicial</a></span>    ª    
-    <span class="migalha">Mais Indicados</span>    ª   
+    <span class="migalha"><a href="index.html" title="">P√°gina Inicial</a></span>    ¬ª    
+    <span class="migalha">Mais Indicados</span>    ¬ª   
     <span class="migalha"><a href="categoria/ranking.html" title="">Ranking	</a></span>   
 </div>
 
@@ -185,9 +186,9 @@
             	<span class="icons maisIndicados"></span>
             	<h2>Ranking</h2>
                 <!--==
-                <p>PromoÁ„o da hora</p>
-                <p>PromoÁ„o do dia</p>
-                <p>PromoÁ„o da semana</p>                
+                <p>Promo√ß√£o da hora</p>
+                <p>Promo√ß√£o do dia</p>
+                <p>Promo√ß√£o da semana</p>                
                 <p>Carro-chefe</p>
                 ==-->
                 <p>Mais Indicados</p>
@@ -448,21 +449,21 @@
         <!-- COMECA COLUNA DIREITA -->
         <div id="dir">
         	<div class="boxSubCat">
-            	<h2>PromoÁ„o do dia</h2>
+            	<h2>Promo√ß√£o do dia</h2>
                 <a href="" title="">
                     <img src="img/model/180x79.jpg" alt="" title="" />
                     <p class="titulo">Nome da promo</p>
-                    <!-- SE PROMO«√O EM DESCONTO -->
+                    <!-- SE PROMO√á√ÉO EM DESCONTO -->
                     <p><span class="precoDe">De: R$700,00</span>&nbsp;&nbsp;<span class="precoPor">Por: R$500,00</span> </p>
                 </a>
             </div>
         	<div class="boxSubCat">
-            	<h2>PromoÁ„o da semana</h2>
+            	<h2>Promo√ß√£o da semana</h2>
                 <a href="" title="">
                     <img src="img/model/180x79.jpg" alt="" title="" />
                     <p class="titulo">Nome da promo</p>
-                    <!-- SE PROMO«√O EM PRODUTO -->
-                    <p><span class="fontYi">Na Cheiro de Pizza comprando uma pizza grande vocÍ leva outra pizza do mesmo tamanho e sabor totalmente gr·tis.</span></p>
+                    <!-- SE PROMO√á√ÉO EM PRODUTO -->
+                    <p><span class="fontYi">Na Cheiro de Pizza comprando uma pizza grande voc√™ leva outra pizza do mesmo tamanho e sabor totalmente gr√°tis.</span></p>
                 </a>
             </div>
             <div class="boxSubCat">
@@ -500,7 +501,7 @@
 	<div id="infos">
     	<div class="fb-like-box" data-href="http://www.facebook.com/fanpageTigurio" data-width="292" data-height="330" data-show-faces="true" data-border-color="#D9A300" data-stream="false" data-header="false"></div>
     </div>
-    <div id="copy">Zapeat 2012 - O Zapeat n„o È autor e n„o endossa nenhuma das opiniıes e/ou coment·rios. Eles s„o de exclusiva responsabilidade dos respectivos autores.</div>
+    <div id="copy">Zapeat 2012 - O Zapeat n√£o √© autor e n√£o endossa nenhuma das opini√µes e/ou coment√°rios. Eles s√£o de exclusiva responsabilidade dos respectivos autores.</div>
 </div>
 <!-- TERMINA RODAPE -->
 <div id="fb-root"></div>
@@ -514,3 +515,4 @@
 </script>
 </body>
 </html>
+</f:view>
