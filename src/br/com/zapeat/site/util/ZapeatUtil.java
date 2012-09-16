@@ -73,12 +73,12 @@ public class ZapeatUtil {
 		return (long) ((10000 * Math.random()) * (100 * Math.random()));
 	}
 	
-	public static Integer getParamFormatado(String param){
+	public static Long getParamFormatado(String param){
 		
-		Integer inteiro = null;
+		Long inteiro = null;
 		
 		try{
-			inteiro = Integer.valueOf(param);
+			inteiro = Long.valueOf(param);
 		} catch(NumberFormatException e){}
 		
 		return inteiro;
