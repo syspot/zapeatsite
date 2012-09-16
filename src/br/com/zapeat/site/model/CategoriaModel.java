@@ -12,6 +12,16 @@ public class CategoriaModel {
 	
 	private String imagem;
 	
+	private String css;
+	
+	public CategoriaModel() {
+
+	}
+	
+	public CategoriaModel(String descricao, String css) {
+		this.descricao = descricao;
+		this.css = css;
+	}
 
 	public Long getId() {
 		return TSUtil.tratarLong(id);
@@ -46,6 +56,14 @@ public class CategoriaModel {
 	}
 
 	
+	public String getCss() {
+		return css;
+	}
+
+	public void setCss(String css) {
+		this.css = css;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

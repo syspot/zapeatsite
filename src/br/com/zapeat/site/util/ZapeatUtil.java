@@ -83,5 +83,16 @@ public class ZapeatUtil {
 		
 		return inteiro;
 	}
+	
+	public static Long getPageParamFormatado(String param){
+		
+		Long inteiro = 1L;
+		
+		try{
+			inteiro = Long.valueOf(param);
+		} catch(NumberFormatException e){}
+		
+		return inteiro;
+	}
 
 }

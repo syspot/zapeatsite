@@ -52,11 +52,9 @@ public class FornecedorModel {
 	private String cssTopGeral;
 
 	public FornecedorModel() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public FornecedorModel(Long id) {
-
 		this.id = id;
 	}
 
@@ -238,9 +236,29 @@ public class FornecedorModel {
 	public void setCategoriaPrincipal(CategoriaModel categoriaPrincipal) {
 		this.categoriaPrincipal = categoriaPrincipal;
 	}
+	
+	public Integer getQuantidadeIndicacoes() {
+		return quantidadeIndicacoes;
+	}
+
+	public void setQuantidadeIndicacoes(Integer quantidadeIndicacoes) {
+		this.quantidadeIndicacoes = quantidadeIndicacoes;
+	}
+
+	public String getCssTopGeral() {
+		return cssTopGeral;
+	}
+
+	public void setCssTopGeral(String cssTopGeral) {
+		this.cssTopGeral = cssTopGeral;
+	}
 
 	public String getImagemThumbView() {
 		return Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_FORNECEDOR_THUMB + getImagemThumb();
+	}
+	
+	public String getLogoMarcaView() {
+		return TSUtil.isEmpty(this.logoMarca) ? this.logoMarca : Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_FORNECEDOR_LOGOMARCA + this.logoMarca;
 	}
 
 	@Override
@@ -266,22 +284,6 @@ public class FornecedorModel {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}
-
-	public Integer getQuantidadeIndicacoes() {
-		return quantidadeIndicacoes;
-	}
-
-	public void setQuantidadeIndicacoes(Integer quantidadeIndicacoes) {
-		this.quantidadeIndicacoes = quantidadeIndicacoes;
-	}
-
-	public String getCssTopGeral() {
-		return cssTopGeral;
-	}
-
-	public void setCssTopGeral(String cssTopGeral) {
-		this.cssTopGeral = cssTopGeral;
 	}
 
 }

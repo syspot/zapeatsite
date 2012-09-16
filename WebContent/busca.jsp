@@ -164,7 +164,7 @@
 <div id="id-Breadcrumb">
     <span class="migalha"><a href="" title="">Página Inicial</a></span>    »    
     <span class="migalha">Busca</span>    »   
-    <span class="migalha">Termo Buscado</span>
+    <span class="migalha">${buscaFaces.termoBuscado}</span>
 </div>
 
 <!-- COMECA CENTRAL -->
@@ -204,7 +204,11 @@
 	                        <div class="boxInfo">
 	                            <div class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: ${result.categoria}</div>
 	                            <div class="floatLeft marginLeft"><span class="icons tel"></span>${result.telefone}</div>
-	                            <div class="floatLeft marginLeft"><span class="icons site"></span>${result.site}</div>
+	                            
+	                            <c:if test="${not empty result.site}">
+	                            	<div class="floatLeft marginLeft"><span class="icons site"></span> <a href="${result.site}" target="_blank" title="${result.site}">Visite o site</a> </div>
+			           			</c:if>
+			           			
 	                            <div class="floatLeft marginLeft"><span class="icons indicacao"></span>${result.indicacoes} indicam</div>
 	                        </div>
 	                    </li>
@@ -213,8 +217,9 @@
                 </ul>
                 
                 <div id="paginacao">
+                
 					<c:if test="${buscaFaces.qtdPaginas > 1}">
-                		<li class="inicio"><a href="" title=""><span class="icons pagInicio"></span></a></li>
+                		<li class="inicio"><a href="busca.jsf?page=${buscaFaces.page - 1}" title=""><span class="icons pagInicio"></span></a></li>
            			</c:if>
                 
                		<c:forEach begin="1" end="${buscaFaces.qtdPaginas}" var="pagina">
@@ -222,8 +227,9 @@
 	                </c:forEach>
 	                
 					<c:if test="${buscaFaces.qtdPaginas > 1}">
-						<li class="fim"><a href="busca.jsf?page=${buscaFaces.qtdPaginas}" title=""><span class="icons pagFim"></span></a></li>
+						<li class="fim"><a href="busca.jsf?page=${buscaFaces.page + 1}" title=""><span class="icons pagFim"></span></a></li>
            			</c:if>
+           			
                 </div>
 
         </div>

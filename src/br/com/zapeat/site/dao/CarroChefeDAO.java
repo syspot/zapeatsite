@@ -1,9 +1,12 @@
 package br.com.zapeat.site.dao;
 
+import java.util.List;
+
 import br.com.topsys.database.TSDataBaseBrokerIf;
 import br.com.topsys.database.factory.TSDataBaseBrokerFactory;
 import br.com.topsys.util.TSUtil;
 import br.com.zapeat.site.model.CarroChefeModel;
+import br.com.zapeat.site.model.Model;
 
 public class CarroChefeDAO {
 
@@ -28,6 +31,27 @@ public class CarroChefeDAO {
 		}
 
 		return (CarroChefeModel) broker.getObjectBean(CarroChefeModel.class, "id", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "descricao", "flagAtivo", "titulo", "imagem");
+
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<CarroChefeModel> pesquisarPorCategoria(Long categoriaId, Long page){
+		
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+		broker.setPropertySQL("carrochefedao.pesquisaporcategoria", categoriaId, page);
+
+		return broker.getCollectionBean(CarroChefeModel.class, "id", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.logoMarca", "fornecedorModel.telefone", "fornecedorModel.site", "fornecedorModel.categoriaPrincipal.id", "fornecedorModel.categoriaPrincipal.descricao", "descricao", "titulo");
+		
+	}
+	
+	public Model obterQtdPaginasPorCategoria(Long categoriaId) {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+		broker.setPropertySQL("carrochefedao.pesquisarqtdpaginasporcategoria", categoriaId);
+
+		return (Model) broker.getObjectBean(Model.class, "value");
 
 	}
 

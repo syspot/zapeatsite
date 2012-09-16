@@ -1,5 +1,7 @@
 package br.com.zapeat.site.model;
 
+import br.com.zapeat.site.util.Constantes;
+
 
 public class ImagemPromocaoModel {
 	
@@ -32,8 +34,14 @@ public class ImagemPromocaoModel {
 	public void setImagem(String imagem) {
 		this.imagem = imagem;
 	}
-
-
+	
+	public String getImagemFullView(){
+		return Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_PROMOCAO_FULL + getImagem();
+	}
+	
+	public String getImagemThumbView(){
+		return Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_PROMOCAO_THUMB + getImagem();
+	}
 
 	@Override
 	public int hashCode() {

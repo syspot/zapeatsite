@@ -128,6 +128,10 @@ public class PromocaoModel {
 	public void setImagemThumb(String imagemThumb) {
 		this.imagemThumb = imagemThumb;
 	}
+	
+	public String getImagemThumbView(){
+		return TSUtil.isEmpty(this.imagemThumb) ? this.imagemThumb : Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_PROMOCAO_THUMB + imagemThumb;
+	}
 
 	public String getCssSessao(){
 		return getTipoPromocaoModel().getId().equals(Constantes.TIPO_PROMOCAO_SEMANA) ? "icons daSemana" : 

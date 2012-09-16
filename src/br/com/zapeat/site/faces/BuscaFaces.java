@@ -5,11 +5,11 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 
-import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.faces.TSMainFaces;
 import br.com.zapeat.site.dao.BuscaDAO;
 import br.com.zapeat.site.model.BuscaModel;
 import br.com.zapeat.site.model.CidadeModel;
+import br.com.zapeat.site.util.ZapeatUtil;
 
 @ManagedBean
 public class BuscaFaces extends TSMainFaces {
@@ -26,6 +26,8 @@ public class BuscaFaces extends TSMainFaces {
 	
 	private Long qtdPaginas;
 	
+	private Long page;
+	
 	public BuscaFaces(){
 		this.cidade = new CidadeModel();
 		this.buscar();
@@ -33,25 +35,11 @@ public class BuscaFaces extends TSMainFaces {
 	
 	public String buscar(){
 		
-		String page = super.getRequestParameter("page");
+		this.page = ZapeatUtil.getPageParamFormatado(super.getRequestParameter("page"));
 		
 		this.buscaDAO = new BuscaDAO();
-		
-		if(!TSUtil.isEmpty(page)){
 			
-			Integer pagina = null;
-			
-			try{
-				pagina = Integer.valueOf(page);
-			} catch(NumberFormatException e){}
-			
-			this.listagem = this.buscaDAO.pesquisarPorTexto(this.termoBuscado, pagina);
-			
-		} else{
-			
-			this.listagem = this.buscaDAO.pesquisarPorTexto(this.termoBuscado, null);
-			
-		}
+		this.listagem = this.buscaDAO.pesquisarPorTexto(this.termoBuscado, this.page);
 		
 		this.qtdPaginas = this.buscaDAO.obterQtdPaginasPorTexto(this.termoBuscado).getValue();
 		
@@ -108,6 +96,14 @@ public class BuscaFaces extends TSMainFaces {
 
 	public void setQtdPaginas(Long qtdPaginas) {
 		this.qtdPaginas = qtdPaginas;
+	}
+
+	public Long getPage() {
+		return page;
+	}
+
+	public void setPage(Long page) {
+		this.page = page;
 	}
 
 }

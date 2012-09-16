@@ -12,7 +12,7 @@ public class BuscaDAO {
 
 
     @SuppressWarnings("unchecked")
-    public List<BuscaModel> pesquisarPorTexto(String texto, Integer page){
+    public List<BuscaModel> pesquisarPorTexto(String texto, Long page){
     	
     	TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
     	
