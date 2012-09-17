@@ -19,8 +19,9 @@ public class Constantes {
 	public static final String PREFIXO_IMAGEM_CARRO_CHEFE_FULL = "590x260_";
 	public static final String PREFIXO_IMAGEM_CARRO_CHEFE_THUMB = "180x79_";
 	public static final String PREFIXO_IMAGEM_FORNECEDOR_LOGOMARCA = "80x80_";
-	public static final String PREFIXO_IMAGEM_BANNER_FULL = "728x90_";
-	public static final String PREFIXO_IMAGEM_BANNER_THUMB = "260x170_";
+	public static final String PREFIXO_IMAGEM_BANNER_SUPERIOR_GRANDE = "728x90_";
+	public static final String PREFIXO_IMAGEM_BANNER_LATERAL = "170x260_";
+	public static final String PREFIXO_IMAGEM_BANNER_SUPERIOR_PEQUENO = "210x110_";
 	
 	public static Long TIPO_PROMOCAO_HORA = 1L;
 	public static Long TIPO_PROMOCAO_DIA = 2L;

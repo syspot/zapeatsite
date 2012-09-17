@@ -30,5 +30,35 @@ public class BannerDAO {
 		return (BannerModel) broker.getObjectBean(BannerModel.class, "id", "imagem", "taxaPrioridade", "qdoCliques", "flagAtivo");
 
 	}
+	
+	public BannerModel obterBannerLateral(){
+		
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		
+		broker.setPropertySQL("bannerdao.obterbannerlateral");
+		
+		return (BannerModel) broker.getObjectBean(BannerModel.class, "id", "imagem");
+		
+	}
+	
+	public BannerModel obterBannerSuperiorPequeno(){
+		
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		
+		broker.setPropertySQL("bannerdao.obterbannersuperiorpequeno");
+		
+		return (BannerModel) broker.getObjectBean(BannerModel.class, "id", "imagem");
+		
+	}
+	
+	public BannerModel obterBannerSuperiorGrande(){
+		
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		
+		broker.setPropertySQL("bannerdao.obterbannersuperiorgrande");
+		
+		return (BannerModel) broker.getObjectBean(BannerModel.class, "id", "imagem");
+		
+	}
 
 }

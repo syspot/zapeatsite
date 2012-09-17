@@ -144,131 +144,24 @@
     <!-- TERMINA BUSCA -->
     <!-- COMECA PUBLICIDADE/MARCA -->
     <div id="marcaPublicidade">
-    	<h1></h1>
-        <div class="superbanner"></div>
+    	<h1><img src="${promocaoFaces.bannerSuperiorPequeno.imagemSuperiorPequenoView}" alt="" title="" /></h1>
+        <div class="superbanner"><img src="${promocaoFaces.bannerSuperiorGrande.imagemSuperiorGrandeView}" alt="" title="" /></div>
     </div>
     <!-- TERMINA PUBLICIDADE/MARCA -->    
     <!-- COMECA MENU -->
-    <div id="menu">
+    	<div id="menu">
             <nav id="categorias">
             	<div id="cadastro">
                     <div id="facebook">
-                        <div class="fb-login-button" data-show-faces="false" data-width="200" data-max-rows="1"></div>
+                        <div class="fb-login-button" data-show-faces="false" data-width="200" data-max-rows="1">Entrar usando Facebook</div>
                     </div>
                     <div id="local">
                         <span class="chamadaCadastro">Não tem Facebook?</span>
-                        <div><a href="" class="modal" rel="modal" title="Cadastrar"><span class="icons iconCadastrar"></span>cadastrar</a></div>
-                        <div><a id="modal" href="inc/login.html" class="modal" rel="modal" title="Cadastrar"><span class="icons iconLogin"></span>login</a></div>
+                        <div><a class="modal" title="Cadastrar" rel="modal" href="inc/cadastro.jsf"><span class="icons iconCadastrar"></span>cadastrar</a></div>
+                        <div><a id="modal" href="inc/login.jsf" class="modal" rel="modal" title="Login"><span class="icons iconLogin"></span>login</a></div>
                     </div>
             	</div>
-                <ul id="principal">
-                    <li>
-                    	<!-- SE CATEGORIA:
-                        - Mais Indicados:<span class="icons maisIndicados"></span>
-                        - Baladas:<span class="icons iconBaladas"></span>
-                        - Bares:<span class="icons iconBares"></span>
-                        - Delivery:<span class="icons iconDelivery"></span>
-                        - Lanchonetes:<span class="icons iconLanchonete"></span>
-                        - Pizzarias:<span class="icons iconPizzaria"></span>
-                        - Restaurantes:<span class="icons iconRestaurante"></span>
-                        - Outras Categorias:<span class="icons outrasCat"></span>
-                        -->
-                        <span class="icons maisIndicados"></span>
-                        <span class="titMenu">mais indicados</span>
-                        <ul id="sub">
-                            <li><a href="listagem.html" title="promoção da semana1">promoção da semana</a></li>
-                            <li><a href="listagem.html" title="promoção do dia">promoção do dia</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">promoção da hora</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">ranking</a></li>
-                            <li><a href="listagem.html" title="carro-chefe">carro-chefe</a></li>
-                            <li><a href="estabelecimento.html" title="estabelecimentos">estabelecimentos</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <span class="icons iconBaladas"></span>
-                        <span class="titMenu">baladas</span>
-                        <ul id="sub">
-                            <li><a href="listagem.html" title="promoção da semana1">promoção da semana</a></li>
-                            <li><a href="listagem.html" title="promoção do dia">promoção do dia</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">promoção da hora</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">ranking</a></li>
-                            <li><a href="listagem.html" title="carro-chefe">carro-chefe</a></li>
-                            <li><a href="estabelecimento.html" title="estabelecimentos">estabelecimentos</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <span class="icons iconBares"></span>
-                        <span class="titMenu">bares</span>
-                        <ul id="sub">
-                            <li><a href="listagem.html" title="promoção da semana1">promoção da semana</a></li>
-                            <li><a href="listagem.html" title="promoção do dia">promoção do dia</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">promoção da hora</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">ranking</a></li>
-                            <li><a href="listagem.html" title="carro-chefe">carro-chefe</a></li>
-                            <li><a href="estabelecimento.html" title="estabelecimentos">estabelecimentos</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <span class="icons iconDelivery"></span>
-                        <span class="titMenu">delivery</span>
-                        <ul id="sub">
-                            <li><a href="listagem.html" title="promoção da semana1">promoção da semana</a></li>
-                            <li><a href="listagem.html" title="promoção do dia">promoção do dia</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">promoção da hora</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">ranking</a></li>
-                            <li><a href="listagem.html" title="carro-chefe">carro-chefe</a></li>
-                            <li><a href="estabelecimento.html" title="estabelecimentos">estabelecimentos</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <span class="icons iconLanchonete"></span>
-                        <span class="titMenu">lanchonetes</span>
-                        <ul id="sub">
-                            <li><a href="listagem.html" title="promoção da semana1">promoção da semana</a></li>
-                            <li><a href="listagem.html" title="promoção do dia">promoção do dia</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">promoção da hora</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">ranking</a></li>
-                            <li><a href="listagem.html" title="carro-chefe">carro-chefe</a></li>
-                            <li><a href="estabelecimento.html" title="estabelecimentos">estabelecimentos</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <span class="icons iconPizzaria"></span>
-                        <span class="titMenu">pizzarias</span>
-                        <ul id="sub">
-                            <li><a href="listagem.html" title="promoção da semana1">promoção da semana</a></li>
-                            <li><a href="listagem.html" title="promoção do dia">promoção do dia</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">promoção da hora</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">ranking</a></li>
-                            <li><a href="listagem.html" title="carro-chefe">carro-chefe</a></li>
-                            <li><a href="estabelecimento.html" title="estabelecimentos">estabelecimentos</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <span class="icons iconRestaurante"></span>
-                        <span class="titMenu">restaurantes</span>
-                        <ul id="sub">
-                            <li><a href="listagem.html" title="promoção da semana1">promoção da semana</a></li>
-                            <li><a href="listagem.html" title="promoção do dia">promoção do dia</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">promoção da hora</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">ranking</a></li>
-                            <li><a href="listagem.html" title="carro-chefe">carro-chefe</a></li>
-                            <li><a href="estabelecimento.html" title="estabelecimentos">estabelecimentos</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <span class="icons outrasCat"></span>
-                        <span class="titMenu">outras categorias</span>
-                        <ul id="sub">
-                            <li><a href="listagem.html" title="promoção da semana1">promoção da semana</a></li>
-                            <li><a href="listagem.html" title="promoção do dia">promoção do dia</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">promoção da hora</a></li>
-                            <li><a href="listagem.html" title="promoção da hora">ranking</a></li>
-                            <li><a href="listagem.html" title="carro-chefe">carro-chefe</a></li>
-                            <li><a href="estabelecimento.html" title="estabelecimentos">estabelecimentos</a></li>
-                        </ul>
-                    </li>
-                </ul>
+                <%@ include file="/categorias.jsp" %>
             </nav>
         </div>
     <!-- TERMINA MENU -->
@@ -277,11 +170,10 @@
 
 <div id="id-Breadcrumb">
     <span class="migalha"><a href="" title="">Página Inicial</a></span>    »    
-    <span class="migalha"><a href="" title="">Restaurantes</a></span>    »   
-    <span class="migalha"><a href="" title="">Promoção da Hora</a></span>    »   
-    <span class="migalha"><a href="" title="">Restaurante</a></span>    
-    <span class="migalha"><a href="" title="">Yemanjá</a></span>    »   
-    <span class="migalha"><a href="" title="">Muqueca a Moda TopSys</a></span>
+    <span class="migalha"><a href="" title="">${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.descricao}</a></span>    »   
+    <span class="migalha"><a href="" title="">${promocaoFaces.promocao.fornecedorModel.nomeFantasia}</a></span>    »   
+    <span class="migalha"><a href="" title="">${promocaoFaces.promocao.tipoPromocaoModel.descricao}</a></span>    »   
+    <span class="migalha"><a href="" title="">${promocaoFaces.promocao.titulo}</a></span>
 </div>
 
 <!-- COMECA CENTRAL -->
@@ -292,12 +184,12 @@
     	<!-- COMECA COLUNA ESQUERDA -->
     	<div id="esqInt">
         	<div id="boxSobreEstab">
-            	<div class="marca"></div>
-                <p class="titulo marginBottom15px">Nome local</p>
-                <div class="marginBottom5px">
-                	<a href="" title="Indico"><span class="icons indicacaoAzul"></span>Eu Indico [100]</a>
-                </div>
-                <div><span class="icons telAzul"></span>(71) 9876.5432]</div>
+            	<div class="marca"><img src="${promocaoFaces.promocao.fornecedorModel.logoMarcaView}" width="117" height="117" alt="${promocaoFaces.promocao.fornecedorModel.nomeFantasia}" title="${promocaoFaces.promocao.fornecedorModel.nomeFantasia}" /></div>
+                <p class="titulo marginBottom15px">${promocaoFaces.promocao.fornecedorModel.nomeFantasia} - ${promocaoFaces.promocao.fornecedorModel.bairro}</p>
+                <!--<div class="marginBottom5px">
+                	 <a href="" title="Indico"><span class="icons indicacaoAzul"></span>Eu Indico [100]</a>  
+                </div> -->
+                <div><span class="icons telAzul"></span>${promocaoFaces.promocao.fornecedorModel.telefone}</div>
             </div>
                 	
         </div>
@@ -307,23 +199,23 @@
         <div id="meio">
         	<div id="destaque">
             	<div id="fotoDestaque">
-	                <a href=""><img src="img/model/590x260.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a>
+	                <a href=""><img src="${promocaoFaces.promocao.imagemPromocaoFullView}" alt="${promocaoFaces.promocao.fornecedorModel.nomeFantasia}" title="${promocaoFaces.promocao.fornecedorModel.nomeFantasia}" /></a>
                     <div class="tituloPromo">
-                    	<p><span class="tipoPromo">Promoção da hora</span></p>
-                        <p><span class="nomePromo">Nome da Promoção</span></p>
+                    	<p><span class="tipoPromo">${promocaoFaces.promocao.tipoPromocaoModel.descricao}</span></p>
+                        <p><span class="nomePromo">${promocaoFaces.promocao.titulo}</span></p>
                     </div>
                 </div>
                 <div id="faixa">
-                	<p class="precoDe">De: R$ 200,00</p>
-                    <p class="precoPor">Por: R$ 120,00</p>
-                   	<p class="percentual">40%</p>
+                	<p class="precoDe">De: R$ ${promocaoFaces.promocao.precoOriginalFormatado}</p>
+                    <p class="precoPor">Por: R$ ${promocaoFaces.promocao.precoPromocionalFormatado}</p>
+                   	<p class="percentual">${promocaoFaces.promocao.percentualDesconto}%</p>
                    	<p class="fontYi font10px">desconto</p>
                 </div>
                 <div class="boxInfo">
-                	<a href="LINK RESTAURANTE > ESTABELECIMENTO" title="" class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: Restaurante</a>
+                	<a href="listagem.jsf?categoriaId=${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.id}" title="" class="floatLeft"><span class="${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.css}"></span>Categoria: ${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.descricao}</a>
                 </div>
                 <blockquote class="fontYi">
-                	<p>Casais de namorados tem promoção especial. Venha comemorar aniversário de namoro e a companheira não paga o rodízio.</p>
+                	<p>${promocaoFaces.promocao.descricao}</p>
                 </blockquote>
                 <div class="clear"></div>
                 <div class="barraCompartilhamento">
@@ -334,11 +226,11 @@
                 	<ul>
                     	<li>
                         	<p class="titOtherInfo">horário da promoção</p>
-                            <p>texto da informação</p>
+                            <p>${promocaoFaces.promocao.fornecedorModel.horariosFuncionamento}</p>
                         </li>
                     	<li>
                         	<p class="titOtherInfo">O local</p>
-                            <p>texto da informação</p>
+                            <p>${promocaoFaces.promocao.fornecedorModel.logradouro}, ${promocaoFaces.promocao.fornecedorModel.bairro}</p>
                         </li>
                         <li>
                         	<p class="titOtherInfo">Outros</p>
@@ -353,7 +245,7 @@
                     </ul>
                 </div>
                 
-                <address>Aqui entra o endereço do estabelecimento</address>
+                <address>${promocaoFaces.promocao.fornecedorModel.logradouro}, nº ${promocaoFaces.promocao.fornecedorModel.numero} - ${promocaoFaces.promocao.fornecedorModel.bairro}</address>
                 
                 <script>
 				  var map;
@@ -394,29 +286,29 @@
         <div id="dir">
         	<div class="boxSubCat">
             	<h2>Promoção do dia</h2>
-                <img src="img/model/180x79.jpg" alt="" title="" />
-                <p class="titulo">Nome da promo</p>
+                <img src="${promocaoFaces.promocaoDia.imagemPromocaoThumbView}" alt="" title="" />
+                <p class="titulo">${promocaoFaces.promocaoDia.titulo}</p>
                 <!-- SE PROMOÇÃO EM DESCONTO -->
-                <p><span class="precoDe">De: R$700,00</span>&nbsp;&nbsp;<span class="precoPor">Por: R$500,00</span> 
+                <p><span class="precoDe">De: R$ ${promocaoFaces.promocaoDia.precoOriginalFormatado}</span>&nbsp;&nbsp;<span class="precoPor">Por: R$ ${promocaoFaces.promocaoDia.precoPromocionalFormatado}</span> 
             </div>
         	<div class="boxSubCat">
             	<h2>Promoção da semana</h2>
-                <img src="img/model/180x79.jpg" alt="" title="" />
-                <p class="titulo">Nome da promo</p>
+                <img src="${promocaoFaces.promocaoSemana.imagemPromocaoThumbView}" alt="" title="" />
+                <p class="titulo">${promocaoFaces.promocaoSemana.titulo}</p>
                 <!-- SE PROMOÇÃO EM PRODUTO -->
-                <p><span class="fontYi">Na Cheiro de Pizza comprando uma pizza grande você leva outra pizza do mesmo tamanho e sabor totalmente grátis.</span></p>
+                <p><span class="fontYi">${promocaoFaces.promocaoSemana.descricao}</span></p>
             </div>
             <div class="boxSubCat">
             	<h2>Carro-chefe</h2>
-                <img src="img/model/180x79.jpg" alt="" title="" />
-                <p class="titulo">Nome do estab</p>
-                <p class="categoria">categoria</p>
-                <p class="item">nome do prod</p>
-                <p><span class="precoDe">De: R$789,00</span>&nbsp;&nbsp;<span class="precoPor">Por: R$254,00</span> 
+                <img src="${promocaoFaces.carroChefeModel.imagemThumbView}" alt="" title="" />
+                <p class="titulo">${promocaoFaces.carroChefeModel.fornecedorModel.nomeFantasia}</p>
+                <p class="categoria">${promocaoFaces.carroChefeModel.fornecedorModel.categoriaPrincipal.descricao}</p>
+                <p class="item">${promocaoFaces.carroChefeModel.titulo}</p>
+                <!-- <p><span class="precoDe">De: R$789,00</span>&nbsp;&nbsp;<span class="precoPor">Por: R$254,00</span>  --> 
             </div>
             
             <div class="boxSubCat">
-            	<div class="banner">banner</div>
+            	<div class="banner"><img src="${promocaoFaces.bannerLateral.imagemLateralView}" alt="" title="" /></div>
             </div>
             
             

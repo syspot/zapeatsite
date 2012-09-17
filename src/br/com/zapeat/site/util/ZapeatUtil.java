@@ -94,5 +94,30 @@ public class ZapeatUtil {
 		
 		return inteiro;
 	}
+	
+	public static String getValorFormatado(Double valor){
+		
+		String preco = valor.toString().replace(".", ",");
+		
+		if(preco.split(",")[1].equals("0")){
+			
+			preco = preco.split(",")[0] + ",00";
+			
+		} else{
+			
+			if(preco.split(",")[1].length() > 1){
+
+				preco = preco.split(",")[0] + "," + preco.split(",")[1];
+				
+			} else{
+				
+				preco = preco.split(",")[0] + "," + preco.split(",")[1] + "0";
+				
+			}
+			
+		}
+		
+		return preco;
+	}
 
 }
