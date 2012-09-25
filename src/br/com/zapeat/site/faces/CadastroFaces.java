@@ -7,8 +7,10 @@ import org.apache.myfaces.custom.fileupload.UploadedFile;
 
 
 
+import br.com.topsys.constant.TSConstant;
 import br.com.topsys.exception.TSApplicationException;
 import br.com.topsys.file.TSFile;
+import br.com.topsys.util.TSCryptoUtil;
 import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.faces.TSMainFaces;
 import br.com.topsys.web.util.TSFacesUtil;
@@ -88,6 +90,8 @@ public class CadastroFaces extends TSMainFaces {
 			if (!this.existeEmail()) {
 
 				this.criarArquivoDiretorio();
+				
+				this.usuarioModel.setSenha(TSCryptoUtil.gerarHash(this.usuarioModel.getSenha(), TSConstant.CRIPTOGRAFIA_MD5));
 
 				this.usuarioDAO.inserir(this.usuarioModel);
 

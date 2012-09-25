@@ -2,6 +2,7 @@
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>
 
 <f:view>
 
@@ -16,16 +17,7 @@
 <link href="css/home.css" rel="stylesheet" type="text/css" />
 <link href="css/cssReset.css" rel="stylesheet" type="text/css" />
 <link href="css/fontface.css" rel="stylesheet" type="text/css" />
-
-<!--<meta property="og:site_name" content="Zapeat">
-<meta property="og:image" content="http://img.zapeat.com/icon/icone-68px.png">
-<meta property="geo.position" content="-13.548547000;-38.638272000">
-<meta property="geo.position" conterty="ICBM" content="-13.548547000,-38.638272000">
-<meta property="geo.region" content="BR-BA">
-<meta property="geo.placename" content="Salvador">-->                                                                
-
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"> </script>
-<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
 <script src="js/jquery-latest.js"></script>
 <script type="text/javascript" src="js/geometa.js"></script>
 <script type="text/javascript">
@@ -139,7 +131,6 @@
 
 <body onload="initialize()">
 
-
 <!-- COMECA TOPO -->
 <div id="topo">
 	<!-- COMECA BUSCA -->
@@ -162,7 +153,70 @@
             <nav id="categorias">
             	<div id="cadastro">
             		<div id="facebook">
-                        <div class="fb-login-button" data-show-faces="false" data-width="200" data-max-rows="1">Entrar usando Facebook</div>
+						<div id="fb-root"></div>
+					    <script>
+					      // Load the SDK Asynchronously
+					      (function(d){
+					         var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+					         if (d.getElementById(id)) {return;}
+					         js = d.createElement('script'); js.id = id; js.async = true;
+					         js.src = "//connect.facebook.net/en_US/all.js";
+					         ref.parentNode.insertBefore(js, ref);
+					       }(document));
+					
+					      // Init the SDK upon load
+					      window.fbAsyncInit = function() {
+					        FB.init({
+					          appId      : '444305308941322', // App ID
+					          channelUrl : 'http://localhost:8080/zapeatsite/index.sec', // Path to your Channel File
+					          status     : true, // check login status
+					          cookie     : true, // enable cookies to allow the server to access the session
+					          xfbml      : true  // parse XFBML
+					        });
+					
+					        // listen for and handle auth.statusChange events
+					        FB.Event.subscribe('auth.statusChange', function(response) {
+					          if (response.authResponse) {
+					            // user has auth'd your app and is logged into Facebook
+					            FB.api('/me', function(me){
+					              if (me.name) {
+					            	document.getElementById('auth-displayid').innerHTML = me.id;  
+					            	document.getElementById('auth-displayemail').innerHTML = me.email;
+					                document.getElementById('auth-displayname').innerHTML = me.name;
+					                document.getElementById('faceId').value= me.id;
+					                document.getElementById('faceNome').value= me.name;
+					                document.getElementById('faceEmail').value= me.email;
+					              }
+					            })
+					            document.getElementById('auth-loggedout').style.display = 'none';
+					            document.getElementById('auth-loggedin').style.display = 'block';
+					            document.getElementById('botao').style.display = 'none';
+					          } else {
+					            // user has not auth'd your app, or is not logged into Facebook
+					            document.getElementById('auth-loggedout').style.display = 'block';
+					            document.getElementById('auth-loggedin').style.display = 'none';
+					            document.getElementById('botao').style.display = 'block';
+					          }
+					        });
+					
+					        // respond to clicks on the login and logout links
+					        document.getElementById('auth-loginlink').addEventListener('click', function(){
+					          FB.login();
+					        });
+					        document.getElementById('auth-logoutlink').addEventListener('click', function(){
+					          FB.logout();
+					        }); 
+					      } 
+					    </script>
+					      <div id="auth-status">
+					        <div id="auth-loggedout" class="fb-login-button">Entrar</div>
+					        <div id="auth-loggedin" style="display:none">
+					        ID Facebook: <span id="auth-displayid"></span>
+					          Olá, <span id="auth-displayname"></span>  
+					        (<a href="#" id="auth-logoutlink">logout</a>)
+					        Email: <span id="auth-displayemail"></span>
+					      </div>
+					    </div>
                     </div>
                     
                     <div id="local">
@@ -178,8 +232,16 @@
     <!-- TERMINA MENU -->
 </div>
 <!-- TERMINA TOPO -->
+<h:form id="form">
+    <t:inputHidden forceId="true" value="#{faceBookFaces.id}" id="faceId" />
+    <t:inputHidden forceId="true" value="#{faceBookFaces.nome}" id="faceNome" />
+    <t:inputHidden forceId="true" value="#{faceBookFaces.email}" id="faceEmail" />
+    <h:commandButton value="submit" action="#{faceBookFaces.obterParametros}"/>
+    
+    <h:commandLink action="#{loginFacebookFaces.logout}" value="LOGOUT" />
+</h:form>
 
-<div id="id-Breadcrumb"><span id="status"></span></div>
+<div id="id-Breadcrumb"><span id="status">Olá, fulano de tal, temos ótimas promoções pra você!</span></div>
 
 <!-- COMECA CENTRAL -->
 <div id="central">

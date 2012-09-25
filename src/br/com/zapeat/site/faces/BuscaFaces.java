@@ -28,7 +28,7 @@ public class BuscaFaces extends TSMainFaces {
 	
 	public BuscaFaces(){
 		this.cidade = new CidadeModel();
-		this.buscar();
+		//this.buscar();
 	}
 	
 	public String buscar(){

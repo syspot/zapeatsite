@@ -104,3 +104,9 @@
 				backgroundColor:"#fff"
 		});
     });
+    
+    jQuery(window).ready(function(){  
+        jQuery("#btnInit").click(function(){
+			$('#info').val(initialize);
+			}); 			
+    })
