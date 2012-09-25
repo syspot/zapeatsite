@@ -3,6 +3,7 @@ package br.com.zapeat.site.model;
 import java.util.Date;
 
 import br.com.topsys.util.TSUtil;
+import br.com.zapeat.site.util.Constantes;
 
 public class BannerModel {
 
@@ -103,6 +104,17 @@ public class BannerModel {
 
 	public void setFlagAtivo(Boolean flagAtivo) {
 		this.flagAtivo = flagAtivo;
+	}
+	
+	public String getImagemLateralView(){
+		return Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_BANNER_LATERAL + this.imagem;
+	}
+	
+	public String getImagemSuperiorGrandeView(){
+		return Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_BANNER_SUPERIOR_GRANDE + this.imagem;
+	}
+	public String getImagemSuperiorPequenoView(){
+		return Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_BANNER_SUPERIOR_PEQUENO + this.imagem;
 	}
 
 	@Override

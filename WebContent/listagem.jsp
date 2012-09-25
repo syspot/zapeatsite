@@ -165,11 +165,8 @@
 
 <div id="id-Breadcrumb">
     <span class="migalha"><a href="" title="">Página Inicial</a></span>    »    
-    <span class="migalha"><a href="" title="">Restaurantes</a></span>    »   
-    <span class="migalha"><a href="" title="">Promoção da Hora</a></span>    »   
-    <span class="migalha"><a href="" title="">Restaurante</a></span>    
-    <span class="migalha"><a href="" title="">Yemanjá</a></span>    »   
-    <span class="migalha"><a href="" title="">Muqueca a Moda TopSys</a></span>
+    <span class="migalha"><a href="" title="">${listagemFaces.categoria.descricao}</a></span>    »   
+    <span class="migalha"><a href="" title="">${listagemFaces.nomeTipo}</a></span>       
 </div>
 
 <!-- COMECA CENTRAL -->
@@ -181,22 +178,22 @@
         <!-- COMECA COLUNA MEIO -->
         <div id="meio">
         	<div id="tituloSessao">
-            	<span class="icons maisIndicados"></span>
-            	<h2>Mais Indicados</h2>
+            	<span class="${listagemFaces.categoria.css}"></span>
+            	<h2>${listagemFaces.categoria.descricao}</h2>
                 <!--==
                 <p>Promoção da hora</p>
                 <p>Promoção do dia</p>
                 <p>Promoção da semana</p>                
                 <p>Carro-chefe</p>
                 ==-->
-                <p>Estabelecimentos</p>
+                <p>${listagemFaces.nomeTipo}</p>
             </div>
             <ul id="listagem">
             		<!-- SE LISTAGEM POR PROMOÇÃO -->
             		<c:forEach items="${listagemFaces.promocoes}" var="promocao">
 	                	<li>
 		                    <a href="" title="">
-		                    	<div class="marca floatLeft"><img src="${promocao.fornecedorModel.logoMarca}" alt="Marca 80x80px" title="${promocao.fornecedorModel.nomeFantasia}" /></div>
+		                    	<div class="marca floatLeft"><img src="${promocao.fornecedorModel.logoMarcaView}" alt="${promocao.titulo}" title="${promocao.fornecedorModel.nomeFantasia}" /></div>
 		                        <!-- SE PROMOÇÃO EM PRODUTO -->
 		                        <div class="info">
 		                        	<p class="titulo"><c:out value="${promocao.fornecedorModel.nomeFantasia}"/>  </p>
@@ -213,8 +210,41 @@
 	                        <div class="boxInfo">
 	                            <div class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: <c:out value="${promocao.fornecedorModel.categoriaPrincipal.descricao}" /></div>
 	                            <div class="floatLeft marginLeft"><span class="icons tel"></span><c:out value="${promocao.fornecedorModel.telefone}" /></div>
-	                            <div class="floatLeft marginLeft"><span class="icons site"></span><c:out value="${promocao.fornecedorModel.site}"/></div>
+	                            
+	                            <c:if test="${not empty promocao.fornecedorModel.site}">
+	                            	<div class="floatLeft marginLeft"><span class="icons site"></span> <a href="${promocao.fornecedorModel.site}" target="_blank" title="${promocao.fornecedorModel.site}">Visite o site</a> </div>
+			           			</c:if>
+			           			
 	                            <div class="floatLeft marginLeft"><span class="icons indicacao"></span><c:out value="${promocao.indicacoes}"/> indicam</div>
+	                        </div>
+	                    </li>
+                    </c:forEach>
+                    
+            		<c:forEach items="${listagemFaces.carrosChefes}" var="carroChefe">
+	                	<li>
+		                    <a href="" title="">
+		                    	<div class="marca floatLeft"><img src="${carroChefe.fornecedorModel.logoMarcaView}" alt="Marca 80x80px" title="${carroChefe.fornecedorModel.nomeFantasia}" /></div>
+		                        <!-- SE PROMOÇÃO EM PRODUTO -->
+		                        <div class="info">
+		                        	<p class="titulo"><c:out value="${carroChefe.fornecedorModel.nomeFantasia}"/>  </p>
+		                            <p class="item"><c:out value="${carroChefe.titulo}" /></p>                            
+		                            <p class="resumo fontYi">
+		                            <c:out value="${carroChefe.descricao}"/>
+		                            </p>
+		                        </div>
+		                    </a>
+	                        <!-- SE LISTAGEM POR PROMOÇÃO, RETIRA DIV A SEGUIR -->
+	                        <!-- <div class="sessao"><span class="${promocao.cssSessao}"></span><c:out value="${promocao.tipoPromocaoModel.descricao}" /></div> -->
+	                        
+	                        <br clear="all" />
+	                        <div class="boxInfo">
+	                            <div class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: <c:out value="${carroChefe.fornecedorModel.categoriaPrincipal.descricao}" /></div>
+	                            <div class="floatLeft marginLeft"><span class="icons tel"></span><c:out value="${carroChefe.fornecedorModel.telefone}" /></div>
+	                            
+	                            <c:if test="${not empty carroChefe.fornecedorModel.site}">
+	                            	<div class="floatLeft marginLeft"><span class="icons site"></span> <a href="${carroChefe.fornecedorModel.site}" target="_blank" title="${carroChefe.fornecedorModel.site}">Visite o site</a> </div>
+			           			</c:if>
+			           			
 	                        </div>
 	                    </li>
                     </c:forEach>

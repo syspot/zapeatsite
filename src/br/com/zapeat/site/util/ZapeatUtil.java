@@ -72,5 +72,52 @@ public class ZapeatUtil {
 	public static long gerarNumeroAleatorio() {
 		return (long) ((10000 * Math.random()) * (100 * Math.random()));
 	}
+	
+	public static Long getParamFormatado(String param){
+		
+		Long inteiro = null;
+		
+		try{
+			inteiro = Long.valueOf(param);
+		} catch(NumberFormatException e){}
+		
+		return inteiro;
+	}
+	
+	public static Long getPageParamFormatado(String param){
+		
+		Long inteiro = 1L;
+		
+		try{
+			inteiro = Long.valueOf(param);
+		} catch(NumberFormatException e){}
+		
+		return inteiro;
+	}
+	
+	public static String getValorFormatado(Double valor){
+		
+		String preco = valor.toString().replace(".", ",");
+		
+		if(preco.split(",")[1].equals("0")){
+			
+			preco = preco.split(",")[0] + ",00";
+			
+		} else{
+			
+			if(preco.split(",")[1].length() > 1){
+
+				preco = preco.split(",")[0] + "," + preco.split(",")[1];
+				
+			} else{
+				
+				preco = preco.split(",")[0] + "," + preco.split(",")[1] + "0";
+				
+			}
+			
+		}
+		
+		return preco;
+	}
 
 }

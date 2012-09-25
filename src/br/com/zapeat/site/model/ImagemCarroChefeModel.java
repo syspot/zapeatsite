@@ -2,6 +2,8 @@ package br.com.zapeat.site.model;
 
 import java.io.Serializable;
 
+import br.com.zapeat.site.util.Constantes;
+
 @SuppressWarnings("serial")
 public class ImagemCarroChefeModel implements Serializable {
 
@@ -33,6 +35,15 @@ public class ImagemCarroChefeModel implements Serializable {
 
 	public void setImagem(String imagem) {
 		this.imagem = imagem;
+	}
+	
+
+	public String getImagemFullView(){
+		return Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_CARRO_CHEFE_FULL + getImagem();
+	}
+	
+	public String getImagemThumbView(){
+		return Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_CARRO_CHEFE_THUMB + getImagem();
 	}
 
 	@Override

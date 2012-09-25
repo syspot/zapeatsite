@@ -5,6 +5,7 @@ import java.util.List;
 
 import br.com.topsys.util.TSUtil;
 import br.com.zapeat.site.util.Constantes;
+import br.com.zapeat.site.util.ZapeatUtil;
 
 
 public class PromocaoModel {
@@ -30,6 +31,10 @@ public class PromocaoModel {
 	private List<ImagemPromocaoModel> imagensPromocoes;
 	
 	private Integer indicacoes;
+	
+	private String imagemThumb;
+	
+	private String imagemPromocao;
 
 	public Long getId() {
 		return TSUtil.tratarLong(id);
@@ -119,9 +124,49 @@ public class PromocaoModel {
 		this.indicacoes = indicacoes;
 	}
 	
+	public String getImagemThumb() {
+		return imagemThumb;
+	}
+
+	public void setImagemThumb(String imagemThumb) {
+		this.imagemThumb = imagemThumb;
+	}
+	
+	public String getImagemPromocao() {
+		return imagemPromocao;
+	}
+
+	public void setImagemPromocao(String imagemPromocao) {
+		this.imagemPromocao = imagemPromocao;
+	}
+
+	public String getImagemThumbView(){
+		return TSUtil.isEmpty(this.imagemThumb) ? this.imagemThumb : Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_PROMOCAO_THUMB + imagemThumb;
+	}
+	
+	public String getImagemPromocaoFullView(){
+		return TSUtil.isEmpty(this.imagemPromocao) ? this.imagemPromocao : Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_PROMOCAO_FULL + this.imagemPromocao;
+	}
+	
+	public String getImagemPromocaoThumbView(){
+		return TSUtil.isEmpty(this.imagemPromocao) ? this.imagemPromocao : Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_PROMOCAO_THUMB + this.imagemPromocao;
+	}
+
 	public String getCssSessao(){
 		return getTipoPromocaoModel().getId().equals(Constantes.TIPO_PROMOCAO_SEMANA) ? "icons daSemana" : 
 			getTipoPromocaoModel().getId().equals(Constantes.TIPO_PROMOCAO_DIA) ? "icons doDia" : "icons daHora";  
+	}
+	
+	public String getPrecoOriginalFormatado(){
+		return ZapeatUtil.getValorFormatado(this.precoOriginal);
+	}
+	
+	public String getPrecoPromocionalFormatado(){
+		return ZapeatUtil.getValorFormatado(this.precoPromocional);
+	}
+	
+	public int getPercentualDesconto(){
+		return 100 - (int)(this.precoPromocional.doubleValue() * 100 / this.precoOriginal.doubleValue());
 	}
 
 	@Override
