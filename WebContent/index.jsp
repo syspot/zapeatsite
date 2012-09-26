@@ -408,7 +408,7 @@ window.close();
             	<h2>Top Geral</h2>
                 <ul id="topGeral">
                 	<c:forEach items="${indexFaces.topGeral}" var="top">
-                    <li class="${top.cssTopGeral}">
+                    <li class="${top.css}">
                     	<a href="estabelecimento.jsf?id=${top.id}" title="">
                             <p class="titulo">${top.nomeFantasia}</p>
                         </a>

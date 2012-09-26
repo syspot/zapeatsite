@@ -13,7 +13,6 @@
 
 window.onbeforeunload = function() {
     window.opener.reload(true);
-    window.location.href = "http://localhost:8080/zapeatsite/index.jsf";
     window.close();
 };
 

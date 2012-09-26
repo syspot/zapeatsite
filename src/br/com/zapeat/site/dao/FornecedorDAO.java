@@ -4,6 +4,7 @@ import java.util.List;
 
 import br.com.topsys.database.TSDataBaseBrokerIf;
 import br.com.topsys.database.factory.TSDataBaseBrokerFactory;
+import br.com.zapeat.site.model.CategoriaModel;
 import br.com.zapeat.site.model.FornecedorModel;
 
 public class FornecedorDAO {
@@ -27,6 +28,28 @@ public class FornecedorDAO {
 		broker.setPropertySQL("fornecedordao.pesquisarTopGeral");
 
 		return broker.getCollectionBean(FornecedorModel.class, "id", "nomeFantasia", "quantidadeIndicacoes");
+
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<FornecedorModel> pesquisarMelhorAtendimento(CategoriaModel model) {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+		broker.setPropertySQL("fornecedordao.pesquisarMelhorAtendimento", model.getId());
+
+		return broker.getCollectionBean(FornecedorModel.class, "id", "nomeFantasia", "quantidadeIndicacoes", "logoMarca");
+
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<FornecedorModel> pesquisarMelhorComida(CategoriaModel model) {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+		broker.setPropertySQL("fornecedordao.pesquisarMelhorComida", model.getId());
+
+		return broker.getCollectionBean(FornecedorModel.class, "id", "nomeFantasia", "quantidadeIndicacoes", "logoMarca");
 
 	}
 

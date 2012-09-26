@@ -18,6 +18,10 @@ public class CategoriaModel {
 
 	}
 	
+	public CategoriaModel(Long id) {
+		this.id = id;
+	}
+	
 	public CategoriaModel(String descricao, String css) {
 		this.descricao = descricao;
 		this.css = css;

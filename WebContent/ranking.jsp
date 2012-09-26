@@ -118,6 +118,8 @@
 </head>
 
 <body>
+
+<h:form id="form">
 <!-- COMECA TOPO -->
 <div id="topo">
 	<!-- COMECA BUSCA -->
@@ -219,14 +221,11 @@
     <!-- TERMINA MENU -->
 </div>
 
-<h:form id="form">
-    <t:inputHidden forceId="true" value="#{faceBookFaces.id}" id="faceId" />
-    <t:inputHidden forceId="true" value="#{faceBookFaces.nome}" id="faceNome" />
-    <t:inputHidden forceId="true" value="#{faceBookFaces.email}" id="faceEmail" />
-</h:form>
-<div id="div999">
+<t:inputHidden forceId="true" value="#{rankingFaces.usuarioModel.id}" id="faceId" />
+<t:inputHidden forceId="true" value="#{rankingFaces.usuarioModel.nome}" id="faceNome" />
+<t:inputHidden forceId="true" value="#{rankingFaces.usuarioModel.email}" id="faceEmail" />
+
 <div id="id-Breadcrumb"><span id="status">Olá, <span id="nome"></span>, temos ótimas promoções pra você!</span></div>
-</div>
 
 <!-- COMECA CENTRAL -->
 <div id="central">
@@ -238,12 +237,7 @@
         	<div id="tituloSessao">
             	<span class="icons maisIndicados"></span>
             	<h2>Ranking</h2>
-                <!--==
-                <p>Promoção da hora</p>
-                <p>Promoção do dia</p>
-                <p>Promoção da semana</p>                
-                <p>Carro-chefe</p>
-                ==-->
+                
                 <p>Mais Indicados</p>
             </div>
         	<div class="coluna">
@@ -260,8 +254,8 @@
                         </a>
                     </blockquote>
                     <div class="indico">
-                    	<p><a id="modal" href="inc/indicacao.html" title="" class="modal" rel="modal"><span class="icons indicacaoRed"></span> Indico [100]</a></p>
-                    	<p><a id="modal" href="inc/indicacao.html" title="" class="modal" rel="modal"><span class="icons naoindicacaoRed"></span> Não indico</a></p>
+                    	<p><a id="modal" href="inc/indicacao.jsf" title="" class="modal" rel="modal"><span class="icons indicacaoRed"></span> Indico [100]</a></p>
+                    	<p><a id="modal" href="inc/indicacao.jsf" title="" class="modal" rel="modal"><span class="icons naoindicacaoRed"></span> Não indico</a></p>
                     </div>
                 </div>
                 
@@ -486,6 +480,8 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 </script>
+
+</h:form>
 </body>
 </html>
 </f:view>
