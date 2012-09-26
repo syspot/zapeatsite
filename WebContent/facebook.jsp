@@ -17,12 +17,29 @@ window.onbeforeunload = function() {
 };
 
 </script>
-<a onclick="window.open('https://www.facebook.com/dialog/oauth?display=popup&amp;client_id=444305308941322&amp;scope=read_friendlists,publish_stream,offline_access,publish_checkins,user_checkins,publish_actions,user_likes,email&amp;redirect_uri=http://localhost:8080/zapeatsite/index.sec', 'fblogin', 'location=1,status=1,scrollbars=1, width=350,height=400');return false;" title="Entrar usando o Facebook">
+
+		<div id="fb-root"></div>
+		<script>
+			(function(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id))
+					return;
+				js = d.createElement(s);
+				js.id = id;
+				js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1&appId=444305308941322";
+				fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+		</script>
+		
+		<a onclick="window.open('https://www.facebook.com/dialog/oauth?display=popup&amp;client_id=444305308941322&amp;scope=read_friendlists,publish_stream,offline_access,publish_checkins,user_checkins,publish_actions,user_likes,email&amp;redirect_uri=http://localhost:8080/zapeatsite/index.sec', 'fblogin', 'location=1,status=1,scrollbars=1, width=350,height=400');return false;" title="Entrar usando o Facebook">
                                                                 <span>Entrar usando o Facebook</span>
                                                             </a>
-	<h:outputLink value="#{faceBookFaces.url}">
-		Login com FaceBook
+	<h:outputLink styleClass="fb-login-button" value="#{faceBookFaces.url}">
+		<h:graphicImage value="img/facebook.gif" />
 	</h:outputLink>
+
+	
+	
 </f:view>
 </body>
 </html>

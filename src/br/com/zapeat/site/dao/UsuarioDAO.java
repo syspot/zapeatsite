@@ -29,4 +29,14 @@ public class UsuarioDAO {
 
 	}
 
+	public void alterar(UsuarioModel model) throws TSApplicationException {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+		broker.setPropertySQL("usuariodao.alterar", model.getNome(), model.getId());
+
+		broker.execute();
+
+	}
+
 }

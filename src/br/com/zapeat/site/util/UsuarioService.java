@@ -17,7 +17,7 @@ public class UsuarioService {
 			DefaultFacebookClient fb = new DefaultFacebookClient(accessToken);
 
 			Usuario user = fb.fetchObject("me", Usuario.class);
-
+			
 			if (!TSUtil.isEmpty(user) && !TSUtil.isEmpty(user.getId())) {
 
 				model = new UsuarioModel();
@@ -27,6 +27,8 @@ public class UsuarioService {
 				model.setNome(user.getName());
 
 				model.setEmail(user.getEmail());
+				
+				model.setFlagAtivo(Boolean.TRUE);
 			}
 
 		} catch (Throwable ex) {

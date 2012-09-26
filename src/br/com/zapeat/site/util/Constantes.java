@@ -2,7 +2,7 @@ package br.com.zapeat.site.util;
 
 import java.io.File;
 
-public class Constantes {
+public final class Constantes {
 
 	public static final String PASTA_UPLOAD_TEMP = "e:" + File.separator + "img_zapeat" + File.separator;
 	public static final String PASTA_UPLOAD = "e:" + File.separator + "img_zapeat" + File.separator;

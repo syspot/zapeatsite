@@ -25,7 +25,6 @@ public class RankingFaces extends TSMainFaces {
 	public RankingFaces() {
 
 		this.carregaDados();
-		
 
 	}
 

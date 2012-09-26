@@ -53,6 +53,7 @@
       <param-value>100k</param-value>
     </init-param>
   </filter>
+  
   <filter-mapping>
     <filter-name>extensionsFilter</filter-name>
     <servlet-name>Faces Servlet</servlet-name>

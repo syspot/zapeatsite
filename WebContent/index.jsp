@@ -3,6 +3,7 @@
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>
+<%@ taglib prefix="p" uri="http://primefaces.prime.com.tr/ui"%>
 
 <f:view>
 
@@ -126,18 +127,10 @@
 			alert(msg);
 		}
 </script>   
-
 </head>
 
 <body onload="initialize()">
-
-<script type="text/javascript">
-window.onbeforeunload = function() {
-    window.opener.reload(true);
-};
-window.close();
-</script>
-
+	
 <!-- COMECA TOPO -->
 <div id="topo">
 	<!-- COMECA BUSCA -->
@@ -216,18 +209,23 @@ window.close();
 					        }); 
 					      } 
 					    </script>
-					      <div id="auth-status">
-					        <div id="auth-loggedout" class="fb-login-button">Entrar com Facebook</div>
-					        
-					    </div>
+					    
+				      <h:outputLink value="#{faceBookFaces.url}" rendered="#{empty sessionScope.usuarioLogado.id}">
+						<h:graphicImage value="img/facebook.gif" />
+					  </h:outputLink>
+					  <h:outputLink value="#{faceBookFaces.logout}" rendered="#{!empty sessionScope.usuarioLogado.id}">
+					  	Sair
+					  </h:outputLink>
+					  
                     </div>
                     
+                    <c:if test="${empty sessionScope.usuarioLogado.id}">
                     <div id="local">
                         <span class="chamadaCadastro">Não tem Facebook?</span>
                         <div><a class="modal" title="Cadastrar" rel="modal" href="<%= request.getContextPath() %>/inc/cadastro.jsf"><span class="icons iconCadastrar"></span>cadastrar</a></div>
                         <div><a id="modal" href="<%= request.getContextPath() %>/inc/login.jsf" class="modal" rel="modal" title="Login"><span class="icons iconLogin"></span>login</a></div>
                     </div>
-                    
+                    </c:if>
             	</div>
                 
                 <%@ include file="/categorias.jsp" %>
@@ -235,21 +233,17 @@ window.close();
         </div>
     <!-- TERMINA MENU -->
 </div>
-    
-<t:inputHidden forceId="true" value="#{faceBookFaces.id}" id="faceId" />
-<t:inputHidden forceId="true" value="#{faceBookFaces.nome}" id="faceNome" />
-<t:inputHidden forceId="true" value="#{faceBookFaces.email}" id="faceEmail" />
+<c:if test="${!empty sessionScope.usuarioLogado.id}">
+<div id="id-Breadcrumb"><span id="status">Olá, ${sessionScope.usuarioLogado.nome}</span>, temos ótimas promoções pra você!</span></div>
 
-<div id="id-Breadcrumb"><span id="status">Olá, <span id="nome"></span>, temos ótimas promoções pra você!</span></div>
-
-<!-- COMECA CENTRAL -->
+</c:if><!-- COMECA CENTRAL -->
 <div id="central">
 	<!-- COMECA CONTEUDO -->
 	<div id="conteudo">
     			
     	<!-- COMECA COLUNA ESQUERDA -->
     	<div id="esq">
-    		<c:if test="${!empty indexFaces.promocaoDia.id}">
+    		<c:if test="${not empty indexFaces.promocaoDia.id}">
         	<div class="boxSubCat">
             	<h2>Promoção do dia</h2>
             	<a href="promocao.jsf?id=${indexFaces.promocaoDia.id}" title="">
@@ -272,7 +266,7 @@ window.close();
             </div>
             </c:if>
             
-            <c:if test="${!empty indexFaces.promocaoSemana.id}">
+            <c:if test="${not empty indexFaces.promocaoSemana.id}">
         	<div class="boxSubCat">
             	<h2>Promoção da semana</h2>
                 <a href="promocao.jsf?id=${indexFaces.promocaoSemana.id}" title="">
@@ -294,7 +288,7 @@ window.close();
             </div>
             </c:if>
             
-            <c:if test="${!empty indexFaces.carroChefeModel.id}">
+            <c:if test="${not empty indexFaces.carroChefeModel.id}">
             <div class="boxSubCat">
             	<h2>Carro-chefe</h2>
                 <a href="promocao.jsf?carroChefeId=${indexFaces.carroChefeModel.id}" title=""><img src="img/model/180x79.jpg" alt="" title="" /></a>

@@ -5,14 +5,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
-import javax.faces.context.FacesContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.topsys.exception.TSApplicationException;
 import br.com.topsys.util.TSUtil;
+import br.com.zapeat.site.dao.UsuarioDAO;
 import br.com.zapeat.site.model.UsuarioModel;
 import br.com.zapeat.site.util.Constantes;
 import br.com.zapeat.site.util.FacebookClient;
@@ -84,6 +85,35 @@ public class SecurityServlet extends HttpServlet {
 					UsuarioModel model = us.authFacebookLogin(accessToken, expires);
 
 					if (!TSUtil.isEmpty(model) && !TSUtil.isEmpty(model.getId())) {
+
+						UsuarioModel usuario = new UsuarioDAO().obter(model);
+
+						if (TSUtil.isEmpty(usuario)) {
+
+							try {
+
+								new UsuarioDAO().inserir(model);
+
+							} catch (TSApplicationException e) {
+
+								e.printStackTrace();
+							}
+
+						} else {
+
+							try {
+
+								usuario.setNome(model.getNome());
+
+								new UsuarioDAO().alterar(usuario);
+
+							} catch (TSApplicationException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+						
+						req.getSession().setAttribute("accessToken", accessToken);
 
 						req.getSession().setAttribute(Constantes.USUARIO_LOGADO, model);
 

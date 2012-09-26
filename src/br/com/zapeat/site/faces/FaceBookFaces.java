@@ -1,72 +1,161 @@
 package br.com.zapeat.site.faces;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 
+import javax.faces.bean.ManagedBean;
+
+import br.com.topsys.exception.TSApplicationException;
 import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.util.TSFacesUtil;
+import br.com.zapeat.site.dao.UsuarioDAO;
+import br.com.zapeat.site.model.UsuarioModel;
+import br.com.zapeat.site.util.Constantes;
 import br.com.zapeat.site.util.FacebookClient;
+import br.com.zapeat.site.util.UsuarioService;
 
-@ViewScoped
 @ManagedBean(name = "faceBookFaces")
 public class FaceBookFaces {
-	
-	private String id;
-	private String nome;
-	private String email;
+
 	private String url;
 	
-	public FaceBookFaces() {
+	private String logout;
+
+	public FaceBookFaces() throws MalformedURLException {
 		
+		String path = TSFacesUtil.getRequest().getServerName() + ":" + TSFacesUtil.getRequest().getServerPort() + TSFacesUtil.getRequest().getContextPath() + "/index.jsf";
+		
+		System.out.println(path);
+
 		this.url = FacebookClient.getLoginRedirectURL();
 
-		//this.obterParametros();
-	}
+		this.logout = FacebookClient.getLogoutUrl();
 
-	public String obterParametros() {
-		
-		this.id = TSFacesUtil.getRequestParameter("faceId");
-		this.nome = TSFacesUtil.getRequestParameter("faceNome");
-		this.email = TSFacesUtil.getRequestParameter("faceEmail");
-		
-		if (!TSUtil.isEmpty(id)) {
-			
-			System.out.println(id);
+		String code = TSFacesUtil.getRequestParameter("code");
+
+		if (!TSUtil.isEmpty(code)) {
+
+			String authURL = FacebookClient.getAuthURL(code);
+
+			URL url = new URL(authURL);
+
+			try {
+
+				String result = readURL(url);
+
+				String accessToken = null;
+
+				Integer expires = null;
+
+				String[] pairs = result.split("&");
+
+				for (String pair : pairs) {
+
+					String[] kv = pair.split("=");
+
+					if (kv.length != 2) {
+
+						this.redirect();
+
+						throw new RuntimeException("Unexpected auth response");
+
+					} else {
+
+						if (kv[0].equals("access_token")) {
+							accessToken = kv[1];
+						}
+
+						if (kv[0].equals("expires")) {
+							expires = Integer.valueOf(kv[1]);
+						}
+					}
+				}
+
+				if (accessToken != null && expires != null) {
+
+					UsuarioService us = new UsuarioService();
+
+					UsuarioModel model = us.authFacebookLogin(accessToken, expires);
+
+					if (!TSUtil.isEmpty(model) && !TSUtil.isEmpty(model.getId())) {
+
+						UsuarioModel usuario = new UsuarioDAO().obter(model);
+
+						if (TSUtil.isEmpty(usuario)) {
+
+							try {
+
+								new UsuarioDAO().inserir(model);
+
+							} catch (TSApplicationException e) {
+
+								e.printStackTrace();
+							}
+
+						} else {
+
+							try {
+
+								usuario.setNome(model.getNome());
+
+								new UsuarioDAO().alterar(usuario);
+
+							} catch (TSApplicationException e) {
+
+								e.printStackTrace();
+							}
+						}
+
+						TSFacesUtil.addObjectInSession("accessToken", accessToken);
+
+						TSFacesUtil.addObjectInSession(Constantes.USUARIO_LOGADO, model);
+
+						this.redirect();
+					}
+
+				} else {
+
+					this.redirect();
+				}
+
+			} catch (IOException e) {
+
+				throw new RuntimeException(e);
+			}
 		}
-		if (!TSUtil.isEmpty(nome)) {
 
-			System.out.println(nome);
+	}
+
+	private String readURL(URL url) throws IOException {
+
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+
+		InputStream is = url.openStream();
+
+		int r;
+
+		while ((r = is.read()) != -1) {
+
+			baos.write(r);
 		}
-		if (!TSUtil.isEmpty(email)) {
 
-			System.out.println(email);
+		return new String(baos.toByteArray());
+	}
+
+	@SuppressWarnings("static-access")
+	private void redirect() {
+
+		try {
+
+			TSFacesUtil.getFacesContext().getCurrentInstance().getExternalContext().redirect("index.jsf");
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
 		}
-		
-		return null;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public String getUrl() {
@@ -75,6 +164,14 @@ public class FaceBookFaces {
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	public String getLogout() {
+		return logout;
+	}
+
+	public void setLogout(String logout) {
+		this.logout = logout;
 	}
 
 }
