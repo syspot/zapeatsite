@@ -131,6 +131,13 @@
 
 <body onload="initialize()">
 
+<script type="text/javascript">
+window.onbeforeunload = function() {
+    window.opener.reload(true);
+};
+window.close();
+</script>
+
 <!-- COMECA TOPO -->
 <div id="topo">
 	<!-- COMECA BUSCA -->
@@ -144,7 +151,7 @@
     <!-- TERMINA BUSCA -->
     <!-- COMECA PUBLICIDADE/MARCA -->
     <div id="marcaPublicidade">
-    	<h1></h1>
+    	<h1><img src="img/marca.png" title="Página Inicial" alt="Marca Zapeat" /></h1>
         <div class="superbanner"></div>
     </div>
     <!-- TERMINA PUBLICIDADE/MARCA -->    
@@ -168,34 +175,35 @@
 					      window.fbAsyncInit = function() {
 					        FB.init({
 					          appId      : '444305308941322', // App ID
-					          channelUrl : 'http://localhost:8080/zapeatsite/index.sec', // Path to your Channel File
+					          channelUrl : 'http://localhost:8080/zapeatsite/index.jsf', // Path to your Channel File
 					          status     : true, // check login status
 					          cookie     : true, // enable cookies to allow the server to access the session
-					          xfbml      : true  // parse XFBML
+					          xfbml      : true,  // parse XFBML
+					          oauth		 : true   
 					        });
 					
 					        // listen for and handle auth.statusChange events
 					        FB.Event.subscribe('auth.statusChange', function(response) {
+						        
 					          if (response.authResponse) {
-					            // user has auth'd your app and is logged into Facebook
+						        
 					            FB.api('/me', function(me){
 					              if (me.name) {
-					            	document.getElementById('auth-displayid').innerHTML = me.id;  
-					            	document.getElementById('auth-displayemail').innerHTML = me.email;
-					                document.getElementById('auth-displayname').innerHTML = me.name;
+						            document.getElementById('nome').innerHTML = me.name;
 					                document.getElementById('faceId').value= me.id;
 					                document.getElementById('faceNome').value= me.name;
 					                document.getElementById('faceEmail').value= me.email;
 					              }
 					            })
 					            document.getElementById('auth-loggedout').style.display = 'none';
+					            document.getElementById('modal').style.display = 'none';
 					            document.getElementById('auth-loggedin').style.display = 'block';
-					            document.getElementById('botao').style.display = 'none';
+					            document.getElementById('auth-loggedin').style.display = 'block';
+					            
 					          } else {
 					            // user has not auth'd your app, or is not logged into Facebook
 					            document.getElementById('auth-loggedout').style.display = 'block';
-					            document.getElementById('auth-loggedin').style.display = 'none';
-					            document.getElementById('botao').style.display = 'block';
+					            document.getElementById('modal').style.display = 'block';
 					          }
 					        });
 					
@@ -209,13 +217,8 @@
 					      } 
 					    </script>
 					      <div id="auth-status">
-					        <div id="auth-loggedout" class="fb-login-button">Entrar</div>
-					        <div id="auth-loggedin" style="display:none">
-					        ID Facebook: <span id="auth-displayid"></span>
-					          Olá, <span id="auth-displayname"></span>  
-					        (<a href="#" id="auth-logoutlink">logout</a>)
-					        Email: <span id="auth-displayemail"></span>
-					      </div>
+					        <div id="auth-loggedout" class="fb-login-button">Entrar com Facebook</div>
+					        
 					    </div>
                     </div>
                     
@@ -224,6 +227,7 @@
                         <div><a class="modal" title="Cadastrar" rel="modal" href="<%= request.getContextPath() %>/inc/cadastro.jsf"><span class="icons iconCadastrar"></span>cadastrar</a></div>
                         <div><a id="modal" href="<%= request.getContextPath() %>/inc/login.jsf" class="modal" rel="modal" title="Login"><span class="icons iconLogin"></span>login</a></div>
                     </div>
+                    
             	</div>
                 
                 <%@ include file="/categorias.jsp" %>
@@ -231,17 +235,12 @@
         </div>
     <!-- TERMINA MENU -->
 </div>
-<!-- TERMINA TOPO -->
-<h:form id="form">
-    <t:inputHidden forceId="true" value="#{faceBookFaces.id}" id="faceId" />
-    <t:inputHidden forceId="true" value="#{faceBookFaces.nome}" id="faceNome" />
-    <t:inputHidden forceId="true" value="#{faceBookFaces.email}" id="faceEmail" />
-    <h:commandButton value="submit" action="#{faceBookFaces.obterParametros}"/>
     
-    <h:commandLink action="#{loginFacebookFaces.logout}" value="LOGOUT" />
-</h:form>
+<t:inputHidden forceId="true" value="#{faceBookFaces.id}" id="faceId" />
+<t:inputHidden forceId="true" value="#{faceBookFaces.nome}" id="faceNome" />
+<t:inputHidden forceId="true" value="#{faceBookFaces.email}" id="faceEmail" />
 
-<div id="id-Breadcrumb"><span id="status">Olá, fulano de tal, temos ótimas promoções pra você!</span></div>
+<div id="id-Breadcrumb"><span id="status">Olá, <span id="nome"></span>, temos ótimas promoções pra você!</span></div>
 
 <!-- COMECA CENTRAL -->
 <div id="central">

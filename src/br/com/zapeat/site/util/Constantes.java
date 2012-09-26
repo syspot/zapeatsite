@@ -33,4 +33,6 @@ public class Constantes {
 	public static Long TIPO_LISTAGEM_CARRO_CHEFE = 5L;
 	
 	public static final String USUARIO_LOGADO = "usuarioLogado";
+	public static final String INDEX = "index";
+	
 }

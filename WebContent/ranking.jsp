@@ -2,10 +2,9 @@
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>
 
 <f:view>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -15,30 +14,20 @@
 <link href="css/interna.css" rel="stylesheet" type="text/css" />
 <link href="css/cssReset.css" rel="stylesheet" type="text/css" />
 <link href="css/fontface.css" rel="stylesheet" type="text/css" />
-                                                             
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1&appId=329697663791960";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"> </script>
-<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
 <script src="js/jquery-latest.js"></script>
 <script type="text/javascript" src="js/geometa.js"></script>
 <script type="text/javascript">
       $(document).ready(function() {
-		$('#principal ul:eq(0)').css('left','-45px');
-		$('#principal ul:eq(1)').css('left','-120px');
-		$('#principal ul:eq(2)').css('left','-195px');
-		$('#principal ul:eq(3)').css('left','-270px');
-		$('#principal ul:eq(4)').css('right','-225px');
-		$('#principal ul:eq(5)').css('right','-150px');
-		$('#principal ul:eq(6)').css('right','-75px');
-		$('#principal ul:eq(7)').css('right','-0px');
+		$('#outrosDestaques > #listagem > li:even').css('background', '#CCE5FF');
+		$('#principal ul:eq(0)').css('left','-50px');
+		$('#principal ul:eq(1)').css('left','-135px');
+		$('#principal ul:eq(2)').css('left','-220px');
+		$('#principal ul:eq(3)').css('left','-305px');
+		$('#principal ul:eq(4)').css('right','-170px');
+		$('#principal ul:eq(5)').css('right','-85px');
+		$('#principal ul:eq(6)').css('right','0px');
+		//$('#principal ul:eq(7)').css('right','0px');
 	  })
 </script>
 <!--=============MODAL=============-->
@@ -129,8 +118,6 @@
 </head>
 
 <body>
-
-
 <!-- COMECA TOPO -->
 <div id="topo">
 	<!-- COMECA BUSCA -->
@@ -144,7 +131,7 @@
     <!-- TERMINA BUSCA -->
     <!-- COMECA PUBLICIDADE/MARCA -->
     <div id="marcaPublicidade">
-    	<h1></h1>
+    	<h1><img src="img/marca.png" title="Página Inicial" alt="Marca Zapeat" /></h1>
         <div class="superbanner"></div>
     </div>
     <!-- TERMINA PUBLICIDADE/MARCA -->    
@@ -152,14 +139,78 @@
     <div id="menu">
             <nav id="categorias">
             	<div id="cadastro">
-                    <div id="facebook">
-                        <div class="fb-login-button" data-show-faces="false" data-width="200" data-max-rows="1">Entrar usando Facebook</div>
+            		<div id="facebook">
+						<div id="fb-root"></div>
+					    <script>
+					      // Load the SDK Asynchronously
+					      (function(d){
+					         var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+					         if (d.getElementById(id)) {return;}
+					         js = d.createElement('script'); js.id = id; js.async = true;
+					         js.src = "//connect.facebook.net/en_US/all.js";
+					         ref.parentNode.insertBefore(js, ref);
+					       }(document));
+					
+					      // Init the SDK upon load
+					      window.fbAsyncInit = function() {
+					        FB.init({
+					          appId      : '444305308941322', // App ID
+					          channelUrl : 'http://localhost:8080/zapeatsite/index.jsf', // Path to your Channel File
+					          status     : true, // check login status
+					          cookie     : true, // enable cookies to allow the server to access the session
+					          xfbml      : true  // parse XFBML
+					        });
+					
+					        // listen for and handle auth.statusChange events
+					        FB.Event.subscribe('auth.statusChange', function(response) {
+						        
+					          if (response.authResponse) {
+						        
+					            FB.api('/me', function(me){
+					              if (me.name) {
+						            document.getElementById('nome').innerHTML = me.name;
+					                document.getElementById('faceId').value= me.id;
+					                document.getElementById('faceNome').value= me.name;
+					                document.getElementById('faceEmail').value= me.email;
+					              }
+					            })
+					            document.getElementById('auth-loggedout').style.display = 'none';
+					            document.getElementById('modal').style.display = 'none';
+					            document.getElementById('auth-loggedin').style.display = 'block';
+					            document.getElementById('auth-loggedin').style.display = 'block';
+					            document.getElementById('botao').style.display = 'none';
+					            
+					          } else {
+					            // user has not auth'd your app, or is not logged into Facebook
+					            document.getElementById('auth-loggedout').style.display = 'block';
+					            document.getElementById('modal').style.display = 'block';
+					            document.getElementById('botao').style.display = 'block';
+					            
+					          }
+					        });
+					
+					        // respond to clicks on the login and logout links
+					        document.getElementById('auth-loginlink').addEventListener('click', function(){
+					          FB.login();
+					        });
+					        document.getElementById('auth-logoutlink').addEventListener('click', function(){
+					          FB.logout();
+					        }); 
+					      } 
+					    </script>
+					      <div id="auth-status">
+					        <div id="auth-loggedout" class="fb-login-button">Entrar com Facebook</div>
+					        
+					    </div>
                     </div>
+                    
                     <div id="local">
                         <span class="chamadaCadastro">Não tem Facebook?</span>
                         <div><a class="modal" title="Cadastrar" rel="modal" href="<%= request.getContextPath() %>/inc/cadastro.jsf"><span class="icons iconCadastrar"></span>cadastrar</a></div>
                         <div><a id="modal" href="<%= request.getContextPath() %>/inc/login.jsf" class="modal" rel="modal" title="Login"><span class="icons iconLogin"></span>login</a></div>
+                        
                     </div>
+                    
             	</div>
                 
                 <%@ include file="/categorias.jsp" %>
@@ -167,12 +218,14 @@
         </div>
     <!-- TERMINA MENU -->
 </div>
-<!-- TERMINA TOPO -->
 
-<div id="id-Breadcrumb">
-    <span class="migalha"><a href="index.html" title="">Página Inicial</a></span>    »    
-    <span class="migalha">Mais Indicados</span>    »   
-    <span class="migalha"><a href="categoria/ranking.html" title="">Ranking	</a></span>   
+<h:form id="form">
+    <t:inputHidden forceId="true" value="#{faceBookFaces.id}" id="faceId" />
+    <t:inputHidden forceId="true" value="#{faceBookFaces.nome}" id="faceNome" />
+    <t:inputHidden forceId="true" value="#{faceBookFaces.email}" id="faceEmail" />
+</h:form>
+<div id="div999">
+<div id="id-Breadcrumb"><span id="status">Olá, <span id="nome"></span>, temos ótimas promoções pra você!</span></div>
 </div>
 
 <!-- COMECA CENTRAL -->
@@ -199,7 +252,7 @@
                 	<span class="position1"></span>
                 	<blockquote>
                     	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
+                            <span class="imgRank"><img src="img/model/180x79.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
                             <div class="info">
                                 <p class="titulo">Nome da comida</p>
                                 <p class="dados">Nome do estabelecimento</p>
@@ -207,7 +260,8 @@
                         </a>
                     </blockquote>
                     <div class="indico">
-                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
+                    	<p><a id="modal" href="inc/indicacao.html" title="" class="modal" rel="modal"><span class="icons indicacaoRed"></span> Indico [100]</a></p>
+                    	<p><a id="modal" href="inc/indicacao.html" title="" class="modal" rel="modal"><span class="icons naoindicacaoRed"></span> Não indico</a></p>
                     </div>
                 </div>
                 
@@ -215,7 +269,7 @@
                 	<span class="position2"></span>
                 	<blockquote>
                     	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
+                            <span class="imgRank"><img src="img/model/180x79.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
                             <div class="info">
                                 <p class="titulo">Nome da comida</p>
                                 <p class="dados">Nome do estabelecimento</p>
@@ -231,7 +285,7 @@
                 	<span class="position3"></span>
                 	<blockquote>
                     	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
+                            <span class="imgRank"><img src="img/model/180x79.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
                             <div class="info">
                                 <p class="titulo">Nome da comida</p>
                                 <p class="dados">Nome do estabelecimento</p>
@@ -247,7 +301,7 @@
                 	<span class="position4"></span>
                 	<blockquote>
                     	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
+                            <span class="imgRank"><img src="img/model/180x79.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
                             <div class="info">
                                 <p class="titulo">Nome da comida</p>
                                 <p class="dados">Nome do estabelecimento</p>
@@ -263,7 +317,7 @@
                 	<span class="position5"></span>
                 	<blockquote>
                     	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
+                            <span class="imgRank"><img src="img/model/180x79.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
                             <div class="info">
                                 <p class="titulo">Nome da comida</p>
                                 <p class="dados">Nome do estabelecimento</p>
@@ -283,7 +337,7 @@
                 	<span class="position1"></span>
                 	<blockquote>
                     	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
+                            <span class="imgRank"><img src="img/model/180x79.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
                             <div class="info">
                                 <p class="titulo">Nome do estabelecimento</p>
                                 <p class="dados">Categoria</p>
@@ -299,7 +353,7 @@
                 	<span class="position2"></span>
                 	<blockquote>
                     	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
+                            <span class="imgRank"><img src="img/model/180x79.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
                             <div class="info">
                                 <p class="titulo">Nome do estabelecimento</p>
                                 <p class="dados">Categoria</p>
@@ -315,7 +369,7 @@
                 	<span class="position3"></span>
                 	<blockquote>
                     	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
+                            <span class="imgRank"><img src="img/model/180x79.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
                             <div class="info">
                                 <p class="titulo">Nome do estabelecimento</p>
                                 <p class="dados">Categoria</p>
@@ -330,7 +384,7 @@
                 <div class="boxRanking">
                 	<blockquote>
                     	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
+                            <span class="imgRank"><img src="img/model/180x79.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
                             <div class="info">
                                 <p class="titulo">Nome do estabelecimento</p>
                                 <p class="dados">Categoria</p>
@@ -346,7 +400,7 @@
                 	<span class="position5"></span>
                 	<blockquote>
                     	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
+                            <span class="imgRank"><img src="img/model/180x79.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
                             <div class="info">
                                 <p class="titulo">Nome do estabelecimento</p>
                                 <p class="dados">Categoria</p>
@@ -360,88 +414,7 @@
             </div>
             
             
-            <div class="coluna">
-            	<h2>Carro-chefe</h2>
-                <div class="boxRanking">
-                	<span class="position1"></span>
-                	<blockquote>
-                    	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
-                            <div class="info">
-                                <p class="titulo">Nome da comida</p>
-                                <p class="dados">Nome do estabelecimento</p>
-                            </div>
-                        </a>
-                    </blockquote>
-                    <div class="indico">
-                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
-                    </div>
-                </div>
-                
-                <div class="boxRanking">
-                	<span class="position2"></span>
-                	<blockquote>
-                    	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
-                            <div class="info">
-                                <p class="titulo">Nome da comida</p>
-                                <p class="dados">Nome do estabelecimento</p>
-                            </div>
-                        </a>
-                    </blockquote>
-                    <div class="indico">
-                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
-                    </div>
-                </div>
-                
-                <div class="boxRanking">
-                	<span class="position3"></span>
-                	<blockquote>
-                    	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
-                            <div class="info">
-                                <p class="titulo">Nome da comida</p>
-                                <p class="dados">Nome do estabelecimento</p>
-                            </div>
-                        </a>
-                    </blockquote>
-                    <div class="indico">
-                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
-                    </div>
-                </div>
-                
-                <div class="boxRanking">
-                	<span class="position4"></span>
-                	<blockquote>
-                    	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
-                            <div class="info">
-                                <p class="titulo">Nome da comida</p>
-                                <p class="dados">Nome do estabelecimento</p>
-                            </div>
-                        </a>
-                    </blockquote>
-                    <div class="indico">
-                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
-                    </div>
-                </div>
-                
-                <div class="boxRanking">
-                	<span class="position5"></span>
-                	<blockquote>
-                    	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
-                            <div class="info">
-                                <p class="titulo">Nome da comida</p>
-                                <p class="dados">Nome do estabelecimento</p>
-                            </div>
-                        </a>
-                    </blockquote>
-                    <div class="indico">
-                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
-                    </div>
-                </div>
-            </div>
+            
 
         
         </div>

@@ -9,6 +9,7 @@ import br.com.topsys.web.faces.TSMainFaces;
 import br.com.topsys.web.util.TSFacesUtil;
 import br.com.zapeat.site.dao.UsuarioDAO;
 import br.com.zapeat.site.model.UsuarioModel;
+import br.com.zapeat.site.util.Constantes;
 
 @ViewScoped
 @ManagedBean(name = "loginFaces")
@@ -22,26 +23,6 @@ public class LoginFaces extends TSMainFaces {
 		this.initDAO();
 		this.initObejtos();
 
-	}
-
-	public String obterParametros() {
-
-		if (!TSUtil.isEmpty(this.usuarioModel.getId())) {
-
-			System.out.println(this.usuarioModel.getId());
-		}
-		
-		if (!TSUtil.isEmpty(this.usuarioModel.getNome())) {
-
-			System.out.println(this.usuarioModel.getNome());
-		}
-		
-		if (!TSUtil.isEmpty(this.usuarioModel.getEmail())) {
-
-			System.out.println(this.usuarioModel.getEmail());
-		}
-
-		return null;
 	}
 
 	private void initDAO() {
@@ -90,6 +71,8 @@ public class LoginFaces extends TSMainFaces {
 			if (!TSUtil.isEmpty(model.getId()) && model.getSenha().equals(TSCryptoUtil.gerarHash(this.usuarioModel.getSenha(), "MD5"))) {
 
 				TSFacesUtil.addObjectInSession(br.com.zapeat.site.util.Constantes.USUARIO_LOGADO, model);
+				
+				return Constantes.INDEX;
 
 			} else {
 
