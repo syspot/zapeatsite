@@ -137,12 +137,7 @@
     <!-- TERMINA BUSCA -->
     <!-- COMECA PUBLICIDADE/MARCA -->
     <div id="marcaPublicidade">
-    	<h1>
-    	<h:outputLink value="#{facesContext.externalContext.requestContextPath}/index.jsf" title="Página Inicial">
-    		<h:graphicImage value="img/marca.png" />
-    	</h:outputLink>	
-    	</h1>
-        <div class="superbanner"></div>
+    	<%@ include file="/include_banner_topo.jsp" %>
     </div>
     <!-- TERMINA PUBLICIDADE/MARCA -->    
     <!-- COMECA MENU -->
@@ -177,7 +172,7 @@
 <!-- TERMINA TOPO -->
 
 <div id="id-Breadcrumb">
-    <span class="migalha"><a href="" title="">Página Inicial</a></span>    »    
+    <span class="migalha"><a href="busca.jsf" title="">Página Inicial</a></span>    »    
     <span class="migalha">Busca</span>    »   
     <span class="migalha">${buscaFaces.termoBuscado}</span>
 </div>
@@ -234,7 +229,16 @@
                 <div id="paginacao">
                 
 					<c:if test="${buscaFaces.qtdPaginas > 1}">
-                		<li class="inicio"><a href="busca.jsf?page=${buscaFaces.page - 1}" title=""><span class="icons pagInicio"></span></a></li>
+					
+						<c:choose>
+               				<c:when test="${not empty buscaFaces.page and buscaFaces.page != 1}">
+               					<li class="inicio"><a href="busca.jsf?page=${buscaFaces.page - 1}" title=""><span class="icons pagInicio"></span></a></li>
+               				</c:when>
+               				<c:otherwise>
+               					<li class="inicio"><span class="icons pagInicio"></span></li>
+               				</c:otherwise>
+               			</c:choose>
+						
            			</c:if>
                 
                 	<c:if test="${buscaFaces.qtdPaginas > 1}">
@@ -246,7 +250,27 @@
 	                </c:if>
 	                
 					<c:if test="${buscaFaces.qtdPaginas > 1}">
-						<li class="fim"><a href="busca.jsf?page=${buscaFaces.page + 1}" title=""><span class="icons pagFim"></span></a></li>
+						
+						<c:choose>
+							
+							<c:when test="${not empty buscaFaces.page}">
+								<c:choose>
+			          				<c:when test="${buscaFaces.page != buscaFaces.qtdPaginas}">
+			          					<li class="fim"><a href="busca.jsf?page=${buscaFaces.page + 1}" title=""><span class="icons pagFim"></span></a></li>
+			          				</c:when>
+			          				<c:otherwise>
+			          					<li class="inicio"><span class="icons pagFim"></span></li>
+			          				</c:otherwise>
+	          					</c:choose>
+							</c:when>
+							
+							<c:otherwise>
+								<li class="fim"><a href="busca.jsf?page=${buscaFaces.page + 1}" title=""><span class="icons pagFim"></span></a></li>
+							</c:otherwise>
+							
+						</c:choose>
+						
+           			
            			</c:if>
            			
                 </div>

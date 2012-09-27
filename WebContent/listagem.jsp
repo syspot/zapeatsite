@@ -139,12 +139,7 @@
     <!-- TERMINA BUSCA -->
     <!-- COMECA PUBLICIDADE/MARCA -->
     <div id="marcaPublicidade">
-    	<h1>
-    	<h:outputLink value="#{facesContext.externalContext.requestContextPath}/index.jsf" title="Página Inicial">
-    		<h:graphicImage value="img/marca.png" />
-    	</h:outputLink>	
-    	</h1>
-        <div class="superbanner"></div>
+    	<%@ include file="/include_banner_topo.jsp" %>
     </div>
     <!-- TERMINA PUBLICIDADE/MARCA -->    
     <!-- COMECA MENU -->
@@ -179,9 +174,9 @@
 <!-- TERMINA TOPO -->
 
 <div id="id-Breadcrumb">
-    <span class="migalha"><a href="" title="">Página Inicial</a></span>    »    
-    <span class="migalha"><a href="" title="">${listagemFaces.categoria.descricao}</a></span>    »   
-    <span class="migalha"><a href="" title="">${listagemFaces.nomeTipo}</a></span>       
+    <span class="migalha"><a href="listagem.jsf" title="">Página Inicial</a></span>    »    
+    <span class="migalha"><a href="listagem.jsf?categoriaId=${listagemFaces.categoria.id}" title="">${listagemFaces.categoria.descricao}</a></span>    »   
+    <span class="migalha">${listagemFaces.nomeTipo}</span>       
 </div>
 
 <!-- COMECA CENTRAL -->
@@ -268,7 +263,16 @@
                 <ul id="paginacao">
            			
            			<c:if test="${listagemFaces.qtdPaginas > 1}">
-                		<li class="inicio"><a href="listagem.jsf?page=${listagemFaces.page - 1}" title=""><span class="icons pagInicio"></span></a></li>
+           			
+           				<c:choose>
+               				<c:when test="${not empty buscaFaces.page and buscaFaces.page != 1}">
+               					<li class="inicio"><a href="listagem.jsf?page=${listagemFaces.page - 1}" title=""><span class="icons pagInicio"></span></a></li>
+               				</c:when>
+               				<c:otherwise>
+               					<li class="inicio"><span class="icons pagInicio"></span></li>
+               				</c:otherwise>
+               			</c:choose>
+               			
            			</c:if>
                 
                 	<c:if test="${listagemFaces.qtdPaginas > 1}">
@@ -279,9 +283,25 @@
 	                
 	                </c:if>
 	                
-					<c:if test="${listagemFaces.qtdPaginas > 1}">
-						<li class="fim"><a href="listagem.jsf?page=${listagemFaces.page + 1}" title=""><span class="icons pagFim"></span></a></li>
-           			</c:if>
+           			<c:choose>
+							
+						<c:when test="${not empty listagemFaces.page}">
+							<c:choose>
+		          				<c:when test="${listagemFaces.page != listagemFaces.qtdPaginas}">
+		          					<li class="fim"><a href="listagem.jsf?page=${listagemFaces.page + 1}" title=""><span class="icons pagFim"></span></a></li>
+		          				</c:when>
+		          				<c:otherwise>
+		          					<li class="inicio"><span class="icons pagFim"></span></li>
+		          				</c:otherwise>
+          					</c:choose>
+						</c:when>
+						
+						<c:otherwise>
+							<li class="fim"><a href="listagem.jsf?page=${listagemFaces.page + 1}" title=""><span class="icons pagFim"></span></a></li>
+						</c:otherwise>
+						
+					</c:choose>
+           			
            			
                 </ul>
 

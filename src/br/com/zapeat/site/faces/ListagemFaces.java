@@ -53,6 +53,7 @@ public class ListagemFaces extends TSMainFaces {
 		
 		if(TSUtil.isEmpty(categoria)){
 			categoria = new CategoriaModel("Mais Indicados", "icons maisIndicados");
+			categoria.setId(Constantes.CATEGORIA_MAIS_INDICADOS);
 		}
 		
 	}
@@ -123,6 +124,10 @@ public class ListagemFaces extends TSMainFaces {
 
 	public void setPage(Long page) {
 		this.page = page;
+	}
+
+	public Long getTipo() {
+		return tipo;
 	}
 	
 }

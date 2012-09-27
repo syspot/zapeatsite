@@ -21,6 +21,10 @@ public class BuscaModel {
 	private Integer indicacoes;
 	
 	private String imagem;
+	
+	private Long latitude;
+	
+	private Long longitude;
 
 	public String getTitulo() {
 		return titulo;
@@ -108,6 +112,21 @@ public class BuscaModel {
 	public void setImagem(String imagem) {
 		this.imagem = imagem;
 	}
-	
+
+	public Long getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(Long latitude) {
+		this.latitude = latitude;
+	}
+
+	public Long getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(Long longitude) {
+		this.longitude = longitude;
+	}
 
 }

@@ -130,12 +130,7 @@
     <!-- TERMINA BUSCA -->
     <!-- COMECA PUBLICIDADE/MARCA -->
     <div id="marcaPublicidade">
-    	<h1>
-    	<h:outputLink value="#{facesContext.externalContext.requestContextPath}/index.jsf" title="Página Inicial">
-    		<h:graphicImage value="img/marca.png" />
-    	</h:outputLink>	
-    	</h1>
-        <div class="superbanner"></div>
+    	<%@ include file="/include_banner_topo.jsp" %>
     </div>
     <!-- TERMINA PUBLICIDADE/MARCA -->    
     <!-- COMECA MENU -->
@@ -355,7 +350,7 @@
             </c:if>
             
             <div class="boxSubCat">
-            	<div class="banner">banner</div>
+            	<%@ include file="/include_banner_lateral.jsp" %>
             </div>
             
         </div>
