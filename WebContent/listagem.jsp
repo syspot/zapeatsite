@@ -251,17 +251,21 @@
                 </ul>
                 
                 <ul id="paginacao">
-                
+           			
            			<c:if test="${listagemFaces.qtdPaginas > 1}">
-                		<li class="inicio"><a href="" title=""><span class="icons pagInicio"></span></a></li>
+                		<li class="inicio"><a href="listagem.jsf?page=${listagemFaces.page - 1}" title=""><span class="icons pagInicio"></span></a></li>
            			</c:if>
                 
-               		<c:forEach begin="1" end="${listagemFaces.qtdPaginas}" var="pagina">
-	                    <li class="pagina"><a href="listagem.jsf?page=${pagina}" title="">${pagina}</a></li>
-	                </c:forEach>
+                	<c:if test="${listagemFaces.qtdPaginas > 1}">
+           			
+	               		<c:forEach begin="1" end="${listagemFaces.qtdPaginas}" var="pagina">
+		                    <li class="pagina"><a href="listagem.jsf?page=${pagina}" title="">${pagina}</a></li>
+		                </c:forEach>
+	                
+	                </c:if>
 	                
 					<c:if test="${listagemFaces.qtdPaginas > 1}">
-						<li class="fim"><a href="listagem.jsf?page=${listagemFaces.qtdPaginas}" title=""><span class="icons pagFim"></span></a></li>
+						<li class="fim"><a href="listagem.jsf?page=${listagemFaces.page + 1}" title=""><span class="icons pagFim"></span></a></li>
            			</c:if>
            			
                 </ul>

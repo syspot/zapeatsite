@@ -22,25 +22,29 @@ public class ListagemFaces extends TSMainFaces {
 	private List<CarroChefeModel> carrosChefes;
 	
 	private CategoriaModel categoria;
-	Long tipo;
+	
+	private Long tipo;
+	
 	private Long qtdPaginas;
+	
+	private Long page;
 	
 	public ListagemFaces(){
 		
-		Long page = ZapeatUtil.getParamFormatado(super.getRequestParameter("page"));
+		this.page = ZapeatUtil.getParamFormatado(super.getRequestParameter("page"));
 		this.tipo = ZapeatUtil.getParamFormatado(super.getRequestParameter("tipo"));
 		Long categoriaId = ZapeatUtil.getParamFormatado(super.getRequestParameter("categoriaId"));
 		
 		if(!TSUtil.isEmpty(tipo) && Constantes.TIPO_LISTAGEM_CARRO_CHEFE.equals(tipo)){
 			
 			CarroChefeDAO carroChefeDAO = new CarroChefeDAO();
-			this.carrosChefes = carroChefeDAO.pesquisarPorCategoria(categoriaId, page);
+			this.carrosChefes = carroChefeDAO.pesquisarPorCategoria(categoriaId, this.page);
 			this.qtdPaginas = carroChefeDAO.obterQtdPaginasPorCategoria(categoriaId).getValue();
 			
 		} else{
 			
 			PromocaoDAO promocaoDAO = new PromocaoDAO();
-			this.promocoes = promocaoDAO.pesquisarPorIndicacoes(page, tipo, categoriaId);
+			this.promocoes = promocaoDAO.pesquisarPorIndicacoes(this.page, tipo, categoriaId);
 			this.qtdPaginas = promocaoDAO.obterQtdPaginasPorIndicacoes(tipo, categoriaId).getValue();
 			
 		}
@@ -111,6 +115,14 @@ public class ListagemFaces extends TSMainFaces {
 
 	public void setCategoria(CategoriaModel categoria) {
 		this.categoria = categoria;
+	}
+
+	public Long getPage() {
+		return page;
+	}
+
+	public void setPage(Long page) {
+		this.page = page;
 	}
 	
 }
