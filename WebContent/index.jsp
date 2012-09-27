@@ -2,6 +2,8 @@
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>
+<%@ taglib prefix="p" uri="http://primefaces.prime.com.tr/ui"%>
 
 <f:view>
 
@@ -16,16 +18,7 @@
 <link href="css/home.css" rel="stylesheet" type="text/css" />
 <link href="css/cssReset.css" rel="stylesheet" type="text/css" />
 <link href="css/fontface.css" rel="stylesheet" type="text/css" />
-
-<!--<meta property="og:site_name" content="Zapeat">
-<meta property="og:image" content="http://img.zapeat.com/icon/icone-68px.png">
-<meta property="geo.position" content="-13.548547000;-38.638272000">
-<meta property="geo.position" conterty="ICBM" content="-13.548547000,-38.638272000">
-<meta property="geo.region" content="BR-BA">
-<meta property="geo.placename" content="Salvador">-->                                                                
-
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"> </script>
-<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
 <script src="js/jquery-latest.js"></script>
 <script type="text/javascript" src="js/geometa.js"></script>
 <script type="text/javascript">
@@ -134,12 +127,10 @@
 			alert(msg);
 		}
 </script>   
-
 </head>
 
 <body onload="initialize()">
-
-
+	
 <!-- COMECA TOPO -->
 <div id="topo">
 	<!-- COMECA BUSCA -->
@@ -153,7 +144,11 @@
     <!-- TERMINA BUSCA -->
     <!-- COMECA PUBLICIDADE/MARCA -->
     <div id="marcaPublicidade">
-    	<h1></h1>
+    	<h1>
+    	<h:outputLink value="#{facesContext.externalContext.requestContextPath}/index.jsf" title="Página Inicial">
+    		<h:graphicImage value="img/marca.png" />
+    	</h:outputLink>	
+    	</h1>
         <div class="superbanner"></div>
     </div>
     <!-- TERMINA PUBLICIDADE/MARCA -->    
@@ -162,14 +157,23 @@
             <nav id="categorias">
             	<div id="cadastro">
             		<div id="facebook">
-                        <div class="fb-login-button" data-show-faces="false" data-width="200" data-max-rows="1">Entrar usando Facebook</div>
+						
+					  <h:outputLink value="#{faceBookFaces.url}" rendered="#{empty sessionScope.usuarioLogado.id}">
+						<h:graphicImage value="img/facebook.gif" />
+					  </h:outputLink>
+					  <h:outputLink value="#{faceBookFaces.logout}" rendered="#{!empty sessionScope.usuarioLogado.id}">
+					  	Sair
+					  </h:outputLink>
+					  
                     </div>
                     
+                    <c:if test="${empty sessionScope.usuarioLogado.id}">
                     <div id="local">
                         <span class="chamadaCadastro">Não tem Facebook?</span>
                         <div><a class="modal" title="Cadastrar" rel="modal" href="<%= request.getContextPath() %>/inc/cadastro.jsf"><span class="icons iconCadastrar"></span>cadastrar</a></div>
                         <div><a id="modal" href="<%= request.getContextPath() %>/inc/login.jsf" class="modal" rel="modal" title="Login"><span class="icons iconLogin"></span>login</a></div>
                     </div>
+                    </c:if>
             	</div>
                 
                 <%@ include file="/categorias.jsp" %>
@@ -177,9 +181,10 @@
         </div>
     <!-- TERMINA MENU -->
 </div>
-<!-- TERMINA TOPO -->
-
-<div id="id-Breadcrumb"><span id="status"></span></div>
+					  
+<c:if test="${!empty sessionScope.usuarioLogado.id}">
+<div id="id-Breadcrumb"><span id="status">Olá, ${sessionScope.usuarioLogado.nome}</span>, temos ótimas promoções pra você!</div>
+</c:if>
 
 <!-- COMECA CENTRAL -->
 <div id="central">
@@ -188,7 +193,7 @@
     			
     	<!-- COMECA COLUNA ESQUERDA -->
     	<div id="esq">
-    		<c:if test="${!empty indexFaces.promocaoDia.id}">
+    		<c:if test="${not empty indexFaces.promocaoDia.id}">
         	<div class="boxSubCat">
             	<h2>Promoção do dia</h2>
             	<a href="promocao.jsf?id=${indexFaces.promocaoDia.id}" title="">
@@ -211,7 +216,7 @@
             </div>
             </c:if>
             
-            <c:if test="${!empty indexFaces.promocaoSemana.id}">
+            <c:if test="${not empty indexFaces.promocaoSemana.id}">
         	<div class="boxSubCat">
             	<h2>Promoção da semana</h2>
                 <a href="promocao.jsf?id=${indexFaces.promocaoSemana.id}" title="">
@@ -233,7 +238,7 @@
             </div>
             </c:if>
             
-            <c:if test="${!empty indexFaces.carroChefeModel.id}">
+            <c:if test="${not empty indexFaces.carroChefeModel.id}">
             <div class="boxSubCat">
             	<h2>Carro-chefe</h2>
                 <a href="promocao.jsf?carroChefeId=${indexFaces.carroChefeModel.id}" title=""><img src="img/model/180x79.jpg" alt="" title="" /></a>
@@ -248,7 +253,7 @@
         <div id="meio">
         	<div id="destaque">
             	<div id="fotoDestaque">
-	                <a href="promocao.jsf/?id=${indexFaces.promocaoHora.id}"><img src="img/model/590x260.jpg" alt="Marca 80x80px" title="${indexFaces.promocaoSemana.fornecedorModel.nomeFantasia}" /></a>
+	                <a href="promocao.jsf?id=${indexFaces.promocaoHora.id}"><img src="img/model/590x260.jpg" alt="Marca 80x80px" title="${indexFaces.promocaoSemana.fornecedorModel.nomeFantasia}" /></a>
                     <div class="tituloPromo">
                     	<p><span class="tipoPromo">Promoção da hora</span></p>
                         <p><span class="nomePromo"><c:out value="${indexFaces.promocaoHora.titulo}"/>/${indexFaces.promocaoSemana.fornecedorModel.nomeFantasia}</span></p>
@@ -256,7 +261,7 @@
                 </div>
                 <div id="faixa">
  	               <div class="marca"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
-                   <p class="percentual">40%</p>
+                   <p class="percentual">${indexFaces.promocaoHora.percentualDesconto}%</p>
                    <p class="fontYi font10px">desconto</p>
                 </div>
                 <blockquote class="fontYi">
@@ -347,7 +352,7 @@
             	<h2>Top Geral</h2>
                 <ul id="topGeral">
                 	<c:forEach items="${indexFaces.topGeral}" var="top">
-                    <li class="${top.cssTopGeral}">
+                    <li class="${top.css}">
                     	<a href="estabelecimento.jsf?id=${top.id}" title="">
                             <p class="titulo">${top.nomeFantasia}</p>
                         </a>

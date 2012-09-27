@@ -82,6 +82,7 @@ $(document).ready( function() {
 	        
 	        <h:commandButton value="ACESSAR" id="submit" styleClass="submit" action="#{loginFaces.autenticar}"/>
             
+            <p:commandButton value="Submit" action="#{loginFaces.autenticar}"/>
         </div>
 
     </h:form>

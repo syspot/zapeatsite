@@ -84,9 +84,9 @@ public class IndexFaces extends TSMainFaces {
 		this.estabelecimentos = this.fornecedorDAO.pesquisarHome();
 
 		this.topGeral = this.fornecedorDAO.pesquisarTopGeral();
-		
+
 		this.comentarioModel = this.comentarioDAO.obterIndicacao();
-		
+
 		this.setarCssTopGeral();
 
 	}
@@ -99,23 +99,23 @@ public class IndexFaces extends TSMainFaces {
 
 			if (count == 1) {
 
-				item.setCssTopGeral("hum");
-				
+				item.setCss("hum");
+
 			} else if (count == 2) {
 
-				item.setCssTopGeral("dois");
-				
+				item.setCss("dois");
+
 			} else if (count == 3) {
 
-				item.setCssTopGeral("tres");
-			
+				item.setCss("tres");
+
 			} else if (count == 4) {
 
-				item.setCssTopGeral("quatro");
-				
+				item.setCss("quatro");
+
 			} else {
-				
-				item.setCssTopGeral("cinco");
+
+				item.setCss("cinco");
 			}
 
 			count++;

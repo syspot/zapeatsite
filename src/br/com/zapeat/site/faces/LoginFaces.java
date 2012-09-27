@@ -1,7 +1,7 @@
 package br.com.zapeat.site.faces;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
 import br.com.topsys.util.TSCryptoUtil;
 import br.com.topsys.util.TSUtil;
@@ -9,8 +9,9 @@ import br.com.topsys.web.faces.TSMainFaces;
 import br.com.topsys.web.util.TSFacesUtil;
 import br.com.zapeat.site.dao.UsuarioDAO;
 import br.com.zapeat.site.model.UsuarioModel;
+import br.com.zapeat.site.util.Constantes;
 
-@SessionScoped
+@ViewScoped
 @ManagedBean(name = "loginFaces")
 public class LoginFaces extends TSMainFaces {
 
@@ -32,6 +33,7 @@ public class LoginFaces extends TSMainFaces {
 	private void initObejtos() {
 
 		this.usuarioModel = new UsuarioModel();
+
 	}
 
 	private boolean validaCampos() {
@@ -67,9 +69,9 @@ public class LoginFaces extends TSMainFaces {
 
 			UsuarioModel model = this.usuarioDAO.obter(this.usuarioModel);
 
-			if (!TSUtil.isEmpty(model.getId()) && model.getSenha().equals(TSCryptoUtil.gerarHash(this.usuarioModel.getSenha(), "MD5"))) {
+			if (!TSUtil.isEmpty(model.getId()) && !TSUtil.isEmpty(model.getSenha()) && model.getSenha().equals(TSCryptoUtil.gerarHash(this.usuarioModel.getSenha(), "MD5"))) {
 
-				TSFacesUtil.addObjectInSession(br.com.zapeat.site.util.Constantes.USUARIO_LOGADO, model);
+				TSFacesUtil.addObjectInSession(Constantes.USUARIO_LOGADO, model);
 
 			} else {
 
@@ -77,7 +79,7 @@ public class LoginFaces extends TSMainFaces {
 			}
 		}
 
-		return null;
+		return Constantes.INDEX;
 	}
 
 	public UsuarioModel getUsuarioModel() {

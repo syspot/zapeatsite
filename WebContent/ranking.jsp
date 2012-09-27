@@ -2,10 +2,12 @@
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>
+<%@ taglib prefix="p" uri="http://primefaces.prime.com.tr/ui"%>
 
 <f:view>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -15,7 +17,6 @@
 <link href="css/interna.css" rel="stylesheet" type="text/css" />
 <link href="css/cssReset.css" rel="stylesheet" type="text/css" />
 <link href="css/fontface.css" rel="stylesheet" type="text/css" />
-                                                             
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
@@ -31,14 +32,15 @@
 <script type="text/javascript" src="js/geometa.js"></script>
 <script type="text/javascript">
       $(document).ready(function() {
-		$('#principal ul:eq(0)').css('left','-45px');
-		$('#principal ul:eq(1)').css('left','-120px');
-		$('#principal ul:eq(2)').css('left','-195px');
-		$('#principal ul:eq(3)').css('left','-270px');
-		$('#principal ul:eq(4)').css('right','-225px');
-		$('#principal ul:eq(5)').css('right','-150px');
-		$('#principal ul:eq(6)').css('right','-75px');
-		$('#principal ul:eq(7)').css('right','-0px');
+		$('#outrosDestaques > #listagem > li:even').css('background', '#CCE5FF');
+		$('#principal ul:eq(0)').css('left','-50px');
+		$('#principal ul:eq(1)').css('left','-135px');
+		$('#principal ul:eq(2)').css('left','-220px');
+		$('#principal ul:eq(3)').css('left','-305px');
+		$('#principal ul:eq(4)').css('right','-170px');
+		$('#principal ul:eq(5)').css('right','-85px');
+		$('#principal ul:eq(6)').css('right','0px');
+		//$('#principal ul:eq(7)').css('right','0px');
 	  })
 </script>
 <!--=============MODAL=============-->
@@ -144,22 +146,35 @@
     <!-- TERMINA BUSCA -->
     <!-- COMECA PUBLICIDADE/MARCA -->
     <div id="marcaPublicidade">
-    	<h1></h1>
-        <div class="superbanner"></div>
+    	<h1>
+    	<h:outputLink value="#{facesContext.externalContext.requestContextPath}/index.jsf" title="Página Inicial">
+    		<h:graphicImage value="img/marca.png" />
+    	</h:outputLink></h1>	
+    	<div class="superbanner"></div>
     </div>
     <!-- TERMINA PUBLICIDADE/MARCA -->    
     <!-- COMECA MENU -->
     <div id="menu">
             <nav id="categorias">
             	<div id="cadastro">
-                    <div id="facebook">
-                        <div class="fb-login-button" data-show-faces="false" data-width="200" data-max-rows="1">Entrar usando Facebook</div>
+            		<div id="facebook">
+						
+					  <h:outputLink value="#{faceBookFaces.url}" rendered="#{empty sessionScope.usuarioLogado.id}">
+						<h:graphicImage value="img/facebook.gif" />
+					  </h:outputLink>
+					  <h:outputLink value="#{faceBookFaces.logout}" rendered="#{!empty sessionScope.usuarioLogado.id}">
+					  	Sair
+					  </h:outputLink>
+					  
                     </div>
+                    
+                    <c:if test="${empty sessionScope.usuarioLogado.id}">
                     <div id="local">
                         <span class="chamadaCadastro">Não tem Facebook?</span>
                         <div><a class="modal" title="Cadastrar" rel="modal" href="<%= request.getContextPath() %>/inc/cadastro.jsf"><span class="icons iconCadastrar"></span>cadastrar</a></div>
                         <div><a id="modal" href="<%= request.getContextPath() %>/inc/login.jsf" class="modal" rel="modal" title="Login"><span class="icons iconLogin"></span>login</a></div>
                     </div>
+                    </c:if>
             	</div>
                 
                 <%@ include file="/categorias.jsp" %>
@@ -168,12 +183,6 @@
     <!-- TERMINA MENU -->
 </div>
 <!-- TERMINA TOPO -->
-
-<div id="id-Breadcrumb">
-    <span class="migalha"><a href="index.html" title="">Página Inicial</a></span>    »    
-    <span class="migalha">Mais Indicados</span>    »   
-    <span class="migalha"><a href="categoria/ranking.html" title="">Ranking	</a></span>   
-</div>
 
 <!-- COMECA CENTRAL -->
 <div id="central">
@@ -185,303 +194,114 @@
         	<div id="tituloSessao">
             	<span class="icons maisIndicados"></span>
             	<h2>Ranking</h2>
-                <!--==
-                <p>Promoção da hora</p>
-                <p>Promoção do dia</p>
-                <p>Promoção da semana</p>                
-                <p>Carro-chefe</p>
-                ==-->
                 <p>Mais Indicados</p>
             </div>
         	<div class="coluna">
             	<h2>Melhor Comida</h2>
+            	<c:forEach var="item" items="${rankingFaces.melhorComida}">
                 <div class="boxRanking">
-                	<span class="position1"></span>
+                	<span class="${item.css}"></span>
                 	<blockquote>
-                    	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
+                    	<a href="estabelecimento.jsf?id=${item.id}" title="${item.nomeFantasia}">
+                            <span class="imgRank">
+                            	<img src="img/model/180x79.jpg" alt="Marca 80x80px" title="${item.nomeFantasia}" />
+                            </span>
                             <div class="info">
-                                <p class="titulo">Nome da comida</p>
-                                <p class="dados">Nome do estabelecimento</p>
+                                <p class="titulo">${item.nomeFantasia}</p>
+                                <p class="dados">${item.categoriaPrincipal.descricao}</p>
                             </div>
                         </a>
                     </blockquote>
                     <div class="indico">
-                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
+                    	<p><a id="modal" href="inc/indicacao.jsf" title="" class="modal" rel="modal"><span class="icons indicacaoRed"></span> Indico [${item.quantidadeIndicacoes}]</a></p>
+                    	<p><a id="modal" href="inc/indicacao.jsf" title="" class="modal" rel="modal"><span class="icons naoindicacaoRed"></span> Não indico</a></p>
                     </div>
                 </div>
-                
-                <div class="boxRanking">
-                	<span class="position2"></span>
-                	<blockquote>
-                    	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
-                            <div class="info">
-                                <p class="titulo">Nome da comida</p>
-                                <p class="dados">Nome do estabelecimento</p>
-                            </div>
-                        </a>
-                    </blockquote>
-                    <div class="indico">
-                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
-                    </div>
-                </div>
-                
-                <div class="boxRanking">
-                	<span class="position3"></span>
-                	<blockquote>
-                    	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
-                            <div class="info">
-                                <p class="titulo">Nome da comida</p>
-                                <p class="dados">Nome do estabelecimento</p>
-                            </div>
-                        </a>
-                    </blockquote>
-                    <div class="indico">
-                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
-                    </div>
-                </div>
-                
-                <div class="boxRanking">
-                	<span class="position4"></span>
-                	<blockquote>
-                    	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
-                            <div class="info">
-                                <p class="titulo">Nome da comida</p>
-                                <p class="dados">Nome do estabelecimento</p>
-                            </div>
-                        </a>
-                    </blockquote>
-                    <div class="indico">
-                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
-                    </div>
-                </div>
-                
-                <div class="boxRanking">
-                	<span class="position5"></span>
-                	<blockquote>
-                    	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
-                            <div class="info">
-                                <p class="titulo">Nome da comida</p>
-                                <p class="dados">Nome do estabelecimento</p>
-                            </div>
-                        </a>
-                    </blockquote>
-                    <div class="indico">
-                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
-                    </div>
-                </div>
+                </c:forEach>
             </div>
-            
             
             <div class="coluna">
             	<h2>Ambiente</h2>
+            	<c:forEach var="item" items="${rankingFaces.melhorAmbiente}">
                 <div class="boxRanking">
-                	<span class="position1"></span>
+                	<span class="${item.css}"></span>
                 	<blockquote>
-                    	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
+                    	<a href="estabelecimento.jsf?id=${item.id}" title="${item.nomeFantasia}">
+                            <span class="imgRank"><img src="img/model/180x79.jpg" alt="Marca 80x80px" title="${item.nomeFantasia}" /></span>
                             <div class="info">
-                                <p class="titulo">Nome do estabelecimento</p>
-                                <p class="dados">Categoria</p>
+                                <p class="titulo">${item.nomeFantasia}</p>
+                                <p class="dados">${item.categoriaPrincipal.descricao}</p>
                             </div>
                         </a>
                     </blockquote>
                     <div class="indico">
-                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
+                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [${item.quantidadeIndicacoes}]</a>
                     </div>
                 </div>
+                </c:forEach>
                 
-                <div class="boxRanking">
-                	<span class="position2"></span>
-                	<blockquote>
-                    	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
-                            <div class="info">
-                                <p class="titulo">Nome do estabelecimento</p>
-                                <p class="dados">Categoria</p>
-                            </div>
-                        </a>
-                    </blockquote>
-                    <div class="indico">
-                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
-                    </div>
-                </div>
-                
-                <div class="boxRanking">
-                	<span class="position3"></span>
-                	<blockquote>
-                    	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
-                            <div class="info">
-                                <p class="titulo">Nome do estabelecimento</p>
-                                <p class="dados">Categoria</p>
-                            </div>
-                        </a>
-                    </blockquote>
-                    <div class="indico">
-                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
-                    </div>
-                </div>
-                
-                <div class="boxRanking">
-                	<blockquote>
-                    	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
-                            <div class="info">
-                                <p class="titulo">Nome do estabelecimento</p>
-                                <p class="dados">Categoria</p>
-                            </div>
-                        </a>
-                    </blockquote>
-                    <div class="indico">
-                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
-                    </div>
-                </div>
-                
-                <div class="boxRanking">
-                	<span class="position5"></span>
-                	<blockquote>
-                    	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
-                            <div class="info">
-                                <p class="titulo">Nome do estabelecimento</p>
-                                <p class="dados">Categoria</p>
-                            </div>
-                        </a>
-                    </blockquote>
-                    <div class="indico">
-                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
-                    </div>
-                </div>
             </div>
-            
-            
-            <div class="coluna">
-            	<h2>Carro-chefe</h2>
-                <div class="boxRanking">
-                	<span class="position1"></span>
-                	<blockquote>
-                    	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
-                            <div class="info">
-                                <p class="titulo">Nome da comida</p>
-                                <p class="dados">Nome do estabelecimento</p>
-                            </div>
-                        </a>
-                    </blockquote>
-                    <div class="indico">
-                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
-                    </div>
-                </div>
-                
-                <div class="boxRanking">
-                	<span class="position2"></span>
-                	<blockquote>
-                    	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
-                            <div class="info">
-                                <p class="titulo">Nome da comida</p>
-                                <p class="dados">Nome do estabelecimento</p>
-                            </div>
-                        </a>
-                    </blockquote>
-                    <div class="indico">
-                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
-                    </div>
-                </div>
-                
-                <div class="boxRanking">
-                	<span class="position3"></span>
-                	<blockquote>
-                    	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
-                            <div class="info">
-                                <p class="titulo">Nome da comida</p>
-                                <p class="dados">Nome do estabelecimento</p>
-                            </div>
-                        </a>
-                    </blockquote>
-                    <div class="indico">
-                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
-                    </div>
-                </div>
-                
-                <div class="boxRanking">
-                	<span class="position4"></span>
-                	<blockquote>
-                    	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
-                            <div class="info">
-                                <p class="titulo">Nome da comida</p>
-                                <p class="dados">Nome do estabelecimento</p>
-                            </div>
-                        </a>
-                    </blockquote>
-                    <div class="indico">
-                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
-                    </div>
-                </div>
-                
-                <div class="boxRanking">
-                	<span class="position5"></span>
-                	<blockquote>
-                    	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
-                            <div class="info">
-                                <p class="titulo">Nome da comida</p>
-                                <p class="dados">Nome do estabelecimento</p>
-                            </div>
-                        </a>
-                    </blockquote>
-                    <div class="indico">
-                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
-                    </div>
-                </div>
-            </div>
-
-        
+                    
         </div>
         
         <!-- COMECA COLUNA DIREITA -->
         <div id="dir">
+        	<c:if test="${not empty indexFaces.promocaoDia.id}">
         	<div class="boxSubCat">
             	<h2>Promoção do dia</h2>
-                <a href="" title="">
+            	<a href="promocao.jsf?id=${indexFaces.promocaoDia.id}" title="">
                     <img src="img/model/180x79.jpg" alt="" title="" />
-                    <p class="titulo">Nome da promo</p>
+                    <p class="titulo">${indexFaces.promocaoDia.fornecedorModel.nomeFantasia}</p>
+                    <p class="item">
+                    ${indexFaces.promocaoDia.descricao}</p>
                     <!-- SE PROMOÇÃO EM DESCONTO -->
-                    <p><span class="precoDe">De: R$700,00</span>&nbsp;&nbsp;<span class="precoPor">Por: R$500,00</span> </p>
+                    <p><span class="precoDe">
+                    De: <h:outputText value="#{indexFaces.promocaoDia.precoOriginal}">
+                    		<f:convertNumber type="currency" currencySymbol="R$"/>
+                    	</h:outputText></span>&nbsp;&nbsp;
+                    	<span class="precoPor">
+                    Por: 
+                    	<h:outputText value="#{indexFaces.promocaoDia.precoPromocional}">
+                    		<f:convertNumber type="currency" currencySymbol="R$"/>
+                    	</h:outputText></span>
+                    	<p><span class="fontYi">${indexFaces.promocaoDia.descricao}</span></p>
                 </a>
             </div>
+            </c:if>
+        	<c:if test="${not empty indexFaces.promocaoSemana.id}">
         	<div class="boxSubCat">
             	<h2>Promoção da semana</h2>
-                <a href="" title="">
-                    <img src="img/model/180x79.jpg" alt="" title="" />
-                    <p class="titulo">Nome da promo</p>
-                    <!-- SE PROMOÇÃO EM PRODUTO -->
-                    <p><span class="fontYi">Na Cheiro de Pizza comprando uma pizza grande você leva outra pizza do mesmo tamanho e sabor totalmente grátis.</span></p>
-                </a>
+                <a href="promocao.jsf?id=${indexFaces.promocaoSemana.id}" title="">
+                	<img src="img/model/180x79.jpg" alt="" title="" />
+               
+                    <p class="titulo">${indexFaces.promocaoSemana.fornecedorModel.nomeFantasia}</p>
+                    <p><span class="precoDe">
+                    De: <h:outputText value="#{indexFaces.promocaoSemana.precoOriginal}">
+                    		<f:convertNumber type="currency" currencySymbol="R$"/>
+                    	</h:outputText></span>&nbsp;&nbsp;
+                    	<span class="precoPor">
+                    Por: 
+                    	<h:outputText value="#{indexFaces.promocaoSemana.precoPromocional}">
+                    		<f:convertNumber type="currency" currencySymbol="R$"/>
+                    	</h:outputText></span>
+                    	
+                    	<p><span class="fontYi">${indexFaces.promocaoSemana.descricao}</span></p>
+                  </a>   
             </div>
+            </c:if>
+            <c:if test="${not empty indexFaces.carroChefeModel.id}">
             <div class="boxSubCat">
             	<h2>Carro-chefe</h2>
-                <a href="" title="">
-                    <img src="img/model/180x79.jpg" alt="" title="" />
-                    <p class="titulo">Nome do estab</p>
-                    <p class="categoria">categoria</p>
-                    <p class="item">nome do prod</p>
-                    <p><span class="precoDe">De: R$789,00</span>&nbsp;&nbsp;<span class="precoPor">Por: R$254,00</span> </p>
+                <a href="promocao.jsf?carroChefeId=${indexFaces.carroChefeModel.id}" title=""><img src="img/model/180x79.jpg" alt="" title="" /></a>
+                    <p class="titulo">${indexFaces.carroChefeModel.fornecedorModel.nomeFantasia}</p>
+                    <p><span class="item">${indexFaces.carroChefeModel.descricao}</span></p>
                 </a>
             </div>
+            </c:if>
             
             <div class="boxSubCat">
             	<div class="banner">banner</div>
             </div>
-            
-            
             
         </div>
     </div>

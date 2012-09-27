@@ -49,7 +49,7 @@ public class FornecedorModel {
 
 	private Integer quantidadeIndicacoes;
 	
-	private String cssTopGeral;
+	private String css;
 
 	public FornecedorModel() {
 	}
@@ -245,14 +245,6 @@ public class FornecedorModel {
 		this.quantidadeIndicacoes = quantidadeIndicacoes;
 	}
 
-	public String getCssTopGeral() {
-		return cssTopGeral;
-	}
-
-	public void setCssTopGeral(String cssTopGeral) {
-		this.cssTopGeral = cssTopGeral;
-	}
-
 	public String getImagemThumbView() {
 		return Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_FORNECEDOR_THUMB + getImagemThumb();
 	}
@@ -284,6 +276,14 @@ public class FornecedorModel {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public String getCss() {
+		return css;
+	}
+
+	public void setCss(String css) {
+		this.css = css;
 	}
 
 }

@@ -5,10 +5,11 @@ import javax.faces.bean.SessionScoped;
 
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 
-
-
+import br.com.topsys.constant.TSConstant;
 import br.com.topsys.exception.TSApplicationException;
 import br.com.topsys.file.TSFile;
+import br.com.topsys.util.TSCryptoUtil;
+import br.com.topsys.util.TSStringUtil;
 import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.faces.TSMainFaces;
 import br.com.topsys.web.util.TSFacesUtil;
@@ -35,6 +36,8 @@ public class CadastroFaces extends TSMainFaces {
 	private void initObjetos() {
 
 		this.setUsuarioModel(new UsuarioModel());
+		
+		this.getUsuarioModel().setFlagAtivo(Boolean.TRUE);
 	}
 
 	private void initDAO() {
@@ -89,11 +92,21 @@ public class CadastroFaces extends TSMainFaces {
 
 				this.criarArquivoDiretorio();
 
-				this.usuarioDAO.inserir(this.usuarioModel);
+				this.usuarioModel.setSenha(TSCryptoUtil.gerarHash(this.usuarioModel.getSenha(), TSConstant.CRIPTOGRAFIA_MD5));
 
-				this.initObjetos();
+				UsuarioModel model = this.usuarioDAO.inserir(this.usuarioModel);
 
 				super.setDefaultMessage(true);
+				
+				model.setNome(TSStringUtil.formatarNomeProprio(model.getNome()));
+
+				TSFacesUtil.addObjectInSession(Constantes.USUARIO_LOGADO, model);
+
+				this.initObjetos();
+				
+				super.setDefaultMessage(true);
+
+				return Constantes.INDEX;
 
 			} else {
 
