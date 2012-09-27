@@ -21,6 +21,8 @@ public class ComentarioModel{
 	private Boolean flagIndicaPromocao;
 	
 	private Long posicao;
+	
+	private Boolean flagNaoIndica;
 
 	public Long getId() {
 		return TSUtil.tratarLong(id);
@@ -109,6 +111,14 @@ public class ComentarioModel{
 
 	public void setPosicao(Long posicao) {
 		this.posicao = posicao;
+	}
+
+	public Boolean getFlagNaoIndica() {
+		return flagNaoIndica;
+	}
+
+	public void setFlagNaoIndica(Boolean flagNaoIndica) {
+		this.flagNaoIndica = flagNaoIndica;
 	}
 	
 }

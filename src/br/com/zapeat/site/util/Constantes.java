@@ -34,5 +34,6 @@ public final class Constantes {
 	
 	public static final String USUARIO_LOGADO = "usuarioLogado";
 	public static final String INDEX = "index";
+	public static final String SEQUENCE_USUARIO_SITE = "usuarios_id_seq";
 	
 }

@@ -26,10 +26,6 @@ public class FaceBookFaces {
 
 	public FaceBookFaces() throws MalformedURLException {
 		
-		String path = TSFacesUtil.getRequest().getServerName() + ":" + TSFacesUtil.getRequest().getServerPort() + TSFacesUtil.getRequest().getContextPath() + "/index.jsf";
-		
-		System.out.println(path);
-
 		this.url = FacebookClient.getLoginRedirectURL();
 
 		this.logout = FacebookClient.getLogoutUrl();
@@ -59,8 +55,6 @@ public class FaceBookFaces {
 					if (kv.length != 2) {
 
 						this.redirect();
-
-						throw new RuntimeException("Unexpected auth response");
 
 					} else {
 

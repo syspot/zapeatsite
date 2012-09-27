@@ -209,7 +209,7 @@
 					        }); 
 					      } 
 					    </script>
-					    
+					  
 				      <h:outputLink value="#{faceBookFaces.url}" rendered="#{empty sessionScope.usuarioLogado.id}">
 						<h:graphicImage value="img/facebook.gif" />
 					  </h:outputLink>
@@ -233,10 +233,12 @@
         </div>
     <!-- TERMINA MENU -->
 </div>
+					  
 <c:if test="${!empty sessionScope.usuarioLogado.id}">
-<div id="id-Breadcrumb"><span id="status">Olá, ${sessionScope.usuarioLogado.nome}</span>, temos ótimas promoções pra você!</span></div>
+<div id="id-Breadcrumb"><span id="status">Olá, ${sessionScope.usuarioLogado.nome}</span>, temos ótimas promoções pra você!</div>
+</c:if>
 
-</c:if><!-- COMECA CENTRAL -->
+<!-- COMECA CENTRAL -->
 <div id="central">
 	<!-- COMECA CONTEUDO -->
 	<div id="conteudo">
@@ -303,7 +305,7 @@
         <div id="meio">
         	<div id="destaque">
             	<div id="fotoDestaque">
-	                <a href="promocao.jsf/?id=${indexFaces.promocaoHora.id}"><img src="img/model/590x260.jpg" alt="Marca 80x80px" title="${indexFaces.promocaoSemana.fornecedorModel.nomeFantasia}" /></a>
+	                <a href="promocao.jsf?id=${indexFaces.promocaoHora.id}"><img src="img/model/590x260.jpg" alt="Marca 80x80px" title="${indexFaces.promocaoSemana.fornecedorModel.nomeFantasia}" /></a>
                     <div class="tituloPromo">
                     	<p><span class="tipoPromo">Promoção da hora</span></p>
                         <p><span class="nomePromo"><c:out value="${indexFaces.promocaoHora.titulo}"/>/${indexFaces.promocaoSemana.fornecedorModel.nomeFantasia}</span></p>
@@ -311,7 +313,7 @@
                 </div>
                 <div id="faixa">
  	               <div class="marca"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
-                   <p class="percentual">40%</p>
+                   <p class="percentual">${indexFaces.promocaoHora.percentualDesconto}%</p>
                    <p class="fontYi font10px">desconto</p>
                 </div>
                 <blockquote class="fontYi">

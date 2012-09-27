@@ -7,7 +7,8 @@ public final class FacebookClient {
 	public static String API_KEY = "444305308941322";
 	public static String SECRET = "bd452d9359ebe75370c39cf50b09dd40";
 	private static final String client_id = "444305308941322";
-	private static final String redirect_uri = TSFacesUtil.getRequest().getServerName() + ":" + TSFacesUtil.getRequest().getServerPort() + TSFacesUtil.getRequest().getContextPath() + "/checarLoginFacebook.jsf";
+	private static final String redirect_uri = "http://" +TSFacesUtil.getRequest().getServerName() + ":" + TSFacesUtil.getRequest().getServerPort() + TSFacesUtil.getRequest().getContextPath() + "/checarLoginFacebook.jsf";
+	private static final String redirect_uri_logout = "http://" +TSFacesUtil.getRequest().getServerName() + ":" + TSFacesUtil.getRequest().getServerPort() + TSFacesUtil.getRequest().getContextPath() + "/logout.jsf";
 	private static final String[] perms = new String[] { "email" };
 
 	public static String getAPIKey() {
@@ -30,7 +31,7 @@ public final class FacebookClient {
 		
 		String accessToken = (String) TSFacesUtil.getObjectInSession("accessToken");
 		
-		return "https://www.facebook.com/logout.php?next=http://localhost:8080/zapeatsite/logout.jsf&access_token="+accessToken;
+		return "https://www.facebook.com/logout.php?next="+ redirect_uri_logout + "&access_token=" + accessToken;
 	}
 	
 

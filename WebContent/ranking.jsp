@@ -3,35 +3,41 @@
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>
+<%@ taglib prefix="p" uri="http://primefaces.prime.com.tr/ui"%>
 
 <f:view>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 <title>Zapeat</title>
 <link href="css/padrao.css" rel="stylesheet" type="text/css" />
-<link href="css/interna.css" rel="stylesheet" type="text/css" />
+<link href="css/home.css" rel="stylesheet" type="text/css" />
 <link href="css/cssReset.css" rel="stylesheet" type="text/css" />
 <link href="css/fontface.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"> </script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"> </script>
 <script src="js/jquery-latest.js"></script>
 <script type="text/javascript" src="js/geometa.js"></script>
 <script type="text/javascript">
       $(document).ready(function() {
 		$('#outrosDestaques > #listagem > li:even').css('background', '#CCE5FF');
-		$('#principal ul:eq(0)').css('left','-50px');
-		$('#principal ul:eq(1)').css('left','-135px');
-		$('#principal ul:eq(2)').css('left','-220px');
-		$('#principal ul:eq(3)').css('left','-305px');
-		$('#principal ul:eq(4)').css('right','-170px');
-		$('#principal ul:eq(5)').css('right','-85px');
-		$('#principal ul:eq(6)').css('right','0px');
-		//$('#principal ul:eq(7)').css('right','0px');
+		$('#principal ul:eq(0)').css('left','-45px');
+		$('#principal ul:eq(1)').css('left','-120px');
+		$('#principal ul:eq(2)').css('left','-195px');
+		$('#principal ul:eq(3)').css('left','-270px');
+		$('#principal ul:eq(4)').css('right','-225px');
+		$('#principal ul:eq(5)').css('right','-150px');
+		$('#principal ul:eq(6)').css('right','-75px');
+		$('#principal ul:eq(7)').css('right','-0px');
 	  })
 </script>
+
 <!--=============MODAL=============-->
-	<script type="text/javascript" src="http://fw2.atarde.com.br/fw/js/modal.js">
+	<script type="text/javascript" src="js/modal.js"></script>
+    <script type="text/javascript">
     $(document).ready(function(){
 		$('a.modal').modal({
 			closeClickOut:true,
@@ -41,18 +47,25 @@
 <!--=============GEOLOCATION=============--> 
 <script type="text/javascript">
 		//função para botão de acionar geolocation
-	$(document).ready(function () {
-		// wire up button click
-		$('#btnInit').click(function () {
-				// teste para a presença do geolocation
+ 		jQuery(window).ready(function(){  
+            jQuery("#btnInit").click(function(){
+				$('#info').val(initialize);
+				}); 			
+        })
+		
+		//inicia o geolocation
+		function initialize() {
+			// teste para a presença do geolocation
 			if (navigator && navigator.geolocation) {
+				// faz a requisição da posição do usuário
 				navigator.geolocation.getCurrentPosition(geo_success, geo_error);
 			} else {
-				error('Geolocation is not supported.');
+				// use MaxMind IP to location API fallback
+				printAddress(geoip_latitude(), geoip_longitude(), true);
 			}
-		});
-	});	
-		
+		}
+	
+
 
 	function geo_success(position) {
     	printAddress(position.coords.latitude, position.coords.longitude);
@@ -113,13 +126,11 @@
 		function error(msg){
 			alert(msg);
 		}
-		
-</script> 
+</script>   
 </head>
 
-<body>
-
-<h:form id="form">
+<body onload="initialize()">
+	
 <!-- COMECA TOPO -->
 <div id="topo">
 	<!-- COMECA BUSCA -->
@@ -160,7 +171,8 @@
 					          channelUrl : 'http://localhost:8080/zapeatsite/index.jsf', // Path to your Channel File
 					          status     : true, // check login status
 					          cookie     : true, // enable cookies to allow the server to access the session
-					          xfbml      : true  // parse XFBML
+					          xfbml      : true,  // parse XFBML
+					          oauth		 : true   
 					        });
 					
 					        // listen for and handle auth.statusChange events
@@ -180,14 +192,11 @@
 					            document.getElementById('modal').style.display = 'none';
 					            document.getElementById('auth-loggedin').style.display = 'block';
 					            document.getElementById('auth-loggedin').style.display = 'block';
-					            document.getElementById('botao').style.display = 'none';
 					            
 					          } else {
 					            // user has not auth'd your app, or is not logged into Facebook
 					            document.getElementById('auth-loggedout').style.display = 'block';
 					            document.getElementById('modal').style.display = 'block';
-					            document.getElementById('botao').style.display = 'block';
-					            
 					          }
 					        });
 					
@@ -200,19 +209,23 @@
 					        }); 
 					      } 
 					    </script>
-					      <div id="auth-status">
-					        <div id="auth-loggedout" class="fb-login-button">Entrar com Facebook</div>
-					        
-					    </div>
+					  
+				      <h:outputLink value="#{faceBookFaces.url}" rendered="#{empty sessionScope.usuarioLogado.id}">
+						<h:graphicImage value="img/facebook.gif" />
+					  </h:outputLink>
+					  <h:outputLink value="#{faceBookFaces.logout}" rendered="#{!empty sessionScope.usuarioLogado.id}">
+					  	Sair
+					  </h:outputLink>
+					  
                     </div>
                     
+                    <c:if test="${empty sessionScope.usuarioLogado.id}">
                     <div id="local">
                         <span class="chamadaCadastro">Não tem Facebook?</span>
                         <div><a class="modal" title="Cadastrar" rel="modal" href="<%= request.getContextPath() %>/inc/cadastro.jsf"><span class="icons iconCadastrar"></span>cadastrar</a></div>
                         <div><a id="modal" href="<%= request.getContextPath() %>/inc/login.jsf" class="modal" rel="modal" title="Login"><span class="icons iconLogin"></span>login</a></div>
-                        
                     </div>
-                    
+                    </c:if>
             	</div>
                 
                 <%@ include file="/categorias.jsp" %>
@@ -220,12 +233,10 @@
         </div>
     <!-- TERMINA MENU -->
 </div>
-
-<t:inputHidden forceId="true" value="#{rankingFaces.usuarioModel.id}" id="faceId" />
-<t:inputHidden forceId="true" value="#{rankingFaces.usuarioModel.nome}" id="faceNome" />
-<t:inputHidden forceId="true" value="#{rankingFaces.usuarioModel.email}" id="faceEmail" />
-
-<div id="id-Breadcrumb"><span id="status">Olá, <span id="nome"></span>, temos ótimas promoções pra você!</span></div>
+					  
+<c:if test="${!empty sessionScope.usuarioLogado.id}">
+<div id="id-Breadcrumb"><span id="status">Olá, ${sessionScope.usuarioLogado.nome}</span>, temos ótimas promoções pra você!</div>
+</c:if>
 
 <!-- COMECA CENTRAL -->
 <div id="central">
@@ -234,6 +245,8 @@
     
     	<!-- COMECA COLUNA PRINCIPAL  -->
     	<div id="conteudoRanking">
+    	
+    	<h:messages showDetail="true" showSummary="false" errorStyle="font-size:12px; color:#666; font-family:'titilliumtext22l_ltthin';"/>
         	<div id="tituloSessao">
             	<span class="icons maisIndicados"></span>
             	<h2>Ranking</h2>

@@ -4,6 +4,7 @@ import br.com.topsys.database.TSDataBaseBrokerIf;
 import br.com.topsys.database.factory.TSDataBaseBrokerFactory;
 import br.com.topsys.exception.TSApplicationException;
 import br.com.zapeat.site.model.UsuarioModel;
+import br.com.zapeat.site.util.Constantes;
 
 public class UsuarioDAO {
 
@@ -20,6 +21,8 @@ public class UsuarioDAO {
 	public UsuarioModel inserir(UsuarioModel model) throws TSApplicationException {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		
+		model.setId(broker.getSequenceNextValue(Constantes.SEQUENCE_USUARIO_SITE));
 
 		broker.setPropertySQL("usuariodao.inserir", model.getNome(), model.getEmail(), model.getSenha(), model.getFlagAtivo(), model.getImagem());
 

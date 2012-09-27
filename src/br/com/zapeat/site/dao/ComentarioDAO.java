@@ -37,5 +37,25 @@ public class ComentarioDAO {
 		broker.execute();
 
 	}
+	
+	public ComentarioModel obterIndicacaoComidaPositiva(ComentarioModel model) {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+		broker.setPropertySQL("comentariodao.obterIndicacaoComidaPositiva", model.getFornecedorModel().getId(), model.getUsuarioModel().getId());
+
+		return (ComentarioModel) broker.getObjectBean(ComentarioModel.class, "id", "descricao", "usuarioModel.id", "usuarioModel.nome", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.logoMarca");
+
+	}
+	
+	public ComentarioModel obterIndicacaoComidaNegativa(ComentarioModel model) {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+		broker.setPropertySQL("comentariodao.obterIndicacaoComidaNegativa", model.getFornecedorModel().getId(), model.getUsuarioModel().getId());
+
+		return (ComentarioModel) broker.getObjectBean(ComentarioModel.class, "id", "descricao", "usuarioModel.id","usuarioModel.nome", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.logoMarca");
+
+	}
 
 }

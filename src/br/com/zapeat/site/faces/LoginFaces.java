@@ -33,6 +33,7 @@ public class LoginFaces extends TSMainFaces {
 	private void initObejtos() {
 
 		this.usuarioModel = new UsuarioModel();
+
 	}
 
 	private boolean validaCampos() {
@@ -68,11 +69,9 @@ public class LoginFaces extends TSMainFaces {
 
 			UsuarioModel model = this.usuarioDAO.obter(this.usuarioModel);
 
-			if (!TSUtil.isEmpty(model.getId()) && model.getSenha().equals(TSCryptoUtil.gerarHash(this.usuarioModel.getSenha(), "MD5"))) {
+			if (!TSUtil.isEmpty(model.getId()) && !TSUtil.isEmpty(model.getSenha()) && model.getSenha().equals(TSCryptoUtil.gerarHash(this.usuarioModel.getSenha(), "MD5"))) {
 
-				TSFacesUtil.addObjectInSession(br.com.zapeat.site.util.Constantes.USUARIO_LOGADO, model);
-				
-				return Constantes.INDEX;
+				TSFacesUtil.addObjectInSession(Constantes.USUARIO_LOGADO, model);
 
 			} else {
 
@@ -80,7 +79,7 @@ public class LoginFaces extends TSMainFaces {
 			}
 		}
 
-		return null;
+		return Constantes.INDEX;
 	}
 
 	public UsuarioModel getUsuarioModel() {
