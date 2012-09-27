@@ -144,7 +144,11 @@
     <!-- TERMINA BUSCA -->
     <!-- COMECA PUBLICIDADE/MARCA -->
     <div id="marcaPublicidade">
-    	<h1><img src="img/marca.png" title="Página Inicial" alt="Marca Zapeat" /></h1>
+    	<h1>
+    	<h:outputLink value="#{facesContext.externalContext.requestContextPath}/index.jsf" title="Página Inicial">
+    		<h:graphicImage value="img/marca.png" />
+    	</h:outputLink>	
+    	</h1>
         <div class="superbanner"></div>
     </div>
     <!-- TERMINA PUBLICIDADE/MARCA -->    
@@ -153,64 +157,8 @@
             <nav id="categorias">
             	<div id="cadastro">
             		<div id="facebook">
-						<div id="fb-root"></div>
-					    <script>
-					      // Load the SDK Asynchronously
-					      (function(d){
-					         var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-					         if (d.getElementById(id)) {return;}
-					         js = d.createElement('script'); js.id = id; js.async = true;
-					         js.src = "//connect.facebook.net/en_US/all.js";
-					         ref.parentNode.insertBefore(js, ref);
-					       }(document));
-					
-					      // Init the SDK upon load
-					      window.fbAsyncInit = function() {
-					        FB.init({
-					          appId      : '444305308941322', // App ID
-					          channelUrl : 'http://localhost:8080/zapeatsite/index.jsf', // Path to your Channel File
-					          status     : true, // check login status
-					          cookie     : true, // enable cookies to allow the server to access the session
-					          xfbml      : true,  // parse XFBML
-					          oauth		 : true   
-					        });
-					
-					        // listen for and handle auth.statusChange events
-					        FB.Event.subscribe('auth.statusChange', function(response) {
-						        
-					          if (response.authResponse) {
-						        
-					            FB.api('/me', function(me){
-					              if (me.name) {
-						            document.getElementById('nome').innerHTML = me.name;
-					                document.getElementById('faceId').value= me.id;
-					                document.getElementById('faceNome').value= me.name;
-					                document.getElementById('faceEmail').value= me.email;
-					              }
-					            })
-					            document.getElementById('auth-loggedout').style.display = 'none';
-					            document.getElementById('modal').style.display = 'none';
-					            document.getElementById('auth-loggedin').style.display = 'block';
-					            document.getElementById('auth-loggedin').style.display = 'block';
-					            
-					          } else {
-					            // user has not auth'd your app, or is not logged into Facebook
-					            document.getElementById('auth-loggedout').style.display = 'block';
-					            document.getElementById('modal').style.display = 'block';
-					          }
-					        });
-					
-					        // respond to clicks on the login and logout links
-					        document.getElementById('auth-loginlink').addEventListener('click', function(){
-					          FB.login();
-					        });
-					        document.getElementById('auth-logoutlink').addEventListener('click', function(){
-					          FB.logout();
-					        }); 
-					      } 
-					    </script>
-					  
-				      <h:outputLink value="#{faceBookFaces.url}" rendered="#{empty sessionScope.usuarioLogado.id}">
+						
+					  <h:outputLink value="#{faceBookFaces.url}" rendered="#{empty sessionScope.usuarioLogado.id}">
 						<h:graphicImage value="img/facebook.gif" />
 					  </h:outputLink>
 					  <h:outputLink value="#{faceBookFaces.logout}" rendered="#{!empty sessionScope.usuarioLogado.id}">

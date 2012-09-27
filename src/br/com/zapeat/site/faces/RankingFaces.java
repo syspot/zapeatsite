@@ -152,6 +152,8 @@ public class RankingFaces extends TSMainFaces {
 
 			count++;
 		}
+		
+		count = 1;
 
 		for (FornecedorModel item : this.melhorComida) {
 

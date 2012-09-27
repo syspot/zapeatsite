@@ -137,7 +137,11 @@
     <!-- TERMINA BUSCA -->
     <!-- COMECA PUBLICIDADE/MARCA -->
     <div id="marcaPublicidade">
-    	<h1></h1>
+    	<h1>
+    	<h:outputLink value="#{facesContext.externalContext.requestContextPath}/index.jsf" title="Página Inicial">
+    		<h:graphicImage value="img/marca.png" />
+    	</h:outputLink>	
+    	</h1>
         <div class="superbanner"></div>
     </div>
     <!-- TERMINA PUBLICIDADE/MARCA -->    
@@ -145,15 +149,26 @@
     <div id="menu">
             <nav id="categorias">
             	<div id="cadastro">
-                    <div id="facebook">
-                        <div class="fb-login-button" data-show-faces="false" data-width="200" data-max-rows="1">Entrar usando Facebook</div>
+            		<div id="facebook">
+						
+					  <h:outputLink value="#{faceBookFaces.url}" rendered="#{empty sessionScope.usuarioLogado.id}">
+						<h:graphicImage value="img/facebook.gif" />
+					  </h:outputLink>
+					  <h:outputLink value="#{faceBookFaces.logout}" rendered="#{!empty sessionScope.usuarioLogado.id}">
+					  	Sair
+					  </h:outputLink>
+					  
                     </div>
+                    
+                    <c:if test="${empty sessionScope.usuarioLogado.id}">
                     <div id="local">
                         <span class="chamadaCadastro">Não tem Facebook?</span>
-                        <div><a class="modal" title="Cadastrar" rel="modal" href="inc/cadastro.jsf"><span class="icons iconCadastrar"></span>cadastrar</a></div>
-                        <div><a id="modal" href="inc/login.jsf" class="modal" rel="modal" title="Login"><span class="icons iconLogin"></span>login</a></div>
+                        <div><a class="modal" title="Cadastrar" rel="modal" href="<%= request.getContextPath() %>/inc/cadastro.jsf"><span class="icons iconCadastrar"></span>cadastrar</a></div>
+                        <div><a id="modal" href="<%= request.getContextPath() %>/inc/login.jsf" class="modal" rel="modal" title="Login"><span class="icons iconLogin"></span>login</a></div>
                     </div>
+                    </c:if>
             	</div>
+                
                 <%@ include file="/categorias.jsp" %>
             </nav>
         </div>

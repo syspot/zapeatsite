@@ -38,7 +38,7 @@ public class FornecedorDAO {
 
 		broker.setPropertySQL("fornecedordao.pesquisarMelhorAtendimento", model.getId());
 
-		return broker.getCollectionBean(FornecedorModel.class, "id", "nomeFantasia", "quantidadeIndicacoes", "logoMarca");
+		return broker.getCollectionBean(FornecedorModel.class, "id", "nomeFantasia", "quantidadeIndicacoes", "logoMarca", "categoriaPrincipal.id", "categoriaPrincipal.descricao");
 
 	}
 	
@@ -49,7 +49,7 @@ public class FornecedorDAO {
 
 		broker.setPropertySQL("fornecedordao.pesquisarMelhorComida", model.getId());
 
-		return broker.getCollectionBean(FornecedorModel.class, "id", "nomeFantasia", "quantidadeIndicacoes", "logoMarca");
+		return broker.getCollectionBean(FornecedorModel.class, "id", "nomeFantasia", "quantidadeIndicacoes", "logoMarca", "categoriaPrincipal.id", "categoriaPrincipal.descricao");
 
 	}
 

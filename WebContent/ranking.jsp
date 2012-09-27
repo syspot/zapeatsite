@@ -7,37 +7,44 @@
 
 <f:view>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 <title>Zapeat</title>
 <link href="css/padrao.css" rel="stylesheet" type="text/css" />
-<link href="css/home.css" rel="stylesheet" type="text/css" />
+<link href="css/interna.css" rel="stylesheet" type="text/css" />
 <link href="css/cssReset.css" rel="stylesheet" type="text/css" />
 <link href="css/fontface.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"> </script>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1&appId=329697663791960";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"> </script>
+<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
 <script src="js/jquery-latest.js"></script>
 <script type="text/javascript" src="js/geometa.js"></script>
 <script type="text/javascript">
       $(document).ready(function() {
 		$('#outrosDestaques > #listagem > li:even').css('background', '#CCE5FF');
-		$('#principal ul:eq(0)').css('left','-45px');
-		$('#principal ul:eq(1)').css('left','-120px');
-		$('#principal ul:eq(2)').css('left','-195px');
-		$('#principal ul:eq(3)').css('left','-270px');
-		$('#principal ul:eq(4)').css('right','-225px');
-		$('#principal ul:eq(5)').css('right','-150px');
-		$('#principal ul:eq(6)').css('right','-75px');
-		$('#principal ul:eq(7)').css('right','-0px');
+		$('#principal ul:eq(0)').css('left','-50px');
+		$('#principal ul:eq(1)').css('left','-135px');
+		$('#principal ul:eq(2)').css('left','-220px');
+		$('#principal ul:eq(3)').css('left','-305px');
+		$('#principal ul:eq(4)').css('right','-170px');
+		$('#principal ul:eq(5)').css('right','-85px');
+		$('#principal ul:eq(6)').css('right','0px');
+		//$('#principal ul:eq(7)').css('right','0px');
 	  })
 </script>
-
 <!--=============MODAL=============-->
-	<script type="text/javascript" src="js/modal.js"></script>
-    <script type="text/javascript">
+	<script type="text/javascript" src="http://fw2.atarde.com.br/fw/js/modal.js">
     $(document).ready(function(){
 		$('a.modal').modal({
 			closeClickOut:true,
@@ -47,25 +54,18 @@
 <!--=============GEOLOCATION=============--> 
 <script type="text/javascript">
 		//função para botão de acionar geolocation
- 		jQuery(window).ready(function(){  
-            jQuery("#btnInit").click(function(){
-				$('#info').val(initialize);
-				}); 			
-        })
-		
-		//inicia o geolocation
-		function initialize() {
-			// teste para a presença do geolocation
+	$(document).ready(function () {
+		// wire up button click
+		$('#btnInit').click(function () {
+				// teste para a presença do geolocation
 			if (navigator && navigator.geolocation) {
-				// faz a requisição da posição do usuário
 				navigator.geolocation.getCurrentPosition(geo_success, geo_error);
 			} else {
-				// use MaxMind IP to location API fallback
-				printAddress(geoip_latitude(), geoip_longitude(), true);
+				error('Geolocation is not supported.');
 			}
-		}
-	
-
+		});
+	});	
+		
 
 	function geo_success(position) {
     	printAddress(position.coords.latitude, position.coords.longitude);
@@ -126,11 +126,13 @@
 		function error(msg){
 			alert(msg);
 		}
-</script>   
+		
+</script> 
 </head>
 
-<body onload="initialize()">
-	
+<body>
+
+
 <!-- COMECA TOPO -->
 <div id="topo">
 	<!-- COMECA BUSCA -->
@@ -144,8 +146,11 @@
     <!-- TERMINA BUSCA -->
     <!-- COMECA PUBLICIDADE/MARCA -->
     <div id="marcaPublicidade">
-    	<h1><img src="img/marca.png" title="Página Inicial" alt="Marca Zapeat" /></h1>
-        <div class="superbanner"></div>
+    	<h1>
+    	<h:outputLink value="#{facesContext.externalContext.requestContextPath}/index.jsf" title="Página Inicial">
+    		<h:graphicImage value="img/marca.png" />
+    	</h:outputLink></h1>	
+    	<div class="superbanner"></div>
     </div>
     <!-- TERMINA PUBLICIDADE/MARCA -->    
     <!-- COMECA MENU -->
@@ -153,64 +158,8 @@
             <nav id="categorias">
             	<div id="cadastro">
             		<div id="facebook">
-						<div id="fb-root"></div>
-					    <script>
-					      // Load the SDK Asynchronously
-					      (function(d){
-					         var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-					         if (d.getElementById(id)) {return;}
-					         js = d.createElement('script'); js.id = id; js.async = true;
-					         js.src = "//connect.facebook.net/en_US/all.js";
-					         ref.parentNode.insertBefore(js, ref);
-					       }(document));
-					
-					      // Init the SDK upon load
-					      window.fbAsyncInit = function() {
-					        FB.init({
-					          appId      : '444305308941322', // App ID
-					          channelUrl : 'http://localhost:8080/zapeatsite/index.jsf', // Path to your Channel File
-					          status     : true, // check login status
-					          cookie     : true, // enable cookies to allow the server to access the session
-					          xfbml      : true,  // parse XFBML
-					          oauth		 : true   
-					        });
-					
-					        // listen for and handle auth.statusChange events
-					        FB.Event.subscribe('auth.statusChange', function(response) {
-						        
-					          if (response.authResponse) {
-						        
-					            FB.api('/me', function(me){
-					              if (me.name) {
-						            document.getElementById('nome').innerHTML = me.name;
-					                document.getElementById('faceId').value= me.id;
-					                document.getElementById('faceNome').value= me.name;
-					                document.getElementById('faceEmail').value= me.email;
-					              }
-					            })
-					            document.getElementById('auth-loggedout').style.display = 'none';
-					            document.getElementById('modal').style.display = 'none';
-					            document.getElementById('auth-loggedin').style.display = 'block';
-					            document.getElementById('auth-loggedin').style.display = 'block';
-					            
-					          } else {
-					            // user has not auth'd your app, or is not logged into Facebook
-					            document.getElementById('auth-loggedout').style.display = 'block';
-					            document.getElementById('modal').style.display = 'block';
-					          }
-					        });
-					
-					        // respond to clicks on the login and logout links
-					        document.getElementById('auth-loginlink').addEventListener('click', function(){
-					          FB.login();
-					        });
-					        document.getElementById('auth-logoutlink').addEventListener('click', function(){
-					          FB.logout();
-					        }); 
-					      } 
-					    </script>
-					  
-				      <h:outputLink value="#{faceBookFaces.url}" rendered="#{empty sessionScope.usuarioLogado.id}">
+						
+					  <h:outputLink value="#{faceBookFaces.url}" rendered="#{empty sessionScope.usuarioLogado.id}">
 						<h:graphicImage value="img/facebook.gif" />
 					  </h:outputLink>
 					  <h:outputLink value="#{faceBookFaces.logout}" rendered="#{!empty sessionScope.usuarioLogado.id}">
@@ -233,10 +182,7 @@
         </div>
     <!-- TERMINA MENU -->
 </div>
-					  
-<c:if test="${!empty sessionScope.usuarioLogado.id}">
-<div id="id-Breadcrumb"><span id="status">Olá, ${sessionScope.usuarioLogado.nome}</span>, temos ótimas promoções pra você!</div>
-</c:if>
+<!-- TERMINA TOPO -->
 
 <!-- COMECA CENTRAL -->
 <div id="central">
@@ -245,223 +191,117 @@
     
     	<!-- COMECA COLUNA PRINCIPAL  -->
     	<div id="conteudoRanking">
-    	
-    	<h:messages showDetail="true" showSummary="false" errorStyle="font-size:12px; color:#666; font-family:'titilliumtext22l_ltthin';"/>
         	<div id="tituloSessao">
             	<span class="icons maisIndicados"></span>
             	<h2>Ranking</h2>
-                
                 <p>Mais Indicados</p>
             </div>
         	<div class="coluna">
             	<h2>Melhor Comida</h2>
+            	<c:forEach var="item" items="${rankingFaces.melhorComida}">
                 <div class="boxRanking">
-                	<span class="position1"></span>
+                	<span class="${item.css}"></span>
                 	<blockquote>
-                    	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/180x79.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
+                    	<a href="estabelecimento.jsf?id=${item.id}" title="${item.nomeFantasia}">
+                            <span class="imgRank">
+                            	<img src="img/model/180x79.jpg" alt="Marca 80x80px" title="${item.nomeFantasia}" />
+                            </span>
                             <div class="info">
-                                <p class="titulo">Nome da comida</p>
-                                <p class="dados">Nome do estabelecimento</p>
+                                <p class="titulo">${item.nomeFantasia}</p>
+                                <p class="dados">${item.categoriaPrincipal.descricao}</p>
                             </div>
                         </a>
                     </blockquote>
                     <div class="indico">
-                    	<p><a id="modal" href="inc/indicacao.jsf" title="" class="modal" rel="modal"><span class="icons indicacaoRed"></span> Indico [100]</a></p>
+                    	<p><a id="modal" href="inc/indicacao.jsf" title="" class="modal" rel="modal"><span class="icons indicacaoRed"></span> Indico [${item.quantidadeIndicacoes}]</a></p>
                     	<p><a id="modal" href="inc/indicacao.jsf" title="" class="modal" rel="modal"><span class="icons naoindicacaoRed"></span> Não indico</a></p>
                     </div>
                 </div>
-                
-                <div class="boxRanking">
-                	<span class="position2"></span>
-                	<blockquote>
-                    	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/180x79.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
-                            <div class="info">
-                                <p class="titulo">Nome da comida</p>
-                                <p class="dados">Nome do estabelecimento</p>
-                            </div>
-                        </a>
-                    </blockquote>
-                    <div class="indico">
-                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
-                    </div>
-                </div>
-                
-                <div class="boxRanking">
-                	<span class="position3"></span>
-                	<blockquote>
-                    	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/180x79.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
-                            <div class="info">
-                                <p class="titulo">Nome da comida</p>
-                                <p class="dados">Nome do estabelecimento</p>
-                            </div>
-                        </a>
-                    </blockquote>
-                    <div class="indico">
-                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
-                    </div>
-                </div>
-                
-                <div class="boxRanking">
-                	<span class="position4"></span>
-                	<blockquote>
-                    	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/180x79.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
-                            <div class="info">
-                                <p class="titulo">Nome da comida</p>
-                                <p class="dados">Nome do estabelecimento</p>
-                            </div>
-                        </a>
-                    </blockquote>
-                    <div class="indico">
-                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
-                    </div>
-                </div>
-                
-                <div class="boxRanking">
-                	<span class="position5"></span>
-                	<blockquote>
-                    	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/180x79.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
-                            <div class="info">
-                                <p class="titulo">Nome da comida</p>
-                                <p class="dados">Nome do estabelecimento</p>
-                            </div>
-                        </a>
-                    </blockquote>
-                    <div class="indico">
-                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
-                    </div>
-                </div>
+                </c:forEach>
             </div>
-            
             
             <div class="coluna">
             	<h2>Ambiente</h2>
+            	<c:forEach var="item" items="${rankingFaces.melhorAmbiente}">
                 <div class="boxRanking">
-                	<span class="position1"></span>
+                	<span class="${item.css}"></span>
                 	<blockquote>
-                    	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/180x79.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
+                    	<a href="estabelecimento.jsf?id=${item.id}" title="${item.nomeFantasia}">
+                            <span class="imgRank"><img src="img/model/180x79.jpg" alt="Marca 80x80px" title="${item.nomeFantasia}" /></span>
                             <div class="info">
-                                <p class="titulo">Nome do estabelecimento</p>
-                                <p class="dados">Categoria</p>
+                                <p class="titulo">${item.nomeFantasia}</p>
+                                <p class="dados">${item.categoriaPrincipal.descricao}</p>
                             </div>
                         </a>
                     </blockquote>
                     <div class="indico">
-                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
+                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [${item.quantidadeIndicacoes}]</a>
                     </div>
                 </div>
+                </c:forEach>
                 
-                <div class="boxRanking">
-                	<span class="position2"></span>
-                	<blockquote>
-                    	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/180x79.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
-                            <div class="info">
-                                <p class="titulo">Nome do estabelecimento</p>
-                                <p class="dados">Categoria</p>
-                            </div>
-                        </a>
-                    </blockquote>
-                    <div class="indico">
-                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
-                    </div>
-                </div>
-                
-                <div class="boxRanking">
-                	<span class="position3"></span>
-                	<blockquote>
-                    	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/180x79.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
-                            <div class="info">
-                                <p class="titulo">Nome do estabelecimento</p>
-                                <p class="dados">Categoria</p>
-                            </div>
-                        </a>
-                    </blockquote>
-                    <div class="indico">
-                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
-                    </div>
-                </div>
-                
-                <div class="boxRanking">
-                	<blockquote>
-                    	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/180x79.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
-                            <div class="info">
-                                <p class="titulo">Nome do estabelecimento</p>
-                                <p class="dados">Categoria</p>
-                            </div>
-                        </a>
-                    </blockquote>
-                    <div class="indico">
-                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
-                    </div>
-                </div>
-                
-                <div class="boxRanking">
-                	<span class="position5"></span>
-                	<blockquote>
-                    	<a href="" title="">
-                            <span class="imgRank"><img src="img/model/180x79.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></span>
-                            <div class="info">
-                                <p class="titulo">Nome do estabelecimento</p>
-                                <p class="dados">Categoria</p>
-                            </div>
-                        </a>
-                    </blockquote>
-                    <div class="indico">
-                    	<a href="" title=""><span class="icons indicacaoRed"></span> Eu indico [100]</a>
-                    </div>
-                </div>
             </div>
-            
-            
-            
-
-        
+                    
         </div>
         
         <!-- COMECA COLUNA DIREITA -->
         <div id="dir">
+        	<c:if test="${not empty indexFaces.promocaoDia.id}">
         	<div class="boxSubCat">
             	<h2>Promoção do dia</h2>
-                <a href="" title="">
+            	<a href="promocao.jsf?id=${indexFaces.promocaoDia.id}" title="">
                     <img src="img/model/180x79.jpg" alt="" title="" />
-                    <p class="titulo">Nome da promo</p>
+                    <p class="titulo">${indexFaces.promocaoDia.fornecedorModel.nomeFantasia}</p>
+                    <p class="item">
+                    ${indexFaces.promocaoDia.descricao}</p>
                     <!-- SE PROMOÇÃO EM DESCONTO -->
-                    <p><span class="precoDe">De: R$700,00</span>&nbsp;&nbsp;<span class="precoPor">Por: R$500,00</span> </p>
+                    <p><span class="precoDe">
+                    De: <h:outputText value="#{indexFaces.promocaoDia.precoOriginal}">
+                    		<f:convertNumber type="currency" currencySymbol="R$"/>
+                    	</h:outputText></span>&nbsp;&nbsp;
+                    	<span class="precoPor">
+                    Por: 
+                    	<h:outputText value="#{indexFaces.promocaoDia.precoPromocional}">
+                    		<f:convertNumber type="currency" currencySymbol="R$"/>
+                    	</h:outputText></span>
+                    	<p><span class="fontYi">${indexFaces.promocaoDia.descricao}</span></p>
                 </a>
             </div>
+            </c:if>
+        	<c:if test="${not empty indexFaces.promocaoSemana.id}">
         	<div class="boxSubCat">
             	<h2>Promoção da semana</h2>
-                <a href="" title="">
-                    <img src="img/model/180x79.jpg" alt="" title="" />
-                    <p class="titulo">Nome da promo</p>
-                    <!-- SE PROMOÇÃO EM PRODUTO -->
-                    <p><span class="fontYi">Na Cheiro de Pizza comprando uma pizza grande você leva outra pizza do mesmo tamanho e sabor totalmente grátis.</span></p>
-                </a>
+                <a href="promocao.jsf?id=${indexFaces.promocaoSemana.id}" title="">
+                	<img src="img/model/180x79.jpg" alt="" title="" />
+               
+                    <p class="titulo">${indexFaces.promocaoSemana.fornecedorModel.nomeFantasia}</p>
+                    <p><span class="precoDe">
+                    De: <h:outputText value="#{indexFaces.promocaoSemana.precoOriginal}">
+                    		<f:convertNumber type="currency" currencySymbol="R$"/>
+                    	</h:outputText></span>&nbsp;&nbsp;
+                    	<span class="precoPor">
+                    Por: 
+                    	<h:outputText value="#{indexFaces.promocaoSemana.precoPromocional}">
+                    		<f:convertNumber type="currency" currencySymbol="R$"/>
+                    	</h:outputText></span>
+                    	
+                    	<p><span class="fontYi">${indexFaces.promocaoSemana.descricao}</span></p>
+                  </a>   
             </div>
+            </c:if>
+            <c:if test="${not empty indexFaces.carroChefeModel.id}">
             <div class="boxSubCat">
             	<h2>Carro-chefe</h2>
-                <a href="" title="">
-                    <img src="img/model/180x79.jpg" alt="" title="" />
-                    <p class="titulo">Nome do estab</p>
-                    <p class="categoria">categoria</p>
-                    <p class="item">nome do prod</p>
-                    <p><span class="precoDe">De: R$789,00</span>&nbsp;&nbsp;<span class="precoPor">Por: R$254,00</span> </p>
+                <a href="promocao.jsf?carroChefeId=${indexFaces.carroChefeModel.id}" title=""><img src="img/model/180x79.jpg" alt="" title="" /></a>
+                    <p class="titulo">${indexFaces.carroChefeModel.fornecedorModel.nomeFantasia}</p>
+                    <p><span class="item">${indexFaces.carroChefeModel.descricao}</span></p>
                 </a>
             </div>
+            </c:if>
             
             <div class="boxSubCat">
             	<div class="banner">banner</div>
             </div>
-            
-            
             
         </div>
     </div>
@@ -493,8 +333,6 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 </script>
-
-</h:form>
 </body>
 </html>
 </f:view>
