@@ -79,10 +79,10 @@ $(document).ready( function() {
 
         <div class="inputs">  
         
-        	<h:commandButton value="CADASTRAR" id="submit" action="#{rankingFaces.indicar}"/>  
+        	<h:commandButton value="CADASTRAR" id="submit" action="#{rankingFaces.indicarComida}"/>  
             
         </div>
-
+		
     </h:form>
 
 </div>

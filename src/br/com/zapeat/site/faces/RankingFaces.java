@@ -28,7 +28,11 @@ public class RankingFaces extends TSMainFaces {
 
 	public RankingFaces() {
 
+		this.initComentario();
+
 		this.carregaDados();
+
+		this.getParametrosIndicacao();
 
 	}
 
@@ -53,6 +57,39 @@ public class RankingFaces extends TSMainFaces {
 
 	}
 
+	public String getParametrosIndicacao() {
+
+		String estabelecimentoId = TSFacesUtil.getRequestParameter("estabelecimentoId");
+
+		String indico = TSFacesUtil.getRequestParameter("indico");
+
+		if (!TSUtil.isEmpty(estabelecimentoId) && TSUtil.isNumeric(estabelecimentoId) && !TSUtil.isEmpty(indico) && TSUtil.isNumeric(indico)) {
+
+			this.initComentario();
+
+			this.comentarioModel.getFornecedorModel().setId(Long.valueOf(estabelecimentoId));
+
+			if (indico.equals("1")) {
+
+				this.comentarioModel.setFlagIndicaPromocao(Boolean.TRUE);
+
+			} else if (indico.equals("2")) {
+
+				this.comentarioModel.setFlagNaoIndica(Boolean.FALSE);
+
+			} else {
+
+				this.redirect();
+			}
+
+			System.out.println("Cod Fornec: " + this.comentarioModel.getFornecedorModel().getId());
+
+			System.out.println("Valor Indico: " + indico);
+		}
+
+		return null;
+	}
+
 	public String indicarEstabelecimento() {
 
 		UsuarioModel model = (UsuarioModel) TSFacesUtil.getObjectInSession(Constantes.USUARIO_LOGADO);
@@ -65,7 +102,12 @@ public class RankingFaces extends TSMainFaces {
 
 			try {
 
-				new ComentarioDAO().inserir(this.comentarioModel);
+				ComentarioModel coment = new ComentarioDAO().obterIndicacaoFornecedorPorUsuario(this.comentarioModel);
+
+				if (TSUtil.isEmpty(coment)) {
+
+					new ComentarioDAO().inserir(this.comentarioModel);
+				}
 
 				this.initComentario();
 
@@ -89,7 +131,7 @@ public class RankingFaces extends TSMainFaces {
 		if (!TSUtil.isEmpty(model) && !TSUtil.isEmpty(model.getId())) {
 
 			this.comentarioModel.setUsuarioModel(model);
-
+			
 			ComentarioModel coment = new ComentarioDAO().obterIndicacaoComidaNegativa(this.comentarioModel);
 
 			if (TSUtil.isEmpty(coment)) {
@@ -152,7 +194,7 @@ public class RankingFaces extends TSMainFaces {
 
 			count++;
 		}
-		
+
 		count = 1;
 
 		for (FornecedorModel item : this.melhorComida) {
