@@ -1,9 +1,10 @@
 package br.com.zapeat.site.util;
 
-import br.com.topsys.util.TSCryptoUtil;
-import br.com.topsys.util.TSUtil;
 import java.text.Normalizer;
 import java.util.Calendar;
+
+import br.com.topsys.util.TSCryptoUtil;
+import br.com.topsys.util.TSUtil;
 
 public final class Utilitarios {
 
@@ -31,7 +32,7 @@ public final class Utilitarios {
 		if (TSUtil.isEmpty(palavra)) {
 			return null;
 		}
-
+		
 		return Normalizer.normalize(new StringBuilder(palavra), Normalizer.Form.NFKD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
 	}
 
