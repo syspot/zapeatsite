@@ -25,14 +25,16 @@ public class RankingFaces extends TSMainFaces {
 	private List<FornecedorModel> melhorComida;
 	private List<FornecedorModel> melhorAmbiente;
 	private ComentarioModel comentarioModel;
+	private CategoriaModel categoriaModel;
+	private String indico;
 
 	public RankingFaces() {
-
-		this.initComentario();
 
 		this.carregaDados();
 
 		this.getParametrosIndicacao();
+
+		this.indicarEstabelecimento();
 
 	}
 
@@ -42,7 +44,7 @@ public class RankingFaces extends TSMainFaces {
 
 		if (!TSUtil.isEmpty(categoriaId) && TSUtil.isNumeric(categoriaId)) {
 
-			CategoriaModel categoriaModel = new CategoriaModel(new Long(categoriaId));
+			this.categoriaModel = new CategoriaModel(new Long(categoriaId));
 
 			this.melhorComida = new FornecedorDAO().pesquisarMelhorComida(categoriaModel);
 
@@ -57,68 +59,50 @@ public class RankingFaces extends TSMainFaces {
 
 	}
 
-	public String getParametrosIndicacao() {
+	private void getParametrosIndicacao() {
 
 		String estabelecimentoId = TSFacesUtil.getRequestParameter("estabelecimentoId");
 
-		String indico = TSFacesUtil.getRequestParameter("indico");
+		this.indico = TSFacesUtil.getRequestParameter("indico");
 
-		if (!TSUtil.isEmpty(estabelecimentoId) && TSUtil.isNumeric(estabelecimentoId) && !TSUtil.isEmpty(indico) && TSUtil.isNumeric(indico)) {
+		if (!TSUtil.isEmpty(estabelecimentoId) && TSUtil.isNumeric(estabelecimentoId) && !TSUtil.isEmpty(this.indico) && TSUtil.isNumeric(this.indico)) {
 
 			this.initComentario();
 
 			this.comentarioModel.getFornecedorModel().setId(Long.valueOf(estabelecimentoId));
 
-			if (indico.equals("1")) {
-
-				this.comentarioModel.setFlagIndicaPromocao(Boolean.TRUE);
-
-			} else if (indico.equals("2")) {
-
-				this.comentarioModel.setFlagNaoIndica(Boolean.FALSE);
-
-			} else {
-
-				this.redirect();
-			}
-
-			System.out.println("Cod Fornec: " + this.comentarioModel.getFornecedorModel().getId());
-
-			System.out.println("Valor Indico: " + indico);
 		}
 
-		return null;
 	}
 
 	public String indicarEstabelecimento() {
 
-		UsuarioModel model = (UsuarioModel) TSFacesUtil.getObjectInSession(Constantes.USUARIO_LOGADO);
+		if (!TSUtil.isEmpty(this.indico) && TSUtil.isNumeric(this.indico) && this.indico.equals("3")) {
 
-		if (!TSUtil.isEmpty(model) && !TSUtil.isEmpty(model.getId())) {
+			UsuarioModel model = (UsuarioModel) TSFacesUtil.getObjectInSession(Constantes.USUARIO_LOGADO);
 
-			this.comentarioModel.setUsuarioModel(model);
+			if (!TSUtil.isEmpty(model) && !TSUtil.isEmpty(model.getId())) {
 
-			this.comentarioModel.setFlagIndicaAtendimento(Boolean.TRUE);
+				this.comentarioModel.setUsuarioModel(model);
 
-			try {
+				this.comentarioModel.setFlagIndicaAtendimento(Boolean.TRUE);
 
-				ComentarioModel coment = new ComentarioDAO().obterIndicacaoFornecedorPorUsuario(this.comentarioModel);
-
-				if (TSUtil.isEmpty(coment)) {
+				try {
 
 					new ComentarioDAO().inserir(this.comentarioModel);
+
+					this.initComentario();
+
+				} catch (TSApplicationException e) {
+
+					e.printStackTrace();
 				}
 
-				this.initComentario();
+			} else {
 
-			} catch (TSApplicationException e) {
-
-				e.printStackTrace();
+				super.addErrorMessage("Você precisa estar logado para realizar a operação!");
 			}
 
-		} else {
-
-			super.addErrorMessage("Você precisa estar logado para realizar a operação!");
 		}
 
 		return null;
@@ -131,26 +115,56 @@ public class RankingFaces extends TSMainFaces {
 		if (!TSUtil.isEmpty(model) && !TSUtil.isEmpty(model.getId())) {
 
 			this.comentarioModel.setUsuarioModel(model);
-			
-			ComentarioModel coment = new ComentarioDAO().obterIndicacaoComidaNegativa(this.comentarioModel);
 
-			if (TSUtil.isEmpty(coment)) {
+			if (this.indico.equals("1")) {
 
-				try {
+				ComentarioModel coment = new ComentarioDAO().obterIndicacaoComidaPositiva(this.comentarioModel);
 
-					new ComentarioDAO().inserir(this.comentarioModel);
+				if (TSUtil.isEmpty(coment)) {
 
-					this.initComentario();
+					try {
 
-				} catch (TSApplicationException e) {
+						this.comentarioModel.setFlagIndicaPromocao(Boolean.TRUE);
 
-					e.printStackTrace();
+						new ComentarioDAO().inserir(this.comentarioModel);
+
+						this.initComentario();
+
+					} catch (TSApplicationException e) {
+
+						e.printStackTrace();
+					}
 				}
+
+			} else if (this.indico.equals("2")) {
+
+				ComentarioModel coment = new ComentarioDAO().obterIndicacaoComidaNegativa(this.comentarioModel);
+
+				if (TSUtil.isEmpty(coment)) {
+
+					try {
+
+						this.comentarioModel.setFlagNaoIndica(Boolean.TRUE);
+
+						new ComentarioDAO().inserir(this.comentarioModel);
+
+						this.initComentario();
+
+					} catch (TSApplicationException e) {
+
+						e.printStackTrace();
+					}
+				}
+
+			} else {
+
+				this.redirect();
 			}
 
 		} else {
 
 			super.addErrorMessage("Você precisa estar logado para realizar a operação!");
+
 		}
 
 		return null;
@@ -258,6 +272,22 @@ public class RankingFaces extends TSMainFaces {
 
 	public void setComentarioModel(ComentarioModel comentarioModel) {
 		this.comentarioModel = comentarioModel;
+	}
+
+	public String getIndico() {
+		return indico;
+	}
+
+	public void setIndico(String indico) {
+		this.indico = indico;
+	}
+
+	public CategoriaModel getCategoriaModel() {
+		return categoriaModel;
+	}
+
+	public void setCategoriaModel(CategoriaModel categoriaModel) {
+		this.categoriaModel = categoriaModel;
 	}
 
 }

@@ -242,3 +242,11 @@ input:-moz-placeholder {    color:    #b5b5b5;}
 .bg_modal 	{ position: absolute; top: 0; left: 0; z-index: 99999999998; }
 .view_modal { position: absolute; left: 50%; top: 50%; text-align: left; z-index: 99999999998; }
 .modal		{ visibility: hidden; cursor:pointer; }
+
+.error {
+	color: red;
+}
+
+.info {
+	color: green;
+}

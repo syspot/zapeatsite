@@ -68,8 +68,12 @@ $(document).ready( function() {
         <div class="sep"></div>
         
         <div class="inputs">
-        
-        	<h:inputTextarea id="comentario" cols="43"/>
+        	
+        	<t:inputHidden value="#{rankingFaces.categoriaModel.id}" id="categoriaId" forceId="true"/>
+        	<t:inputHidden value="#{rankingFaces.comentarioModel.fornecedorModel.id}" id="estabelecimentoId" forceId="true"/>
+        	<t:inputHidden value="#{rankingFaces.indico}" id="indico" forceId="true"/>
+        	
+        	<t:inputTextarea value="#{rankingFaces.comentarioModel.descricao}" id="comentario" forceId="true" cols="43"/>
         	
         	<script type="text/javascript">
 	             		$('#comentario').attr('placeholder','Deixe o seu comentário').attr('autofocus','');

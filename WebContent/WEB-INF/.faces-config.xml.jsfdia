@@ -4,8 +4,12 @@
   <PROCESS-ITEM ID="rules:*:0" NAME="item" PATH="*" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT ID="index::#index.jsp" NAME="output3"
     PATH="/index.jsp" TARGET="rules:#index.jsp" TITLE="index" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="ranking::#ranking.jsp" NAME="output"
+    PATH="/ranking.jsp" TARGET="rules:#ranking.jsp" TITLE="ranking" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#index.jsp" PATH="/index.jsp"
   SHAPE="288,353,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#ranking.jsp" PATH="/ranking.jsp"
+  SHAPE="256,33,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>
