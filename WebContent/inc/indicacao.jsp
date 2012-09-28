@@ -88,4 +88,5 @@ $(document).ready( function() {
 </div>
 </body>
 </html>
+
 </f:view>

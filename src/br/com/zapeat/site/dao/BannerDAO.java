@@ -51,11 +51,11 @@ public class BannerDAO {
 		
 	}
 	
-	public BannerModel obterBannerSuperiorGrande(){
+	public BannerModel obterBannerTopo(){
 		
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		
-		broker.setPropertySQL("bannerdao.obterbannersuperiorgrande");
+		broker.setPropertySQL("bannerdao.obterbannertopo");
 		
 		return (BannerModel) broker.getObjectBean(BannerModel.class, "id", "imagem");
 		

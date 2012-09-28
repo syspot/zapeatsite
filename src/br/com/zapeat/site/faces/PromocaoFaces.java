@@ -38,7 +38,7 @@ public class PromocaoFaces extends TSMainFaces {
 		this.promocaoDia = promocaoDAO.obterPromocaoDia(new FornecedorModel());
 		this.promocaoSemana = promocaoDAO.obterPromocaoSemana(new FornecedorModel());
 		this.bannerLateral = bannerDAO.obterBannerLateral();
-		this.bannerSuperiorGrande = bannerDAO.obterBannerSuperiorGrande();
+		//this.bannerSuperiorGrande = bannerDAO.obterBannerSuperiorGrande();
 		this.bannerSuperiorPequeno = bannerDAO.obterBannerSuperiorPequeno();
 		this.carroChefeModel = carroChefeDAO.pesquisar(new CarroChefeModel());
 		

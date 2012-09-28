@@ -141,12 +141,7 @@
     <!-- TERMINA BUSCA -->
     <!-- COMECA PUBLICIDADE/MARCA -->
     <div id="marcaPublicidade">
-    	<h1>
-    	<h:outputLink value="#{facesContext.externalContext.requestContextPath}/index.jsf" title="Página Inicial">
-    		<h:graphicImage value="img/marca.png" />
-    	</h:outputLink>	
-    	</h1>
-        <div class="superbanner"><img src="${promocaoFaces.bannerSuperiorGrande.imagemSuperiorGrandeView}" alt="" title="" /></div>
+    	<%@ include file="/include_banner_topo.jsp" %>
     </div>
     
     <!-- TERMINA PUBLICIDADE/MARCA -->    
@@ -321,7 +316,7 @@
             </div>
             
             <div class="boxSubCat">
-            	<div class="banner"><img src="${promocaoFaces.bannerLateral.imagemLateralView}" alt="" title="" /></div>
+            	<%@ include file="/include_banner_lateral.jsp" %>
             </div>
             
             
