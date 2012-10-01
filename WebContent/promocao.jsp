@@ -177,11 +177,11 @@
 <!-- TERMINA TOPO -->
 
 <div id="id-Breadcrumb">
-    <span class="migalha"><a href="" title="">Página Inicial</a></span>    »    
-    <span class="migalha"><a href="" title="">${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.descricao}</a></span>    »   
-    <span class="migalha"><a href="" title="">${promocaoFaces.promocao.fornecedorModel.nomeFantasia}</a></span>    »   
-    <span class="migalha"><a href="" title="">${promocaoFaces.promocao.tipoPromocaoModel.descricao}</a></span>    »   
-    <span class="migalha"><a href="" title="">${promocaoFaces.promocao.titulo}</a></span>
+    <span class="migalha"><a href="index.jsf" title="">Página Inicial</a></span>    »    
+    <span class="migalha"><a href="listagem.jsf?categoriaId=${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.id}" title="">${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.descricao}</a></span>    »   
+    <span class="migalha"><a href="estabelecimento.jsf?id=${promocaoFaces.promocao.fornecedorModel.id}" title="">${promocaoFaces.promocao.fornecedorModel.nomeFantasia}</a></span>    »   
+    <span class="migalha"><a href="listagem.jsf?categoriaId=${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.id}&tipo=${promocaoFaces.promocao.tipoPromocaoModel.id}" title="">${promocaoFaces.promocao.tipoPromocaoModel.descricao}</a></span>    »   
+    <span class="migalha">${promocaoFaces.promocao.titulo}</span>
 </div>
 
 <!-- COMECA CENTRAL -->
@@ -259,7 +259,7 @@
 				  var map;
 				  function initialize() {
 					// Creating a map
-					var latlng = new google.maps.LatLng(-12.973393753658488, -38.51103549999999); 
+					var latlng = new google.maps.LatLng(${promocaoFaces.promocao.fornecedorModel.latitude}, ${promocaoFaces.promocao.fornecedorModel.longitude}); 
 					var map = new google.maps.Map(document.getElementById('map_canvas_estab'), {  
 					  zoom: 17,
 					  center: latlng,

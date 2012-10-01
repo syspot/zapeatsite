@@ -193,5 +193,11 @@ public class PromocaoModel {
 			return false;
 		return true;
 	}
+	
+
+	@Override
+	public String toString() {
+		return this.fornecedorModel.toString();
+	}
 
 }
