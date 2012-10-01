@@ -93,6 +93,7 @@ $(document).ready( function() {
 	            </script>
 	            
         	</div>
+        	
             
             <div class="custom_file_upload">
             	

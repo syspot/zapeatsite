@@ -33,6 +33,7 @@ public final class Constantes {
 	public static Long TIPO_LISTAGEM_CARRO_CHEFE = 5L;
 	
 	public static final String USUARIO_LOGADO = "usuarioLogado";
+	public static final String LOGIN_APLICACAO = "loginAplicacao";
 	public static final String INDEX = "index";
 	public static final String SEQUENCE_USUARIO_SITE = "usuarios_id_seq";
 	

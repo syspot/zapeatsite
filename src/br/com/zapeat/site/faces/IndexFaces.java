@@ -42,7 +42,7 @@ public class IndexFaces extends TSMainFaces {
 		this.initDAO();
 		this.initObjetos();
 		this.carregaDados();
-
+		
 	}
 
 	private void initDAO() {

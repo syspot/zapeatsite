@@ -133,7 +133,8 @@
 	
 <!-- COMECA TOPO -->
 <%@ include file="/topo.jsp" %>
-					  
+			
+            					  
 <c:if test="${!empty sessionScope.usuarioLogado.id}">
 <div id="id-Breadcrumb"><span id="status">Olá, ${sessionScope.usuarioLogado.nome}</span>, temos ótimas promoções pra você!</div>
 </c:if>
@@ -171,6 +172,8 @@
                 </a>
             </div>
             </c:if>
+            
+            
             
             <c:if test="${not empty indexFaces.promocaoSemana.id}">
         	<div class="boxSubCat">

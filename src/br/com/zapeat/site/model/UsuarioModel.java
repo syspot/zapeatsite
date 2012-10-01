@@ -1,5 +1,6 @@
 package br.com.zapeat.site.model;
 
+import br.com.topsys.util.TSStringUtil;
 import br.com.topsys.util.TSUtil;
 
 public class UsuarioModel {
@@ -33,6 +34,12 @@ public class UsuarioModel {
 	}
 
 	public String getNome() {
+		
+		if(!TSUtil.isEmpty(this.nome)){
+			
+			this.nome = TSStringUtil.formatarNomeProprio(this.nome);
+		}
+		
 		return nome;
 	}
 

@@ -1,8 +1,6 @@
 package br.com.zapeat.site.faces;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
 
@@ -13,39 +11,30 @@ import br.com.zapeat.site.util.Constantes;
 public class LogoutFaces {
 
 	public LogoutFaces() {
-		
+
 		this.logout();
 	}
 
-	@SuppressWarnings("static-access")
 	public String logout() {
 
 		TSFacesUtil.removeObjectInSession(Constantes.USUARIO_LOGADO);
-		
-		this.removerCookieFaceBoook();
-		
-		TSFacesUtil.getFacesContext().getCurrentInstance().getExternalContext().invalidateSession();
-		
+
+		TSFacesUtil.removeObjectInSession(Constantes.LOGIN_APLICACAO);
+
+		//TSFacesUtil.getFacesContext().getExternalContext().invalidateSession();
+
+		TSFacesUtil.getRequest().getSession().invalidate();
+
 		try {
-
-			TSFacesUtil.getFacesContext().getCurrentInstance().getExternalContext().redirect("index.jsf");
-
+			
+			TSFacesUtil.getFacesContext().getExternalContext().redirect("index.jsf");
+			
 		} catch (IOException e) {
-
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		return null;
-	}
-
-	@SuppressWarnings("static-access")
-	private void removerCookieFaceBoook() {
-
-		Map<String, Object> props = new HashMap<String, Object>();
-
-		props.put("maxAge", 0);
-
-		TSFacesUtil.getFacesContext().getCurrentInstance().getExternalContext().addResponseCookie("c_user", "", props);
 	}
 
 }

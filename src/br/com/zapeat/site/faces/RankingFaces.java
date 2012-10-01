@@ -82,8 +82,10 @@ public class RankingFaces extends TSMainFaces {
 			UsuarioModel model = (UsuarioModel) TSFacesUtil.getObjectInSession(Constantes.USUARIO_LOGADO);
 
 			if (!TSUtil.isEmpty(model) && !TSUtil.isEmpty(model.getId())) {
+				
+				this.comentarioModel.setUsuarioModel(model);
 
-				ComentarioModel coment = new ComentarioDAO().obterIndicacaoComidaPositiva(this.comentarioModel);
+				ComentarioModel coment = new ComentarioDAO().obterIndicacaoEstabelecimentoPorUsuario(this.comentarioModel);
 
 				if (TSUtil.isEmpty(coment)) {
 
@@ -92,7 +94,7 @@ public class RankingFaces extends TSMainFaces {
 					this.comentarioModel.setFlagIndicaAtendimento(Boolean.TRUE);
 
 					try {
-
+						
 						new ComentarioDAO().inserir(this.comentarioModel);
 
 						this.initComentario();

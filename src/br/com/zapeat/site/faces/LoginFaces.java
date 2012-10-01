@@ -73,6 +73,8 @@ public class LoginFaces extends TSMainFaces {
 
 				TSFacesUtil.addObjectInSession(Constantes.USUARIO_LOGADO, model);
 
+				TSFacesUtil.addObjectInSession(Constantes.LOGIN_APLICACAO, true);
+
 				return Constantes.INDEX;
 
 			} else {

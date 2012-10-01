@@ -1,7 +1,7 @@
 package br.com.zapeat.site.faces;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 
@@ -17,7 +17,7 @@ import br.com.zapeat.site.dao.UsuarioDAO;
 import br.com.zapeat.site.model.UsuarioModel;
 import br.com.zapeat.site.util.Constantes;
 
-@SessionScoped
+@ViewScoped
 @ManagedBean(name = "cadastroFaces")
 public class CadastroFaces extends TSMainFaces {
 
@@ -105,11 +105,15 @@ public class CadastroFaces extends TSMainFaces {
 				this.initObjetos();
 				
 				super.setDefaultMessage(true);
+				
+				super.addObjectInRequest("cadastro_sucesso",true);
 
 				return Constantes.INDEX;
 
 			} else {
-
+				
+			    super.addObjectInRequest("cadastro_sucesso",false);
+			    
 				super.addErrorMessage("Esse e-mail já existe.");
 			}
 

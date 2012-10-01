@@ -29,7 +29,11 @@
 					  <h:outputLink value="#{faceBookFaces.url}" rendered="#{empty sessionScope.usuarioLogado.id}">
 						<h:graphicImage value="img/facebook.gif" />
 					  </h:outputLink>
-					  <h:outputLink value="#{faceBookFaces.logout}" rendered="#{!empty sessionScope.usuarioLogado.id}">
+					  <h:outputLink value="#{faceBookFaces.logout}" rendered="#{!empty sessionScope.usuarioLogado.id and !sessionScope.loginAplicacao}">
+					  	Sair
+					  </h:outputLink>
+					  
+					  <h:outputLink value="logout.jsf" rendered="#{!empty sessionScope.usuarioLogado.id and sessionScope.loginAplicacao}">
 					  	Sair
 					  </h:outputLink>
 					  
