@@ -30,6 +30,8 @@ public class RankingFaces extends TSMainFaces {
 
 	public RankingFaces() {
 
+		this.initComentario();
+
 		this.carregaDados();
 
 		this.getParametrosIndicacao();
@@ -67,8 +69,6 @@ public class RankingFaces extends TSMainFaces {
 
 		if (!TSUtil.isEmpty(estabelecimentoId) && TSUtil.isNumeric(estabelecimentoId) && !TSUtil.isEmpty(this.indico) && TSUtil.isNumeric(this.indico)) {
 
-			this.initComentario();
-
 			this.comentarioModel.getFornecedorModel().setId(Long.valueOf(estabelecimentoId));
 
 		}
@@ -83,19 +83,30 @@ public class RankingFaces extends TSMainFaces {
 
 			if (!TSUtil.isEmpty(model) && !TSUtil.isEmpty(model.getId())) {
 
-				this.comentarioModel.setUsuarioModel(model);
+				ComentarioModel coment = new ComentarioDAO().obterIndicacaoComidaPositiva(this.comentarioModel);
 
-				this.comentarioModel.setFlagIndicaAtendimento(Boolean.TRUE);
+				if (TSUtil.isEmpty(coment)) {
 
-				try {
+					this.comentarioModel.setUsuarioModel(model);
 
-					new ComentarioDAO().inserir(this.comentarioModel);
+					this.comentarioModel.setFlagIndicaAtendimento(Boolean.TRUE);
 
-					this.initComentario();
+					try {
 
-				} catch (TSApplicationException e) {
+						new ComentarioDAO().inserir(this.comentarioModel);
 
-					e.printStackTrace();
+						this.initComentario();
+
+						super.addInfoMessage("Voto computado com sucesso.");
+
+					} catch (TSApplicationException e) {
+
+						e.printStackTrace();
+					}
+
+				} else {
+
+					super.addErrorMessage(model.getNome() + ": O Sr(a) já indicou essa promoção");
 				}
 
 			} else {
@@ -130,10 +141,16 @@ public class RankingFaces extends TSMainFaces {
 
 						this.initComentario();
 
+						super.addInfoMessage("Voto computado com sucesso.");
+
 					} catch (TSApplicationException e) {
 
 						e.printStackTrace();
 					}
+
+				} else {
+
+					super.addErrorMessage(model.getNome() + ": O Sr(a) já indicou essa promoção");
 				}
 
 			} else if (this.indico.equals("2")) {
@@ -154,6 +171,10 @@ public class RankingFaces extends TSMainFaces {
 
 						e.printStackTrace();
 					}
+
+				} else {
+
+					super.addErrorMessage(model.getNome() + ": O Sr(a) já indicou essa promoção");
 				}
 
 			} else {
@@ -177,6 +198,12 @@ public class RankingFaces extends TSMainFaces {
 		this.getComentarioModel().setFornecedorModel(new FornecedorModel());
 
 		this.getComentarioModel().setUsuarioModel(new UsuarioModel());
+
+		this.getComentarioModel().setFlagIndicaAtendimento(Boolean.FALSE);
+
+		this.getComentarioModel().setFlagIndicaPromocao(Boolean.FALSE);
+
+		this.getComentarioModel().setFlagNaoIndica(Boolean.FALSE);
 	}
 
 	private void setarCss() {

@@ -3,6 +3,7 @@
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
 <%@ taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>
+<%@ taglib prefix="p" uri="http://primefaces.prime.com.tr/ui"%>
 
 <f:view>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -67,6 +68,10 @@ $(document).ready( function() {
         
         <div class="sep"></div>
         
+         <div align="center">
+                <h:messages errorStyle="color:red;" fatalStyle="color:red;" showDetail="true" showSummary="false" fatalClass="error" errorClass="error" id="msg"/>
+            </div>
+        
         <div class="inputs">
         	
         	<t:inputHidden value="#{rankingFaces.categoriaModel.id}" id="categoriaId" forceId="true"/>
@@ -84,7 +89,7 @@ $(document).ready( function() {
         <div class="inputs">  
         
         	<h:commandButton value="CADASTRAR" id="submit" action="#{rankingFaces.indicarComida}"/>  
-            
+           
         </div>
 		
     </h:form>
