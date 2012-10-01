@@ -20,7 +20,7 @@ public class CarroChefeModel implements Serializable {
 	private String imagem;
 
 	public CarroChefeModel() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public CarroChefeModel(FornecedorModel fornecedorModel) {

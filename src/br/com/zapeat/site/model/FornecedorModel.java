@@ -162,8 +162,8 @@ public class FornecedorModel {
 	public String getLogoMarca() {
 
 		if (!TSUtil.isEmpty(this.logoMarca)) {
-
-			this.logoMarca = Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_FORNECEDOR_THUMB + this.logoMarca;
+			
+			this.logoMarca = Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_FORNECEDOR_LOGOMARCA + this.logoMarca;
 		}
 
 		return logoMarca;
@@ -247,6 +247,10 @@ public class FornecedorModel {
 
 	public String getImagemThumbView() {
 		return Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_FORNECEDOR_THUMB + getImagemThumb();
+	}
+	
+	public String getImagemFullView() {
+		return Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_FORNECEDOR_FULL + getImagemThumb();
 	}
 	
 	public String getLogoMarcaView() {

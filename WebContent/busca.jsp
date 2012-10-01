@@ -128,46 +128,7 @@
 
 
 <!-- COMECA TOPO -->
-<div id="topo">
-	<!-- COMECA BUSCA -->
-	<div class="barraBusca">
-		<%@ include file="/include_busca_topo.jsp" %>
-    </div>
-    <!-- TERMINA BUSCA -->
-    <!-- COMECA PUBLICIDADE/MARCA -->
-    <div id="marcaPublicidade">
-    	<%@ include file="/include_banner_topo.jsp" %>
-    </div>
-    <!-- TERMINA PUBLICIDADE/MARCA -->    
-    <!-- COMECA MENU -->
-    <div id="menu">
-            <nav id="categorias">
-            	<div id="cadastro">
-            		<div id="facebook">
-						
-					  <h:outputLink value="#{faceBookFaces.url}" rendered="#{empty sessionScope.usuarioLogado.id}">
-						<h:graphicImage value="img/facebook.gif" />
-					  </h:outputLink>
-					  <h:outputLink value="#{faceBookFaces.logout}" rendered="#{!empty sessionScope.usuarioLogado.id}">
-					  	Sair
-					  </h:outputLink>
-					  
-                    </div>
-                    
-                    <c:if test="${empty sessionScope.usuarioLogado.id}">
-                    <div id="local">
-                        <span class="chamadaCadastro">Não tem Facebook?</span>
-                        <div><a class="modal" title="Cadastrar" rel="modal" href="<%= request.getContextPath() %>/inc/cadastro.jsf"><span class="icons iconCadastrar"></span>cadastrar</a></div>
-                        <div><a id="modal" href="<%= request.getContextPath() %>/inc/login.jsf" class="modal" rel="modal" title="Login"><span class="icons iconLogin"></span>login</a></div>
-                    </div>
-                    </c:if>
-            	</div>
-                
-                <%@ include file="/categorias.jsp" %>
-            </nav>
-        </div>
-    <!-- TERMINA MENU -->
-</div>
+	<%@ include file="/topo.jsp" %>
 <!-- TERMINA TOPO -->
 
 <div id="id-Breadcrumb">

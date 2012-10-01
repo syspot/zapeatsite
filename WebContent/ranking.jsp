@@ -131,53 +131,8 @@
 </head>
 
 <body>
-
-
 <!-- COMECA TOPO -->
-<div id="topo">
-	<!-- COMECA BUSCA -->
-	<div class="barraBusca">
-    	<form>
-        	<label>Buscar<input type="text" /></label>
-            <label>em<input type="text" value="" id="info" /><span id="btnInit" class="icons" ></span></label>
-            <input type="submit" value="" />
-        </form>
-    </div>
-    <!-- TERMINA BUSCA -->
-    <!-- COMECA PUBLICIDADE/MARCA -->
-    <div id="marcaPublicidade">
-    	<%@ include file="/include_banner_topo.jsp" %>
-    </div>
-    <!-- TERMINA PUBLICIDADE/MARCA -->    
-    <!-- COMECA MENU -->
-    <div id="menu">
-            <nav id="categorias">
-            	<div id="cadastro">
-            		<div id="facebook">
-						
-					  <h:outputLink value="#{faceBookFaces.url}" rendered="#{empty sessionScope.usuarioLogado.id}">
-						<h:graphicImage value="img/facebook.gif" />
-					  </h:outputLink>
-					  <h:outputLink value="#{faceBookFaces.logout}" rendered="#{!empty sessionScope.usuarioLogado.id}">
-					  	Sair
-					  </h:outputLink>
-					  
-                    </div>
-                    
-                    <c:if test="${empty sessionScope.usuarioLogado.id}">
-                    <div id="local">
-                        <span class="chamadaCadastro">Não tem Facebook?</span>
-                        <div><a class="modal" title="Cadastrar" rel="modal" href="<%= request.getContextPath() %>/inc/cadastro.jsf"><span class="icons iconCadastrar"></span>cadastrar</a></div>
-                        <div><a id="modal" href="<%= request.getContextPath() %>/inc/login.jsf" class="modal" rel="modal" title="Login"><span class="icons iconLogin"></span>login</a></div>
-                    </div>
-                    </c:if>
-            	</div>
-                
-                <%@ include file="/categorias.jsp" %>
-            </nav>
-        </div>
-    <!-- TERMINA MENU -->
-</div>
+	<%@ include file="/topo.jsp" %>
 <!-- TERMINA TOPO -->
 
 <!-- COMECA CENTRAL -->
@@ -192,10 +147,11 @@
             	<h2>Ranking</h2>
                 <p>Mais Indicados</p>
                 <div align="center">
-                <h:messages errorStyle="color:red;" fatalStyle="color:red;" showDetail="true" showSummary="false" fatalClass="error" errorClass="error" id="msg"/>
+                <h:messages errorStyle="color:red;" fatalStyle="color:red;" infoClass="info" infoStyle="color:green;" showDetail="true" showSummary="false" fatalClass="error" errorClass="error" id="msg"/>
                 </div>
             </div>
             
+            <c:if test="${!empty rankingFaces.melhorComida}">
         	<div class="coluna">
             	<h2>Melhor Comida</h2>
             	<c:forEach var="item" items="${rankingFaces.melhorComida}">
@@ -213,13 +169,21 @@
                         </a>
                     </blockquote>
                     <div class="indico">
+                    	<c:if test="${!empty sessionScope.usuarioLogado.id}">
                     	<p><a id="modal" href="inc/indicacao.jsf?categoriaId=${item.categoriaPrincipal.id}&estabelecimentoId=${item.id}&indico=1" title="" class="modal" rel="modal"><span class="icons indicacaoRed"></span> Indico [${item.quantidadeIndicacoes}]</a></p>
                     	<p><a id="modal" href="inc/indicacao.jsf?categoriaId=${item.categoriaPrincipal.id}&estabelecimentoId=${item.id}&indico=2" title="" class="modal" rel="modal"><span class="icons naoindicacaoRed"></span> Não indico</a></p>
+                    	</c:if>
+                    	<c:if test="${empty sessionScope.usuarioLogado.id}">
+                    	<p><a id="modal" href="inc/login.jsf" title="" class="modal" rel="modal"><span class="icons indicacaoRed"></span> Indico [${item.quantidadeIndicacoes}]</a></p>
+                    	<p><a id="modal" href="inc/login.jsf" title="" class="modal" rel="modal"><span class="icons naoindicacaoRed"></span> Não indico</a></p>
+                    	</c:if>
                     </div>
                 </div>
                 </c:forEach>
             </div>
+            </c:if>
             
+            <c:if test="${!empty rankingFaces.melhorAmbiente}">
             <div class="coluna">
             	<h2>Ambiente</h2>
             	<c:forEach var="item" items="${rankingFaces.melhorAmbiente}">
@@ -235,12 +199,17 @@
                         </a>
                     </blockquote>
                     <div class="indico">
-                    	<a href="ranking.jsf?categoriaId=${item.categoriaPrincipal.id}&estabelecimentoId=${item.id}&indico=3" title=""><span class="icons indicacaoRed"></span> Eu indico [${item.quantidadeIndicacoes}]</a>
+                    	<c:if test="${!empty sessionScope.usuarioLogado.id}">
+                    		<a href="ranking.jsf?categoriaId=${item.categoriaPrincipal.id}&estabelecimentoId=${item.id}&indico=3" title=""><span class="icons indicacaoRed"></span> Eu indico [${item.quantidadeIndicacoes}]</a>
+                    	</c:if>
+                    	<c:if test="${empty sessionScope.usuarioLogado.id}">
+                    		<p><a id="modal" href="inc/login.jsf" title="" class="modal" rel="modal"><span class="icons indicacaoRed"></span> Indico [${item.quantidadeIndicacoes}]</a></p>
+                    	</c:if>
                     </div>
                 </div>
                 </c:forEach>
-                
             </div>
+            </c:if>
                     
         </div>
         
@@ -250,7 +219,7 @@
         	<div class="boxSubCat">
             	<h2>Promoção do dia</h2>
             	<a href="promocao.jsf?id=${indexFaces.promocaoDia.id}" title="">
-                    <img src="img/model/180x79.jpg" alt="" title="" />
+                    <img src="${indexFaces.promocaoDia.imagemPromocaoThumbView}" alt="" title="" />
                     <p class="titulo">${indexFaces.promocaoDia.fornecedorModel.nomeFantasia}</p>
                     <p class="item">
                     ${indexFaces.promocaoDia.descricao}</p>
@@ -268,12 +237,12 @@
                 </a>
             </div>
             </c:if>
+            
         	<c:if test="${not empty indexFaces.promocaoSemana.id}">
         	<div class="boxSubCat">
             	<h2>Promoção da semana</h2>
                 <a href="promocao.jsf?id=${indexFaces.promocaoSemana.id}" title="">
-                	<img src="img/model/180x79.jpg" alt="" title="" />
-               
+                	<img src="${indexFaces.promocaoSemana.imagemPromocaoThumbView}" alt="" title="" />
                     <p class="titulo">${indexFaces.promocaoSemana.fornecedorModel.nomeFantasia}</p>
                     <p><span class="precoDe">
                     De: <h:outputText value="#{indexFaces.promocaoSemana.precoOriginal}">
@@ -289,12 +258,14 @@
                   </a>   
             </div>
             </c:if>
+            
             <c:if test="${not empty indexFaces.carroChefeModel.id}">
             <div class="boxSubCat">
             	<h2>Carro-chefe</h2>
-                <a href="promocao.jsf?carroChefeId=${indexFaces.carroChefeModel.id}" title=""><img src="img/model/180x79.jpg" alt="" title="" /></a>
-                    <p class="titulo">${indexFaces.carroChefeModel.fornecedorModel.nomeFantasia}</p>
-                    <p><span class="item">${indexFaces.carroChefeModel.descricao}</span></p>
+                <a href="promocao.jsf?carroChefeId=${indexFaces.carroChefeModel.id}" title="">
+                	<img src="${indexFaces.carroChefeModel.imagemThumbView}" alt="" title="" /></a>
+                <p class="titulo">${indexFaces.carroChefeModel.fornecedorModel.nomeFantasia}</p>
+                <p><span class="item">${indexFaces.carroChefeModel.descricao}</span></p>
                 </a>
             </div>
             </c:if>

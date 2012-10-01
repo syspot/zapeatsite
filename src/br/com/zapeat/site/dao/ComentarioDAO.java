@@ -32,19 +32,9 @@ public class ComentarioDAO {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		
-		broker.setPropertySQL("comentariodao.inserir", model.getUsuarioModel().getId(), model.getFornecedorModel().getId(), model.getDescricao(), model.getFlagIndicaAtendimento(), model.getFlagIndicaPromocao());
+		broker.setPropertySQL("comentariodao.inserir", model.getUsuarioModel().getId(), model.getFornecedorModel().getId(), model.getDescricao(), model.getFlagIndicaAtendimento(), model.getFlagIndicaPromocao(), model.getFlagNaoIndica());
 
 		broker.execute();
-
-	}
-	
-	public ComentarioModel obterIndicacaoFornecedorPorUsuario(ComentarioModel model) {
-
-		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
-
-		broker.setPropertySQL("comentariodao.obterIndicacaoFornecedorPorUsuario", model.getFornecedorModel().getId(), model.getUsuarioModel().getId());
-
-		return (ComentarioModel) broker.getObjectBean(ComentarioModel.class, "id", "descricao", "usuarioModel.id", "usuarioModel.nome", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.logoMarca");
 
 	}
 	

@@ -2,8 +2,10 @@
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
+<%@ taglib prefix="p" uri="http://primefaces.prime.com.tr/ui"%>
 
 <f:view>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -62,17 +64,19 @@ $(document).ready( function() {
             
             <p>Preencha os dados abaixo para acessar</p>
             
-            <h:messages showDetail="true" showSummary="false" globalOnly="true"/>
-            
         </div>
         
         <div class="sep"></div>
-
+		
+		<div align="center">
+        	<h:messages globalOnly="false" errorStyle="color:red;" fatalStyle="color:red;" showDetail="true" showSummary="false" fatalClass="error" errorClass="error" id="msg"/>
+        </div>
+            
         <div class="inputs">
         	
-        	<h:inputText title="E-mail" id="email" value="#{loginFaces.usuarioModel.email}" tabindex="1" maxlength="100"/>
+        	<h:inputText title="E-mail" id="email" value="#{loginFaces.usuarioModel.email}" required="true" requiredMessage="Email: Obrigatório" tabindex="1" maxlength="100"/>
             
-        	<h:inputSecret required="true" id="senha" maxlength="100" value="#{loginFaces.usuarioModel.senha}" redisplay="true"/>
+            <h:inputSecret required="true" id="senha" maxlength="100" value="#{loginFaces.usuarioModel.senha}" requiredMessage="Senha: Obrigatório" redisplay="true"/>
             
             <script type="text/javascript">
 	             		$('#email').attr('placeholder','E-mail').attr('autofocus','');
@@ -80,9 +84,8 @@ $(document).ready( function() {
 						
 	        </script>
 	        
-	        <h:commandButton value="ACESSAR" id="submit" styleClass="submit" action="#{loginFaces.autenticar}"/>
-            
-            <p:commandButton value="Submit" action="#{loginFaces.autenticar}"/>
+	        <h:commandButton value="ACESSAR" id="submit" action="#{loginFaces.autenticar}"/>
+	        
         </div>
 
     </h:form>
