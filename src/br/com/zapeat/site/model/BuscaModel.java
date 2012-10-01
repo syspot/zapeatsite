@@ -22,9 +22,9 @@ public class BuscaModel {
 	
 	private String imagem;
 	
-	private Long latitude;
+	private Double latitude;
 	
-	private Long longitude;
+	private Double longitude;
 
 	public String getTitulo() {
 		return titulo;
@@ -113,20 +113,35 @@ public class BuscaModel {
 		this.imagem = imagem;
 	}
 
-	public Long getLatitude() {
+	public Double getLatitude() {
 		return latitude;
 	}
 
-	public void setLatitude(Long latitude) {
+	public void setLatitude(Double latitude) {
 		this.latitude = latitude;
 	}
 
-	public Long getLongitude() {
+	public Double getLongitude() {
 		return longitude;
 	}
 
-	public void setLongitude(Long longitude) {
+	public void setLongitude(Double longitude) {
 		this.longitude = longitude;
+	}
+	
+	@Override
+	public String toString() {
+		
+		StringBuilder retorno = new StringBuilder();
+		
+		retorno.append("['");
+		retorno.append(tipo.equals(3) ? titulo : nome).append("', ");
+		retorno.append(latitude).append(", ");
+		retorno.append(longitude).append(", ");
+		retorno.append(1);
+		retorno.append("]");
+		
+		return retorno.toString();
 	}
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 
+import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.faces.TSMainFaces;
 import br.com.zapeat.site.dao.BuscaDAO;
 import br.com.zapeat.site.model.BuscaModel;
@@ -56,7 +57,11 @@ public class BuscaFaces extends TSMainFaces {
 		lista.add("teste3");
 		
 		return lista;
-    }  
+    }
+	
+	public String getPosicaoCentralMaps(){
+		return TSUtil.isEmpty(this.listagem) ? "-12.0, -38.0" : this.listagem.get(0).getLatitude() + ", " + this.listagem.get(0).getLongitude();
+	}
 	
 	public List<BuscaModel> getListagem() {
 		return listagem;

@@ -132,11 +132,11 @@
 <!-- TERMINA TOPO -->
 
 <div id="id-Breadcrumb">
-    <span class="migalha"><a href="" title="">Página Inicial</a></span>    »    
-    <span class="migalha"><a href="" title="">${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.descricao}</a></span>    »   
-    <span class="migalha"><a href="" title="">${promocaoFaces.promocao.fornecedorModel.nomeFantasia}</a></span>    »   
-    <span class="migalha"><a href="" title="">${promocaoFaces.promocao.tipoPromocaoModel.descricao}</a></span>    »   
-    <span class="migalha"><a href="" title="">${promocaoFaces.promocao.titulo}</a></span>
+    <span class="migalha"><a href="index.jsf" title="">Página Inicial</a></span>    »    
+    <span class="migalha"><a href="listagem.jsf?categoriaId=${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.id}" title="">${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.descricao}</a></span>    »   
+    <span class="migalha"><a href="estabelecimento.jsf?id=${promocaoFaces.promocao.fornecedorModel.id}" title="">${promocaoFaces.promocao.fornecedorModel.nomeFantasia}</a></span>    »   
+    <span class="migalha"><a href="listagem.jsf?categoriaId=${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.id}&tipo=${promocaoFaces.promocao.tipoPromocaoModel.id}" title="">${promocaoFaces.promocao.tipoPromocaoModel.descricao}</a></span>    »   
+    <span class="migalha">${promocaoFaces.promocao.titulo}</span>
 </div>
 
 <!-- COMECA CENTRAL -->
@@ -147,12 +147,14 @@
     	<!-- COMECA COLUNA ESQUERDA -->
     	<div id="esqInt">
         	<div id="boxSobreEstab">
-            	<div class="marca"><img src="${promocaoFaces.promocao.fornecedorModel.logoMarcaView}" width="117" height="117" alt="${promocaoFaces.promocao.fornecedorModel.nomeFantasia}" title="${promocaoFaces.promocao.fornecedorModel.nomeFantasia}" /></div>
-                <p class="titulo marginBottom15px">${promocaoFaces.promocao.fornecedorModel.nomeFantasia} - ${promocaoFaces.promocao.fornecedorModel.bairro}</p>
-                <!--<div class="marginBottom5px">
-                	 <a href="" title="Indico"><span class="icons indicacaoAzul"></span>Eu Indico [100]</a>  
-                </div> -->
-                <div><span class="icons telAzul"></span>${promocaoFaces.promocao.fornecedorModel.telefone}</div>
+        		<a href="estabelecimento.jsf?id=${promocaoFaces.promocao.fornecedorModel.id}">
+	            	<div class="marca"><img src="${promocaoFaces.promocao.fornecedorModel.logoMarcaView}" width="117" height="117" alt="${promocaoFaces.promocao.fornecedorModel.nomeFantasia}" title="${promocaoFaces.promocao.fornecedorModel.nomeFantasia}" /></div>
+	                <p class="titulo marginBottom15px">${promocaoFaces.promocao.fornecedorModel.nomeFantasia} - ${promocaoFaces.promocao.fornecedorModel.bairro}</p>
+	                <!--<div class="marginBottom5px">
+	                	 <a href="" title="Indico"><span class="icons indicacaoAzul"></span>Eu Indico [100]</a>  
+	                </div> -->
+	                <div><span class="icons telAzul"></span>${promocaoFaces.promocao.fornecedorModel.telefone}</div>
+                </a>
             </div>
                 	
         </div>
@@ -214,7 +216,7 @@
 				  var map;
 				  function initialize() {
 					// Creating a map
-					var latlng = new google.maps.LatLng(-12.973393753658488, -38.51103549999999); 
+					var latlng = new google.maps.LatLng(${promocaoFaces.promocao.fornecedorModel.latitude}, ${promocaoFaces.promocao.fornecedorModel.longitude}); 
 					var map = new google.maps.Map(document.getElementById('map_canvas_estab'), {  
 					  zoom: 17,
 					  center: latlng,
@@ -248,26 +250,32 @@
         <!-- COMECA COLUNA DIREITA -->
         <div id="dir">
         	<div class="boxSubCat">
-            	<h2>Promoção do dia</h2>
-                <img src="${promocaoFaces.promocaoDia.imagemPromocaoThumbView}" alt="" title="" />
-                <p class="titulo">${promocaoFaces.promocaoDia.titulo}</p>
-                <!-- SE PROMOÇÃO EM DESCONTO -->
-                <p><span class="precoDe">De: R$ ${promocaoFaces.promocaoDia.precoOriginalFormatado}</span>&nbsp;&nbsp;<span class="precoPor">Por: R$ ${promocaoFaces.promocaoDia.precoPromocionalFormatado}</span> 
+        		<a href="promocao.jsf?id=${promocaoFaces.promocaoDia.id}">
+	            	<h2>Promoção do dia</h2>
+	                <img src="${promocaoFaces.promocaoDia.imagemPromocaoThumbView}" alt="" title="" />
+	                <p class="titulo">${promocaoFaces.promocaoDia.titulo}</p>
+	                <!-- SE PROMOÇÃO EM DESCONTO -->
+	                <p><span class="precoDe">De: R$ ${promocaoFaces.promocaoDia.precoOriginalFormatado}</span>&nbsp;&nbsp;<span class="precoPor">Por: R$ ${promocaoFaces.promocaoDia.precoPromocionalFormatado}</span>
+                </a> 
             </div>
         	<div class="boxSubCat">
-            	<h2>Promoção da semana</h2>
-                <img src="${promocaoFaces.promocaoSemana.imagemPromocaoThumbView}" alt="" title="" />
-                <p class="titulo">${promocaoFaces.promocaoSemana.titulo}</p>
-                <!-- SE PROMOÇÃO EM PRODUTO -->
-                <p><span class="fontYi">${promocaoFaces.promocaoSemana.descricao}</span></p>
+        		<a href="promocao.jsf?id=${promocaoFaces.promocaoSemana.id}">
+	            	<h2>Promoção da semana</h2>
+	                <img src="${promocaoFaces.promocaoSemana.imagemPromocaoThumbView}" alt="" title="" />
+	                <p class="titulo">${promocaoFaces.promocaoSemana.titulo}</p>
+	                <!-- SE PROMOÇÃO EM PRODUTO -->
+	                <p><span class="fontYi">${promocaoFaces.promocaoSemana.descricao}</span></p>
+                </a>
             </div>
             <div class="boxSubCat">
-            	<h2>Carro-chefe</h2>
-                <img src="${promocaoFaces.carroChefeModel.imagemThumbView}" alt="" title="" />
-                <p class="titulo">${promocaoFaces.carroChefeModel.fornecedorModel.nomeFantasia}</p>
-                <p class="categoria">${promocaoFaces.carroChefeModel.fornecedorModel.categoriaPrincipal.descricao}</p>
-                <p class="item">${promocaoFaces.carroChefeModel.titulo}</p>
-                <!-- <p><span class="precoDe">De: R$789,00</span>&nbsp;&nbsp;<span class="precoPor">Por: R$254,00</span>  --> 
+            	<a href="estabelecimento.jsf?id=${promocaoFaces.carroChefeModel.fornecedorModel.id}">
+	            	<h2>Carro-chefe</h2>
+	                <img src="${promocaoFaces.carroChefeModel.imagemThumbView}" alt="" title="" />
+	                <p class="titulo">${promocaoFaces.carroChefeModel.fornecedorModel.nomeFantasia}</p>
+	                <p class="categoria">${promocaoFaces.carroChefeModel.fornecedorModel.categoriaPrincipal.descricao}</p>
+	                <p class="item">${promocaoFaces.carroChefeModel.titulo}</p>
+	                <!-- <p><span class="precoDe">De: R$789,00</span>&nbsp;&nbsp;<span class="precoPor">Por: R$254,00</span>  -->
+                </a> 
             </div>
             
             <div class="boxSubCat">

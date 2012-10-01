@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
-<%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#" >
+<f:view>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
@@ -124,7 +125,6 @@
 		}
 </script>     
 </head>
-<f:view>
 <body onload="initialize()">
 
 
@@ -133,8 +133,8 @@
 <!-- TERMINA TOPO -->
 
 <div id="id-Breadcrumb">
-    <span class="migalha"><a href="busca.jsf" title="">Página Inicial</a></span>    »    
-    <span class="migalha">Busca</span>    »   
+    <span class="migalha"><a href="index.jsf" title="">Página Inicial</a></span>    »    
+    <span class="migalha"><a href="busca.jsf" title="">Busca</a></span>    »   
     <span class="migalha">${buscaFaces.termoBuscado}</span>
 </div>
 
@@ -243,17 +243,11 @@
         <div id="colunaMapa">
         	  <div id="map" style="width: 350px; height: 700px;"></div>
               <script type="text/javascript">
-				var locations = [
-				  ['DaBox PIzzaria', -33.890542, 151.274856, 4],
-				  ['Restaurante Yemanjá', -33.923036, 151.259052, 5],
-				  ['Porto Brasil', -34.028249, 151.157507, 3],
-				  ['DOC', -33.80010128657071, 151.28747820854187, 2],
-				  ['071 Music Bar', -33.950198, 151.259302, 1]
-				];
+              var locations = ${buscaFaces.listagem};
 			
 				var map = new google.maps.Map(document.getElementById('map'), {
 				  zoom: 10,
-				  center: new google.maps.LatLng(-33.92, 151.25),
+				  center: new google.maps.LatLng(${buscaFaces.posicaoCentralMaps}),
 				  mapTypeId: google.maps.MapTypeId.ROADMAP
 				});
 			
@@ -285,11 +279,7 @@
 <div id="rodape">
 	<!-- COMECA BUSCA -->
 	<div class="barraBusca">
-    	<form>
-        	<label>Buscar<input type="text" /></label>
-            <label>em<input type="text" value="" id="info" /><span id="btnInit" class="icons" ></span></label>
-            <input type="submit" value="" />
-        </form>
+    	<%@ include file="/include_busca_topo.jsp" %>
     </div>
     <!-- TERMINA BUSCA -->
 	<div id="infos">

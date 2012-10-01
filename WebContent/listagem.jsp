@@ -163,7 +163,7 @@
             		<!-- SE LISTAGEM POR PROMOÇÃO -->
             		<c:forEach items="${listagemFaces.promocoes}" var="promocao">
 	                	<li>
-		                    <a href="" title="">
+		                    <a href="promocao.jsf?id=${promocao.id}" title="">
 		                    	<div class="marca floatLeft"><img src="${promocao.fornecedorModel.logoMarcaView}" alt="${promocao.titulo}" title="${promocao.fornecedorModel.nomeFantasia}" /></div>
 		                        <!-- SE PROMOÇÃO EM PRODUTO -->
 		                        <div class="info">
@@ -193,7 +193,7 @@
                     
             		<c:forEach items="${listagemFaces.carrosChefes}" var="carroChefe">
 	                	<li>
-		                    <a href="" title="">
+		                    <a href="estabelecimento.jsf?id=${carroChefe.fornecedorModel.id}" title="">
 		                    	<div class="marca floatLeft"><img src="${carroChefe.fornecedorModel.logoMarcaView}" alt="Marca 80x80px" title="${carroChefe.fornecedorModel.nomeFantasia}" /></div>
 		                        <!-- SE PROMOÇÃO EM PRODUTO -->
 		                        <div class="info">
@@ -244,26 +244,29 @@
 	                
 	                </c:if>
 	                
-           			<c:choose>
+	                <c:if test="${listagemFaces.qtdPaginas > 1}">
+	                
+	           			<c:choose>
+								
+							<c:when test="${not empty listagemFaces.page}">
+								<c:choose>
+			          				<c:when test="${listagemFaces.page != listagemFaces.qtdPaginas}">
+			          					<li class="fim"><a href="listagem.jsf?page=${listagemFaces.page + 1}" title=""><span class="icons pagFim"></span></a></li>
+			          				</c:when>
+			          				<c:otherwise>
+			          					<li class="inicio"><span class="icons pagFim"></span></li>
+			          				</c:otherwise>
+	          					</c:choose>
+							</c:when>
 							
-						<c:when test="${not empty listagemFaces.page}">
-							<c:choose>
-		          				<c:when test="${listagemFaces.page != listagemFaces.qtdPaginas}">
-		          					<li class="fim"><a href="listagem.jsf?page=${listagemFaces.page + 1}" title=""><span class="icons pagFim"></span></a></li>
-		          				</c:when>
-		          				<c:otherwise>
-		          					<li class="inicio"><span class="icons pagFim"></span></li>
-		          				</c:otherwise>
-          					</c:choose>
-						</c:when>
+							<c:otherwise>
+								<li class="fim"><a href="listagem.jsf?page=${listagemFaces.page + 1}" title=""><span class="icons pagFim"></span></a></li>
+							</c:otherwise>
+							
+						</c:choose>
 						
-						<c:otherwise>
-							<li class="fim"><a href="listagem.jsf?page=${listagemFaces.page + 1}" title=""><span class="icons pagFim"></span></a></li>
-						</c:otherwise>
-						
-					</c:choose>
-           			
-           			
+	                </c:if>
+	                
                 </ul>
 
         </div>
@@ -273,17 +276,12 @@
         <div id="colunaMapa">
         	  <div id="map" style="width: 350px; height: 700px;"></div>
               <script type="text/javascript">
-				var locations = [
-				  ['DaBox PIzzaria', -33.890542, 151.274856, 4],
-				  ['Restaurante Yemanjá', -33.923036, 151.259052, 5],
-				  ['Porto Brasil', -34.028249, 151.157507, 3],
-				  ['DOC', -33.80010128657071, 151.28747820854187, 2],
-				  ['071 Music Bar', -33.950198, 151.259302, 1]
-				];
+              	
+              	var locations = ${listagemFaces.posicoesMaps};
 			
 				var map = new google.maps.Map(document.getElementById('map'), {
 				  zoom: 10,
-				  center: new google.maps.LatLng(-33.92, 151.25),
+				  center: new google.maps.LatLng(${listagemFaces.posicaoCentralMaps}),
 				  mapTypeId: google.maps.MapTypeId.ROADMAP
 				});
 			
@@ -304,6 +302,7 @@
 					}
 				  })(marker, i));
 				}
+				
 			  </script>
 			  
 			  <script type="text/javascript"> 

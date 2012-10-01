@@ -86,6 +86,33 @@ public class ListagemFaces extends TSMainFaces {
 		return nomeTipo;
 	}
 	
+	public String getPosicaoCentralMaps(){
+		
+		if(!TSUtil.isEmpty(tipo) && Constantes.TIPO_LISTAGEM_CARRO_CHEFE.equals(tipo)){
+			
+			return TSUtil.isEmpty(this.carrosChefes) ? "-12.0, -38.0" : this.carrosChefes.get(0).getFornecedorModel().getLatitude() + ", " + this.carrosChefes.get(0).getFornecedorModel().getLongitude();
+			
+		} else{
+			
+			return TSUtil.isEmpty(this.promocoes) ? "-12.0, -38.0" : this.promocoes.get(0).getFornecedorModel().getLatitude() + ", " + this.promocoes.get(0).getFornecedorModel().getLongitude();
+			
+		}
+	}
+	
+	public String getPosicoesMaps(){
+		
+		if(!TSUtil.isEmpty(tipo) && Constantes.TIPO_LISTAGEM_CARRO_CHEFE.equals(tipo)){
+			
+			return this.carrosChefes.toString();
+			
+		} else{
+			
+			return this.promocoes.toString();
+			
+		}
+
+	}
+	
 	public List<PromocaoModel> getPromocoes() {
 		return promocoes;
 	}

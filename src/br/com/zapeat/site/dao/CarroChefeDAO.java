@@ -41,7 +41,7 @@ public class CarroChefeDAO {
 
 		broker.setPropertySQL("carrochefedao.pesquisaporcategoria", categoriaId, page);
 
-		return broker.getCollectionBean(CarroChefeModel.class, "id", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.logoMarca", "fornecedorModel.telefone", "fornecedorModel.site", "fornecedorModel.categoriaPrincipal.id", "fornecedorModel.categoriaPrincipal.descricao", "descricao", "titulo");
+		return broker.getCollectionBean(CarroChefeModel.class, "id", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.logoMarca", "fornecedorModel.telefone", "fornecedorModel.site", "fornecedorModel.latitude", "fornecedorModel.longitude", "fornecedorModel.categoriaPrincipal.id", "fornecedorModel.categoriaPrincipal.descricao", "descricao", "titulo");
 		
 	}
 	

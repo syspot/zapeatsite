@@ -104,4 +104,9 @@ public class CarroChefeModel implements Serializable {
 	public void setImagem(String imagem) {
 		this.imagem = imagem;
 	}
+	
+	@Override
+	public String toString() {
+		return this.fornecedorModel.toString();
+	}
 }

@@ -289,5 +289,20 @@ public class FornecedorModel {
 	public void setCss(String css) {
 		this.css = css;
 	}
+	
+	@Override
+	public String toString() {
+		
+		StringBuilder retorno = new StringBuilder();
+		
+		retorno.append("['");
+		retorno.append(nomeFantasia).append("', ");
+		retorno.append(latitude).append(", ");
+		retorno.append(longitude).append(", ");
+		retorno.append(1);
+		retorno.append("]");
+		
+		return retorno.toString();
+	}
 
 }
