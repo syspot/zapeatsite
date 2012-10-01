@@ -251,7 +251,7 @@
 	                <a href="promocao.jsf?id=${indexFaces.promocaoHora.id}"><img src="img/model/590x260.jpg" alt="Marca 80x80px" title="${indexFaces.promocaoSemana.fornecedorModel.nomeFantasia}" /></a>
                     <div class="tituloPromo">
                     	<p><span class="tipoPromo">Promoção da hora</span></p>
-                        <p><span class="nomePromo"><c:out value="${indexFaces.promocaoHora.titulo}"/>/${indexFaces.promocaoSemana.fornecedorModel.nomeFantasia}</span></p>
+                        <p><span class="nomePromo"><c:out value="${indexFaces.promocaoHora.titulo}"/>/${indexFaces.promocaoHora.fornecedorModel.nomeFantasia}</span></p>
                     </div>
                 </div>
                 <div id="faixa">

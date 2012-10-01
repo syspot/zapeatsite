@@ -73,13 +73,15 @@ public class LoginFaces extends TSMainFaces {
 
 				TSFacesUtil.addObjectInSession(Constantes.USUARIO_LOGADO, model);
 
+				return Constantes.INDEX;
+
 			} else {
 
 				TSFacesUtil.addErrorMessage("Dados inválidos.");
 			}
 		}
 
-		return Constantes.INDEX;
+		return null;
 	}
 
 	public UsuarioModel getUsuarioModel() {
