@@ -12,6 +12,8 @@ public class ImagemFornecedorModel implements Serializable {
 	private FornecedorModel fornecedorModel;
 
 	private String imagem;
+	
+	private String css;
 
 	public Long getId() {
 		return id;
@@ -69,6 +71,14 @@ public class ImagemFornecedorModel implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public String getCss() {
+		return css;
+	}
+
+	public void setCss(String css) {
+		this.css = css;
 	}
 
 }

@@ -9,18 +9,12 @@ import javax.faces.bean.RequestScoped;
 import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.faces.TSMainFaces;
 import br.com.topsys.web.util.TSFacesUtil;
-import br.com.zapeat.site.dao.BannerDAO;
-import br.com.zapeat.site.dao.CarroChefeDAO;
 import br.com.zapeat.site.dao.ComentarioDAO;
 import br.com.zapeat.site.dao.FornecedorDAO;
 import br.com.zapeat.site.dao.ImagemFornecedorDAO;
-import br.com.zapeat.site.dao.PromocaoDAO;
-import br.com.zapeat.site.model.BannerModel;
-import br.com.zapeat.site.model.CarroChefeModel;
 import br.com.zapeat.site.model.ComentarioModel;
 import br.com.zapeat.site.model.FornecedorModel;
 import br.com.zapeat.site.model.ImagemFornecedorModel;
-import br.com.zapeat.site.model.PromocaoModel;
 
 @RequestScoped
 @ManagedBean(name = "estabelecimentoFaces")
@@ -28,16 +22,8 @@ public class EstabelecimentoFaces extends TSMainFaces {
 
 	private FornecedorModel fornecedorModel;
 	private List<ImagemFornecedorModel> fotosEstabelecimento;
-	private PromocaoModel promocaoDia;
-	private PromocaoModel promocaoSemana;
-	private BannerModel bannerModel;
-	private CarroChefeModel carroChefeModel;
 	private ComentarioModel ranking;
-
-	private PromocaoDAO promocaoDAO;
 	private FornecedorDAO fornecedorDAO;
-	private BannerDAO bannerDAO;
-	private CarroChefeDAO carroChefeDAO;
 	private ImagemFornecedorDAO imagemFornecedorDAO;
 	private ComentarioDAO comentarioDAO;
 
@@ -61,15 +47,9 @@ public class EstabelecimentoFaces extends TSMainFaces {
 
 				this.fotosEstabelecimento = this.imagemFornecedorDAO.pesquisar(this.fornecedorModel);
 
-				this.promocaoDia = this.promocaoDAO.obterPromocaoDia(this.fornecedorModel);
-
-				this.promocaoSemana = this.promocaoDAO.obterPromocaoSemana(this.fornecedorModel);
-
-				this.bannerModel = this.bannerDAO.pesquisar(new BannerModel(this.fornecedorModel));
-
-				this.carroChefeModel = this.carroChefeDAO.pesquisar(new CarroChefeModel(this.fornecedorModel));
-
 				this.ranking = this.comentarioDAO.rankingEstabelecimento(this.fornecedorModel);
+				
+				this.setarCssFotos();
 
 			} else {
 
@@ -81,6 +61,30 @@ public class EstabelecimentoFaces extends TSMainFaces {
 			this.redirect();
 		}
 
+	}
+
+	private void setarCssFotos() {
+
+		int count = 1;
+
+		for (ImagemFornecedorModel item : this.fotosEstabelecimento) {
+
+			if (count == 1) {
+
+				item.setCss("ftoGrande");
+
+			} else if (count == 2) {
+
+				item.setCss("ftoPeq floatLeft");
+
+			} else if (count == 3) {
+
+				item.setCss("ftoPeq floatRight");
+
+			}
+
+			count++;
+		}
 	}
 
 	private void redirect() {
@@ -97,52 +101,9 @@ public class EstabelecimentoFaces extends TSMainFaces {
 
 	private void initDAO() {
 
-		this.promocaoDAO = new PromocaoDAO();
-		this.bannerDAO = new BannerDAO();
 		this.fornecedorDAO = new FornecedorDAO();
-		this.carroChefeDAO = new CarroChefeDAO();
 		this.imagemFornecedorDAO = new ImagemFornecedorDAO();
 		this.comentarioDAO = new ComentarioDAO();
-	}
-
-	public PromocaoModel getPromocaoDia() {
-		return promocaoDia;
-	}
-
-	public void setPromocaoDia(PromocaoModel promocaoDia) {
-		this.promocaoDia = promocaoDia;
-	}
-
-	public PromocaoModel getPromocaoSemana() {
-		return promocaoSemana;
-	}
-
-	public void setPromocaoSemana(PromocaoModel promocaoSemana) {
-		this.promocaoSemana = promocaoSemana;
-	}
-
-	public BannerModel getBannerModel() {
-		return bannerModel;
-	}
-
-	public void setBannerModel(BannerModel bannerModel) {
-		this.bannerModel = bannerModel;
-	}
-
-	public CarroChefeModel getCarroChefeModel() {
-		return carroChefeModel;
-	}
-
-	public void setCarroChefeModel(CarroChefeModel carroChefeModel) {
-		this.carroChefeModel = carroChefeModel;
-	}
-
-	public PromocaoDAO getPromocaoDAO() {
-		return promocaoDAO;
-	}
-
-	public void setPromocaoDAO(PromocaoDAO promocaoDAO) {
-		this.promocaoDAO = promocaoDAO;
 	}
 
 	public FornecedorDAO getFornecedorDAO() {
@@ -152,23 +113,7 @@ public class EstabelecimentoFaces extends TSMainFaces {
 	public void setFornecedorDAO(FornecedorDAO fornecedorDAO) {
 		this.fornecedorDAO = fornecedorDAO;
 	}
-
-	public BannerDAO getBannerDAO() {
-		return bannerDAO;
-	}
-
-	public void setBannerDAO(BannerDAO bannerDAO) {
-		this.bannerDAO = bannerDAO;
-	}
-
-	public CarroChefeDAO getCarroChefeDAO() {
-		return carroChefeDAO;
-	}
-
-	public void setCarroChefeDAO(CarroChefeDAO carroChefeDAO) {
-		this.carroChefeDAO = carroChefeDAO;
-	}
-
+	
 	public List<ImagemFornecedorModel> getFotosEstabelecimento() {
 		return fotosEstabelecimento;
 	}

@@ -69,7 +69,7 @@ $(document).ready( function() {
         <div class="sep"></div>
         
          <div align="center">
-                <h:messages errorStyle="color:red;" fatalStyle="color:red;" showDetail="true" showSummary="false" fatalClass="error" errorClass="error" id="msg"/>
+                <h:messages errorStyle="color:red;" fatalStyle="color:red;" infoClass="info" infoStyle="color:green;" showDetail="true" showSummary="false" fatalClass="error" errorClass="error" id="msg"/>
             </div>
         
         <div class="inputs">

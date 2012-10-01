@@ -132,54 +132,15 @@
 <body onload="initialize()">
 	
 <!-- COMECA TOPO -->
-<div id="topo">
-	<!-- COMECA BUSCA -->
-	<div class="barraBusca">
-    	<form>
-        	<label>Buscar<input type="text" /></label>
-            <label>em<input type="text" value="" id="info" /><span id="btnInit" class="icons" ></span></label>
-            <input type="submit" value="" />
-        </form>
-    </div>
-    <!-- TERMINA BUSCA -->
-    <!-- COMECA PUBLICIDADE/MARCA -->
-    <div id="marcaPublicidade">
-    	<%@ include file="/include_banner_topo.jsp" %>
-    </div>
-    <!-- TERMINA PUBLICIDADE/MARCA -->    
-    <!-- COMECA MENU -->
-    <div id="menu">
-            <nav id="categorias">
-            	<div id="cadastro">
-            		<div id="facebook">
-						
-					  <h:outputLink value="#{faceBookFaces.url}" rendered="#{empty sessionScope.usuarioLogado.id}">
-						<h:graphicImage value="img/facebook.gif" />
-					  </h:outputLink>
-					  <h:outputLink value="#{faceBookFaces.logout}" rendered="#{!empty sessionScope.usuarioLogado.id}">
-					  	Sair
-					  </h:outputLink>
-					  
-                    </div>
-                    
-                    <c:if test="${empty sessionScope.usuarioLogado.id}">
-                    <div id="local">
-                        <span class="chamadaCadastro">Não tem Facebook?</span>
-                        <div><a class="modal" title="Cadastrar" rel="modal" href="<%= request.getContextPath() %>/inc/cadastro.jsf"><span class="icons iconCadastrar"></span>cadastrar</a></div>
-                        <div><a id="modal" href="<%= request.getContextPath() %>/inc/login.jsf" class="modal" rel="modal" title="Login"><span class="icons iconLogin"></span>login</a></div>
-                    </div>
-                    </c:if>
-            	</div>
-                
-                <%@ include file="/categorias.jsp" %>
-            </nav>
-        </div>
-    <!-- TERMINA MENU -->
-</div>
+<%@ include file="/topo.jsp" %>
 					  
 <c:if test="${!empty sessionScope.usuarioLogado.id}">
 <div id="id-Breadcrumb"><span id="status">Olá, ${sessionScope.usuarioLogado.nome}</span>, temos ótimas promoções pra você!</div>
 </c:if>
+
+<div id="message" align="center">
+	<h:messages errorStyle="color:red;" fatalStyle="color:red;" infoClass="info" infoStyle="color:green;" showDetail="true" showSummary="false" fatalClass="error" errorClass="error" id="msg"/>
+</div>
 
 <!-- COMECA CENTRAL -->
 <div id="central">
@@ -192,7 +153,7 @@
         	<div class="boxSubCat">
             	<h2>Promoção do dia</h2>
             	<a href="promocao.jsf?id=${indexFaces.promocaoDia.id}" title="">
-                    <img src="img/model/180x79.jpg" alt="" title="" />
+                    <img src="${indexFaces.promocaoDia.imagemPromocaoThumbView}" alt="" title="" />
                     <p class="titulo">${indexFaces.promocaoDia.fornecedorModel.nomeFantasia}</p>
                     <p class="item">
                     ${indexFaces.promocaoDia.descricao}</p>
@@ -215,8 +176,7 @@
         	<div class="boxSubCat">
             	<h2>Promoção da semana</h2>
                 <a href="promocao.jsf?id=${indexFaces.promocaoSemana.id}" title="">
-                	<img src="img/model/180x79.jpg" alt="" title="" />
-               
+                	<img src="${indexFaces.promocaoSemana.imagemPromocaoThumbView}" alt="" title="" />
                     <p class="titulo">${indexFaces.promocaoSemana.fornecedorModel.nomeFantasia}</p>
                     <p><span class="precoDe">
                     De: <h:outputText value="#{indexFaces.promocaoSemana.precoOriginal}">
@@ -236,9 +196,10 @@
             <c:if test="${not empty indexFaces.carroChefeModel.id}">
             <div class="boxSubCat">
             	<h2>Carro-chefe</h2>
-                <a href="promocao.jsf?carroChefeId=${indexFaces.carroChefeModel.id}" title=""><img src="img/model/180x79.jpg" alt="" title="" /></a>
-                    <p class="titulo">${indexFaces.carroChefeModel.fornecedorModel.nomeFantasia}</p>
-                    <p><span class="item">${indexFaces.carroChefeModel.descricao}</span></p>
+                <a href="promocao.jsf?carroChefeId=${indexFaces.carroChefeModel.id}" title="">
+                	<img src="${indexFaces.carroChefeModel.imagemThumbView}" alt="" title="" /></a>
+                <p class="titulo">${indexFaces.carroChefeModel.fornecedorModel.nomeFantasia}</p>
+                <p><span class="item">${indexFaces.carroChefeModel.descricao}</span></p>
                 </a>
             </div>
             </c:if>
@@ -248,14 +209,18 @@
         <div id="meio">
         	<div id="destaque">
             	<div id="fotoDestaque">
-	                <a href="promocao.jsf?id=${indexFaces.promocaoHora.id}"><img src="img/model/590x260.jpg" alt="Marca 80x80px" title="${indexFaces.promocaoSemana.fornecedorModel.nomeFantasia}" /></a>
+	                <a href="promocao.jsf?id=${indexFaces.promocaoHora.id}">
+	                	<img src="${indexFaces.promocaoHora.imagemPromocaoFullView}" alt="" title="" />
+	                </a>
                     <div class="tituloPromo">
                     	<p><span class="tipoPromo">Promoção da hora</span></p>
                         <p><span class="nomePromo"><c:out value="${indexFaces.promocaoHora.titulo}"/>/${indexFaces.promocaoHora.fornecedorModel.nomeFantasia}</span></p>
                     </div>
                 </div>
                 <div id="faixa">
- 	               <div class="marca"><img src="img/model/80x80.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></div>
+ 	               <div class="marca">
+ 	               	<img src="${indexFaces.promocaoHora.fornecedorModel.logoMarcaView}" alt="" title="${indexFaces.promocaoHora.fornecedorModel.nomeFantasia}" />
+ 	               </div>
                    <p class="percentual">${indexFaces.promocaoHora.percentualDesconto}%</p>
                    <p class="fontYi font10px">desconto</p>
                 </div>
@@ -309,7 +274,7 @@
                 	<li>
                     	<a href="promocao.jsf?id=${promocao.id}" title="">
                             <div class="marca floatLeft">
-                            	<img src="img/model/80x80.jpg" alt="Marca 80x80px" title="${promocao.fornecedorModel.nomeFantasia}" />
+                            	<img src="${promocao.imagemThumbView}" alt="" title="${promocao.fornecedorModel.nomeFantasia}" />
                            </div>
                             <!-- SE PROMOÇÃO EM PRODUTO -->
                             <div class="info">
@@ -339,7 +304,6 @@
         
         </div>
         
-        
         <!-- COMECA COLUNA DIREITA -->
         <div id="dir">
         	<c:if test="${!empty indexFaces.topGeral}">
@@ -348,7 +312,7 @@
                 <ul id="topGeral">
                 	<c:forEach items="${indexFaces.topGeral}" var="top">
                     <li class="${top.css}">
-                    	<a href="estabelecimento.jsf?id=${top.id}" title="">
+                    	<a href="estabelecimento.jsf?id=${top.id}" title="${top.nomeFantasia}">
                             <p class="titulo">${top.nomeFantasia}</p>
                         </a>
                     </li>
@@ -369,7 +333,7 @@
             	<c:forEach items="${indexFaces.estabelecimentos}" var="estabelecimento">
                 	<div class="marca floatLeft">
                 		<a href="estabelecimento.jsf?id=${estabelecimento.id}" title="${estabelecimento.nomeFantasia}">
-                			<img src="img/model/80x80.jpg" alt="Marca 80x80px" title="${estabelecimento.nomeFantasia}" />
+                			<img src="${estabelecimento.logoMarcaView}" alt="" title="${estabelecimento.nomeFantasia}" />
                 		</a>
                 	</div>
                 </c:forEach>
@@ -381,11 +345,13 @@
             	<h2>Quem Indica</h2>
                 <span class="imgDestaque-peq posRel">
                 	<a href="estabelecimento.jsf?id=${indexFaces.comentarioModel.fornecedorModel.id}" title="">
-                        <img src="img/model/180x79.jpg" alt="" title="" />
+                        <img src="${indexFaces.comentarioModel.fornecedorModel.logoMarcaView}" alt="" title="" />
                         <p class="tituloIndica">${indexFaces.comentarioModel.fornecedorModel.nomeFantasia}</p>
                     </a>
-                </span>
+                </span>descricao
+                <c:if test="${!empty indexFaces.comentarioModel.id}">
                 <p class="comment">${indexFaces.comentarioModel.descricao}</p>
+                </c:if>
                 <p class="autor">${indexFaces.comentarioModel.usuarioModel.nome}</p>
             </div>
             </c:if>

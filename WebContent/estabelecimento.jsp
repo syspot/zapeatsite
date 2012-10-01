@@ -118,55 +118,7 @@
 
 <body>
 <!-- COMECA TOPO -->
-<div id="topo">
-	<!-- COMECA BUSCA -->
-	<div class="barraBusca">
-    	<form>
-        	<label>Buscar<input type="text" /></label>
-            <label>em<input type="text" value="" id="info" /><span id="btnInit" class="icons" ></span></label>
-            <input type="submit" value="" />
-        </form>
-    </div>
-    <!-- TERMINA BUSCA -->
-    <!-- COMECA PUBLICIDADE/MARCA -->
-    <div id="marcaPublicidade">
-    	<h1>
-    	<h:outputLink value="#{facesContext.externalContext.requestContextPath}/index.jsf" title="Página Inicial">
-    		<h:graphicImage value="img/marca.png" />
-    	</h:outputLink>	
-    	</h1>
-        <div class="superbanner"></div>
-    </div>
-    <!-- TERMINA PUBLICIDADE/MARCA -->    
-    <!-- COMECA MENU -->
-    <div id="menu">
-            <nav id="categorias">
-            	<div id="cadastro">
-            		<div id="facebook">
-						
-					  <h:outputLink value="#{faceBookFaces.url}" rendered="#{empty sessionScope.usuarioLogado.id}">
-						<h:graphicImage value="img/facebook.gif" />
-					  </h:outputLink>
-					  <h:outputLink value="#{faceBookFaces.logout}" rendered="#{!empty sessionScope.usuarioLogado.id}">
-					  	Sair
-					  </h:outputLink>
-					  
-                    </div>
-                    
-                    <c:if test="${empty sessionScope.usuarioLogado.id}">
-                    <div id="local">
-                        <span class="chamadaCadastro">Não tem Facebook?</span>
-                        <div><a class="modal" title="Cadastrar" rel="modal" href="<%= request.getContextPath() %>/inc/cadastro.jsf"><span class="icons iconCadastrar"></span>cadastrar</a></div>
-                        <div><a id="modal" href="<%= request.getContextPath() %>/inc/login.jsf" class="modal" rel="modal" title="Login"><span class="icons iconLogin"></span>login</a></div>
-                    </div>
-                    </c:if>
-            	</div>
-                
-                <%@ include file="/categorias.jsp" %>
-            </nav>
-        </div>
-    <!-- TERMINA MENU -->
-</div>
+	<%@ include file="/topo.jsp" %>
 <!-- TERMINA TOPO -->
 
 <!-- 
@@ -194,12 +146,17 @@
                     <span>${estabelecimentoFaces.ranking.posicao}º</span><br />lugar
                 </div>
             </div>
+            
+            <c:if test="${!empty estabelecimentoFaces.fotosEstabelecimento}">
             <div class="boxSubCat ftoLocal">
             	<h2>Fotos do ambiente</h2>
-                <span class="ftoGrande"><img src="estabelecimento/img/model/180x79.jpg" alt="" title="" /></span>
-                <span class="ftoPeq floatLeft"><img src="estabelecimento/img/model/180x79.jpg" alt="" title="" /></span>
-                <span class="ftoPeq floatRight"><img src="estabelecimento/img/model/180x79.jpg" alt="" title="" /></span>
+            	<c:forEach items="${estabelecimentoFaces.fotosEstabelecimento}" var="item">
+            	<span class="${item.css}">
+            		<img src="${item.imagemThumbView}" alt="" title="" />
+            	</span>
+            	</c:forEach>
             </div>
+            </c:if>
                 	
         </div>
         
@@ -207,16 +164,13 @@
         <div id="meio">
         	<div id="destaque">
             	<div id="fotoDestaque">
-	                <a href=""><img src="img/model/590x260.jpg" alt="Marca 80x80px" title="Nome do estabelecimento" /></a>
+	                <a href=""><img src="${estabelecimentoFaces.fornecedorModel.imagemFullView}" alt="" title="${estabelecimentoFaces.fornecedorModel.nomeFantasia}" /></a>
                     <div class="tituloPromo">
                         <p><span class="nomePromo">${estabelecimentoFaces.fornecedorModel.nomeFantasia}</span></p>
                     </div>
                 </div>
                 <div class="boxInfo">
-                	<!-- <a href="estabelecimento/LINK RESTAURANTE > ESTABELECIMENTO" title="" class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: Restaurante</a> -->
-                    <!-- <a href="estabelecimento/LINK RESTAURANTE > ESTABELECIMENTO" title="" class="floatLeft"></a>-->
-                    <span class="icons tel"></span>${estabelecimentoFaces.fornecedorModel.telefone}
-                    
+                	<span class="icons tel"></span>${estabelecimentoFaces.fornecedorModel.telefone}
                 </div>
                 <blockquote class="fontYi">
                 	<p>${estabelecimentoFaces.fornecedorModel.descricao}</p>
@@ -293,69 +247,68 @@
                 </div>
             </div>
             
-        
         </div>
         
         
         <!-- COMECA COLUNA DIREITA -->
         <div id="dir">
-        	<c:if test="${!empty estabelecimentoFaces.promocaoDia.id}">
+        	<c:if test="${not empty indexFaces.promocaoDia.id}">
         	<div class="boxSubCat">
             	<h2>Promoção do dia</h2>
-            	<a href="promocao.jsf?id=${estabelecimentoFaces.promocaoDia.id}" title="">
-                    <img src="img/model/180x79.jpg" alt="" title="" />
-                    <p class="titulo">${estabelecimentoFaces.promocaoDia.fornecedorModel.nomeFantasia}</p>
+            	<a href="promocao.jsf?id=${indexFaces.promocaoDia.id}" title="">
+                    <img src="${indexFaces.promocaoDia.imagemPromocaoThumbView}" alt="" title="" />
+                    <p class="titulo">${indexFaces.promocaoDia.fornecedorModel.nomeFantasia}</p>
                     <p class="item">
-                    ${estabelecimentoFaces.promocaoDia.descricao}</p>
+                    ${indexFaces.promocaoDia.descricao}</p>
                     <!-- SE PROMOÇÃO EM DESCONTO -->
                     <p><span class="precoDe">
-                    De: <h:outputText value="#{estabelecimentoFaces.promocaoDia.precoOriginal}">
+                    De: <h:outputText value="#{indexFaces.promocaoDia.precoOriginal}">
                     		<f:convertNumber type="currency" currencySymbol="R$"/>
                     	</h:outputText></span>&nbsp;&nbsp;
                     	<span class="precoPor">
                     Por: 
-                    	<h:outputText value="#{estabelecimentoFaces.promocaoDia.precoPromocional}">
+                    	<h:outputText value="#{indexFaces.promocaoDia.precoPromocional}">
                     		<f:convertNumber type="currency" currencySymbol="R$"/>
                     	</h:outputText></span>
-                    	<p><span class="fontYi">${estabelecimentoFaces.promocaoDia.descricao}</span></p>
+                    	<p><span class="fontYi">${indexFaces.promocaoDia.descricao}</span></p>
                 </a>
             </div>
             </c:if>
             
-            <c:if test="${!empty estabelecimentoFaces.promocaoSemana.id}">
+        	<c:if test="${not empty indexFaces.promocaoSemana.id}">
         	<div class="boxSubCat">
             	<h2>Promoção da semana</h2>
-                <a href="promocao.jsf?id=${estabelecimentoFaces.promocaoSemana.id}" title="">
-                	<img src="img/model/180x79.jpg" alt="" title="" />
-               
-                    <p class="titulo">${estabelecimentoFaces.promocaoSemana.fornecedorModel.nomeFantasia}</p>
+                <a href="promocao.jsf?id=${indexFaces.promocaoSemana.id}" title="">
+                	<img src="${indexFaces.promocaoSemana.imagemPromocaoThumbView}" alt="" title="" />
+                    <p class="titulo">${indexFaces.promocaoSemana.fornecedorModel.nomeFantasia}</p>
                     <p><span class="precoDe">
-                    De: <h:outputText value="#{estabelecimentoFaces.promocaoSemana.precoOriginal}">
+                    De: <h:outputText value="#{indexFaces.promocaoSemana.precoOriginal}">
                     		<f:convertNumber type="currency" currencySymbol="R$"/>
                     	</h:outputText></span>&nbsp;&nbsp;
                     	<span class="precoPor">
                     Por: 
-                    	<h:outputText value="#{estabelecimentoFaces.promocaoSemana.precoPromocional}">
+                    	<h:outputText value="#{indexFaces.promocaoSemana.precoPromocional}">
                     		<f:convertNumber type="currency" currencySymbol="R$"/>
                     	</h:outputText></span>
                     	
-                    	<p><span class="fontYi">${estabelecimentoFaces.promocaoSemana.descricao}</span></p>
+                    	<p><span class="fontYi">${indexFaces.promocaoSemana.descricao}</span></p>
                   </a>   
             </div>
             </c:if>
             
-            <c:if test="${!empty estabelecimentoFaces.carroChefeModel.id}">
+            <c:if test="${not empty indexFaces.carroChefeModel.id}">
             <div class="boxSubCat">
             	<h2>Carro-chefe</h2>
-                <a href="promocao.jsf?carroChefeId=${estabelecimentoFaces.carroChefeModel.id}" title=""><img src="img/model/180x79.jpg" alt="" title="" /></a>
-                    <p class="titulo">${estabelecimentoFaces.carroChefeModel.fornecedorModel.nomeFantasia}</p>
-                    <p><span class="item">${estabelecimentoFaces.carroChefeModel.descricao}</span></p>
+                <a href="promocao.jsf?carroChefeId=${indexFaces.carroChefeModel.id}" title="">
+                	<img src="${indexFaces.carroChefeModel.imagemThumbView}" alt="" title="" /></a>
+                <p class="titulo">${indexFaces.carroChefeModel.fornecedorModel.nomeFantasia}</p>
+                <p><span class="item">${indexFaces.carroChefeModel.descricao}</span></p>
                 </a>
             </div>
             </c:if>
             
             <div class="boxSubCat">
-            	<div class="banner">banner</div>
+            	<%@ include file="/include_banner_lateral.jsp" %>
             </div>
             
         </div>
