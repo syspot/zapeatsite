@@ -1,11 +1,12 @@
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+<%@ taglib prefix="p" uri="http://primefaces.prime.com.tr/ui" %>
 
 <div id="topo">
 	<!-- COMECA BUSCA -->
 	<div class="barraBusca">
     	<h:form>
 			<label>Buscar<h:inputText value="#{buscaFaces.termoBuscado}"/></label>
-		    <label>em<h:inputText id="info" value="#{buscaFaces.localBuscado}"/><span id="btnInit" class="icons" ></span></label>
+		    <label>em<p:autoComplete id="info" value="#{buscaFaces.localBuscado}"/><span id="btnInit" class="icons" ></span></label>
 		    <h:commandButton value="" action="#{buscaFaces.buscar}" />
 		</h:form>
     </div>
