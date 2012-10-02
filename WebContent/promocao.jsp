@@ -47,14 +47,22 @@
 	$(document).ready(function () {
 		// wire up button click
 		$('#btnInit').click(function () {
-				// teste para a presença do geolocation
-			if (navigator && navigator.geolocation) {
-				navigator.geolocation.getCurrentPosition(geo_success, geo_error);
-			} else {
-				error('Geolocation is not supported.');
-			}
+			$('#info').val(initialize);
 		});
-	});	
+	});
+		
+	//inicia o geolocation
+	function initialize() {
+		// teste para a presença do geolocation
+		if (navigator && navigator.geolocation) {
+			// faz a requisição da posição do usuário
+			navigator.geolocation.getCurrentPosition(geo_success, geo_error);
+		} else {
+			// use MaxMind IP to location API fallback
+			printAddress(geoip_latitude(), geoip_longitude(), true);
+		}
+	}
+
 		
 
 	function geo_success(position) {

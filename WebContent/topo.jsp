@@ -3,44 +3,25 @@
 <div id="topo">
 	<!-- COMECA BUSCA -->
 	<div class="barraBusca">
-    	<h:form>
+    	<h:form prependId="false">
 			<label>Buscar<h:inputText value="#{buscaFaces.termoBuscado}"/></label>
-		    <label>em<h:inputText id="info" value="#{buscaFaces.localBuscado}"/><span id="btnInit" class="icons" ></span></label>
+		    <label>em<input type="text" id="info" name="info" value="${buscaFaces.localBuscado}"/><span id="btnInit" class="icons" ></span></label>
 		    <h:commandButton value="" action="#{buscaFaces.buscar}" />
 		</h:form>
-
-		<script src="js/jquery.autocomplete.js"></script>
+		
+		<script src="js/jquery-1.8.2.js"></script>
+		<script src="js/jquery.ui.core.js"></script>
+		<script src="js/jquery.ui.widget.js"></script>
+		<script src="js/jquery.ui.position.js"></script>
+		<script src="js/jquery.ui.autocomplete.js"></script>
 		
 		<script type="text/javascript">
-		  $(document).ready(function(){
-			var availableTags = [
-				"ActionScript",
-				"AppleScript",
-				"Asp",
-				"BASIC",
-				"C",
-				"C++",
-				"Clojure",
-				"COBOL",
-				"ColdFusion",
-				"Erlang",
-				"Fortran",
-				"Groovy",
-				"Haskell",
-				"Java",
-				"JavaScript",
-				"Lisp",
-				"Perl",
-				"PHP",
-				"Python",
-				"Ruby",
-				"Scala",
-				"Scheme"
-			];
+		  
+			var availableTags = ${cidadeFaces.cidades};
 			$( "#info" ).autocomplete({
 				source: availableTags
 			});
-		});
+		
 		</script>
     </div>
     <!-- TERMINA BUSCA -->

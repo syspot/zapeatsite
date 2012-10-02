@@ -1,6 +1,6 @@
 @charset "utf-8";
 /* CSS Document */
-
+li.ui-menu-item{background:#fff; max-width:150px; padding:5px;}
 /*--==TOPO==--*/
 #topo{ width:100%; height:225px;
 	background-color:#FFC926;

@@ -31,20 +31,28 @@ public class BuscaFaces extends TSMainFaces {
 	
 	public BuscaFaces(){
 		this.cidade = new CidadeModel();
-		this.buscar();
+		this.init();
 	}
 	
-	public String buscar(){
+	private void init() {
 		
 		this.page = ZapeatUtil.getPageParamFormatado(super.getRequestParameter("page"));
 		
+		this.localBuscado = super.getRequestParameter("info");
+		
 		this.buscaDAO = new BuscaDAO();
 			
-		this.listagem = this.buscaDAO.pesquisarPorTexto(this.termoBuscado, this.page);
+		this.listagem = this.buscaDAO.pesquisarPorTexto(this.termoBuscado, localBuscado, this.page);
 		
-		this.qtdPaginas = this.buscaDAO.obterQtdPaginasPorTexto(this.termoBuscado).getValue();
+		this.qtdPaginas = this.buscaDAO.obterQtdPaginasPorTexto(this.termoBuscado, localBuscado).getValue();
 		
-		return null;
+	}
+
+	public String buscar(){
+		
+		this.init();
+		
+		return "pesquisar";
 		
 	}
 	

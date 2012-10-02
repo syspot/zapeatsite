@@ -21,6 +21,17 @@ public class CidadeDAO {
     	
     }
     
+    @SuppressWarnings("unchecked")
+    public List<CidadeModel> pesquisarTodos(){
+    	
+    	TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+    	
+    	broker.setPropertySQL("cidadedao.pesquisartodos");
+    	
+    	return broker.getCollectionBean(CidadeModel.class, "id", "nome");
+    	
+    }
+    
     public CidadeModel obter(CidadeModel cidade){
     	
     	TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
