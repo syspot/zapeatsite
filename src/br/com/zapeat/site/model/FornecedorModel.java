@@ -50,6 +50,8 @@ public class FornecedorModel {
 	private Integer quantidadeIndicacoes;
 	
 	private String css;
+	
+	private Integer numeroUnico;
 
 	public FornecedorModel() {
 	}
@@ -245,6 +247,22 @@ public class FornecedorModel {
 		this.quantidadeIndicacoes = quantidadeIndicacoes;
 	}
 
+	public String getCss() {
+		return css;
+	}
+
+	public void setCss(String css) {
+		this.css = css;
+	}
+	
+	public Integer getNumeroUnico() {
+		return numeroUnico;
+	}
+
+	public void setNumeroUnico(Integer numeroUnico) {
+		this.numeroUnico = numeroUnico;
+	}
+
 	public String getImagemThumbView() {
 		return Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_FORNECEDOR_THUMB + getImagemThumb();
 	}
@@ -286,14 +304,6 @@ public class FornecedorModel {
 		return true;
 	}
 
-	public String getCss() {
-		return css;
-	}
-
-	public void setCss(String css) {
-		this.css = css;
-	}
-	
 	@Override
 	public String toString() {
 		
@@ -303,7 +313,7 @@ public class FornecedorModel {
 		retorno.append(nomeFantasia).append("', ");
 		retorno.append(latitude).append(", ");
 		retorno.append(longitude).append(", ");
-		retorno.append(1);
+		retorno.append(numeroUnico);
 		retorno.append("]");
 		
 		return retorno.toString();

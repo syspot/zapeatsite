@@ -4,6 +4,10 @@ import br.com.zapeat.site.util.Constantes;
 
 public class BuscaModel {
 
+	private Long id;
+	
+	private Integer numeroUnico;
+	
 	private String titulo;
 	
 	private String nome;
@@ -25,6 +29,14 @@ public class BuscaModel {
 	private Double latitude;
 	
 	private Double longitude;
+
+	public Integer getNumeroUnico() {
+		return numeroUnico;
+	}
+
+	public void setNumeroUnico(Integer numeroUnico) {
+		this.numeroUnico = numeroUnico;
+	}
 
 	public String getTitulo() {
 		return titulo;
@@ -129,6 +141,31 @@ public class BuscaModel {
 		this.longitude = longitude;
 	}
 	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getLink() {
+		
+		String link = "";
+		
+		switch (tipo) {
+			
+			case 1: link = "promocao.jsf?id=" + id; break; 
+			case 2: link = "estabelecimento.jsf?id=" + id; break; 
+			case 3: link = "estabelecimento.jsf?id=" + id; break; 
+
+			default: break;
+
+		}
+		
+		return link;
+	}
+	
 	@Override
 	public String toString() {
 		
@@ -138,7 +175,7 @@ public class BuscaModel {
 		retorno.append(tipo.equals(3) ? titulo : nome).append("', ");
 		retorno.append(latitude).append(", ");
 		retorno.append(longitude).append(", ");
-		retorno.append(1);
+		retorno.append(numeroUnico);
 		retorno.append("]");
 		
 		return retorno.toString();

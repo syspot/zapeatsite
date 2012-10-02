@@ -35,18 +35,38 @@ public class ListagemFaces extends TSMainFaces {
 		this.tipo = ZapeatUtil.getParamFormatado(super.getRequestParameter("tipo"));
 		Long categoriaId = ZapeatUtil.getParamFormatado(super.getRequestParameter("categoriaId"));
 		
-		if(!TSUtil.isEmpty(tipo) && Constantes.TIPO_LISTAGEM_CARRO_CHEFE.equals(tipo)){
+		if(!TSUtil.isEmpty(categoriaId) && Constantes.CATEGORIA_MAIS_INDICADOS.equals(categoriaId)){
 			
-			CarroChefeDAO carroChefeDAO = new CarroChefeDAO();
-			this.carrosChefes = carroChefeDAO.pesquisarPorCategoria(categoriaId, this.page);
-			this.qtdPaginas = carroChefeDAO.obterQtdPaginasPorCategoria(categoriaId).getValue();
+			if(!TSUtil.isEmpty(tipo) && Constantes.TIPO_LISTAGEM_CARRO_CHEFE.equals(tipo)){
+				
+				CarroChefeDAO carroChefeDAO = new CarroChefeDAO();
+				this.carrosChefes = carroChefeDAO.pesquisarPorCategoriaMaisIndicados(this.page);
+				this.qtdPaginas = carroChefeDAO.obterQtdPaginasPorCategoriaMaisIndicados().getValue();
+				
+			} else{
+				
+				PromocaoDAO promocaoDAO = new PromocaoDAO();
+				this.promocoes = promocaoDAO.pesquisarPorIndicacoesMaisIndicados(this.page, tipo);
+				this.qtdPaginas = promocaoDAO.obterQtdPaginasPorIndicacoesMaisIndicados(tipo).getValue();
+				
+			}
 			
 		} else{
 			
-			PromocaoDAO promocaoDAO = new PromocaoDAO();
-			this.promocoes = promocaoDAO.pesquisarPorIndicacoes(this.page, tipo, categoriaId);
-			this.qtdPaginas = promocaoDAO.obterQtdPaginasPorIndicacoes(tipo, categoriaId).getValue();
-			
+			if(!TSUtil.isEmpty(tipo) && Constantes.TIPO_LISTAGEM_CARRO_CHEFE.equals(tipo)){
+				
+				CarroChefeDAO carroChefeDAO = new CarroChefeDAO();
+				this.carrosChefes = carroChefeDAO.pesquisarPorCategoria(categoriaId, this.page);
+				this.qtdPaginas = carroChefeDAO.obterQtdPaginasPorCategoria(categoriaId).getValue();
+				
+			} else{
+				
+				PromocaoDAO promocaoDAO = new PromocaoDAO();
+				this.promocoes = promocaoDAO.pesquisarPorIndicacoes(this.page, tipo, categoriaId);
+				this.qtdPaginas = promocaoDAO.obterQtdPaginasPorIndicacoes(tipo, categoriaId).getValue();
+				
+			}
+		
 		}
 		
 		categoria = new CategoriaDAO().obter(categoriaId);

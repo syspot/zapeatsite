@@ -18,7 +18,7 @@ public class BuscaDAO {
     	
     	broker.setPropertySQL("buscadao.pesquisarportexto", ZapeatUtil.tratarStringILike(texto), page);
     	
-    	return broker.getCollectionBean(BuscaModel.class, "titulo", "nome", "descricao", "tipo", "categoria",  "telefone", "site", "indicacoes", "imagem", "latitude", "longitude");
+    	return broker.getCollectionBean(BuscaModel.class, "numeroUnico", "id", "titulo", "nome", "descricao", "tipo", "categoria",  "telefone", "site", "indicacoes", "imagem", "latitude", "longitude");
     	
     }
     
