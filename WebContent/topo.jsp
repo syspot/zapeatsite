@@ -27,22 +27,27 @@
             		<div id="facebook">
 						
 					  <h:outputLink value="#{faceBookFaces.url}" rendered="#{empty sessionScope.usuarioLogado.id}">
-						<h:graphicImage value="img/facebook.gif" />
-					  </h:outputLink>
-					  <h:outputLink value="#{faceBookFaces.logout}" rendered="#{!empty sessionScope.usuarioLogado.id and !sessionScope.loginAplicacao}">
-					  	Sair
+						<h:graphicImage value="img/facebook.gif"/>
 					  </h:outputLink>
 					  
-					  <h:outputLink value="logout.jsf" rendered="#{!empty sessionScope.usuarioLogado.id and sessionScope.loginAplicacao}">
-					  	Sair
+					  <div align="center">
+					  <h:outputLink value="#{faceBookFaces.logout}" rendered="#{!empty sessionScope.usuarioLogado.id and !sessionScope.loginAplicacao}">
+					  	<h:graphicImage value="img/botao_sair.png"/>
 					  </h:outputLink>
+					  </div>
+					  
+					  <div align="center">
+					  <h:outputLink value="logout.jsf" rendered="#{!empty sessionScope.usuarioLogado.id and sessionScope.loginAplicacao}">
+					  	<h:graphicImage value="img/botao_sair.png"/>
+					  </h:outputLink>
+					  </div>
 					  
                     </div>
                     
                     <c:if test="${empty sessionScope.usuarioLogado.id}">
                     <div id="local">
                         <span class="chamadaCadastro">Não tem Facebook?</span>
-                        <div><a class="modal" title="Cadastrar" rel="modal" href="<%= request.getContextPath() %>/inc/cadastro.jsf"><span class="icons iconCadastrar"></span>cadastrar</a></div>
+                        <div><a class="modal" title="Cadastrar" rel="modal" href="#dialog"><span class="icons iconCadastrar"></span>cadastrar</a></div>
                         <div><a id="modal" href="<%= request.getContextPath() %>/inc/login.jsf" class="modal" rel="modal" title="Login"><span class="icons iconLogin"></span>login</a></div>
                     </div>
                     </c:if>
