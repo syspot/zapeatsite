@@ -117,6 +117,18 @@
 </head>
 
 <body>
+
+<script type="text/javascript">
+	$(document).ready(function(e) {
+		$('.linkLogin').click(function(){
+			$('.formLogin').slideToggle().animate({opacity:1})
+		})
+		$('.linkCadastro,.close').click(function(){
+			$('#mascara').slideToggle();
+		})
+        });
+</script>
+
 <!-- COMECA TOPO -->
 	<%@ include file="/topo.jsp" %>
 <!-- TERMINA TOPO -->

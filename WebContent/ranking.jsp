@@ -131,6 +131,17 @@
 </head>
 
 <body>
+
+<script type="text/javascript">
+	$(document).ready(function(e) {
+		$('.linkLogin').click(function(){
+			$('.formLogin').slideToggle().animate({opacity:1})
+		})
+		$('.linkCadastro,.close').click(function(){
+			$('#mascara').slideToggle();
+		})
+        });
+</script>
 <!-- COMECA TOPO -->
 	<%@ include file="/topo.jsp" %>
 <!-- TERMINA TOPO -->
@@ -222,9 +233,6 @@
             	<span class="icons maisIndicados"></span>
             	<h2>Ranking</h2>
                 <p>Mais Indicados</p>
-                <div align="center">
-                	<h:messages errorStyle="color:red;" fatalStyle="color:red;" infoClass="info" infoStyle="color:green;" showDetail="true" showSummary="false" fatalClass="error" errorClass="error" id="msg"/>
-                </div>
             </div>
             
             <c:if test="${!empty rankingFaces.melhorComida}">
@@ -245,14 +253,8 @@
                         </a>
                     </blockquote>
                     <div class="indico">
-                    	<c:if test="${!empty sessionScope.usuarioLogado.id}">
-                    	<p><a id="modal" href="inc/indicacao.jsf?categoriaId=${item.categoriaPrincipal.id}&estabelecimentoId=${item.id}&indico=1" title="" class="modal" rel="modal"><span class="icons indicacaoRed"></span> Indico [${item.quantidadeIndicacoes}]</a></p>
-                    	<p><a id="modal" href="inc/indicacao.jsf?categoriaId=${item.categoriaPrincipal.id}&estabelecimentoId=${item.id}&indico=2" title="" class="modal" rel="modal"><span class="icons naoindicacaoRed"></span> Não indico</a></p>
-                    	</c:if>
-                    	<c:if test="${empty sessionScope.usuarioLogado.id}">
-                    	<p><a id="modal" href="inc/login.jsf" title="" class="modal" rel="modal"><span class="icons indicacaoRed"></span> Indico [${item.quantidadeIndicacoes}]</a></p>
-                    	<p><a id="modal" href="inc/login.jsf" title="" class="modal" rel="modal"><span class="icons naoindicacaoRed"></span> Não indico</a></p>
-                    	</c:if>
+                    	<p><a href="ranking.jsf?categoriaId=${item.categoriaPrincipal.id}&estabelecimentoId=${item.id}&indico=1" title=""><span class="icons indicacaoRed"></span> Indico [${item.quantidadeIndicacoes}]</a></p>
+                    	<p><a href="ranking.jsf?categoriaId=${item.categoriaPrincipal.id}&estabelecimentoId=${item.id}&indico=2" title=""><span class="icons naoindicacaoRed"></span> Não indico</a></p>
                     </div>
                 </div>
                 </c:forEach>
@@ -275,12 +277,7 @@
                         </a>
                     </blockquote>
                     <div class="indico">
-                    	<c:if test="${!empty sessionScope.usuarioLogado.id}">
-                    		<a href="ranking.jsf?categoriaId=${item.categoriaPrincipal.id}&estabelecimentoId=${item.id}&indico=3" title=""><span class="icons indicacaoRed"></span> Eu indico [${item.quantidadeIndicacoes}]</a>
-                    	</c:if>
-                    	<c:if test="${empty sessionScope.usuarioLogado.id}">
-                    		<p><a id="modal" href="inc/login.jsf" title="" class="modal" rel="modal"><span class="icons indicacaoRed"></span> Indico [${item.quantidadeIndicacoes}]</a></p>
-                    	</c:if>
+                    	<a href="ranking.jsf?categoriaId=${item.categoriaPrincipal.id}&estabelecimentoId=${item.id}&indico=3" title=""><span class="icons indicacaoRed"></span> Eu indico [${item.quantidadeIndicacoes}]</a>
                     </div>
                 </div>
                 </c:forEach>

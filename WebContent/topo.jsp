@@ -81,9 +81,8 @@
                     <c:if test="${empty sessionScope.usuarioLogado.id}">
                     <div id="local">
                         <span class="chamadaCadastro">Não tem Facebook?</span>
-                        
                         <div><a class="linkCadastro" title="Cadastrar"><span class="icons iconCadastrar"></span>cadastrar</a></div>
-<div><a class="linkLogin" title="Login"><span class="icons iconLogin"></span>login</a></div>
+						<div><a class="linkLogin" title="Login"><span class="icons iconLogin"></span>login</a></div>
                     </div>
                     </c:if>
             	</div>

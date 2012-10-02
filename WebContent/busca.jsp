@@ -127,15 +127,96 @@
 </head>
 <body onload="initialize()">
 
-
+<script type="text/javascript">
+	$(document).ready(function(e) {
+		$('.linkLogin').click(function(){
+			$('.formLogin').slideToggle().animate({opacity:1})
+		})
+		$('.linkCadastro,.close').click(function(){
+			$('#mascara').slideToggle();
+		})
+        });
+</script>
 <!-- COMECA TOPO -->
 	<%@ include file="/topo.jsp" %>
 <!-- TERMINA TOPO -->
 
 <div id="id-Breadcrumb">
-    <span class="migalha"><a href="index.jsf" title="">Página Inicial</a></span>    »    
-    <span class="migalha"><a href="busca.jsf" title="">Busca</a></span>    »   
-    <span class="migalha">${buscaFaces.termoBuscado}</span>
+<div class="formLogin">
+    	<h:form prependId="false" id="form1">
+    	<div class="inputs">
+        	Preencha os dados ao lado para acessar: 
+        	<h:inputText title="E-mail" id="emailLogin" value="#{loginFaces.usuarioModel.email}" required="false" requiredMessage="Email: Obrigatório" tabindex="1" maxlength="100"/>
+            <h:inputSecret required="false" id="senhaLogin" maxlength="100" value="#{loginFaces.usuarioModel.senha}" requiredMessage="Senha: Obrigatório" redisplay="true"/>
+			<h:commandButton styleClass="submit" action="#{loginFaces.autenticar}" id="submit2" value="ACESSAR"></h:commandButton>
+			<script type="text/javascript">
+	             		$('#emailLogin').attr('placeholder','E-mail').attr('autofocus','');
+	             		$('#senhaLogin').attr('placeholder','Senha');
+						
+	        </script>
+        </div>
+        </h:form>
+</div>
+
+<c:if test="${!empty sessionScope.usuarioLogado.id}">
+<span id="status">Olá, ${sessionScope.usuarioLogado.nome}</span>, temos ótimas promoções pra você!
+</c:if> 
+
+</div>
+
+<div align="center">
+	<h:messages errorClass="erros msg erro" infoClass="infos msg ok" fatalClass="erros msg erro" showDetail="true"/>
+</div>
+
+<div id="mascara">    
+<div class="container">
+<a href="#" class="close" rel="modalclose"><img src="img/btnFechar.png" alt="Botão Fechar" class="btnFechar"></a>
+
+	<h:form id="signup" enctype="multipart/form-data" prependId="false">
+    
+        <div class="header">
+        
+            <h3>Cadastro</h3>
+            
+            <p>Preencha os dados abaixo para cadastro</p>
+            
+        </div>
+        
+        <div class="sep"></div>
+
+        	<div class="inputs">
+				
+				<h:inputText required="true" id="nome" maxlength="100" value="#{cadastroFaces.usuarioModel.nome}"/>
+				
+				<h:inputText required="true" id="email" maxlength="100" value="#{cadastroFaces.usuarioModel.email}"/>
+				
+				<h:inputSecret required="true" id="senha" maxlength="100" value="#{cadastroFaces.usuarioModel.senha}" redisplay="true"/>
+				 
+	             <script type="text/javascript">
+	             		$('#nome').attr('placeholder','Nome').attr('autofocus','');
+	             		$('#email').attr('placeholder','E-mail');
+	             		$('#senha').attr('placeholder','Senha');
+						
+	            </script>
+	            
+        	</div>
+        	
+            
+            <div class="custom_file_upload">
+            	
+                <t:inputFileUpload storage="file" value="#{cadastroFaces.arquivo}" id="file"/>
+                
+            </div>
+
+        <div class="inputs">   
+        	
+        	<h:commandButton styleClass="submit" id="submit" value="CADASTRAR" action="#{cadastroFaces.insertEvent}"/>
+            
+        </div>
+
+    </h:form>
+
+</div>
 </div>
 
 <!-- COMECA CENTRAL -->
