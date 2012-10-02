@@ -139,7 +139,7 @@
     	<!-- COMECA COLUNA ESQUERDA -->
     	<div id="esqInt">
         	<div id="boxSobreEstab">
-            	<div class="marca"></div>
+            	<div class="marca"><img src="${estabelecimentoFaces.ranking.fornecedorModel.logoMarcaView}"/></div>
                 <p>Ranking</p>
                 <div id="ranking">
                 	<span class="icons medalha"></span>
