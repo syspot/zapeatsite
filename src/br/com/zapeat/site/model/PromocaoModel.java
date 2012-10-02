@@ -35,7 +35,7 @@ public class PromocaoModel {
 	private String imagemThumb;
 	
 	private String imagemPromocao;
-
+	
 	public Long getId() {
 		return TSUtil.tratarLong(id);
 	}

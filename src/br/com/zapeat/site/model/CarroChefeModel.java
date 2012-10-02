@@ -18,6 +18,8 @@ public class CarroChefeModel implements Serializable {
 	private String titulo;
 
 	private String imagem;
+	
+	private Integer numeroUnico;
 
 	public CarroChefeModel() {
 
@@ -71,6 +73,22 @@ public class CarroChefeModel implements Serializable {
 	public String getImagemThumbView(){
 		return Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_CARRO_CHEFE_THUMB + this.imagem;
 	}
+	
+	public String getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
+	}
+	
+	public Integer getNumeroUnico() {
+		return numeroUnico;
+	}
+
+	public void setNumeroUnico(Integer numeroUnico) {
+		this.numeroUnico = numeroUnico;
+	}
 
 	@Override
 	public int hashCode() {
@@ -97,14 +115,6 @@ public class CarroChefeModel implements Serializable {
 		return true;
 	}
 
-	public String getImagem() {
-		return imagem;
-	}
-
-	public void setImagem(String imagem) {
-		this.imagem = imagem;
-	}
-	
 	@Override
 	public String toString() {
 		return this.fornecedorModel.toString();

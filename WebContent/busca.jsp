@@ -157,7 +157,7 @@
             		<c:forEach items="${buscaFaces.listagem}" var="result">
             		
 	                	<li>
-	                    <a href="" title="">
+	                    <a href="${result.link}" title="">
 	                    	<div class="marca floatLeft"><img src="${result.imagemView}" alt="" title="${result.titulo}" /></div>
 	                        <!-- SE PROMOÇÃO EM PRODUTO -->
 	                        <div class="info">

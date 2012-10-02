@@ -8,6 +8,40 @@
 		    <label>em<h:inputText id="info" value="#{buscaFaces.localBuscado}"/><span id="btnInit" class="icons" ></span></label>
 		    <h:commandButton value="" action="#{buscaFaces.buscar}" />
 		</h:form>
+
+		<script src="js/jquery.autocomplete.js"></script>
+		
+		<script type="text/javascript">
+		  $(document).ready(function(){
+			var availableTags = [
+				"ActionScript",
+				"AppleScript",
+				"Asp",
+				"BASIC",
+				"C",
+				"C++",
+				"Clojure",
+				"COBOL",
+				"ColdFusion",
+				"Erlang",
+				"Fortran",
+				"Groovy",
+				"Haskell",
+				"Java",
+				"JavaScript",
+				"Lisp",
+				"Perl",
+				"PHP",
+				"Python",
+				"Ruby",
+				"Scala",
+				"Scheme"
+			];
+			$( "#info" ).autocomplete({
+				source: availableTags
+			});
+		});
+		</script>
     </div>
     <!-- TERMINA BUSCA -->
     <!-- COMECA PUBLICIDADE/MARCA -->
