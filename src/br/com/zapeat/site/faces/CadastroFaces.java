@@ -24,6 +24,7 @@ public class CadastroFaces extends TSMainFaces {
 	private UsuarioModel usuarioModel;
 	private UsuarioDAO usuarioDAO;
 	private UploadedFile arquivo;
+	private boolean exibirDivMessagem;
 
 	public CadastroFaces() {
 
@@ -36,8 +37,10 @@ public class CadastroFaces extends TSMainFaces {
 	private void initObjetos() {
 
 		this.setUsuarioModel(new UsuarioModel());
-		
+
 		this.getUsuarioModel().setFlagAtivo(Boolean.TRUE);
+
+		this.setExibirDivMessagem(false);
 	}
 
 	private void initDAO() {
@@ -85,6 +88,8 @@ public class CadastroFaces extends TSMainFaces {
 		super.setClearFields(false);
 
 		super.setDefaultMessage(false);
+		
+		this.setExibirDivMessagem(false);
 
 		if (this.validaCampos()) {
 
@@ -97,23 +102,23 @@ public class CadastroFaces extends TSMainFaces {
 				UsuarioModel model = this.usuarioDAO.inserir(this.usuarioModel);
 
 				super.setDefaultMessage(true);
-				
+
 				model.setNome(TSStringUtil.formatarNomeProprio(model.getNome()));
 
 				TSFacesUtil.addObjectInSession(Constantes.USUARIO_LOGADO, model);
 
 				this.initObjetos();
-				
+
 				super.setDefaultMessage(true);
-				
-				super.addObjectInRequest("cadastro_sucesso",true);
+
+				this.exibirDivMessagem = true;
 
 				return Constantes.INDEX;
 
 			} else {
-				
-			    super.addObjectInRequest("cadastro_sucesso",false);
-			    
+
+				this.exibirDivMessagem = true;
+
 				super.addErrorMessage("Esse e-mail já existe.");
 			}
 
@@ -179,6 +184,14 @@ public class CadastroFaces extends TSMainFaces {
 
 	public void setArquivo(UploadedFile arquivo) {
 		this.arquivo = arquivo;
+	}
+
+	public boolean isExibirDivMessagem() {
+		return exibirDivMessagem;
+	}
+
+	public void setExibirDivMessagem(boolean exibirDivMessagem) {
+		this.exibirDivMessagem = exibirDivMessagem;
 	}
 
 }

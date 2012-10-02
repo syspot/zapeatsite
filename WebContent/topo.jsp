@@ -27,15 +27,20 @@
             		<div id="facebook">
 						
 					  <h:outputLink value="#{faceBookFaces.url}" rendered="#{empty sessionScope.usuarioLogado.id}">
-						<h:graphicImage value="img/facebook.gif" />
-					  </h:outputLink>
-					  <h:outputLink value="#{faceBookFaces.logout}" rendered="#{!empty sessionScope.usuarioLogado.id and !sessionScope.loginAplicacao}">
-					  	Sair
+						<h:graphicImage value="img/facebook.gif"/>
 					  </h:outputLink>
 					  
-					  <h:outputLink value="logout.jsf" rendered="#{!empty sessionScope.usuarioLogado.id and sessionScope.loginAplicacao}">
-					  	Sair
+					  <div align="center">
+					  <h:outputLink value="#{faceBookFaces.logout}" rendered="#{!empty sessionScope.usuarioLogado.id and !sessionScope.loginAplicacao}">
+					  	<h:graphicImage value="img/botao_sair.png"/>
 					  </h:outputLink>
+					  </div>
+					  
+					  <div align="center">
+					  <h:outputLink value="logout.jsf" rendered="#{!empty sessionScope.usuarioLogado.id and sessionScope.loginAplicacao}">
+					  	<h:graphicImage value="img/botao_sair.png"/>
+					  </h:outputLink>
+					  </div>
 					  
                     </div>
                     
@@ -132,4 +137,3 @@
             </nav>
         </div>
 </div>
-    <!-- TERMINA MENU -->

@@ -133,15 +133,10 @@
 	
 <!-- COMECA TOPO -->
 <%@ include file="/topo.jsp" %>
-			
-            					  
+			  					  
 <c:if test="${!empty sessionScope.usuarioLogado.id}">
 <div id="id-Breadcrumb"><span id="status">Olá, ${sessionScope.usuarioLogado.nome}</span>, temos ótimas promoções pra você!</div>
 </c:if>
-
-<div id="message" align="center">
-	<h:messages errorStyle="color:red;" fatalStyle="color:red;" infoClass="info" infoStyle="color:green;" showDetail="true" showSummary="false" fatalClass="error" errorClass="error" id="msg"/>
-</div>
 
 <!-- COMECA CENTRAL -->
 <div id="central">
@@ -172,8 +167,6 @@
                 </a>
             </div>
             </c:if>
-            
-            
             
             <c:if test="${not empty indexFaces.promocaoSemana.id}">
         	<div class="boxSubCat">
