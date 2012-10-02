@@ -2,6 +2,7 @@
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>
 
 <f:view>
 
@@ -30,9 +31,6 @@
 		$('#principal ul:eq(7)').css('right','-0px');
 	  })
 </script>
-
-
-
 <!--=============MODAL=============-->
 	<script type="text/javascript" src="http://fw2.atarde.com.br/fw/js/modal.js">
     $(document).ready(function(){
@@ -47,22 +45,14 @@
 	$(document).ready(function () {
 		// wire up button click
 		$('#btnInit').click(function () {
-			$('#info').val(initialize);
+				// teste para a presença do geolocation
+			if (navigator && navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(geo_success, geo_error);
+			} else {
+				error('Geolocation is not supported.');
+			}
 		});
-	});
-		
-	//inicia o geolocation
-	function initialize() {
-		// teste para a presença do geolocation
-		if (navigator && navigator.geolocation) {
-			// faz a requisição da posição do usuário
-			navigator.geolocation.getCurrentPosition(geo_success, geo_error);
-		} else {
-			// use MaxMind IP to location API fallback
-			printAddress(geoip_latitude(), geoip_longitude(), true);
-		}
-	}
-
+	});	
 		
 
 	function geo_success(position) {
@@ -141,6 +131,84 @@
 <!-- COMECA TOPO -->
 	<%@ include file="/topo.jsp" %>
 <!-- TERMINA TOPO -->
+
+<div id="id-Breadcrumb">
+<div class="formLogin">
+    	<h:form prependId="false" id="form1">
+    	<div class="inputs">
+        	Preencha os dados ao lado para acessar: 
+        	<h:inputText title="E-mail" id="emailLogin" value="#{loginFaces.usuarioModel.email}" required="false" requiredMessage="Email: Obrigatório" tabindex="1" maxlength="100"/>
+            <h:inputSecret required="false" id="senhaLogin" maxlength="100" value="#{loginFaces.usuarioModel.senha}" requiredMessage="Senha: Obrigatório" redisplay="true"/>
+			<h:commandButton styleClass="submit" action="#{loginFaces.autenticar}" id="submit2" value="ACESSAR"></h:commandButton>
+			<script type="text/javascript">
+	             		$('#emailLogin').attr('placeholder','E-mail').attr('autofocus','');
+	             		$('#senhaLogin').attr('placeholder','Senha');
+						
+	        </script>
+        </div>
+        </h:form>
+</div>
+
+<c:if test="${!empty sessionScope.usuarioLogado.id}">
+<span id="status">Olá, ${sessionScope.usuarioLogado.nome}</span>, temos ótimas promoções pra você!
+</c:if> 
+
+</div>
+
+<div align="center">
+	<h:messages errorClass="erros msg erro" infoClass="infos msg ok" fatalClass="erros msg erro" showDetail="true"/>
+</div>
+
+<div id="mascara">    
+<div class="container">
+<a href="#" class="close" rel="modalclose"><img src="img/btnFechar.png" alt="Botão Fechar" class="btnFechar"></a>
+
+	<h:form id="signup" enctype="multipart/form-data" prependId="false">
+    
+        <div class="header">
+        
+            <h3>Cadastro</h3>
+            
+            <p>Preencha os dados abaixo para cadastro</p>
+            
+        </div>
+        
+        <div class="sep"></div>
+
+        	<div class="inputs">
+				
+				<h:inputText required="true" id="nome" maxlength="100" value="#{cadastroFaces.usuarioModel.nome}"/>
+				
+				<h:inputText required="true" id="email" maxlength="100" value="#{cadastroFaces.usuarioModel.email}"/>
+				
+				<h:inputSecret required="true" id="senha" maxlength="100" value="#{cadastroFaces.usuarioModel.senha}" redisplay="true"/>
+				 
+	             <script type="text/javascript">
+	             		$('#nome').attr('placeholder','Nome').attr('autofocus','');
+	             		$('#email').attr('placeholder','E-mail');
+	             		$('#senha').attr('placeholder','Senha');
+						
+	            </script>
+	            
+        	</div>
+        	
+            
+            <div class="custom_file_upload">
+            	
+                <t:inputFileUpload storage="file" value="#{cadastroFaces.arquivo}" id="file"/>
+                
+            </div>
+
+        <div class="inputs">   
+        	
+        	<h:commandButton styleClass="submit" id="submit" value="CADASTRAR" action="#{cadastroFaces.insertEvent}"/>
+            
+        </div>
+
+    </h:form>
+
+</div>
+</div>
 
 <div id="id-Breadcrumb">
     <span class="migalha"><a href="index.jsf" title="">Página Inicial</a></span>    »    

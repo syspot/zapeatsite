@@ -62,8 +62,9 @@
                     <c:if test="${empty sessionScope.usuarioLogado.id}">
                     <div id="local">
                         <span class="chamadaCadastro">Não tem Facebook?</span>
-                        <div><a id="modal" href="<%= request.getContextPath() %>/inc/cadastro.jsf" class="modal" rel="modal" title="Cadastro"><span class="icons iconLogin"></span>cadastrar</a></div>
-                        <div><a id="modal" href="<%= request.getContextPath() %>/inc/login.jsf" class="modal" rel="modal" title="Login"><span class="icons iconLogin"></span>login</a></div>
+                        
+                        <div><a class="linkCadastro" title="Cadastrar"><span class="icons iconCadastrar"></span>cadastrar</a></div>
+<div><a class="linkLogin" title="Login"><span class="icons iconLogin"></span>login</a></div>
                     </div>
                     </c:if>
             	</div>
