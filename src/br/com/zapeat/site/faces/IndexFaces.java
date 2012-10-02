@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 
+import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.faces.TSMainFaces;
 import br.com.zapeat.site.dao.BannerDAO;
 import br.com.zapeat.site.dao.CarroChefeDAO;
@@ -42,7 +43,7 @@ public class IndexFaces extends TSMainFaces {
 		this.initDAO();
 		this.initObjetos();
 		this.carregaDados();
-		
+
 	}
 
 	private void initDAO() {
@@ -75,7 +76,10 @@ public class IndexFaces extends TSMainFaces {
 
 		this.promocaoHora = this.promocaoDAO.obterPromocaoHora();
 
-		this.promocoesHora = this.promocaoDAO.pesquisarPromocoesHora();
+		if (!TSUtil.isEmpty(this.promocaoHora) && !TSUtil.isEmpty(this.promocaoHora.getId())) {
+
+			this.promocoesHora = this.promocaoDAO.pesquisarPromocoesHora(this.promocaoHora);
+		}
 
 		this.bannerModel = this.bannerDAO.pesquisar(new BannerModel());
 
