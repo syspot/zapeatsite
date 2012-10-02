@@ -106,18 +106,16 @@ public class CadastroFaces extends TSMainFaces {
 				model.setNome(TSStringUtil.formatarNomeProprio(model.getNome()));
 
 				TSFacesUtil.addObjectInSession(Constantes.USUARIO_LOGADO, model);
+				
+				TSFacesUtil.addObjectInSession(Constantes.LOGIN_APLICACAO, true);
 
 				this.initObjetos();
 
 				super.setDefaultMessage(true);
 
-				this.exibirDivMessagem = true;
-
 				return Constantes.INDEX;
 
 			} else {
-
-				this.exibirDivMessagem = true;
 
 				super.addErrorMessage("Esse e-mail já existe.");
 			}
