@@ -160,7 +160,7 @@
                 	<blockquote>
                     	<a href="estabelecimento.jsf?id=${item.id}" title="${item.nomeFantasia}">
                             <span class="imgRank">
-                            	<img src="img/model/180x79.jpg" alt="Marca 80x80px" title="${item.nomeFantasia}" />
+                            	<img src="${item.logoMarca18079}" alt="" title="${item.nomeFantasia}" />
                             </span>
                             <div class="info">
                                 <p class="titulo">${item.nomeFantasia}</p>
@@ -191,7 +191,7 @@
                 	<span class="${item.css}"></span>
                 	<blockquote>
                     	<a href="estabelecimento.jsf?id=${item.id}" title="${item.nomeFantasia}">
-                            <span class="imgRank"><img src="img/model/180x79.jpg" alt="Marca 80x80px" title="${item.nomeFantasia}" /></span>
+                            <span class="imgRank"><img src="${item.logoMarca18079}" alt="" title="${item.nomeFantasia}" /></span>
                             <div class="info">
                                 <p class="titulo">${item.nomeFantasia}</p>
                                 <p class="dados">${item.categoriaPrincipal.descricao}</p>

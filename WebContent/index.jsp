@@ -268,9 +268,9 @@
                    
                    <c:forEach var="promocao" items="${indexFaces.promocoesHora}">
                 	<li>
-                    	<a href="promocao.jsf?id=${promocao.id}" title="">
+                		<a href="promocao.jsf?id=${promocao.id}" title="">
                             <div class="marca floatLeft">
-                            	<img src="${promocao.imagemThumbView}" alt="" title="${promocao.fornecedorModel.nomeFantasia}" />
+                            	<img src="${promocao.imagemPromocaoThumbView}" alt="" title="${promocao.fornecedorModel.nomeFantasia}" />
                            </div>
                             <!-- SE PROMOÇÃO EM PRODUTO -->
                             <div class="info">
@@ -285,7 +285,10 @@
                             	<span class="icons tel"></span>${promocao.fornecedorModel.telefone}
                             </p>
                             <p>
-                            	<a href="${promocao.fornecedorModel.site}" title="" target="_blank"><span class="icons site"></span>${promocao.fornecedorModel.site}</a>
+                            	<c:if test="${not empty promocao.fornecedorModel.site}">
+	                            	<div class="floatLeft marginLeft"><span class="icons site"></span> <a href="${promocao.fornecedorModel.site}" target="_blank" title="${promocao.fornecedorModel.site}">Visite o site</a> </div>
+			           			</c:if>
+                            	
                             </p>
                             <p>
                             	<span class="icons indicacao"></span>${promocao.indicacoes}

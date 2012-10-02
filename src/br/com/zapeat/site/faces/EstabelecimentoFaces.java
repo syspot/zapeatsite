@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 
 import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.faces.TSMainFaces;
@@ -16,7 +16,7 @@ import br.com.zapeat.site.model.ComentarioModel;
 import br.com.zapeat.site.model.FornecedorModel;
 import br.com.zapeat.site.model.ImagemFornecedorModel;
 
-@RequestScoped
+@ViewScoped
 @ManagedBean(name = "estabelecimentoFaces")
 public class EstabelecimentoFaces extends TSMainFaces {
 

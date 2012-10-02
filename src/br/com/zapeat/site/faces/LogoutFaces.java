@@ -21,8 +21,6 @@ public class LogoutFaces {
 
 		TSFacesUtil.removeObjectInSession(Constantes.LOGIN_APLICACAO);
 
-		//TSFacesUtil.getFacesContext().getExternalContext().invalidateSession();
-
 		TSFacesUtil.getRequest().getSession().invalidate();
 
 		try {

@@ -274,6 +274,10 @@ public class FornecedorModel {
 	public String getLogoMarcaView() {
 		return TSUtil.isEmpty(this.logoMarca) ? this.logoMarca : Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_FORNECEDOR_LOGOMARCA + this.logoMarca;
 	}
+	
+	public String getLogoMarca18079() {
+		return TSUtil.isEmpty(this.logoMarca) ? this.logoMarca : Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_FORNECEDOR_THUMB + this.logoMarca;
+	}
 
 	@Override
 	public int hashCode() {

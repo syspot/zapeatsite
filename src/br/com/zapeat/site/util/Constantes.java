@@ -2,14 +2,16 @@ package br.com.zapeat.site.util;
 
 import java.io.File;
 
+import br.com.topsys.web.util.TSFacesUtil;
+
 public final class Constantes {
 
 	public static final String PASTA_UPLOAD_TEMP = "e:" + File.separator + "img_zapeat" + File.separator;
 	public static final String PASTA_UPLOAD = "e:" + File.separator + "img_zapeat" + File.separator;
 
-	public static final String PASTA_DOWNLOAD_TEMP = "http://localhost:8080/img_zapeat/";
-	public static final String PASTA_DOWNLOAD = "http://localhost:8080/img_zapeat/";
-	public static final String PASTA_DOWNLOAD_FORNECEDOR = "http://localhost:8080/img_zapeat/fornecedor/";
+	public static final String PASTA_DOWNLOAD_TEMP = "http://"+TSFacesUtil.getRequest().getServerName() + ":" + TSFacesUtil.getRequest().getServerPort() + "/img_zapeat/";
+	public static final String PASTA_DOWNLOAD = "http://"+TSFacesUtil.getRequest().getServerName() + ":" + TSFacesUtil.getRequest().getServerPort() + "/img_zapeat/";
+	public static final String PASTA_DOWNLOAD_FORNECEDOR = "http://"+TSFacesUtil.getRequest().getServerName() + ":" + TSFacesUtil.getRequest().getServerPort() + "/img_zapeat/fornecedor/";
 	
 	public static final String PREFIXO_IMAGEM_PROMOCAO_FULL = "590x260_";
 	public static final String PREFIXO_IMAGEM_PROMOCAO_THUMB = "180x79_";

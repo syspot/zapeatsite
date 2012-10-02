@@ -24,7 +24,7 @@ public class UsuarioDAO {
 		
 		model.setId(broker.getSequenceNextValue(Constantes.SEQUENCE_USUARIO_SITE));
 
-		broker.setPropertySQL("usuariodao.inserir", model.getNome(), model.getEmail(), model.getSenha(), model.getFlagAtivo(), model.getImagem());
+		broker.setPropertySQL("usuariodao.inserir", model.getId(), model.getNome(), model.getEmail(), model.getSenha(), model.getFlagAtivo(), model.getImagem());
 
 		broker.execute();
 
