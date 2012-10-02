@@ -40,6 +40,11 @@ public class CidadeModel {
 	public void setEstadoModel(EstadoModel estadoModel) {
 		this.estadoModel = estadoModel;
 	}
+	
+	@Override
+	public String toString() {
+		return "'" + this.nome + "'";
+	}
 
 	@Override
 	public int hashCode() {
