@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+]<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -132,7 +132,6 @@
 
 <!-- COMECA TOPO -->
 	<%@ include file="/topo.jsp" %>
-<!-- TERMINA TOPO -->
 <div id="id-Breadcrumb">
 <div class="formLogin">
     	<h:form prependId="false" id="form1">
@@ -178,11 +177,11 @@
 
         	<div class="inputs">
 				
-				<h:inputText required="true" id="nome" maxlength="100" value="#{cadastroFaces.usuarioModel.nome}"/>
+				<h:inputText required="false" id="nome" maxlength="100" value="#{cadastroFaces.usuarioModel.nome}"/>
 				
-				<h:inputText required="true" id="email" maxlength="100" value="#{cadastroFaces.usuarioModel.email}"/>
+				<h:inputText required="false" id="email" maxlength="100" value="#{cadastroFaces.usuarioModel.email}"/>
 				
-				<h:inputSecret required="true" id="senha" maxlength="100" value="#{cadastroFaces.usuarioModel.senha}" redisplay="true"/>
+				<h:inputSecret required="false" id="senha" maxlength="100" value="#{cadastroFaces.usuarioModel.senha}" redisplay="true"/>
 				 
 	             <script type="text/javascript">
 	             		$('#nome').attr('placeholder','Nome').attr('autofocus','');
@@ -210,6 +209,7 @@
 
 </div>
 </div>
+
 <!-- COMECA CENTRAL -->
 <div id="central">
 	<!-- COMECA CONTEUDO -->

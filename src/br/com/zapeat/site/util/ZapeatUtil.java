@@ -52,7 +52,11 @@ public class ZapeatUtil {
 	}
 
 	public static String tratarStringILike(String str) {
-		return (str == null) ? "%" : "%" + str.toLowerCase() + "%";
+		return (TSUtil.isEmpty(str)) ? null : "%" + str.toLowerCase() + "%";
+	}
+	
+	public static String tratarStringCidadeILike(String str) {
+		return (TSUtil.isEmpty(str)) ? null : str.split(",").length > 1 ? "%" + str.split(",")[0] + "%" : "%" + str.toLowerCase() + "%";
 	}
 
 	public static String semAcento(String campo) {
