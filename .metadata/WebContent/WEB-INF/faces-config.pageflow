@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf13491265789731" configfile="/zapeatsite/WebContent/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="370" id="pf13491266726792" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf13491266726803 pf13491266726804" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="562" id="pf13491266726792" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf13491266726803 pf13491266726804 pf13493022410050" path="*"/>
   <nodes xsi:type="pageflow:PFPage" name="index" x="338" y="178" id="pf13491266726805" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf13491266726803" path="/index.jsp"/>
   <nodes xsi:type="pageflow:PFPage" name="ranking" x="338" y="562" id="pf13491266726806" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf13491266726804" path="/ranking.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="busca" x="338" y="946" id="pf13493022410051" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf13493022410050" path="/busca.jsp"/>
   <links id="pf13491266726803" target="pf13491266726805" source="pf13491266726792" outcome="index" redirect="true"/>
   <links id="pf13491266726804" target="pf13491266726806" source="pf13491266726792" outcome="ranking" redirect="true"/>
+  <links id="pf13493022410050" target="pf13493022410051" source="pf13491266726792" outcome="pesquisar"/>
 </pageflow:Pageflow>

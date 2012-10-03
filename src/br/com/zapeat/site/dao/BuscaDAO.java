@@ -16,7 +16,7 @@ public class BuscaDAO {
     	
     	TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
     	
-    	broker.setPropertySQL("buscadao.pesquisarportexto", ZapeatUtil.tratarStringILike(texto), cidade, page);
+    	broker.setPropertySQL("buscadao.pesquisarportexto", ZapeatUtil.tratarStringILike(texto), ZapeatUtil.tratarStringCidadeILike(cidade), page);
     	
     	return broker.getCollectionBean(BuscaModel.class, "numeroUnico", "id", "titulo", "nome", "descricao", "tipo", "categoria",  "telefone", "site", "indicacoes", "imagem", "latitude", "longitude");
     	
@@ -26,7 +26,7 @@ public class BuscaDAO {
 		
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		
-		broker.setPropertySQL("buscadao.obterqtdpaginasportexto", ZapeatUtil.tratarStringILike(texto), cidade);
+		broker.setPropertySQL("buscadao.obterqtdpaginasportexto", ZapeatUtil.tratarStringILike(texto), ZapeatUtil.tratarStringCidadeILike(cidade));
 		
 		return (Model) broker.getObjectBean(Model.class, "value");
 		

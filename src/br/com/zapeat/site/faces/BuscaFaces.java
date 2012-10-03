@@ -38,11 +38,9 @@ public class BuscaFaces extends TSMainFaces {
 		
 		this.page = ZapeatUtil.getPageParamFormatado(super.getRequestParameter("page"));
 		
-		this.localBuscado = super.getRequestParameter("info");
-		
 		this.buscaDAO = new BuscaDAO();
 			
-		this.listagem = this.buscaDAO.pesquisarPorTexto(this.termoBuscado, localBuscado, this.page);
+		this.listagem = this.buscaDAO.pesquisarPorTexto(this.termoBuscado, this.localBuscado, this.page);
 		
 		this.qtdPaginas = this.buscaDAO.obterQtdPaginasPorTexto(this.termoBuscado, localBuscado).getValue();
 		
