@@ -397,21 +397,7 @@
     <!-- TERMINA CONTEUDO -->
 </div>
 <!-- TERMINA CENTRAL -->
-<div id="rodape">
-	<!-- COMECA BUSCA -->
-	<div class="barraBusca">
-    	<form>
-        	<label>Buscar<input type="text" /></label>
-            <label>em<input type="text" value="" id="info" /><span id="btnInit" class="icons" ></span></label>
-            <input type="submit" value="" />
-        </form>
-    </div>
-    <!-- TERMINA BUSCA -->
-	<div id="infos">
-    	<div class="fb-like-box" data-href="http://www.facebook.com/fanpageTigurio" data-width="292" data-height="330" data-show-faces="true" data-border-color="#D9A300" data-stream="false" data-header="false"></div>
-    </div>
-    <div id="copy">Zapeat 2012 - O Zapeat não é autor e não endossa nenhuma das opiniões e/ou comentários. Eles são de exclusiva responsabilidade dos respectivos autores.</div>
-</div>
+	<%@ include file="/rodape.jsp" %>
 <!-- TERMINA RODAPE -->
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
