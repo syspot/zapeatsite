@@ -141,8 +141,6 @@
 
 <!-- COMECA TOPO -->
 	<%@ include file="/topo.jsp" %>
-<!-- TERMINA TOPO -->
-
 <div id="id-Breadcrumb">
 <div class="formLogin">
     	<h:form prependId="false" id="form1">
@@ -188,11 +186,11 @@
 
         	<div class="inputs">
 				
-				<h:inputText required="true" id="nome" maxlength="100" value="#{cadastroFaces.usuarioModel.nome}"/>
+				<h:inputText required="false" id="nome" maxlength="100" value="#{cadastroFaces.usuarioModel.nome}"/>
 				
-				<h:inputText required="true" id="email" maxlength="100" value="#{cadastroFaces.usuarioModel.email}"/>
+				<h:inputText required="false" id="email" maxlength="100" value="#{cadastroFaces.usuarioModel.email}"/>
 				
-				<h:inputSecret required="true" id="senha" maxlength="100" value="#{cadastroFaces.usuarioModel.senha}" redisplay="true"/>
+				<h:inputSecret required="false" id="senha" maxlength="100" value="#{cadastroFaces.usuarioModel.senha}" redisplay="true"/>
 				 
 	             <script type="text/javascript">
 	             		$('#nome').attr('placeholder','Nome').attr('autofocus','');

@@ -2,6 +2,7 @@
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+<%@ taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -22,9 +23,7 @@
 <meta property="geo.position" conterty="ICBM" content="-13.548547000,-38.638272000">
 <meta property="geo.region" content="BR-BA">
 <meta property="geo.placename" content="Salvador">                                                                
-
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"> </script>
-<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
 <script src="js/jquery-latest.js"></script>
 <script type="text/javascript">
       $(document).ready(function() {
@@ -139,8 +138,6 @@
 </script>
 <!-- COMECA TOPO -->
 	<%@ include file="/topo.jsp" %>
-<!-- TERMINA TOPO -->
-
 <div id="id-Breadcrumb">
 <div class="formLogin">
     	<h:form prependId="false" id="form1">
@@ -186,11 +183,11 @@
 
         	<div class="inputs">
 				
-				<h:inputText required="true" id="nome" maxlength="100" value="#{cadastroFaces.usuarioModel.nome}"/>
+				<h:inputText required="false" id="nome" maxlength="100" value="#{cadastroFaces.usuarioModel.nome}"/>
 				
-				<h:inputText required="true" id="email" maxlength="100" value="#{cadastroFaces.usuarioModel.email}"/>
+				<h:inputText required="false" id="email" maxlength="100" value="#{cadastroFaces.usuarioModel.email}"/>
 				
-				<h:inputSecret required="true" id="senha" maxlength="100" value="#{cadastroFaces.usuarioModel.senha}" redisplay="true"/>
+				<h:inputSecret required="false" id="senha" maxlength="100" value="#{cadastroFaces.usuarioModel.senha}" redisplay="true"/>
 				 
 	             <script type="text/javascript">
 	             		$('#nome').attr('placeholder','Nome').attr('autofocus','');

@@ -3,7 +3,6 @@
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>
-<%@ taglib prefix="p" uri="http://primefaces.prime.com.tr/ui"%>
 
 <f:view>
 
@@ -128,6 +127,23 @@
 			alert(msg);
 		}
 </script> 
+ 
+
+</head>
+
+<body onload="initialize()">
+
+<script type="text/javascript">
+	$(document).ready(function(e) {
+		$('.linkLogin').click(function(){
+			$('.formLogin').slideToggle().animate({opacity:1})
+		})
+		$('.linkCadastro,.close').click(function(){
+			$('#mascara').slideToggle();
+		})
+        });
+</script>
+
 
 <script type="text/javascript">
 $(document).ready( function() {
@@ -168,26 +184,10 @@ $(document).ready( function() {
 		
 	});
 });
-</script>  
+</script> 
 
-</head>
-
-<body onload="initialize()">
-
-<script type="text/javascript">
-	$(document).ready(function(e) {
-		$('.linkLogin').click(function(){
-			$('.formLogin').slideToggle().animate({opacity:1})
-		})
-		$('.linkCadastro,.close').click(function(){
-			$('#mascara').slideToggle();
-		})
-        });
-</script>
-	
 <!-- COMECA TOPO -->
-<%@ include file="/topo.jsp" %>
-
+	<%@ include file="/topo.jsp" %>
 <div id="id-Breadcrumb">
 <div class="formLogin">
     	<h:form prependId="false" id="form1">
@@ -233,11 +233,11 @@ $(document).ready( function() {
 
         	<div class="inputs">
 				
-				<h:inputText required="true" id="nome" maxlength="100" value="#{cadastroFaces.usuarioModel.nome}"/>
+				<h:inputText required="false" id="nome" maxlength="100" value="#{cadastroFaces.usuarioModel.nome}"/>
 				
-				<h:inputText required="true" id="email" maxlength="100" value="#{cadastroFaces.usuarioModel.email}"/>
+				<h:inputText required="false" id="email" maxlength="100" value="#{cadastroFaces.usuarioModel.email}"/>
 				
-				<h:inputSecret required="true" id="senha" maxlength="100" value="#{cadastroFaces.usuarioModel.senha}" redisplay="true"/>
+				<h:inputSecret required="false" id="senha" maxlength="100" value="#{cadastroFaces.usuarioModel.senha}" redisplay="true"/>
 				 
 	             <script type="text/javascript">
 	             		$('#nome').attr('placeholder','Nome').attr('autofocus','');
@@ -475,7 +475,7 @@ $(document).ready( function() {
                         <img src="${indexFaces.comentarioModel.fornecedorModel.logoMarcaView}" alt="" title="" />
                         <p class="tituloIndica">${indexFaces.comentarioModel.fornecedorModel.nomeFantasia}</p>
                     </a>
-                </span>descricao
+                </span>
                 <c:if test="${!empty indexFaces.comentarioModel.id}">
                 <p class="comment">${indexFaces.comentarioModel.descricao}</p>
                 </c:if>
