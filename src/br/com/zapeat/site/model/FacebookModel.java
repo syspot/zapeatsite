@@ -3,33 +3,110 @@ package br.com.zapeat.site.model;
 
 public class FacebookModel {
 	
-	// get these from your FB Dev App
-    private static final String api_key = "444305308941322";     
-    private static final String secret = "bd452d9359ebe75370c39cf50b09dd40";
-    private static final String client_id = "444305308941322";  
+	private String algorithm;
+	private Long expires;
+	private Long issued_at;
+	private String oauth_token;
+	private Long user_id;
+	private FacebookSignedRequestUser user;
+	
+	public String getAlgorithm() {
+		return algorithm;
+	}
+	
+	public void setAlgorithm(String algorithm) {
+		this.algorithm = algorithm;
+	}
+	
+	public Long getExpires() {
+		return expires;
+	}
+	
+	public void setExpires(Long expires) {
+		this.expires = expires;
+	}
+	
+	public Long getIssued_at() {
+		return issued_at;
+	}
+	
+	public void setIssued_at(Long issued_at) {
+		this.issued_at = issued_at;
+	}
+	
+	public String getOauth_token() {
+		return oauth_token;
+	}
+	
+	public void setOauth_token(String oauth_token) {
+		this.oauth_token = oauth_token;
+	}
+	
+	public Long getUser_id() {
+		return user_id;
+	}
+	
+	public void setUser_id(Long user_id) {
+		this.user_id = user_id;
+	}
 
-    // set this to your servlet URL for the authentication servlet/filter
-    private static final String redirect_uri = "http://www.onmydoorstep.com.au/fbauth"; 
-    /// set this to the list of extended permissions you want
-    
-    public static String getAPIKey() {
-        return api_key;
-    }
+	public FacebookSignedRequestUser getUser() {
+		return user;
+	}
 
-    public static String getSecret() {
-        return secret;
-    }
+	public void setUser(FacebookSignedRequestUser user) {
+		this.user = user;
+	}
+	
+	public static class FacebookSignedRequestUser {
 
-    public static String getLoginRedirectURL() {
-        return "https://graph.facebook.com/oauth/authorize?client_id=" + 
-            client_id + "&display=page&redirect_uri=" + 
-            redirect_uri+"&scope=email";
-    }
+		private String country;
+		private String locale;
+		private FacebookSignedRequestUserAge age;
+		
+		public String getCountry() {
+			return country;
+		}
 
-    public static String getAuthURL(String authCode) {
-        return "https://graph.facebook.com/oauth/access_token?client_id=" + 
-            client_id+"&redirect_uri=" + 
-            redirect_uri+"&client_secret="+secret+"&code="+authCode;
-    }
+		public void setCountry(String country) {
+			this.country = country;
+		}
 
+		public String getLocale() {
+			return locale;
+		}
+
+		public void setLocale(String locale) {
+			this.locale = locale;
+		}
+
+		public FacebookSignedRequestUserAge getAge() {
+			return age;
+		}
+
+		public void setAge(FacebookSignedRequestUserAge age) {
+			this.age = age;
+		}
+
+		public static class FacebookSignedRequestUserAge{
+			private int min;
+			private int max;
+
+			public int getMin() {
+				return min;
+			}
+
+			public void setMin(int min) {
+				this.min = min;
+			}
+
+			public int getMax() {
+				return max;
+			}
+
+			public void setMax(int max) {
+				this.max = max;
+			}
+		}
+	}
 }
