@@ -14,7 +14,7 @@ public class ComentarioDAO {
 
 		broker.setPropertySQL("comentariodao.obterIndicacaoEstabelecimento");
 
-		return (ComentarioModel) broker.getObjectBean(ComentarioModel.class, "id", "descricao", "usuarioModel.nome", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.logoMarca");
+		return (ComentarioModel) broker.getObjectBean(ComentarioModel.class, "id", "descricao", "usuarioModel.nome", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.imagemThumb");
 
 	}
 

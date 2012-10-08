@@ -472,7 +472,7 @@ $(document).ready( function() {
             	<h2>Quem Indica</h2>
                 <span class="imgDestaque-peq posRel">
                 	<a href="estabelecimento.jsf?id=${indexFaces.comentarioModel.fornecedorModel.id}" title="">
-                        <img src="${indexFaces.comentarioModel.fornecedorModel.logoMarcaView}" alt="" title="" />
+                        <img src="${indexFaces.comentarioModel.fornecedorModel.imagemThumbView}" alt="" title="" />
                         <p class="tituloIndica">${indexFaces.comentarioModel.fornecedorModel.nomeFantasia}</p>
                     </a>
                 </span>

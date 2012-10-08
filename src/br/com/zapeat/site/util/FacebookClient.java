@@ -4,10 +4,10 @@ import br.com.topsys.web.util.TSFacesUtil;
 
 public final class FacebookClient {
 
-	public static String API_KEY = "444305308941322";
-	public static String SECRET = "bd452d9359ebe75370c39cf50b09dd40";
-	private static final String client_id = "444305308941322";
-	private static final String redirect_uri = "http://apps.facebook.com/mosiahvuxs";
+	public static String API_KEY = "288597137908601";
+	public static String SECRET = "209751614b750506d68b915721a27119";
+	private static final String client_id = "288597137908601";
+	private static final String redirect_uri = "http://" +TSFacesUtil.getRequest().getServerName() + ":" + TSFacesUtil.getRequest().getServerPort() + TSFacesUtil.getRequest().getContextPath() + "/checarLoginFacebook.jsf";
 	private static final String redirect_uri_logout = "http://" + TSFacesUtil.getRequest().getServerName() + ":" + TSFacesUtil.getRequest().getServerPort() + TSFacesUtil.getRequest().getContextPath() + "/logout.jsf";
 	private static final String[] perms = new String[] { "publish_stream", "email" };
 

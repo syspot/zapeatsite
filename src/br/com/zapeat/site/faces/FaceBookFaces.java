@@ -121,6 +121,10 @@ public class FaceBookFaces {
 
 				throw new RuntimeException(e);
 			}
+		
+		} else {
+			
+			this.redirect();
 		}
 
 	}
