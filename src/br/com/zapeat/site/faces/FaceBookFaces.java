@@ -33,6 +33,8 @@ public class FaceBookFaces {
 		this.logout = FacebookClient.getLogoutUrl();
 
 		String code = TSFacesUtil.getRequestParameter("code");
+		
+		String erro = TSFacesUtil.getRequestParameter("error");
 
 		if (!TSUtil.isEmpty(code)) {
 
@@ -122,7 +124,7 @@ public class FaceBookFaces {
 				throw new RuntimeException(e);
 			}
 		
-		} else {
+		} else if(!TSUtil.isEmpty(TSUtil.tratarString(erro))){
 			
 			this.redirect();
 		}
