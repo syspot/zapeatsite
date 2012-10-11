@@ -10,7 +10,11 @@ public class CategoriaModel {
 
 	private Boolean flagAtivo;
 	
+	private Boolean flagDestaque;
+	
 	private String imagem;
+	
+	private String imagemView;
 	
 	private String css;
 	
@@ -91,6 +95,22 @@ public class CategoriaModel {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public Boolean getFlagDestaque() {
+		return flagDestaque;
+	}
+
+	public void setFlagDestaque(Boolean flagDestaque) {
+		this.flagDestaque = flagDestaque;
+	}
+
+	public String getImagemView() {
+		return imagemView;
+	}
+
+	public void setImagemView(String imagemView) {
+		this.imagemView = imagemView;
 	}
 
 }
