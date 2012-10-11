@@ -23,6 +23,8 @@ public class CategoriaDAO {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
+		broker.setPropertySQL("categoriadao.pesquisar");
+
 		return broker.getCollectionBean(CategoriaModel.class, "id", "descricao", "flagAtivo", "imagem", "flagDestaque");
 
 	}
