@@ -72,9 +72,22 @@
             	</div>
                 
                 <ul id="principal">
+                
+                	<li>
+                	<span class="icons maisIndicados"></span>
+                        <span class="titMenu">mais indicados</span>
+                        <ul id="sub">
+                            <li><a href="listagem.jsf?categoriaId=7&tipo=3" title="promoção da semana">promoção da semana</a></li>
+                            <li><a href="listagem.jsf?categoriaId=7&tipo=2" title="promoção do dia">promoção do dia</a></li>
+                            <li><a href="listagem.jsf?categoriaId=7&tipo=1" title="promoção da hora">promoção da hora</a></li>
+                            <li><a href="ranking.jsf?categoriaId=7" title="ranking">ranking</a></li>
+                            <li><a href="listagem.jsf?categoriaId=7&tipo=5" title="carro-chefe">carro-chefe</a></li>
+                            
+                        </ul>
+                        </li>
                 	<c:forEach items="${categoriaFaces.categorias}" var="item">
                     <li>
-                        <span class="iconografia"><img src="${item.imagemView}" alt="${item.descricao}" title="${item.descricao}" /></span>
+                        <span class="iconografia"><img src="${item.imagemView}" alt="" title="${item.descricao}" /></span>
                         <span class="titMenu">${item.descricao}</span>
                         <ul id="sub">
                             <li><a href="listagem.jsf?categoriaId=${item.id}&tipo=3" title="promoção da semana">promoção da semana</a></li>
