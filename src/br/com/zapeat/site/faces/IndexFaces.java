@@ -77,7 +77,7 @@ public class IndexFaces extends TSMainFaces {
 		this.promocaoHora = this.promocaoDAO.obterPromocaoHora();
 
 		if (!TSUtil.isEmpty(this.promocaoHora) && !TSUtil.isEmpty(this.promocaoHora.getId())) {
-
+			
 			this.promocoesHora = this.promocaoDAO.pesquisarPromocoesHora(this.promocaoHora);
 		}
 
@@ -94,7 +94,7 @@ public class IndexFaces extends TSMainFaces {
 		this.setarCssTopGeral();
 
 	}
-
+	
 	private void setarCssTopGeral() {
 
 		int count = 1;

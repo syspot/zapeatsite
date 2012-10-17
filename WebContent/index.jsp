@@ -31,7 +31,7 @@
 		$('#principal ul:eq(4)').css('right','-225px');
 		$('#principal ul:eq(5)').css('right','-150px');
 		$('#principal ul:eq(6)').css('right','-75px');
-		$('#principal ul:eq(7)').css('right','-0px');
+		$('#principal ul:eq(7)').css('right','0px');
 	  })
 </script>
 
@@ -127,8 +127,6 @@
 			alert(msg);
 		}
 </script> 
- 
-
 </head>
 
 <body onload="initialize()">
@@ -336,9 +334,10 @@ $(document).ready( function() {
 	                <a href="promocao.jsf?id=${indexFaces.promocaoHora.id}">
 	                	<img src="${indexFaces.promocaoHora.imagemPromocaoFullView}" alt="" title="" />
 	                </a>
+	                
                     <div class="tituloPromo">
                     	<p><span class="tipoPromo">Promoção da hora</span></p>
-                        <p><span class="nomePromo"><c:out value="${indexFaces.promocaoHora.titulo}"/>/${indexFaces.promocaoHora.fornecedorModel.nomeFantasia}</span></p>
+                        <p><span class="nomePromo"><c:out value="${indexFaces.promocaoHora.titulo}"/></span></p>
                     </div>
                 </div>
                 <div id="faixa">
@@ -349,8 +348,10 @@ $(document).ready( function() {
                    <p class="fontYi font10px">desconto</p>
                 </div>
                 <blockquote class="fontYi">
-                	<p>${indexFaces.promocaoHora.descricao}</p>
-                </blockquote>
+        			<p>${indexFaces.promocaoHora.descricao}</p>
+        			<p class="timePromo">Tempo restante:</p>
+        			<span id="time" class="time"></span>
+				</blockquote>
                 <div class="map">
                 	<script>
 					  var map;

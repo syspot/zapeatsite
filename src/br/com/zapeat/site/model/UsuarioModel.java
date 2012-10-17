@@ -6,21 +6,23 @@ import br.com.topsys.util.TSUtil;
 public class UsuarioModel {
 
 	private Long id;
-	
+
 	private String nome;
-	
+
 	private String login;
-	
-	private String senha;	
-	
+
+	private String senha;
+
 	private String email;
-	
+
 	private String confirmaSenha;
-	
-	private Boolean flagAtivo;	
-	
+
+	private Boolean flagAtivo;
+
 	private String imagem;
-	
+
+	private String token;
+
 	public UsuarioModel() {
 
 	}
@@ -34,12 +36,12 @@ public class UsuarioModel {
 	}
 
 	public String getNome() {
-		
-		if(!TSUtil.isEmpty(this.nome)){
-			
+
+		if (!TSUtil.isEmpty(this.nome)) {
+
 			this.nome = TSStringUtil.formatarNomeProprio(this.nome);
 		}
-		
+
 		return nome;
 	}
 
@@ -93,6 +95,14 @@ public class UsuarioModel {
 
 	public void setImagem(String imagem) {
 		this.imagem = imagem;
+	}
+
+	public String getToken() {
+		return TSUtil.tratarString(token);
+	}
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 
 }

@@ -1,8 +1,11 @@
 package br.com.zapeat.site.model;
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
+import br.com.topsys.util.TSDateUtil;
+import br.com.topsys.util.TSParseUtil;
 import br.com.topsys.util.TSUtil;
 import br.com.zapeat.site.util.Constantes;
 import br.com.zapeat.site.util.ZapeatUtil;
@@ -35,6 +38,8 @@ public class PromocaoModel {
 	private String imagemThumb;
 	
 	private String imagemPromocao;
+	
+	private Timestamp dataFim;
 	
 	public Long getId() {
 		return TSUtil.tratarLong(id);
@@ -198,6 +203,16 @@ public class PromocaoModel {
 	@Override
 	public String toString() {
 		return this.fornecedorModel.toString();
+	}
+
+	public Timestamp getDataFim() {
+		
+		
+		return dataFim;
+	}
+
+	public void setDataFim(Timestamp dataFim) {
+		this.dataFim = dataFim;
 	}
 
 }
