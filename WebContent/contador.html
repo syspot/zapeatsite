@@ -30,7 +30,7 @@ $(document).ready(function() {
 
 	//contando tempo restante a partir de data determinada
 	$("#time2").countdown({
-		date: "Oct 20 20:00",
+		date: new Date(),
 		//htmlTemplate: "%{h} <span class=\"cd-time\">hours</span> %{m} <span class=\"cd-time\">mins</span> %{s} <span class=\"cd-time\">sec</span>",
 		offset: 1,
 		onChange: function( event, timer ){

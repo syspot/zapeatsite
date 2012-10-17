@@ -5,8 +5,6 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 
-import br.com.topsys.util.TSDateUtil;
-import br.com.topsys.util.TSParseUtil;
 import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.faces.TSMainFaces;
 import br.com.zapeat.site.dao.BannerDAO;
@@ -79,11 +77,7 @@ public class IndexFaces extends TSMainFaces {
 		this.promocaoHora = this.promocaoDAO.obterPromocaoHora();
 
 		if (!TSUtil.isEmpty(this.promocaoHora) && !TSUtil.isEmpty(this.promocaoHora.getId())) {
-
-			this.promocaoHora.setFim(TSParseUtil.stringToDate(TSParseUtil.timestampToStringHora(this.promocaoHora.getDataFim()), TSDateUtil.DD_MM_YYYY));
-
-			System.out.println(this.promocaoHora.getFim());
-
+			
 			this.promocoesHora = this.promocaoDAO.pesquisarPromocoesHora(this.promocaoHora);
 		}
 
@@ -100,7 +94,7 @@ public class IndexFaces extends TSMainFaces {
 		this.setarCssTopGeral();
 
 	}
-
+	
 	private void setarCssTopGeral() {
 
 		int count = 1;

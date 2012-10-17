@@ -127,36 +127,6 @@
 			alert(msg);
 		}
 </script> 
-
-<script src="http://pluginjquery.com.br/labs/countdown1.3/script/jquery.jcountdown1.3.js" type="text/javascript"></script>
-<script type="text/javascript">
-$(document).ready(function() {
-	//contando tempo restante a partir de data determinada
-	$("#time").countdown({
-		date: new Date(),
-		updateTime: 1000,
-		//para definir campos que aparecerão
-		//htmlTemplate: "<div class=\"boxTime\"><span class=\"cd-time\">%{d}</span> dia(s)</div> <div class=\"boxTime\"><span class=\"cd-time\">%{h}</span> horas</div> <div class=\"boxTime\"><span class=\"cd-time\">%{m}</span> min</div> <div class=\"boxTime\"><span class=\"cd-time\">%{s}</span> seg</div>",
-		htmlTemplate: "<div class=\"boxTime\"><span class=\"cd-time\">%{h}</span> horas</div> <div class=\"boxTime\"><span class=\"cd-time\">%{m}</span> min</div> <div class=\"boxTime\"><span class=\"cd-time\">%{s}</span> seg</div>",
-		offset: 1,
-		onChange: function( event, timer ){
-		},
-		onComplete: function( event ){
-			$(this).html("<b>Finalizado</b>");
-		},
-		//onPause: function( event, timer ){
-		//	$(this).html("Pausa");
-		//},
-		//onResume: function( event ){
-		//	$(this).html("Resumed");
-		//},
-		leadingZero: true
-	});
-
-
-});
-</script>
-
 </head>
 
 <body onload="initialize()">
@@ -367,7 +337,7 @@ $(document).ready( function() {
 	                
                     <div class="tituloPromo">
                     	<p><span class="tipoPromo">Promoção da hora</span></p>
-                        <p><span class="nomePromo"><c:out value="${indexFaces.promocaoHora.titulo}"/>/${indexFaces.promocaoHora.fornecedorModel.nomeFantasia}</span></p>
+                        <p><span class="nomePromo"><c:out value="${indexFaces.promocaoHora.titulo}"/></span></p>
                     </div>
                 </div>
                 <div id="faixa">

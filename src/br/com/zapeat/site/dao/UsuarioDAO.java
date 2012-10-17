@@ -1,8 +1,10 @@
 package br.com.zapeat.site.dao;
 
+import br.com.topsys.constant.TSConstant;
 import br.com.topsys.database.TSDataBaseBrokerIf;
 import br.com.topsys.database.factory.TSDataBaseBrokerFactory;
 import br.com.topsys.exception.TSApplicationException;
+import br.com.topsys.util.TSCryptoUtil;
 import br.com.zapeat.site.model.UsuarioModel;
 import br.com.zapeat.site.util.Constantes;
 
@@ -23,8 +25,10 @@ public class UsuarioDAO {
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		
 		model.setId(broker.getSequenceNextValue(Constantes.SEQUENCE_USUARIO_SITE));
+		
+		model.setToken(TSCryptoUtil.gerarHash(model.getId().toString() + model.getNome(), TSConstant.CRIPTOGRAFIA_MD5));
 
-		broker.setPropertySQL("usuariodao.inserir", model.getId(), model.getNome(), model.getEmail(), model.getSenha(), model.getFlagAtivo(), model.getImagem());
+		broker.setPropertySQL("usuariodao.inserir", model.getId(), model.getNome(), model.getEmail(), model.getSenha(), model.getFlagAtivo(), model.getImagem(), model.getToken());
 
 		broker.execute();
 
