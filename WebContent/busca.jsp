@@ -35,7 +35,7 @@
 		$('#principal ul:eq(4)').css('right','-225px');
 		$('#principal ul:eq(5)').css('right','-150px');
 		$('#principal ul:eq(6)').css('right','-75px');
-		$('#principal ul:eq(7)').css('right','-0px');
+		$('#principal ul:eq(7)').css('right','0px');
 	  })
 </script>
 

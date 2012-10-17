@@ -31,7 +31,7 @@
 		$('#principal ul:eq(4)').css('right','-225px');
 		$('#principal ul:eq(5)').css('right','-150px');
 		$('#principal ul:eq(6)').css('right','-75px');
-		$('#principal ul:eq(7)').css('right','-0px');
+		$('#principal ul:eq(7)').css('right','0px');
 	  })
 </script>
 
@@ -127,7 +127,35 @@
 			alert(msg);
 		}
 </script> 
- 
+
+<script src="http://pluginjquery.com.br/labs/countdown1.3/script/jquery.jcountdown1.3.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	//contando tempo restante a partir de data determinada
+	$("#time").countdown({
+		date: new Date(),
+		updateTime: 1000,
+		//para definir campos que aparecerão
+		//htmlTemplate: "<div class=\"boxTime\"><span class=\"cd-time\">%{d}</span> dia(s)</div> <div class=\"boxTime\"><span class=\"cd-time\">%{h}</span> horas</div> <div class=\"boxTime\"><span class=\"cd-time\">%{m}</span> min</div> <div class=\"boxTime\"><span class=\"cd-time\">%{s}</span> seg</div>",
+		htmlTemplate: "<div class=\"boxTime\"><span class=\"cd-time\">%{h}</span> horas</div> <div class=\"boxTime\"><span class=\"cd-time\">%{m}</span> min</div> <div class=\"boxTime\"><span class=\"cd-time\">%{s}</span> seg</div>",
+		offset: 1,
+		onChange: function( event, timer ){
+		},
+		onComplete: function( event ){
+			$(this).html("<b>Finalizado</b>");
+		},
+		//onPause: function( event, timer ){
+		//	$(this).html("Pausa");
+		//},
+		//onResume: function( event ){
+		//	$(this).html("Resumed");
+		//},
+		leadingZero: true
+	});
+
+
+});
+</script>
 
 </head>
 
@@ -336,6 +364,7 @@ $(document).ready( function() {
 	                <a href="promocao.jsf?id=${indexFaces.promocaoHora.id}">
 	                	<img src="${indexFaces.promocaoHora.imagemPromocaoFullView}" alt="" title="" />
 	                </a>
+	                
                     <div class="tituloPromo">
                     	<p><span class="tipoPromo">Promoção da hora</span></p>
                         <p><span class="nomePromo"><c:out value="${indexFaces.promocaoHora.titulo}"/>/${indexFaces.promocaoHora.fornecedorModel.nomeFantasia}</span></p>
@@ -349,8 +378,10 @@ $(document).ready( function() {
                    <p class="fontYi font10px">desconto</p>
                 </div>
                 <blockquote class="fontYi">
-                	<p>${indexFaces.promocaoHora.descricao}</p>
-                </blockquote>
+        			<p>${indexFaces.promocaoHora.descricao}</p>
+        			<p class="timePromo">Tempo restante:</p>
+        			<span id="time" class="time"></span>
+				</blockquote>
                 <div class="map">
                 	<script>
 					  var map;

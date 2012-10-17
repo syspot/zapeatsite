@@ -36,7 +36,7 @@ li.ui-menu-item{background:#fff; max-width:150px; padding:5px;}
 #menu nav #cadastro #local{ width:174px; float:left; color:#fff; font-size:10px; height:30px; margin:5px 0px;}
 #menu nav#categorias ul#principal{ width:600px; float:right;} 
 
-#menu nav#categorias ul#principal > li{ float:left; width:80px; padding:0px 2px; height:62px; text-align:center; color:#fff; margin-left:1px;
+#menu nav#categorias ul#principal > li{ float:left; width:70px; padding:0px 2px; height:62px; text-align:center; color:#fff; margin-left:1px;
 						background-color:#FFBC00;
 						background-image:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #FFBC00), color-stop(0, #FF9900));
 						background-image:-moz-linear-gradient(top, #FFBC00, #FF9900);
@@ -284,4 +284,11 @@ a.linkLogin,a.linkCadastro{cursor:pointer;}
 .ok{ border-color: green;background-color: #80FF00;}
 #mascara{display:none; width:100%; height:100%; background:rgba(0,0,0,.5); position:fixed; z-index:9999999; top:0; left:0;}
 
-.iconografia{ display:block; width:20px; height:20px; margin:3px auto;}
+.iconografia{ display:block; width:20px; height:20px; margin:4px auto; overflow:hidden;}
+
+span#time{ display:block;}
+span#time b{background:#F30; color:#fff; padding:0px 5px; font-size:15px;font-family: 'titilliumtext22l_rgbold';}
+
+.timePromo{margin-top:25px; font-size:10px;font-family: 'titilliumtext22l_rgbold'; border-top: 1px dotted #666; padding-top:5px;}
+.boxTime{float:left; text-align:center; width:30px; margin:1px; font-size:9px;font-family: 'titilliumtext22l_rgbold';}
+.cd-time{display:block; background:#FF7100; color:#000; height:14px; padding:7px 5px; font-size:14px!important; font-weight:bold;}

@@ -32,14 +32,14 @@
 <script type="text/javascript">
       $(document).ready(function() {
 		$('#outrosDestaques > #listagem > li:even').css('background', '#CCE5FF');
-		$('#principal ul:eq(0)').css('left','-50px');
-		$('#principal ul:eq(1)').css('left','-135px');
-		$('#principal ul:eq(2)').css('left','-220px');
-		$('#principal ul:eq(3)').css('left','-305px');
-		$('#principal ul:eq(4)').css('right','-170px');
-		$('#principal ul:eq(5)').css('right','-85px');
-		$('#principal ul:eq(6)').css('right','0px');
-		//$('#principal ul:eq(7)').css('right','0px');
+		$('#principal ul:eq(0)').css('left','-45px');
+		$('#principal ul:eq(1)').css('left','-120px');
+		$('#principal ul:eq(2)').css('left','-195px');
+		$('#principal ul:eq(3)').css('left','-270px');
+		$('#principal ul:eq(4)').css('right','-225px');
+		$('#principal ul:eq(5)').css('right','-150px');
+		$('#principal ul:eq(6)').css('right','-75px');
+		$('#principal ul:eq(7)').css('right','0px');
 	  })
 </script>
 <!--=============MODAL=============-->
