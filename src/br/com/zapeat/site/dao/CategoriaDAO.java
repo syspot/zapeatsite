@@ -14,7 +14,7 @@ public class CategoriaDAO {
 
 		broker.setPropertySQL("categoriadao.obter", id);
 
-		return (CategoriaModel) broker.getObjectBean(CategoriaModel.class, "id", "descricao", "css");
+		return (CategoriaModel) broker.getObjectBean(CategoriaModel.class, "id", "descricao", "imagem");
 
 	}
 

@@ -8,9 +8,11 @@ import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.faces.TSMainFaces;
 import br.com.zapeat.site.dao.CarroChefeDAO;
 import br.com.zapeat.site.dao.CategoriaDAO;
+import br.com.zapeat.site.dao.FornecedorDAO;
 import br.com.zapeat.site.dao.PromocaoDAO;
 import br.com.zapeat.site.model.CarroChefeModel;
 import br.com.zapeat.site.model.CategoriaModel;
+import br.com.zapeat.site.model.FornecedorModel;
 import br.com.zapeat.site.model.PromocaoModel;
 import br.com.zapeat.site.util.Constantes;
 import br.com.zapeat.site.util.ZapeatUtil;
@@ -20,6 +22,7 @@ public class ListagemFaces extends TSMainFaces {
 
 	private List<PromocaoModel> promocoes;
 	private List<CarroChefeModel> carrosChefes;
+	private List<FornecedorModel> fornecedores;
 	
 	private CategoriaModel categoria;
 	
@@ -43,6 +46,12 @@ public class ListagemFaces extends TSMainFaces {
 				this.carrosChefes = carroChefeDAO.pesquisarPorCategoriaMaisIndicados(this.page);
 				this.qtdPaginas = carroChefeDAO.obterQtdPaginasPorCategoriaMaisIndicados().getValue();
 				
+			} else if(!TSUtil.isEmpty(tipo) && Constantes.TIPO_LISTAGEM_ESTABELECIMENTO.equals(tipo)){
+				
+				FornecedorDAO fornecedorDAO = new FornecedorDAO();
+				this.fornecedores = fornecedorDAO.pesquisarPorCategoriaMaisIndicados(this.page);
+				this.qtdPaginas = fornecedorDAO.obterQtdPaginasPorCategoriaMaisIndicados().getValue();
+				
 			} else{
 				
 				PromocaoDAO promocaoDAO = new PromocaoDAO();
@@ -58,6 +67,12 @@ public class ListagemFaces extends TSMainFaces {
 				CarroChefeDAO carroChefeDAO = new CarroChefeDAO();
 				this.carrosChefes = carroChefeDAO.pesquisarPorCategoria(categoriaId, this.page);
 				this.qtdPaginas = carroChefeDAO.obterQtdPaginasPorCategoria(categoriaId).getValue();
+				
+			} else if(!TSUtil.isEmpty(tipo) && Constantes.TIPO_LISTAGEM_ESTABELECIMENTO.equals(tipo)){
+				
+				FornecedorDAO fornecedorDAO = new FornecedorDAO();
+				this.fornecedores = fornecedorDAO.pesquisarPorCategoria(this.page, categoriaId);
+				this.qtdPaginas = fornecedorDAO.obterQtdPaginasPorCategoria(categoriaId).getValue();
 				
 			} else{
 				
@@ -139,6 +154,14 @@ public class ListagemFaces extends TSMainFaces {
 
 	public void setPromocoes(List<PromocaoModel> promocoes) {
 		this.promocoes = promocoes;
+	}
+
+	public List<FornecedorModel> getFornecedores() {
+		return fornecedores;
+	}
+
+	public void setFornecedores(List<FornecedorModel> fornecedores) {
+		this.fornecedores = fornecedores;
 	}
 
 	public List<CarroChefeModel> getCarrosChefes() {

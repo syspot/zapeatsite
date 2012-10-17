@@ -13,6 +13,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 <title>Zapeat</title>
+<script src="js/jquery-1.8.2.js" type="text/javascript"></script>
+<script src="js/jquery.jcountdown1.3.js" type="text/javascript"></script>
+
 <link href="css/padrao.css" rel="stylesheet" type="text/css" />
 <link href="css/home.css" rel="stylesheet" type="text/css" />
 <link href="css/cssReset.css" rel="stylesheet" type="text/css" />
@@ -140,6 +143,26 @@
 			$('#mascara').slideToggle();
 		})
         });
+	$("#time").countdown({
+		date: "october 17, 2012, 16:20", 
+		
+		onChange: function( event, timer ){
+
+		},
+		onComplete: function( event ){
+		
+			$(this).html("Finalizado");
+		},
+		onPause: function( event, timer ){
+
+			$(this).html("Pause");
+		},
+		onResume: function( event ){
+		
+			$(this).html("Resumed");
+		},
+		leadingZero: true
+	});
 </script>
 
 
@@ -350,7 +373,7 @@ $(document).ready( function() {
                 <blockquote class="fontYi">
         			<p>${indexFaces.promocaoHora.descricao}</p>
         			<p class="timePromo">Tempo restante:</p>
-        			<span id="time" class="time"></span>
+        			<p id="time" class="time"></p>
 				</blockquote>
                 <div class="map">
                 	<script>

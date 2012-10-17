@@ -13,6 +13,7 @@ public final class Constantes {
 	public static final String PASTA_DOWNLOAD = "http://"+TSFacesUtil.getRequest().getServerName() + ":" + TSFacesUtil.getRequest().getServerPort() + "/img_zapeat/";
 	public static final String PASTA_DOWNLOAD_FORNECEDOR = "http://"+TSFacesUtil.getRequest().getServerName() + ":" + TSFacesUtil.getRequest().getServerPort() + "/img_zapeat/fornecedor/";
 	
+	public static final String PREFIXO_IMAGEM_CATEGORIA = "20x20_";
 	public static final String PREFIXO_IMAGEM_PROMOCAO_FULL = "590x260_";
 	public static final String PREFIXO_IMAGEM_PROMOCAO_THUMB = "180x79_";
 	public static final String PREFIXO_PROMOCAO_THUMB = "80x80_";
@@ -33,6 +34,7 @@ public final class Constantes {
 	public static Long TIPO_LISTAGEM_PROMOCAO_DA_HORA = 2L;
 	public static Long TIPO_LISTAGEM_PROMOCAO_DO_DIA = 1L;
 	public static Long TIPO_LISTAGEM_CARRO_CHEFE = 5L;
+	public static Long TIPO_LISTAGEM_ESTABELECIMENTO = 6L;
 	
 	public static final String USUARIO_LOGADO = "usuarioLogado";
 	public static final String LOGIN_APLICACAO = "loginAplicacao";

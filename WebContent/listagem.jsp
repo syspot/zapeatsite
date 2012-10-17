@@ -271,6 +271,7 @@
 	                    </li>
                     </c:forEach>
                     
+                    <!-- SE LISTAGEM POR CARRO-CHEFE -->
             		<c:forEach items="${listagemFaces.carrosChefes}" var="carroChefe">
 	                	<li>
 		                    <a href="estabelecimento.jsf?id=${carroChefe.fornecedorModel.id}" title="">
@@ -296,6 +297,35 @@
 	                            	<div class="floatLeft marginLeft"><span class="icons site"></span> <a href="${carroChefe.fornecedorModel.site}" target="_blank" title="${carroChefe.fornecedorModel.site}">Visite o site</a> </div>
 			           			</c:if>
 			           			
+	                        </div>
+	                    </li>
+                    </c:forEach>
+                    
+                    <!-- SE LISTAGEM POR PROMOÇÃO -->
+            		<c:forEach items="${listagemFaces.fornecedores}" var="fornecedor">
+	                	<li>
+		                    <a href="fornecedor.jsf?id=${fornecedor.id}" title="">
+		                    	<div class="marca floatLeft"><img src="${fornecedor.logoMarcaView}" alt="${fornecedor.nomeFantasia}" title="${fornecedor.nomeFantasia}" /></div>
+		                        <!-- SE PROMOÇÃO EM PRODUTO -->
+		                        <div class="info">
+		                        	<p class="titulo"><c:out value="${fornecedor.nomeFantasia}"/>  </p>
+		                            <p class="item"><c:out value="${fornecedor.nomeFantasia}" /></p>                            
+		                            <p class="resumo fontYi">
+		                            <c:out value="${fornecedor.descricao}"/>
+		                            </p>
+		                        </div>
+		                    </a>
+	                        
+	                        <br clear="all" />
+	                        <div class="boxInfo">
+	                            <div class="floatLeft"><span class="iconografia"><img src="${fornecedor.categoriaPrincipal.imagemView}" alt="" title="${fornecedor.categoriaPrincipal.descricao}" /></span></span>Categoria: <c:out value="${fornecedor.categoriaPrincipal.descricao}" /></div>
+	                            <div class="floatLeft marginLeft"><span class="icons tel"></span><c:out value="${fornecedor.telefone}" /></div>
+	                            
+	                            <c:if test="${not empty fornecedor.site}">
+	                            	<div class="floatLeft marginLeft"><span class="icons site"></span> <a href="${fornecedor.site}" target="_blank" title="${fornecedor.site}">Visite o site</a> </div>
+			           			</c:if>
+			           			
+	                            <div class="floatLeft marginLeft"><span class="icons indicacao"></span><c:out value="${fornecedor.quantidadeIndicacoes}"/> indicam</div>
 	                        </div>
 	                    </li>
                     </c:forEach>

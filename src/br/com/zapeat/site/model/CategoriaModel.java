@@ -1,6 +1,7 @@
 package br.com.zapeat.site.model;
 
 import br.com.topsys.util.TSUtil;
+import br.com.zapeat.site.util.Constantes;
 
 public class CategoriaModel {
 
@@ -13,8 +14,6 @@ public class CategoriaModel {
 	private Boolean flagDestaque;
 	
 	private String imagem;
-	
-	private String imagemView;
 	
 	private String css;
 	
@@ -106,11 +105,8 @@ public class CategoriaModel {
 	}
 
 	public String getImagemView() {
-		return imagemView;
+		return Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_CATEGORIA + getImagem();
 	}
 
-	public void setImagemView(String imagemView) {
-		this.imagemView = imagemView;
-	}
 
 }

@@ -44,6 +44,15 @@ li.ui-menu-item{background:#fff; max-width:150px; padding:5px;}
 						font-size:11px; font-family:Arial, Helvetica, sans-serif; font-weight:bold;
 						position:relative;
 						}
+						
+#outrasCategorias a{ float:left; width:70px; padding:0px 2px; height:62px; text-align:center; color:#fff; margin-left:1px;
+						background-color:#FFBC00;
+						background-image:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #FFBC00), color-stop(0, #FF9900));
+						background-image:-moz-linear-gradient(top, #FFBC00, #FF9900);
+						background-image:-o-linear-gradient(top, #FFBC00, #FF9900);
+						font-size:11px; font-family:Arial, Helvetica, sans-serif; font-weight:bold;
+						position:relative;
+						}
 #menu nav#categorias ul#principal > li:hover{ 
 						background-color:#7373E6; cursor:pointer;
 						background-image: url(../img/setaMenu.png), -webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #7373E6), color-stop(0, #0000F6));
@@ -292,3 +301,6 @@ span#time b{background:#F30; color:#fff; padding:0px 5px; font-size:15px;font-fa
 .timePromo{margin-top:25px; font-size:10px;font-family: 'titilliumtext22l_rgbold'; border-top: 1px dotted #666; padding-top:5px;}
 .boxTime{float:left; text-align:center; width:30px; margin:1px; font-size:9px;font-family: 'titilliumtext22l_rgbold';}
 .cd-time{display:block; background:#FF7100; color:#000; height:14px; padding:7px 5px; font-size:14px!important; font-weight:bold;}
+
+#menu nav #cadastro a.logout{ background:url(../img/sair.png) no-repeat left center; padding-left:25px; display:block; height:25px; margin-top:5px; line-height:25px; color: #993D00; font-family: 'titilliumtext22l_ltmedium'; font-size: 12px; text-transform: uppercase;}
+#menu nav #cadastro a.logout:hover{color:#cc0000;}

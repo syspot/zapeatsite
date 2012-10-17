@@ -11,7 +11,7 @@
 		var defaults = {
 				date: (new Date()),
 				updateTime: 1000,
-				htmlTemplate: "%{d} <span class=\"cd-time\">days</span> %{h} <span class=\"cd-time\">hours</span> %{m} <span class=\"cd-time\">mins</span> %{s} <span class=\"cd-time\">sec</span>",
+				htmlTemplate: "",
 				minus: false,
 				onChange: null,
 				onComplete: null,
@@ -458,5 +458,5 @@
 			$.error('Method '+ method+' does not exist in the jCountdown Plugin');
 		}
 	};
-       
+	
 })(jQuery);

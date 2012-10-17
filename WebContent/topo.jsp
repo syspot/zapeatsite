@@ -49,8 +49,8 @@
 					  </h:outputLink>
 					  
 					  <div align="center">
-					  <h:outputLink value="#{faceBookFaces.logout}" rendered="#{!empty sessionScope.usuarioLogado.id and !sessionScope.loginAplicacao}">
-					  	<h:graphicImage value="img/botao_sair.png"/>
+					  <h:outputLink styleClass="logout" value="#{faceBookFaces.logout}" rendered="#{!empty sessionScope.usuarioLogado.id and !sessionScope.loginAplicacao}">
+					  	Logout (sair)
 					  </h:outputLink>
 					  </div>
 					  
@@ -74,7 +74,7 @@
                 <ul id="principal">
                 
                 	<li>
-                	<span class="icons maisIndicados"></span>
+                		<span class="icons maisIndicados"></span>
                         <span class="titMenu">mais indicados</span>
                         <ul id="sub">
                             <li><a href="listagem.jsf?categoriaId=7&tipo=3" title="promoção da semana">promoção da semana</a></li>
@@ -82,9 +82,9 @@
                             <li><a href="listagem.jsf?categoriaId=7&tipo=1" title="promoção da hora">promoção da hora</a></li>
                             <li><a href="ranking.jsf?categoriaId=7" title="ranking">ranking</a></li>
                             <li><a href="listagem.jsf?categoriaId=7&tipo=5" title="carro-chefe">carro-chefe</a></li>
-                            
+                            <li><a href="listagem.jsf?categoriaId=7&tipo=6" title="estabelecimento">estabelecimento</a></li>
                         </ul>
-                        </li>
+                    </li>
                 	<c:forEach items="${categoriaFaces.categorias}" var="item">
                     <li>
                         <span class="iconografia"><img src="${item.imagemView}" alt="" title="${item.descricao}" /></span>
@@ -95,10 +95,16 @@
                             <li><a href="listagem.jsf?categoriaId=${item.id}&tipo=1" title="promoção da hora">promoção da hora</a></li>
                             <li><a href="ranking.jsf?categoriaId=${item.id}" title="ranking">ranking</a></li>
                             <li><a href="listagem.jsf?categoriaId=${item.id}&tipo=5" title="carro-chefe">carro-chefe</a></li>
-                            
+                            <li><a href="listagem.jsf?categoriaId=${item.id}&tipo=6" title="estabelecimento">estabelecimento</a></li>
                         </ul>
                     </li>
                     </c:forEach>
+                    <li id="outrasCategorias">
+	                   	<a href="listagem.jsf?categoriaId=8&tipo=6" title="estabelecimento">
+	                    	<span class="iconografia"><img src="img/outrasCategorias.png" alt="" title="outras categorias" /></span>
+	                        <span class="titMenu">outras categorias</span>
+	                    </a>
+	                </li>
                </ul>
             </nav>
         </div>
