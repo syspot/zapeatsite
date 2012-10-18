@@ -56,6 +56,17 @@ public class CarroChefeDAO {
 		
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<CarroChefeModel> pesquisarPorCategoriaOutrasCategorias(Long page){
+		
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		
+		broker.setPropertySQL("carrochefedao.pesquisaporcategoriaoutrascategorias", page);
+		
+		return broker.getCollectionBean(CarroChefeModel.class, "id", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.logoMarca", "fornecedorModel.telefone", "fornecedorModel.site", "fornecedorModel.latitude", "fornecedorModel.longitude", "fornecedorModel.categoriaPrincipal.id", "fornecedorModel.categoriaPrincipal.descricao", "descricao", "titulo", "fornecedorModel.numeroUnico", "fornecedorModel.quantidadeIndicacoes");
+		
+	}
+	
 	public Model obterQtdPaginasPorCategoria(Long categoriaId) {
 		
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
@@ -74,6 +85,16 @@ public class CarroChefeDAO {
 
 		return (Model) broker.getObjectBean(Model.class, "value");
 
+	}
+	
+	public Model obterQtdPaginasPorCategoriaOutrasCategorias() {
+		
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		
+		broker.setPropertySQL("carrochefedao.pesquisarqtdpaginasporcategoriaoutrascategorias");
+		
+		return (Model) broker.getObjectBean(Model.class, "value");
+		
 	}
 
 }

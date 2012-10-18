@@ -290,10 +290,11 @@
                         	<p class="titOtherInfo">Outros</p>
                             <p>Formas de Pagamento</p>
                             <p>
-                                <span class="iconCard iconVisa"></span>
-                                <span class="iconCard iconAmex"></span>
-                                <span class="iconCard iconDiners"></span>
-                                <span class="iconCard iconMaster"></span>
+                            	<c:forEach items="${promocaoFaces.promocao.fornecedorModel.formasPagamentos}" var="formaPagamento">
+	                                <span class="iconCard">
+		                                <img src="${formaPagamento.imagemView}" alt="" title="${formaPagamento.descricao}" class="floatLeftMargin4" />
+	                                </span>
+                            	</c:forEach>
                             </p>
                         </li>
                     </ul>

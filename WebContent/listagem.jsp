@@ -309,7 +309,6 @@
 		                        <!-- SE PROMOÇÃO EM PRODUTO -->
 		                        <div class="info">
 		                        	<p class="titulo"><c:out value="${fornecedor.nomeFantasia}"/>  </p>
-		                            <p class="item"><c:out value="${fornecedor.nomeFantasia}" /></p>                            
 		                            <p class="resumo fontYi">
 		                            <c:out value="${fornecedor.descricao}"/>
 		                            </p>

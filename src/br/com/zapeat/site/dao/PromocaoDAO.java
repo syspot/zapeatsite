@@ -31,6 +31,17 @@ public class PromocaoDAO {
 		return broker.getCollectionBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.logoMarca", "fornecedorModel.telefone", "fornecedorModel.site", "fornecedorModel.latitude", "fornecedorModel.longitude", "fornecedorModel.categoriaPrincipal.id", "fornecedorModel.categoriaPrincipal.descricao", "descricao", "titulo", "indicacoes", "fornecedorModel.numeroUnico");
 		
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<PromocaoModel> pesquisarPorIndicacoesOutrasCategorias(Long page, Long tipoPromocao) {
+		
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		
+		broker.setPropertySQL("promocaodao.pesquisarporindicacoesoutrascategorias", tipoPromocao, page);
+		
+		return broker.getCollectionBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.logoMarca", "fornecedorModel.telefone", "fornecedorModel.site", "fornecedorModel.latitude", "fornecedorModel.longitude", "fornecedorModel.categoriaPrincipal.id", "fornecedorModel.categoriaPrincipal.descricao", "descricao", "titulo", "indicacoes", "fornecedorModel.numeroUnico");
+		
+	}
 
 	public Model obterQtdPaginasPorIndicacoes(Long tipoPromocao, Long categoriaId) {
 
@@ -47,6 +58,16 @@ public class PromocaoDAO {
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		
 		broker.setPropertySQL("promocaodao.pesquisarqtdpaginasporindicacoesmaisindicados", tipoPromocao);
+		
+		return (Model) broker.getObjectBean(Model.class, "value");
+		
+	}
+	
+	public Model obterQtdPaginasPorIndicacoesOutrasCategorias(Long tipoPromocao) {
+		
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		
+		broker.setPropertySQL("promocaodao.pesquisarqtdpaginasporindicacoesoutrascategorias", tipoPromocao);
 		
 		return (Model) broker.getObjectBean(Model.class, "value");
 		

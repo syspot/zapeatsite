@@ -1,29 +1,18 @@
 package br.com.zapeat.site.model;
 
-import java.io.Serializable;
-
 import br.com.topsys.util.TSUtil;
 import br.com.zapeat.site.util.Constantes;
 
-@SuppressWarnings("serial")
-public class FormaPagamentoModel implements Serializable {
+public class FormaPagamentoModel {
 
 	private Long id;
 
 	private String descricao;
-
+	
 	private String imagem;
 
-	private Boolean flagAtivo;
-
-	private String imagemThumb25x18;
-
 	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
+		return TSUtil.tratarLong(id);
 	}
 
 	public String getDescricao() {
@@ -37,31 +26,43 @@ public class FormaPagamentoModel implements Serializable {
 	public String getImagem() {
 		return imagem;
 	}
+	
+	public String getImagemView() {
+		return Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_FORMA_PAGAMENTO + imagem;
+	}
 
 	public void setImagem(String imagem) {
 		this.imagem = imagem;
 	}
 
-	public Boolean getFlagAtivo() {
-		return flagAtivo;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public void setFlagAtivo(Boolean flagAtivo) {
-		this.flagAtivo = flagAtivo;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
 	}
 
-	public String getImagemThumb25x18() {
-
-		if (!TSUtil.isEmpty(this.imagem)) {
-
-			this.imagemThumb25x18 = Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_FORMA_PAGAMENTO + this.imagem;
-		}
-
-		return imagemThumb25x18;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		FormaPagamentoModel other = (FormaPagamentoModel) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
 	}
-
-	public void setImagemThumb25x18(String imagemThumb25x18) {
-		this.imagemThumb25x18 = imagemThumb25x18;
-	}
+	
 
 }

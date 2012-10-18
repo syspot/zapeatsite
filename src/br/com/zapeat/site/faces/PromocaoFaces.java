@@ -2,8 +2,10 @@ package br.com.zapeat.site.faces;
 
 import javax.faces.bean.ManagedBean;
 
+import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.faces.TSMainFaces;
 import br.com.zapeat.site.dao.CarroChefeDAO;
+import br.com.zapeat.site.dao.FormaPagamentoDAO;
 import br.com.zapeat.site.dao.PromocaoDAO;
 import br.com.zapeat.site.model.CarroChefeModel;
 import br.com.zapeat.site.model.FornecedorModel;
@@ -27,6 +29,11 @@ public class PromocaoFaces extends TSMainFaces {
 		CarroChefeDAO carroChefeDAO = new CarroChefeDAO();
 
 		this.promocao = promocaoDAO.obter(id);
+		
+		if(!TSUtil.isEmpty(this.promocao)){
+			this.promocao.getFornecedorModel().setFormasPagamentos(new FormaPagamentoDAO().pesquisar(this.promocao.getFornecedorModel()));
+		}
+		
 		this.promocaoDia = promocaoDAO.obterPromocaoDia(new FornecedorModel());
 		this.promocaoSemana = promocaoDAO.obterPromocaoSemana(new FornecedorModel());
 		this.carroChefeModel = carroChefeDAO.pesquisar(new CarroChefeModel());
