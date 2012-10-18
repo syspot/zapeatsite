@@ -1,5 +1,7 @@
 package br.com.zapeat.site.model;
 
+import java.util.List;
+
 import br.com.topsys.util.TSUtil;
 import br.com.zapeat.site.util.Constantes;
 
@@ -52,6 +54,8 @@ public class FornecedorModel {
 	private String css;
 	
 	private Integer numeroUnico;
+	
+	private List<FormaPagamentoModel> formasPagamentos; 
 
 	public FornecedorModel() {
 	}
@@ -261,6 +265,14 @@ public class FornecedorModel {
 
 	public void setNumeroUnico(Integer numeroUnico) {
 		this.numeroUnico = numeroUnico;
+	}
+
+	public List<FormaPagamentoModel> getFormasPagamentos() {
+		return formasPagamentos;
+	}
+
+	public void setFormasPagamentos(List<FormaPagamentoModel> formasPagamentos) {
+		this.formasPagamentos = formasPagamentos;
 	}
 
 	public String getImagemThumbView() {

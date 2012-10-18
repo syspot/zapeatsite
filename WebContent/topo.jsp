@@ -100,10 +100,16 @@
                     </li>
                     </c:forEach>
                     <li>
-	                   	<a href="listagem.jsf?categoriaId=8&tipo=6" title="estabelecimento">
-	                    	<span class="iconografia"><img src="img/outrasCategorias.png" alt="" title="outras categorias" /></span>
-	                        <span class="titMenu">outras categorias</span>
-	                    </a>
+                    	<span class="iconografia"><img src="img/outrasCategorias.png" alt="" title="outras categorias" /></span>
+                        <span class="titMenu">outras categorias</span>
+                        <ul id="sub">
+                            <li><a href="listagem.jsf?categoriaId=8&tipo=3" title="promoção da semana">promoção da semana</a></li>
+                            <li><a href="listagem.jsf?categoriaId=8&tipo=2" title="promoção do dia">promoção do dia</a></li>
+                            <li><a href="listagem.jsf?categoriaId=8&tipo=1" title="promoção da hora">promoção da hora</a></li>
+                            <li><a href="ranking.jsf?categoriaId=8" title="ranking">ranking</a></li>
+                            <li><a href="listagem.jsf?categoriaId=8&tipo=5" title="carro-chefe">carro-chefe</a></li>
+                            <li><a href="listagem.jsf?categoriaId=8&tipo=6" title="estabelecimento">estabelecimento</a></li>
+                        </ul>
 	                </li>
                </ul>
             </nav>

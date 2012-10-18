@@ -14,6 +14,7 @@ public final class Constantes {
 	public static final String PASTA_DOWNLOAD_FORNECEDOR = "http://"+TSFacesUtil.getRequest().getServerName() + ":" + TSFacesUtil.getRequest().getServerPort() + "/img_zapeat/fornecedor/";
 	
 	public static final String PREFIXO_IMAGEM_CATEGORIA = "20x20_";
+	public static final String PREFIXO_IMAGEM_FORMA_PAGAMENTO = "25x18_";
 	public static final String PREFIXO_IMAGEM_PROMOCAO_FULL = "590x260_";
 	public static final String PREFIXO_IMAGEM_PROMOCAO_THUMB = "180x79_";
 	public static final String PREFIXO_PROMOCAO_THUMB = "80x80_";

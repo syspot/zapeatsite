@@ -46,7 +46,7 @@ li.ui-menu-item{background:#fff; max-width:150px; padding:5px;}
 						}
 						
 						
-#outrasCategorias { float:left; width:70px; padding:0px 2px; height:62px; text-align:center; color:#fff; margin-left:1px;
+#outrasCategorias a { float:left; width:70px; padding:0px 2px; height:62px; text-align:center; color:#fff; margin-left:1px;
 						background-color:#FFBC00;
 						background-image:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #FFBC00), color-stop(0, #FF9900));
 						background-image:-moz-linear-gradient(top, #FFBC00, #FF9900);
