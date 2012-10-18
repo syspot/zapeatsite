@@ -60,6 +60,28 @@ public class ListagemFaces extends TSMainFaces {
 				
 			}
 			
+		} if(!TSUtil.isEmpty(categoriaId) && Constantes.CATEGORIA_OUTRAS_CATEGORIAS.equals(categoriaId)){
+			
+			if(!TSUtil.isEmpty(tipo) && Constantes.TIPO_LISTAGEM_CARRO_CHEFE.equals(tipo)){
+				
+				CarroChefeDAO carroChefeDAO = new CarroChefeDAO();
+				this.carrosChefes = carroChefeDAO.pesquisarPorCategoriaOutrasCategorias(this.page);
+				this.qtdPaginas = carroChefeDAO.obterQtdPaginasPorCategoriaOutrasCategorias().getValue();
+				
+			} else if(!TSUtil.isEmpty(tipo) && Constantes.TIPO_LISTAGEM_ESTABELECIMENTO.equals(tipo)){
+				
+				FornecedorDAO fornecedorDAO = new FornecedorDAO();
+				this.fornecedores = fornecedorDAO.pesquisarPorCategoriaOutrasCategorias(this.page);
+				this.qtdPaginas = fornecedorDAO.obterQtdPaginasPorCategoriaOutrasCategorias().getValue();
+				
+			} else{
+				
+				PromocaoDAO promocaoDAO = new PromocaoDAO();
+				this.promocoes = promocaoDAO.pesquisarPorIndicacoesOutrasCategorias(this.page, tipo);
+				this.qtdPaginas = promocaoDAO.obterQtdPaginasPorIndicacoesOutrasCategorias(tipo).getValue();
+				
+			}
+			
 		} else{
 			
 			if(!TSUtil.isEmpty(tipo) && Constantes.TIPO_LISTAGEM_CARRO_CHEFE.equals(tipo)){

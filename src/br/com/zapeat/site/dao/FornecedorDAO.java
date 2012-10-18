@@ -99,6 +99,17 @@ public class FornecedorDAO {
 		
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<FornecedorModel> pesquisarPorCategoriaOutrasCategorias(Long page){
+		
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		
+		broker.setPropertySQL("fornecedordao.pesquisaporcategoriaoutrascategorias", page);
+		
+		return broker.getCollectionBean(FornecedorModel.class, "id", "logoMarca", "nomeFantasia", "descricao", "telefone", "site", "latitude", "longitude", "categoriaPrincipal.id", "categoriaPrincipal.descricao", "categoriaPrincipal.imagem", "quantidadeIndicacoes", "numeroUnico");
+		
+	}
+	
 	public Model obterQtdPaginasPorCategoriaMaisIndicados() {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
@@ -107,6 +118,16 @@ public class FornecedorDAO {
 
 		return (Model) broker.getObjectBean(Model.class, "value");
 
+	}
+	
+	public Model obterQtdPaginasPorCategoriaOutrasCategorias() {
+		
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		
+		broker.setPropertySQL("fornecedordao.pesquisarqtdpaginasporcategoriaoutrascategorias");
+		
+		return (Model) broker.getObjectBean(Model.class, "value");
+		
 	}
 
 }

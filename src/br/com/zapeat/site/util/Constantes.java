@@ -43,5 +43,6 @@ public final class Constantes {
 	public static final String SEQUENCE_USUARIO_SITE = "usuarios_id_seq";
 	
 	public static Long CATEGORIA_MAIS_INDICADOS = 7L;
+	public static Long CATEGORIA_OUTRAS_CATEGORIAS = 8L;
 	
 }
