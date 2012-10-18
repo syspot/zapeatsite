@@ -4,7 +4,6 @@ import java.util.List;
 
 import br.com.topsys.database.TSDataBaseBrokerIf;
 import br.com.topsys.database.factory.TSDataBaseBrokerFactory;
-import br.com.zapeat.site.model.CarroChefeModel;
 import br.com.zapeat.site.model.CategoriaModel;
 import br.com.zapeat.site.model.FornecedorModel;
 import br.com.zapeat.site.model.Model;

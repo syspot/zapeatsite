@@ -2,6 +2,7 @@ package br.com.zapeat.site.model;
 
 import java.io.Serializable;
 
+import br.com.topsys.util.TSUtil;
 import br.com.zapeat.site.util.Constantes;
 
 @SuppressWarnings("serial")
@@ -74,6 +75,10 @@ public class CarroChefeModel implements Serializable {
 		return Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_CARRO_CHEFE_THUMB + this.imagem;
 	}
 	
+	public String getImagemFullView() {
+		return TSUtil.isEmpty(this.imagem) ? this.imagem : Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_CARRO_CHEFE_FULL + this.imagem;
+	}
+
 	public String getImagem() {
 		return imagem;
 	}

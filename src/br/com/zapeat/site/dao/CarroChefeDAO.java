@@ -96,5 +96,15 @@ public class CarroChefeDAO {
 		return (Model) broker.getObjectBean(Model.class, "value");
 		
 	}
+	
+	public CarroChefeModel obter(Long id) {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+		broker.setPropertySQL("carrochefedao.obter", id);
+
+		return (CarroChefeModel) broker.getObjectBean(CarroChefeModel.class, "id", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.logoMarca", "fornecedorModel.horariosFuncionamento", "fornecedorModel.logradouro", "fornecedorModel.numero", "fornecedorModel.bairro", "fornecedorModel.telefone", "fornecedorModel.categoriaPrincipal.id", "fornecedorModel.categoriaPrincipal.descricao", "fornecedorModel.categoriaPrincipal.imagem", "imagem", "descricao", "titulo", "fornecedorModel.longitude", "fornecedorModel.latitude");
+
+	}
 
 }

@@ -235,73 +235,160 @@
     
     	<!-- COMECA COLUNA ESQUERDA -->
     	<div id="esqInt">
-        	<div id="boxSobreEstab">
-        		<a href="estabelecimento.jsf?id=${promocaoFaces.promocao.fornecedorModel.id}">
-	            	<div class="marca"><img src="${promocaoFaces.promocao.fornecedorModel.logoMarcaView}" width="117" height="117" alt="${promocaoFaces.promocao.fornecedorModel.nomeFantasia}" title="${promocaoFaces.promocao.fornecedorModel.nomeFantasia}" /></div>
-	                <p class="titulo marginBottom15px">${promocaoFaces.promocao.fornecedorModel.nomeFantasia} - ${promocaoFaces.promocao.fornecedorModel.bairro}</p>
-	                <!--<div class="marginBottom5px">
-	                	 <a href="" title="Indico"><span class="icons indicacaoAzul"></span>Eu Indico [100]</a>  
-	                </div> -->
-	                <div><span class="icons telAzul"></span>${promocaoFaces.promocao.fornecedorModel.telefone}</div>
-                </a>
-            </div>
-                	
+    	
+    		<c:choose>
+    		
+    			<c:when test="${promocaoFaces.tipoPromocao}">
+    			
+    				<div id="boxSobreEstab">
+		        		<a href="estabelecimento.jsf?id=${promocaoFaces.promocao.fornecedorModel.id}">
+			            	<div class="marca"><img src="${promocaoFaces.promocao.fornecedorModel.logoMarcaView}" width="117" height="117" alt="${promocaoFaces.promocao.fornecedorModel.nomeFantasia}" title="${promocaoFaces.promocao.fornecedorModel.nomeFantasia}" /></div>
+			                <p class="titulo marginBottom15px">${promocaoFaces.promocao.fornecedorModel.nomeFantasia} - ${promocaoFaces.promocao.fornecedorModel.bairro}</p>
+			                <!--<div class="marginBottom5px">
+			                	 <a href="" title="Indico"><span class="icons indicacaoAzul"></span>Eu Indico [100]</a>  
+			                </div> -->
+			                <div><span class="icons telAzul"></span>${promocaoFaces.promocao.fornecedorModel.telefone}</div>
+		                </a>
+		            </div>
+	            
+    			</c:when>
+    			
+    			<c:otherwise>
+    			
+    				<div id="boxSobreEstab">
+		        		<a href="estabelecimento.jsf?id=${promocaoFaces.carroChefe.fornecedorModel.id}">
+			            	<div class="marca"><img src="${promocaoFaces.carroChefe.fornecedorModel.logoMarcaView}" width="117" height="117" alt="${promocaoFaces.carroChefe.fornecedorModel.nomeFantasia}" title="${promocaoFaces.carroChefe.fornecedorModel.nomeFantasia}" /></div>
+			                <p class="titulo marginBottom15px">${promocaoFaces.carroChefe.fornecedorModel.nomeFantasia} - ${promocaoFaces.carroChefe.fornecedorModel.bairro}</p>
+			                <!--<div class="marginBottom5px">
+			                	 <a href="" title="Indico"><span class="icons indicacaoAzul"></span>Eu Indico [100]</a>  
+			                </div> -->
+			                <div><span class="icons telAzul"></span>${promocaoFaces.carroChefe.fornecedorModel.telefone}</div>
+		                </a>
+		            </div>
+    			
+    			</c:otherwise>
+    		
+    		</c:choose>
+    		
         </div>
 
         
         <!-- COMECA COLUNA MEIO -->
         <div id="meio">
         	<div id="destaque">
-            	<div id="fotoDestaque">
-	                <a href=""><img src="${promocaoFaces.promocao.imagemPromocaoFullView}" alt="${promocaoFaces.promocao.fornecedorModel.nomeFantasia}" title="${promocaoFaces.promocao.fornecedorModel.nomeFantasia}" /></a>
-                    <div class="tituloPromo">
-                    	<p><span class="tipoPromo">${promocaoFaces.promocao.tipoPromocaoModel.descricao}</span></p>
-                        <p><span class="nomePromo">${promocaoFaces.promocao.titulo}</span></p>
-                    </div>
-                </div>
-                <div id="faixa">
-                	<p class="precoDe">De: R$ ${promocaoFaces.promocao.precoOriginalFormatado}</p>
-                    <p class="precoPor">Por: R$ ${promocaoFaces.promocao.precoPromocionalFormatado}</p>
-                   	<p class="percentual">${promocaoFaces.promocao.percentualDesconto}%</p>
-                   	<p class="fontYi font10px">desconto</p>
-                </div>
-                <div class="boxInfo">
-                	<a href="listagem.jsf?categoriaId=${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.id}" title="" class="floatLeft"><span class="${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.css}"></span>Categoria: ${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.descricao}</a>
-                </div>
-                <blockquote class="fontYi">
-                	<p>${promocaoFaces.promocao.descricao}</p>
-                </blockquote>
+        		
+        		<c:choose>
+    		
+	    			<c:when test="${promocaoFaces.tipoPromocao}">
+	    			
+	    				<div id="fotoDestaque">
+			                <a href=""><img src="${promocaoFaces.promocao.imagemPromocaoFullView}" alt="${promocaoFaces.promocao.fornecedorModel.nomeFantasia}" title="${promocaoFaces.promocao.fornecedorModel.nomeFantasia}" /></a>
+		                    <div class="tituloPromo">
+		                    	<p><span class="tipoPromo">${promocaoFaces.promocao.tipoPromocaoModel.descricao}</span></p>
+		                        <p><span class="nomePromo">${promocaoFaces.promocao.titulo}</span></p>
+		                    </div>
+		                </div>
+		                <div id="faixa">
+		                	<p class="precoDe">De: R$ ${promocaoFaces.promocao.precoOriginalFormatado}</p>
+		                    <p class="precoPor">Por: R$ ${promocaoFaces.promocao.precoPromocionalFormatado}</p>
+		                   	<p class="percentual">${promocaoFaces.promocao.percentualDesconto}%</p>
+		                   	<p class="fontYi font10px">desconto</p>
+		                </div>
+		                <div class="boxInfo">
+		                	<a href="listagem.jsf?categoriaId=${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.id}" title="" class="floatLeft"><span class="${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.css}"></span>Categoria: ${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.descricao}</a>
+		                </div>
+		                <blockquote class="fontYi">
+		                	<p>${promocaoFaces.promocao.descricao}</p>
+		                </blockquote>
+		            
+	    			</c:when>
+	    			
+	    			<c:otherwise>
+	    			
+	    				<div id="fotoDestaque">
+			                <a href=""><img src="${promocaoFaces.carroChefe.imagemFullView}" alt="${promocaoFaces.carroChefe.fornecedorModel.nomeFantasia}" title="${promocaoFaces.carroChefe.fornecedorModel.nomeFantasia}" /></a>
+		                    <div class="tituloPromo">
+		                    	<p><span class="tipoPromo">Carro chefe</span></p>
+		                        <p><span class="nomePromo">${promocaoFaces.carroChefe.titulo}</span></p>
+		                    </div>
+		                </div>
+		                <div class="boxInfo">
+		                	<a href="listagem.jsf?categoriaId=${promocaoFaces.carroChefe.fornecedorModel.categoriaPrincipal.id}" title="" class="floatLeft"><span class="${promocaoFaces.carroChefe.fornecedorModel.categoriaPrincipal.css}"></span>Categoria: ${promocaoFaces.carroChefe.fornecedorModel.categoriaPrincipal.descricao}</a>
+		                </div>
+		                <blockquote class="fontYi">
+		                	<p>${promocaoFaces.carroChefe.descricao}</p>
+		                </blockquote>
+	    			
+	    			</c:otherwise>
+	    		
+	    		</c:choose>
+            	
                 <div class="clear"></div>
                 <div class="barraCompartilhamento">
 	                <a href="http://www.facebook.com/sharer.php?u=URL_da_promocao" target="_blank" title="Facebook"><img src="img/btnFb.jpg" title="Recomendar" /></a>
                     <div class="fb-like" data-href="http://www.zapeat.com.br" data-send="false" data-layout="button_count" data-width="200" data-show-faces="false"></div>
                 </div> 
-                <div id="outroDados">
-                	<ul>
-                    	<li>
-                        	<p class="titOtherInfo">horário da promoção</p>
-                            <p>${promocaoFaces.promocao.fornecedorModel.horariosFuncionamento}</p>
-                        </li>
-                    	<li>
-                        	<p class="titOtherInfo">O local</p>
-                            <p>${promocaoFaces.promocao.fornecedorModel.logradouro}, ${promocaoFaces.promocao.fornecedorModel.bairro}</p>
-                        </li>
-                        <li>
-                        	<p class="titOtherInfo">Outros</p>
-                            <p>Formas de Pagamento</p>
-                            <p>
-                            	<c:forEach items="${promocaoFaces.promocao.fornecedorModel.formasPagamentos}" var="formaPagamento">
-	                                <span class="iconCard">
-		                                <img src="${formaPagamento.imagemView}" alt="" title="${formaPagamento.descricao}" class="floatLeftMargin4" />
-	                                </span>
-                            	</c:forEach>
-                            </p>
-                        </li>
-                    </ul>
-                </div>
                 
-                <address>${promocaoFaces.promocao.fornecedorModel.logradouro}, nº ${promocaoFaces.promocao.fornecedorModel.numero} - ${promocaoFaces.promocao.fornecedorModel.bairro}</address>
-                
+                <c:choose>
+    		
+	    			<c:when test="${promocaoFaces.tipoPromocao}">
+	    			
+	    				<div id="outroDados">
+		                	<ul>
+		                    	<li>
+		                        	<p class="titOtherInfo">horário da promoção</p>
+		                            <p>${promocaoFaces.promocao.fornecedorModel.horariosFuncionamento}</p>
+		                        </li>
+		                    	<li>
+		                        	<p class="titOtherInfo">O local</p>
+		                            <p>${promocaoFaces.promocao.fornecedorModel.logradouro}, ${promocaoFaces.promocao.fornecedorModel.bairro}</p>
+		                        </li>
+		                        <li>
+		                        	<p class="titOtherInfo">Outros</p>
+		                            <p>Formas de Pagamento</p>
+		                            <p>
+		                            	<c:forEach items="${promocaoFaces.promocao.fornecedorModel.formasPagamentos}" var="formaPagamento">
+			                                <span class="iconCard">
+				                                <img src="${formaPagamento.imagemView}" alt="" title="${formaPagamento.descricao}" class="floatLeftMargin4" />
+			                                </span>
+		                            	</c:forEach>
+		                            </p>
+		                        </li>
+		                    </ul>
+		                </div>
+		                
+		                <address>${promocaoFaces.promocao.fornecedorModel.logradouro}, nº ${promocaoFaces.promocao.fornecedorModel.numero} - ${promocaoFaces.promocao.fornecedorModel.bairro}</address>
+		            
+	    			</c:when>
+	    			
+	    			<c:otherwise>
+	    			
+	    				<div id="outroDados">
+		                	<ul>
+		                    	<li>
+		                        	<p class="titOtherInfo">O local</p>
+		                            <p>${promocaoFaces.carroChefe.fornecedorModel.logradouro}, ${promocaoFaces.carroChefe.fornecedorModel.bairro}</p>
+		                        </li>
+		                        <li>
+		                        	<p class="titOtherInfo">Outros</p>
+		                            <p>Formas de Pagamento</p>
+		                            <p>
+		                            	<c:forEach items="${promocaoFaces.carroChefe.fornecedorModel.formasPagamentos}" var="formaPagamento">
+			                                <span class="iconCard">
+				                                <img src="${formaPagamento.imagemView}" alt="" title="${formaPagamento.descricao}" class="floatLeftMargin4" />
+			                                </span>
+		                            	</c:forEach>
+		                            </p>
+		                        </li>
+		                    </ul>
+		                </div>
+		                
+		                <address>${promocaoFaces.carroChefe.fornecedorModel.logradouro}, nº ${promocaoFaces.carroChefe.fornecedorModel.numero} - ${promocaoFaces.carroChefe.fornecedorModel.bairro}</address>
+	    			
+	    			</c:otherwise>
+	    		
+	    		</c:choose>
+	    		
                 <script>
 				  var map;
 				  function initialize() {
@@ -339,35 +426,40 @@
         
         <!-- COMECA COLUNA DIREITA -->
         <div id="dir">
-        	<div class="boxSubCat">
-        		<a href="promocao.jsf?id=${promocaoFaces.promocaoDia.id}">
-	            	<h2>Promoção do dia</h2>
-	                <img src="${promocaoFaces.promocaoDia.imagemPromocaoThumbView}" alt="" title="" />
-	                <p class="titulo">${promocaoFaces.promocaoDia.titulo}</p>
-	                <!-- SE PROMOÇÃO EM DESCONTO -->
-	                <p><span class="precoDe">De: R$ ${promocaoFaces.promocaoDia.precoOriginalFormatado}</span>&nbsp;&nbsp;<span class="precoPor">Por: R$ ${promocaoFaces.promocaoDia.precoPromocionalFormatado}</span>
-                </a> 
-            </div>
-        	<div class="boxSubCat">
-        		<a href="promocao.jsf?id=${promocaoFaces.promocaoSemana.id}">
-	            	<h2>Promoção da semana</h2>
-	                <img src="${promocaoFaces.promocaoSemana.imagemPromocaoThumbView}" alt="" title="" />
-	                <p class="titulo">${promocaoFaces.promocaoSemana.titulo}</p>
-	                <!-- SE PROMOÇÃO EM PRODUTO -->
-	                <p><span class="fontYi">${promocaoFaces.promocaoSemana.descricao}</span></p>
-                </a>
-            </div>
-            <div class="boxSubCat">
-            	<a href="estabelecimento.jsf?id=${promocaoFaces.carroChefeModel.fornecedorModel.id}">
-	            	<h2>Carro-chefe</h2>
-	                <img src="${promocaoFaces.carroChefeModel.imagemThumbView}" alt="" title="" />
-	                <p class="titulo">${promocaoFaces.carroChefeModel.fornecedorModel.nomeFantasia}</p>
-	                <p class="categoria">${promocaoFaces.carroChefeModel.fornecedorModel.categoriaPrincipal.descricao}</p>
-	                <p class="item">${promocaoFaces.carroChefeModel.titulo}</p>
-	                <!-- <p><span class="precoDe">De: R$789,00</span>&nbsp;&nbsp;<span class="precoPor">Por: R$254,00</span>  -->
-                </a> 
-            </div>
-            
+        	<c:if test="${not empty promocaoFaces.promocaoDia.id}">
+	        	<div class="boxSubCat">
+	        		<a href="promocao.jsf?id=${promocaoFaces.promocaoDia.id}">
+		            	<h2>Promoção do dia</h2>
+		                <img src="${promocaoFaces.promocaoDia.imagemPromocaoThumbView}" alt="" title="" />
+		                <p class="titulo">${promocaoFaces.promocaoDia.titulo}</p>
+		                <!-- SE PROMOÇÃO EM DESCONTO -->
+		                <p><span class="precoDe">De: R$ ${promocaoFaces.promocaoDia.precoOriginalFormatado}</span>&nbsp;&nbsp;<span class="precoPor">Por: R$ ${promocaoFaces.promocaoDia.precoPromocionalFormatado}</span>
+	                </a> 
+	            </div>
+            </c:if>
+            <c:if test="${not empty promocaoFaces.promocaoSemana.id}">
+	        	<div class="boxSubCat">
+	        		<a href="promocao.jsf?id=${promocaoFaces.promocaoSemana.id}">
+		            	<h2>Promoção da semana</h2>
+		                <img src="${promocaoFaces.promocaoSemana.imagemPromocaoThumbView}" alt="" title="" />
+		                <p class="titulo">${promocaoFaces.promocaoSemana.titulo}</p>
+		                <!-- SE PROMOÇÃO EM PRODUTO -->
+		                <p><span class="fontYi">${promocaoFaces.promocaoSemana.descricao}</span></p>
+	                </a>
+	            </div>
+            </c:if>
+            <c:if test="${not empty promocaoFaces.carroChefeModel.id}">
+	            <div class="boxSubCat">
+	            	<a href="estabelecimento.jsf?id=${promocaoFaces.carroChefeModel.fornecedorModel.id}">
+		            	<h2>Carro-chefe</h2>
+		                <img src="${promocaoFaces.carroChefeModel.imagemThumbView}" alt="" title="" />
+		                <p class="titulo">${promocaoFaces.carroChefeModel.fornecedorModel.nomeFantasia}</p>
+		                <p class="categoria">${promocaoFaces.carroChefeModel.fornecedorModel.categoriaPrincipal.descricao}</p>
+		                <p class="item">${promocaoFaces.carroChefeModel.titulo}</p>
+		                <!-- <p><span class="precoDe">De: R$789,00</span>&nbsp;&nbsp;<span class="precoPor">Por: R$254,00</span>  -->
+	                </a> 
+	            </div>
+            </c:if>
             <div class="boxSubCat">
             	<%@ include file="/include_banner_lateral.jsp" %>
             </div>

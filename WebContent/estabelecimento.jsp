@@ -283,13 +283,13 @@
                             </c:if>
                             <p>Formas de Pagamento</p>
                             <p>
-	                            <c:forEach items="${promocaoFaces.promocao.fornecedorModel.formasPagamentos}" var="formaPagamento">
+	                            <c:forEach items="${estabelecimentoFaces.fornecedorModel.formasPagamentos}" var="formaPagamento">
 	                                <span class="iconCard">
 		                                <img src="${formaPagamento.imagemView}" alt="" title="${formaPagamento.descricao}" class="floatLeftMargin4" />
 	                                </span>
 	                           	</c:forEach>
                            	</p>
-                            <p><span class="icons indicacao"></span> ${estabelecimentoFaces.fornecedorModel.quantidadeIndicacoes} pessoas indicam o ambiente</p>
+                            <p><span class="icons indicacao"></span> ${estabelecimentoFaces.fornecedorModel.quantidadeIndicacoes} pessoa(s) indicam o ambiente</p>
                             
                         </li>
                     </ul>

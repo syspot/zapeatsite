@@ -60,7 +60,7 @@ public class ListagemFaces extends TSMainFaces {
 				
 			}
 			
-		} if(!TSUtil.isEmpty(categoriaId) && Constantes.CATEGORIA_OUTRAS_CATEGORIAS.equals(categoriaId)){
+		} else if(!TSUtil.isEmpty(categoriaId) && Constantes.CATEGORIA_OUTRAS_CATEGORIAS.equals(categoriaId)){
 			
 			if(!TSUtil.isEmpty(tipo) && Constantes.TIPO_LISTAGEM_CARRO_CHEFE.equals(tipo)){
 				
@@ -149,7 +149,7 @@ public class ListagemFaces extends TSMainFaces {
 			
 			return TSUtil.isEmpty(this.carrosChefes) ? "-12.0, -38.0" : this.carrosChefes.get(0).getFornecedorModel().getLatitude() + ", " + this.carrosChefes.get(0).getFornecedorModel().getLongitude();
 			
-		} if(!TSUtil.isEmpty(tipo) && Constantes.TIPO_LISTAGEM_ESTABELECIMENTO.equals(tipo)){
+		} else if(!TSUtil.isEmpty(tipo) && Constantes.TIPO_LISTAGEM_ESTABELECIMENTO.equals(tipo)){
 			
 			return TSUtil.isEmpty(this.fornecedores) ? "-12.0, -38.0" : this.fornecedores.get(0).getLatitude() + ", " + this.fornecedores.get(0).getLongitude();
 			
@@ -166,7 +166,7 @@ public class ListagemFaces extends TSMainFaces {
 			
 			return this.carrosChefes.toString();
 			
-		} if(!TSUtil.isEmpty(tipo) && Constantes.TIPO_LISTAGEM_ESTABELECIMENTO.equals(tipo)){
+		} else if(!TSUtil.isEmpty(tipo) && Constantes.TIPO_LISTAGEM_ESTABELECIMENTO.equals(tipo)){
 			
 			return this.fornecedores.toString();
 			
