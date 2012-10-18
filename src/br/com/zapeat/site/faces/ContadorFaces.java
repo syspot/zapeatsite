@@ -4,7 +4,10 @@ import java.util.Calendar;
 
 import javax.faces.bean.ManagedBean;
 
+import br.com.topsys.util.TSDateUtil;
+import br.com.topsys.util.TSParseUtil;
 import br.com.topsys.web.faces.TSMainFaces;
+import br.com.zapeat.site.util.Utilitarios;
 
 @ManagedBean(name="contadorFaces")
 public class ContadorFaces extends TSMainFaces {
@@ -25,16 +28,12 @@ public class ContadorFaces extends TSMainFaces {
 		
 		c.add(Calendar.HOUR_OF_DAY, 1);
 		
-		str.append(getMes(c.get(Calendar.MONTH)));
+		str.append(Utilitarios.getMes(c.get(Calendar.MONTH)));
 		str.append(c.get(Calendar.DAY_OF_MONTH));
 		str.append(", ");
 		str.append(c.get(Calendar.YEAR));
 		str.append(" ");
-		str.append(c.get(Calendar.HOUR_OF_DAY));
-		str.append(":");
-		str.append(c.get(Calendar.MINUTE));
-		str.append(":");
-		str.append(c.get(Calendar.SECOND));
+		str.append(TSParseUtil.dateToString(c.getTime(), TSDateUtil.HH_MM_SS));
 		
 		return str.toString();
 		

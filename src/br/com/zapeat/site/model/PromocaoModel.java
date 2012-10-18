@@ -1,6 +1,7 @@
 package br.com.zapeat.site.model;
 
 import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -8,39 +9,41 @@ import br.com.topsys.util.TSDateUtil;
 import br.com.topsys.util.TSParseUtil;
 import br.com.topsys.util.TSUtil;
 import br.com.zapeat.site.util.Constantes;
+import br.com.zapeat.site.util.Utilitarios;
 import br.com.zapeat.site.util.ZapeatUtil;
-
 
 public class PromocaoModel {
 
 	private Long id;
 
 	private TipoPromocaoModel tipoPromocaoModel;
-	
+
 	private FornecedorModel fornecedorModel;
-	
+
 	private String titulo;
-	
+
 	private String descricao;
-	
+
 	private Date inicio;
-	
+
 	private Date fim;
-	
+
 	private Double precoOriginal;
-	
+
 	private Double precoPromocional;
-	
+
 	private List<ImagemPromocaoModel> imagensPromocoes;
-	
+
 	private Integer indicacoes;
-	
+
 	private String imagemThumb;
-	
+
 	private String imagemPromocao;
-	
+
 	private Timestamp dataFim;
-	
+
+	private String dataFormatada;
+
 	public Long getId() {
 		return TSUtil.tratarLong(id);
 	}
@@ -128,7 +131,7 @@ public class PromocaoModel {
 	public void setIndicacoes(Integer indicacoes) {
 		this.indicacoes = indicacoes;
 	}
-	
+
 	public String getImagemThumb() {
 		return imagemThumb;
 	}
@@ -136,7 +139,7 @@ public class PromocaoModel {
 	public void setImagemThumb(String imagemThumb) {
 		this.imagemThumb = imagemThumb;
 	}
-	
+
 	public String getImagemPromocao() {
 		return imagemPromocao;
 	}
@@ -145,33 +148,32 @@ public class PromocaoModel {
 		this.imagemPromocao = imagemPromocao;
 	}
 
-	public String getImagemThumbView(){
+	public String getImagemThumbView() {
 		return TSUtil.isEmpty(this.imagemThumb) ? this.imagemThumb : Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_PROMOCAO_THUMB + imagemThumb;
 	}
-	
-	public String getImagemPromocaoFullView(){
+
+	public String getImagemPromocaoFullView() {
 		return TSUtil.isEmpty(this.imagemPromocao) ? this.imagemPromocao : Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_PROMOCAO_FULL + this.imagemPromocao;
 	}
-	
-	public String getImagemPromocaoThumbView(){
+
+	public String getImagemPromocaoThumbView() {
 		return TSUtil.isEmpty(this.imagemPromocao) ? this.imagemPromocao : Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_PROMOCAO_THUMB + this.imagemPromocao;
 	}
 
-	public String getCssSessao(){
-		return getTipoPromocaoModel().getId().equals(Constantes.TIPO_PROMOCAO_SEMANA) ? "icons daSemana" : 
-			getTipoPromocaoModel().getId().equals(Constantes.TIPO_PROMOCAO_DIA) ? "icons doDia" : "icons daHora";  
+	public String getCssSessao() {
+		return getTipoPromocaoModel().getId().equals(Constantes.TIPO_PROMOCAO_SEMANA) ? "icons daSemana" : getTipoPromocaoModel().getId().equals(Constantes.TIPO_PROMOCAO_DIA) ? "icons doDia" : "icons daHora";
 	}
-	
-	public String getPrecoOriginalFormatado(){
+
+	public String getPrecoOriginalFormatado() {
 		return ZapeatUtil.getValorFormatado(this.precoOriginal);
 	}
-	
-	public String getPrecoPromocionalFormatado(){
+
+	public String getPrecoPromocionalFormatado() {
 		return ZapeatUtil.getValorFormatado(this.precoPromocional);
 	}
-	
-	public int getPercentualDesconto(){
-		return 100 - (int)(this.precoPromocional.doubleValue() * 100 / this.precoOriginal.doubleValue());
+
+	public int getPercentualDesconto() {
+		return 100 - (int) (this.precoPromocional.doubleValue() * 100 / this.precoOriginal.doubleValue());
 	}
 
 	@Override
@@ -198,7 +200,6 @@ public class PromocaoModel {
 			return false;
 		return true;
 	}
-	
 
 	@Override
 	public String toString() {
@@ -206,13 +207,39 @@ public class PromocaoModel {
 	}
 
 	public Timestamp getDataFim() {
-		
-		
+
 		return dataFim;
 	}
 
 	public void setDataFim(Timestamp dataFim) {
 		this.dataFim = dataFim;
+	}
+
+	public String getDataFormatada() {
+
+		if (!TSUtil.isEmpty(this.fim)) {
+
+			StringBuilder str = new StringBuilder();
+
+			Calendar c = Calendar.getInstance();
+
+			c.setTime(this.fim);
+
+			str.append(Utilitarios.getMes(c.get(Calendar.MONTH)));
+			str.append(c.get(Calendar.DAY_OF_MONTH));
+			str.append(", ");
+			str.append(c.get(Calendar.YEAR));
+			str.append(" ");
+			str.append(TSParseUtil.dateToString(this.fim, TSDateUtil.HH_MM_SS));
+
+			return str.toString();
+		}
+
+		return dataFormatada;
+	}
+
+	public void setDataFormatada(String dataFormatada) {
+		this.dataFormatada = dataFormatada;
 	}
 
 }
