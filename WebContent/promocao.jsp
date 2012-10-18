@@ -221,11 +221,30 @@
 </div>
 
 <div id="id-Breadcrumb">
-    <span class="migalha"><a href="index.jsf" title="">Página Inicial</a></span>    »    
-    <span class="migalha"><a href="listagem.jsf?categoriaId=${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.id}" title="">${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.descricao}</a></span>    »   
-    <span class="migalha"><a href="estabelecimento.jsf?id=${promocaoFaces.promocao.fornecedorModel.id}" title="">${promocaoFaces.promocao.fornecedorModel.nomeFantasia}</a></span>    »   
-    <span class="migalha"><a href="listagem.jsf?categoriaId=${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.id}&tipo=${promocaoFaces.promocao.tipoPromocaoModel.id}" title="">${promocaoFaces.promocao.tipoPromocaoModel.descricao}</a></span>    »   
-    <span class="migalha">${promocaoFaces.promocao.titulo}</span>
+    <span class="migalha"><a href="index.jsf" title="">Página Inicial</a></span>    »
+    
+    <c:choose>
+    
+    	<c:when test="${promocaoFaces.tipoPromocao}">
+    	
+    		<span class="migalha"><a href="listagem.jsf?categoriaId=${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.id}" title="">${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.descricao}</a></span>    »   
+		    <span class="migalha"><a href="estabelecimento.jsf?id=${promocaoFaces.promocao.fornecedorModel.id}" title="">${promocaoFaces.promocao.fornecedorModel.nomeFantasia}</a></span>    »   
+		    <span class="migalha"><a href="listagem.jsf?categoriaId=${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.id}&tipo=${promocaoFaces.promocao.tipoPromocaoModel.id}" title="">${promocaoFaces.promocao.tipoPromocaoModel.descricao}</a></span>    »   
+		    <span class="migalha">${promocaoFaces.promocao.titulo}</span>
+    
+    	</c:when>
+    	
+    	<c:otherwise>
+    	
+    		<span class="migalha"><a href="listagem.jsf?categoriaId=${promocaoFaces.carroChefe.fornecedorModel.categoriaPrincipal.id}" title="">${promocaoFaces.carroChefe.fornecedorModel.categoriaPrincipal.descricao}</a></span>    »   
+		    <span class="migalha"><a href="estabelecimento.jsf?id=${promocaoFaces.carroChefe.fornecedorModel.id}" title="">${promocaoFaces.carroChefe.fornecedorModel.nomeFantasia}</a></span>    »   
+		    <span class="migalha">${promocaoFaces.carroChefe.titulo}</span>
+    	
+    	</c:otherwise>
+    
+    </c:choose>
+    
+    
 </div>
 
 <!-- COMECA CENTRAL -->
@@ -450,7 +469,7 @@
             </c:if>
             <c:if test="${not empty promocaoFaces.carroChefeModel.id}">
 	            <div class="boxSubCat">
-	            	<a href="estabelecimento.jsf?id=${promocaoFaces.carroChefeModel.fornecedorModel.id}">
+	            	<a href="promocao.jsf?carroChefeId=${promocaoFaces.carroChefeModel.id}">
 		            	<h2>Carro-chefe</h2>
 		                <img src="${promocaoFaces.carroChefeModel.imagemThumbView}" alt="" title="" />
 		                <p class="titulo">${promocaoFaces.carroChefeModel.fornecedorModel.nomeFantasia}</p>

@@ -351,7 +351,7 @@ $(document).ready( function() {
                 <blockquote class="fontYi">
         			<p>${indexFaces.promocaoHora.descricao}</p>
         			<p class="timePromo">Tempo restante:</p>
-        			<iframe src="/contador.jsf" frameborder="0" class="time"></iframe>
+        			<iframe src="contador.jsf" frameborder="0" class="time"></iframe>
 				</blockquote>
                 <div class="map">
                 	<script>
