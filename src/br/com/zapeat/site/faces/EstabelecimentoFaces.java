@@ -10,6 +10,7 @@ import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.faces.TSMainFaces;
 import br.com.topsys.web.util.TSFacesUtil;
 import br.com.zapeat.site.dao.ComentarioDAO;
+import br.com.zapeat.site.dao.FormaPagamentoDAO;
 import br.com.zapeat.site.dao.FornecedorDAO;
 import br.com.zapeat.site.dao.ImagemFornecedorDAO;
 import br.com.zapeat.site.model.ComentarioModel;
@@ -42,6 +43,10 @@ public class EstabelecimentoFaces extends TSMainFaces {
 			this.initDAO();
 
 			this.fornecedorModel = this.fornecedorDAO.obter(new FornecedorModel(new Long(fornecedorId)));
+			
+			if(!TSUtil.isEmpty(this.fornecedorModel)){
+				this.fornecedorModel.setFormasPagamentos(new FormaPagamentoDAO().pesquisar(this.fornecedorModel));
+			}
 
 			if (!TSUtil.isEmpty(this.fornecedorModel) && !TSUtil.isEmpty(this.fornecedorModel.getId())) {
 

@@ -281,6 +281,14 @@
                             <p>
                             <a href="${estabelecimentoFaces.fornecedorModel.site}" title="" target="_blank">${estabelecimentoFaces.fornecedorModel.site}</a></p>
                             </c:if>
+                            <p>Formas de Pagamento</p>
+                            <p>
+	                            <c:forEach items="${promocaoFaces.promocao.fornecedorModel.formasPagamentos}" var="formaPagamento">
+	                                <span class="iconCard">
+		                                <img src="${formaPagamento.imagemView}" alt="" title="${formaPagamento.descricao}" class="floatLeftMargin4" />
+	                                </span>
+	                           	</c:forEach>
+                           	</p>
                             <p><span class="icons indicacao"></span> ${estabelecimentoFaces.fornecedorModel.quantidadeIndicacoes} pessoas indicam o ambiente</p>
                             
                         </li>
