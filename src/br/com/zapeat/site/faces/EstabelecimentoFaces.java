@@ -44,15 +44,13 @@ public class EstabelecimentoFaces extends TSMainFaces {
 
 			this.fornecedorModel = this.fornecedorDAO.obter(new FornecedorModel(new Long(fornecedorId)));
 			
-			if(!TSUtil.isEmpty(this.fornecedorModel)){
-				this.fornecedorModel.setFormasPagamentos(new FormaPagamentoDAO().pesquisar(this.fornecedorModel));
-			}
-
 			if (!TSUtil.isEmpty(this.fornecedorModel) && !TSUtil.isEmpty(this.fornecedorModel.getId())) {
 
 				this.fotosEstabelecimento = this.imagemFornecedorDAO.pesquisar(this.fornecedorModel);
 
 				this.ranking = this.comentarioDAO.rankingEstabelecimento(this.fornecedorModel);
+				
+				this.fornecedorModel.setFormasPagamentos(new FormaPagamentoDAO().pesquisar(this.fornecedorModel));
 
 				this.setarCssFotos();
 

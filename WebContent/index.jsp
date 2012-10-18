@@ -13,17 +13,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 <title>Zapeat</title>
-
-<script src="js/jquery-1.8.2.js" type="text/javascript"></script>
-
-
 <link href="css/padrao.css" rel="stylesheet" type="text/css" />
 <link href="css/home.css" rel="stylesheet" type="text/css" />
 <link href="css/cssReset.css" rel="stylesheet" type="text/css" />
 <link href="css/fontface.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"> </script>
-
-
+<script src="js/jquery-latest.js"></script>
+<script src="js/jquery.validate.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/geometa.js"></script>
 <script type="text/javascript">
       $(document).ready(function() {
@@ -35,7 +31,7 @@
 		$('#principal ul:eq(4)').css('right','-225px');
 		$('#principal ul:eq(5)').css('right','-150px');
 		$('#principal ul:eq(6)').css('right','-75px');
-		$('#principal ul:eq(7)').css('right','0px');
+		$('#principal ul:eq(7)').css('right','-0px');
 	  })
 </script>
 
@@ -56,7 +52,7 @@
 				$('#info').val(initialize);
 				}); 			
         })
-		
+
 		//inicia o geolocation
 		function initialize() {
 			// teste para a presença do geolocation
@@ -68,7 +64,7 @@
 				printAddress(geoip_latitude(), geoip_longitude(), true);
 			}
 		}
-	
+
 
 
 	function geo_success(position) {
@@ -84,20 +80,20 @@
 	function printAddress(latitude, longitude, isMaxMind) {
 		// set up the Geocoder object
 		var geocoder = new google.maps.Geocoder();
-	 
+
 		// turn coordinates into an object
 		var yourLocation = new google.maps.LatLng(latitude, longitude);
-		
+
 		// find out info about our location
 		geocoder.geocode({ 'latLng': yourLocation }, function (results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
 				if (results[0]) {
-					
+
 					//--
 					//captura infomação requisitada do endereço
 					for (var i=0; i<results[0].address_components.length; i++) {
 					for (var b=0; b<results[0].address_components[i].types.length;b++) {
-		
+
 						if (results[0].address_components[i].types[b] == "administrative_area_level_1") {
 							state= results[0].address_components[i];
 							break;
@@ -106,7 +102,7 @@
 							city= results[0].address_components[i];
 							break;
 						}
-						
+
 					}
 					}
 
@@ -126,14 +122,28 @@
 				$('body').append('<p>IP to Location Service Provided by MaxMind</p>');
 			}
 		}
-		
+
 		function error(msg){
 			alert(msg);
 		}
 </script> 
+ 
+
 </head>
 
 <body onload="initialize()">
+
+<script type="text/javascript">
+	$(document).ready(function(e) {
+		$('.linkLogin').click(function(){
+			$('.formLogin').slideToggle().animate({opacity:1})
+		})
+		$('.linkCadastro,.close').click(function(){
+			$('#mascara').slideToggle();
+		})
+        });
+</script>
+
 
 <script type="text/javascript">
 $(document).ready( function() {
@@ -147,7 +157,7 @@ $(document).ready( function() {
 			email:{
 				// campoEmail será obrigatório (required) e precisará ser um e-mail válido (email)
 				required: true, email: true
-				
+
 			},
 			senha:{
 				// campoMensagem será obrigatório (required) e terá tamanho mínimo (minLength)
@@ -158,20 +168,20 @@ $(document).ready( function() {
 		messages:{
 			nome:{
 				required: "Nome: Obrigatório",
-				
+
 			},
 			email:{
 				required: "E-mail: Obrigatório",
 				email: "E-mail inválido"
-					
+
 			},
-			
+
 			senha:{
 				required: "Senha: Obrigatório",
 				minlength: "Sua senha deve ter no mínimo, 6 caracteres"
 			}
 		},
-		
+
 	});
 });
 </script> 
@@ -189,7 +199,7 @@ $(document).ready( function() {
 			<script type="text/javascript">
 	             		$('#emailLogin').attr('placeholder','E-mail').attr('autofocus','');
 	             		$('#senhaLogin').attr('placeholder','Senha');
-						
+
 	        </script>
         </div>
         </h:form>
@@ -222,20 +232,20 @@ $(document).ready( function() {
         <div class="sep"></div>
 
         	<div class="inputs">
-				
+
 				<h:inputText required="false" id="nome" maxlength="100" value="#{cadastroFaces.usuarioModel.nome}"/>
-				
+
 				<h:inputText required="false" id="email" maxlength="100" value="#{cadastroFaces.usuarioModel.email}"/>
-				
+
 				<h:inputSecret required="false" id="senha" maxlength="100" value="#{cadastroFaces.usuarioModel.senha}" redisplay="true"/>
-				 
+
 	             <script type="text/javascript">
 	             		$('#nome').attr('placeholder','Nome').attr('autofocus','');
 	             		$('#email').attr('placeholder','E-mail');
 	             		$('#senha').attr('placeholder','Senha');
-						
+
 	            </script>
-	            
+
         	</div>
         	
             
@@ -326,10 +336,9 @@ $(document).ready( function() {
 	                <a href="promocao.jsf?id=${indexFaces.promocaoHora.id}">
 	                	<img src="${indexFaces.promocaoHora.imagemPromocaoFullView}" alt="" title="" />
 	                </a>
-	                
                     <div class="tituloPromo">
                     	<p><span class="tipoPromo">Promoção da hora</span></p>
-                        <p><span class="nomePromo"><c:out value="${indexFaces.promocaoHora.titulo}"/></span></p>
+                        <p><span class="nomePromo"><c:out value="${indexFaces.promocaoHora.titulo}"/>/${indexFaces.promocaoHora.fornecedorModel.nomeFantasia}</span></p>
                     </div>
                 </div>
                 <div id="faixa">
@@ -347,7 +356,7 @@ $(document).ready( function() {
                 <div class="map">
                 	<script>
 					  var map;
-					  
+
 					  function initializeMap() {
 						// Creating a map
 						var lat = ${indexFaces.promocaoHora.fornecedorModel.latitude}
@@ -358,7 +367,7 @@ $(document).ready( function() {
 						  center: latlng,
 						  mapTypeId: google.maps.MapTypeId.ROADMAP
 						});
-						
+
 						// Creating a marker and positioning it on the map
 						var marker = new google.maps.Marker({
 						  position: latlng, 
@@ -367,7 +376,7 @@ $(document).ready( function() {
 						  icon: 'img/markerAzul.png'
 						});
 					  }
-				
+
 					  google.maps.event.addDomListener(window, 'load', initializeMap);
 				</script>
                 	<div id="map_canvas"></div>
