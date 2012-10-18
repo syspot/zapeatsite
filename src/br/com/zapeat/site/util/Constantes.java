@@ -25,6 +25,7 @@ public final class Constantes {
 	public static final String PREFIXO_IMAGEM_BANNER_SUPERIOR_GRANDE = "728x90_";
 	public static final String PREFIXO_IMAGEM_BANNER_LATERAL = "170x260_";
 	public static final String PREFIXO_IMAGEM_BANNER_SUPERIOR_PEQUENO = "210x110_";
+	public static final String PREFIXO_IMAGEM_FORMA_PAGAMENTO = "25x18_";
 	
 	public static Long TIPO_PROMOCAO_HORA = 1L;
 	public static Long TIPO_PROMOCAO_DIA = 2L;

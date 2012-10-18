@@ -4,28 +4,43 @@
 
 <f:view>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Untitled Document</title>
-
-<script src="js/jquery-1.8.2.js" type="text/javascript"></script>
-<script src="js/jquery.jcountdown1.3.js" type="text/javascript"></script>
-
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://pluginjquery.com.br/labs/countdown1.3/script/jquery.jcountdown1.3.js" type="text/javascript"></script>
+<script src="js/jquery.countdown-pt-BR.js" type="text/javascript"></script>
 <script type="text/javascript">
-
 $(document).ready(function() {
-			
+
+	//contando tempo passado a partir de data determinada
+	$("#time").countdown({
+		date: "october 16, 2012", //Counting TO a date
+		htmlTemplate: "%{h} <span class=\"cd-time\">:</span> %{m} <span class=\"cd-time\">:</span> %{s} <span class=\"cd-time\"></span>",
+		//date: "july 1, 2011 19:24", //Counting TO a date
+		onChange: function( event, timer ){
+		},
+		onComplete: function( event ){
+
+			$(this).html("Completo");
+		},
+		leadingZero: true,
+		direction: "up"
+	});
+
 	//contando tempo restante a partir de data determinada
 	$("#time2").countdown({
-		date: "october 17, 2012, 16:03", //Counting TO a date
-		//htmlTemplate: "%{h} <span class=\"cd-time\">hours</span> %{m} <span class=\"cd-time\">mins</span> %{s} <span class=\"cd-time\">sec</span>",
+		date: "${contadorFaces.data}", //Counting TO a date
+		htmlTemplate: "%{h} <span class=\"cd-time\">:</span> %{m} <span class=\"cd-time\">:</span> %{s} <span class=\"cd-time\"></span>",
 		
 		onChange: function( event, timer ){
 
+
+
 		},
 		onComplete: function( event ){
-		
+
 			$(this).html("Finalizado");
 		},
 		onPause: function( event, timer ){
@@ -33,17 +48,17 @@ $(document).ready(function() {
 			$(this).html("Pause");
 		},
 		onResume: function( event ){
-		
+
 			$(this).html("Resumed");
 		},
 		leadingZero: true
 	});
-	
+
 	//$("#time2").countdown('pause');
-	
+
 	//$("#time2").countdown('resume');
-	
-	
+
+
 	/*
 	$("#time2").countdown({
 		date: "may 1, 2011",
@@ -54,20 +69,13 @@ $(document).ready(function() {
 
 });
 </script>
-
-<script src="js/jquery.countdown-pt-BR.js" type="text/javascript"></script>
 </head>
 
 <body>
-<p>contando tempo passado a partir de data determinada</p>
-<p id="time" class="time"></p>
 
-
+<h:inputHidden value="#{contadorFaces}"/>
 <p>contando tempo restante a partir de data determinada</p>
 <p id="time2" class="time"></p>
-
-<input type="button" value="clique aqui" onclick="alert(new Date());"></input>
-
 </body>
 </html>
 </f:view>
