@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -13,34 +12,34 @@ $(document).ready(function() {
 	//contando tempo passado a partir de data determinada
 	$("#time").countdown({
 		date: "october 16, 2012", //Counting TO a date
-		//htmlTemplate: "%{h} <span class=\"cd-time\">hours</span> %{m} <span class=\"cd-time\">mins</span> %{s} <span class=\"cd-time\">sec</span>",
+		htmlTemplate: "%{h} <span class=\"cd-time\">:</span> %{m} <span class=\"cd-time\">:</span> %{s} <span class=\"cd-time\"></span>",
 		//date: "july 1, 2011 19:24", //Counting TO a date
 		onChange: function( event, timer ){
 		},
 		onComplete: function( event ){
-		
+
 			$(this).html("Completo");
 		},
 		leadingZero: true,
 		direction: "up"
 	});
-	
-	
+
+
 
 
 
 	//contando tempo restante a partir de data determinada
 	$("#time2").countdown({
-		date: ${contadorFaces.data}, //Counting TO a date
-		//htmlTemplate: "%{h} <span class=\"cd-time\">hours</span> %{m} <span class=\"cd-time\">mins</span> %{s} <span class=\"cd-time\">sec</span>",
-		offset: 1,
-		onChange: function( event, timer ){
+		date: "october 17, 2012 23:59:59", //Counting TO a date
+		htmlTemplate: "%{h} <span class=\"cd-time\">:</span> %{m} <span class=\"cd-time\">:</span> %{s} <span class=\"cd-time\"></span>",
 		
+		onChange: function( event, timer ){
+
 
 
 		},
 		onComplete: function( event ){
-		
+
 			$(this).html("Finalizado");
 		},
 		onPause: function( event, timer ){
@@ -48,17 +47,17 @@ $(document).ready(function() {
 			$(this).html("Pause");
 		},
 		onResume: function( event ){
-		
+
 			$(this).html("Resumed");
 		},
 		leadingZero: true
 	});
-	
+
 	//$("#time2").countdown('pause');
-	
+
 	//$("#time2").countdown('resume');
-	
-	
+
+
 	/*
 	$("#time2").countdown({
 		date: "may 1, 2011",

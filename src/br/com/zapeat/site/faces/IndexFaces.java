@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 
 import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.faces.TSMainFaces;
+import br.com.topsys.web.util.TSFacesUtil;
 import br.com.zapeat.site.dao.BannerDAO;
 import br.com.zapeat.site.dao.CarroChefeDAO;
 import br.com.zapeat.site.dao.ComentarioDAO;
@@ -79,6 +80,8 @@ public class IndexFaces extends TSMainFaces {
 		if (!TSUtil.isEmpty(this.promocaoHora) && !TSUtil.isEmpty(this.promocaoHora.getId())) {
 			
 			this.promocoesHora = this.promocaoDAO.pesquisarPromocoesHora(this.promocaoHora);
+			
+			TSFacesUtil.addObjectInSession("promocaoHora", this.promocaoHora);
 		}
 
 		this.bannerModel = this.bannerDAO.pesquisar(new BannerModel());

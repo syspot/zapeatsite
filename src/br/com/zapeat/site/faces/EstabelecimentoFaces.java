@@ -53,7 +53,7 @@ public class EstabelecimentoFaces extends TSMainFaces {
 				this.fotosEstabelecimento = this.imagemFornecedorDAO.pesquisar(this.fornecedorModel);
 
 				this.ranking = this.comentarioDAO.rankingEstabelecimento(this.fornecedorModel);
-				
+
 				this.setarCssFotos();
 
 			} else {
@@ -109,6 +109,7 @@ public class EstabelecimentoFaces extends TSMainFaces {
 		this.fornecedorDAO = new FornecedorDAO();
 		this.imagemFornecedorDAO = new ImagemFornecedorDAO();
 		this.comentarioDAO = new ComentarioDAO();
+
 	}
 
 	public FornecedorDAO getFornecedorDAO() {
@@ -118,7 +119,7 @@ public class EstabelecimentoFaces extends TSMainFaces {
 	public void setFornecedorDAO(FornecedorDAO fornecedorDAO) {
 		this.fornecedorDAO = fornecedorDAO;
 	}
-	
+
 	public List<ImagemFornecedorModel> getFotosEstabelecimento() {
 		return fotosEstabelecimento;
 	}
