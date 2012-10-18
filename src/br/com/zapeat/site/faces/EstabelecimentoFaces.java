@@ -10,11 +10,9 @@ import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.faces.TSMainFaces;
 import br.com.topsys.web.util.TSFacesUtil;
 import br.com.zapeat.site.dao.ComentarioDAO;
-import br.com.zapeat.site.dao.FormaPagamentoFornecedorDAO;
 import br.com.zapeat.site.dao.FornecedorDAO;
 import br.com.zapeat.site.dao.ImagemFornecedorDAO;
 import br.com.zapeat.site.model.ComentarioModel;
-import br.com.zapeat.site.model.FormaPagamentoFornecedorModel;
 import br.com.zapeat.site.model.FornecedorModel;
 import br.com.zapeat.site.model.ImagemFornecedorModel;
 
@@ -24,12 +22,10 @@ public class EstabelecimentoFaces extends TSMainFaces {
 
 	private FornecedorModel fornecedorModel;
 	private List<ImagemFornecedorModel> fotosEstabelecimento;
-	private List<FormaPagamentoFornecedorModel> formasPagamentos;
 	private ComentarioModel ranking;
 	private FornecedorDAO fornecedorDAO;
 	private ImagemFornecedorDAO imagemFornecedorDAO;
 	private ComentarioDAO comentarioDAO;
-	private FormaPagamentoFornecedorDAO formaPagamentoFornecedorDAO;
 
 	public EstabelecimentoFaces() {
 
@@ -50,11 +46,9 @@ public class EstabelecimentoFaces extends TSMainFaces {
 			if (!TSUtil.isEmpty(this.fornecedorModel) && !TSUtil.isEmpty(this.fornecedorModel.getId())) {
 
 				this.fotosEstabelecimento = this.imagemFornecedorDAO.pesquisar(this.fornecedorModel);
-				
-				this.formasPagamentos  = this.formaPagamentoFornecedorDAO.pesquisar(this.fornecedorModel);
 
 				this.ranking = this.comentarioDAO.rankingEstabelecimento(this.fornecedorModel);
-				
+
 				this.setarCssFotos();
 
 			} else {
@@ -110,7 +104,7 @@ public class EstabelecimentoFaces extends TSMainFaces {
 		this.fornecedorDAO = new FornecedorDAO();
 		this.imagemFornecedorDAO = new ImagemFornecedorDAO();
 		this.comentarioDAO = new ComentarioDAO();
-		this.formaPagamentoFornecedorDAO = new FormaPagamentoFornecedorDAO();
+
 	}
 
 	public FornecedorDAO getFornecedorDAO() {
@@ -120,7 +114,7 @@ public class EstabelecimentoFaces extends TSMainFaces {
 	public void setFornecedorDAO(FornecedorDAO fornecedorDAO) {
 		this.fornecedorDAO = fornecedorDAO;
 	}
-	
+
 	public List<ImagemFornecedorModel> getFotosEstabelecimento() {
 		return fotosEstabelecimento;
 	}
@@ -159,22 +153,6 @@ public class EstabelecimentoFaces extends TSMainFaces {
 
 	public void setRanking(ComentarioModel ranking) {
 		this.ranking = ranking;
-	}
-
-	public FormaPagamentoFornecedorDAO getFormaPagamentoFornecedorDAO() {
-		return formaPagamentoFornecedorDAO;
-	}
-
-	public void setFormaPagamentoFornecedorDAO(FormaPagamentoFornecedorDAO formaPagamentoFornecedorDAO) {
-		this.formaPagamentoFornecedorDAO = formaPagamentoFornecedorDAO;
-	}
-
-	public List<FormaPagamentoFornecedorModel> getFormasPagamentos() {
-		return formasPagamentos;
-	}
-
-	public void setFormasPagamentos(List<FormaPagamentoFornecedorModel> formasPagamentos) {
-		this.formasPagamentos = formasPagamentos;
 	}
 
 }
