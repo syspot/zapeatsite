@@ -86,7 +86,7 @@ public class FaceBookFaces {
 
 							try {
 
-								new UsuarioDAO().inserir(model);
+								usuario = new UsuarioDAO().inserir(model);
 
 							} catch (TSApplicationException e) {
 
@@ -147,12 +147,13 @@ public class FaceBookFaces {
 		return new String(baos.toByteArray());
 	}
 
-	@SuppressWarnings("static-access")
 	private void redirect() {
 
 		try {
 
-			TSFacesUtil.getFacesContext().getCurrentInstance().getExternalContext().redirect("index.jsf");
+			//TSFacesUtil.getFacesContext().getCurrentInstance().getExternalContext().redirect("index.jsf");
+			
+			TSFacesUtil.getResponse().sendRedirect("index.jsf");
 
 		} catch (Exception e) {
 
