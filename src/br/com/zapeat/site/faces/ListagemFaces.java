@@ -127,6 +127,10 @@ public class ListagemFaces extends TSMainFaces {
 			
 			return TSUtil.isEmpty(this.carrosChefes) ? "-12.0, -38.0" : this.carrosChefes.get(0).getFornecedorModel().getLatitude() + ", " + this.carrosChefes.get(0).getFornecedorModel().getLongitude();
 			
+		} if(!TSUtil.isEmpty(tipo) && Constantes.TIPO_LISTAGEM_ESTABELECIMENTO.equals(tipo)){
+			
+			return TSUtil.isEmpty(this.fornecedores) ? "-12.0, -38.0" : this.fornecedores.get(0).getLatitude() + ", " + this.fornecedores.get(0).getLongitude();
+			
 		} else{
 			
 			return TSUtil.isEmpty(this.promocoes) ? "-12.0, -38.0" : this.promocoes.get(0).getFornecedorModel().getLatitude() + ", " + this.promocoes.get(0).getFornecedorModel().getLongitude();
@@ -139,6 +143,10 @@ public class ListagemFaces extends TSMainFaces {
 		if(!TSUtil.isEmpty(tipo) && Constantes.TIPO_LISTAGEM_CARRO_CHEFE.equals(tipo)){
 			
 			return this.carrosChefes.toString();
+			
+		} if(!TSUtil.isEmpty(tipo) && Constantes.TIPO_LISTAGEM_ESTABELECIMENTO.equals(tipo)){
+			
+			return this.fornecedores.toString();
 			
 		} else{
 			

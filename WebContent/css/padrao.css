@@ -45,7 +45,8 @@ li.ui-menu-item{background:#fff; max-width:150px; padding:5px;}
 						position:relative;
 						}
 						
-#outrasCategorias a{ float:left; width:70px; padding:0px 2px; height:62px; text-align:center; color:#fff; margin-left:1px;
+						
+#outrasCategorias { float:left; width:70px; padding:0px 2px; height:62px; text-align:center; color:#fff; margin-left:1px;
 						background-color:#FFBC00;
 						background-image:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #FFBC00), color-stop(0, #FF9900));
 						background-image:-moz-linear-gradient(top, #FFBC00, #FF9900);
@@ -53,6 +54,7 @@ li.ui-menu-item{background:#fff; max-width:150px; padding:5px;}
 						font-size:11px; font-family:Arial, Helvetica, sans-serif; font-weight:bold;
 						position:relative;
 						}
+						
 #menu nav#categorias ul#principal > li:hover{ 
 						background-color:#7373E6; cursor:pointer;
 						background-image: url(../img/setaMenu.png), -webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #7373E6), color-stop(0, #0000F6));

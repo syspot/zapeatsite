@@ -304,7 +304,7 @@
                     <!-- SE LISTAGEM POR PROMOÇÃO -->
             		<c:forEach items="${listagemFaces.fornecedores}" var="fornecedor">
 	                	<li>
-		                    <a href="fornecedor.jsf?id=${fornecedor.id}" title="">
+		                    <a href="estabelecimento.jsf?id=${fornecedor.id}" title="">
 		                    	<div class="marca floatLeft"><img src="${fornecedor.logoMarcaView}" alt="${fornecedor.nomeFantasia}" title="${fornecedor.nomeFantasia}" /></div>
 		                        <!-- SE PROMOÇÃO EM PRODUTO -->
 		                        <div class="info">
@@ -318,7 +318,7 @@
 	                        
 	                        <br clear="all" />
 	                        <div class="boxInfo">
-	                            <div class="floatLeft"><span class="iconografia"><img src="${fornecedor.categoriaPrincipal.imagemView}" alt="" title="${fornecedor.categoriaPrincipal.descricao}" /></span></span>Categoria: <c:out value="${fornecedor.categoriaPrincipal.descricao}" /></div>
+	                            <div class="floatLeft"><span style="margin-right: 4px"><img src="${fornecedor.categoriaPrincipal.imagemView}" alt="" title="${fornecedor.categoriaPrincipal.descricao}" /></span>Categoria: <c:out value="${fornecedor.categoriaPrincipal.descricao}" /></div>
 	                            <div class="floatLeft marginLeft"><span class="icons tel"></span><c:out value="${fornecedor.telefone}" /></div>
 	                            
 	                            <c:if test="${not empty fornecedor.site}">

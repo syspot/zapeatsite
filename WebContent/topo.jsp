@@ -99,7 +99,7 @@
                         </ul>
                     </li>
                     </c:forEach>
-                    <li id="outrasCategorias">
+                    <li>
 	                   	<a href="listagem.jsf?categoriaId=8&tipo=6" title="estabelecimento">
 	                    	<span class="iconografia"><img src="img/outrasCategorias.png" alt="" title="outras categorias" /></span>
 	                        <span class="titMenu">outras categorias</span>
