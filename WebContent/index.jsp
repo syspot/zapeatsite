@@ -351,7 +351,7 @@ $(document).ready( function() {
                 <blockquote class="fontYi">
         			<p>${indexFaces.promocaoHora.descricao}</p>
         			<p class="timePromo">Tempo restante:</p>
-        			<iframe src="contador.jsf" frameborder="0" class="time"></iframe>
+        			<p id="tempo" class="time"></p>
 				</blockquote>
                 <div class="map">
                 	<script>
@@ -501,6 +501,38 @@ $(document).ready( function() {
   js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://pluginjquery.com.br/labs/countdown1.3/script/jquery.jcountdown1.3.js" type="text/javascript"></script>
+<script src="js/jquery.countdown-pt-BR.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	
+	$("#tempo").countdown({
+		date: "${indexFaces.promocaoHora.dataFormatada}", //Counting TO a date
+		htmlTemplate: "%{h} <span class=\"time\">:</span> %{m} <span class=\"time\">:</span> %{s} <span class=\"time\"></span>",
+		
+		onChange: function( event, timer ){
+
+		},
+		onComplete: function( event ){
+
+			$(this).html("Finalizado");
+		},
+		onPause: function( event, timer ){
+
+			$(this).html("Pause");
+		},
+		onResume: function( event ){
+
+			$(this).html("Resumed");
+		},
+		leadingZero: true
+	});
+
+});
 </script>
 </body>
 

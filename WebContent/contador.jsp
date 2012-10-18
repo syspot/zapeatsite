@@ -30,7 +30,7 @@ $(document).ready(function() {
 
 	//contando tempo restante a partir de data determinada
 	$("#tempo").countdown({
-		date: "${sessionScope.promocaoHora.dataFormatada}", //Counting TO a date
+		date: "${indexFaces.promocaoHora.dataFormatada}", //Counting TO a date
 		htmlTemplate: "%{h} <span class=\"cd-time\">:</span> %{m} <span class=\"cd-time\">:</span> %{s} <span class=\"cd-time\"></span>",
 		
 		onChange: function( event, timer ){
