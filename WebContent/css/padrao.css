@@ -127,6 +127,7 @@ ul#listagem  .precoPor{ font-family: 'titilliumtext22l_ltmedium'; font-size:16px
 /*--==OUTROS==--*/
 .clear{clear:both;}
 .floatLeft{ float:left;}
+.floatLeftMargin4{ float:left; margin-right: 8px;}
 .floatRight{ float:right;}
 .posRel{position:relative;}
 .marginLeft{margin-left:35px;}

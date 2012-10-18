@@ -95,7 +95,7 @@ public class FornecedorDAO {
 		
 		broker.setPropertySQL("fornecedordao.pesquisaporcategoriamaisindicadas", page);
 		
-		return broker.getCollectionBean(FornecedorModel.class, "id", "logoMarca", "nomeFantasia", "descricao", "telefone", "site", "latitude", "longitude", "categoriaPrincipal.id", "categoriaPrincipal.descricao", "quantidadeIndicacoes", "numeroUnico");
+		return broker.getCollectionBean(FornecedorModel.class, "id", "logoMarca", "nomeFantasia", "descricao", "telefone", "site", "latitude", "longitude", "categoriaPrincipal.id", "categoriaPrincipal.descricao", "categoriaPrincipal.imagem", "quantidadeIndicacoes", "numeroUnico");
 		
 	}
 	

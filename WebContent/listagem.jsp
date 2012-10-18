@@ -229,7 +229,7 @@
         <!-- COMECA COLUNA MEIO -->
         <div id="meio">
         	<div id="tituloSessao">
-            	<span class="${listagemFaces.categoria.css}"></span>
+            	<img src="${listagemFaces.categoria.imagemView}" class="floatLeftMargin4" />
             	<h2>${listagemFaces.categoria.descricao}</h2>
                 <!--==
                 <p>Promoção da hora</p>
@@ -301,7 +301,7 @@
 	                    </li>
                     </c:forEach>
                     
-                    <!-- SE LISTAGEM POR PROMOÇÃO -->
+                    <!-- SE LISTAGEM POR FORNECEDOR -->
             		<c:forEach items="${listagemFaces.fornecedores}" var="fornecedor">
 	                	<li>
 		                    <a href="estabelecimento.jsf?id=${fornecedor.id}" title="">
@@ -318,7 +318,7 @@
 	                        
 	                        <br clear="all" />
 	                        <div class="boxInfo">
-	                            <div class="floatLeft"><span style="margin-right: 4px"><img src="${fornecedor.categoriaPrincipal.imagemView}" alt="" title="${fornecedor.categoriaPrincipal.descricao}" /></span>Categoria: <c:out value="${fornecedor.categoriaPrincipal.descricao}" /></div>
+	                            <div class="floatLeft"><img src="${fornecedor.categoriaPrincipal.imagemView}" alt="" title="${fornecedor.categoriaPrincipal.descricao}" class="floatLeftMargin4" />Categoria: <c:out value="${fornecedor.categoriaPrincipal.descricao}" /></div>
 	                            <div class="floatLeft marginLeft"><span class="icons tel"></span><c:out value="${fornecedor.telefone}" /></div>
 	                            
 	                            <c:if test="${not empty fornecedor.site}">
