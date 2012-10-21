@@ -144,6 +144,8 @@ public class RankingFaces extends TSMainFaces {
 						this.comentarioModel.setFlagIndicaPromocao(Boolean.TRUE);
 
 						new ComentarioDAO().inserir(this.comentarioModel);
+						
+						this.carregaDados();
 
 						this.initComentario();
 
@@ -184,9 +186,11 @@ public class RankingFaces extends TSMainFaces {
 
 					try {
 
-						this.comentarioModel.setFlagIndicaPromocao(Boolean.TRUE);
+						this.comentarioModel.setFlagNaoIndica(Boolean.TRUE);
 
 						new ComentarioDAO().inserir(this.comentarioModel);
+						
+						this.carregaDados();
 
 						this.initComentario();
 

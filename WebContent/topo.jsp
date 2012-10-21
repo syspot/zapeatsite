@@ -171,8 +171,8 @@ $(document).ready( function() {
     	<div class="inputs">
         	Preencha os dados ao lado para acessar: 
         	<h:inputText title="E-mail" id="emailLogin" value="#{loginFaces.usuarioModel.email}" required="false" requiredMessage="Email: Obrigatório" tabindex="1" maxlength="100"/>
-            <h:inputSecret required="false" id="senhaLogin" maxlength="100" value="#{loginFaces.usuarioModel.senha}" requiredMessage="Senha: Obrigatório" redisplay="true"/>
-			<h:commandButton styleClass="submit" action="#{loginFaces.autenticar}" id="submit2" value="ACESSAR"></h:commandButton>
+            <h:inputSecret tabindex="2" required="false" id="senhaLogin" maxlength="100" value="#{loginFaces.usuarioModel.senha}" requiredMessage="Senha: Obrigatório" redisplay="true"/>
+			<h:commandButton tabindex="3" styleClass="submit" action="#{loginFaces.autenticar}" id="submit2" value="ACESSAR"></h:commandButton>
 			<script type="text/javascript">
 	             		$('#emailLogin').attr('placeholder','E-mail').attr('autofocus','');
 	             		$('#senhaLogin').attr('placeholder','Senha');
@@ -212,11 +212,11 @@ $(document).ready( function() {
 
         	<div class="inputs">
 
-				<h:inputText required="false" id="nome" maxlength="100" value="#{cadastroFaces.usuarioModel.nome}"/>
+				<h:inputText tabindex="100" required="false" id="nome" maxlength="100" value="#{cadastroFaces.usuarioModel.nome}"/>
 
-				<h:inputText required="false" id="email" maxlength="100" value="#{cadastroFaces.usuarioModel.email}"/>
+				<h:inputText tabindex="101" required="false" id="email" maxlength="100" value="#{cadastroFaces.usuarioModel.email}"/>
 
-				<h:inputSecret required="false" id="senha" maxlength="100" value="#{cadastroFaces.usuarioModel.senha}" redisplay="true"/>
+				<h:inputSecret tabindex="102" required="false" id="senha" maxlength="100" value="#{cadastroFaces.usuarioModel.senha}" redisplay="true"/>
 
 	             <script type="text/javascript">
 	             		$('#nome').attr('placeholder','Nome').attr('autofocus','');
@@ -229,7 +229,7 @@ $(document).ready( function() {
 
         	<div class="inputs">
         	
-        		<h:commandButton styleClass="submit" id="submit" value="CADASTRAR" action="#{cadastroFaces.insertEvent}"/>
+        		<h:commandButton tabindex="103" styleClass="submit" id="submit" value="CADASTRAR" action="#{cadastroFaces.insertEvent}"/>
             
         	</div>
 
