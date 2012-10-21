@@ -93,6 +93,17 @@ public class PromocaoDAO {
 		return broker.getCollectionBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "descricao", "inicio", "fim", "precoOriginal", "precoPromocional", "titulo", "fornecedorModel.longitude", "fornecedorModel.latitude", "fornecedorModel.site","indicacoes", "fornecedorModel.telefone", "imagemPromocao");
 
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<PromocaoModel> pesquisarPromocoesHora(Long id) {
+		
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		
+		broker.setPropertySQL("promocaodao.pesquisarPromocoesHora", id);
+		
+		return broker.getCollectionBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "descricao", "inicio", "fim", "precoOriginal", "precoPromocional", "titulo", "fornecedorModel.longitude", "fornecedorModel.latitude", "fornecedorModel.site","indicacoes", "fornecedorModel.telefone", "imagemPromocao");
+		
+	}
 
 	public PromocaoModel obterPromocaoDia(FornecedorModel model) {
 

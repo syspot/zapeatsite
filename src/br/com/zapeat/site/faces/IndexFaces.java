@@ -7,11 +7,9 @@ import javax.faces.bean.ManagedBean;
 
 import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.faces.TSMainFaces;
-import br.com.zapeat.site.dao.CarroChefeDAO;
 import br.com.zapeat.site.dao.ComentarioDAO;
 import br.com.zapeat.site.dao.FornecedorDAO;
 import br.com.zapeat.site.dao.PromocaoDAO;
-import br.com.zapeat.site.model.CarroChefeModel;
 import br.com.zapeat.site.model.ComentarioModel;
 import br.com.zapeat.site.model.FornecedorModel;
 import br.com.zapeat.site.model.PromocaoModel;
@@ -19,42 +17,22 @@ import br.com.zapeat.site.model.PromocaoModel;
 @ManagedBean(name = "indexFaces")
 public class IndexFaces extends TSMainFaces {
 
-	private PromocaoModel promocaoDia;
+
 	private PromocaoModel promocaoHora;
-	private PromocaoModel promocaoSemana;
-	private CarroChefeModel carroChefeModel;
 	private ComentarioModel comentarioModel;
 
 	private List<PromocaoModel> promocoesHora;
 	private List<FornecedorModel> topGeral;
 
-	private PromocaoDAO promocaoDAO;
-	private FornecedorDAO fornecedorDAO;
-
-	private CarroChefeDAO carroChefeDAO;
-	private ComentarioDAO comentarioDAO;
-
 	public IndexFaces() {
 
-		this.initDAO();
 		this.initObjetos();
 		this.carregaDados();
 
 	}
 
-	private void initDAO() {
-
-		this.promocaoDAO = new PromocaoDAO();
-		this.fornecedorDAO = new FornecedorDAO();
-		this.carroChefeDAO = new CarroChefeDAO();
-		this.comentarioDAO = new ComentarioDAO();
-	}
-
 	private void initObjetos() {
 
-		this.promocaoHora = new PromocaoModel();
-		this.promocaoDia = new PromocaoModel();
-		this.promocaoSemana = new PromocaoModel();
 		this.promocoesHora = new ArrayList<PromocaoModel>();
 		this.topGeral = new ArrayList<FornecedorModel>();
 		this.comentarioModel = new ComentarioModel();
@@ -62,24 +40,19 @@ public class IndexFaces extends TSMainFaces {
 	}
 
 	private void carregaDados() {
-
-		this.promocaoDia = this.promocaoDAO.obterPromocaoDia(new FornecedorModel());
-
-		this.promocaoSemana = this.promocaoDAO.obterPromocaoSemana(new FornecedorModel());
-
-		this.promocaoHora = this.promocaoDAO.obterPromocaoHora();
+		
+		PromocaoDAO promocaoDAO = new PromocaoDAO();
+		this.promocaoHora = promocaoDAO.obterPromocaoHora();
 
 		if (!TSUtil.isEmpty(this.promocaoHora) && !TSUtil.isEmpty(this.promocaoHora.getId())) {
 			
-			this.promocoesHora = this.promocaoDAO.pesquisarPromocoesHora(this.promocaoHora);
+			this.promocoesHora = promocaoDAO.pesquisarPromocoesHora(this.promocaoHora);
 				
 		}
 
-		this.carroChefeModel = this.carroChefeDAO.pesquisar(new CarroChefeModel());
+		this.topGeral = new FornecedorDAO().pesquisarTopGeral();
 
-		this.topGeral = this.fornecedorDAO.pesquisarTopGeral();
-
-		this.comentarioModel = this.comentarioDAO.obterIndicacao();
+		this.comentarioModel = new ComentarioDAO().obterIndicacao();
 
 		this.setarCssTopGeral();
 
@@ -116,20 +89,8 @@ public class IndexFaces extends TSMainFaces {
 		}
 	}
 
-	public PromocaoModel getPromocaoDia() {
-		return promocaoDia;
-	}
-
-	public void setPromocaoDia(PromocaoModel promocao) {
-		this.promocaoDia = promocao;
-	}
-
-	public PromocaoModel getPromocaoSemana() {
-		return promocaoSemana;
-	}
-
-	public void setPromocaoSemana(PromocaoModel promocaoSemana) {
-		this.promocaoSemana = promocaoSemana;
+	public List<PromocaoModel> pesquisarPromocoesHora(Long id) {
+		return new PromocaoDAO().pesquisarPromocoesHora(id);
 	}
 
 	public List<PromocaoModel> getPromocoesHora() {
@@ -148,46 +109,6 @@ public class IndexFaces extends TSMainFaces {
 		this.topGeral = topGeral;
 	}
 
-	public CarroChefeModel getCarroChefeModel() {
-		return carroChefeModel;
-	}
-
-	public void setCarroChefeModel(CarroChefeModel carroChefeModel) {
-		this.carroChefeModel = carroChefeModel;
-	}
-
-	public PromocaoDAO getPromocaoDAO() {
-		return promocaoDAO;
-	}
-
-	public void setPromocaoDAO(PromocaoDAO promocaoDAO) {
-		this.promocaoDAO = promocaoDAO;
-	}
-
-	public FornecedorDAO getFornecedorDAO() {
-		return fornecedorDAO;
-	}
-
-	public void setFornecedorDAO(FornecedorDAO fornecedorDAO) {
-		this.fornecedorDAO = fornecedorDAO;
-	}
-
-	public CarroChefeDAO getCarroChefeDAO() {
-		return carroChefeDAO;
-	}
-
-	public void setCarroChefeDAO(CarroChefeDAO carroChefeDAO) {
-		this.carroChefeDAO = carroChefeDAO;
-	}
-
-	public PromocaoModel getPromocaoHora() {
-		return promocaoHora;
-	}
-
-	public void setPromocaoHora(PromocaoModel promocaoHora) {
-		this.promocaoHora = promocaoHora;
-	}
-
 	public ComentarioModel getComentarioModel() {
 		return comentarioModel;
 	}
@@ -196,12 +117,12 @@ public class IndexFaces extends TSMainFaces {
 		this.comentarioModel = comentarioModel;
 	}
 
-	public ComentarioDAO getComentarioDAO() {
-		return comentarioDAO;
+	public PromocaoModel getPromocaoHora() {
+		return promocaoHora;
 	}
 
-	public void setComentarioDAO(ComentarioDAO comentarioDAO) {
-		this.comentarioDAO = comentarioDAO;
+	public void setPromocaoHora(PromocaoModel promocaoHora) {
+		this.promocaoHora = promocaoHora;
 	}
 
 }
