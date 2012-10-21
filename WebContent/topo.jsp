@@ -1,6 +1,60 @@
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
+<script type="text/javascript">
+	$(document).ready(function(e) {
+		$('.linkLogin').click(function(){
+			$('.formLogin').slideToggle().animate({opacity:1})
+		})
+		$('.linkCadastro,.close').click(function(){
+			$('#mascara').slideToggle();
+		})
+        });
+</script>
+
+
+<script type="text/javascript">
+$(document).ready( function() {
+	$("#signup").validate({
+		// Define as regras
+		rules:{
+			nome:{
+				// campoNome será obrigatório (required) e terá tamanho mínimo (minLength)
+				required: true
+			},
+			email:{
+				// campoEmail será obrigatório (required) e precisará ser um e-mail válido (email)
+				required: true, email: true
+
+			},
+			senha:{
+				// campoMensagem será obrigatório (required) e terá tamanho mínimo (minLength)
+				required: true, minlength: 6
+			}
+		},
+		// Define as mensagens de erro para cada regra
+		messages:{
+			nome:{
+				required: "Nome: Obrigatório",
+
+			},
+			email:{
+				required: "E-mail: Obrigatório",
+				email: "E-mail inválido"
+
+			},
+
+			senha:{
+				required: "Senha: Obrigatório",
+				minlength: "Sua senha deve ter no mínimo, 6 caracteres"
+			}
+		},
+
+	});
+});
+</script>
+
 <div id="topo">
 	<!-- COMECA BUSCA -->
 	<div class="barraBusca">
@@ -55,9 +109,9 @@
 					  </div>
 					  
 					  <div align="center">
-					  <h:outputLink value="logout.jsf" rendered="#{!empty sessionScope.usuarioLogado.id and sessionScope.loginAplicacao}">
-					  	<h:graphicImage value="img/botao_sair.png"/>
-					  </h:outputLink>
+						  <h:outputLink styleClass="logout" value="logout.jsf" rendered="#{!empty sessionScope.usuarioLogado.id and sessionScope.loginAplicacao}">
+						  	Logout (sair)
+						  </h:outputLink>
 					  </div>
 					  
                     </div>
@@ -108,4 +162,79 @@
                </ul>
             </nav>
         </div>
+</div>
+
+
+<div id="id-Breadcrumb">
+<div class="formLogin">
+    	<h:form prependId="false" id="form1">
+    	<div class="inputs">
+        	Preencha os dados ao lado para acessar: 
+        	<h:inputText title="E-mail" id="emailLogin" value="#{loginFaces.usuarioModel.email}" required="false" requiredMessage="Email: Obrigatório" tabindex="1" maxlength="100"/>
+            <h:inputSecret required="false" id="senhaLogin" maxlength="100" value="#{loginFaces.usuarioModel.senha}" requiredMessage="Senha: Obrigatório" redisplay="true"/>
+			<h:commandButton styleClass="submit" action="#{loginFaces.autenticar}" id="submit2" value="ACESSAR"></h:commandButton>
+			<script type="text/javascript">
+	             		$('#emailLogin').attr('placeholder','E-mail').attr('autofocus','');
+	             		$('#senhaLogin').attr('placeholder','Senha');
+
+	        </script>
+        </div>
+        </h:form>
+</div>
+
+<c:if test="${!empty sessionScope.usuarioLogado.id}">
+<span id="status">Olá, ${sessionScope.usuarioLogado.nome}</span>, temos ótimas promoções pra você!
+</c:if> 
+
+</div>
+
+<div align="center">
+	<h:messages errorClass="erros msg erro" infoClass="infos msg ok" fatalClass="erros msg erro" showDetail="true"/>
+</div>
+
+<div id="mascara">    
+	
+	<div class="container">
+	
+		<a href="#" class="close" rel="modalclose"><img src="img/btnFechar.png" alt="Botão Fechar" class="btnFechar"></a>
+
+		<h:form id="signup" enctype="multipart/form-data" prependId="false">
+    
+	        <div class="header">
+	        
+	            <h3>Cadastro</h3>
+	            
+	            <p>Preencha os dados abaixo para cadastro</p>
+	            
+	        </div>
+        
+        	<div class="sep"></div>
+
+        	<div class="inputs">
+
+				<h:inputText required="false" id="nome" maxlength="100" value="#{cadastroFaces.usuarioModel.nome}"/>
+
+				<h:inputText required="false" id="email" maxlength="100" value="#{cadastroFaces.usuarioModel.email}"/>
+
+				<h:inputSecret required="false" id="senha" maxlength="100" value="#{cadastroFaces.usuarioModel.senha}" redisplay="true"/>
+
+	             <script type="text/javascript">
+	             		$('#nome').attr('placeholder','Nome').attr('autofocus','');
+	             		$('#email').attr('placeholder','E-mail');
+	             		$('#senha').attr('placeholder','Senha');
+
+	            </script>
+
+        	</div>
+
+        	<div class="inputs">
+        	
+        		<h:commandButton styleClass="submit" id="submit" value="CADASTRAR" action="#{cadastroFaces.insertEvent}"/>
+            
+        	</div>
+
+    	</h:form>
+
+	</div>
+	
 </div>

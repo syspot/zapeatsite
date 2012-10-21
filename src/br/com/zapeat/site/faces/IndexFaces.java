@@ -42,12 +42,17 @@ public class IndexFaces extends TSMainFaces {
 	private void carregaDados() {
 		
 		PromocaoDAO promocaoDAO = new PromocaoDAO();
+		
 		this.promocaoHora = promocaoDAO.obterPromocaoHora();
 
 		if (!TSUtil.isEmpty(this.promocaoHora) && !TSUtil.isEmpty(this.promocaoHora.getId())) {
 			
 			this.promocoesHora = promocaoDAO.pesquisarPromocoesHora(this.promocaoHora);
 				
+		} else{
+			
+			
+			
 		}
 
 		this.topGeral = new FornecedorDAO().pesquisarTopGeral();
