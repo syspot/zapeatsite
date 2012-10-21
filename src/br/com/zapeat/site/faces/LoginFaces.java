@@ -75,8 +75,6 @@ public class LoginFaces extends TSMainFaces {
 
 				TSFacesUtil.addObjectInSession(Constantes.LOGIN_APLICACAO, true);
 
-				return Constantes.INDEX;
-
 			} else {
 
 				TSFacesUtil.addErrorMessage("Dados inválidos.");
