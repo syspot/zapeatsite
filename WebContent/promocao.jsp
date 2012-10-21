@@ -14,11 +14,11 @@
 
 <body onload="initialize()">
 
-
 	<!-- COMECA TOPO -->
 	<%@ include file="/topo.jsp" %>
 
 <div id="id-Breadcrumb">
+
     <span class="migalha"><a href="index.jsf" title="">Página Inicial</a></span>    »
     
     <c:choose>
@@ -64,7 +64,7 @@
 			                <div><span class="icons telAzul"></span>${promocaoFaces.promocao.fornecedorModel.telefone}</div>
 		                </a>
 		            </div>
-		            <c:if test="${!empty promocaoFaces.promocao.imagensPromocoes}">
+		            <c:if test="${not empty promocaoFaces.promocao.imagensPromocoes}">
 			            <div class="boxSubCat ftoLocal">
 			            	<h2>Fotos da promoção</h2>
 			            	<c:forEach items="${promocaoFaces.promocao.imagensPromocoes}" var="item">
@@ -86,7 +86,7 @@
 			                <div><span class="icons telAzul"></span>${promocaoFaces.carroChefe.fornecedorModel.telefone}</div>
 		                </a>
 		            </div>
-		             <c:if test="${!empty promocaoFaces.carroChefe.imagensCarroChefe}">
+		             <c:if test="${not empty promocaoFaces.carroChefe.imagensCarroChefe}">
 			            <div class="boxSubCat ftoLocal">
 			            	<h2>Fotos do Carro-Chefe</h2>
 			            	<c:forEach items="${promocaoFaces.carroChefe.imagensCarroChefe}" var="item">
