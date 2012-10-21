@@ -112,3 +112,15 @@ ul#listagem:hover li:not(:hover) {
 #paginacao .pagina:hover{background:#efefef;}
 
 #colunaMapa{position:relative; width:350px; float:right;}
+
+ul#listagemCat li{ border-bottom:1px solid #ccc; overflow:hidden;margin-bottom:20px;}
+
+#listagemCat .boxInfoCat ul{ margin:10px 0px; background:#ebf5ff; border:1px solid #CCCCEB; /*width:567px;*/ height:20px; padding:10px; color:#0066CC; font-family:'titilliumtext22l_ltmedium'; font-size:12px; line-height:20px; clear:both;}
+
+#listagemCat .boxInfoCat ul li{float:left; border:none!important; margin:0px 15px;}
+
+#listagemCat .boxInfoCat p.titulo{color: #0066CC; font-family: 'titilliumtext22l_rgbold'; font-size: 15px; line-height: 18px;}
+
+#listagemCat .boxInfoCat a,
+
+#listagemCat .boxInfoCat a:visited{color: #0066CC;    font-family: 'titilliumtext22l_ltmedium';    font-size: 12px;    line-height: 20px;}

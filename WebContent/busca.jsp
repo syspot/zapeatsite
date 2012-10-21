@@ -278,20 +278,11 @@
                				</c:otherwise>
                			</c:choose>
 						
-           			</c:if>
-                
-                	<c:if test="${buscaFaces.qtdPaginas > 1}">
-                	
 	               		<c:forEach begin="1" end="${buscaFaces.qtdPaginas}" var="pagina">
 		                    <li class="pagina"><a href="busca.jsf?page=${pagina}" title="">${pagina}</a></li>
 		                </c:forEach>
 	                
-	                </c:if>
-	                
-					<c:if test="${buscaFaces.qtdPaginas > 1}">
-						
 						<c:choose>
-							
 							<c:when test="${not empty buscaFaces.page}">
 								<c:choose>
 			          				<c:when test="${buscaFaces.page != buscaFaces.qtdPaginas}">
@@ -302,13 +293,10 @@
 			          				</c:otherwise>
 	          					</c:choose>
 							</c:when>
-							
 							<c:otherwise>
 								<li class="fim"><a href="busca.jsf?page=${buscaFaces.page + 1}" title=""><span class="icons pagFim"></span></a></li>
 							</c:otherwise>
-							
 						</c:choose>
-						
            			
            			</c:if>
            			

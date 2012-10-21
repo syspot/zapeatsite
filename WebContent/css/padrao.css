@@ -307,3 +307,5 @@ span#time b{background:#F30; color:#fff; padding:0px 5px; font-size:15px;font-fa
 
 #menu nav #cadastro a.logout{ background:url(../img/sair.png) no-repeat left center; padding-left:25px; display:block; height:25px; margin-top:5px; line-height:25px; color: #993D00; font-family: 'titilliumtext22l_ltmedium'; font-size: 12px; text-transform: uppercase;}
 #menu nav #cadastro a.logout:hover{color:#cc0000;}
+
+#conteudo #contCategoria	 { float:left; width:790px; margin-right:20px;}
