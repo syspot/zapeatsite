@@ -40,7 +40,7 @@
         <!-- COMECA COLUNA MEIO -->
         <div id="meio">
         
-        	
+        	<%@ include file="/include_destaque_promocao.jsp" %>
         
         </div>
         
@@ -86,50 +86,41 @@
     <!-- TERMINA CONTEUDO -->
 </div>
 <!-- TERMINA CENTRAL -->
-<!-- COMECA RODAPE -->
+
+	<!-- COMECA RODAPE -->
 	<%@ include file="/rodape.jsp" %>
-<!-- TERMINA RODAPE -->
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-</script>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="http://pluginjquery.com.br/labs/countdown1.3/script/jquery.jcountdown1.3.js" type="text/javascript"></script>
-<script src="js/jquery.countdown-pt-BR.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-$(document).ready(function() {
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="http://pluginjquery.com.br/labs/countdown1.3/script/jquery.jcountdown1.3.js" type="text/javascript"></script>
+	<script src="js/jquery.countdown-pt-BR.js" type="text/javascript"></script>
 	
-	$("#tempo").countdown({
-		date: "${indexFaces.promocaoHora.dataFormatada}", //Counting TO a date
-		htmlTemplate: "%{h} <span class=\"time\">:</span> %{m} <span class=\"time\">:</span> %{s} <span class=\"time\"></span>",
+	<script type="text/javascript">
+		$(document).ready(function() {
+			
+			$("#tempo").countdown({
+				date: "${indexFaces.promocaoHora.dataFormatada}", //Counting TO a date
+				htmlTemplate: "%{h} <span class='time'>:</span> %{m} <span class='time'>:</span> %{s} <span class='time'></span>",
+				
+				onChange: function( event, timer ){
 		
-		onChange: function( event, timer ){
-
-		},
-		onComplete: function( event ){
-
-			$(this).html("Finalizado");
-		},
-		onPause: function( event, timer ){
-
-			$(this).html("Pause");
-		},
-		onResume: function( event ){
-
-			$(this).html("Resumed");
-		},
-		leadingZero: true
-	});
-
-});
-</script>
+				},
+				onComplete: function( event ){
+		
+					$(this).html("Finalizado");
+				},
+				onPause: function( event, timer ){
+		
+					$(this).html("Pause");
+				},
+				onResume: function( event ){
+		
+					$(this).html("Resumed");
+				},
+				leadingZero: true
+			});
+		
+		});
+	</script>
 </body>
 
 </html>

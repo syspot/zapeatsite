@@ -6,6 +6,8 @@ import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.faces.TSMainFaces;
 import br.com.zapeat.site.dao.CarroChefeDAO;
 import br.com.zapeat.site.dao.FormaPagamentoDAO;
+import br.com.zapeat.site.dao.ImagemCarroChefeDAO;
+import br.com.zapeat.site.dao.ImagemPromocaoDAO;
 import br.com.zapeat.site.dao.PromocaoDAO;
 import br.com.zapeat.site.model.CarroChefeModel;
 import br.com.zapeat.site.model.PromocaoModel;
@@ -62,6 +64,7 @@ public class PromocaoFaces extends TSMainFaces {
 		
 		if(!TSUtil.isEmpty(this.promocao)){
 			this.promocao.getFornecedorModel().setFormasPagamentos(new FormaPagamentoDAO().pesquisar(this.promocao.getFornecedorModel()));
+			this.promocao.setImagensPromocoes(new ImagemPromocaoDAO().pesquisar(this.promocao));
 		}
 		
 	}
@@ -74,6 +77,7 @@ public class PromocaoFaces extends TSMainFaces {
 		
 		if(!TSUtil.isEmpty(this.carroChefe)){
 			this.carroChefe.getFornecedorModel().setFormasPagamentos(new FormaPagamentoDAO().pesquisar(this.carroChefe.getFornecedorModel()));
+			this.carroChefe.setImagensCarroChefe(new ImagemCarroChefeDAO().pesquisar(this.carroChefe));
 		}
 		
 	}

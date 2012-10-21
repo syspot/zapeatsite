@@ -52,8 +52,6 @@ public class EstabelecimentoFaces extends TSMainFaces {
 				
 				this.fornecedorModel.setFormasPagamentos(new FormaPagamentoDAO().pesquisar(this.fornecedorModel));
 
-				this.setarCssFotos();
-
 			} else {
 
 				this.redirect();
@@ -64,30 +62,6 @@ public class EstabelecimentoFaces extends TSMainFaces {
 			this.redirect();
 		}
 
-	}
-
-	private void setarCssFotos() {
-
-		int count = 1;
-
-		for (ImagemFornecedorModel item : this.fotosEstabelecimento) {
-
-			if (count == 1) {
-
-				item.setCss("ftoGrande");
-
-			} else if (count == 2) {
-
-				item.setCss("ftoPeq floatLeft");
-
-			} else if (count == 3) {
-
-				item.setCss("ftoPeq floatRight");
-
-			}
-
-			count++;
-		}
 	}
 
 	private void redirect() {

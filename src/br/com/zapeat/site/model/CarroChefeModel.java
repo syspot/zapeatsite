@@ -1,6 +1,7 @@
 package br.com.zapeat.site.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import br.com.topsys.util.TSUtil;
 import br.com.zapeat.site.util.Constantes;
@@ -21,6 +22,8 @@ public class CarroChefeModel implements Serializable {
 	private String imagem;
 	
 	private Integer numeroUnico;
+	
+	private List<ImagemCarroChefeModel> imagensCarroChefe;
 
 	public CarroChefeModel() {
 
@@ -93,6 +96,14 @@ public class CarroChefeModel implements Serializable {
 
 	public void setNumeroUnico(Integer numeroUnico) {
 		this.numeroUnico = numeroUnico;
+	}
+
+	public List<ImagemCarroChefeModel> getImagensCarroChefe() {
+		return imagensCarroChefe;
+	}
+
+	public void setImagensCarroChefe(List<ImagemCarroChefeModel> imagensCarroChefe) {
+		this.imagensCarroChefe = imagensCarroChefe;
 	}
 
 	@Override

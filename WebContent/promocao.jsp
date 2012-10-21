@@ -42,7 +42,6 @@
     
     </c:choose>
     
-    
 </div>
 
 <!-- COMECA CENTRAL -->
@@ -54,9 +53,7 @@
     	<div id="esqInt">
     	
     		<c:choose>
-    		
     			<c:when test="${promocaoFaces.tipoPromocao}">
-    			
     				<div id="boxSobreEstab">
 		        		<a href="estabelecimento.jsf?id=${promocaoFaces.promocao.fornecedorModel.id}">
 			            	<div class="marca"><img src="${promocaoFaces.promocao.fornecedorModel.logoMarcaView}" width="117" height="117" alt="${promocaoFaces.promocao.fornecedorModel.nomeFantasia}" title="${promocaoFaces.promocao.fornecedorModel.nomeFantasia}" /></div>
@@ -67,11 +64,18 @@
 			                <div><span class="icons telAzul"></span>${promocaoFaces.promocao.fornecedorModel.telefone}</div>
 		                </a>
 		            </div>
-	            
+		            <c:if test="${!empty promocaoFaces.promocao.imagensPromocoes}">
+			            <div class="boxSubCat ftoLocal">
+			            	<h2>Fotos da promoção</h2>
+			            	<c:forEach items="${promocaoFaces.promocao.imagensPromocoes}" var="item">
+				            	<span class="floatLeft">
+				            		<img src="${item.imagemThumbView}" alt="" title="" />
+				            	</span>
+			            	</c:forEach>
+			            </div>
+		            </c:if>
     			</c:when>
-    			
     			<c:otherwise>
-    			
     				<div id="boxSobreEstab">
 		        		<a href="estabelecimento.jsf?id=${promocaoFaces.carroChefe.fornecedorModel.id}">
 			            	<div class="marca"><img src="${promocaoFaces.carroChefe.fornecedorModel.logoMarcaView}" width="117" height="117" alt="${promocaoFaces.carroChefe.fornecedorModel.nomeFantasia}" title="${promocaoFaces.carroChefe.fornecedorModel.nomeFantasia}" /></div>
@@ -82,11 +86,18 @@
 			                <div><span class="icons telAzul"></span>${promocaoFaces.carroChefe.fornecedorModel.telefone}</div>
 		                </a>
 		            </div>
-    			
+		             <c:if test="${!empty promocaoFaces.carroChefe.imagensCarroChefe}">
+			            <div class="boxSubCat ftoLocal">
+			            	<h2>Fotos do Carro-Chefe</h2>
+			            	<c:forEach items="${promocaoFaces.carroChefe.imagensCarroChefe}" var="item">
+				            	<span class="floatLeft">
+				            		<img src="${item.imagemThumbView}" alt="" title="" />
+				            	</span>
+			            	</c:forEach>
+			            </div>
+		            </c:if>
     			</c:otherwise>
-    		
     		</c:choose>
-    		
         </div>
 
         
@@ -254,18 +265,10 @@
     </div>
     <!-- TERMINA CONTEUDO -->
 </div>
-<!-- TERMINA CENTRAL -->
+
+	<!-- TERMINA CENTRAL -->
 	<%@ include file="/rodape.jsp" %>
-<!-- TERMINA RODAPE -->
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-</script>
+
 </body>
 </html>
 </f:view>
