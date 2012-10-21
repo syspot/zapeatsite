@@ -287,60 +287,12 @@
         
         <!-- COMECA COLUNA DIREITA -->
         <div id="dir">
-        	<c:if test="${not empty indexFaces.promocaoDia.id}">
-        	<div class="boxSubCat">
-            	<h2>Promoção do dia</h2>
-            	<a href="promocao.jsf?id=${indexFaces.promocaoDia.id}" title="">
-                    <img src="${indexFaces.promocaoDia.imagemPromocaoThumbView}" alt="" title="" />
-                    <p class="titulo">${indexFaces.promocaoDia.fornecedorModel.nomeFantasia}</p>
-                    <p class="item">
-                    ${indexFaces.promocaoDia.descricao}</p>
-                    <!-- SE PROMOÇÃO EM DESCONTO -->
-                    <p><span class="precoDe">
-                    De: <h:outputText value="#{indexFaces.promocaoDia.precoOriginal}">
-                    		<f:convertNumber type="currency" currencySymbol="R$"/>
-                    	</h:outputText></span>&nbsp;&nbsp;
-                    	<span class="precoPor">
-                    Por: 
-                    	<h:outputText value="#{indexFaces.promocaoDia.precoPromocional}">
-                    		<f:convertNumber type="currency" currencySymbol="R$"/>
-                    	</h:outputText></span>
-                    	<p><span class="fontYi">${indexFaces.promocaoDia.descricao}</span></p>
-                </a>
-            </div>
-            </c:if>
+        
+        	<%@ include file="/include_promocao_do_dia_lateral.jsp" %>
             
-        	<c:if test="${not empty indexFaces.promocaoSemana.id}">
-        	<div class="boxSubCat">
-            	<h2>Promoção da semana</h2>
-                <a href="promocao.jsf?id=${indexFaces.promocaoSemana.id}" title="">
-                	<img src="${indexFaces.promocaoSemana.imagemPromocaoThumbView}" alt="" title="" />
-                    <p class="titulo">${indexFaces.promocaoSemana.fornecedorModel.nomeFantasia}</p>
-                    <p><span class="precoDe">
-                    De: <h:outputText value="#{indexFaces.promocaoSemana.precoOriginal}">
-                    		<f:convertNumber type="currency" currencySymbol="R$"/>
-                    	</h:outputText></span>&nbsp;&nbsp;
-                    	<span class="precoPor">
-                    Por: 
-                    	<h:outputText value="#{indexFaces.promocaoSemana.precoPromocional}">
-                    		<f:convertNumber type="currency" currencySymbol="R$"/>
-                    	</h:outputText></span>
-                    	
-                    	<p><span class="fontYi">${indexFaces.promocaoSemana.descricao}</span></p>
-                  </a>   
-            </div>
-            </c:if>
+        	<%@ include file="/include_promocao_da_semana_lateral.jsp" %>
             
-            <c:if test="${not empty indexFaces.carroChefeModel.id}">
-            <div class="boxSubCat">
-            	<h2>Carro-chefe</h2>
-                <a href="promocao.jsf?carroChefeId=${indexFaces.carroChefeModel.id}" title="">
-                	<img src="${indexFaces.carroChefeModel.imagemThumbView}" alt="" title="" /></a>
-                <p class="titulo">${indexFaces.carroChefeModel.fornecedorModel.nomeFantasia}</p>
-                <p><span class="item">${indexFaces.carroChefeModel.descricao}</span></p>
-                </a>
-            </div>
-            </c:if>
+            <%@ include file="/include_carro_chefe_lateral.jsp" %>
             
            	<%@ include file="/include_banner_lateral.jsp" %>
             

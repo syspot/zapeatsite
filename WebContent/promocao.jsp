@@ -440,49 +440,17 @@
 	                <div class="fb-comments" data-href="http://example.com" data-num-posts="5" data-width="600"></div>
                 </div>
             </div>
-            
-        
         
         <!-- COMECA COLUNA DIREITA -->
         <div id="dir">
-        	<c:if test="${not empty promocaoFaces.promocaoDia.id}">
-	        	<div class="boxSubCat">
-	        		<a href="promocao.jsf?id=${promocaoFaces.promocaoDia.id}">
-		            	<h2>Promoção do dia</h2>
-		                <img src="${promocaoFaces.promocaoDia.imagemPromocaoThumbView}" alt="" title="" />
-		                <p class="titulo">${promocaoFaces.promocaoDia.titulo}</p>
-		                <!-- SE PROMOÇÃO EM DESCONTO -->
-		                <p><span class="precoDe">De: R$ ${promocaoFaces.promocaoDia.precoOriginalFormatado}</span>&nbsp;&nbsp;<span class="precoPor">Por: R$ ${promocaoFaces.promocaoDia.precoPromocionalFormatado}</span>
-	                </a> 
-	            </div>
-            </c:if>
-            <c:if test="${not empty promocaoFaces.promocaoSemana.id}">
-	        	<div class="boxSubCat">
-	        		<a href="promocao.jsf?id=${promocaoFaces.promocaoSemana.id}">
-		            	<h2>Promoção da semana</h2>
-		                <img src="${promocaoFaces.promocaoSemana.imagemPromocaoThumbView}" alt="" title="" />
-		                <p class="titulo">${promocaoFaces.promocaoSemana.titulo}</p>
-		                <!-- SE PROMOÇÃO EM PRODUTO -->
-		                <p><span class="fontYi">${promocaoFaces.promocaoSemana.descricao}</span></p>
-	                </a>
-	            </div>
-            </c:if>
-            <c:if test="${not empty promocaoFaces.carroChefeModel.id}">
-	            <div class="boxSubCat">
-	            	<a href="promocao.jsf?carroChefeId=${promocaoFaces.carroChefeModel.id}">
-		            	<h2>Carro-chefe</h2>
-		                <img src="${promocaoFaces.carroChefeModel.imagemThumbView}" alt="" title="" />
-		                <p class="titulo">${promocaoFaces.carroChefeModel.fornecedorModel.nomeFantasia}</p>
-		                <p class="categoria">${promocaoFaces.carroChefeModel.fornecedorModel.categoriaPrincipal.descricao}</p>
-		                <p class="item">${promocaoFaces.carroChefeModel.titulo}</p>
-		                <!-- <p><span class="precoDe">De: R$789,00</span>&nbsp;&nbsp;<span class="precoPor">Por: R$254,00</span>  -->
-	                </a> 
-	            </div>
-            </c:if>
+        	
+			<%@ include file="/include_promocao_do_dia_lateral.jsp" %>
+            
+			<%@ include file="/include_promocao_da_semana_lateral.jsp" %>
+			
+            <%@ include file="/include_carro_chefe_lateral.jsp" %>
 
            	<%@ include file="/include_banner_lateral.jsp" %>
-            
-            
             
         </div>
     </div>

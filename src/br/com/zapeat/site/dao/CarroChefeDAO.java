@@ -106,5 +106,15 @@ public class CarroChefeDAO {
 		return (CarroChefeModel) broker.getObjectBean(CarroChefeModel.class, "id", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.logoMarca", "fornecedorModel.horariosFuncionamento", "fornecedorModel.logradouro", "fornecedorModel.numero", "fornecedorModel.bairro", "fornecedorModel.telefone", "fornecedorModel.categoriaPrincipal.id", "fornecedorModel.categoriaPrincipal.descricao", "fornecedorModel.categoriaPrincipal.imagem", "imagem", "descricao", "titulo", "fornecedorModel.longitude", "fornecedorModel.latitude");
 
 	}
+	
+	public CarroChefeModel obterCarroChefeAleatorio() {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+		broker.setPropertySQL("carrochefedao.obtercarrochefealeatorio");
+
+		return (CarroChefeModel) broker.getObjectBean(CarroChefeModel.class, "id", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "descricao", "flagAtivo", "titulo", "imagem");
+
+	}
 
 }
