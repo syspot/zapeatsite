@@ -336,7 +336,7 @@
            			
            				<c:choose>
                				<c:when test="${not empty buscaFaces.page and buscaFaces.page != 1}">
-               					<li class="inicio"><a href="listagem.jsf?page=${listagemFaces.page - 1}" title=""><span class="icons pagInicio"></span></a></li>
+               					<li class="inicio"><a href="listagem.jsf?categoriaId=${listagemFaces.categoria.id}&tipo=${listagemFaces.tipo}&page=${listagemFaces.page - 1}" title=""><span class="icons pagInicio"></span></a></li>
                				</c:when>
                				<c:otherwise>
                					<li class="inicio"><span class="icons pagInicio"></span></li>
@@ -344,27 +344,17 @@
                			</c:choose>
                			
 	               		<c:forEach begin="1" end="${listagemFaces.qtdPaginas}" var="pagina">
-		                    <li class="pagina"><a href="listagem.jsf?page=${pagina}" title="">${pagina}</a></li>
+		                    <li class="pagina"><a href="listagem.jsf?categoriaId=${listagemFaces.categoria.id}&tipo=${listagemFaces.tipo}&page=${pagina}" title="">${pagina}</a></li>
 		                </c:forEach>
 	                
-	           			<c:choose>
-								
-							<c:when test="${not empty listagemFaces.page}">
-								<c:choose>
-			          				<c:when test="${listagemFaces.page != listagemFaces.qtdPaginas}">
-			          					<li class="fim"><a href="listagem.jsf?page=${listagemFaces.page + 1}" title=""><span class="icons pagFim"></span></a></li>
-			          				</c:when>
-			          				<c:otherwise>
-			          					<li class="inicio"><span class="icons pagFim"></span></li>
-			          				</c:otherwise>
-	          					</c:choose>
-							</c:when>
-							
-							<c:otherwise>
-								<li class="fim"><a href="listagem.jsf?page=${listagemFaces.page + 1}" title=""><span class="icons pagFim"></span></a></li>
-							</c:otherwise>
-							
-						</c:choose>
+						<c:choose>
+	          				<c:when test="${listagemFaces.page != listagemFaces.qtdPaginas}">
+	          					<li class="fim"><a href="listagem.jsf?categoriaId=${listagemFaces.categoria.id}&tipo=${listagemFaces.tipo}&page=${listagemFaces.page + 1}" title=""><span class="icons pagFim"></span></a></li>
+	          				</c:when>
+	          				<c:otherwise>
+	          					<li class="inicio"><span class="icons pagFim"></span></li>
+	          				</c:otherwise>
+       					</c:choose>
 						
 	                </c:if>
 	                

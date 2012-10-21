@@ -234,7 +234,7 @@
             </div>
             
             <ul id="listagemCat">
-                    	
+
 				<c:forEach items="${listagemCategoriaFaces.outrasCategorias}" var="categoria">
 
 					<li>
@@ -272,26 +272,17 @@
 		                    <li class="pagina"><a href="outrasCat.jsf?page=${pagina}" title="">${pagina}</a></li>
 		                </c:forEach>
 	                
-	           			<c:choose>
-								
-							<c:when test="${not empty listagemCategoriaFaces.page}">
-								<c:choose>
-			          				<c:when test="${listagemCategoriaFaces.page != listagemCategoriaFaces.qtdPaginas}">
-			          					<li class="fim"><a href="outrasCat.jsf?page=${listagemCategoriaFaces.page + 1}" title=""><span class="icons pagFim"></span></a></li>
-			          				</c:when>
-			          				<c:otherwise>
-			          					<li class="inicio"><span class="icons pagFim"></span></li>
-			          				</c:otherwise>
-	          					</c:choose>
-							</c:when>
-							
-							<c:otherwise>
-								<li class="fim"><a href="outrasCat.jsf?page=${listagemFaces.page + 1}" title=""><span class="icons pagFim"></span></a></li>
-							</c:otherwise>
-							
-						</c:choose>
+						<c:choose>
+	          				<c:when test="${listagemCategoriaFaces.page != listagemCategoriaFaces.qtdPaginas}">
+	          					<li class="fim"><a href="outrasCat.jsf?page=${listagemCategoriaFaces.page + 1}" title=""><span class="icons pagFim"></span></a></li>
+	          				</c:when>
+	          				<c:otherwise>
+	          					<li class="inicio"><span class="icons pagFim"></span></li>
+	          				</c:otherwise>
+      					</c:choose>
 						
-	                </c:if>
+                </c:if>
+                
             </div>
 
         </div>

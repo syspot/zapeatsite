@@ -283,19 +283,12 @@
 		                </c:forEach>
 	                
 						<c:choose>
-							<c:when test="${not empty buscaFaces.page}">
-								<c:choose>
-			          				<c:when test="${buscaFaces.page != buscaFaces.qtdPaginas}">
-			          					<li class="fim"><a href="busca.jsf?page=${buscaFaces.page + 1}" title=""><span class="icons pagFim"></span></a></li>
-			          				</c:when>
-			          				<c:otherwise>
-			          					<li class="inicio"><span class="icons pagFim"></span></li>
-			          				</c:otherwise>
-	          					</c:choose>
-							</c:when>
-							<c:otherwise>
-								<li class="fim"><a href="busca.jsf?page=${buscaFaces.page + 1}" title=""><span class="icons pagFim"></span></a></li>
-							</c:otherwise>
+	          				<c:when test="${buscaFaces.page != buscaFaces.qtdPaginas}">
+	          					<li class="fim"><a href="busca.jsf?page=${buscaFaces.page + 1}" title=""><span class="icons pagFim"></span></a></li>
+	          				</c:when>
+	          				<c:otherwise>
+	          					<li class="inicio"><span class="icons pagFim"></span></li>
+	          				</c:otherwise>
 						</c:choose>
            			
            			</c:if>
