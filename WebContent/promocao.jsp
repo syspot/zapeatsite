@@ -479,9 +479,8 @@
 	                </a> 
 	            </div>
             </c:if>
-            <div class="boxSubCat">
-            	<%@ include file="/include_banner_lateral.jsp" %>
-            </div>
+
+           	<%@ include file="/include_banner_lateral.jsp" %>
             
             
             

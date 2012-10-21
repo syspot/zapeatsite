@@ -27,7 +27,7 @@ public class EstabelecimentoFaces extends TSMainFaces {
 	private FornecedorDAO fornecedorDAO;
 	private ImagemFornecedorDAO imagemFornecedorDAO;
 	private ComentarioDAO comentarioDAO;
-
+	
 	public EstabelecimentoFaces() {
 
 		this.carregaDados();
@@ -109,13 +109,9 @@ public class EstabelecimentoFaces extends TSMainFaces {
 		this.comentarioDAO = new ComentarioDAO();
 
 	}
-
-	public FornecedorDAO getFornecedorDAO() {
-		return fornecedorDAO;
-	}
-
-	public void setFornecedorDAO(FornecedorDAO fornecedorDAO) {
-		this.fornecedorDAO = fornecedorDAO;
+	
+	public List<FornecedorModel> obterEstabelecimentosLateral(){
+		return new FornecedorDAO().pesquisarHome();
 	}
 
 	public List<ImagemFornecedorModel> getFotosEstabelecimento() {
@@ -126,28 +122,12 @@ public class EstabelecimentoFaces extends TSMainFaces {
 		this.fotosEstabelecimento = fotosEstabelecimento;
 	}
 
-	public ImagemFornecedorDAO getImagemFornecedorDAO() {
-		return imagemFornecedorDAO;
-	}
-
-	public void setImagemFornecedorDAO(ImagemFornecedorDAO imagemFornecedorDAO) {
-		this.imagemFornecedorDAO = imagemFornecedorDAO;
-	}
-
 	public FornecedorModel getFornecedorModel() {
 		return fornecedorModel;
 	}
 
 	public void setFornecedorModel(FornecedorModel fornecedorModel) {
 		this.fornecedorModel = fornecedorModel;
-	}
-
-	public ComentarioDAO getComentarioDAO() {
-		return comentarioDAO;
-	}
-
-	public void setComentarioDAO(ComentarioDAO comentarioDAO) {
-		this.comentarioDAO = comentarioDAO;
 	}
 
 	public ComentarioModel getRanking() {

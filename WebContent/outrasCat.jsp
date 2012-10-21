@@ -299,18 +299,10 @@
         
         <!-- COMECA COLUNA DIREITA -->
         <div id="dir">
-        	<div class="boxSubCat">
-                <h2>Estabelecimentos</h2>
-                <div class="marca floatLeft"></div>
-                <div class="marca floatLeft"></div>
-                <div class="marca floatLeft"></div>
-                <div class="marca floatLeft"></div>
-                <div class="marca floatLeft"></div>
-                <div class="marca floatLeft"></div>
-            </div>
-        	<div class="boxSubCat">
-            	<div class="banner">banner</div>
-            </div>
+        	
+			<%@ include file="/include_estabelecimentos_lateral.jsp" %>
+			
+        	<%@ include file="/include_banner_lateral.jsp" %>
 
         </div>
         

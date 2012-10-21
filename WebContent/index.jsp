@@ -450,24 +450,9 @@ $(document).ready( function() {
             </div>
             </c:if>
             
-            <c:if test="${!empty indexFaces.bannerModel.imagem}">
-            <div class="boxSubCat">
-            	<%@ include file="/include_banner_lateral.jsp" %>
-            </div>
-            </c:if>
+           	<%@ include file="/include_banner_lateral.jsp" %>
             
-            <c:if test="${!empty indexFaces.estabelecimentos}">
-            <div class="boxSubCat">
-            	<h2>Estabelecimentos</h2>
-            	<c:forEach items="${indexFaces.estabelecimentos}" var="estabelecimento">
-                	<div class="marca floatLeft">
-                		<a href="estabelecimento.jsf?id=${estabelecimento.id}" title="${estabelecimento.nomeFantasia}">
-                			<img src="${estabelecimento.logoMarcaView}" alt="" title="${estabelecimento.nomeFantasia}" />
-                		</a>
-                	</div>
-                </c:forEach>
-            </div>
-            </c:if>
+            <%@ include file="/include_estabelecimentos_lateral.jsp" %>
             
             <c:if test="${!empty indexFaces.comentarioModel.id}">
             <div class="boxSubCat">

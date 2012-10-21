@@ -1,1 +1,7 @@
-<div class="banner"><img src="${bannerFaces.bannerLateral.imagemLateralView}" alt="" title="" /></div>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<c:if test="${not empty bannerFaces.bannerLateral}">
+	<div class="boxSubCat">
+		<div class="banner"><img src="${bannerFaces.bannerLateral.imagemLateralView}" alt="" title="" /></div>
+	</div>
+</c:if>

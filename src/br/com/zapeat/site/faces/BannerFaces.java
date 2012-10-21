@@ -9,33 +9,12 @@ import br.com.zapeat.site.model.BannerModel;
 @ManagedBean
 public class BannerFaces extends TSMainFaces {
 
-	private BannerModel bannerTopo;
-	private BannerModel bannerLateral;
-	
-	public BannerFaces() {
-		
-		BannerDAO bannerDAO = new BannerDAO();
-		
-		this.bannerLateral = bannerDAO.obterBannerLateral();
-		this.bannerTopo = bannerDAO.obterBannerTopo();
-		
-	}
-
 	public BannerModel getBannerTopo() {
-		return bannerTopo;
-	}
-
-	public void setBannerTopo(BannerModel bannerTopo) {
-		this.bannerTopo = bannerTopo;
+		return new BannerDAO().obterBannerTopo();
 	}
 
 	public BannerModel getBannerLateral() {
-		return bannerLateral;
+		return new BannerDAO().obterBannerLateral();
 	}
-
-	public void setBannerLateral(BannerModel bannerLateral) {
-		this.bannerLateral = bannerLateral;
-	}
-
 	
 }
