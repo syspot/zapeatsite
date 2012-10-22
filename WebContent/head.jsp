@@ -8,6 +8,8 @@
 
 <link href="css/interna.css" rel="stylesheet" type="text/css" />
 
+<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css?v=2.1.2" media="screen" />
+<script type="text/javascript" src="js/jquery.fancybox.pack.js?v=2.1.2"></script>
 
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"> </script>
 <script src="js/jquery-latest.js"></script>
@@ -119,3 +121,21 @@
 			alert(msg);
 		}
 </script> 
+
+<script type="text/javascript" src="js/jquery.fancybox.pack.js?v=2.1.2"></script>
+	<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css?v=2.1.2" media="screen" />
+<script type="text/javascript">
+$(document).ready(function() {
+$(".fotoEstab").fancybox({
+			padding: 0,
+			openEffect : 'elastic',
+			openSpeed  : 150,
+			closeEffect : 'elastic',
+			closeSpeed  : 150,
+			closeClick : true,
+			helpers : {
+				overlay : null
+			}
+		});
+})
+</script>

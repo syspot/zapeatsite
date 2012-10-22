@@ -13,7 +13,6 @@
 </head>
 
 <body>
-
 	<!-- COMECA TOPO -->
 	<%@ include file="/topo.jsp" %>
 
@@ -38,7 +37,9 @@
 	            	<h2>Fotos do ambiente</h2>
 	            	<c:forEach items="${estabelecimentoFaces.fotosEstabelecimento}" var="item">
 	            	<span class="floatLeft">
-	            		<img src="${item.imagemThumbView}" alt="" title="" />
+	            		<a class="fotoEstab" href="${item.imagemFullView}">
+	            			<img src="${item.imagemThumbView}" alt="" title=""/>
+	            		</a>
 	            	</span>
 	            	</c:forEach>
 	            </div>
