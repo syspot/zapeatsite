@@ -19,6 +19,16 @@ public class UsuarioDAO {
 		return (UsuarioModel) broker.getObjectBean(UsuarioModel.class, "id", "nome", "email", "senha", "flagAtivo", "imagem");
 
 	}
+	
+	public UsuarioModel getById(UsuarioModel model) {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+		broker.setPropertySQL("usuariodao.getById", model.getId());
+
+		return (UsuarioModel) broker.getObjectBean(UsuarioModel.class, "id", "nome", "email", "senha", "flagAtivo", "imagem");
+
+	}
 
 	public UsuarioModel inserir(UsuarioModel model) throws TSApplicationException {
 
@@ -28,7 +38,7 @@ public class UsuarioDAO {
 		
 		model.setToken(TSCryptoUtil.gerarHash(model.getId().toString() + model.getNome(), TSConstant.CRIPTOGRAFIA_MD5));
 
-		broker.setPropertySQL("usuariodao.inserir", model.getId(), model.getNome(), model.getEmail(), model.getSenha(), model.getFlagAtivo(), model.getImagem(), model.getToken());
+		broker.setPropertySQL("usuariodao.inserir", model.getId(), model.getNome(), model.getEmail().toLowerCase(), model.getSenha(), model.getFlagAtivo(), model.getImagem(), model.getToken(), model.getFlagFacebook());
 
 		broker.execute();
 
@@ -41,6 +51,16 @@ public class UsuarioDAO {
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
 		broker.setPropertySQL("usuariodao.alterar", model.getNome(), model.getId());
+
+		broker.execute();
+
+	}
+	
+	public void alterarStatus(UsuarioModel model) throws TSApplicationException {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+		broker.setPropertySQL("usuariodao.alterarStatus", model.getFlagAtivo(), model.getId());
 
 		broker.execute();
 

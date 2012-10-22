@@ -1,5 +1,12 @@
 package br.com.zapeat.site.faces;
 
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -16,6 +23,7 @@ import br.com.topsys.web.util.TSFacesUtil;
 import br.com.zapeat.site.dao.UsuarioDAO;
 import br.com.zapeat.site.model.UsuarioModel;
 import br.com.zapeat.site.util.Constantes;
+import br.com.zapeat.site.util.EnviarEmail;
 
 @ViewScoped
 @ManagedBean(name = "cadastroFaces")
@@ -38,7 +46,9 @@ public class CadastroFaces extends TSMainFaces {
 
 		this.setUsuarioModel(new UsuarioModel());
 
-		this.getUsuarioModel().setFlagAtivo(Boolean.TRUE);
+		this.getUsuarioModel().setFlagAtivo(Boolean.FALSE);
+		
+		this.getUsuarioModel().setFlagFacebook(Boolean.FALSE);
 
 		this.setExibirDivMessagem(false);
 	}
@@ -101,19 +111,13 @@ public class CadastroFaces extends TSMainFaces {
 
 				UsuarioModel model = this.usuarioDAO.inserir(this.usuarioModel);
 
-				super.setDefaultMessage(true);
-
 				model.setNome(TSStringUtil.formatarNomeProprio(model.getNome()));
-
-				TSFacesUtil.addObjectInSession(Constantes.USUARIO_LOGADO, model);
 				
-				TSFacesUtil.addObjectInSession(Constantes.LOGIN_APLICACAO, true);
+				this.enviarEmail(model);
 
 				this.initObjetos();
 
-				super.setDefaultMessage(true);
-
-				return Constantes.INDEX;
+				super.addInfoMessage("Para efetivar seu cadastro é necessário acessar o e-mail informado e clicar no link de confirmação.");
 
 			} else {
 
@@ -123,6 +127,51 @@ public class CadastroFaces extends TSMainFaces {
 		}
 
 		return null;
+	}
+	
+	private void enviarEmail(UsuarioModel model){
+		
+		StringBuilder corpo = new StringBuilder();
+		
+		String marca = Constantes.URL_APLICACAO + "img/marca.png";
+		
+		corpo.append("<img src="+ marca +"/>");
+		
+		corpo.append("<br><br><br>");
+
+		corpo.append("Olá " + model.getNome());
+
+		corpo.append("<br>");
+
+		corpo.append("Para confirmar seu cadastro no site ZAPEAT clique no link abaixo:");
+
+		corpo.append("<br><br>");
+
+		try {
+			
+			corpo.append(Constantes.URL_APLICACAO + "confirmacao.jsf?token="+ TSCryptoUtil.criptografar(model.getId().toString()) + "");
+			
+		} catch (InvalidKeyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchPaddingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (BadPaddingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalBlockSizeException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		EnviarEmail.enviar(Constantes.ZAPEAT_GMAIL, model.getEmail(), "Zapeat - Confirmação de Cadastro", corpo.toString());
 	}
 
 	private boolean existeEmail() {

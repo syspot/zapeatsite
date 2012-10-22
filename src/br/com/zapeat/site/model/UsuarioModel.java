@@ -18,6 +18,8 @@ public class UsuarioModel {
 	private String confirmaSenha;
 
 	private Boolean flagAtivo;
+	
+	private Boolean flagFacebook;
 
 	private String imagem;
 
@@ -103,6 +105,14 @@ public class UsuarioModel {
 
 	public void setToken(String token) {
 		this.token = token;
+	}
+
+	public Boolean getFlagFacebook() {
+		return flagFacebook;
+	}
+
+	public void setFlagFacebook(Boolean flagFacebook) {
+		this.flagFacebook = flagFacebook;
 	}
 
 }

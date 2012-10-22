@@ -5,6 +5,8 @@ import java.io.File;
 import br.com.topsys.web.util.TSFacesUtil;
 
 public final class Constantes {
+	
+	public static final String URL_APLICACAO = "http://" + TSFacesUtil.getRequest().getServerName() + ":"	+ TSFacesUtil.getRequest().getServerPort() + "/"+ TSFacesUtil.getRequest().getContextPath();
 
 	public static final String PASTA_UPLOAD_TEMP = "e:" + File.separator + "img_zapeat" + File.separator;
 	public static final String PASTA_UPLOAD = "e:" + File.separator + "img_zapeat" + File.separator;
@@ -41,6 +43,13 @@ public final class Constantes {
 	public static final String LOGIN_APLICACAO = "loginAplicacao";
 	public static final String INDEX = "index";
 	public static final String SEQUENCE_USUARIO_SITE = "usuarios_id_seq";
+	public static final String MIME_TYPE_TEXT = "text/plain";
+	public static final String MIME_TYPE_HTML = "text/html";
+	
+	public static final String SMTP_GMAIL = "smtp.gmail.com";
+	public static final String PORTAL_GMAIL = "465";
+	public static final String ZAPEAT_GMAIL = "zapeatx@gmail.com";
+	public static final String ZAPEAT_SENHA_GMAIL = "zapeat123";
 	
 	public static Long CATEGORIA_MAIS_INDICADOS = 7L;
 	public static Long CATEGORIA_OUTRAS_CATEGORIAS = 8L;
