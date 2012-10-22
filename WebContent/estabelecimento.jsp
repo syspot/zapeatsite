@@ -13,6 +13,9 @@
 </head>
 
 <body>
+
+
+
 	<!-- COMECA TOPO -->
 	<%@ include file="/topo.jsp" %>
 
@@ -36,7 +39,7 @@
 	            <div class="boxSubCat ftoLocal">
 	            	<h2>Fotos do ambiente</h2>
 	            	<c:forEach items="${estabelecimentoFaces.fotosEstabelecimento}" var="item">
-	            	<span class="floatLeft">
+	            	<span class="ftoGrande">
 	            		<a class="fotoEstab" href="${item.imagemFullView}">
 	            			<img src="${item.imagemThumbView}" alt="" title=""/>
 	            		</a>
@@ -163,6 +166,24 @@
 
 	<!-- TERMINA CENTRAL -->
 	<%@ include file="/rodape.jsp" %>
+	
+	<script type="text/javascript" src="js/jquery.fancybox.pack.js?v=2.1.2"></script>
+	<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css?v=2.1.2" media="screen" />
+<script type="text/javascript">
+$(document).ready(function() {
+$(".fotoEstab").fancybox({
+			padding: 0,
+			openEffect : 'elastic',
+			openSpeed  : 150,
+			closeEffect : 'elastic',
+			closeSpeed  : 150,
+			closeClick : true,
+			helpers : {
+				overlay : null
+			}
+		});
+})
+</script>
 
 </body>
 </html></f:view>

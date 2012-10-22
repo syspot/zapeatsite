@@ -103,7 +103,7 @@ public class RankingFaces extends TSMainFaces {
 
 						this.initComentario();
 
-						super.addInfoMessage("Voto computado com sucesso.");
+						super.addInfoMessage("Voto computado com sucesso!");
 
 					} catch (TSApplicationException e) {
 
@@ -112,7 +112,7 @@ public class RankingFaces extends TSMainFaces {
 
 				} else {
 
-					super.addErrorMessage(model.getNome() + ": O Sr(a) já indicou essa promoção");
+					super.addErrorMessage(model.getNome() + " você já indicou essa promoção!");
 				}
 
 			} else {
@@ -149,7 +149,7 @@ public class RankingFaces extends TSMainFaces {
 
 						this.initComentario();
 
-						super.addInfoMessage("Voto computado com sucesso.");
+						super.addInfoMessage("Voto computado com sucesso!");
 
 					} catch (TSApplicationException e) {
 
@@ -158,7 +158,7 @@ public class RankingFaces extends TSMainFaces {
 
 				} else {
 
-					super.addErrorMessage(model.getNome() + ": O Sr(a) já indicou essa promoção");
+					super.addErrorMessage(model.getNome() + ": você já indicou essa promoção!");
 				}
 
 			} else {
@@ -194,7 +194,7 @@ public class RankingFaces extends TSMainFaces {
 
 						this.initComentario();
 
-						super.addInfoMessage("Voto computado com sucesso.");
+						super.addInfoMessage("Voto computado com sucesso!");
 
 					} catch (TSApplicationException e) {
 
@@ -203,7 +203,7 @@ public class RankingFaces extends TSMainFaces {
 
 				} else {
 
-					super.addErrorMessage(model.getNome() + ": O Sr(a) já indicou essa promoção");
+					super.addErrorMessage(model.getNome() + ": O Sr(a) já indicou essa promoção!");
 				}
 
 			} else {
