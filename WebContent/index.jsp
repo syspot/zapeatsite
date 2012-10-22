@@ -65,21 +65,7 @@
             
             <%@ include file="/include_estabelecimentos_lateral.jsp" %>
             
-            <c:if test="${!empty indexFaces.comentarioModel.id}">
-            <div class="boxSubCat">
-            	<h2>Quem Indica</h2>
-                <span class="imgDestaque-peq posRel">
-                	<a href="estabelecimento.jsf?id=${indexFaces.comentarioModel.fornecedorModel.id}" title="">
-                        <img src="${indexFaces.comentarioModel.fornecedorModel.imagemThumbView}" alt="" title="" />
-                        <p class="tituloIndica">${indexFaces.comentarioModel.fornecedorModel.nomeFantasia}</p>
-                    </a>
-                </span>
-                <c:if test="${!empty indexFaces.comentarioModel.id}">
-                <p class="comment">${indexFaces.comentarioModel.descricao}</p>
-                </c:if>
-                <p class="autor">${indexFaces.comentarioModel.usuarioModel.nome}</p>
-            </div>
-            </c:if>
+            <%@ include file="/include_quem_indica_lateral.jsp" %>
             
         </div>
     </div>

@@ -58,16 +58,21 @@
         
         <div class="inputs">
         	
+        	<t:inputHidden id="categoriaId" forceId="true"/>
+        	<t:inputHidden id="estabelecimentoId" forceId="true"/>
+        	<t:inputHidden id="indico" forceId="true"/>
+        	
+        	<t:inputTextarea id="comentario" forceId="true" cols="43"/>
         	
         	<script type="text/javascript">
-	             		$('#comentario').attr('placeholder','Deixe o seu comentário').attr('autofocus','');
-	             		
+				$('#comentario').attr('placeholder','Deixe o seu comentário').attr('autofocus','');
 	        </script>
+	        
         </div>
 
-        <div class="inputs">  
+        <div class="inputs">
         
-        	<h:commandButton value="CADASTRAR" styleClass="submit" action="#{rankingFaces.indicacaoNegativa}"/>  
+        	<h:commandButton value="COMENTAR" styleClass="submit" action="#{rankingFaces.indicacaoNegativa}"/>  
            
         </div>
 		

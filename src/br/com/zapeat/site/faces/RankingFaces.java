@@ -27,6 +27,8 @@ public class RankingFaces extends TSMainFaces {
 	private ComentarioModel comentarioModel;
 	private CategoriaModel categoriaModel;
 	private String indico;
+	
+	private String comentario;
 
 	public RankingFaces() {
 
@@ -103,7 +105,7 @@ public class RankingFaces extends TSMainFaces {
 
 						this.initComentario();
 
-						super.addInfoMessage("Voto computado com sucesso.");
+						super.addInfoMessage("Voto computado com sucesso!");
 
 					} catch (TSApplicationException e) {
 
@@ -112,7 +114,7 @@ public class RankingFaces extends TSMainFaces {
 
 				} else {
 
-					super.addErrorMessage(model.getNome() + ": O Sr(a) já indicou essa promoção");
+					super.addErrorMessage(model.getNome() + " você já indicou essa promoção!");
 				}
 
 			} else {
@@ -149,7 +151,7 @@ public class RankingFaces extends TSMainFaces {
 
 						this.initComentario();
 
-						super.addInfoMessage("Voto computado com sucesso.");
+						super.addInfoMessage("Voto computado com sucesso!");
 
 					} catch (TSApplicationException e) {
 
@@ -158,7 +160,7 @@ public class RankingFaces extends TSMainFaces {
 
 				} else {
 
-					super.addErrorMessage(model.getNome() + ": O Sr(a) já indicou essa promoção");
+					super.addErrorMessage(model.getNome() + ": você já indicou essa promoção!");
 				}
 
 			} else {
@@ -194,7 +196,7 @@ public class RankingFaces extends TSMainFaces {
 
 						this.initComentario();
 
-						super.addInfoMessage("Voto computado com sucesso.");
+						super.addInfoMessage("Voto computado com sucesso!");
 
 					} catch (TSApplicationException e) {
 
@@ -203,7 +205,7 @@ public class RankingFaces extends TSMainFaces {
 
 				} else {
 
-					super.addErrorMessage(model.getNome() + ": O Sr(a) já indicou essa promoção");
+					super.addErrorMessage(model.getNome() + ": O Sr(a) já indicou essa promoção!");
 				}
 
 			} else {
@@ -339,6 +341,14 @@ public class RankingFaces extends TSMainFaces {
 
 	public void setCategoriaModel(CategoriaModel categoriaModel) {
 		this.categoriaModel = categoriaModel;
+	}
+
+	public String getComentario() {
+		return comentario;
+	}
+
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
 	}
 
 }

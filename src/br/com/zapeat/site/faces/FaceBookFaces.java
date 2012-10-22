@@ -85,6 +85,10 @@ public class FaceBookFaces {
 						if (TSUtil.isEmpty(usuario)) {
 
 							try {
+								
+								model.setFlagAtivo(Boolean.TRUE);
+								
+								model.setFlagFacebook(Boolean.TRUE);
 
 								usuario = new UsuarioDAO().inserir(model);
 

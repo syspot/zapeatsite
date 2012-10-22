@@ -113,7 +113,7 @@ public class CarroChefeDAO {
 
 		broker.setPropertySQL("carrochefedao.obtercarrochefealeatorio");
 
-		return (CarroChefeModel) broker.getObjectBean(CarroChefeModel.class, "id", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "descricao", "flagAtivo", "titulo", "imagem");
+		return (CarroChefeModel) broker.getObjectBean(CarroChefeModel.class, "id", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.quantidadeIndicacoes", "descricao", "flagAtivo", "titulo", "imagem", "fornecedorModel.categoriaPrincipal.id", "fornecedorModel.categoriaPrincipal.descricao");
 
 	}
 

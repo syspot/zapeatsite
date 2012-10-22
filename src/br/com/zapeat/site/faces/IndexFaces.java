@@ -7,20 +7,16 @@ import javax.faces.bean.ManagedBean;
 
 import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.faces.TSMainFaces;
-import br.com.zapeat.site.dao.ComentarioDAO;
 import br.com.zapeat.site.dao.FornecedorDAO;
 import br.com.zapeat.site.dao.PromocaoDAO;
-import br.com.zapeat.site.model.ComentarioModel;
 import br.com.zapeat.site.model.FornecedorModel;
 import br.com.zapeat.site.model.PromocaoModel;
 
 @ManagedBean(name = "indexFaces")
 public class IndexFaces extends TSMainFaces {
 
-
 	private PromocaoModel promocaoHora;
-	private ComentarioModel comentarioModel;
-
+	
 	private List<PromocaoModel> promocoesHora;
 	private List<FornecedorModel> topGeral;
 
@@ -35,7 +31,6 @@ public class IndexFaces extends TSMainFaces {
 
 		this.promocoesHora = new ArrayList<PromocaoModel>();
 		this.topGeral = new ArrayList<FornecedorModel>();
-		this.comentarioModel = new ComentarioModel();
 
 	}
 
@@ -56,8 +51,6 @@ public class IndexFaces extends TSMainFaces {
 		}
 
 		this.topGeral = new FornecedorDAO().pesquisarTopGeral();
-
-		this.comentarioModel = new ComentarioDAO().obterIndicacao();
 
 		this.setarCssTopGeral();
 
@@ -112,14 +105,6 @@ public class IndexFaces extends TSMainFaces {
 
 	public void setTopGeral(List<FornecedorModel> topGeral) {
 		this.topGeral = topGeral;
-	}
-
-	public ComentarioModel getComentarioModel() {
-		return comentarioModel;
-	}
-
-	public void setComentarioModel(ComentarioModel comentarioModel) {
-		this.comentarioModel = comentarioModel;
 	}
 
 	public PromocaoModel getPromocaoHora() {

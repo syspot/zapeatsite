@@ -8,7 +8,6 @@
 
 <link href="css/interna.css" rel="stylesheet" type="text/css" />
 
-
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"> </script>
 <script src="js/jquery-latest.js"></script>
 <script src="js/jquery.validate.js" type="text/javascript"></script>
@@ -25,6 +24,17 @@
 		$('#principal ul:eq(6)').css('right','-75px');
 		$('#principal ul:eq(7)').css('right','-0px');
 	  })
+	  $(".fotoEstab").fancybox({
+			padding: 0,
+			openEffect : 'elastic',
+			openSpeed  : 150,
+			closeEffect : 'elastic',
+			closeSpeed  : 150,
+			closeClick : true,
+			helpers : {
+				overlay : null
+			}
+		});
 </script>
 
 <!--=============MODAL=============-->
@@ -118,4 +128,4 @@
 		function error(msg){
 			alert(msg);
 		}
-</script> 
+</script>

@@ -14,6 +14,8 @@
 
 <body>
 
+
+
 	<!-- COMECA TOPO -->
 	<%@ include file="/topo.jsp" %>
 
@@ -37,11 +39,11 @@
 	            <div class="boxSubCat ftoLocal">
 	            	<h2>Fotos do ambiente</h2>
 	            	<c:forEach items="${estabelecimentoFaces.fotosEstabelecimento}" var="item">
-	            	<span class="floatLeft">
-	            		<a class="fotoEstab" href="${item.imagemFullView}">
-	            			<img src="${item.imagemThumbView}" alt="" title="" />
-	            		</a>
-	            	</span>
+	            		<span class="floatLeft">
+	            			<a class="fotoEstab" href="${item.imagemFullView}">
+	            				<img src="${item.imagemThumbView}" alt="" title="" />
+	            			</a>
+	            		</span>
 	            	</c:forEach>
 	            </div>
             </c:if>
@@ -165,44 +167,7 @@
 
 	<!-- TERMINA CENTRAL -->
 	<%@ include file="/rodape.jsp" %>
+	<%@ include file="/include_modal_foto.jsp" %>
 	
-	<!-- Add fancyBox main JS and CSS files -->
-
-<script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>
-
-<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css" media="screen" />
-
-<script type="text/javascript">
-
-$(document).ready(function() {
-
-
-$(".fotoEstab").fancybox({
-
-			 padding: 0,
-
-			 openEffect : 'elastic',
-
-			 openSpeed  : 150,
-
-			 closeEffect : 'elastic',
-
-			 closeSpeed  : 150,
-
-			 closeClick : true,
-
-			 helpers : {
-				 overlay : {
-					 css : {
-						 'background' : 'rgba(0,0,0,0.8)'
-					 }
-				 }
-			 }
-		 });
-
-})
-
-</script>
-
 </body>
 </html></f:view>

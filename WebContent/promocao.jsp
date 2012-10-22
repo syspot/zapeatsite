@@ -69,7 +69,9 @@
 			            	<h2>Fotos da promoção</h2>
 			            	<c:forEach items="${promocaoFaces.promocao.imagensPromocoes}" var="item">
 				            	<span class="floatLeft">
-				            		<img src="${item.imagemThumbView}" alt="" title="" />
+				            		<a class="fotoEstab" href="${item.imagemFullView}">
+				            			<img src="${item.imagemThumbView}" alt="" title="" />
+			            			</a>
 				            	</span>
 			            	</c:forEach>
 			            </div>
@@ -91,7 +93,9 @@
 			            	<h2>Fotos do Carro-Chefe</h2>
 			            	<c:forEach items="${promocaoFaces.carroChefe.imagensCarroChefe}" var="item">
 				            	<span class="floatLeft">
-				            		<img src="${item.imagemThumbView}" alt="" title="" />
+				            		<a class="fotoEstab" href="${item.imagemFullView}">
+				            			<img src="${item.imagemThumbView}" alt="" title="" />
+			            			</a>
 				            	</span>
 			            	</c:forEach>
 			            </div>
@@ -281,8 +285,8 @@
 			<%@ include file="/include_promocao_do_dia_lateral.jsp" %>
             
 			<%@ include file="/include_promocao_da_semana_lateral.jsp" %>
-			
-            <%@ include file="/include_carro_chefe_lateral.jsp" %>
+            
+            <%@ include file="/include_quem_indica_lateral.jsp" %>
 
            	<%@ include file="/include_banner_lateral.jsp" %>
             
@@ -293,7 +297,8 @@
 
 	<!-- TERMINA CENTRAL -->
 	<%@ include file="/rodape.jsp" %>
-
+	<%@ include file="/include_modal_foto.jsp" %>
+	
 </body>
 </html>
 </f:view>
