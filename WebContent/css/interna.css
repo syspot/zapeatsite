@@ -98,6 +98,8 @@ ul#listagem:hover li:not(:hover) {
 .boxSubCat .fontYi,
 .boxSubCat .categoria{color:#333;}
 
+.boxSubCat p.indicacaoComida a{ margin:5px 0px; font-family: 'titilliumtext22l_ltmedium'; font-size:14px; color:#333;}
+
 
 #paginacao{ min-width:380px; margin: 20px auto; height:30px; padding:0px 5px;font-family: 'titilliumtext22l_ltmedium'; font-size:14px;}
 #paginacao .inicio,
@@ -124,3 +126,9 @@ ul#listagemCat li{ border-bottom:1px solid #ccc; overflow:hidden;margin-bottom:2
 #listagemCat .boxInfoCat a,
 
 #listagemCat .boxInfoCat a:visited{color: #0066CC;    font-family: 'titilliumtext22l_ltmedium';    font-size: 12px;    line-height: 20px;}
+
+.votacao{ width:180px; border-top:1px dotted #900; height:auto; padding:5px 0px; margin-top:10px;}
+
+.votacao a{font-family: 'microsoft_yi_baitiregular'; font-size:14px; color:#900; display:block; line-height:25px;}
+
+.votacao a:hover{text-decoration:underline;}

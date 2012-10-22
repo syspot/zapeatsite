@@ -49,7 +49,7 @@
                     </blockquote>
                     <div class="indico">
                     	<p><a href="ranking.jsf?categoriaId=${item.categoriaPrincipal.id}&estabelecimentoId=${item.id}&indico=1" title=""><span class="icons indicacaoRed"></span> Indico [${item.quantidadeIndicacoes}]</a></p>
-                    	<p><a href="ranking.jsf?categoriaId=${item.categoriaPrincipal.id}&estabelecimentoId=${item.id}&indico=2" title=""><span class="icons naoindicacaoRed"></span> Não indico</a></p>
+                    	<p><a title="" class="linkRanking"><span class="icons naoindicacaoRed"></span> Não indico</a></p>
                    	</div>
                 </div>
                 </c:forEach>
@@ -72,7 +72,7 @@
                         </a>
                     </blockquote>
                     <div class="indico">
-                    	<a href="ranking.jsf?categoriaId=${item.categoriaPrincipal.id}&estabelecimentoId=${item.id}&indico=3" title=""><span class="icons indicacaoRed"></span> Eu indico [${item.quantidadeIndicacoes}]</a>
+                    	<a href="ranking.jsf?categoriaId=${item.categoriaPrincipal.id}&estabelecimentoId=${item.id}&indico=2" title=""><span class="icons indicacaoRed"></span> Eu indico [${item.quantidadeIndicacoes}]</a>
                     </div>
                 </div>
                 </c:forEach>
@@ -99,6 +99,9 @@
 	
 	<!-- TERMINA CENTRAL -->
 	<%@ include file="/rodape.jsp" %>
+
+
+	
 
 </body>
 </html>

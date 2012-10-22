@@ -38,7 +38,9 @@
 	            	<h2>Fotos do ambiente</h2>
 	            	<c:forEach items="${estabelecimentoFaces.fotosEstabelecimento}" var="item">
 	            	<span class="floatLeft">
-	            		<img src="${item.imagemThumbView}" alt="" title="" />
+	            		<a class="fotoEstab" href="${item.imagemFullView}">
+	            			<img src="${item.imagemThumbView}" alt="" title="" />
+	            		</a>
 	            	</span>
 	            	</c:forEach>
 	            </div>
@@ -56,7 +58,8 @@
                     </div>
                 </div>
                 <div class="boxInfo">
-                	<span class="icons tel"></span>${estabelecimentoFaces.fornecedorModel.telefone}
+                	<span class="floatLeft"><span class="icons tel"></span>${estabelecimentoFaces.fornecedorModel.telefone}</span>
+                	<span class="floatLeft marginLeft"><a href="estabelecimento.jsf?categoriaId=${item.categoriaPrincipal.id}&estabelecimentoId=${item.id}&indico=2" title=""><span class="icons indicacao"></span> Eu indico [${item.quantidadeIndicacoes}]</a></span>
                 </div>
                 <blockquote class="fontYi">
                 	<p>${estabelecimentoFaces.fornecedorModel.descricao}</p>
@@ -130,7 +133,7 @@
                 
                 <div class="clear"></div>
                 <div class="barraCompartilhamento">
-	                <a href="http://www.facebook.com/sharer.php?u=URL_da_materia" target="_blank" title="Facebook"><img src="img/btnFb.jpg" title="Recomendar" /></a>
+                	<div class="recomende"><a href="http://www.facebook.com/sharer.php?u=URL_da_materia" target="_blank" title="Facebook"><img src="img/btnFb.jpg" title="Recomendar" /></a></div>
                     <div class="fb-like" data-href="http://www.zapeat.com.br" data-send="false" data-layout="button_count" data-width="200" data-show-faces="false"></div>
                 </div>
                 
@@ -162,6 +165,44 @@
 
 	<!-- TERMINA CENTRAL -->
 	<%@ include file="/rodape.jsp" %>
+	
+	<!-- Add fancyBox main JS and CSS files -->
+
+<script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css" media="screen" />
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+
+$(".fotoEstab").fancybox({
+
+			 padding: 0,
+
+			 openEffect : 'elastic',
+
+			 openSpeed  : 150,
+
+			 closeEffect : 'elastic',
+
+			 closeSpeed  : 150,
+
+			 closeClick : true,
+
+			 helpers : {
+				 overlay : {
+					 css : {
+						 'background' : 'rgba(0,0,0,0.8)'
+					 }
+				 }
+			 }
+		 });
+
+})
+
+</script>
 
 </body>
 </html></f:view>

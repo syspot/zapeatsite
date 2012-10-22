@@ -10,7 +10,11 @@
 		$('.linkCadastro,.close').click(function(){
 			$('#mascara').slideToggle();
 		})
-        });
+		
+		$('.linkRanking,.closeRanking').click(function(){
+			$('#mascaraRanking').slideToggle();
+		})
+    });
 </script>
 
 
@@ -229,7 +233,7 @@ $(document).ready( function() {
 
         	<div class="inputs">
         	
-        		<h:commandButton tabindex="103" styleClass="submit" id="submit" value="CADASTRAR" action="#{cadastroFaces.insertEvent}"/>
+        		<h:commandButton tabindex="103" styleClass="submit"  value="CADASTRAR" action="#{cadastroFaces.insertEvent}"/>
             
         	</div>
 
