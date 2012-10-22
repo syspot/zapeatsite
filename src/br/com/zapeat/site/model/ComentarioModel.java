@@ -4,25 +4,25 @@ import java.util.Date;
 
 import br.com.topsys.util.TSUtil;
 
-public class ComentarioModel{
+public class ComentarioModel {
 
 	private Long id;
 
 	private UsuarioModel usuarioModel;
 
 	private FornecedorModel fornecedorModel;
-	
+
 	private String descricao;
-	
+
 	private Date dataCadastro;
-	
-	private Boolean flagIndicaAtendimento;
-	
-	private Boolean flagIndicaPromocao;
-	
+
+	private Boolean flagIndicaAmbiente;
+
+	private Boolean flagIndicaComida;
+
 	private Long posicao;
-	
-	private Boolean flagNaoIndica;
+
+	private Boolean flagNaoIndicaComida;
 
 	public Long getId() {
 		return TSUtil.tratarLong(id);
@@ -64,22 +64,6 @@ public class ComentarioModel{
 		this.dataCadastro = dataCadastro;
 	}
 
-	public Boolean getFlagIndicaAtendimento() {
-		return flagIndicaAtendimento;
-	}
-
-	public void setFlagIndicaAtendimento(Boolean flagIndicaAtendimento) {
-		this.flagIndicaAtendimento = flagIndicaAtendimento;
-	}
-
-	public Boolean getFlagIndicaPromocao() {
-		return flagIndicaPromocao;
-	}
-
-	public void setFlagIndicaPromocao(Boolean flagIndicaPromocao) {
-		this.flagIndicaPromocao = flagIndicaPromocao;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -113,12 +97,28 @@ public class ComentarioModel{
 		this.posicao = posicao;
 	}
 
-	public Boolean getFlagNaoIndica() {
-		return flagNaoIndica;
+	public Boolean getFlagIndicaAmbiente() {
+		return flagIndicaAmbiente;
 	}
 
-	public void setFlagNaoIndica(Boolean flagNaoIndica) {
-		this.flagNaoIndica = flagNaoIndica;
+	public void setFlagIndicaAmbiente(Boolean flagIndicaAmbiente) {
+		this.flagIndicaAmbiente = flagIndicaAmbiente;
 	}
-	
+
+	public Boolean getFlagIndicaComida() {
+		return flagIndicaComida;
+	}
+
+	public void setFlagIndicaComida(Boolean flagIndicaComida) {
+		this.flagIndicaComida = flagIndicaComida;
+	}
+
+	public Boolean getFlagNaoIndicaComida() {
+		return flagNaoIndicaComida;
+	}
+
+	public void setFlagNaoIndicaComida(Boolean flagNaoIndicaComida) {
+		this.flagNaoIndicaComida = flagNaoIndicaComida;
+	}
+
 }
