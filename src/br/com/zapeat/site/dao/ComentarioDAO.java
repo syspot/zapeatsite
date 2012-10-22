@@ -32,7 +32,7 @@ public class ComentarioDAO {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		
-		broker.setPropertySQL("comentariodao.inserir", model.getUsuarioModel().getId(), model.getFornecedorModel().getId(), model.getDescricao(), model.getFlagIndicaAtendimento(), model.getFlagIndicaPromocao(), model.getFlagNaoIndica());
+		broker.setPropertySQL("comentariodao.inserir", model.getUsuarioModel().getId(), model.getFornecedorModel().getId(), model.getDescricao(), model.getFlagIndicaAmbiente(), model.getFlagIndicaComida(), model.getFlagNaoIndicaComida());
 
 		broker.execute();
 

@@ -27,7 +27,7 @@ public class RankingFaces extends TSMainFaces {
 	private ComentarioModel comentarioModel;
 	private CategoriaModel categoriaModel;
 	private String indico;
-	
+
 	private String comentario;
 
 	public RankingFaces() {
@@ -97,7 +97,7 @@ public class RankingFaces extends TSMainFaces {
 
 					this.comentarioModel.setUsuarioModel(model);
 
-					this.comentarioModel.setFlagIndicaAtendimento(Boolean.TRUE);
+					this.comentarioModel.setFlagIndicaAmbiente(Boolean.TRUE);
 
 					try {
 
@@ -143,10 +143,10 @@ public class RankingFaces extends TSMainFaces {
 
 					try {
 
-						this.comentarioModel.setFlagIndicaPromocao(Boolean.TRUE);
+						this.comentarioModel.setFlagIndicaComida(Boolean.TRUE);
 
 						new ComentarioDAO().inserir(this.comentarioModel);
-						
+
 						this.carregaDados();
 
 						this.initComentario();
@@ -188,10 +188,10 @@ public class RankingFaces extends TSMainFaces {
 
 					try {
 
-						this.comentarioModel.setFlagNaoIndica(Boolean.TRUE);
+						this.comentarioModel.setFlagNaoIndicaComida(Boolean.TRUE);
 
 						new ComentarioDAO().inserir(this.comentarioModel);
-						
+
 						this.carregaDados();
 
 						this.initComentario();
@@ -225,11 +225,11 @@ public class RankingFaces extends TSMainFaces {
 
 		this.getComentarioModel().setUsuarioModel(new UsuarioModel());
 
-		this.getComentarioModel().setFlagIndicaAtendimento(Boolean.FALSE);
+		this.getComentarioModel().setFlagIndicaAmbiente(Boolean.FALSE);
 
-		this.getComentarioModel().setFlagIndicaPromocao(Boolean.FALSE);
+		this.getComentarioModel().setFlagIndicaComida(Boolean.FALSE);
 
-		this.getComentarioModel().setFlagNaoIndica(Boolean.FALSE);
+		this.getComentarioModel().setFlagNaoIndicaComida(Boolean.FALSE);
 	}
 
 	private void setarCss() {
