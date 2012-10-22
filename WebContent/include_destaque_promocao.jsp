@@ -2,6 +2,9 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 
+
+<c:if test="${not empty indexFaces.promocaoHora}">
+
 <div id="destaque">
         	
    	<div id="fotoDestaque">
@@ -74,36 +77,41 @@
 	</div>
             
 </div>
-       
-	<div id="outrosDestaques">
-		
-		<h2>Outras Promoções da Hora</h2>
-   		
-			<ul id="listagem">
-				<c:forEach var="promocao" items="${indexFaces.promocoesHora}">
-					<li>
-						<a href="promocao.jsf?id=${promocao.id}" title="">
-							<div class="marca floatLeft">
-                   				<img src="${promocao.imagemPromocaoThumbView}" alt="" title="${promocao.fornecedorModel.nomeFantasia}" />
-                  			</div>
-							<!-- SE PROMOÇÃO EM PRODUTO -->
-		                   <div class="info">
-		                       <p class="titulo">${promocao.titulo}</p>
-		                       <p class="resumo fontYi">
-		                       ${promocao.descricao}
-		                       </p>
-		                   </div>
-						</a>
-						
-		               <div class="dados">
-							<p><span class="icons tel"></span>${promocao.fornecedorModel.telefone}</p>
-							<c:if test="${not empty promocao.fornecedorModel.site}">
-								<p><div ><span class="icons site"></span> <a href="${promocao.fornecedorModel.site}" target="_blank" title="${promocao.fornecedorModel.site}">Visite o site</a> </div></p>
-							</c:if>
-							<p><span class="icons indicacao"></span>${promocao.indicacoes}</p>
-						</div>
-					</li>
-				</c:forEach>
-			</ul>
-   </div>
+
+	<c:if test="${not empty indexFaces.promocoesHora}">
+	
+		<div id="outrosDestaques">
+			
+			<h2>Outras Promoções da Hora</h2>
+	   		
+				<ul id="listagem">
+					<c:forEach var="promocao" items="${indexFaces.promocoesHora}">
+						<li>
+							<a href="promocao.jsf?id=${promocao.id}" title="">
+								<div class="marca floatLeft">
+	                   				<img src="${promocao.imagemPromocaoThumbView}" alt="" title="${promocao.fornecedorModel.nomeFantasia}" />
+	                  			</div>
+								<!-- SE PROMOÇÃO EM PRODUTO -->
+			                   <div class="info">
+			                       <p class="titulo">${promocao.titulo}</p>
+			                       <p class="resumo fontYi">
+			                       ${promocao.descricao}
+			                       </p>
+			                   </div>
+							</a>
+							
+			               <div class="dados">
+								<p><span class="icons tel"></span>${promocao.fornecedorModel.telefone}</p>
+								<c:if test="${not empty promocao.fornecedorModel.site}">
+									<p><div ><span class="icons site"></span> <a href="${promocao.fornecedorModel.site}" target="_blank" title="${promocao.fornecedorModel.site}">Visite o site</a> </div></p>
+								</c:if>
+								<p><span class="icons indicacao"></span>${promocao.indicacoes}</p>
+							</div>
+						</li>
+					</c:forEach>
+				</ul>
+	   </div>
    
+   </c:if>
+   
+</c:if>

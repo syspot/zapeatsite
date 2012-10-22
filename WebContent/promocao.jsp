@@ -14,11 +14,11 @@
 
 <body onload="initialize()">
 
-
 	<!-- COMECA TOPO -->
 	<%@ include file="/topo.jsp" %>
 
 <div id="id-Breadcrumb">
+
     <span class="migalha"><a href="index.jsf" title="">Página Inicial</a></span>    »
     
     <c:choose>
@@ -64,7 +64,7 @@
 			                <div><span class="icons telAzul"></span>${promocaoFaces.promocao.fornecedorModel.telefone}</div>
 		                </a>
 		            </div>
-		            <c:if test="${!empty promocaoFaces.promocao.imagensPromocoes}">
+		            <c:if test="${not empty promocaoFaces.promocao.imagensPromocoes}">
 			            <div class="boxSubCat ftoLocal">
 			            	<h2>Fotos da promoção</h2>
 			            	<c:forEach items="${promocaoFaces.promocao.imagensPromocoes}" var="item">
@@ -86,7 +86,7 @@
 			                <div><span class="icons telAzul"></span>${promocaoFaces.carroChefe.fornecedorModel.telefone}</div>
 		                </a>
 		            </div>
-		             <c:if test="${!empty promocaoFaces.carroChefe.imagensCarroChefe}">
+		             <c:if test="${not empty promocaoFaces.carroChefe.imagensCarroChefe}">
 			            <div class="boxSubCat ftoLocal">
 			            	<h2>Fotos do Carro-Chefe</h2>
 			            	<c:forEach items="${promocaoFaces.carroChefe.imagensCarroChefe}" var="item">
@@ -186,6 +186,29 @@
 		                </div>
 		                
 		                <address>${promocaoFaces.promocao.fornecedorModel.logradouro}, nº ${promocaoFaces.promocao.fornecedorModel.numero} - ${promocaoFaces.promocao.fornecedorModel.bairro}</address>
+		                
+		                <script>
+							  var map;
+							  function initialize() {
+								// Creating a map
+								var latlng = new google.maps.LatLng(${promocaoFaces.promocao.fornecedorModel.latitude}, ${promocaoFaces.promocao.fornecedorModel.longitude}); 
+								var map = new google.maps.Map(document.getElementById('map_canvas_estab'), {  
+								  zoom: 17,
+								  center: latlng,
+								  mapTypeId: google.maps.MapTypeId.ROADMAP
+								});
+								
+								// Creating a marker and positioning it on the map
+								var marker = new google.maps.Marker({
+								  position: latlng, 
+								  map: map,
+								  clickable: false,
+								  icon: 'img/markerAzul.png'
+								});
+							  }
+						
+							  google.maps.event.addDomListener(window, 'load', initialize);
+							</script>
 		            
 	    			</c:when>
 	    			
@@ -212,35 +235,37 @@
 		                </div>
 		                
 		                <address>${promocaoFaces.carroChefe.fornecedorModel.logradouro}, nº ${promocaoFaces.carroChefe.fornecedorModel.numero} - ${promocaoFaces.carroChefe.fornecedorModel.bairro}</address>
+		                
+		                <script>
+							  var map;
+							  function initialize() {
+								// Creating a map
+								var latlng = new google.maps.LatLng(${promocaoFaces.carroChefe.fornecedorModel.latitude}, ${promocaoFaces.carroChefe.fornecedorModel.longitude}); 
+								var map = new google.maps.Map(document.getElementById('map_canvas_estab'), {  
+								  zoom: 17,
+								  center: latlng,
+								  mapTypeId: google.maps.MapTypeId.ROADMAP
+								});
+								
+								// Creating a marker and positioning it on the map
+								var marker = new google.maps.Marker({
+								  position: latlng, 
+								  map: map,
+								  clickable: false,
+								  icon: 'img/markerAzul.png'
+								});
+							  }
+						
+							  google.maps.event.addDomListener(window, 'load', initialize);
+							</script>
 	    			
 	    			</c:otherwise>
 	    		
 	    		</c:choose>
 	    		
-                <script>
-				  var map;
-				  function initialize() {
-					// Creating a map
-					var latlng = new google.maps.LatLng(${promocaoFaces.promocao.fornecedorModel.latitude}, ${promocaoFaces.promocao.fornecedorModel.longitude}); 
-					var map = new google.maps.Map(document.getElementById('map_canvas_estab'), {  
-					  zoom: 17,
-					  center: latlng,
-					  mapTypeId: google.maps.MapTypeId.ROADMAP
-					});
-					
-					// Creating a marker and positioning it on the map
-					var marker = new google.maps.Marker({
-					  position: latlng, 
-					  map: map,
-					  clickable: false,
-					  icon: 'img/markerAzul.png'
-					});
-				  }
+			<div id="map_canvas_estab"></div>
 			
-				  google.maps.event.addDomListener(window, 'load', initialize);
-				</script>
-                <div id="map_canvas_estab"></div>
-            </div>
+		</div>
 
                 
                 <!-- COMENTÁRIOS FACEBOOK -->
