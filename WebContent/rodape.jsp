@@ -67,7 +67,7 @@
 
         <div class="inputs">
         
-        	<h:commandButton value="COMENTAR" styleClass="submit" action="#{rankingFaces.naoIndicar}"/>  
+        	<h:commandButton value="COMENTAR" styleClass="submit" action="#{indicacaoFaces.naoIndicar}"/>  
            
         </div>
 		

@@ -186,7 +186,7 @@ public class RankingFaces extends TSMainFaces {
 
 	public String naoIndicar(){
 		
-		//Long CategoriaId = ZapeatUtil.getPageParamFormatado(super.getRequestParameter("categoriaId"));
+		Long categoriaId = ZapeatUtil.getPageParamFormatado(super.getRequestParameter("categoriaId"));
 		Long estabelecimentoId = ZapeatUtil.getPageParamFormatado(super.getRequestParameter("estabelecimentoId"));
 		String comentario = super.getRequestParameter("comentario");
 		
@@ -217,8 +217,10 @@ public class RankingFaces extends TSMainFaces {
 						this.initComentario();
 
 						super.addInfoMessage("Voto computado com sucesso!");
+						
+						TSFacesUtil.getFacesContext().getExternalContext().redirect("ranking.jsf?categoriaId="+categoriaId);
 
-					} catch (TSApplicationException e) {
+					} catch (Exception e) {
 
 						e.printStackTrace();
 						

@@ -50,7 +50,7 @@
                     </blockquote>
                     <div class="indico">
                     	<p><a href="ranking.jsf?categoriaId=${item.categoriaPrincipal.id}&estabelecimentoId=${item.id}&indico=1" title=""><span class="icons indicacaoRed"></span> Indico [${item.quantidadeIndicacoes}]</a></p>
-                    	<p><a title="" onclick="nao_indicar(${item.categoriaPrincipal.id}, ${item.id})" class="linkRanking"><span class="icons naoindicacaoRed"></span> Não indico</a></p>
+                    	<p><a title="Não indicar" onclick="nao_indicar(${item.categoriaPrincipal.id}, ${item.id})" class="linkRanking"><span class="icons naoindicacaoRed"></span> Não indico</a></p>
                    	</div>
                 </div>
                 </c:forEach>
