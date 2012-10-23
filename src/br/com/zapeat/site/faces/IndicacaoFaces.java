@@ -76,8 +76,7 @@ public class IndicacaoFaces extends TSMainFaces {
 	
 	private void redirect(Long categoriaId){
 		try {
-			TSFacesUtil.getFacesContext().getExternalContext().dispatch("ranking.jsf?categoriaId="+categoriaId);
-			TSFacesUtil.getFacesContext().responseComplete();
+			TSFacesUtil.getFacesContext().getExternalContext().redirect("ranking.jsf?categoriaId="+categoriaId);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
