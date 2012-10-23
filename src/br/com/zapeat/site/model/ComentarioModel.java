@@ -98,7 +98,7 @@ public class ComentarioModel {
 	}
 
 	public Boolean getFlagIndicaAmbiente() {
-		return flagIndicaAmbiente;
+		return TSUtil.isEmpty(flagIndicaAmbiente) ? false : flagIndicaAmbiente;
 	}
 
 	public void setFlagIndicaAmbiente(Boolean flagIndicaAmbiente) {
@@ -106,7 +106,7 @@ public class ComentarioModel {
 	}
 
 	public Boolean getFlagIndicaComida() {
-		return flagIndicaComida;
+		return TSUtil.isEmpty(flagIndicaComida) ? false : flagIndicaComida;
 	}
 
 	public void setFlagIndicaComida(Boolean flagIndicaComida) {
@@ -114,7 +114,7 @@ public class ComentarioModel {
 	}
 
 	public Boolean getFlagNaoIndicaComida() {
-		return flagNaoIndicaComida;
+		return TSUtil.isEmpty(flagNaoIndicaComida) ? false : flagNaoIndicaComida;
 	}
 
 	public void setFlagNaoIndicaComida(Boolean flagNaoIndicaComida) {

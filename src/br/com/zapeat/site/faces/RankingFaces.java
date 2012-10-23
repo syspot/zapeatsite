@@ -17,6 +17,7 @@ import br.com.zapeat.site.model.ComentarioModel;
 import br.com.zapeat.site.model.FornecedorModel;
 import br.com.zapeat.site.model.UsuarioModel;
 import br.com.zapeat.site.util.Constantes;
+import br.com.zapeat.site.util.ZapeatUtil;
 
 @ViewScoped
 @ManagedBean(name = "rankingFaces")
@@ -39,8 +40,6 @@ public class RankingFaces extends TSMainFaces {
 		this.getParametrosIndicacao();
 
 		this.indicacaoPositiva();
-
-		this.indicacaoNegativa();
 
 		this.indicarEstabelecimento();
 
@@ -129,21 +128,34 @@ public class RankingFaces extends TSMainFaces {
 
 	public String indicacaoPositiva() {
 
-		if (!TSUtil.isEmpty(this.indico) && TSUtil.isNumeric(this.indico) && this.indico.equals("1")) {
+		if (!TSUtil.isEmpty(this.indico) && TSUtil.isNumeric(this.indico)) {
 
 			UsuarioModel model = (UsuarioModel) TSFacesUtil.getObjectInSession(Constantes.USUARIO_LOGADO);
 
 			if (!TSUtil.isEmpty(model) && !TSUtil.isEmpty(model.getId())) {
 
 				this.comentarioModel.setUsuarioModel(model);
-
-				ComentarioModel coment = new ComentarioDAO().obterIndicacaoComidaPositiva(this.comentarioModel);
+				ComentarioModel coment;
+				
+				if(this.indico.equals("1")){
+					
+					this.comentarioModel.setFlagIndicaComida(Boolean.TRUE);
+					coment = new ComentarioDAO().obterIndicacaoComidaPositiva(this.comentarioModel);
+					
+				} else if(this.indico.equals("2")){
+					
+					this.comentarioModel.setFlagIndicaAmbiente(Boolean.TRUE);
+					coment = new ComentarioDAO().obterIndicacaoEstabelecimentoPorUsuario(this.comentarioModel);
+					
+				} else{
+					
+					return null;
+					
+				}
 
 				if (TSUtil.isEmpty(coment)) {
 
 					try {
-
-						this.comentarioModel.setFlagIndicaComida(Boolean.TRUE);
 
 						new ComentarioDAO().inserir(this.comentarioModel);
 
@@ -172,25 +184,33 @@ public class RankingFaces extends TSMainFaces {
 		return null;
 	}
 
-	public String indicacaoNegativa() {
-
-		if (!TSUtil.isEmpty(this.indico) && TSUtil.isNumeric(this.indico) && this.indico.equals("2")) {
-
+	public String naoIndicar(){
+		
+		//Long CategoriaId = ZapeatUtil.getPageParamFormatado(super.getRequestParameter("categoriaId"));
+		Long estabelecimentoId = ZapeatUtil.getPageParamFormatado(super.getRequestParameter("estabelecimentoId"));
+		String comentario = super.getRequestParameter("comentario");
+		
+		if(!TSUtil.isEmpty(estabelecimentoId)){
+			
 			UsuarioModel model = (UsuarioModel) TSFacesUtil.getObjectInSession(Constantes.USUARIO_LOGADO);
 
 			if (!TSUtil.isEmpty(model) && !TSUtil.isEmpty(model.getId())) {
 
-				this.comentarioModel.setUsuarioModel(model);
+				ComentarioModel comentarioModel = new ComentarioModel();
+				
+				comentarioModel.setUsuarioModel(model);
+				comentarioModel.setDescricao(comentario);
+				comentarioModel.setFornecedorModel(new FornecedorModel(estabelecimentoId));
 
-				ComentarioModel coment = new ComentarioDAO().obterIndicacaoComidaPositiva(this.comentarioModel);
+				ComentarioModel coment = new ComentarioDAO().obterIndicacaoComidaPositiva(comentarioModel);
 
 				if (TSUtil.isEmpty(coment)) {
 
 					try {
 
-						this.comentarioModel.setFlagNaoIndicaComida(Boolean.TRUE);
+						comentarioModel.setFlagNaoIndicaComida(Boolean.TRUE);
 
-						new ComentarioDAO().inserir(this.comentarioModel);
+						new ComentarioDAO().inserir(comentarioModel);
 
 						this.carregaDados();
 
@@ -201,6 +221,7 @@ public class RankingFaces extends TSMainFaces {
 					} catch (TSApplicationException e) {
 
 						e.printStackTrace();
+						
 					}
 
 				} else {
@@ -212,9 +233,11 @@ public class RankingFaces extends TSMainFaces {
 
 				super.addErrorMessage("Você precisa estar logado para realizar a operação!");
 			}
+			
 		}
-
-		return null;
+		
+		return  null;
+		
 	}
 
 	private void initComentario() {

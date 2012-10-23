@@ -14,7 +14,7 @@
     	
     	<div class="votacao">
 	       <a href="ranking.jsf?categoriaId=${promocaoFaces.carroChefeModel.fornecedorModel.categoriaPrincipal.id}&estabelecimentoId=${promocaoFaces.carroChefeModel.fornecedorModel.id}&indico=1" title="Indico" class="floatLeft"><span class="icons indicacaoRed"></span>Indico [${promocaoFaces.carroChefeModel.fornecedorModel.quantidadeIndicacoes}]</a>
-	       <a href="" title="Não Indico" class="floatRight"><span class="icons naoindicacaoRed"></span>Não Indico</a>
+	       <a href="" onclick="nao_indicar(${promocaoFaces.carroChefeModel.fornecedorModel.categoriaPrincipal.id}, ${promocaoFaces.carroChefeModel.fornecedorModel.id})" title="Não Indico" class="floatRight"><span class="icons naoindicacaoRed"></span>Não Indico</a>
 		</div>
 		 
 	</div>
