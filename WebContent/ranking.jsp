@@ -10,7 +10,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 	<%@ include file="/head.jsp" %>
-	<script type="text/javascript" src="js/funcoes.js"></script>
 </head>
 
 <body>
@@ -26,9 +25,9 @@
     	<!-- COMECA COLUNA PRINCIPAL  -->
     	<div id="conteudoRanking">
         	<div id="tituloSessao">
-            	<span class="icons maisIndicados"></span>
+            	<img src="${rankingFaces.categoriaModel.imagemView}" class="floatLeftMargin4" />
             	<h2>Ranking</h2>
-                <p>Mais Indicados</p>
+                <p>${rankingFaces.categoriaModel.descricao}</p>
             </div>
             
             <c:if test="${!empty rankingFaces.melhorComida}">

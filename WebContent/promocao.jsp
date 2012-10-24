@@ -16,6 +16,9 @@
 
 	<!-- COMECA TOPO -->
 	<%@ include file="/topo.jsp" %>
+	
+	<input type="hidden" id="id" name="id" value="${promocaoFaces.promocao.id}">
+	<input type="hidden" id="carroChefeId" name="id" value="${promocaoFaces.carroChefe.id}">
 
 <div id="id-Breadcrumb">
 

@@ -10,6 +10,7 @@
 
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"> </script>
 <script src="js/jquery-latest.js"></script>
+<script type="text/javascript" src="js/funcoes.js"></script>
 <script src="js/jquery.validate.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/geometa.js"></script>
 <script type="text/javascript">

@@ -40,7 +40,7 @@
 	<div class="container">
 	
 		<a class="closeRanking" rel="modalclose"><img src="img/btnFechar.png" alt="Botão Fechar" class="btnFechar"></a>
-		<h:form id="signup2" enctype="multipart/form-data" prependId="false">
+		<h:form id="signup2" prependId="false">
     	
         <div class="header">
         
@@ -56,6 +56,8 @@
         	
         	<input type="hidden" id="categoriaId" name="categoriaId" />
         	<input type="hidden" id="estabelecimentoId" name="estabelecimentoId" />
+        	<input type="hidden" id="idPagina" name="idPagina" />
+        	<input type="hidden" id="idCarroChefe" name="idCarroChefe" />
         	
         	<textarea name="comentario" rows="3" cols="43"></textarea>
         	
@@ -67,7 +69,7 @@
 
         <div class="inputs">
         
-        	<h:commandButton value="COMENTAR" styleClass="submit" action="#{indicacaoFaces.naoIndicar}"/>  
+        	<h:commandButton value="COMENTAR" styleClass="submit" action="#{indicacaoFaces.naoIndicar}" onclick="processarVoto();"/>  
            
         </div>
 		

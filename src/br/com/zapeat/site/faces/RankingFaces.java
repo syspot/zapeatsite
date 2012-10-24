@@ -10,6 +10,7 @@ import br.com.topsys.exception.TSApplicationException;
 import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.faces.TSMainFaces;
 import br.com.topsys.web.util.TSFacesUtil;
+import br.com.zapeat.site.dao.CategoriaDAO;
 import br.com.zapeat.site.dao.ComentarioDAO;
 import br.com.zapeat.site.dao.FornecedorDAO;
 import br.com.zapeat.site.model.CategoriaModel;
@@ -51,7 +52,7 @@ public class RankingFaces extends TSMainFaces {
 
 		if (!TSUtil.isEmpty(categoriaId) && TSUtil.isNumeric(categoriaId)) {
 
-			this.categoriaModel = new CategoriaModel(new Long(categoriaId));
+			this.categoriaModel = new CategoriaDAO().obter(new Long(categoriaId));
 
 			this.melhorComida = new FornecedorDAO().pesquisarMelhorComida(categoriaModel);
 

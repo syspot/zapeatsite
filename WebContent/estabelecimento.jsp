@@ -18,6 +18,8 @@
 
 	<!-- COMECA TOPO -->
 	<%@ include file="/topo.jsp" %>
+	
+	<input type="hidden" id="id" name="id" value="${estabelecimentoFaces.fornecedorModel.id}">
 
 <!-- COMECA CENTRAL -->
 <div id="central">
@@ -54,7 +56,7 @@
         <div id="meio">
         	<div id="destaque">
             	<div id="fotoDestaque">
-	                <a href=""><img src="${estabelecimentoFaces.fornecedorModel.imagemFullView}" alt="" title="${estabelecimentoFaces.fornecedorModel.nomeFantasia}" /></a>
+	                <img src="${estabelecimentoFaces.fornecedorModel.imagemFullView}" alt="" title="${estabelecimentoFaces.fornecedorModel.nomeFantasia}" />
                     <div class="tituloPromo">
                         <p><span class="nomePromo">${estabelecimentoFaces.fornecedorModel.nomeFantasia}</span></p>
                     </div>

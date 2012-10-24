@@ -20,9 +20,15 @@ public class IndicacaoFaces extends TSMainFaces {
 	
 	public String naoIndicar(){
 		
-		Long categoriaId = ZapeatUtil.getPageParamFormatado(super.getRequestParameter("categoriaId"));
-		Long estabelecimentoId = ZapeatUtil.getPageParamFormatado(super.getRequestParameter("estabelecimentoId"));
+		Long categoriaId = ZapeatUtil.getParamFormatado(super.getRequestParameter("categoriaId"));
+		Long estabelecimentoId = ZapeatUtil.getParamFormatado(super.getRequestParameter("estabelecimentoId"));
 		String comentario = super.getRequestParameter("comentario");
+
+		String id = super.getRequestParameter("idPagina");
+		String carroChefeId = super.getRequestParameter("idCarroChefe");
+		
+		System.out.println(id);
+		System.out.println(carroChefeId);
 		
 		if(!TSUtil.isEmpty(estabelecimentoId)){
 			
@@ -48,7 +54,7 @@ public class IndicacaoFaces extends TSMainFaces {
 
 						super.addInfoMessage("Voto computado com sucesso!");
 						
-						this.redirect(categoriaId);
+						//this.redirect(categoriaId);
 
 					} catch (Exception e) {
 
@@ -68,7 +74,7 @@ public class IndicacaoFaces extends TSMainFaces {
 			
 		}
 		
-		this.redirect(categoriaId);
+		//this.redirect(categoriaId);
 		
 		return null;
 		

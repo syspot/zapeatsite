@@ -83,7 +83,6 @@ $(document).ready( function() {
 		
 		</script>
     </div>
-    
     <h:inputHidden value="#{categoriaFaces}"/>
     <!-- TERMINA BUSCA -->
     <!-- COMECA PUBLICIDADE/MARCA -->
