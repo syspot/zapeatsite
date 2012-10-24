@@ -12,21 +12,25 @@
 		<navigation-case>
 			<from-outcome>index</from-outcome>
 			<to-view-id>/index.jsp</to-view-id>
-			<redirect/>
+			<redirect />
 		</navigation-case>
 
 		<navigation-case>
 			<from-outcome>ranking</from-outcome>
 			<to-view-id>/ranking.jsp</to-view-id>
-			<redirect/>
+			<redirect />
 		</navigation-case>
-		
+
 		<navigation-case>
 			<from-outcome>pesquisar</from-outcome>
 			<to-view-id>/busca.jsp</to-view-id>
 		</navigation-case>
-		
+
 
 	</navigation-rule>
+
+	<lifecycle>
+		<phase-listener>br.com.zapeat.site.util.MessagesSupport</phase-listener>
+	</lifecycle>
 
 </faces-config>
