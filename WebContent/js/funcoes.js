@@ -1,7 +1,16 @@
-function nao_indicar(categoriaId, estabelecimentoId){
+function indicar(categoriaId, estabelecimentoId){
 	
 	$("#categoriaId").val(categoriaId);
 	$("#estabelecimentoId").val(estabelecimentoId);
+	
+}
+
+function indicar(categoriaId, estabelecimentoId){
+	
+	$("#categoriaId").val(categoriaId);
+	$("#estabelecimentoId").val(estabelecimentoId);
+	
+	alert(estabelecimentoId);
 	
 }
 

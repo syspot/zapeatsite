@@ -1,7 +1,5 @@
 package br.com.zapeat.site.faces;
 
-import java.io.IOException;
-
 import javax.faces.bean.ManagedBean;
 
 import br.com.topsys.util.TSUtil;
@@ -18,26 +16,17 @@ import br.com.zapeat.site.util.ZapeatUtil;
 public class IndicacaoFaces extends TSMainFaces {
 	
 	
-	public String naoIndicar(){
+	private void executarIndicacao(ComentarioModel comentarioModel){
 		
-		Long categoriaId = ZapeatUtil.getParamFormatado(super.getRequestParameter("categoriaId"));
 		Long estabelecimentoId = ZapeatUtil.getParamFormatado(super.getRequestParameter("estabelecimentoId"));
 		String comentario = super.getRequestParameter("comentario");
 
-		String id = super.getRequestParameter("idPagina");
-		String carroChefeId = super.getRequestParameter("idCarroChefe");
-		
-		System.out.println(id);
-		System.out.println(carroChefeId);
-		
 		if(!TSUtil.isEmpty(estabelecimentoId)){
 			
 			UsuarioModel model = (UsuarioModel) TSFacesUtil.getObjectInSession(Constantes.USUARIO_LOGADO);
 
 			if (!TSUtil.isEmpty(model) && !TSUtil.isEmpty(model.getId())) {
 
-				ComentarioModel comentarioModel = new ComentarioModel();
-				
 				comentarioModel.setUsuarioModel(model);
 				comentarioModel.setDescricao(comentario);
 				comentarioModel.setFornecedorModel(new FornecedorModel(estabelecimentoId));
@@ -48,14 +37,10 @@ public class IndicacaoFaces extends TSMainFaces {
 
 					try {
 
-						comentarioModel.setFlagNaoIndicaComida(Boolean.TRUE);
-
 						new ComentarioDAO().inserir(comentarioModel);
 
 						super.addInfoMessage("Voto computado com sucesso!");
 						
-						//this.redirect(categoriaId);
-
 					} catch (Exception e) {
 
 						e.printStackTrace();
@@ -74,18 +59,42 @@ public class IndicacaoFaces extends TSMainFaces {
 			
 		}
 		
-		//this.redirect(categoriaId);
+	}
+	
+	public String indicarComida(){
+		
+		ComentarioModel comentarioModel = new ComentarioModel();
+		
+		comentarioModel.setFlagIndicaComida(Boolean.TRUE);
+		
+		this.executarIndicacao(comentarioModel);
 		
 		return null;
 		
 	}
 	
-	private void redirect(Long categoriaId){
-		try {
-			TSFacesUtil.getFacesContext().getExternalContext().redirect("ranking.jsf?categoriaId="+categoriaId);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	public String indicarAmbiente(){
+		
+		ComentarioModel comentarioModel = new ComentarioModel();
+		
+		comentarioModel.setFlagIndicaAmbiente(Boolean.TRUE);
+		
+		this.executarIndicacao(comentarioModel);
+		
+		return null;
+		
+	}
+	
+	public String naoIndicar(){
+		
+		ComentarioModel comentarioModel = new ComentarioModel();
+		
+		comentarioModel.setFlagNaoIndicaComida(Boolean.TRUE);
+		
+		this.executarIndicacao(comentarioModel);
+		
+		return null;
+		
 	}
 	
 }

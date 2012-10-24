@@ -2,20 +2,27 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 
-<c:if test="${not empty promocaoFaces.carroChefeModel}">
-	<div class="boxSubCat">
-		<a href="promocao.jsf?carroChefeId=${promocaoFaces.carroChefeModel.id}">
-			<h2>Carro-chefe</h2>
-			<img src="${promocaoFaces.carroChefeModel.imagemThumbView}" alt="" title="" />
-			<p class="titulo">${promocaoFaces.carroChefeModel.fornecedorModel.nomeFantasia}</p>
-			<p class="categoria">${promocaoFaces.carroChefeModel.fornecedorModel.categoriaPrincipal.descricao}</p>
-			<p class="item">${promocaoFaces.carroChefeModel.titulo}</p>
-    	</a>
-    	<input type="hidden" va>
-    	<div class="votacao">
-	       <a href="ranking.jsf?categoriaId=${promocaoFaces.carroChefeModel.fornecedorModel.categoriaPrincipal.id}&estabelecimentoId=${promocaoFaces.carroChefeModel.fornecedorModel.id}&indico=1" title="Indico" class="floatLeft"><span class="icons indicacaoRed"></span>Indico [${promocaoFaces.carroChefeModel.fornecedorModel.quantidadeIndicacoes}]</a>
-	       <a title="Não indicar" onclick="nao_indicar(${promocaoFaces.carroChefeModel.fornecedorModel.categoriaPrincipal.id}, ${promocaoFaces.carroChefeModel.fornecedorModel.id})" class="linkRanking floatRight"><span class="icons naoindicacaoRed"></span> Não indico</a>
+<h:form>
+
+	<c:if test="${not empty promocaoFaces.carroChefeModel}">
+
+		<input type="hidden" name="estabelecimentoId" value="${promocaoFaces.carroChefeModel.fornecedorModel.id}" />
+		
+		<div class="boxSubCat">
+			<a href="promocao.jsf?carroChefeId=${promocaoFaces.carroChefeModel.id}">
+				<h2>Carro-chefe</h2>
+				<img src="${promocaoFaces.carroChefeModel.imagemThumbView}" alt="" title="" />
+				<p class="titulo">${promocaoFaces.carroChefeModel.fornecedorModel.nomeFantasia}</p>
+				<p class="categoria">${promocaoFaces.carroChefeModel.fornecedorModel.categoriaPrincipal.descricao}</p>
+				<p class="item">${promocaoFaces.carroChefeModel.titulo}</p>
+	    	</a>
+	    	
+	    	<div class="votacao">
+		       <h:commandLink action="#{indicacaoFaces.indicarComida}" styleClass="floatLeft"><span class="icons indicacaoRed"></span>Indico [${promocaoFaces.carroChefeModel.fornecedorModel.quantidadeIndicacoes}]</h:commandLink>
+		       <a title="Não indicar" onclick="nao_indicar(${promocaoFaces.carroChefeModel.fornecedorModel.categoriaPrincipal.id}, ${promocaoFaces.carroChefeModel.fornecedorModel.id})" class="linkRanking floatRight"><span class="icons naoindicacaoRed"></span> Não indico</a>
+			</div>
+			 
 		</div>
-		 
-	</div>
-</c:if>
+	</c:if>
+
+</h:form>

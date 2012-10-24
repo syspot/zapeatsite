@@ -29,8 +29,4 @@
 
 	</navigation-rule>
 
-	<lifecycle>
-		<phase-listener>br.com.zapeat.site.util.MessagesSupport</phase-listener>
-	</lifecycle>
-
 </faces-config>
