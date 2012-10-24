@@ -17,6 +17,7 @@ import br.com.zapeat.site.model.ComentarioModel;
 import br.com.zapeat.site.model.FornecedorModel;
 import br.com.zapeat.site.model.UsuarioModel;
 import br.com.zapeat.site.util.Constantes;
+import br.com.zapeat.site.util.ZapeatUtil;
 
 @ViewScoped
 @ManagedBean(name = "rankingFaces")
@@ -39,8 +40,6 @@ public class RankingFaces extends TSMainFaces {
 		this.getParametrosIndicacao();
 
 		this.indicacaoPositiva();
-
-		this.indicacaoNegativa();
 
 		this.indicarEstabelecimento();
 
@@ -105,7 +104,7 @@ public class RankingFaces extends TSMainFaces {
 
 						this.initComentario();
 
-						super.addInfoMessage("Voto computado com sucesso!");
+						super.addInfoMessage("Operação realizada com sucesso!");
 
 					} catch (TSApplicationException e) {
 
@@ -114,7 +113,7 @@ public class RankingFaces extends TSMainFaces {
 
 				} else {
 
-					super.addErrorMessage(model.getNome() + " você já indicou essa promoção!");
+					super.addErrorMessage(model.getNome() + " você já realizou essa operação!");
 				}
 
 			} else {
@@ -129,15 +128,30 @@ public class RankingFaces extends TSMainFaces {
 
 	public String indicacaoPositiva() {
 
-		if (!TSUtil.isEmpty(this.indico) && TSUtil.isNumeric(this.indico) && this.indico.equals("1")) {
+		if (!TSUtil.isEmpty(this.indico) && TSUtil.isNumeric(this.indico)) {
 
 			UsuarioModel model = (UsuarioModel) TSFacesUtil.getObjectInSession(Constantes.USUARIO_LOGADO);
 
 			if (!TSUtil.isEmpty(model) && !TSUtil.isEmpty(model.getId())) {
 
 				this.comentarioModel.setUsuarioModel(model);
+				ComentarioModel coment;
 
-				ComentarioModel coment = new ComentarioDAO().obterIndicacaoComidaPositiva(this.comentarioModel);
+				if (this.indico.equals("1")) {
+
+					this.comentarioModel.setFlagIndicaComida(Boolean.TRUE);
+					coment = new ComentarioDAO().obterIndicacaoComidaPositiva(this.comentarioModel);
+
+				} else if (this.indico.equals("2")) {
+
+					this.comentarioModel.setFlagIndicaAmbiente(Boolean.TRUE);
+					coment = new ComentarioDAO().obterIndicacaoEstabelecimentoPorUsuario(this.comentarioModel);
+
+				} else {
+
+					return null;
+
+				}
 
 				if (TSUtil.isEmpty(coment)) {
 
@@ -151,7 +165,7 @@ public class RankingFaces extends TSMainFaces {
 
 						this.initComentario();
 
-						super.addInfoMessage("Voto computado com sucesso!");
+						super.addInfoMessage("Operação realizada com sucesso!");
 
 					} catch (TSApplicationException e) {
 
@@ -160,7 +174,7 @@ public class RankingFaces extends TSMainFaces {
 
 				} else {
 
-					super.addErrorMessage(model.getNome() + ": você já indicou essa promoção!");
+					super.addErrorMessage(model.getNome() + " você já realizou essa operação!");
 				}
 
 			} else {
@@ -172,17 +186,25 @@ public class RankingFaces extends TSMainFaces {
 		return null;
 	}
 
-	public String indicacaoNegativa() {
+	public String naoIndicar() {
 
-		if (!TSUtil.isEmpty(this.indico) && TSUtil.isNumeric(this.indico) && this.indico.equals("2")) {
+		Long categoriaId = ZapeatUtil.getPageParamFormatado(super.getRequestParameter("categoriaId"));
+		Long estabelecimentoId = ZapeatUtil.getPageParamFormatado(super.getRequestParameter("estabelecimentoId"));
+		String comentario = super.getRequestParameter("comentario");
+
+		if (!TSUtil.isEmpty(estabelecimentoId)) {
 
 			UsuarioModel model = (UsuarioModel) TSFacesUtil.getObjectInSession(Constantes.USUARIO_LOGADO);
 
 			if (!TSUtil.isEmpty(model) && !TSUtil.isEmpty(model.getId())) {
 
-				this.comentarioModel.setUsuarioModel(model);
+				ComentarioModel comentarioModel = new ComentarioModel();
 
-				ComentarioModel coment = new ComentarioDAO().obterIndicacaoComidaPositiva(this.comentarioModel);
+				comentarioModel.setUsuarioModel(model);
+				comentarioModel.setDescricao(comentario);
+				comentarioModel.setFornecedorModel(new FornecedorModel(estabelecimentoId));
+
+				ComentarioModel coment = new ComentarioDAO().obterIndicacaoComidaPositiva(comentarioModel);
 
 				if (TSUtil.isEmpty(coment)) {
 
@@ -190,31 +212,43 @@ public class RankingFaces extends TSMainFaces {
 
 						this.comentarioModel.setFlagNaoIndicaComida(Boolean.TRUE);
 
+						comentarioModel.setFlagNaoIndicaComida(Boolean.TRUE);
+
 						new ComentarioDAO().inserir(this.comentarioModel);
+
+						new ComentarioDAO().inserir(comentarioModel);
 
 						this.carregaDados();
 
 						this.initComentario();
 
-						super.addInfoMessage("Voto computado com sucesso!");
+						super.addInfoMessage("Operação realizada com sucesso!");
+						
+						TSFacesUtil.addObjectInRequest("categoriaId", categoriaId);
+						TSFacesUtil.addObjectInRequest("estabelecimentoId", estabelecimentoId);
 
-					} catch (TSApplicationException e) {
+						//TSFacesUtil.getFacesContext().getExternalContext().redirect("ranking.jsf?categoriaId=" + categoriaId);
+
+					} catch (Exception e) {
 
 						e.printStackTrace();
+
 					}
 
 				} else {
 
-					super.addErrorMessage(model.getNome() + ": O Sr(a) já indicou essa promoção!");
+					super.addErrorMessage(model.getNome() + " você já realizou essa operação!");
 				}
 
 			} else {
 
 				super.addErrorMessage("Você precisa estar logado para realizar a operação!");
 			}
+
 		}
 
 		return null;
+
 	}
 
 	private void initComentario() {

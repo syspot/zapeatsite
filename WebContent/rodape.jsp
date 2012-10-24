@@ -52,17 +52,12 @@
         
         <div class="sep"></div>
         
-         <div align="center">
-                <h:messages errorStyle="color:red;" fatalStyle="color:red;" infoClass="info" infoStyle="color:green;" showDetail="true" showSummary="false" fatalClass="error" errorClass="error" id="msg"/>
-            </div>
-        
         <div class="inputs">
         	
-        	<t:inputHidden id="categoriaId" forceId="true"/>
-        	<t:inputHidden id="estabelecimentoId" forceId="true"/>
-        	<t:inputHidden id="indico" forceId="true"/>
+        	<input type="hidden" id="categoriaId" name="categoriaId" />
+        	<input type="hidden" id="estabelecimentoId" name="estabelecimentoId" />
         	
-        	<t:inputTextarea id="comentario" forceId="true" cols="43"/>
+        	<textarea name="comentario" rows="3" cols="43"></textarea>
         	
         	<script type="text/javascript">
 				$('#comentario').attr('placeholder','Deixe o seu comentário').attr('autofocus','');
@@ -72,7 +67,7 @@
 
         <div class="inputs">
         
-        	<h:commandButton value="COMENTAR" styleClass="submit" action="#{rankingFaces.indicacaoNegativa}"/>  
+        	<h:commandButton value="COMENTAR" styleClass="submit" action="#{indicacaoFaces.naoIndicar}"/>  
            
         </div>
 		

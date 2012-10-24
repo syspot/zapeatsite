@@ -10,6 +10,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 	<%@ include file="/head.jsp" %>
+	<script type="text/javascript" src="js/funcoes.js"></script>
 </head>
 
 <body>
@@ -49,7 +50,7 @@
                     </blockquote>
                     <div class="indico">
                     	<p><a href="ranking.jsf?categoriaId=${item.categoriaPrincipal.id}&estabelecimentoId=${item.id}&indico=1" title=""><span class="icons indicacaoRed"></span> Indico [${item.quantidadeIndicacoes}]</a></p>
-                    	<p><a title="" class="linkRanking"><span class="icons naoindicacaoRed"></span> Não indico</a></p>
+                    	<p><a title="Não indicar" onclick="nao_indicar(${item.categoriaPrincipal.id}, ${item.id})" class="linkRanking"><span class="icons naoindicacaoRed"></span> Não indico</a></p>
                    	</div>
                 </div>
                 </c:forEach>

@@ -56,7 +56,7 @@
 	                        
 	                        <br clear="all" />
 	                        <div class="boxInfo">
-	                            <div class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: <c:out value="${promocao.fornecedorModel.categoriaPrincipal.descricao}" /></div>
+	                            <div class="floatLeft"><img src="${promocao.fornecedorModel.categoriaPrincipal.imagemView}" alt="" title="${promocao.fornecedorModel.categoriaPrincipal.descricao}" class="floatLeftMargin4" />Categoria: <c:out value="${promocao.fornecedorModel.categoriaPrincipal.descricao}" /></div>
 	                            <div class="floatLeft marginLeft"><span class="icons tel"></span><c:out value="${promocao.fornecedorModel.telefone}" /></div>
 	                            
 	                            <c:if test="${not empty promocao.fornecedorModel.site}">
@@ -87,7 +87,7 @@
 	                        
 	                        <br clear="all" />
 	                        <div class="boxInfo">
-	                            <div class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: <c:out value="${carroChefe.fornecedorModel.categoriaPrincipal.descricao}" /></div>
+	                            <div class="floatLeft"><img src="${carroChefe.fornecedorModel.categoriaPrincipal.imagemView}" alt="" title="${carroChefe.fornecedorModel.categoriaPrincipal.descricao}" class="floatLeftMargin4" />Categoria: <c:out value="${carroChefe.fornecedorModel.categoriaPrincipal.descricao}" /></div>
 	                            <div class="floatLeft marginLeft"><span class="icons tel"></span><c:out value="${carroChefe.fornecedorModel.telefone}" /></div>
 	                            
 	                            <c:if test="${not empty carroChefe.fornecedorModel.site}">
