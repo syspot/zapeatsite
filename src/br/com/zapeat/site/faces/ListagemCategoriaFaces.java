@@ -29,6 +29,14 @@ public class ListagemCategoriaFaces extends TSMainFaces {
 		this.qtdPaginas = categoriaDAO.obterQtdPaginasOutrasCategorias().getValue();
 		
 	}
+	
+	public Long getPaginaInicial(){
+		return this.page < 11 ? 1 : this.page - 9;
+	}
+	
+	public Long getPaginaFinal(){
+		return this.page < 11 ? this.qtdPaginas > 10 ? 10 : this.qtdPaginas : this.page;
+	}
 
 	public List<CategoriaModel> getOutrasCategorias() {
 		return outrasCategorias;

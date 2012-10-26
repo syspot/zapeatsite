@@ -63,7 +63,7 @@
                				</c:otherwise>
                			</c:choose>
                			
-	               		<c:forEach begin="1" end="${listagemCategoriaFaces.qtdPaginas}" var="pagina">
+	               		<c:forEach begin="${listagemCategoriaFaces.paginaInicial}" end="${listagemCategoriaFaces.paginaFinal}" var="pagina">
 		                    <li class="pagina"><a href="outrasCat.jsf?page=${pagina}" title="">${pagina}</a></li>
 		                </c:forEach>
 	                
