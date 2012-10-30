@@ -44,12 +44,8 @@ public class IndexFaces extends TSMainFaces {
 			
 			this.promocoesHora = promocaoDAO.pesquisarPromocoesHora(this.promocaoHora);
 				
-		} else{
-			
-			
-			
 		}
-
+		
 		this.topGeral = new FornecedorDAO().pesquisarTopGeral();
 
 		this.setarCssTopGeral();

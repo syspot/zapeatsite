@@ -11,11 +11,8 @@
 			<p class="categoria">${estabelecimentoFaces.carroChefeModel.fornecedorModel.categoriaPrincipal.descricao}</p>
 			<p class="item">${estabelecimentoFaces.carroChefeModel.titulo}</p>
     	</a>
-    	<input type="hidden" va>
-    	<div class="votacao">
-	       <a href="ranking.jsf?categoriaId=${estabelecimentoFaces.carroChefeModel.fornecedorModel.categoriaPrincipal.id}&estabelecimentoId=${estabelecimentoFaces.carroChefeModel.fornecedorModel.id}&indico=1" title="Indico" class="floatLeft"><span class="icons indicacaoRed"></span>Indico [${estabelecimentoFaces.carroChefeModel.fornecedorModel.quantidadeIndicacoes}]</a>
-	       <a title="Não indicar" onclick="nao_indicar(${estabelecimentoFaces.carroChefeModel.fornecedorModel.categoriaPrincipal.id}, ${estabelecimentoFaces.carroChefeModel.fornecedorModel.id})" class="linkRanking floatRight"><span class="icons naoindicacaoRed"></span> Não indico</a>
-		</div>
+    	
+    	
 		 
 	</div>
 </c:if>
