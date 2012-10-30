@@ -100,7 +100,7 @@
 	                                </span>
 	                           	</c:forEach>
                            	</p>
-                            <p><span class="icons indicacao"></span> ${estabelecimentoFaces.fornecedorModel.quantidadeIndicacoes} pessoa(s) indicam o ambiente</p>
+                            <!-- <p><span class="icons indicacao"></span> ${estabelecimentoFaces.fornecedorModel.quantidadeIndicacoes} pessoa(s) indicam o ambiente</p> -->
                             
                         </li>
                     </ul>
@@ -152,11 +152,11 @@
         <!-- COMECA COLUNA DIREITA -->
         <div id="dir">
         
-        	<%@ include file="/include_promocao_do_dia_lateral.jsp" %>
+        	<%@ include file="/include_promocao_do_dia_estabelecimento_lateral.jsp" %>
             
-            <%@ include file="/include_promocao_da_semana_lateral.jsp" %>
+            <%@ include file="/include_promocao_da_semana_estabelecimento_lateral.jsp" %>
             
-            <%@ include file="/include_carro_chefe_lateral.jsp" %>
+            <%@ include file="/include_carro_chefe_estabelecimento_lateral.jsp" %>
             
            	<%@ include file="/include_banner_lateral.jsp" %>
             
