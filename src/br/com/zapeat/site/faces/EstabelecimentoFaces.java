@@ -9,13 +9,17 @@ import javax.faces.bean.ViewScoped;
 import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.faces.TSMainFaces;
 import br.com.topsys.web.util.TSFacesUtil;
+import br.com.zapeat.site.dao.CarroChefeDAO;
 import br.com.zapeat.site.dao.ComentarioDAO;
 import br.com.zapeat.site.dao.FormaPagamentoDAO;
 import br.com.zapeat.site.dao.FornecedorDAO;
 import br.com.zapeat.site.dao.ImagemFornecedorDAO;
+import br.com.zapeat.site.dao.PromocaoDAO;
+import br.com.zapeat.site.model.CarroChefeModel;
 import br.com.zapeat.site.model.ComentarioModel;
 import br.com.zapeat.site.model.FornecedorModel;
 import br.com.zapeat.site.model.ImagemFornecedorModel;
+import br.com.zapeat.site.model.PromocaoModel;
 
 @ViewScoped
 @ManagedBean(name = "estabelecimentoFaces")
@@ -27,7 +31,13 @@ public class EstabelecimentoFaces extends TSMainFaces {
 	private FornecedorDAO fornecedorDAO;
 	private ImagemFornecedorDAO imagemFornecedorDAO;
 	private ComentarioDAO comentarioDAO;
-	
+	private PromocaoDAO promocaoDAO;
+	private CarroChefeDAO carroChefeDAO;
+
+	private PromocaoModel promocaoDoDia;
+	private PromocaoModel promocaoDaSemana;
+	private CarroChefeModel carroChefeModel;
+
 	public EstabelecimentoFaces() {
 
 		this.carregaDados();
@@ -43,14 +53,20 @@ public class EstabelecimentoFaces extends TSMainFaces {
 			this.initDAO();
 
 			this.fornecedorModel = this.fornecedorDAO.obter(new FornecedorModel(new Long(fornecedorId)));
-			
+
 			if (!TSUtil.isEmpty(this.fornecedorModel) && !TSUtil.isEmpty(this.fornecedorModel.getId())) {
 
 				this.fotosEstabelecimento = this.imagemFornecedorDAO.pesquisar(this.fornecedorModel);
 
 				this.ranking = this.comentarioDAO.rankingEstabelecimento(this.fornecedorModel);
-				
+
 				this.fornecedorModel.setFormasPagamentos(new FormaPagamentoDAO().pesquisar(this.fornecedorModel));
+
+				this.promocaoDaSemana = this.promocaoDAO.obterPromocaoSemana(this.fornecedorModel);
+
+				this.promocaoDoDia = this.promocaoDAO.obterPromocaoSemana(this.fornecedorModel);
+
+				this.carroChefeModel = this.carroChefeDAO.obter(this.fornecedorModel);
 
 			} else {
 
@@ -83,8 +99,8 @@ public class EstabelecimentoFaces extends TSMainFaces {
 		this.comentarioDAO = new ComentarioDAO();
 
 	}
-	
-	public List<FornecedorModel> obterEstabelecimentosLateral(){
+
+	public List<FornecedorModel> obterEstabelecimentosLateral() {
 		return new FornecedorDAO().pesquisarHome();
 	}
 
@@ -110,6 +126,70 @@ public class EstabelecimentoFaces extends TSMainFaces {
 
 	public void setRanking(ComentarioModel ranking) {
 		this.ranking = ranking;
+	}
+
+	public FornecedorDAO getFornecedorDAO() {
+		return fornecedorDAO;
+	}
+
+	public void setFornecedorDAO(FornecedorDAO fornecedorDAO) {
+		this.fornecedorDAO = fornecedorDAO;
+	}
+
+	public ImagemFornecedorDAO getImagemFornecedorDAO() {
+		return imagemFornecedorDAO;
+	}
+
+	public void setImagemFornecedorDAO(ImagemFornecedorDAO imagemFornecedorDAO) {
+		this.imagemFornecedorDAO = imagemFornecedorDAO;
+	}
+
+	public ComentarioDAO getComentarioDAO() {
+		return comentarioDAO;
+	}
+
+	public void setComentarioDAO(ComentarioDAO comentarioDAO) {
+		this.comentarioDAO = comentarioDAO;
+	}
+
+	public PromocaoModel getPromocaoDoDia() {
+		return promocaoDoDia;
+	}
+
+	public void setPromocaoDoDia(PromocaoModel promocaoDoDia) {
+		this.promocaoDoDia = promocaoDoDia;
+	}
+
+	public PromocaoModel getPromocaoDaSemana() {
+		return promocaoDaSemana;
+	}
+
+	public void setPromocaoDaSemana(PromocaoModel promocaoDaSemana) {
+		this.promocaoDaSemana = promocaoDaSemana;
+	}
+
+	public CarroChefeModel getCarroChefeModel() {
+		return carroChefeModel;
+	}
+
+	public void setCarroChefeModel(CarroChefeModel carroChefeModel) {
+		this.carroChefeModel = carroChefeModel;
+	}
+
+	public PromocaoDAO getPromocaoDAO() {
+		return promocaoDAO;
+	}
+
+	public void setPromocaoDAO(PromocaoDAO promocaoDAO) {
+		this.promocaoDAO = promocaoDAO;
+	}
+
+	public CarroChefeDAO getCarroChefeDAO() {
+		return carroChefeDAO;
+	}
+
+	public void setCarroChefeDAO(CarroChefeDAO carroChefeDAO) {
+		this.carroChefeDAO = carroChefeDAO;
 	}
 
 }

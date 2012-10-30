@@ -6,6 +6,7 @@ import br.com.topsys.database.TSDataBaseBrokerIf;
 import br.com.topsys.database.factory.TSDataBaseBrokerFactory;
 import br.com.topsys.util.TSUtil;
 import br.com.zapeat.site.model.CarroChefeModel;
+import br.com.zapeat.site.model.FornecedorModel;
 import br.com.zapeat.site.model.Model;
 
 public class CarroChefeDAO {
@@ -104,6 +105,16 @@ public class CarroChefeDAO {
 		broker.setPropertySQL("carrochefedao.obter", id);
 
 		return (CarroChefeModel) broker.getObjectBean(CarroChefeModel.class, "id", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.logoMarca", "fornecedorModel.horariosFuncionamento", "fornecedorModel.logradouro", "fornecedorModel.numero", "fornecedorModel.bairro", "fornecedorModel.telefone", "fornecedorModel.categoriaPrincipal.id", "fornecedorModel.categoriaPrincipal.descricao", "fornecedorModel.categoriaPrincipal.imagem", "imagem", "descricao", "titulo", "fornecedorModel.longitude", "fornecedorModel.latitude");
+
+	}
+	
+	public CarroChefeModel obter(FornecedorModel model) {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+		broker.setPropertySQL("carrochefedao.obterPorFornecedor", model.getId());
+
+		return (CarroChefeModel) broker.getObjectBean(CarroChefeModel.class, "id", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.logoMarca", "fornecedorModel.horariosFuncionamento", "fornecedorModel.logradouro", "fornecedorModel.numero", "fornecedorModel.bairro", "fornecedorModel.telefone", "imagem", "descricao", "titulo", "fornecedorModel.longitude", "fornecedorModel.latitude");
 
 	}
 	
