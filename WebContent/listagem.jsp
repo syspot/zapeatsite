@@ -140,7 +140,7 @@
                				</c:otherwise>
                			</c:choose>
                			
-	               		<c:forEach begin="1" end="${listagemFaces.qtdPaginas}" var="pagina">
+	               		<c:forEach begin="${listagemFaces.paginaInicial}" end="${listagemFaces.paginaFinal}" var="pagina">
 		                    <li class="pagina"><a href="listagem.jsf?categoriaId=${listagemFaces.categoria.id}&tipo=${listagemFaces.tipo}&page=${pagina}" title="">${pagina}</a></li>
 		                </c:forEach>
 	                

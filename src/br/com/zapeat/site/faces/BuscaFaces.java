@@ -1,6 +1,5 @@
 package br.com.zapeat.site.faces;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -9,7 +8,6 @@ import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.faces.TSMainFaces;
 import br.com.zapeat.site.dao.BuscaDAO;
 import br.com.zapeat.site.model.BuscaModel;
-import br.com.zapeat.site.model.CidadeModel;
 import br.com.zapeat.site.util.ZapeatUtil;
 
 @ManagedBean
@@ -18,8 +16,6 @@ public class BuscaFaces extends TSMainFaces {
 	private BuscaDAO buscaDAO;
 	
 	private String termoBuscado;
-	
-	private CidadeModel cidade;
 	
 	private String localBuscado;
 	
@@ -30,7 +26,6 @@ public class BuscaFaces extends TSMainFaces {
 	private Long page;
 	
 	public BuscaFaces(){
-		this.cidade = new CidadeModel();
 		this.init();
 	}
 	
@@ -54,16 +49,13 @@ public class BuscaFaces extends TSMainFaces {
 		
 	}
 	
-	public List<String> completeCidades(String query) {
-		
-		List<String> lista = new ArrayList<String>();
-		
-		lista.add("teste2");
-		lista.add("teste2");
-		lista.add("teste3");
-		
-		return lista;
-    }
+	public Long getPaginaInicial(){
+		return this.page < 11 ? 1 : this.page - 9;
+	}
+	
+	public Long getPaginaFinal(){
+		return this.page < 11 ? this.qtdPaginas > 10 ? 10 : this.qtdPaginas : this.page;
+	}
 	
 	public String getPosicaoCentralMaps(){
 		return TSUtil.isEmpty(this.listagem) ? "-12.0, -38.0" : this.listagem.get(0).getLatitude() + ", " + this.listagem.get(0).getLongitude();
@@ -83,14 +75,6 @@ public class BuscaFaces extends TSMainFaces {
 
 	public void setTermoBuscado(String termoBuscado) {
 		this.termoBuscado = termoBuscado;
-	}
-
-	public CidadeModel getCidade() {
-		return cidade;
-	}
-
-	public void setCidade(CidadeModel cidade) {
-		this.cidade = cidade;
 	}
 
 	public String getLocalBuscado() {

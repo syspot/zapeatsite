@@ -18,6 +18,8 @@ public class BuscaModel {
 	
 	private String categoria;
 	
+	private String imagemCategoria;
+	
 	private String telefone;
 	
 	private String site;
@@ -147,6 +149,18 @@ public class BuscaModel {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getImagemCategoria() {
+		return imagemCategoria;
+	}
+
+	public void setImagemCategoria(String imagemCategoria) {
+		this.imagemCategoria = imagemCategoria;
+	}
+	
+	public String getImagemCategoriaView() {
+		return Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_CATEGORIA + getImagemCategoria();
 	}
 
 	public String getLink() {

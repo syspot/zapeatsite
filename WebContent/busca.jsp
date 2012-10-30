@@ -52,7 +52,7 @@
 	                        
 	                        <br clear="all" />
 	                        <div class="boxInfo">
-	                            <div class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: ${result.categoria}</div>
+	                            <div class="floatLeft"><img src="${result.imagemCategoriaView}" alt="" title="${result.categoria}" class="floatLeftMargin4" />Categoria: ${result.categoria}</div>
 	                            <div class="floatLeft marginLeft"><span class="icons tel"></span>${result.telefone}</div>
 	                            
 	                            <c:if test="${not empty result.site}">
@@ -79,7 +79,7 @@
                				</c:otherwise>
                			</c:choose>
 						
-	               		<c:forEach begin="1" end="${buscaFaces.qtdPaginas}" var="pagina">
+	               		<c:forEach begin="${buscaFaces.paginaInicial}" end="${buscaFaces.paginaFinal}" var="pagina">
 		                    <li class="pagina"><a href="busca.jsf?page=${pagina}" title="">${pagina}</a></li>
 		                </c:forEach>
 	                
