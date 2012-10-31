@@ -63,7 +63,8 @@
                 </div>
                 <div class="boxInfo">
                 	<span class="floatLeft"><span class="icons tel"></span>${estabelecimentoFaces.fornecedorModel.telefone}</span>
-                	<span class="floatLeft marginLeft"><a href="estabelecimento.jsf?categoriaId=${item.categoriaPrincipal.id}&estabelecimentoId=${item.id}&indico=2" title=""><span class="icons indicacao"></span> Eu indico [${item.quantidadeIndicacoes}]</a></span>
+                	<span class="floatLeft marginLeft">
+                	</span>
                 </div>
                 <blockquote class="fontYi">
                 	<p>${estabelecimentoFaces.fornecedorModel.descricao}</p>
@@ -102,7 +103,7 @@
 	                                </span>
 	                           	</c:forEach>
                            	</p>
-                            <!-- <p><span class="icons indicacao"></span> ${estabelecimentoFaces.fornecedorModel.quantidadeIndicacoes} pessoa(s) indicam o ambiente</p> -->
+                            <p><span class="icons indicacao"></span> ${estabelecimentoFaces.fornecedorModel.quantidadeIndicacoes} pessoa(s) indicam o ambiente</p>
                             
                         </li>
                     </ul>

@@ -97,6 +97,8 @@ public class EstabelecimentoFaces extends TSMainFaces {
 		this.fornecedorDAO = new FornecedorDAO();
 		this.imagemFornecedorDAO = new ImagemFornecedorDAO();
 		this.comentarioDAO = new ComentarioDAO();
+		this.promocaoDAO = new PromocaoDAO();
+		this.carroChefeDAO = new CarroChefeDAO();
 
 	}
 
