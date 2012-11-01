@@ -26,7 +26,6 @@
 			<to-view-id>/busca.jsp</to-view-id>
 		</navigation-case>
 
-
 	</navigation-rule>
 
 </faces-config>
