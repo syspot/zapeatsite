@@ -17,11 +17,6 @@
 				<p class="item">${promocaoFaces.carroChefeModel.titulo}</p>
 	    	</a>
 	    	
-	    	<div class="votacao">
-		       <h:commandLink action="#{indicacaoFaces.indicarComida}" styleClass="floatLeft"><span class="icons indicacaoRed"></span>Indico [${promocaoFaces.carroChefeModel.fornecedorModel.quantidadeIndicacoes}]</h:commandLink>
-		       <a title="Não indicar" onclick="nao_indicar(${promocaoFaces.carroChefeModel.fornecedorModel.categoriaPrincipal.id}, ${promocaoFaces.carroChefeModel.fornecedorModel.id})" class="linkRanking floatRight"><span class="icons naoindicacaoRed"></span> Não indico</a>
-			</div>
-			 
 		</div>
 	</c:if>
 

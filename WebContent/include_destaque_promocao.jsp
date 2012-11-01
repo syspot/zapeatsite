@@ -9,7 +9,7 @@
         	
    	<div id="fotoDestaque">
    	
-        <a href="promocao.jsf?id=${indexFaces.promocaoHora.id}">
+        <a href="promocao.jsf?id=${indexFaces.promocaoHora.id}&estabelecimento_id=${indexFaces.promocaoHora.fornecedorModel.id}">
         	<img src="${indexFaces.promocaoHora.imagemPromocaoFullView}" alt="" title="" />
         </a>
             <div class="tituloPromo">
@@ -87,7 +87,7 @@
 				<ul id="listagem">
 					<c:forEach var="promocao" items="${indexFaces.promocoesHora}">
 						<li>
-							<a href="promocao.jsf?id=${promocao.id}" title="">
+							<a href="promocao.jsf?id=${promocao.id}&estabelecimento_id=${promocao.fornecedorModel.id}" title="">
 								<div class="marca floatLeft">
 	                   				<img src="${promocao.imagemPromocaoThumbView}" alt="" title="${promocao.fornecedorModel.nomeFantasia}" />
 	                  			</div>

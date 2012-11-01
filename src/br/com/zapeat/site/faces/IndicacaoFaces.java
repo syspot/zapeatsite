@@ -10,7 +10,6 @@ import br.com.zapeat.site.model.ComentarioModel;
 import br.com.zapeat.site.model.FornecedorModel;
 import br.com.zapeat.site.model.UsuarioModel;
 import br.com.zapeat.site.util.Constantes;
-import br.com.zapeat.site.util.ZapeatUtil;
 
 @ManagedBean(name="indicacaoFaces")
 public class IndicacaoFaces extends TSMainFaces {
@@ -18,10 +17,9 @@ public class IndicacaoFaces extends TSMainFaces {
 	
 	private void executarIndicacao(ComentarioModel comentarioModel){
 		
-		Long estabelecimentoId = ZapeatUtil.getParamFormatado(super.getRequestParameter("estabelecimentoId"));
 		String comentario = super.getRequestParameter("comentario");
 
-		if(!TSUtil.isEmpty(estabelecimentoId)){
+		if(!TSUtil.isEmpty(comentarioModel.getFornecedorModel().getId())){
 			
 			UsuarioModel model = (UsuarioModel) TSFacesUtil.getObjectInSession(Constantes.USUARIO_LOGADO);
 
@@ -29,7 +27,7 @@ public class IndicacaoFaces extends TSMainFaces {
 
 				comentarioModel.setUsuarioModel(model);
 				comentarioModel.setDescricao(comentario);
-				comentarioModel.setFornecedorModel(new FornecedorModel(estabelecimentoId));
+				comentarioModel.setFornecedorModel(comentarioModel.getFornecedorModel());
 
 				ComentarioModel coment = new ComentarioDAO().obterIndicacaoComidaPositiva(comentarioModel);
 
@@ -41,6 +39,7 @@ public class IndicacaoFaces extends TSMainFaces {
 
 						super.addInfoMessage("Voto computado com sucesso!");
 						
+						
 					} catch (Exception e) {
 
 						e.printStackTrace();
@@ -49,21 +48,23 @@ public class IndicacaoFaces extends TSMainFaces {
 
 				} else {
 
-					super.addErrorMessage(model.getNome() + ": O Sr(a) já indicou essa promoção!");
+					super.addErrorMessage(model.getNome() + ": O Sr(a) jï¿½ indicou essa promoï¿½ï¿½o!");
 				}
 
 			} else {
 
-				super.addErrorMessage("Você precisa estar logado para realizar a operação!");
+				super.addErrorMessage("Vocï¿½ precisa estar logado para realizar a operaï¿½ï¿½o!");
 			}
 			
 		}
 		
 	}
 	
-	public String indicarComida(){
+	public String indicarComida(Long fornecedorId){
 		
 		ComentarioModel comentarioModel = new ComentarioModel();
+		
+		comentarioModel.setFornecedorModel(new FornecedorModel(fornecedorId));
 		
 		comentarioModel.setFlagIndicaComida(Boolean.TRUE);
 		
@@ -73,9 +74,11 @@ public class IndicacaoFaces extends TSMainFaces {
 		
 	}
 	
-	public String indicarAmbiente(){
+	public String indicarAmbiente(Long fornecedorId){
 		
 		ComentarioModel comentarioModel = new ComentarioModel();
+		
+		comentarioModel.setFornecedorModel(new FornecedorModel(fornecedorId));
 		
 		comentarioModel.setFlagIndicaAmbiente(Boolean.TRUE);
 		

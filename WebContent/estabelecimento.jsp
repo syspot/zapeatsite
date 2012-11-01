@@ -20,6 +20,7 @@
 	<%@ include file="/topo.jsp" %>
 	
 	<input type="hidden" id="id" name="id" value="${estabelecimentoFaces.fornecedorModel.id}">
+	
 
 <!-- COMECA CENTRAL -->
 <div id="central">
@@ -63,7 +64,6 @@
                 </div>
                 <div class="boxInfo">
                 	<span class="floatLeft"><span class="icons tel"></span>${estabelecimentoFaces.fornecedorModel.telefone}</span>
-                	<span class="floatLeft marginLeft"><a href="estabelecimento.jsf?categoriaId=${item.categoriaPrincipal.id}&estabelecimentoId=${item.id}&indico=2" title=""><span class="icons indicacao"></span> Eu indico [${item.quantidadeIndicacoes}]</a></span>
                 </div>
                 <blockquote class="fontYi">
                 	<p>${estabelecimentoFaces.fornecedorModel.descricao}</p>
@@ -102,10 +102,47 @@
 	                                </span>
 	                           	</c:forEach>
                            	</p>
-                            <p><span class="icons indicacao"></span> ${estabelecimentoFaces.fornecedorModel.quantidadeIndicacoes} pessoa(s) indicam o ambiente</p>
+                            
                             
                         </li>
                     </ul>
+                    
+                    <ul>
+                    	<li>
+                    	<h:form>
+                    		<c:if test="${estabelecimentoFaces.fornecedorModel.quantidadeIndicacoesComida == 1}">
+                    			<p> ${estabelecimentoFaces.fornecedorModel.quantidadeIndicacoesComida} pessoa indica a comida</p>
+                    		</c:if>
+                    		<c:if test="${estabelecimentoFaces.fornecedorModel.quantidadeIndicacoesComida > 1}">
+                    			<p> ${estabelecimentoFaces.fornecedorModel.quantidadeIndicacoesComida} pessoas indicam a comida</p>
+                    		</c:if>
+	                		<div class="votacao">
+	                			
+						       		<h:commandLink action="#{indicacaoFaces.indicarComida(promocaoFaces.carroChefeModel.fornecedorModel.id)}" styleClass="floatLeft"><span class="icons indicacao"></span>Indico</h:commandLink>
+						       		<a title="Não indicar" onclick="nao_indicar(${promocaoFaces.carroChefeModel.fornecedorModel.categoriaPrincipal.id}, ${promocaoFaces.carroChefeModel.fornecedorModel.id})" class="linkRanking floatRight"><span class="icons naoindicacaoRed"></span> Não indico</a>
+						       
+							</div>
+							</li>
+							<li>
+							<br/>
+							</li>
+							
+							<li>
+							<c:if test="${estabelecimentoFaces.fornecedorModel.quantidadeIndicacoesAmbiente == 1}">
+                    			<p> ${estabelecimentoFaces.fornecedorModel.quantidadeIndicacoesAmbiente} pessoa indica o ambiente</p>
+                    		</c:if>
+                    		<c:if test="${estabelecimentoFaces.fornecedorModel.quantidadeIndicacoesAmbiente > 1}">
+                    			<p> ${estabelecimentoFaces.fornecedorModel.quantidadeIndicacoesAmbiente} pessoas indicam o ambiente</p>
+                    		</c:if>
+	                		<div class="votacao">
+	                				<h:commandLink action="#{indicacaoFaces.indicarComida(promocaoFaces.carroChefeModel.fornecedorModel.id)}" styleClass="floatLeft"><span class="icons indicacao"></span>Indico</h:commandLink>
+						       		<a title="Não indicar" onclick="nao_indicar(${promocaoFaces.carroChefeModel.fornecedorModel.categoriaPrincipal.id}, ${promocaoFaces.carroChefeModel.fornecedorModel.id})" class="linkRanking floatRight"><span class="icons naoindicacaoRed"></span> Não indico</a>
+						       
+							</div>
+						</h:form>
+						</li>
+						
+					</ul>
                 </div>
                 
                 <address>${estabelecimentoFaces.fornecedorModel.logradouro} / ${estabelecimentoFaces.fornecedorModel.bairro}</address>
@@ -154,11 +191,11 @@
         <!-- COMECA COLUNA DIREITA -->
         <div id="dir">
         
-        	<%@ include file="/include_promocao_do_dia_lateral.jsp" %>
+        	<%@ include file="/include_promocao_do_dia_estabelecimento_lateral.jsp" %>
             
-            <%@ include file="/include_promocao_da_semana_lateral.jsp" %>
+            <%@ include file="/include_promocao_da_semana_estabelecimento_lateral.jsp" %>
             
-            <%@ include file="/include_carro_chefe_lateral.jsp" %>
+            <%@ include file="/include_carro_chefe_estabelecimento_lateral.jsp" %>
             
            	<%@ include file="/include_banner_lateral.jsp" %>
             

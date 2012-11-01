@@ -62,7 +62,7 @@ public class FornecedorDAO {
 
 		return (FornecedorModel) broker.getObjectBean(FornecedorModel.class,
 
-		"id", "razaoSocial", "cnpj", "nomeFantasia", "cep", "logradouro", "numero", "bairro", "cidadeModel.id", "latitude", "longitude", "logoMarca", "flagAtivo", "descricao", "horariosFuncionamento", "twitter", "facebook", "site", "telefone","quantidadeIndicacoes", "imagemThumb");
+		"id", "razaoSocial", "cnpj", "nomeFantasia", "cep", "logradouro", "numero", "bairro", "cidadeModel.id", "latitude", "longitude", "logoMarca", "flagAtivo", "descricao", "horariosFuncionamento", "twitter", "facebook", "site", "telefone","quantidadeIndicacoesComida", "quantidadeIndicacoesAmbiente", "imagemThumb");
 
 	}
 	

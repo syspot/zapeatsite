@@ -15,7 +15,7 @@
 
 </head>
 
-<body onload="initialize()">
+<body>
 
 <!-- COMECA TOPO -->
 

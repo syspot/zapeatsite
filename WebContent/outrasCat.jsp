@@ -11,7 +11,7 @@
 	<%@ include file="/head.jsp" %>
 </head>
 <f:view>
-<body onload="initialize()">
+<body >
 
 	<!-- COMECA TOPO -->
 	<%@ include file="/topo.jsp" %>

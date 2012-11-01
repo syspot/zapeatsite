@@ -51,6 +51,10 @@ public class FornecedorModel {
 
 	private Integer quantidadeIndicacoes;
 	
+	private Integer quantidadeIndicacoesComida;
+	
+	private Integer quantidadeIndicacoesAmbiente;
+	
 	private String css;
 	
 	private Integer numeroUnico;
@@ -329,6 +333,22 @@ public class FornecedorModel {
 		retorno.append("]");
 		
 		return retorno.toString();
+	}
+
+	public Integer getQuantidadeIndicacoesComida() {
+		return quantidadeIndicacoesComida;
+	}
+
+	public void setQuantidadeIndicacoesComida(Integer quantidadeIndicacoesComida) {
+		this.quantidadeIndicacoesComida = quantidadeIndicacoesComida;
+	}
+
+	public Integer getQuantidadeIndicacoesAmbiente() {
+		return quantidadeIndicacoesAmbiente;
+	}
+
+	public void setQuantidadeIndicacoesAmbiente(Integer quantidadeIndicacoesAmbiente) {
+		this.quantidadeIndicacoesAmbiente = quantidadeIndicacoesAmbiente;
 	}
 
 }

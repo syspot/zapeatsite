@@ -17,6 +17,16 @@ public class ComentarioDAO {
 		return (ComentarioModel) broker.getObjectBean(ComentarioModel.class, "id", "descricao", "usuarioModel.nome", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.imagemThumb");
 
 	}
+	
+	public ComentarioModel obterIndicacao(FornecedorModel model) {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+		broker.setPropertySQL("comentariodao.obterIndicacaoEstabelecimentoById", model.getId());
+
+		return (ComentarioModel) broker.getObjectBean(ComentarioModel.class, "id", "descricao", "usuarioModel.nome", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.imagemThumb");
+
+	}
 
 	public ComentarioModel rankingEstabelecimento(FornecedorModel model) {
 

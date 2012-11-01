@@ -12,7 +12,7 @@
 	<%@ include file="/head.jsp" %>
 </head>
 
-<body onload="initialize()">
+<body>
 
 	<!-- COMECA TOPO -->
 	<%@ include file="/topo.jsp" %>
@@ -196,7 +196,7 @@
 		                
 		                <script>
 							  var map;
-							  function initialize() {
+							  function initialize2() {
 								// Creating a map
 								var latlng = new google.maps.LatLng(${promocaoFaces.promocao.fornecedorModel.latitude}, ${promocaoFaces.promocao.fornecedorModel.longitude}); 
 								var map = new google.maps.Map(document.getElementById('map_canvas_estab'), {  
@@ -214,7 +214,7 @@
 								});
 							  }
 						
-							  google.maps.event.addDomListener(window, 'load', initialize);
+							  google.maps.event.addDomListener(window, 'load', initialize2);
 							</script>
 		            
 	    			</c:when>
@@ -245,7 +245,7 @@
 		                
 		                <script>
 							  var map;
-							  function initialize() {
+							  function initialize2() {
 								// Creating a map
 								var latlng = new google.maps.LatLng(${promocaoFaces.carroChefe.fornecedorModel.latitude}, ${promocaoFaces.carroChefe.fornecedorModel.longitude}); 
 								var map = new google.maps.Map(document.getElementById('map_canvas_estab'), {  
@@ -263,7 +263,7 @@
 								});
 							  }
 						
-							  google.maps.event.addDomListener(window, 'load', initialize);
+							  google.maps.event.addDomListener(window, 'load', initialize2);
 							</script>
 	    			
 	    			</c:otherwise>
@@ -285,11 +285,11 @@
         <!-- COMECA COLUNA DIREITA -->
         <div id="dir">
         	
-			<%@ include file="/include_promocao_do_dia_lateral.jsp" %>
+			<%@ include file="/include_promocao_do_dia_estabelecimento_lateral.jsp" %>
             
-			<%@ include file="/include_promocao_da_semana_lateral.jsp" %>
+			<%@ include file="/include_promocao_da_semana_estabelecimento_lateral.jsp" %>
             
-            <%@ include file="/include_quem_indica_lateral.jsp" %>
+            <%@ include file="/include_quem_indica_estabelecimento_lateral.jsp" %>
 
            	<%@ include file="/include_banner_lateral.jsp" %>
             
