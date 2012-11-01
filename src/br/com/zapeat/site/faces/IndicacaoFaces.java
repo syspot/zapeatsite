@@ -60,11 +60,11 @@ public class IndicacaoFaces extends TSMainFaces {
 		
 	}
 	
-	public String indicarComida(Long fornecedorId){
+	public String indicarComida(){
 		
 		ComentarioModel comentarioModel = new ComentarioModel();
-		
-		comentarioModel.setFornecedorModel(new FornecedorModel(fornecedorId));
+		//TODO IMPLEMENTAR CURTIR
+		comentarioModel.setFornecedorModel(new FornecedorModel(0L));
 		
 		comentarioModel.setFlagIndicaComida(Boolean.TRUE);
 		
@@ -74,11 +74,11 @@ public class IndicacaoFaces extends TSMainFaces {
 		
 	}
 	
-	public String indicarAmbiente(Long fornecedorId){
+	public String indicarAmbiente(){
 		
 		ComentarioModel comentarioModel = new ComentarioModel();
-		
-		comentarioModel.setFornecedorModel(new FornecedorModel(fornecedorId));
+		//TODO IMPLEMENTAR CURTIR
+		comentarioModel.setFornecedorModel(new FornecedorModel(0L));
 		
 		comentarioModel.setFlagIndicaAmbiente(Boolean.TRUE);
 		

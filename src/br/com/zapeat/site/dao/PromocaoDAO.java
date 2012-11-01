@@ -115,31 +115,31 @@ public class PromocaoDAO {
 
 	}
 	
-	public PromocaoModel obterPromocaoHoraAleatoria() {
+	public PromocaoModel obterPromocaoHoraAleatoria(Long promocaoId, Long fornecedorId) {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("promocaodao.obterpromocaohoraaleatoria");
+		broker.setPropertySQL("promocaodao.obterpromocaohoraaleatoria", fornecedorId, promocaoId);
 
 		return (PromocaoModel) broker.getObjectBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "descricao", "inicio", "fim", "precoOriginal", "precoPromocional", "titulo", "imagemPromocao", "fornecedorModel.longitude", "fornecedorModel.latitude");
 
 	}
 	
-	public PromocaoModel obterPromocaoDiaAleatoria() {
+	public PromocaoModel obterPromocaoDiaAleatoria(Long promocaoId, Long fornecedorId) {
 		
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		
-		broker.setPropertySQL("promocaodao.obterpromocaodiaaleatoria");
+		broker.setPropertySQL("promocaodao.obterpromocaodiaaleatoria", fornecedorId, promocaoId);
 		
 		return (PromocaoModel) broker.getObjectBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "descricao", "inicio", "fim", "precoOriginal", "precoPromocional", "titulo", "imagemPromocao", "fornecedorModel.longitude", "fornecedorModel.latitude");
 		
 	}
 	
-	public PromocaoModel obterPromocaoSemanaAleatoria() {
+	public PromocaoModel obterPromocaoSemanaAleatoria(Long promocaoId, Long fornecedorId) {
 		
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		
-		broker.setPropertySQL("promocaodao.obterpromocaosemanaaleatoria");
+		broker.setPropertySQL("promocaodao.obterpromocaosemanaaleatoria", fornecedorId, promocaoId);
 		
 		return (PromocaoModel) broker.getObjectBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "descricao", "inicio", "fim", "precoOriginal", "precoPromocional", "titulo", "imagemPromocao", "fornecedorModel.longitude", "fornecedorModel.latitude");
 		

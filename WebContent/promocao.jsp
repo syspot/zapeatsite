@@ -285,11 +285,11 @@
         <!-- COMECA COLUNA DIREITA -->
         <div id="dir">
         	
-			<%@ include file="/include_promocao_do_dia_estabelecimento_lateral.jsp" %>
+			<%@ include file="/include_promocao_do_dia_promocao_lateral.jsp" %>
             
-			<%@ include file="/include_promocao_da_semana_estabelecimento_lateral.jsp" %>
-            
-            <%@ include file="/include_quem_indica_estabelecimento_lateral.jsp" %>
+			<%@ include file="/include_promocao_da_semana_promocao_lateral.jsp" %>
+			
+            <%@ include file="/include_quem_indica_promocao_lateral.jsp" %>
 
            	<%@ include file="/include_banner_lateral.jsp" %>
             

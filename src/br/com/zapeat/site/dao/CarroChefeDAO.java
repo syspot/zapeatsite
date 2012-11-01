@@ -118,11 +118,11 @@ public class CarroChefeDAO {
 
 	}
 	
-	public CarroChefeModel obterCarroChefeAleatorio() {
+	public CarroChefeModel obterCarroChefeAleatorio(Long fornecedorId) {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("carrochefedao.obtercarrochefealeatorio");
+		broker.setPropertySQL("carrochefedao.obtercarrochefealeatorio", fornecedorId);
 
 		return (CarroChefeModel) broker.getObjectBean(CarroChefeModel.class, "id", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.quantidadeIndicacoes", "descricao", "flagAtivo", "titulo", "imagem", "fornecedorModel.categoriaPrincipal.id", "fornecedorModel.categoriaPrincipal.descricao");
 

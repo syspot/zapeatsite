@@ -3,7 +3,6 @@ package br.com.zapeat.site.faces;
 import javax.faces.bean.ManagedBean;
 
 import br.com.topsys.util.TSUtil;
-import br.com.topsys.web.faces.TSMainFaces;
 import br.com.zapeat.site.dao.CarroChefeDAO;
 import br.com.zapeat.site.dao.FormaPagamentoDAO;
 import br.com.zapeat.site.dao.ImagemCarroChefeDAO;
@@ -14,17 +13,12 @@ import br.com.zapeat.site.model.PromocaoModel;
 import br.com.zapeat.site.util.ZapeatUtil;
 
 @ManagedBean
-public class PromocaoFaces extends TSMainFaces {
+public class PromocaoFaces extends CarregaPromocaoFaces {
 
 	private PromocaoModel promocao;
 	private CarroChefeModel carroChefe;
 	private boolean tipoPromocao;
 	
-	private PromocaoModel promocaoDaHora;
-	private PromocaoModel promocaoDoDia;
-	private PromocaoModel promocaoDaSemana;
-	private CarroChefeModel carroChefeModel;
-
 	public PromocaoFaces() {
 
 		Long id = ZapeatUtil.getParamFormatado(super.getRequestParameter("id"));
@@ -33,14 +27,7 @@ public class PromocaoFaces extends TSMainFaces {
 		PromocaoDAO promocaoDAO = new PromocaoDAO();
 		CarroChefeDAO carroChefeDAO = new CarroChefeDAO();
 		
-		this.promocaoDaHora = promocaoDAO.obterPromocaoHoraAleatoria();
-		this.promocaoDoDia = promocaoDAO.obterPromocaoDiaAleatoria();
-		this.promocaoDaSemana = promocaoDAO.obterPromocaoSemanaAleatoria();
-		this.carroChefeModel = carroChefeDAO.obterCarroChefeAleatorio();
-		
-		
 		if(TSUtil.isEmpty(id) || TSUtil.isEmpty(carroChefeId)){
-			
 			
 			if(!TSUtil.isEmpty(carroChefeId)){
 				
@@ -81,6 +68,16 @@ public class PromocaoFaces extends TSMainFaces {
 		}
 		
 	}
+	
+	@Override
+	protected Long getPromocaoId() {
+		return ZapeatUtil.getParamFormatado(super.getRequestParameter("id"));
+	}
+	
+	@Override
+	protected Long getFornecedorId() {
+		return ZapeatUtil.getParamFormatado(super.getRequestParameter("estabelecimento_id"));
+	}
 
 	public PromocaoModel getPromocao() {
 		return promocao;
@@ -104,38 +101,6 @@ public class PromocaoFaces extends TSMainFaces {
 
 	public void setTipoPromocao(boolean tipoPromocao) {
 		this.tipoPromocao = tipoPromocao;
-	}
-
-	public PromocaoModel getPromocaoDaHora() {
-		return promocaoDaHora;
-	}
-
-	public void setPromocaoDaHora(PromocaoModel promocaoDaHora) {
-		this.promocaoDaHora = promocaoDaHora;
-	}
-
-	public PromocaoModel getPromocaoDoDia() {
-		return promocaoDoDia;
-	}
-
-	public void setPromocaoDoDia(PromocaoModel promocaoDoDia) {
-		this.promocaoDoDia = promocaoDoDia;
-	}
-
-	public PromocaoModel getPromocaoDaSemana() {
-		return promocaoDaSemana;
-	}
-
-	public void setPromocaoDaSemana(PromocaoModel promocaoDaSemana) {
-		this.promocaoDaSemana = promocaoDaSemana;
-	}
-
-	public CarroChefeModel getCarroChefeModel() {
-		return carroChefeModel;
-	}
-
-	public void setCarroChefeModel(CarroChefeModel carroChefeModel) {
-		this.carroChefeModel = carroChefeModel;
 	}
 
 }

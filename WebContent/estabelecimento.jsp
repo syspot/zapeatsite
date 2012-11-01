@@ -118,7 +118,7 @@
                     		</c:if>
 	                		<div class="votacao">
 	                			
-						       		<h:commandLink action="#{indicacaoFaces.indicarComida(promocaoFaces.carroChefeModel.fornecedorModel.id)}" styleClass="floatLeft"><span class="icons indicacao"></span>Indico</h:commandLink>
+						       		<h:commandLink action="#{indicacaoFaces.indicarComida}" styleClass="floatLeft"><span class="icons indicacao"></span>Indico</h:commandLink>
 						       		<a title="Não indicar" onclick="nao_indicar(${promocaoFaces.carroChefeModel.fornecedorModel.categoriaPrincipal.id}, ${promocaoFaces.carroChefeModel.fornecedorModel.id})" class="linkRanking floatRight"><span class="icons naoindicacaoRed"></span> Não indico</a>
 						       
 							</div>
@@ -135,7 +135,7 @@
                     			<p> ${estabelecimentoFaces.fornecedorModel.quantidadeIndicacoesAmbiente} pessoas indicam o ambiente</p>
                     		</c:if>
 	                		<div class="votacao">
-	                				<h:commandLink action="#{indicacaoFaces.indicarComida(promocaoFaces.carroChefeModel.fornecedorModel.id)}" styleClass="floatLeft"><span class="icons indicacao"></span>Indico</h:commandLink>
+	                				<h:commandLink action="#{indicacaoFaces.indicarComida}" styleClass="floatLeft"><span class="icons indicacao"></span>Indico</h:commandLink>
 						       		<a title="Não indicar" onclick="nao_indicar(${promocaoFaces.carroChefeModel.fornecedorModel.categoriaPrincipal.id}, ${promocaoFaces.carroChefeModel.fornecedorModel.id})" class="linkRanking floatRight"><span class="icons naoindicacaoRed"></span> Não indico</a>
 						       
 							</div>
