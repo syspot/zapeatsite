@@ -33,11 +33,11 @@ public class FornecedorDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<FornecedorModel> pesquisarMelhorAtendimento(CategoriaModel model, Long cidadeId) {
+	public List<FornecedorModel> pesquisarTop10(CategoriaModel model, Long cidadeId) {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("fornecedordao.pesquisarMelhorAtendimento", model.getId(), cidadeId);
+		broker.setPropertySQL("fornecedordao.pesquisartop10", model.getId(), cidadeId);
 
 		return broker.getCollectionBean(FornecedorModel.class, "id", "nomeFantasia", "quantidadeIndicacoes", "logoMarca", "categoriaPrincipal.id", "categoriaPrincipal.descricao");
 

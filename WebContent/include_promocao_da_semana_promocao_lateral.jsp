@@ -6,7 +6,7 @@
 
 	<div class="boxSubCat">
 	   	<h2>Promoção da semana</h2>
-	       <a href="promocao.jsf?id=${promocaoFaces.promocaoDaSemana.id}&estabelecimento_id=${promocaoFaces.promocaoDaSemana.fornecedorModel.id}" title="${promocaoFaces.promocaoDaSemana.fornecedorModel.nomeFantasia}">
+	       <a href="promocao.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${promocaoFaces.promocaoDaSemana.id}&estabelecimento_id=${promocaoFaces.promocaoDaSemana.fornecedorModel.id}" title="${promocaoFaces.promocaoDaSemana.fornecedorModel.nomeFantasia}">
 	    	<img src="${promocaoFaces.promocaoDaSemana.imagemPromocaoThumbView}" alt="${promocaoFaces.promocaoDaSemana.fornecedorModel.nomeFantasia}" title="${promocaoFaces.promocaoDaSemana.fornecedorModel.nomeFantasia}" />
 	        <p class="titulo">${promocaoFaces.promocaoDaSemana.fornecedorModel.nomeFantasia}</p>
 	        <p><span class="precoDe">

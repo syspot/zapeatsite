@@ -2,11 +2,11 @@
 /* CSS Document */
 
 ul#topGeral li{ background-image:url(../img/spriteTopGeral.png); background-repeat:no-repeat; padding-left:40px;/* width:35px;*/ min-height:40px;}
-ul#topGeral li.hum		{ background-position:0px 0px;}
-ul#topGeral li.dois		{ background-position:0px -46px;}
-ul#topGeral li.tres		{ background-position:0px -95px;}
-ul#topGeral li.quatro	{ background-position:0px -142px;}
-ul#topGeral li.cinco	{ background-position:0px -187px;}
+ul#topGeral li.top1		{ background-position:0px 0px;}
+ul#topGeral li.top2		{ background-position:0px -46px;}
+ul#topGeral li.top3		{ background-position:0px -95px;}
+ul#topGeral li.top4	{ background-position:0px -142px;}
+ul#topGeral li.top5	{ background-position:0px -187px;}
 ul#topGeral li .titulo		{ font-size:12px!important;}
 ul#topGeral li .categoria	{ font-size:14px!important;}
 #outrosDestaques h2{-webkit-border-radius: 5px 5px 0px 0px; border-radius: 5px 5px 0px 0px; background:#0066CC; font-size:16px; font-family: 'titilliumtext22l_rgbold'; color:#fff; padding:5px 10px;}
@@ -70,3 +70,5 @@ ul#topGeral li .categoria	{ font-size:14px!important;}
 .tituloIndica{background:rgba(0,0,0,.7); padding:3px 5px; color:#fff; font-family: 'titilliumtext22l_ltthin'; font-size:13px; position:absolute; bottom:0; letter-spacing:0;}
 .comment{font-family:Arial, Helvetica, sans-serif; font-size:12px; font-style:italic; line-height:14px;}
 .autor{font-family: 'titilliumtext22l_rgbold'; font-size:12px; font-style:normal; text-align:right;}
+
+.alinhacentro {margin-top: 10px;}

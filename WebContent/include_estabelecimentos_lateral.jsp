@@ -6,7 +6,7 @@
 		<h2>Estabelecimentos</h2>
 		<c:forEach items="${estabelecimentoGeralFaces.estabelecimentos}" var="estabelecimento">
 	    	<div class="marca floatLeft">
-	    		<a href="estabelecimento.jsf?id=${estabelecimento.id}" title="${estabelecimento.nomeFantasia}">
+	    		<a href="estabelecimento.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${estabelecimento.id}" title="${estabelecimento.nomeFantasia}">
 	    			<img src="${estabelecimento.logoMarcaView}" alt="" title="${estabelecimento.nomeFantasia}" />
 	    		</a>
 	    	</div>

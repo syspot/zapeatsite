@@ -5,19 +5,17 @@ import java.util.List;
 import br.com.topsys.database.TSDataBaseBrokerIf;
 import br.com.topsys.database.factory.TSDataBaseBrokerFactory;
 import br.com.zapeat.site.model.CidadeModel;
-import br.com.zapeat.site.util.ZapeatUtil;
 
 public class CidadeDAO {
 
 
-    @SuppressWarnings("unchecked")
-    public List<CidadeModel> pesquisar(String texto){
+    public CidadeModel obter(String cidade, String estado){
     	
     	TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
     	
-    	broker.setPropertySQL("cidadedao.pesquisar", ZapeatUtil.tratarStringILike(texto));
+    	broker.setPropertySQL("cidadedao.obterporcidadeestado", cidade, estado);
     	
-    	return broker.getCollectionBean(CidadeModel.class, "id", "nome", "estadoModel.id", "estadoModel.sigla");
+    	return (CidadeModel) broker.getObjectBean(CidadeModel.class, "id", "nome", "estadoModel.id", "estadoModel.sigla");
     	
     }
     

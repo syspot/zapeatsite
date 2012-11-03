@@ -1,5 +1,6 @@
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 
 
 <script type="text/javascript">
@@ -65,6 +66,7 @@ $(document).ready( function() {
     	<h:form prependId="false">
 			<label>Buscar<h:inputText value="#{buscaFaces.termoBuscado}"/></label>
 		    <label>em<h:inputText id="cidade" value="#{cidadeFaces.cidadeSelecionada}"/><span id="btnInit" class="icons" ></span></label>
+		    <input type="hidden" name="cidade" value="${cidadeFaces.cidadeSelecionada}"></input>
 		    <h:commandButton value="" action="#{buscaFaces.buscar}" />
 		</h:form>
 		
@@ -89,7 +91,7 @@ $(document).ready( function() {
     <!-- COMECA PUBLICIDADE/MARCA -->
     <div id="marcaPublicidade">
     	<h1>
-			<h:outputLink value="#{facesContext.externalContext.requestContextPath}/index.jsf" title="Página Inicial">
+			<h:outputLink value="#{facesContext.externalContext.requestContextPath}/index.jsf?cidade=#{cidadeFaces.cidadeSelecionada}" title="Página Inicial">
 				<h:graphicImage value="img/marca.png" />
 			</h:outputLink>	
 		</h1>
@@ -102,25 +104,25 @@ $(document).ready( function() {
             	<div id="cadastro">
             		<div id="facebook">
 						
-					  <h:outputLink value="#{faceBookFaces.url}" rendered="#{empty sessionScope.usuarioLogado.id}">
+					  <h:outputLink value="#{faceBookFaces.url}" rendered="#{empty sessionScope.idUsuarioLogado}">
 						<h:graphicImage value="img/facebook.gif"/>
 					  </h:outputLink>
 					  
 					  <div align="center">
-					  <h:outputLink styleClass="logout" value="#{faceBookFaces.logout}" rendered="#{!empty sessionScope.usuarioLogado.id and !sessionScope.loginAplicacao}">
+					  <h:outputLink styleClass="logout" value="#{faceBookFaces.logout}" rendered="#{!empty sessionScope.idUsuarioLogado and !sessionScope.loginAplicacao}">
 					  	Logout (sair)
 					  </h:outputLink>
 					  </div>
 					  
 					  <div align="center">
-						  <h:outputLink styleClass="logout" value="logout.jsf" rendered="#{!empty sessionScope.usuarioLogado.id and sessionScope.loginAplicacao}">
+						  <h:outputLink styleClass="logout" value="logout.jsf" rendered="#{!empty sessionScope.idUsuarioLogado and sessionScope.loginAplicacao}">
 						  	Logout (sair)
 						  </h:outputLink>
 					  </div>
 					  
                     </div>
                     
-                    <c:if test="${empty sessionScope.usuarioLogado.id}">
+                    <c:if test="${empty sessionScope.idUsuarioLogado}">
                     <div id="local">
                         <span class="chamadaCadastro">Não tem Facebook?</span>
                         <div><a class="linkCadastro" title="Cadastrar"><span class="icons iconCadastrar"></span>cadastrar</a></div>
@@ -135,12 +137,12 @@ $(document).ready( function() {
                 		<span class="icons maisIndicados"></span>
                         <span class="titMenu">mais indicados</span>
                         <ul id="sub">
-                            <li><a href="listagem.jsf?categoriaId=7&tipo=3" title="promoção da semana">promoção da semana</a></li>
-                            <li><a href="listagem.jsf?categoriaId=7&tipo=2" title="promoção do dia">promoção do dia</a></li>
-                            <li><a href="listagem.jsf?categoriaId=7&tipo=1" title="promoção da hora">promoção da hora</a></li>
-                            <li><a href="ranking.jsf?categoriaId=7" title="ranking">ranking</a></li>
-                            <li><a href="listagem.jsf?categoriaId=7&tipo=5" title="carro-chefe">carro-chefe</a></li>
-                            <li><a href="listagem.jsf?categoriaId=7&tipo=6" title="estabelecimento">estabelecimento</a></li>
+                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=7&tipo=3" title="promoção da semana">promoção da semana</a></li>
+                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=7&tipo=2" title="promoção do dia">promoção do dia</a></li>
+                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=7&tipo=1" title="promoção da hora">promoção da hora</a></li>
+                            <li><a href="ranking.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=7" title="ranking">ranking</a></li>
+                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=7&tipo=5" title="carro-chefe">carro-chefe</a></li>
+                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=7&tipo=6" title="estabelecimento">estabelecimento</a></li>
                         </ul>
                     </li>
                 	<c:forEach items="${categoriaFaces.categorias}" var="item">
@@ -148,17 +150,17 @@ $(document).ready( function() {
                         <span class="iconografia"><img src="${item.imagemView}" alt="" title="${item.descricao}" /></span>
                         <span class="titMenu">${item.descricao}</span>
                         <ul id="sub">
-                            <li><a href="listagem.jsf?categoriaId=${item.id}&tipo=3" title="promoção da semana">promoção da semana</a></li>
-                            <li><a href="listagem.jsf?categoriaId=${item.id}&tipo=2" title="promoção do dia">promoção do dia</a></li>
-                            <li><a href="listagem.jsf?categoriaId=${item.id}&tipo=1" title="promoção da hora">promoção da hora</a></li>
-                            <li><a href="ranking.jsf?categoriaId=${item.id}" title="ranking">ranking</a></li>
-                            <li><a href="listagem.jsf?categoriaId=${item.id}&tipo=5" title="carro-chefe">carro-chefe</a></li>
-                            <li><a href="listagem.jsf?categoriaId=${item.id}&tipo=6" title="estabelecimento">estabelecimento</a></li>
+                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${item.id}&tipo=3" title="promoção da semana">promoção da semana</a></li>
+                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${item.id}&tipo=2" title="promoção do dia">promoção do dia</a></li>
+                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${item.id}&tipo=1" title="promoção da hora">promoção da hora</a></li>
+                            <li><a href="ranking.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${item.id}" title="ranking">ranking</a></li>
+                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${item.id}&tipo=5" title="carro-chefe">carro-chefe</a></li>
+                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${item.id}&tipo=6" title="estabelecimento">estabelecimento</a></li>
                         </ul>
                     </li>
                     </c:forEach>
                     <li>
-                    	<a href="outrasCat.jsf">
+                    	<a href="outrasCat.jsf?cidade=${cidadeFaces.cidadeSelecionada}">
 	                    	<span class="iconografia"><img src="img/outrasCategorias.png" alt="" title="outras categorias" /></span>
 	                        <span class="titMenu">outras categorias</span>
                         </a>

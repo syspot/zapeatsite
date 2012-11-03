@@ -7,7 +7,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 
 import br.com.topsys.exception.TSApplicationException;
 import br.com.topsys.util.TSUtil;
@@ -18,7 +17,6 @@ import br.com.zapeat.site.util.Constantes;
 import br.com.zapeat.site.util.FacebookClient;
 import br.com.zapeat.site.util.UsuarioService;
 
-@RequestScoped
 @ManagedBean(name ="faceBookFaces")
 public class FaceBookFaces {
 
@@ -152,14 +150,11 @@ public class FaceBookFaces {
 		return new String(baos.toByteArray());
 	}
 
-	@SuppressWarnings("static-access")
 	private void redirect() {
 
 		try {
 
-			TSFacesUtil.getFacesContext().getCurrentInstance().getExternalContext().redirect("index.jsf");
-			
-			//TSFacesUtil.getResponse().sendRedirect("index.jsf");
+			TSFacesUtil.getFacesContext().getExternalContext().redirect("index.jsf?cidade=" + TSFacesUtil.getRequestParameter("cidade"));
 
 		} catch (Exception e) {
 

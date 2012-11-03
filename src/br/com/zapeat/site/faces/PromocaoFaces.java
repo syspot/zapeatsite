@@ -36,7 +36,7 @@ public class PromocaoFaces extends CarregaPromocaoFaces {
 		PromocaoDAO promocaoDAO = new PromocaoDAO();
 		CarroChefeDAO carroChefeDAO = new CarroChefeDAO();
 		
-		if(TSUtil.isEmpty(id) || TSUtil.isEmpty(carroChefeId)){
+		if(!TSUtil.isEmpty(id) || !TSUtil.isEmpty(carroChefeId)){
 			
 			if(!TSUtil.isEmpty(carroChefeId)){
 				
@@ -56,7 +56,7 @@ public class PromocaoFaces extends CarregaPromocaoFaces {
 	
 	private void redirect() {
 		try {
-			TSFacesUtil.getFacesContext().getExternalContext().redirect("index.jsf");
+			TSFacesUtil.getFacesContext().getExternalContext().redirect("index.jsf?cidade=" + TSFacesUtil.getRequestParameter("cidade"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -66,14 +66,16 @@ public class PromocaoFaces extends CarregaPromocaoFaces {
 		
 		this.tipoPromocao = true;
 		
-		this.promocao = new PromocaoDAO().obter(id);
+		this.promocao = new PromocaoDAO().obter(id, (Long)TSFacesUtil.getObjectInSession("cidadeId"));
 		
 		if(!TSUtil.isEmpty(this.promocao)){
+		
 			this.promocao.getFornecedorModel().setFormasPagamentos(new FormaPagamentoDAO().pesquisar(this.promocao.getFornecedorModel()));
 			this.promocao.setImagensPromocoes(new ImagemPromocaoDAO().pesquisar(this.promocao));
 			this.promocao.setComentarios(new ComentarioDAO().pesquisarComentarios(this.promocao));
 			this.comentarioPromocaoModel = new ComentarioPromocaoModel();
 			this.comentarioPromocaoModel.setPromocaoModel(this.promocao);
+		
 		} else{
 			
 			this.redirect();
@@ -86,14 +88,16 @@ public class PromocaoFaces extends CarregaPromocaoFaces {
 		
 		this.tipoPromocao = false;
 		
-		this.carroChefe = new CarroChefeDAO().obter(id);
+		this.carroChefe = new CarroChefeDAO().obter(id, (Long)TSFacesUtil.getObjectInSession("cidadeId"));
 		
 		if(!TSUtil.isEmpty(this.carroChefe)){
+			
 			this.carroChefe.getFornecedorModel().setFormasPagamentos(new FormaPagamentoDAO().pesquisar(this.carroChefe.getFornecedorModel()));
 			this.carroChefe.setImagensCarroChefe(new ImagemCarroChefeDAO().pesquisar(this.carroChefe));
 			this.carroChefe.setComentarios(new ComentarioDAO().pesquisarComentarios(this.carroChefe));
 			this.comentarioCarroChefeModel = new ComentarioCarroChefeModel();
 			this.comentarioCarroChefeModel.setCarroChefeModel(this.carroChefe);
+			
 		} else{
 			
 			this.redirect();

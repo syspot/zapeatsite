@@ -1,20 +1,18 @@
 package br.com.zapeat.site.faces;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 
 import br.com.topsys.util.TSUtil;
-import br.com.topsys.web.faces.TSMainFaces;
 import br.com.topsys.web.util.TSFacesUtil;
 import br.com.zapeat.site.dao.FornecedorDAO;
 import br.com.zapeat.site.dao.PromocaoDAO;
 import br.com.zapeat.site.model.FornecedorModel;
 import br.com.zapeat.site.model.PromocaoModel;
 
-@ManagedBean(name = "indexFaces")
-public class IndexFaces extends TSMainFaces {
+@ManagedBean
+public class IndexFaces extends CarregaPromocaoFaces {
 
 	private PromocaoModel promocaoHora;
 	
@@ -23,65 +21,24 @@ public class IndexFaces extends TSMainFaces {
 
 	public IndexFaces() {
 
-		this.initObjetos();
-		this.carregaDados();
-
-	}
-
-	private void initObjetos() {
-
-		this.promocoesHora = new ArrayList<PromocaoModel>();
-		this.topGeral = new ArrayList<FornecedorModel>();
-
-	}
-
-	private void carregaDados() {
-		
 		PromocaoDAO promocaoDAO = new PromocaoDAO();
 		
-		this.promocaoHora = promocaoDAO.obterPromocaoHora();
+		this.promocaoHora = promocaoDAO.obterPromocaoHora((Long)TSFacesUtil.getObjectInSession("cidadeId"));
 
 		if (!TSUtil.isEmpty(this.promocaoHora) && !TSUtil.isEmpty(this.promocaoHora.getId())) {
 			
-			this.promocoesHora = promocaoDAO.pesquisarPromocoesHora(this.promocaoHora);
+			this.promocoesHora = promocaoDAO.pesquisarPromocoesHora(this.promocaoHora, (Long)TSFacesUtil.getObjectInSession("cidadeId"));
 				
 		}
 		
 		this.topGeral = new FornecedorDAO().pesquisarTopGeral((Long)TSFacesUtil.getObjectInSession("cidadeId"));
 
-		this.setarCssTopGeral();
-
-	}
-	
-	private void setarCssTopGeral() {
-
 		int count = 1;
 
 		for (FornecedorModel item : this.topGeral) {
-
-			if (count == 1) {
-
-				item.setCss("hum");
-
-			} else if (count == 2) {
-
-				item.setCss("dois");
-
-			} else if (count == 3) {
-
-				item.setCss("tres");
-
-			} else if (count == 4) {
-
-				item.setCss("quatro");
-
-			} else {
-
-				item.setCss("cinco");
-			}
-
-			count++;
+			item.setCss("top" + count++);
 		}
+
 	}
 
 	public List<PromocaoModel> pesquisarPromocoesHora(Long id) {

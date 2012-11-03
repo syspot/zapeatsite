@@ -40,7 +40,7 @@
             		<!-- SE LISTAGEM POR PROMOÇÃO -->
             		<c:forEach items="${listagemFaces.promocoes}" var="promocao">
 	                	<li>
-		                    <a href="promocao.jsf?id=${promocao.id}" title="">
+		                    <a href="promocao.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${promocao.id}" title="">
 		                    	<div class="marca floatLeft"><img src="${promocao.fornecedorModel.logoMarcaView}" alt="${promocao.titulo}" title="${promocao.fornecedorModel.nomeFantasia}" /></div>
 		                        <!-- SE PROMOÇÃO EM PRODUTO -->
 		                        <div class="info">
@@ -71,7 +71,7 @@
                     <!-- SE LISTAGEM POR CARRO-CHEFE -->
             		<c:forEach items="${listagemFaces.carrosChefes}" var="carroChefe">
 	                	<li>
-		                    <a href="estabelecimento.jsf?id=${carroChefe.fornecedorModel.id}" title="">
+		                    <a href="estabelecimento.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${carroChefe.fornecedorModel.id}" title="">
 		                    	<div class="marca floatLeft"><img src="${carroChefe.fornecedorModel.logoMarcaView}" alt="Marca 80x80px" title="${carroChefe.fornecedorModel.nomeFantasia}" /></div>
 		                        <!-- SE PROMOÇÃO EM PRODUTO -->
 		                        <div class="info">
@@ -101,7 +101,7 @@
                     <!-- SE LISTAGEM POR FORNECEDOR -->
             		<c:forEach items="${listagemFaces.fornecedores}" var="fornecedor">
 	                	<li>
-		                    <a href="estabelecimento.jsf?id=${fornecedor.id}" title="">
+		                    <a href="estabelecimento.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${fornecedor.id}" title="">
 		                    	<div class="marca floatLeft"><img src="${fornecedor.logoMarcaView}" alt="${fornecedor.nomeFantasia}" title="${fornecedor.nomeFantasia}" /></div>
 		                        <!-- SE PROMOÇÃO EM PRODUTO -->
 		                        <div class="info">
@@ -133,7 +133,7 @@
            			
            				<c:choose>
                				<c:when test="${not empty buscaFaces.page and buscaFaces.page != 1}">
-               					<li class="inicio"><a href="listagem.jsf?categoriaId=${listagemFaces.categoria.id}&tipo=${listagemFaces.tipo}&page=${listagemFaces.page - 1}" title=""><span class="icons pagInicio"></span></a></li>
+               					<li class="inicio"><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${listagemFaces.categoria.id}&tipo=${listagemFaces.tipo}&page=${listagemFaces.page - 1}" title=""><span class="icons pagInicio"></span></a></li>
                				</c:when>
                				<c:otherwise>
                					<li class="inicio"><span class="icons pagInicio"></span></li>
@@ -141,12 +141,12 @@
                			</c:choose>
                			
 	               		<c:forEach begin="${listagemFaces.paginaInicial}" end="${listagemFaces.paginaFinal}" var="pagina">
-		                    <li class="pagina"><a href="listagem.jsf?categoriaId=${listagemFaces.categoria.id}&tipo=${listagemFaces.tipo}&page=${pagina}" title="">${pagina}</a></li>
+		                    <li class="pagina"><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${listagemFaces.categoria.id}&tipo=${listagemFaces.tipo}&page=${pagina}" title="">${pagina}</a></li>
 		                </c:forEach>
 	                
 						<c:choose>
 	          				<c:when test="${listagemFaces.page != listagemFaces.qtdPaginas}">
-	          					<li class="fim"><a href="listagem.jsf?categoriaId=${listagemFaces.categoria.id}&tipo=${listagemFaces.tipo}&page=${listagemFaces.page + 1}" title=""><span class="icons pagFim"></span></a></li>
+	          					<li class="fim"><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${listagemFaces.categoria.id}&tipo=${listagemFaces.tipo}&page=${listagemFaces.page + 1}" title=""><span class="icons pagFim"></span></a></li>
 	          				</c:when>
 	          				<c:otherwise>
 	          					<li class="inicio"><span class="icons pagFim"></span></li>

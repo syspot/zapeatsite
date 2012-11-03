@@ -52,7 +52,7 @@
                 <ul id="topGeral">
                 	<c:forEach items="${indexFaces.topGeral}" var="top">
                     <li class="${top.css}">
-                    	<a href="estabelecimento.jsf?id=${top.id}" title="${top.nomeFantasia}">
+                    	<a href="estabelecimento.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${top.id}" title="${top.nomeFantasia}">
                             <p class="titulo">${top.nomeFantasia}</p>
                         </a>
                     </li>

@@ -36,12 +36,12 @@
                     	<div class="boxInfoCat">
                    			<p class="titulo"><img src="${categoria.imagemView}" alt="${categoria.descricao}" title="${categoria.descricao}" class="floatLeftMargin4" />${categoria.descricao}</p>
                            	<ul>
-                           		<li><a href="listagem.jsf?categoriaId=${categoria.id}&tipo=3" title="promoção da semana">promoção da semana</a></li>
-                            	<li><a href="listagem.jsf?categoriaId=${categoria.id}&tipo=2" title="promoção do dia">promoção do dia</a></li>
-	                            <li><a href="listagem.jsf?categoriaId=${categoria.id}&tipo=1" title="promoção da hora">promoção da hora</a></li>
-	                            <li><a href="ranking.jsf?categoriaId=${categoria.id}" title="ranking">ranking</a></li>
-	                            <li><a href="listagem.jsf?categoriaId=${categoria.id}&tipo=5" title="carro-chefe">carro-chefe</a></li>
-                            	<li><a href="listagem.jsf?categoriaId=${categoria.id}&tipo=6" title="estabelecimento">estabelecimento</a></li>
+                           		<li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${categoria.id}&tipo=3" title="promoção da semana">promoção da semana</a></li>
+                            	<li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${categoria.id}&tipo=2" title="promoção do dia">promoção do dia</a></li>
+	                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${categoria.id}&tipo=1" title="promoção da hora">promoção da hora</a></li>
+	                            <li><a href="ranking.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${categoria.id}" title="ranking">ranking</a></li>
+	                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${categoria.id}&tipo=5" title="carro-chefe">carro-chefe</a></li>
+                            	<li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${categoria.id}&tipo=6" title="estabelecimento">estabelecimento</a></li>
                            	</ul>
                        	</div>
                    	</li>
@@ -56,7 +56,7 @@
            			
            				<c:choose>
                				<c:when test="${not empty listagemCategoriaFaces.page and listagemCategoriaFaces.page != 1}">
-               					<li class="inicio"><a href="outrasCat.jsf?page=${listagemCategoriaFaces.page - 1}" title=""><span class="icons pagInicio"></span></a></li>
+               					<li class="inicio"><a href="outrasCat.jsf?cidade=${cidadeFaces.cidadeSelecionada}&page=${listagemCategoriaFaces.page - 1}" title=""><span class="icons pagInicio"></span></a></li>
                				</c:when>
                				<c:otherwise>
                					<li class="inicio"><span class="icons pagInicio"></span></li>
@@ -64,12 +64,12 @@
                			</c:choose>
                			
 	               		<c:forEach begin="${listagemCategoriaFaces.paginaInicial}" end="${listagemCategoriaFaces.paginaFinal}" var="pagina">
-		                    <li class="pagina"><a href="outrasCat.jsf?page=${pagina}" title="">${pagina}</a></li>
+		                    <li class="pagina"><a href="outrasCat.jsf?cidade=${cidadeFaces.cidadeSelecionada}&page=${pagina}" title="">${pagina}</a></li>
 		                </c:forEach>
 	                
 						<c:choose>
 	          				<c:when test="${listagemCategoriaFaces.page != listagemCategoriaFaces.qtdPaginas}">
-	          					<li class="fim"><a href="outrasCat.jsf?page=${listagemCategoriaFaces.page + 1}" title=""><span class="icons pagFim"></span></a></li>
+	          					<li class="fim"><a href="outrasCat.jsf?cidade=${cidadeFaces.cidadeSelecionada}&page=${listagemCategoriaFaces.page + 1}" title=""><span class="icons pagFim"></span></a></li>
 	          				</c:when>
 	          				<c:otherwise>
 	          					<li class="inicio"><span class="icons pagFim"></span></li>

@@ -177,25 +177,43 @@
                 	
                 	<script type="text/javascript">
                 	
-						$(document).ready( function() {
-							$("#formComentario").validate({
-								// Define as regras
-								rules:{
-									descricao:{
-										// campoNome será obrigatório (required) e terá tamanho mínimo (minLength)
-										required: true
-									}
-								},
-								// Define as mensagens de erro para cada regra
-								messages:{
-									descricao:{
-										required: "Descrição do Comentário: Obrigatório",
-						
-									}
-								},
-						
-							});
-						});
+	                	function isEmpty(campos) {
+	
+	                	    var aux = false;
+	                	    var retorno = false;
+	
+	                	    for (i = 0; i < campos.length; i++) {
+	
+	                	    	if ($(campos[i]).val().trim() == "") {
+	
+	                	            $(campos[i]).css('border-color', 'red');
+	
+	                	            aux = true;
+	
+	                	        } else {
+	
+	                	            $(campos[i]).css('border-color', 'green');
+	
+	                	            aux = false;
+	
+	                	        }
+	
+	                	        if (aux == true) {
+	
+	                	            retorno = true;
+	
+	                	        }
+	
+	                	    }
+	
+	                	    return retorno;
+	
+	                	}
+	
+	                	$('#btnComentar').live('click', function () {
+	                	    return !isEmpty(new Array("#descricao"));
+	                	});
+	                	
 					</script>
                 	
                 	<c:choose>
@@ -203,9 +221,10 @@
                 		<c:when test="${not empty estabelecimentoFaces.usuarioLogado.id}">
                 			<h:form id="formComentario" prependId="false">
 			                	<input type="hidden" id="id" name="id" value="${estabelecimentoFaces.fornecedorModel.id}">
+			                	<input type="hidden" name="cidade" value="${cidadeFaces.cidadeSelecionada}">
 			                     <fieldset>
 			                        <h:inputTextarea id="descricao" value="#{estabelecimentoFaces.comentarioFornecedorModel.descricao}" required="true" />
-			                        <h:commandButton action="#{estabelecimentoFaces.comentar}" value="comentar"></h:commandButton>
+			                        <h:commandButton id="btnComentar" action="#{estabelecimentoFaces.comentar}" value="comentar"></h:commandButton>
 			                    </fieldset>
 		                 	</h:form>
                 		</c:when>

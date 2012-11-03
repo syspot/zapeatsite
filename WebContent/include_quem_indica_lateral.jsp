@@ -4,7 +4,7 @@
    <div class="boxSubCat">
    	   <h2>Quem Indica</h2>
        <span class="imgDestaque-peq posRel">
-       	   <a href="estabelecimento.jsf?id=${comentarioFaces.comentarioModel.fornecedorModel.id}" title="">
+       	   <a href="estabelecimento.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${comentarioFaces.comentarioModel.fornecedorModel.id}" title="">
                <img src="${comentarioFaces.comentarioModel.fornecedorModel.imagemThumbView}" alt="" title="" />
                <p class="tituloIndica">${comentarioFaces.comentarioModel.fornecedorModel.nomeFantasia}</p>
            </a>

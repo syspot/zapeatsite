@@ -1,6 +1,7 @@
 package br.com.zapeat.site.faces;
 
 import br.com.topsys.web.faces.TSMainFaces;
+import br.com.topsys.web.util.TSFacesUtil;
 import br.com.zapeat.site.dao.CarroChefeDAO;
 import br.com.zapeat.site.dao.ComentarioDAO;
 import br.com.zapeat.site.dao.PromocaoDAO;
@@ -20,11 +21,11 @@ public class CarregaPromocaoFaces extends TSMainFaces{
 
 		PromocaoDAO promocaoDAO = new PromocaoDAO();
 		
-		this.promocaoDaHora = promocaoDAO.obterPromocaoHoraAleatoria(getPromocaoId(), getFornecedorId());
-		this.promocaoDoDia = promocaoDAO.obterPromocaoDiaAleatoria(getPromocaoId(), getFornecedorId());
-		this.promocaoDaSemana = promocaoDAO.obterPromocaoSemanaAleatoria(getPromocaoId(), getFornecedorId());
-		this.carroChefeModel = new CarroChefeDAO().obterCarroChefeAleatorio(getFornecedorId());
-		this.comentarioModel = new ComentarioDAO().obterIndicacao(getFornecedorId());
+		this.promocaoDaHora = promocaoDAO.obterPromocaoHoraAleatoria(getPromocaoId(), getFornecedorId(), (Long)TSFacesUtil.getObjectInSession("cidadeId"));
+		this.promocaoDoDia = promocaoDAO.obterPromocaoDiaAleatoria(getPromocaoId(), getFornecedorId(), (Long)TSFacesUtil.getObjectInSession("cidadeId"));
+		this.promocaoDaSemana = promocaoDAO.obterPromocaoSemanaAleatoria(getPromocaoId(), getFornecedorId(), (Long)TSFacesUtil.getObjectInSession("cidadeId"));
+		this.carroChefeModel = new CarroChefeDAO().obterCarroChefeAleatorio(getFornecedorId(), (Long)TSFacesUtil.getObjectInSession("cidadeId"));
+		this.comentarioModel = new ComentarioDAO().obterIndicacao(getFornecedorId(), (Long)TSFacesUtil.getObjectInSession("cidadeId"));
 		
 	}
 	

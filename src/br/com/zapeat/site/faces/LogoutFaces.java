@@ -26,7 +26,7 @@ public class LogoutFaces {
 
 		try {
 			
-			TSFacesUtil.getFacesContext().getExternalContext().redirect("index.jsf");
+			TSFacesUtil.getFacesContext().getExternalContext().redirect("index.jsf?cidade=" + TSFacesUtil.getRequestParameter("cidade"));
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

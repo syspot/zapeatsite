@@ -15,21 +15,21 @@ import br.com.zapeat.site.model.PromocaoModel;
 
 public class ComentarioDAO {
 
-	public ComentarioModel obterIndicacao() {
+	public ComentarioModel obterIndicacao(Long cidadeId) {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("comentariodao.obterIndicacaoEstabelecimento");
+		broker.setPropertySQL("comentariodao.obterIndicacaoEstabelecimento", cidadeId);
 
 		return (ComentarioModel) broker.getObjectBean(ComentarioModel.class, "id", "descricao", "usuarioModel.nome", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.imagemThumb");
 
 	}
 	
-	public ComentarioModel obterIndicacao(Long id) {
+	public ComentarioModel obterIndicacao(Long id, Long cidadeId) {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("comentariodao.obterIndicacaoEstabelecimentoById", id);
+		broker.setPropertySQL("comentariodao.obterIndicacaoEstabelecimentoById", id, cidadeId);
 
 		return (ComentarioModel) broker.getObjectBean(ComentarioModel.class, "id", "descricao", "usuarioModel.nome", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.imagemThumb");
 

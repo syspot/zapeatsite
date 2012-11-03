@@ -1,5 +1,5 @@
 <h1>
-	<h:outputLink value="#{facesContext.externalContext.requestContextPath}/index.jsf" title="Página Inicial">
+	<h:outputLink value="#{facesContext.externalContext.requestContextPath}/" title="Página Inicial">
 		<h:graphicImage value="img/marca.png" />
 	</h:outputLink>	
 </h1>

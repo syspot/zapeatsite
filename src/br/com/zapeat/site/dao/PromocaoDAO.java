@@ -73,22 +73,22 @@ public class PromocaoDAO {
 		
 	}
 
-	public PromocaoModel obterPromocaoHora() {
+	public PromocaoModel obterPromocaoHora(Long cidadeId) {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("promocaodao.obterPromocaoHora");
+		broker.setPropertySQL("promocaodao.obterPromocaoHora", cidadeId);
 
 		return (PromocaoModel) broker.getObjectBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "descricao", "inicio", "fim", "precoOriginal", "precoPromocional", "titulo", "fornecedorModel.longitude", "fornecedorModel.latitude", "imagemPromocao", "fornecedorModel.logoMarca");
 
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<PromocaoModel> pesquisarPromocoesHora(PromocaoModel model) {
+	public List<PromocaoModel> pesquisarPromocoesHora(PromocaoModel model, Long cidadeId) {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("promocaodao.pesquisarPromocoesHora", model.getId());
+		broker.setPropertySQL("promocaodao.pesquisarPromocoesHora", model.getId(), cidadeId);
 
 		return broker.getCollectionBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "descricao", "inicio", "fim", "precoOriginal", "precoPromocional", "titulo", "fornecedorModel.longitude", "fornecedorModel.latitude", "fornecedorModel.site","indicacoes", "fornecedorModel.telefone", "imagemPromocao");
 
@@ -115,31 +115,31 @@ public class PromocaoDAO {
 
 	}
 	
-	public PromocaoModel obterPromocaoHoraAleatoria(Long promocaoId, Long fornecedorId) {
+	public PromocaoModel obterPromocaoHoraAleatoria(Long promocaoId, Long fornecedorId, Long cidadeId) {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("promocaodao.obterpromocaohoraaleatoria", fornecedorId, promocaoId);
+		broker.setPropertySQL("promocaodao.obterpromocaohoraaleatoria", fornecedorId, promocaoId, cidadeId);
 
 		return (PromocaoModel) broker.getObjectBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "descricao", "inicio", "fim", "precoOriginal", "precoPromocional", "titulo", "imagemPromocao", "fornecedorModel.longitude", "fornecedorModel.latitude");
 
 	}
 	
-	public PromocaoModel obterPromocaoDiaAleatoria(Long promocaoId, Long fornecedorId) {
+	public PromocaoModel obterPromocaoDiaAleatoria(Long promocaoId, Long fornecedorId, Long cidadeId) {
 		
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		
-		broker.setPropertySQL("promocaodao.obterpromocaodiaaleatoria", fornecedorId, promocaoId);
+		broker.setPropertySQL("promocaodao.obterpromocaodiaaleatoria", fornecedorId, promocaoId, cidadeId);
 		
 		return (PromocaoModel) broker.getObjectBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "descricao", "inicio", "fim", "precoOriginal", "precoPromocional", "titulo", "imagemPromocao", "fornecedorModel.longitude", "fornecedorModel.latitude");
 		
 	}
 	
-	public PromocaoModel obterPromocaoSemanaAleatoria(Long promocaoId, Long fornecedorId) {
+	public PromocaoModel obterPromocaoSemanaAleatoria(Long promocaoId, Long fornecedorId, Long cidadeId) {
 		
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		
-		broker.setPropertySQL("promocaodao.obterpromocaosemanaaleatoria", fornecedorId, promocaoId);
+		broker.setPropertySQL("promocaodao.obterpromocaosemanaaleatoria", fornecedorId, promocaoId, cidadeId);
 		
 		return (PromocaoModel) broker.getObjectBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "descricao", "inicio", "fim", "precoOriginal", "precoPromocional", "titulo", "imagemPromocao", "fornecedorModel.longitude", "fornecedorModel.latitude");
 		
@@ -155,11 +155,11 @@ public class PromocaoDAO {
 
 	}
 	
-	public PromocaoModel obter(Long id) {
+	public PromocaoModel obter(Long id, Long cidadeId) {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("promocaodao.obter", id);
+		broker.setPropertySQL("promocaodao.obter", id, cidadeId);
 
 		return (PromocaoModel) broker.getObjectBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.logoMarca", "fornecedorModel.horariosFuncionamento", "fornecedorModel.logradouro", "fornecedorModel.numero", "fornecedorModel.bairro", "fornecedorModel.telefone", "fornecedorModel.categoriaPrincipal.id", "fornecedorModel.categoriaPrincipal.descricao", "fornecedorModel.categoriaPrincipal.imagem", "imagemPromocao", "descricao", "inicio", "fim", "precoOriginal", "precoPromocional", "titulo", "fornecedorModel.longitude", "fornecedorModel.latitude");
 

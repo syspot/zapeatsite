@@ -111,7 +111,7 @@
 
 					//---
 					//aplica dados no input
-					$('#cidade').val(city.long_name + ", " + state.short_name);
+					$('#cidade').val(city.long_name + "-" + state.short_name);
 					//$('body').append('<p>Seu endereço:<br />' +
 					//	city.long_name + " / " + state.long_name + '</p>');						
 				} else {

@@ -2,24 +2,24 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 
-<c:if test="${not empty promocaoFaces.promocaoDaSemana}">
+<c:if test="${not empty indexFaces.promocaoDaSemana}">
 
 	<div class="boxSubCat">
 	   	<h2>Promoção da semana</h2>
-	       <a href="promocao.jsf?id=${promocaoFaces.promocaoDaSemana.id}&estabelecimento_id=${promocaoFaces.promocaoDaSemana.fornecedorModel.id}" title="${promocaoFaces.promocaoDaSemana.fornecedorModel.nomeFantasia}">
-	    	<img src="${promocaoFaces.promocaoDaSemana.imagemPromocaoThumbView}" alt="${promocaoFaces.promocaoDaSemana.fornecedorModel.nomeFantasia}" title="${promocaoFaces.promocaoDaSemana.fornecedorModel.nomeFantasia}" />
-	        <p class="titulo">${promocaoFaces.promocaoDaSemana.fornecedorModel.nomeFantasia}</p>
+	       <a href="promocao.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${indexFaces.promocaoDaSemana.id}&estabelecimento_id=${indexFaces.promocaoDaSemana.fornecedorModel.id}" title="${indexFaces.promocaoDaSemana.fornecedorModel.nomeFantasia}">
+	    	<img src="${indexFaces.promocaoDaSemana.imagemPromocaoThumbView}" alt="${indexFaces.promocaoDaSemana.fornecedorModel.nomeFantasia}" title="${indexFaces.promocaoDaSemana.fornecedorModel.nomeFantasia}" />
+	        <p class="titulo">${indexFaces.promocaoDaSemana.fornecedorModel.nomeFantasia}</p>
 	        <p><span class="precoDe">
-	        De: <h:outputText value="#{promocaoFaces.promocaoDaSemana.precoOriginal}">
+	        De: <h:outputText value="#{indexFaces.promocaoDaSemana.precoOriginal}">
 	        		<f:convertNumber type="currency" currencySymbol="R$"/>
 	        	</h:outputText></span>&nbsp;&nbsp;
 	        	<span class="precoPor">
 	        Por: 
-	        	<h:outputText value="#{promocaoFaces.promocaoDaSemana.precoPromocional}">
+	        	<h:outputText value="#{indexFaces.promocaoDaSemana.precoPromocional}">
 	        		<f:convertNumber type="currency" currencySymbol="R$"/>
 	        	</h:outputText></span>
 	        	
-	        	<p><span class="fontYi">${promocaoFaces.promocaoDaSemana.descricao}</span></p>
+	        	<p><span class="fontYi">${indexFaces.promocaoDaSemana.descricao}</span></p>
 	      </a>   
 	</div>
 	

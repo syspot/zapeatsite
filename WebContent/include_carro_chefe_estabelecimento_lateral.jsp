@@ -4,7 +4,7 @@
 
 <c:if test="${not empty estabelecimentoFaces.carroChefeModel}">
 	<div class="boxSubCat">
-		<a href="promocao.jsf?carroChefeId=${estabelecimentoFaces.carroChefeModel.id}">
+		<a href="promocao.jsf?cidade=${cidadeFaces.cidadeSelecionada}&carroChefeId=${estabelecimentoFaces.carroChefeModel.id}">
 			<h2>Carro-chefe</h2>
 			<img src="${estabelecimentoFaces.carroChefeModel.imagemThumbView}" alt="" title="" />
 			<p class="titulo">${estabelecimentoFaces.carroChefeModel.fornecedorModel.nomeFantasia}</p>

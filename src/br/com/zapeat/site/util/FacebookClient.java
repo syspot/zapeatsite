@@ -7,8 +7,8 @@ public final class FacebookClient {
 	public static String API_KEY = "288597137908601";
 	public static String SECRET = "209751614b750506d68b915721a27119";
 	private static final String client_id = "288597137908601";
-	private static final String redirect_uri = "http://" +TSFacesUtil.getRequest().getServerName() + ":" + TSFacesUtil.getRequest().getServerPort() + TSFacesUtil.getRequest().getContextPath() + "/checarLoginFacebook.jsf";
-	private static final String redirect_uri_logout = "http://" + TSFacesUtil.getRequest().getServerName() + ":" + TSFacesUtil.getRequest().getServerPort() + TSFacesUtil.getRequest().getContextPath() + "/logout.jsf";
+	private static final String redirect_uri = "http://" +TSFacesUtil.getRequest().getServerName() + ":" + TSFacesUtil.getRequest().getServerPort() + TSFacesUtil.getRequest().getContextPath() + "/checarLoginFacebook.jsf?cidade=" + TSFacesUtil.getRequestParameter("cidade");
+	private static final String redirect_uri_logout = "http://" + TSFacesUtil.getRequest().getServerName() + ":" + TSFacesUtil.getRequest().getServerPort() + TSFacesUtil.getRequest().getContextPath() + "/logout.jsf?cidade=" + TSFacesUtil.getRequestParameter("cidade");
 	private static final String[] perms = new String[] { "publish_stream", "email" };
 
 	public static String getAPIKey() {

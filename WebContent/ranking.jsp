@@ -30,14 +30,14 @@
                 <p>${rankingFaces.categoriaModel.descricao}</p>
             </div>
             
-            <c:if test="${!empty rankingFaces.melhorComida}">
+            <c:if test="${!empty rankingFaces.melhorEstabelecimento}">
         	<div class="coluna">
             	<h2>Melhor Comida</h2>
-            	<c:forEach var="item" items="${rankingFaces.melhorComida}">
+            	<c:forEach var="item" items="${rankingFaces.melhorEstabelecimento}">
             	<div class="boxRanking">
                 	<span class="${item.css}"></span>
                 	<blockquote>
-                    	<a href="estabelecimento.jsf?id=${item.id}" title="${item.nomeFantasia}">
+                    	<a href="estabelecimento.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${item.id}" title="${item.nomeFantasia}">
                             <span class="imgRank">
                             	<img src="${item.logoMarca18079}" alt="" title="${item.nomeFantasia}" />
                             </span>
@@ -53,27 +53,6 @@
             </div>
             </c:if>
             
-            <c:if test="${!empty rankingFaces.melhorAmbiente}">
-            <div class="coluna">
-            	<h2>Ambiente</h2>
-            	<c:forEach var="item" items="${rankingFaces.melhorAmbiente}">
-                <div class="boxRanking">
-                	<span class="${item.css}"></span>
-                	<blockquote>
-                    	<a href="estabelecimento.jsf?id=${item.id}" title="${item.nomeFantasia}">
-                            <span class="imgRank"><img src="${item.logoMarca18079}" alt="" title="${item.nomeFantasia}" /></span>
-                            <div class="info">
-                                <p class="titulo">${item.nomeFantasia}</p>
-                                <p class="dados">${item.categoriaPrincipal.descricao}</p>
-                            </div>
-                        </a>
-                    </blockquote>
-                    
-                </div>
-                </c:forEach>
-            </div>
-            </c:if>
-                    
         </div>
         
         <!-- COMECA COLUNA DIREITA -->

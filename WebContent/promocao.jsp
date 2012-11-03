@@ -22,23 +22,23 @@
 
 <div id="id-Breadcrumb">
 
-    <span class="migalha"><a href="index.jsf" title="">Página Inicial</a></span>    »
+    <span class="migalha"><a href="index.jsf?cidade=${cidadeFaces.cidadeSelecionada}" title="">Página Inicial</a></span>    »
     
     <c:choose>
     
     	<c:when test="${promocaoFaces.tipoPromocao}">
     	
-    		<span class="migalha"><a href="listagem.jsf?categoriaId=${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.id}" title="">${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.descricao}</a></span>    »   
-		    <span class="migalha"><a href="estabelecimento.jsf?id=${promocaoFaces.promocao.fornecedorModel.id}" title="">${promocaoFaces.promocao.fornecedorModel.nomeFantasia}</a></span>    »   
-		    <span class="migalha"><a href="listagem.jsf?categoriaId=${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.id}&tipo=${promocaoFaces.promocao.tipoPromocaoModel.id}" title="">${promocaoFaces.promocao.tipoPromocaoModel.descricao}</a></span>    »   
+    		<span class="migalha"><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.id}" title="">${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.descricao}</a></span>    »   
+		    <span class="migalha"><a href="estabelecimento.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${promocaoFaces.promocao.fornecedorModel.id}" title="">${promocaoFaces.promocao.fornecedorModel.nomeFantasia}</a></span>    »   
+		    <span class="migalha"><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.id}&tipo=${promocaoFaces.promocao.tipoPromocaoModel.id}" title="">${promocaoFaces.promocao.tipoPromocaoModel.descricao}</a></span>    »   
 		    <span class="migalha">${promocaoFaces.promocao.titulo}</span>
     
     	</c:when>
     	
     	<c:otherwise>
     	
-    		<span class="migalha"><a href="listagem.jsf?categoriaId=${promocaoFaces.carroChefe.fornecedorModel.categoriaPrincipal.id}" title="">${promocaoFaces.carroChefe.fornecedorModel.categoriaPrincipal.descricao}</a></span>    »   
-		    <span class="migalha"><a href="estabelecimento.jsf?id=${promocaoFaces.carroChefe.fornecedorModel.id}" title="">${promocaoFaces.carroChefe.fornecedorModel.nomeFantasia}</a></span>    »   
+    		<span class="migalha"><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${promocaoFaces.carroChefe.fornecedorModel.categoriaPrincipal.id}" title="">${promocaoFaces.carroChefe.fornecedorModel.categoriaPrincipal.descricao}</a></span>    »   
+		    <span class="migalha"><a href="estabelecimento.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${promocaoFaces.carroChefe.fornecedorModel.id}" title="">${promocaoFaces.carroChefe.fornecedorModel.nomeFantasia}</a></span>    »   
 		    <span class="migalha">${promocaoFaces.carroChefe.titulo}</span>
     	
     	</c:otherwise>
@@ -58,7 +58,7 @@
     		<c:choose>
     			<c:when test="${promocaoFaces.tipoPromocao}">
     				<div id="boxSobreEstab">
-		        		<a href="estabelecimento.jsf?id=${promocaoFaces.promocao.fornecedorModel.id}">
+		        		<a href="estabelecimento.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${promocaoFaces.promocao.fornecedorModel.id}">
 			            	<div class="marca"><img src="${promocaoFaces.promocao.fornecedorModel.logoMarcaView}" width="117" height="117" alt="${promocaoFaces.promocao.fornecedorModel.nomeFantasia}" title="${promocaoFaces.promocao.fornecedorModel.nomeFantasia}" /></div>
 			                <p class="titulo marginBottom15px">${promocaoFaces.promocao.fornecedorModel.nomeFantasia} - ${promocaoFaces.promocao.fornecedorModel.bairro}</p>
 			                <!--<div class="marginBottom5px">
@@ -82,7 +82,7 @@
     			</c:when>
     			<c:otherwise>
     				<div id="boxSobreEstab">
-		        		<a href="estabelecimento.jsf?id=${promocaoFaces.carroChefe.fornecedorModel.id}">
+		        		<a href="estabelecimento.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${promocaoFaces.carroChefe.fornecedorModel.id}">
 			            	<div class="marca"><img src="${promocaoFaces.carroChefe.fornecedorModel.logoMarcaView}" width="117" height="117" alt="${promocaoFaces.carroChefe.fornecedorModel.nomeFantasia}" title="${promocaoFaces.carroChefe.fornecedorModel.nomeFantasia}" /></div>
 			                <p class="titulo marginBottom15px">${promocaoFaces.carroChefe.fornecedorModel.nomeFantasia} - ${promocaoFaces.carroChefe.fornecedorModel.bairro}</p>
 			                <!--<div class="marginBottom5px">
@@ -130,7 +130,7 @@
 		                   	<p class="fontYi font10px">desconto</p>
 		                </div>
 		                <div class="boxInfo">
-		                	<a href="listagem.jsf?categoriaId=${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.id}" title="" class="floatLeft"><span class="${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.css}"></span>Categoria: ${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.descricao}</a>
+		                	<a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.id}" title="" class="floatLeft"><span class="${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.css}"></span>Categoria: ${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.descricao}</a>
 		                </div>
 		                <blockquote class="fontYi">
 		                	<p>${promocaoFaces.promocao.descricao}</p>
@@ -148,7 +148,7 @@
 		                    </div>
 		                </div>
 		                <div class="boxInfo">
-		                	<a href="listagem.jsf?categoriaId=${promocaoFaces.carroChefe.fornecedorModel.categoriaPrincipal.id}" title="" class="floatLeft"><span class="${promocaoFaces.carroChefe.fornecedorModel.categoriaPrincipal.css}"></span>Categoria: ${promocaoFaces.carroChefe.fornecedorModel.categoriaPrincipal.descricao}</a>
+		                	<a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${promocaoFaces.carroChefe.fornecedorModel.categoriaPrincipal.id}" title="" class="floatLeft"><span class="${promocaoFaces.carroChefe.fornecedorModel.categoriaPrincipal.css}"></span>Categoria: ${promocaoFaces.carroChefe.fornecedorModel.categoriaPrincipal.descricao}</a>
 		                </div>
 		                <blockquote class="fontYi">
 		                	<p>${promocaoFaces.carroChefe.descricao}</p>

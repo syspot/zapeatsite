@@ -32,6 +32,12 @@ public class EstabelecimentoFaces extends CarregaPromocaoFaces {
 
 	public EstabelecimentoFaces() {
 		
+		this.carregaDados();
+		
+	}
+	
+	private void carregaDados(){
+		
 		String fornecedorId = TSFacesUtil.getRequestParameter("id");
 
 		if (!TSUtil.isEmpty(fornecedorId) && TSUtil.isNumeric(fornecedorId)) {
@@ -74,7 +80,7 @@ public class EstabelecimentoFaces extends CarregaPromocaoFaces {
 
 		try {
 
-			TSFacesUtil.getFacesContext().getExternalContext().redirect("index.jsf");
+			TSFacesUtil.getFacesContext().getExternalContext().redirect("index.jsf?cidade=" + TSFacesUtil.getRequestParameter("cidade"));
 
 		} catch (IOException e) {
 
@@ -87,6 +93,8 @@ public class EstabelecimentoFaces extends CarregaPromocaoFaces {
 		if(!TSUtil.isEmpty(this.usuarioLogado) && !TSUtil.isEmpty(this.usuarioLogado.getId())){
 			
 			new ComentarioDAO().comentar(comentarioFornecedorModel);
+			
+			this.carregaDados();
 			
 		} else{
 			
