@@ -107,7 +107,7 @@
 		               <div class="dados">
 							<p><span class="icons tel"></span>${promocao.fornecedorModel.telefone}</p>
 							<c:if test="${not empty promocao.fornecedorModel.site}">
-								<p><div ><span class="icons site"></span> <a href="${promocao.fornecedorModel.site}" target="_blank" title="${promocao.fornecedorModel.site}">Visite o site</a> </div></p>
+								<p><span class="icons site"></span> <a href="${promocao.fornecedorModel.site}" target="_blank" title="${promocao.fornecedorModel.site}">Visite o site</a></p>
 							</c:if>
 							<p><span class="icons indicacao"></span>${promocao.indicacoes}</p>
 						</div>

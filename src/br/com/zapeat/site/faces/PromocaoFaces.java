@@ -1,7 +1,5 @@
 package br.com.zapeat.site.faces;
 
-import java.io.IOException;
-
 import javax.faces.bean.ManagedBean;
 
 import br.com.topsys.exception.TSApplicationException;
@@ -49,17 +47,11 @@ public class PromocaoFaces extends CarregaPromocaoFaces {
 			}
 			
 		} else{
-			this.redirect();
+			
+			ZapeatUtil.redirect();
+			
 		}
 		
-	}
-	
-	private void redirect() {
-		try {
-			TSFacesUtil.getFacesContext().getExternalContext().redirect("index.jsf?cidade=" + TSFacesUtil.getRequestParameter("cidade"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 	
 	private void obterPromocao(PromocaoDAO promocaoDAO, Long id){
@@ -78,7 +70,7 @@ public class PromocaoFaces extends CarregaPromocaoFaces {
 		
 		} else{
 			
-			this.redirect();
+			ZapeatUtil.redirect();
 			
 		}
 		
@@ -100,7 +92,7 @@ public class PromocaoFaces extends CarregaPromocaoFaces {
 			
 		} else{
 			
-			this.redirect();
+			ZapeatUtil.redirect();
 			
 		}
 		

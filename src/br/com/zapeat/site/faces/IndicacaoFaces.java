@@ -11,7 +11,7 @@ import br.com.zapeat.site.model.FornecedorModel;
 import br.com.zapeat.site.model.UsuarioModel;
 import br.com.zapeat.site.util.Constantes;
 
-@ManagedBean(name="indicacaoFaces")
+@ManagedBean
 public class IndicacaoFaces extends TSMainFaces {
 	
 	

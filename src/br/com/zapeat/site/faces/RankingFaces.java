@@ -1,6 +1,5 @@
 package br.com.zapeat.site.faces;
 
-import java.io.IOException;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -12,6 +11,7 @@ import br.com.zapeat.site.dao.CategoriaDAO;
 import br.com.zapeat.site.dao.FornecedorDAO;
 import br.com.zapeat.site.model.CategoriaModel;
 import br.com.zapeat.site.model.FornecedorModel;
+import br.com.zapeat.site.util.ZapeatUtil;
 
 @ManagedBean(name = "rankingFaces")
 public class RankingFaces extends TSMainFaces {
@@ -21,13 +21,7 @@ public class RankingFaces extends TSMainFaces {
 
 	public RankingFaces() {
 
-		this.carregaDados();
-
-	}
-
-	private void carregaDados() {
-
-		String categoriaId = TSFacesUtil.getRequestParameter("categoriaId");
+		String categoriaId = super.getRequestParameter("categoriaId");
 
 		if (!TSUtil.isEmpty(categoriaId) && TSUtil.isNumeric(categoriaId)) {
 
@@ -35,59 +29,17 @@ public class RankingFaces extends TSMainFaces {
 
 			this.melhorEstabelecimento = new FornecedorDAO().pesquisarTop10(categoriaModel, (Long)TSFacesUtil.getObjectInSession("cidadeId"));
 
-			this.setarCss();
+			int count = 1;
+			
+			for (FornecedorModel item : this.melhorEstabelecimento) {
+				item.setCss("position" + count++);
+			}
 
 		} else {
 
-			this.redirect();
+			ZapeatUtil.redirect();
 		}
 
-	}
-
-	private void setarCss() {
-
-		int count = 1;
-
-		for (FornecedorModel item : this.melhorEstabelecimento) {
-
-			if (count == 1) {
-
-				item.setCss("position1");
-
-			} else if (count == 2) {
-
-				item.setCss("position2");
-
-			} else if (count == 3) {
-
-				item.setCss("position3");
-
-			} else if (count == 4) {
-
-				item.setCss("position4");
-
-			} else {
-
-				item.setCss("position5");
-			}
-
-			count++;
-		}
-
-		count = 1;
-
-	}
-
-	private void redirect() {
-
-		try {
-
-			TSFacesUtil.getFacesContext().getExternalContext().redirect("index.jsf");
-
-		} catch (IOException e) {
-
-			e.printStackTrace();
-		}
 	}
 
 	public CategoriaModel getCategoriaModel() {

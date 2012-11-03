@@ -2,13 +2,12 @@ package br.com.zapeat.site.faces;
 
 import javax.faces.bean.ManagedBean;
 
-import br.com.topsys.web.faces.TSMainFaces;
 import br.com.topsys.web.util.TSFacesUtil;
 import br.com.zapeat.site.dao.ComentarioDAO;
 import br.com.zapeat.site.model.ComentarioModel;
 
 @ManagedBean
-public class ComentarioFaces extends TSMainFaces {
+public class ComentarioFaces {
 
 	private ComentarioModel comentarioModel;
 	

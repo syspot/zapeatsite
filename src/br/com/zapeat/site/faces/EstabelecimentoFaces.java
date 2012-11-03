@@ -1,6 +1,5 @@
 package br.com.zapeat.site.faces;
 
-import java.io.IOException;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -66,28 +65,16 @@ public class EstabelecimentoFaces extends CarregaPromocaoFaces {
 
 			} else {
 
-				this.redirect();
+				ZapeatUtil.redirect();
 			}
 
 		} else {
 
-			this.redirect();
+			ZapeatUtil.redirect();
 		}
 		
 	}
 
-	private void redirect() {
-
-		try {
-
-			TSFacesUtil.getFacesContext().getExternalContext().redirect("index.jsf?cidade=" + TSFacesUtil.getRequestParameter("cidade"));
-
-		} catch (IOException e) {
-
-			e.printStackTrace();
-		}
-	}
-	
 	public String comentar() throws TSApplicationException{
 
 		if(!TSUtil.isEmpty(this.usuarioLogado) && !TSUtil.isEmpty(this.usuarioLogado.getId())){

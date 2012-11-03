@@ -143,6 +143,7 @@ li .info .titulo,
 li .info .resumo{ font-size:16px; color:#000;}
 ul#listagem li .dados{ float:right; width:130px;}
 .dados p{ margin-bottom:15px; font-size:10px; line-height:14px; color:#0066CC;font-family: 'titilliumtext22l_ltmedium';}
+.dados p a{ margin-bottom:15px; font-size:10px; line-height:14px; color:#0066CC;font-family: 'titilliumtext22l_ltmedium';}
 .dados a p{color:#0066CC;}
 .banner{ width:170px; height:260px; background:#666; margin:0 auto;}
 .titulo{ font-size:16px; font-weight:bold;}

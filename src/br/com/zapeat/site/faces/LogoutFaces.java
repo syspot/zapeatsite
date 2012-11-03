@@ -1,11 +1,10 @@
 package br.com.zapeat.site.faces;
 
-import java.io.IOException;
-
 import javax.faces.bean.ManagedBean;
 
 import br.com.topsys.web.util.TSFacesUtil;
 import br.com.zapeat.site.util.Constantes;
+import br.com.zapeat.site.util.ZapeatUtil;
 
 @ManagedBean(name = "logoutFaces")
 public class LogoutFaces {
@@ -24,14 +23,7 @@ public class LogoutFaces {
 
 		TSFacesUtil.getRequest().getSession().invalidate();
 
-		try {
-			
-			TSFacesUtil.getFacesContext().getExternalContext().redirect("index.jsf?cidade=" + TSFacesUtil.getRequestParameter("cidade"));
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		ZapeatUtil.redirect();
 
 		return null;
 	}

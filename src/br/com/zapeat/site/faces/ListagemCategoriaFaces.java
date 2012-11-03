@@ -13,9 +13,7 @@ import br.com.zapeat.site.util.ZapeatUtil;
 public class ListagemCategoriaFaces extends TSMainFaces {
 
 	private List<CategoriaModel> outrasCategorias;
-	
 	private Long qtdPaginas;
-	
 	private Long page;
 	
 	public ListagemCategoriaFaces(){

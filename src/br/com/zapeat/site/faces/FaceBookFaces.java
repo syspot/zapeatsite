@@ -16,6 +16,7 @@ import br.com.zapeat.site.model.UsuarioModel;
 import br.com.zapeat.site.util.Constantes;
 import br.com.zapeat.site.util.FacebookClient;
 import br.com.zapeat.site.util.UsuarioService;
+import br.com.zapeat.site.util.ZapeatUtil;
 
 @ManagedBean(name ="faceBookFaces")
 public class FaceBookFaces {
@@ -56,7 +57,7 @@ public class FaceBookFaces {
 
 					if (kv.length != 2) {
 
-						this.redirect();
+						ZapeatUtil.redirect();
 
 					} else {
 
@@ -114,12 +115,12 @@ public class FaceBookFaces {
 						TSFacesUtil.addObjectInSession(Constantes.ID_USUARIO_LOGADO, usuario.getId());
 						TSFacesUtil.addObjectInSession(Constantes.NOME_USUARIO_LOGADO, model.getNome());
 
-						this.redirect();
+						ZapeatUtil.redirect();
 					}
 
 				} else {
 
-					this.redirect();
+					ZapeatUtil.redirect();
 				}
 
 			} catch (IOException e) {
@@ -129,7 +130,7 @@ public class FaceBookFaces {
 		
 		} else if(!TSUtil.isEmpty(TSUtil.tratarString(erro))){
 			
-			this.redirect();
+			ZapeatUtil.redirect();
 		}
 
 	}
@@ -148,18 +149,6 @@ public class FaceBookFaces {
 		}
 
 		return new String(baos.toByteArray());
-	}
-
-	private void redirect() {
-
-		try {
-
-			TSFacesUtil.getFacesContext().getExternalContext().redirect("index.jsf?cidade=" + TSFacesUtil.getRequestParameter("cidade"));
-
-		} catch (Exception e) {
-
-			e.printStackTrace();
-		}
 	}
 
 	public String getUrl() {

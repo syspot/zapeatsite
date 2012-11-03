@@ -11,7 +11,6 @@ import br.com.zapeat.site.model.FornecedorModel;
 @ManagedBean(name = "estabelecimentoGeralFaces")
 public class EstabelecimentoGeralFaces {
 
-	
 	public List<FornecedorModel> getEstabelecimentos() {
 		return new FornecedorDAO().pesquisarHome((Long)TSFacesUtil.getObjectInSession("cidadeId"));
 	}

@@ -1,6 +1,7 @@
 package br.com.zapeat.site.util;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 
 import javax.faces.application.FacesMessage;
@@ -10,6 +11,7 @@ import org.apache.commons.io.FileUtils;
 
 import br.com.topsys.exception.TSSystemException;
 import br.com.topsys.util.TSUtil;
+import br.com.topsys.web.util.TSFacesUtil;
 
 public class ZapeatUtil {
 
@@ -122,6 +124,14 @@ public class ZapeatUtil {
 		}
 		
 		return preco;
+	}
+	
+	public static void redirect() {
+		try {
+			TSFacesUtil.getFacesContext().getExternalContext().redirect("index.jsf?cidade=" + TSFacesUtil.getRequestParameter("cidade"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

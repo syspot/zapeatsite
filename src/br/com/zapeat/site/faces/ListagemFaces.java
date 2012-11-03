@@ -87,8 +87,7 @@ public class ListagemFaces extends TSMainFaces {
 		categoria = new CategoriaDAO().obter(categoriaId);
 		
 		if(TSUtil.isEmpty(categoria)){
-			categoria = new CategoriaModel("Mais Indicados", "icons maisIndicados");
-			categoria.setId(Constantes.CATEGORIA_MAIS_INDICADOS);
+			categoria = new CategoriaDAO().obter(Constantes.CATEGORIA_MAIS_INDICADOS);
 		}
 		
 	}

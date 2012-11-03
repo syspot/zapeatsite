@@ -11,8 +11,5 @@
 			<p class="categoria">${estabelecimentoFaces.carroChefeModel.fornecedorModel.categoriaPrincipal.descricao}</p>
 			<p class="item">${estabelecimentoFaces.carroChefeModel.titulo}</p>
     	</a>
-    	
-    	
-		 
 	</div>
 </c:if>

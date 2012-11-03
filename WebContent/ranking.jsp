@@ -32,7 +32,7 @@
             
             <c:if test="${!empty rankingFaces.melhorEstabelecimento}">
         	<div class="coluna">
-            	<h2>Melhor Comida</h2>
+            	<h2>Os Melhores Estabelecimentos</h2>
             	<c:forEach var="item" items="${rankingFaces.melhorEstabelecimento}">
             	<div class="boxRanking">
                 	<span class="${item.css}"></span>
