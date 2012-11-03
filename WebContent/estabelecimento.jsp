@@ -14,13 +14,8 @@
 
 <body>
 
-
-
 	<!-- COMECA TOPO -->
 	<%@ include file="/topo.jsp" %>
-	
-	<input type="hidden" id="id" name="id" value="${estabelecimentoFaces.fornecedorModel.id}">
-	
 
 <!-- COMECA CENTRAL -->
 <div id="central">
@@ -76,13 +71,13 @@
                             <p>${estabelecimentoFaces.fornecedorModel.horariosFuncionamento}</p>
                             
                         </li>
-                        <c:if test="${!empty estabelecimentoFaces.fornecedorModel.twitter and !empty estabelecimentoFaces.fornecedorModel.facebook}">
+                        <c:if test="${not empty estabelecimentoFaces.fornecedorModel.twitter and not empty estabelecimentoFaces.fornecedorModel.facebook}">
                     	<li>
                         	<p class="titOtherInfo">Redes sociais</p>
-                        	<c:if test="${!empty estabelecimentoFaces.fornecedorModel.twitter}">
+                        	<c:if test="${not empty estabelecimentoFaces.fornecedorModel.twitter}">
                         	<p>@${estabelecimentoFaces.fornecedorModel.twitter}</p>
                             </c:if>
-                            <c:if test="${!empty estabelecimentoFaces.fornecedorModel.facebook}">
+                            <c:if test="${not empty estabelecimentoFaces.fornecedorModel.facebook}">
                             <p><a href="http://facebook.com/${estabelecimentoFaces.fornecedorModel.facebook}" title="" target="_blank">facebook.com/${estabelecimentoFaces.fornecedorModel.facebook}</a></p>
                             
                             </c:if>
@@ -90,7 +85,7 @@
                         </c:if>
                         <li>
                         	<p class="titOtherInfo">Outros</p>
-                            <c:if test="${!empty estabelecimentoFaces.fornecedorModel.site}">
+                            <c:if test="${not empty estabelecimentoFaces.fornecedorModel.site}">
                             <p>
                             <a href="${estabelecimentoFaces.fornecedorModel.site}" title="" target="_blank">${estabelecimentoFaces.fornecedorModel.site}</a></p>
                             </c:if>
@@ -109,37 +104,24 @@
                     
                     <ul>
                     	<li>
-                    	<h:form>
-                    		<c:if test="${estabelecimentoFaces.fornecedorModel.quantidadeIndicacoesComida == 1}">
-                    			<p> ${estabelecimentoFaces.fornecedorModel.quantidadeIndicacoesComida} pessoa indica a comida</p>
-                    		</c:if>
-                    		<c:if test="${estabelecimentoFaces.fornecedorModel.quantidadeIndicacoesComida > 1}">
-                    			<p> ${estabelecimentoFaces.fornecedorModel.quantidadeIndicacoesComida} pessoas indicam a comida</p>
-                    		</c:if>
-	                		<div class="votacao">
-	                			
+                    	
+                    		<h:form>
+                    		
+	                    		<c:if test="${estabelecimentoFaces.fornecedorModel.quantidadeIndicacoes == 1}">
+	                    			<p> ${estabelecimentoFaces.fornecedorModel.quantidadeIndicacoes} pessoa indica</p>
+	                    		</c:if>
+	                    		<c:if test="${estabelecimentoFaces.fornecedorModel.quantidadeIndicacoes > 1}">
+	                    			<p> ${estabelecimentoFaces.fornecedorModel.quantidadeIndicacoes} pessoas indicam</p>
+	                    		</c:if>
+		                		<div class="votacao">
+		                			
 						       		<h:commandLink action="#{indicacaoFaces.indicarComida}" styleClass="floatLeft"><span class="icons indicacao"></span>Indico</h:commandLink>
-						       		<a title="Não indicar" onclick="nao_indicar(${promocaoFaces.carroChefeModel.fornecedorModel.categoriaPrincipal.id}, ${promocaoFaces.carroChefeModel.fornecedorModel.id})" class="linkRanking floatRight"><span class="icons naoindicacaoRed"></span> Não indico</a>
-						       
-							</div>
-							</li>
-							<li>
-							<br/>
-							</li>
+						       		<a title="Não indicar" onclick="" class="linkRanking floatRight"><span class="icons naoindicacaoRed"></span> Não indico</a>
+							       
+								</div>
 							
-							<li>
-							<c:if test="${estabelecimentoFaces.fornecedorModel.quantidadeIndicacoesAmbiente == 1}">
-                    			<p> ${estabelecimentoFaces.fornecedorModel.quantidadeIndicacoesAmbiente} pessoa indica o ambiente</p>
-                    		</c:if>
-                    		<c:if test="${estabelecimentoFaces.fornecedorModel.quantidadeIndicacoesAmbiente > 1}">
-                    			<p> ${estabelecimentoFaces.fornecedorModel.quantidadeIndicacoesAmbiente} pessoas indicam o ambiente</p>
-                    		</c:if>
-	                		<div class="votacao">
-	                				<h:commandLink action="#{indicacaoFaces.indicarComida}" styleClass="floatLeft"><span class="icons indicacao"></span>Indico</h:commandLink>
-						       		<a title="Não indicar" onclick="nao_indicar(${promocaoFaces.carroChefeModel.fornecedorModel.categoriaPrincipal.id}, ${promocaoFaces.carroChefeModel.fornecedorModel.id})" class="linkRanking floatRight"><span class="icons naoindicacaoRed"></span> Não indico</a>
-						       
-							</div>
-						</h:form>
+							</h:form>
+							
 						</li>
 						
 					</ul>
@@ -178,10 +160,84 @@
                     <div class="fb-like" data-href="http://www.zapeat.com.br" data-send="false" data-layout="button_count" data-width="200" data-show-faces="false"></div>
                 </div>
                 
+                <script type="text/javascript">
+                
+	                $('#target').submit(function() {
+                	  alert('Handler for .submit() called.');
+                	  return false;
+                	});
+                
+                </script>
+                
                 <!-- COMENTÁRIOS FACEBOOK -->
                 <div id="comentarioFb">
-                <p class="tituloComent">Deixe seu comentário</p>
-	                <div class="fb-comments" data-href="http://example.com" data-num-posts="5" data-width="600"></div>
+                
+                	<p class="tituloComent">Deixe seu comentário</p>
+                	
+                	
+                	<script type="text/javascript">
+                	
+						$(document).ready( function() {
+							$("#formComentario").validate({
+								// Define as regras
+								rules:{
+									descricao:{
+										// campoNome será obrigatório (required) e terá tamanho mínimo (minLength)
+										required: true
+									}
+								},
+								// Define as mensagens de erro para cada regra
+								messages:{
+									descricao:{
+										required: "Descrição do Comentário: Obrigatório",
+						
+									}
+								},
+						
+							});
+						});
+					</script>
+                	
+                	<c:choose>
+                	
+                		<c:when test="${not empty estabelecimentoFaces.usuarioLogado.id}">
+                			<h:form id="formComentario" prependId="false">
+			                	<input type="hidden" id="id" name="id" value="${estabelecimentoFaces.fornecedorModel.id}">
+			                     <fieldset>
+			                        <h:inputTextarea id="descricao" value="#{estabelecimentoFaces.comentarioFornecedorModel.descricao}" required="true" />
+			                        <h:commandButton action="#{estabelecimentoFaces.comentar}" value="comentar"></h:commandButton>
+			                    </fieldset>
+		                 	</h:form>
+                		</c:when>
+                		<c:otherwise>
+                			<br/>
+                			<div class="comment">
+                				<p>Você precisa estar logado para comentar.</p>
+                			</div>
+                			<br/>
+                			<br/>
+                			<br/>
+                			<br/>
+                		</c:otherwise>
+                	</c:choose>
+	                
+	                <c:if test="${not empty estabelecimentoFaces.fornecedorModel.comentarios}">
+	                	
+                		<c:forEach items="${estabelecimentoFaces.fornecedorModel.comentarios}" var="comentario">
+	                	
+		                	<div class="boxComentario">
+	                	
+			                    <span class="aspas"></span>
+			                    <div class="comment">
+			                         <p>${comentario.descricao}</p>
+			                         <p class="autor">${comentario.usuarioModel.nome}</p>
+			                    </div>
+	                	
+		                	</div>
+	                	
+                		</c:forEach>
+		                
+	                </c:if>
                 </div>
             </div>
             

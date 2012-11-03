@@ -17,7 +17,8 @@ public class LogoutFaces {
 
 	public String logout() {
 
-		TSFacesUtil.removeObjectInSession(Constantes.USUARIO_LOGADO);
+		TSFacesUtil.removeObjectInSession(Constantes.ID_USUARIO_LOGADO);
+		TSFacesUtil.removeObjectInSession(Constantes.NOME_USUARIO_LOGADO);
 
 		TSFacesUtil.removeObjectInSession(Constantes.LOGIN_APLICACAO);
 

@@ -12,9 +12,11 @@ import br.com.zapeat.site.model.CidadeModel;
 public class CidadeFaces extends TSMainFaces {
 
 	private List<CidadeModel> cidades;
+	private String cidadeSelecionada;
 	
 	public CidadeFaces() {
 		this.cidades = new CidadeDAO().pesquisarTodos();
+		this.cidadeSelecionada = (String) super.getObjectInRequest("cidade");
 	}
 
 	public List<CidadeModel> getCidades() {
@@ -24,5 +26,13 @@ public class CidadeFaces extends TSMainFaces {
 	public void setCidades(List<CidadeModel> cidades) {
 		this.cidades = cidades;
 	}
-	
+
+	public String getCidadeSelecionada() {
+		return cidadeSelecionada;
+	}
+
+	public void setCidadeSelecionada(String cidadeSelecionada) {
+		this.cidadeSelecionada = cidadeSelecionada;
+	}
+
 }

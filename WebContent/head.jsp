@@ -52,7 +52,7 @@
 		//função para botão de acionar geolocation
  		jQuery(window).ready(function(){  
             jQuery("#btnInit").click(function(){
-				$('#info').val(initialize);
+				$('#cidade').val(initialize);
 				}); 			
         })
 
@@ -111,7 +111,7 @@
 
 					//---
 					//aplica dados no input
-					$('#info').val(city.long_name + ", " + state.long_name);
+					$('#cidade').val(city.long_name + ", " + state.short_name);
 					//$('body').append('<p>Seu endereço:<br />' +
 					//	city.long_name + " / " + state.long_name + '</p>');						
 				} else {

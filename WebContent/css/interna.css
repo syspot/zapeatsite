@@ -132,3 +132,11 @@ ul#listagemCat li{ border-bottom:1px solid #ccc; overflow:hidden;margin-bottom:2
 .votacao a{font-family: 'microsoft_yi_baitiregular'; font-size:14px; color:#900; display:block; line-height:25px;}
 
 .votacao a:hover{text-decoration:underline;}
+
+.boxComentario{border:1px solid #fff; cursor:default; background:#f5f5f5; padding:5px;width:578px; overflow:hidden; margin:10px 0px;}
+.boxComentario:hover{border:1px solid #CCC;}
+ span.aspas{display:block; float:left; width:40px; height:40px; background:url(../img/aspas.jpg) no-repeat; margin-right:10px;}
+.comment{float:left; font-style:italic; font-family: 'titilliumtext22l_ltthin'; font-size:14px; color:#444; width:528px; line-height:16px;}
+ p.autor{font-family: 'titilliumtext22l_ltmedium'!important; font-size:12px!important;}
+#comentarioFb textarea{width:100%; min-height:100px;}
+#comentarioFb input{font-family: 'titilliumtext22l_ltmedium'; text-transform:uppercase; color:#666; border:1px solid #CCC; margin-top:10px; padding:10px;}

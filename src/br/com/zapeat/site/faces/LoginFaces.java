@@ -71,7 +71,8 @@ public class LoginFaces extends TSMainFaces {
 
 			if (!TSUtil.isEmpty(model) && !TSUtil.isEmpty(model.getSenha()) && model.getSenha().equals(TSCryptoUtil.gerarHash(this.usuarioModel.getSenha(), "MD5"))) {
 
-				TSFacesUtil.addObjectInSession(Constantes.USUARIO_LOGADO, model);
+				TSFacesUtil.addObjectInSession(Constantes.ID_USUARIO_LOGADO, model.getId());
+				TSFacesUtil.addObjectInSession(Constantes.NOME_USUARIO_LOGADO, model.getNome());
 
 				TSFacesUtil.addObjectInSession(Constantes.LOGIN_APLICACAO, true);
 

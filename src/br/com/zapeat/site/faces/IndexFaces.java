@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 
 import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.faces.TSMainFaces;
+import br.com.topsys.web.util.TSFacesUtil;
 import br.com.zapeat.site.dao.FornecedorDAO;
 import br.com.zapeat.site.dao.PromocaoDAO;
 import br.com.zapeat.site.model.FornecedorModel;
@@ -46,7 +47,7 @@ public class IndexFaces extends TSMainFaces {
 				
 		}
 		
-		this.topGeral = new FornecedorDAO().pesquisarTopGeral();
+		this.topGeral = new FornecedorDAO().pesquisarTopGeral((Long)TSFacesUtil.getObjectInSession("cidadeId"));
 
 		this.setarCssTopGeral();
 

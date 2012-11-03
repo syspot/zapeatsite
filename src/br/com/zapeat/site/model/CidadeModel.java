@@ -26,7 +26,7 @@ public class CidadeModel {
 	}
 
 	public String getNome() {
-		return nome;
+		return nome + ", " + getEstadoModel().getSigla().toUpperCase();
 	}
 
 	public void setNome(String nome) {
@@ -43,7 +43,7 @@ public class CidadeModel {
 	
 	@Override
 	public String toString() {
-		return "'" + this.nome + "'";
+		return "'" + getNome() + "'";
 	}
 
 	@Override

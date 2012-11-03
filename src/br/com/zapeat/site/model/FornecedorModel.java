@@ -51,15 +51,13 @@ public class FornecedorModel {
 
 	private Integer quantidadeIndicacoes;
 	
-	private Integer quantidadeIndicacoesComida;
-	
-	private Integer quantidadeIndicacoesAmbiente;
-	
 	private String css;
 	
 	private Integer numeroUnico;
 	
 	private List<FormaPagamentoModel> formasPagamentos; 
+	
+	private List<ComentarioFornecedorModel> comentarios; 
 
 	public FornecedorModel() {
 	}
@@ -295,6 +293,14 @@ public class FornecedorModel {
 		return TSUtil.isEmpty(this.logoMarca) ? this.logoMarca : Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_FORNECEDOR_THUMB + this.logoMarca;
 	}
 
+	public List<ComentarioFornecedorModel> getComentarios() {
+		return comentarios;
+	}
+
+	public void setComentarios(List<ComentarioFornecedorModel> comentarios) {
+		this.comentarios = comentarios;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -333,22 +339,6 @@ public class FornecedorModel {
 		retorno.append("]");
 		
 		return retorno.toString();
-	}
-
-	public Integer getQuantidadeIndicacoesComida() {
-		return quantidadeIndicacoesComida;
-	}
-
-	public void setQuantidadeIndicacoesComida(Integer quantidadeIndicacoesComida) {
-		this.quantidadeIndicacoesComida = quantidadeIndicacoesComida;
-	}
-
-	public Integer getQuantidadeIndicacoesAmbiente() {
-		return quantidadeIndicacoesAmbiente;
-	}
-
-	public void setQuantidadeIndicacoesAmbiente(Integer quantidadeIndicacoesAmbiente) {
-		this.quantidadeIndicacoesAmbiente = quantidadeIndicacoesAmbiente;
 	}
 
 }

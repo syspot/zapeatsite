@@ -28,6 +28,10 @@ public class UsuarioModel {
 	public UsuarioModel() {
 
 	}
+	
+	public UsuarioModel(Long id) {
+		this.id = id;
+	}
 
 	public Long getId() {
 		return TSUtil.tratarLong(id);

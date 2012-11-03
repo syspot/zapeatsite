@@ -4,23 +4,18 @@ import java.util.Date;
 
 import br.com.topsys.util.TSUtil;
 
-public class ComentarioModel {
+public class ComentarioFornecedorModel {
 
 	private Long id;
-
-	private UsuarioModel usuarioModel;
-
-	private FornecedorModel fornecedorModel;
 
 	private String descricao;
 
 	private Date dataCadastro;
 
-	private Boolean flagIndica;
+	private FornecedorModel fornecedorModel;
+	
+	private UsuarioModel usuarioModel;
 
-	private Long posicao;
-
-	private Boolean flagNaoIndica;
 
 	public Long getId() {
 		return TSUtil.tratarLong(id);
@@ -28,22 +23,6 @@ public class ComentarioModel {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public UsuarioModel getUsuarioModel() {
-		return usuarioModel;
-	}
-
-	public void setUsuarioModel(UsuarioModel usuarioModel) {
-		this.usuarioModel = usuarioModel;
-	}
-
-	public FornecedorModel getFornecedorModel() {
-		return fornecedorModel;
-	}
-
-	public void setFornecedorModel(FornecedorModel fornecedorModel) {
-		this.fornecedorModel = fornecedorModel;
 	}
 
 	public String getDescricao() {
@@ -61,29 +40,21 @@ public class ComentarioModel {
 	public void setDataCadastro(Date dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
-	
-	public Long getPosicao() {
-		return posicao;
+
+	public FornecedorModel getFornecedorModel() {
+		return fornecedorModel;
 	}
 
-	public void setPosicao(Long posicao) {
-		this.posicao = posicao;
+	public void setFornecedorModel(FornecedorModel fornecedorModel) {
+		this.fornecedorModel = fornecedorModel;
 	}
 
-	public Boolean getFlagIndica() {
-		return flagIndica;
+	public UsuarioModel getUsuarioModel() {
+		return usuarioModel;
 	}
 
-	public void setFlagIndica(Boolean flagIndica) {
-		this.flagIndica = flagIndica;
-	}
-
-	public Boolean getFlagNaoIndica() {
-		return flagNaoIndica;
-	}
-
-	public void setFlagNaoIndica(Boolean flagNaoIndica) {
-		this.flagNaoIndica = flagNaoIndica;
+	public void setUsuarioModel(UsuarioModel usuarioModel) {
+		this.usuarioModel = usuarioModel;
 	}
 
 	@Override
@@ -102,7 +73,7 @@ public class ComentarioModel {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ComentarioModel other = (ComentarioModel) obj;
+		ComentarioFornecedorModel other = (ComentarioFornecedorModel) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

@@ -21,7 +21,9 @@ public class IndicacaoFaces extends TSMainFaces {
 
 		if(!TSUtil.isEmpty(comentarioModel.getFornecedorModel().getId())){
 			
-			UsuarioModel model = (UsuarioModel) TSFacesUtil.getObjectInSession(Constantes.USUARIO_LOGADO);
+			Long idUsuarioLogado = (Long) TSFacesUtil.getObjectInSession(Constantes.ID_USUARIO_LOGADO);
+			
+			UsuarioModel model = new UsuarioModel(idUsuarioLogado); 
 
 			if (!TSUtil.isEmpty(model) && !TSUtil.isEmpty(model.getId())) {
 
@@ -60,27 +62,13 @@ public class IndicacaoFaces extends TSMainFaces {
 		
 	}
 	
-	public String indicarComida(){
+	public String indicar(){
 		
 		ComentarioModel comentarioModel = new ComentarioModel();
 		//TODO IMPLEMENTAR CURTIR
 		comentarioModel.setFornecedorModel(new FornecedorModel(0L));
 		
-		comentarioModel.setFlagIndicaComida(Boolean.TRUE);
-		
-		this.executarIndicacao(comentarioModel);
-		
-		return null;
-		
-	}
-	
-	public String indicarAmbiente(){
-		
-		ComentarioModel comentarioModel = new ComentarioModel();
-		//TODO IMPLEMENTAR CURTIR
-		comentarioModel.setFornecedorModel(new FornecedorModel(0L));
-		
-		comentarioModel.setFlagIndicaAmbiente(Boolean.TRUE);
+		comentarioModel.setFlagIndica(Boolean.TRUE);
 		
 		this.executarIndicacao(comentarioModel);
 		
@@ -92,7 +80,7 @@ public class IndicacaoFaces extends TSMainFaces {
 		
 		ComentarioModel comentarioModel = new ComentarioModel();
 		
-		comentarioModel.setFlagNaoIndicaComida(Boolean.TRUE);
+		comentarioModel.setFlagNaoIndica(Boolean.TRUE);
 		
 		this.executarIndicacao(comentarioModel);
 		

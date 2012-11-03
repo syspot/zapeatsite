@@ -42,7 +42,7 @@ public class PromocaoModel {
 
 	private Timestamp dataFim;
 
-	private String dataFormatada;
+	private List<ComentarioPromocaoModel> comentarios;
 
 	public Long getId() {
 		return TSUtil.tratarLong(id);
@@ -215,6 +215,14 @@ public class PromocaoModel {
 		this.dataFim = dataFim;
 	}
 
+	public List<ComentarioPromocaoModel> getComentarios() {
+		return comentarios;
+	}
+
+	public void setComentarios(List<ComentarioPromocaoModel> comentarios) {
+		this.comentarios = comentarios;
+	}
+
 	public String getDataFormatada() {
 
 		if (!TSUtil.isEmpty(this.fim)) {
@@ -235,11 +243,7 @@ public class PromocaoModel {
 			return str.toString();
 		}
 
-		return dataFormatada;
-	}
-
-	public void setDataFormatada(String dataFormatada) {
-		this.dataFormatada = dataFormatada;
+		return null;
 	}
 
 }

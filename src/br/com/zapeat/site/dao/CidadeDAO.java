@@ -17,7 +17,7 @@ public class CidadeDAO {
     	
     	broker.setPropertySQL("cidadedao.pesquisar", ZapeatUtil.tratarStringILike(texto));
     	
-    	return broker.getCollectionBean(CidadeModel.class, "id", "nome");
+    	return broker.getCollectionBean(CidadeModel.class, "id", "nome", "estadoModel.id", "estadoModel.sigla");
     	
     }
     
@@ -28,7 +28,7 @@ public class CidadeDAO {
     	
     	broker.setPropertySQL("cidadedao.pesquisartodos");
     	
-    	return broker.getCollectionBean(CidadeModel.class, "id", "nome");
+    	return broker.getCollectionBean(CidadeModel.class, "id", "nome", "estadoModel.id", "estadoModel.sigla");
     	
     }
     
@@ -38,7 +38,7 @@ public class CidadeDAO {
     	
     	broker.setPropertySQL("cidadedao.obter", cidade.getId());
     	
-    	return (CidadeModel) broker.getObjectBean(CidadeModel.class, "id", "nome");
+    	return (CidadeModel) broker.getObjectBean(CidadeModel.class, "id", "nome", "estadoModel.id", "estadoModel.sigla");
     	
     }
 }

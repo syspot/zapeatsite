@@ -55,7 +55,8 @@ public class ConfirmacaoFaces extends TSMainFaces {
 
 						usuarioDAO.alterarStatus(model);
 
-						TSFacesUtil.addObjectInSession(Constantes.USUARIO_LOGADO, model);
+						TSFacesUtil.addObjectInSession(Constantes.ID_USUARIO_LOGADO, model.getId());
+						TSFacesUtil.addObjectInSession(Constantes.NOME_USUARIO_LOGADO, model.getNome());
 
 						TSFacesUtil.addObjectInSession(Constantes.LOGIN_APLICACAO, true);
 					}

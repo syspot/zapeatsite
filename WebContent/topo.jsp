@@ -64,7 +64,7 @@ $(document).ready( function() {
 	<div class="barraBusca">
     	<h:form prependId="false">
 			<label>Buscar<h:inputText value="#{buscaFaces.termoBuscado}"/></label>
-		    <label>em<h:inputText id="info" value="#{buscaFaces.localBuscado}"/><span id="btnInit" class="icons" ></span></label>
+		    <label>em<h:inputText id="cidade" value="#{cidadeFaces.cidadeSelecionada}"/><span id="btnInit" class="icons" ></span></label>
 		    <h:commandButton value="" action="#{buscaFaces.buscar}" />
 		</h:form>
 		
@@ -74,10 +74,11 @@ $(document).ready( function() {
 		<script src="js/jquery.ui.position.js"></script>
 		<script src="js/jquery.ui.autocomplete.js"></script>
 		
+		
 		<script type="text/javascript">
 		  
 			var availableTags = ${cidadeFaces.cidades};
-			$( "#info" ).autocomplete({
+			$( "#cidade" ).autocomplete({
 				source: availableTags
 			});
 		
@@ -185,8 +186,8 @@ $(document).ready( function() {
         </h:form>
 </div>
 
-<c:if test="${!empty sessionScope.usuarioLogado.id}">
-<span id="status">Olá, ${sessionScope.usuarioLogado.nome}</span>, temos ótimas promoções pra você!
+<c:if test="${!empty sessionScope.idUsuarioLogado}">
+<span id="status">Olá, ${sessionScope.nomeUsuarioLogado}</span>, temos ótimas promoções pra você!
 </c:if> 
 
 </div>

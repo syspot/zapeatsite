@@ -24,6 +24,8 @@ public class CarroChefeModel implements Serializable {
 	private Integer numeroUnico;
 	
 	private List<ImagemCarroChefeModel> imagensCarroChefe;
+	
+	private List<ComentarioCarroChefeModel> comentarios;
 
 	public CarroChefeModel() {
 
@@ -104,6 +106,14 @@ public class CarroChefeModel implements Serializable {
 
 	public void setImagensCarroChefe(List<ImagemCarroChefeModel> imagensCarroChefe) {
 		this.imagensCarroChefe = imagensCarroChefe;
+	}
+
+	public List<ComentarioCarroChefeModel> getComentarios() {
+		return comentarios;
+	}
+
+	public void setComentarios(List<ComentarioCarroChefeModel> comentarios) {
+		this.comentarios = comentarios;
 	}
 
 	@Override

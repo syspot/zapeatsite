@@ -113,7 +113,8 @@ public class FaceBookFaces {
 
 						TSFacesUtil.addObjectInSession("accessToken", accessToken);
 
-						TSFacesUtil.addObjectInSession(Constantes.USUARIO_LOGADO, usuario);
+						TSFacesUtil.addObjectInSession(Constantes.ID_USUARIO_LOGADO, usuario.getId());
+						TSFacesUtil.addObjectInSession(Constantes.NOME_USUARIO_LOGADO, model.getNome());
 
 						this.redirect();
 					}

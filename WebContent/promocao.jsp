@@ -277,8 +277,24 @@
                 
                 <!-- COMENTÁRIOS FACEBOOK -->
                 <div id="comentarioFb">
-                <p class="tituloComent">Deixe seu comentário</p>
-	                <div class="fb-comments" data-href="http://example.com" data-num-posts="5" data-width="600"></div>
+                	
+                	<p class="tituloComent">Deixe seu comentário</p>
+                	
+	                <form>
+	                     <fieldset>
+	                        <textarea></textarea>
+	                        <input type="submit" value="comentar" />    
+	                    </fieldset>
+	                 </form>
+	                
+	                <div class="boxComentario">
+	                    <span class="aspas"></span>
+	                    <div class="comment">
+	                         <p>Gosto muito do ambiente retrô. Os hamburgueres são gostosos mas particularmente gosto muito também da salada com carpaccio (não me recordo o nome agora).É um lugar muito agradável para quem procura uma saída leve e não muito demorada com os amigos. Evite chegar muito tarde nos finais de semana senão quiser pegar a lista de espera.</p>
+	                         <p class="autor">Fulano de tal</p>
+	                    </div>
+	                </div>
+
                 </div>
             </div>
         

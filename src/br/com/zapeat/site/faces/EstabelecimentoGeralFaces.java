@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 
+import br.com.topsys.web.util.TSFacesUtil;
 import br.com.zapeat.site.dao.FornecedorDAO;
 import br.com.zapeat.site.model.FornecedorModel;
 
@@ -12,7 +13,7 @@ public class EstabelecimentoGeralFaces {
 
 	
 	public List<FornecedorModel> getEstabelecimentos() {
-		return new FornecedorDAO().pesquisarHome();
+		return new FornecedorDAO().pesquisarHome((Long)TSFacesUtil.getObjectInSession("cidadeId"));
 	}
 
 }

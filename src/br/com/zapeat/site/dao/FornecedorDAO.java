@@ -11,33 +11,33 @@ import br.com.zapeat.site.model.Model;
 public class FornecedorDAO {
 
 	@SuppressWarnings("unchecked")
-	public List<FornecedorModel> pesquisarHome() {
+	public List<FornecedorModel> pesquisarHome(Long cidadeId) {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("fornecedordao.pesquisarHome");
+		broker.setPropertySQL("fornecedordao.pesquisarHome", cidadeId);
 
 		return broker.getCollectionBean(FornecedorModel.class, "id", "logoMarca", "nomeFantasia");
 
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<FornecedorModel> pesquisarTopGeral() {
+	public List<FornecedorModel> pesquisarTopGeral(Long cidadeId) {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("fornecedordao.pesquisarTopGeral");
+		broker.setPropertySQL("fornecedordao.pesquisarTopGeral", cidadeId);
 
 		return broker.getCollectionBean(FornecedorModel.class, "id", "nomeFantasia", "quantidadeIndicacoes");
 
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<FornecedorModel> pesquisarMelhorAtendimento(CategoriaModel model) {
+	public List<FornecedorModel> pesquisarMelhorAtendimento(CategoriaModel model, Long cidadeId) {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("fornecedordao.pesquisarMelhorAtendimento", model.getId());
+		broker.setPropertySQL("fornecedordao.pesquisarMelhorAtendimento", model.getId(), cidadeId);
 
 		return broker.getCollectionBean(FornecedorModel.class, "id", "nomeFantasia", "quantidadeIndicacoes", "logoMarca", "categoriaPrincipal.id", "categoriaPrincipal.descricao");
 
@@ -62,7 +62,7 @@ public class FornecedorDAO {
 
 		return (FornecedorModel) broker.getObjectBean(FornecedorModel.class,
 
-		"id", "razaoSocial", "cnpj", "nomeFantasia", "cep", "logradouro", "numero", "bairro", "cidadeModel.id", "latitude", "longitude", "logoMarca", "flagAtivo", "descricao", "horariosFuncionamento", "twitter", "facebook", "site", "telefone","quantidadeIndicacoesComida", "quantidadeIndicacoesAmbiente", "imagemThumb");
+		"id", "razaoSocial", "cnpj", "nomeFantasia", "cep", "logradouro", "numero", "bairro", "cidadeModel.id", "latitude", "longitude", "logoMarca", "flagAtivo", "descricao", "horariosFuncionamento", "twitter", "facebook", "site", "telefone","quantidadeIndicacoes", "imagemThumb");
 
 	}
 	
