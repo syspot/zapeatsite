@@ -12,21 +12,21 @@ public class BuscaDAO {
 
 
     @SuppressWarnings("unchecked")
-    public List<BuscaModel> pesquisarPorTexto(String texto, String cidade, Long page){
+    public List<BuscaModel> pesquisarPorTexto(String texto, Long cidadeId, Long page){
     	
     	TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
     	
-    	broker.setPropertySQL("buscadao.pesquisarportexto", ZapeatUtil.tratarStringILike(texto), ZapeatUtil.tratarStringCidadeILike(cidade), page);
+    	broker.setPropertySQL("buscadao.pesquisarportexto", ZapeatUtil.tratarStringILike(texto), cidadeId, page);
     	
     	return broker.getCollectionBean(BuscaModel.class, "numeroUnico", "id", "titulo", "nome", "descricao", "tipo", "categoria", "imagemCategoria", "telefone", "site", "indicacoes", "imagem", "latitude", "longitude");
     	
     }
     
-    public Model obterQtdPaginasPorTexto(String texto, String cidade) {
+    public Model obterQtdPaginasPorTexto(String texto, Long cidadeId) {
 		
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		
-		broker.setPropertySQL("buscadao.obterqtdpaginasportexto", ZapeatUtil.tratarStringILike(texto), ZapeatUtil.tratarStringCidadeILike(cidade));
+		broker.setPropertySQL("buscadao.obterqtdpaginasportexto", ZapeatUtil.tratarStringILike(texto), cidadeId);
 		
 		return (Model) broker.getObjectBean(Model.class, "value");
 		

@@ -18,48 +18,6 @@
     });
 </script>
 
-
-<script type="text/javascript">
-$(document).ready( function() {
-	$("#signup").validate({
-		// Define as regras
-		rules:{
-			nome:{
-				// campoNome será obrigatório (required) e terá tamanho mínimo (minLength)
-				required: true
-			},
-			email:{
-				// campoEmail será obrigatório (required) e precisará ser um e-mail válido (email)
-				required: true, email: true
-
-			},
-			senha:{
-				// campoMensagem será obrigatório (required) e terá tamanho mínimo (minLength)
-				required: true, minlength: 6
-			}
-		},
-		// Define as mensagens de erro para cada regra
-		messages:{
-			nome:{
-				required: "Nome: Obrigatório",
-
-			},
-			email:{
-				required: "E-mail: Obrigatório",
-				email: "E-mail inválido"
-
-			},
-
-			senha:{
-				required: "Senha: Obrigatório",
-				minlength: "Sua senha deve ter no mínimo, 6 caracteres"
-			}
-		},
-
-	});
-});
-</script>
-
 <div id="topo">
 	<!-- COMECA BUSCA -->
 	<div class="barraBusca">
@@ -76,14 +34,11 @@ $(document).ready( function() {
 		<script src="js/jquery.ui.position.js"></script>
 		<script src="js/jquery.ui.autocomplete.js"></script>
 		
-		
 		<script type="text/javascript">
-		  
 			var availableTags = ${cidadeFaces.cidades};
 			$( "#cidade" ).autocomplete({
 				source: availableTags
 			});
-		
 		</script>
     </div>
     <h:inputHidden value="#{categoriaFaces}"/>
@@ -109,25 +64,25 @@ $(document).ready( function() {
 					  </h:outputLink>
 					  
 					  <div align="center">
-					  <h:outputLink styleClass="logout" value="#{faceBookFaces.logout}" rendered="#{!empty sessionScope.idUsuarioLogado and !sessionScope.loginAplicacao}">
-					  	Logout (sair)
-					  </h:outputLink>
-					  </div>
-					  
-					  <div align="center">
-						  <h:outputLink styleClass="logout" value="logout.jsf" rendered="#{!empty sessionScope.idUsuarioLogado and sessionScope.loginAplicacao}">
-						  	Logout (sair)
+
+						  <h:outputLink styleClass="logout" value="logout.jsf?cidade=#{cidadeFaces.cidadeSelecionada}" rendered="#{!empty sessionScope.idUsuarioLogado and sessionScope.loginAplicacao}">
+						  		Logout (sair)
 						  </h:outputLink>
+						  
+						  <h:outputLink styleClass="logout" value="#{faceBookFaces.logout}" rendered="#{!empty sessionScope.idUsuarioLogado and !sessionScope.loginAplicacao}">
+						  		Logout (sair)
+						  </h:outputLink>
+						  
 					  </div>
 					  
                     </div>
                     
                     <c:if test="${empty sessionScope.idUsuarioLogado}">
-                    <div id="local">
-                        <span class="chamadaCadastro">Não tem Facebook?</span>
-                        <div><a class="linkCadastro" title="Cadastrar"><span class="icons iconCadastrar"></span>cadastrar</a></div>
-						<div><a class="linkLogin" title="Login"><span class="icons iconLogin"></span>login</a></div>
-                    </div>
+	                    <div id="local">
+	                        <span class="chamadaCadastro">Não tem Facebook?</span>
+	                        <div><a class="linkCadastro" title="Cadastrar"><span class="icons iconCadastrar"></span>cadastrar</a></div>
+							<div><a class="linkLogin" title="Login"><span class="icons iconLogin"></span>login</a></div>
+	                    </div>
                     </c:if>
             	</div>
                 
@@ -145,20 +100,22 @@ $(document).ready( function() {
                             <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=7&tipo=6" title="estabelecimento">estabelecimento</a></li>
                         </ul>
                     </li>
+                    
                 	<c:forEach items="${categoriaFaces.categorias}" var="item">
-                    <li>
-                        <span class="iconografia"><img src="${item.imagemView}" alt="" title="${item.descricao}" /></span>
-                        <span class="titMenu">${item.descricao}</span>
-                        <ul id="sub">
-                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${item.id}&tipo=3" title="promoção da semana">promoção da semana</a></li>
-                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${item.id}&tipo=2" title="promoção do dia">promoção do dia</a></li>
-                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${item.id}&tipo=1" title="promoção da hora">promoção da hora</a></li>
-                            <li><a href="ranking.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${item.id}" title="ranking">ranking</a></li>
-                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${item.id}&tipo=5" title="carro-chefe">carro-chefe</a></li>
-                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${item.id}&tipo=6" title="estabelecimento">estabelecimento</a></li>
-                        </ul>
-                    </li>
+	                    <li>
+	                        <span class="iconografia"><img src="${item.imagemView}" alt="" title="${item.descricao}" /></span>
+	                        <span class="titMenu">${item.descricao}</span>
+	                        <ul id="sub">
+	                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${item.id}&tipo=3" title="promoção da semana">promoção da semana</a></li>
+	                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${item.id}&tipo=2" title="promoção do dia">promoção do dia</a></li>
+	                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${item.id}&tipo=1" title="promoção da hora">promoção da hora</a></li>
+	                            <li><a href="ranking.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${item.id}" title="ranking">ranking</a></li>
+	                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${item.id}&tipo=5" title="carro-chefe">carro-chefe</a></li>
+	                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${item.id}&tipo=6" title="estabelecimento">estabelecimento</a></li>
+	                        </ul>
+	                    </li>
                     </c:forEach>
+                    
                     <li>
                     	<a href="outrasCat.jsf?cidade=${cidadeFaces.cidadeSelecionada}">
 	                    	<span class="iconografia"><img src="img/outrasCategorias.png" alt="" title="outras categorias" /></span>
@@ -168,28 +125,32 @@ $(document).ready( function() {
                </ul>
             </nav>
         </div>
-</div>
+	</div>
 
 
 <div id="id-Breadcrumb">
-<div class="formLogin">
+	<div class="formLogin">
     	<h:form prependId="false" id="form1">
-    	<div class="inputs">
-        	Preencha os dados ao lado para acessar: 
-        	<h:inputText title="E-mail" id="emailLogin" value="#{loginFaces.usuarioModel.email}" required="false" requiredMessage="Email: Obrigatório" tabindex="1" maxlength="100"/>
-            <h:inputSecret tabindex="2" required="false" id="senhaLogin" maxlength="100" value="#{loginFaces.usuarioModel.senha}" requiredMessage="Senha: Obrigatório" redisplay="true"/>
-			<h:commandButton tabindex="3" styleClass="submit" action="#{loginFaces.autenticar}" id="submit2" value="ACESSAR"></h:commandButton>
-			<script type="text/javascript">
-	             		$('#emailLogin').attr('placeholder','E-mail').attr('autofocus','');
-	             		$('#senhaLogin').attr('placeholder','Senha');
-
-	        </script>
-        </div>
+    		<input type="hidden" name="cidade" value="${cidadeFaces.cidadeSelecionada}" />
+	    	<div class="inputs">
+	        	Preencha os dados ao lado para acessar: 
+	        	<h:inputText tabindex="1" title="E-mail" id="emailLogin" maxlength="100" value="#{loginFaces.usuarioModel.email}"  />
+	            <h:inputSecret tabindex="2" id="senhaLogin" maxlength="100" value="#{loginFaces.usuarioModel.senha}" redisplay="true"/>
+				<h:commandButton tabindex="3" styleClass="submit" action="#{loginFaces.autenticar}" id="submit2" value="ACESSAR"></h:commandButton>
+				<script type="text/javascript">
+	           		$('#emailLogin').attr('placeholder','E-mail').attr('autofocus','');
+	           		$('#senhaLogin').attr('placeholder','Senha');
+	           		
+	           		$('#submit2').live('click', function () {
+	         	  	    return !isEmpty(new Array("#emailLogin", "#senhaLogin"));
+	         	  	});
+		        </script>
+	        </div>
         </h:form>
-</div>
+	</div>
 
 <c:if test="${!empty sessionScope.idUsuarioLogado}">
-<span id="status">Olá, ${sessionScope.nomeUsuarioLogado}</span>, temos ótimas promoções pra você!
+	<span id="status">Olá, ${sessionScope.nomeUsuarioLogado}</span>, temos ótimas promoções pra você!
 </c:if> 
 
 </div>
@@ -204,7 +165,7 @@ $(document).ready( function() {
 	
 		<a href="#" class="close" rel="modalclose"><img src="img/btnFechar.png" alt="Botão Fechar" class="btnFechar"></a>
 
-		<h:form id="signup" enctype="multipart/form-data" prependId="false">
+		<h:form id="signup" prependId="false">
     
 	        <div class="header">
 	        
@@ -218,26 +179,31 @@ $(document).ready( function() {
 
         	<div class="inputs">
 
-				<h:inputText tabindex="100" required="false" id="nome" maxlength="100" value="#{cadastroFaces.usuarioModel.nome}"/>
+				<h:inputText tabindex="100" required="true" id="nome" maxlength="100" value="#{cadastroFaces.usuarioModel.nome}"/>
 
-				<h:inputText tabindex="101" required="false" id="email" maxlength="100" value="#{cadastroFaces.usuarioModel.email}"/>
+				<h:inputText tabindex="101" required="true" id="email" maxlength="100" value="#{cadastroFaces.usuarioModel.email}"/>
 
-				<h:inputSecret tabindex="102" required="false" id="senha" maxlength="100" value="#{cadastroFaces.usuarioModel.senha}" redisplay="true"/>
+				<h:inputSecret tabindex="102" required="true" id="senha" maxlength="100" value="#{cadastroFaces.usuarioModel.senha}" redisplay="true"/>
 
 	             <script type="text/javascript">
-	             		$('#nome').attr('placeholder','Nome').attr('autofocus','');
-	             		$('#email').attr('placeholder','E-mail');
-	             		$('#senha').attr('placeholder','Senha');
-
+             		$('#nome').attr('placeholder','Nome').attr('autofocus','');
+             		$('#email').attr('placeholder','E-mail');
+             		$('#senha').attr('placeholder','Senha');
+             		
+             		$('#btnCadastrarUsuario').live('click', function () {
+             	  	    return !isEmpty(new Array("#nome", "#email", "#senha"));
+             	  	});
 	            </script>
 
         	</div>
 
         	<div class="inputs">
         	
-        		<h:commandButton tabindex="103" styleClass="submit"  value="CADASTRAR" action="#{cadastroFaces.insertEvent}"/>
+        		<h:commandButton id="btnCadastrarUsuario" tabindex="103" styleClass="submit"  value="CADASTRAR" action="#{cadastroFaces.insertEvent}"/>
             
         	</div>
+        	
+        	<input type="hidden" name="cidade" value="${cidadeFaces.cidadeSelecionada}" />
 
     	</h:form>
 

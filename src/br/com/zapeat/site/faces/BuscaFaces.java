@@ -6,6 +6,7 @@ import javax.faces.bean.ManagedBean;
 
 import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.faces.TSMainFaces;
+import br.com.topsys.web.util.TSFacesUtil;
 import br.com.zapeat.site.dao.BuscaDAO;
 import br.com.zapeat.site.model.BuscaModel;
 import br.com.zapeat.site.util.ZapeatUtil;
@@ -34,10 +35,12 @@ public class BuscaFaces extends TSMainFaces {
 		this.page = ZapeatUtil.getPageParamFormatado(super.getRequestParameter("page"));
 		
 		this.buscaDAO = new BuscaDAO();
-			
-		this.listagem = this.buscaDAO.pesquisarPorTexto(this.termoBuscado, this.localBuscado, this.page);
 		
-		this.qtdPaginas = this.buscaDAO.obterQtdPaginasPorTexto(this.termoBuscado, localBuscado).getValue();
+		Long cidadeId = (Long)TSFacesUtil.getObjectInSession("cidadeId");
+			
+		this.listagem = this.buscaDAO.pesquisarPorTexto(this.termoBuscado, cidadeId, this.page);
+		
+		this.qtdPaginas = this.buscaDAO.obterQtdPaginasPorTexto(this.termoBuscado, cidadeId).getValue();
 		
 	}
 

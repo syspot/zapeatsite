@@ -24,29 +24,9 @@
 		$('#principal ul:eq(5)').css('right','-150px');
 		$('#principal ul:eq(6)').css('right','-75px');
 		$('#principal ul:eq(7)').css('right','-0px');
-	  })
-	  $(".fotoEstab").fancybox({
-			padding: 0,
-			openEffect : 'elastic',
-			openSpeed  : 150,
-			closeEffect : 'elastic',
-			closeSpeed  : 150,
-			closeClick : true,
-			helpers : {
-				overlay : null
-			}
-		});
+	  });
 </script>
 
-<!--=============MODAL=============-->
-	<script type="text/javascript" src="js/modal.js"></script>
-    <script type="text/javascript">
-    $(document).ready(function(){
-		$('a.modal').modal({
-			closeClickOut:true,
-			backgroundColor:"#fff"
-	});
-	</script>
 <!--=============GEOLOCATION=============--> 
 <script type="text/javascript">
 		//função para botão de acionar geolocation

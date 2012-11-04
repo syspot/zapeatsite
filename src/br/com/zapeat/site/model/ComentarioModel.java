@@ -71,7 +71,7 @@ public class ComentarioModel {
 	}
 
 	public Boolean getFlagIndica() {
-		return flagIndica;
+		return TSUtil.isEmpty(flagIndica) ? false : flagIndica;
 	}
 
 	public void setFlagIndica(Boolean flagIndica) {
@@ -79,7 +79,7 @@ public class ComentarioModel {
 	}
 
 	public Boolean getFlagNaoIndica() {
-		return flagNaoIndica;
+		return TSUtil.isEmpty(flagNaoIndica) ? false : flagNaoIndica;
 	}
 
 	public void setFlagNaoIndica(Boolean flagNaoIndica) {

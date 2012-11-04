@@ -72,7 +72,7 @@ public class UsuarioModel {
 	}
 
 	public Boolean getFlagAtivo() {
-		return flagAtivo;
+		return TSUtil.isEmpty(flagAtivo) ? false : flagAtivo;
 	}
 
 	public void setFlagAtivo(Boolean flagAtivo) {
@@ -112,7 +112,7 @@ public class UsuarioModel {
 	}
 
 	public Boolean getFlagFacebook() {
-		return flagFacebook;
+		return TSUtil.isEmpty(flagFacebook) ? false : flagFacebook;
 	}
 
 	public void setFlagFacebook(Boolean flagFacebook) {

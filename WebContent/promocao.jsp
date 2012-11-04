@@ -130,7 +130,7 @@
 		                   	<p class="fontYi font10px">desconto</p>
 		                </div>
 		                <div class="boxInfo">
-		                	<a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.id}" title="" class="floatLeft"><span class="${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.css}"></span>Categoria: ${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.descricao}</a>
+		                	<a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.id}" title="" class="floatLeft"><div class="floatLeft"><img src="${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.imagemView}" alt="" title="${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.descricao}" class="floatLeftMargin4" />Categoria: <c:out value="${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.descricao}" /></div></a>
 		                </div>
 		                <blockquote class="fontYi">
 		                	<p>${promocaoFaces.promocao.descricao}</p>
@@ -148,7 +148,7 @@
 		                    </div>
 		                </div>
 		                <div class="boxInfo">
-		                	<a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${promocaoFaces.carroChefe.fornecedorModel.categoriaPrincipal.id}" title="" class="floatLeft"><span class="${promocaoFaces.carroChefe.fornecedorModel.categoriaPrincipal.css}"></span>Categoria: ${promocaoFaces.carroChefe.fornecedorModel.categoriaPrincipal.descricao}</a>
+		                	<a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${promocaoFaces.carroChefe.fornecedorModel.categoriaPrincipal.id}" title="" class="floatLeft"><div class="floatLeft"><img src="${promocaoFaces.carroChefe.fornecedorModel.categoriaPrincipal.imagemView}" alt="" title="${promocaoFaces.carroChefe.fornecedorModel.categoriaPrincipal.descricao}" class="floatLeftMargin4" />Categoria: <c:out value="${promocaoFaces.carroChefe.fornecedorModel.categoriaPrincipal.descricao}" /></div></a>
 		                </div>
 		                <blockquote class="fontYi">
 		                	<p>${promocaoFaces.carroChefe.descricao}</p>
@@ -280,21 +280,91 @@
                 	
                 	<p class="tituloComent">Deixe seu comentário</p>
                 	
-	                <form>
-	                     <fieldset>
-	                        <textarea></textarea>
-	                        <input type="submit" value="comentar" />    
-	                    </fieldset>
-	                 </form>
-	                
-	                <div class="boxComentario">
-	                    <span class="aspas"></span>
-	                    <div class="comment">
-	                         <p>Gosto muito do ambiente retrô. Os hamburgueres são gostosos mas particularmente gosto muito também da salada com carpaccio (não me recordo o nome agora).É um lugar muito agradável para quem procura uma saída leve e não muito demorada com os amigos. Evite chegar muito tarde nos finais de semana senão quiser pegar a lista de espera.</p>
-	                         <p class="autor">Fulano de tal</p>
-	                    </div>
-	                </div>
+	                <script type="text/javascript">
+                	
+	                	$('#btnComentar').live('click', function () {
+	                	    return !isEmpty(new Array("#descricao"));
+	                	});
+	                	
+					</script>
+                	
+                	<c:choose>
+                	
+                		<c:when test="${not empty promocaoFaces.usuarioLogado.id}">
+                		
+                			<h:form id="formComentario" prependId="false">
 
+                				<c:choose>
+                					<c:when test="${promocaoFaces.tipoPromocao}">
+	                					<input type="hidden" id="id" name="id" value="${promocaoFaces.promocao.id}">
+	                					<input type="hidden" id="estabelecimento_id" name="estabelecimento_id" value="${promocaoFaces.promocao.fornecedorModel.id}">
+                					</c:when>
+                					<c:otherwise>
+                						<input type="hidden" id="carroChefeId" name="carroChefeId" value="${promocaoFaces.carroChefe.id}">
+                						<input type="hidden" id="estabelecimento_id" name="estabelecimento_id" value="${promocaoFaces.carroChefe.fornecedorModel.id}">
+                					</c:otherwise>
+                				</c:choose>
+			                	
+			                	<input type="hidden" name="cidade" value="${cidadeFaces.cidadeSelecionada}">
+			                	
+			                     <fieldset>
+			                     	
+			                     	<c:choose>
+	                					<c:when test="${promocaoFaces.tipoPromocao}">
+		                					<h:inputTextarea id="descricao" value="#{promocaoFaces.comentarioPromocaoModel.descricao}" required="true" />
+	                					</c:when>
+	                					<c:otherwise>
+	                						<h:inputTextarea id="descricao" value="#{promocaoFaces.comentarioCarroChefeModel.descricao}" required="true" />
+	                					</c:otherwise>
+	                				</c:choose>
+			                        
+			                        <h:commandButton id="btnComentar" action="#{promocaoFaces.comentar}" value="comentar"></h:commandButton>
+			                        
+			                    </fieldset>
+			                    
+		                 	</h:form>
+                		</c:when>
+                		<c:otherwise>
+                			<br/>
+                			<div class="comment" style="margin-bottom: 30px;">
+                				<p>Você precisa estar logado para comentar.</p>
+                			</div>
+                		</c:otherwise>
+                	</c:choose>
+	                
+	                <c:choose>
+       					<c:when test="${promocaoFaces.tipoPromocao}">
+        					
+        					<c:if test="${not empty promocaoFaces.promocao.comentarios}">
+		                		<c:forEach items="${promocaoFaces.promocao.comentarios}" var="comentario">
+				                	<div class="boxComentario">
+					                    <span class="aspas"></span>
+					                    <div class="comment">
+					                         <p>${comentario.descricao}</p>
+					                         <p class="autor">${comentario.usuarioModel.nome}</p>
+					                    </div>
+				                	</div>
+		                		</c:forEach>
+			                </c:if>
+			                
+       					</c:when>
+       					<c:otherwise>
+       						
+       						<c:if test="${not empty promocaoFaces.carroChefe.comentarios}">
+		                		<c:forEach items="${promocaoFaces.carroChefe.comentarios}" var="comentario">
+				                	<div class="boxComentario">
+					                    <span class="aspas"></span>
+					                    <div class="comment">
+					                         <p>${comentario.descricao}</p>
+					                         <p class="autor">${comentario.usuarioModel.nome}</p>
+					                    </div>
+				                	</div>
+		                		</c:forEach>
+			                </c:if>
+			                
+       					</c:otherwise>
+       				</c:choose>
+	                				
                 </div>
             </div>
         

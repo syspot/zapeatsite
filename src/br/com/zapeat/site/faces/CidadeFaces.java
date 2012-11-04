@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 
 import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.faces.TSMainFaces;
+import br.com.topsys.web.util.TSFacesUtil;
 import br.com.zapeat.site.dao.CidadeDAO;
 import br.com.zapeat.site.model.CidadeModel;
 
@@ -27,6 +28,19 @@ public class CidadeFaces extends TSMainFaces {
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			} 
+		} else {
+			
+			Long cidadeId = (Long)TSFacesUtil.getObjectInSession("cidadeId");
+			
+			if(!TSUtil.isEmpty(cidadeId)){
+				
+				CidadeModel cidade = new CidadeDAO().obter(new CidadeModel(cidadeId));
+				
+				if(!TSUtil.isEmpty(cidade)){
+					this.cidadeSelecionada = cidade.toString();
+				}
+			}
+			
 		}
 		
 		CidadeModel cidadeModel = new CidadeDAO().obter(getCidade(), getEstado());

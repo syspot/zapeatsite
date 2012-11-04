@@ -329,3 +329,10 @@ span#time b{background:#F30; color:#fff; padding:0px 5px; font-size:15px;font-fa
 .linkRanking,
 .closeRanking{cursor:pointer;}
 .marginLeft{margin-left:25px;}
+
+#rodape .contRodape{ width:990px; height:auto; margin:0px auto; padding:20px 0px; font-family: 'titilliumtext22l_ltmedium'; overflow:hidden;}
+#rodape .contRodape .col{ width:255px; height:300px;}
+ #rodape .contRodape .col ul{margin:10px 0px 30px 0px; color:#fff; font-size:13px;}
+#rodape .contRodape .col ul li{margin:5px 0px;}
+#rodape .contRodape a{ color:#fff;}
+.marginLeft20{margin-left:20px;}

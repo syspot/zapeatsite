@@ -16,6 +16,15 @@
 
 	<!-- COMECA TOPO -->
 	<%@ include file="/topo.jsp" %>
+	
+	<div id="id-Breadcrumb">
+	
+	    <span class="migalha"><a href="index.jsf?cidade=${cidadeFaces.cidadeSelecionada}" title="">Página Inicial</a></span>    »
+	    
+		<span class="migalha"><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${estabelecimentoFaces.fornecedorModel.categoriaPrincipal.id}" title="">${estabelecimentoFaces.fornecedorModel.categoriaPrincipal.descricao}</a></span>    »   
+	    <span class="migalha">${estabelecimentoFaces.fornecedorModel.nomeFantasia}</span>
+    
+	</div>
 
 <!-- COMECA CENTRAL -->
 <div id="central">
@@ -25,7 +34,7 @@
     	<!-- COMECA COLUNA ESQUERDA -->
     	<div id="esqInt">
         	<div id="boxSobreEstab">
-            	<div class="marca"><img src="${estabelecimentoFaces.ranking.fornecedorModel.logoMarcaView}" height="117" width="117" /></div>
+            	<div class="marca"><a href="estabelecimento.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${estabelecimentoFaces.fornecedorModel.id}" title="${estabelecimentoFaces.fornecedorModel.nomeFantasia}"><img src="${estabelecimentoFaces.ranking.fornecedorModel.logoMarcaView}" height="117" width="117" /></a></div>
                 <p>Ranking</p>
                 <div id="ranking">
                 	<span class="icons medalha"></span>
@@ -33,10 +42,10 @@
                 </div>
             </div>
             
-            <c:if test="${!empty estabelecimentoFaces.fotosEstabelecimento}">
+            <c:if test="${!empty estabelecimentoFaces.fornecedorModel.imagensFornecedorModel}">
 	            <div class="boxSubCat ftoLocal">
 	            	<h2>Fotos do ambiente</h2>
-	            	<c:forEach items="${estabelecimentoFaces.fotosEstabelecimento}" var="item">
+	            	<c:forEach items="${estabelecimentoFaces.fornecedorModel.imagensFornecedorModel}" var="item">
 	            		<span class="floatLeft">
 	            			<a class="fotoEstab" href="${item.imagemFullView}">
 	            				<img src="${item.imagemThumbView}" alt="" title="" />
@@ -58,7 +67,8 @@
                     </div>
                 </div>
                 <div class="boxInfo">
-                	<span class="floatLeft"><span class="icons tel"></span>${estabelecimentoFaces.fornecedorModel.telefone}</span>
+                	<a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${estabelecimentoFaces.fornecedorModel.categoriaPrincipal.id}" title="" class="floatLeft"><div class="floatLeft"><img src="${estabelecimentoFaces.fornecedorModel.categoriaPrincipal.imagemView}" alt="" title="${estabelecimentoFaces.fornecedorModel.categoriaPrincipal.descricao}" class="floatLeftMargin4" />Categoria: <c:out value="${estabelecimentoFaces.fornecedorModel.categoriaPrincipal.descricao}" /></div></a>
+                	<span class="floatLeft" style="margin-left: 20px"><span class="icons tel"></span>${estabelecimentoFaces.fornecedorModel.telefone}</span>
                 </div>
                 <blockquote class="fontYi">
                 	<p>${estabelecimentoFaces.fornecedorModel.descricao}</p>
@@ -107,6 +117,9 @@
                     	
                     		<h:form>
                     		
+                    			<input type="hidden" name="cidade" value="${cidadeFaces.cidadeSelecionada}" />
+                    			<input type="hidden" name="id" value="${estabelecimentoFaces.fornecedorModel.id}" />
+                    		
 	                    		<c:if test="${estabelecimentoFaces.fornecedorModel.quantidadeIndicacoes == 1}">
 	                    			<p> ${estabelecimentoFaces.fornecedorModel.quantidadeIndicacoes} pessoa indica</p>
 	                    		</c:if>
@@ -115,8 +128,8 @@
 	                    		</c:if>
 		                		<div class="votacao">
 		                			
-						       		<h:commandLink action="#{indicacaoFaces.indicarComida}" styleClass="floatLeft"><span class="icons indicacao"></span>Indico</h:commandLink>
-						       		<a title="Não indicar" onclick="" class="linkRanking floatRight"><span class="icons naoindicacaoRed"></span> Não indico</a>
+						       		<h:commandLink action="#{estabelecimentoFaces.indicar}" styleClass="floatLeft"><span class="icons indicacao"></span>Indico</h:commandLink>
+						       		<a title="Não indicar" onclick="nao_indicar(${estabelecimentoFaces.fornecedorModel.id})" class="linkRanking floatRight"><span class="icons naoindicacaoRed"></span> Não indico</a>
 							       
 								</div>
 							
@@ -177,39 +190,6 @@
                 	
                 	<script type="text/javascript">
                 	
-	                	function isEmpty(campos) {
-	
-	                	    var aux = false;
-	                	    var retorno = false;
-	
-	                	    for (i = 0; i < campos.length; i++) {
-	
-	                	    	if ($(campos[i]).val().trim() == "") {
-	
-	                	            $(campos[i]).css('border-color', 'red');
-	
-	                	            aux = true;
-	
-	                	        } else {
-	
-	                	            $(campos[i]).css('border-color', 'green');
-	
-	                	            aux = false;
-	
-	                	        }
-	
-	                	        if (aux == true) {
-	
-	                	            retorno = true;
-	
-	                	        }
-	
-	                	    }
-	
-	                	    return retorno;
-	
-	                	}
-	
 	                	$('#btnComentar').live('click', function () {
 	                	    return !isEmpty(new Array("#descricao"));
 	                	});
@@ -230,13 +210,9 @@
                 		</c:when>
                 		<c:otherwise>
                 			<br/>
-                			<div class="comment">
+                			<div class="comment" style="margin-bottom: 30px;">
                 				<p>Você precisa estar logado para comentar.</p>
                 			</div>
-                			<br/>
-                			<br/>
-                			<br/>
-                			<br/>
                 		</c:otherwise>
                 	</c:choose>
 	                

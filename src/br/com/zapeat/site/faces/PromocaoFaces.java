@@ -15,6 +15,8 @@ import br.com.zapeat.site.model.CarroChefeModel;
 import br.com.zapeat.site.model.ComentarioCarroChefeModel;
 import br.com.zapeat.site.model.ComentarioPromocaoModel;
 import br.com.zapeat.site.model.PromocaoModel;
+import br.com.zapeat.site.model.UsuarioModel;
+import br.com.zapeat.site.util.Constantes;
 import br.com.zapeat.site.util.ZapeatUtil;
 
 @ManagedBean
@@ -25,9 +27,16 @@ public class PromocaoFaces extends CarregaPromocaoFaces {
 	private boolean tipoPromocao;
 	private ComentarioPromocaoModel comentarioPromocaoModel;
 	private ComentarioCarroChefeModel comentarioCarroChefeModel;
+	private UsuarioModel usuarioLogado;
 	
 	public PromocaoFaces() {
 
+		this.carregaDados();
+		
+	}
+	
+	private void carregaDados(){
+		
 		Long id = ZapeatUtil.getParamFormatado(super.getRequestParameter("id"));
 		Long carroChefeId = ZapeatUtil.getParamFormatado(super.getRequestParameter("carroChefeId"));
 		
@@ -51,7 +60,6 @@ public class PromocaoFaces extends CarregaPromocaoFaces {
 			ZapeatUtil.redirect();
 			
 		}
-		
 	}
 	
 	private void obterPromocao(PromocaoDAO promocaoDAO, Long id){
@@ -65,8 +73,14 @@ public class PromocaoFaces extends CarregaPromocaoFaces {
 			this.promocao.getFornecedorModel().setFormasPagamentos(new FormaPagamentoDAO().pesquisar(this.promocao.getFornecedorModel()));
 			this.promocao.setImagensPromocoes(new ImagemPromocaoDAO().pesquisar(this.promocao));
 			this.promocao.setComentarios(new ComentarioDAO().pesquisarComentarios(this.promocao));
+			
+			Long idUsuarioLogado = (Long) TSFacesUtil.getObjectInSession(Constantes.ID_USUARIO_LOGADO);
+			
+			this.usuarioLogado = new UsuarioModel(idUsuarioLogado);
+			
 			this.comentarioPromocaoModel = new ComentarioPromocaoModel();
 			this.comentarioPromocaoModel.setPromocaoModel(this.promocao);
+			this.comentarioPromocaoModel.setUsuarioModel(this.usuarioLogado);
 		
 		} else{
 			
@@ -87,8 +101,14 @@ public class PromocaoFaces extends CarregaPromocaoFaces {
 			this.carroChefe.getFornecedorModel().setFormasPagamentos(new FormaPagamentoDAO().pesquisar(this.carroChefe.getFornecedorModel()));
 			this.carroChefe.setImagensCarroChefe(new ImagemCarroChefeDAO().pesquisar(this.carroChefe));
 			this.carroChefe.setComentarios(new ComentarioDAO().pesquisarComentarios(this.carroChefe));
+			
+			Long idUsuarioLogado = (Long) TSFacesUtil.getObjectInSession(Constantes.ID_USUARIO_LOGADO);
+			
+			this.usuarioLogado = new UsuarioModel(idUsuarioLogado);
+			
 			this.comentarioCarroChefeModel = new ComentarioCarroChefeModel();
 			this.comentarioCarroChefeModel.setCarroChefeModel(this.carroChefe);
+			this.comentarioCarroChefeModel.setUsuarioModel(this.usuarioLogado);
 			
 		} else{
 			
@@ -98,12 +118,25 @@ public class PromocaoFaces extends CarregaPromocaoFaces {
 		
 	}
 	
-	public void comentar() throws TSApplicationException{
-		if(isTipoPromocao()){
-			new ComentarioDAO().comentar(comentarioPromocaoModel); 
+	public String comentar() throws TSApplicationException{
+
+		if(!TSUtil.isEmpty(this.usuarioLogado) && !TSUtil.isEmpty(this.usuarioLogado.getId())){
+			
+			if(isTipoPromocao()){
+				new ComentarioDAO().comentar(comentarioPromocaoModel); 
+			} else{
+				new ComentarioDAO().comentar(comentarioCarroChefeModel);
+			}
+			
+			this.carregaDados();
+			
 		} else{
-			new ComentarioDAO().comentar(comentarioCarroChefeModel);
+			
+			addErrorMessage("É necessário estar logado para realizar essa operação");
+			
 		}
+		
+		return null;
 	}
 	
 	@Override
@@ -144,8 +177,7 @@ public class PromocaoFaces extends CarregaPromocaoFaces {
 		return comentarioPromocaoModel;
 	}
 
-	public void setComentarioPromocaoModel(
-			ComentarioPromocaoModel comentarioPromocaoModel) {
+	public void setComentarioPromocaoModel(ComentarioPromocaoModel comentarioPromocaoModel) {
 		this.comentarioPromocaoModel = comentarioPromocaoModel;
 	}
 
@@ -153,9 +185,16 @@ public class PromocaoFaces extends CarregaPromocaoFaces {
 		return comentarioCarroChefeModel;
 	}
 
-	public void setComentarioCarroChefeModel(
-			ComentarioCarroChefeModel comentarioCarroChefeModel) {
+	public void setComentarioCarroChefeModel(ComentarioCarroChefeModel comentarioCarroChefeModel) {
 		this.comentarioCarroChefeModel = comentarioCarroChefeModel;
+	}
+
+	public UsuarioModel getUsuarioLogado() {
+		return usuarioLogado;
+	}
+
+	public void setUsuarioLogado(UsuarioModel usuarioLogado) {
+		this.usuarioLogado = usuarioLogado;
 	}
 
 }

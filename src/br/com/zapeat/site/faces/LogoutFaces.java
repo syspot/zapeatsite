@@ -11,21 +11,15 @@ public class LogoutFaces {
 
 	public LogoutFaces() {
 
-		this.logout();
-	}
-
-	public String logout() {
-
 		TSFacesUtil.removeObjectInSession(Constantes.ID_USUARIO_LOGADO);
 		TSFacesUtil.removeObjectInSession(Constantes.NOME_USUARIO_LOGADO);
-
+		
 		TSFacesUtil.removeObjectInSession(Constantes.LOGIN_APLICACAO);
-
+		
 		TSFacesUtil.getRequest().getSession().invalidate();
-
+		
 		ZapeatUtil.redirect();
-
-		return null;
+		
 	}
 
 }

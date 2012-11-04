@@ -6,7 +6,7 @@
 	<div class="barraBusca">
     	<h:form prependId="false">
 			<label>Buscar<h:inputText value="#{buscaFaces.termoBuscado}"/></label>
-		    <label>em<h:inputText id="info2" value="#{buscaFaces.localBuscado}"/><span id="btnInit" class="icons" ></span></label>
+		    <label>em<h:inputText id="info2" value="#{cidadeFaces.cidadeSelecionada}"/><span id="btnInit" class="icons" ></span></label>
 		    <h:commandButton value="" action="#{buscaFaces.buscar}" />
 		</h:form>
 		
@@ -27,9 +27,38 @@
     </div>
     <!-- TERMINA BUSCA -->
 	<div id="infos">
-    	<div class="fb-like-box" data-href="http://www.facebook.com/fanpageTigurio" data-width="292" data-height="330" data-show-faces="true" data-border-color="#D9A300" data-stream="false" data-header="false"></div>
+         <div class="contRodape">
+             <div class="col floatLeft">
+                <p>Sobre o Zapeat</p>
+                <ul>
+                     <li>&raquo; <a href="" title="">Sobre</a></li>
+                    <li>&raquo; <a href="" title="">Trabalhe no Zapeat</a></li>
+                     <li>&raquo; <a href="" title="">Seja um Community Manager</a></li>
+                    <li>&raquo; <a href="" title="">Zapeat na Mídia</a></li>
+                     <li>&raquo; <a href="" title="">Fale com o Zapeat</a></li>
+                </ul>
+                <p>Usuário Zapeat</p>
+                <ul>
+                     <li>&raquo; <a href="" title="">Termos de Uso</a></li>
+                    <li>&raquo; <a href="" title="">Política de Privacidade</a></li>
+                     <li>&raquo; <a href="" title="">Como escrever opiniões construtivas?</a></li>
+                    <li>&raquo; <a href="" title="">Perguntas Frequentes </a></li>
+                 </ul>
+            </div>
+            <div class="col floatLeft marginLeft20">
+                <p>Donos de Negócios</p>
+                <ul>
+                    <li>&raquo; <a href="" title="">Adicione uma empresa gratuitamente </a></li>
+                     <li>&raquo; <a href="" title="">Anuncie no site</a></li>
+                </ul>
+            </div>
+            <div class="col floatRight">
+                 <div class="fb-like-box" data-href="http://www.facebook.com/fanpageTigurio" data-width="292" data-height="330" data-show-faces="true" data-border-color="#D9A300" data-stream="false" data-header="false"></div>
+             </div>
+         </div>
+        
     </div>
-    <div id="copy">Zapeat 2012 - O Zapeat não é autor e não endossa nenhuma das opiniões e/ou comentários. Eles são de exclusiva responsabilidade dos respectivos autores.</div>
+
 </div>
 
 <!-- TERMINA RODAPE -->
@@ -54,10 +83,8 @@
         
         <div class="inputs">
         	
-        	<input type="hidden" id="categoriaId" name="categoriaId" />
-        	<input type="hidden" id="estabelecimentoId" name="estabelecimentoId" />
-        	<input type="hidden" id="idPagina" name="idPagina" />
-        	<input type="hidden" id="idCarroChefe" name="idCarroChefe" />
+        	<input type="hidden" name="cidade" value="${cidadeFaces.cidadeSelecionada}" />
+        	<input type="hidden" id="estabelecimentoId" name="id" />        	
         	
         	<textarea name="comentario" rows="3" cols="43"></textarea>
         	
@@ -69,7 +96,7 @@
 
         <div class="inputs">
         
-        	<h:commandButton value="COMENTAR" styleClass="submit" action="#{indicacaoFaces.naoIndicar}" onclick="processarVoto();"/>  
+        	<h:commandButton value="COMENTAR" styleClass="submit" action="#{estabelecimentoFaces.naoIndicar}" />
            
         </div>
 		

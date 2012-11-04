@@ -16,6 +16,19 @@
 
 	<!-- COMECA TOPO -->
 	<%@ include file="/topo.jsp" %>
+	
+		<div id="id-Breadcrumb">
+	
+		    <span class="migalha"><a href="index.jsf?cidade=${cidadeFaces.cidadeSelecionada}" title="">Página Inicial</a></span>    »
+		    <span class="migalha">${listagemFaces.categoria.descricao}</span>
+		    
+		    <c:if test="${not empty listagemFaces.tipo}">
+		    
+				»  <span class="migalha">${listagemFaces.nomeTipo}</span>
+		    
+		    </c:if>
+	    
+		</div>
 
 <!-- COMECA CENTRAL -->
 <div id="central">

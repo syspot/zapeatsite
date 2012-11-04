@@ -60,9 +60,7 @@ public class FornecedorDAO {
 
 		broker.setPropertySQL("fornecedordao.obter", model.getId());
 
-		return (FornecedorModel) broker.getObjectBean(FornecedorModel.class,
-
-		"id", "razaoSocial", "cnpj", "nomeFantasia", "cep", "logradouro", "numero", "bairro", "cidadeModel.id", "latitude", "longitude", "logoMarca", "flagAtivo", "descricao", "horariosFuncionamento", "twitter", "facebook", "site", "telefone","quantidadeIndicacoes", "imagemThumb");
+		return (FornecedorModel) broker.getObjectBean(FornecedorModel.class, "id", "razaoSocial", "cnpj", "nomeFantasia", "cep", "logradouro", "numero", "bairro", "cidadeModel.id", "latitude", "longitude", "logoMarca", "flagAtivo", "descricao", "horariosFuncionamento", "twitter", "facebook", "site", "telefone","quantidadeIndicacoes", "imagemThumb", "categoriaPrincipal.id", "categoriaPrincipal.descricao", "categoriaPrincipal.imagem");
 
 	}
 	

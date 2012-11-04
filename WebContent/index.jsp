@@ -78,7 +78,7 @@
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="http://pluginjquery.com.br/labs/countdown1.3/script/jquery.jcountdown1.3.js" type="text/javascript"></script>
-	<script src="js/jquery.countdown-pt-BR.js" type="text/javascript"></script>
+
 	
 	<script type="text/javascript">
 		$(document).ready(function() {

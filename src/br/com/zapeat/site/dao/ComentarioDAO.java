@@ -55,11 +55,11 @@ public class ComentarioDAO {
 
 	}
 	
-	public ComentarioModel obterIndicacaoComidaPositiva(ComentarioModel model) {
+	public ComentarioModel obterIndicacao(ComentarioModel model) {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("comentariodao.obterIndicacaoComidaPositiva", model.getFornecedorModel().getId(), model.getUsuarioModel().getId());
+		broker.setPropertySQL("comentariodao.obterindicacao", model.getFornecedorModel().getId(), model.getUsuarioModel().getId());
 
 		return (ComentarioModel) broker.getObjectBean(ComentarioModel.class, "id", "descricao", "usuarioModel.id", "usuarioModel.nome", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.logoMarca");
 
@@ -122,7 +122,7 @@ public class ComentarioDAO {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		
-		broker.setPropertySQL("comentariodao.comentarpromocao", model.getDescricao(), model.getPromocaoModel(), model.getUsuarioModel().getId());
+		broker.setPropertySQL("comentariodao.comentarpromocao", model.getDescricao(), model.getPromocaoModel().getId(), model.getUsuarioModel().getId());
 
 		broker.execute();
 
@@ -142,7 +142,7 @@ public class ComentarioDAO {
 		
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		
-		broker.setPropertySQL("comentariodao.comentarcarrochefe", model.getDescricao(), model.getCarroChefeModel(), model.getUsuarioModel().getId());
+		broker.setPropertySQL("comentariodao.comentarcarrochefe", model.getDescricao(), model.getCarroChefeModel().getId(), model.getUsuarioModel().getId());
 		
 		broker.execute();
 		

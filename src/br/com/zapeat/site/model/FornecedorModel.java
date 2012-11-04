@@ -58,6 +58,8 @@ public class FornecedorModel {
 	private List<FormaPagamentoModel> formasPagamentos; 
 	
 	private List<ComentarioFornecedorModel> comentarios; 
+	
+	private List<ImagemFornecedorModel> imagensFornecedorModel; 
 
 	public FornecedorModel() {
 	}
@@ -299,6 +301,15 @@ public class FornecedorModel {
 
 	public void setComentarios(List<ComentarioFornecedorModel> comentarios) {
 		this.comentarios = comentarios;
+	}
+
+	public List<ImagemFornecedorModel> getImagensFornecedorModel() {
+		return imagensFornecedorModel;
+	}
+
+	public void setImagensFornecedorModel(
+			List<ImagemFornecedorModel> imagensFornecedorModel) {
+		this.imagensFornecedorModel = imagensFornecedorModel;
 	}
 
 	@Override

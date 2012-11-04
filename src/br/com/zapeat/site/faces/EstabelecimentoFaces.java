@@ -11,10 +11,10 @@ import br.com.zapeat.site.dao.ComentarioDAO;
 import br.com.zapeat.site.dao.FormaPagamentoDAO;
 import br.com.zapeat.site.dao.FornecedorDAO;
 import br.com.zapeat.site.dao.ImagemFornecedorDAO;
+import br.com.zapeat.site.dao.UsuarioDAO;
 import br.com.zapeat.site.model.ComentarioFornecedorModel;
 import br.com.zapeat.site.model.ComentarioModel;
 import br.com.zapeat.site.model.FornecedorModel;
-import br.com.zapeat.site.model.ImagemFornecedorModel;
 import br.com.zapeat.site.model.UsuarioModel;
 import br.com.zapeat.site.util.Constantes;
 import br.com.zapeat.site.util.ZapeatUtil;
@@ -23,11 +23,9 @@ import br.com.zapeat.site.util.ZapeatUtil;
 public class EstabelecimentoFaces extends CarregaPromocaoFaces {
 
 	private FornecedorModel fornecedorModel;
-	private List<ImagemFornecedorModel> fotosEstabelecimento;
 	private ComentarioModel ranking;
 	private ComentarioFornecedorModel comentarioFornecedorModel;
 	private UsuarioModel usuarioLogado;
-	
 
 	public EstabelecimentoFaces() {
 		
@@ -45,21 +43,18 @@ public class EstabelecimentoFaces extends CarregaPromocaoFaces {
 
 			if (!TSUtil.isEmpty(this.fornecedorModel) && !TSUtil.isEmpty(this.fornecedorModel.getId())) {
 
-				this.fotosEstabelecimento = new ImagemFornecedorDAO().pesquisar(this.fornecedorModel);
-
 				this.ranking = new ComentarioDAO().rankingEstabelecimento(this.fornecedorModel);
 
 				this.fornecedorModel.setFormasPagamentos(new FormaPagamentoDAO().pesquisar(this.fornecedorModel));
-				
+				this.fornecedorModel.setImagensFornecedorModel(new ImagemFornecedorDAO().pesquisar(this.fornecedorModel));
 				this.fornecedorModel.setComentarios(new ComentarioDAO().pesquisarComentarios(this.fornecedorModel));
 				
 				this.comentarioFornecedorModel = new ComentarioFornecedorModel();
-				
 				this.comentarioFornecedorModel.setFornecedorModel(this.fornecedorModel);
 				
 				Long idUsuarioLogado = (Long) TSFacesUtil.getObjectInSession(Constantes.ID_USUARIO_LOGADO);
 				
-				this.usuarioLogado = new UsuarioModel(idUsuarioLogado);
+				this.usuarioLogado = new UsuarioDAO().getById(new UsuarioModel(idUsuarioLogado));
 				
 				this.comentarioFornecedorModel.setUsuarioModel(this.usuarioLogado);
 
@@ -92,6 +87,62 @@ public class EstabelecimentoFaces extends CarregaPromocaoFaces {
 		return null;
 	}
 	
+	private void executarIndicacao(ComentarioModel comentarioModel) throws TSApplicationException{
+		
+		String comentario = super.getRequestParameter("comentario");
+
+		if (!TSUtil.isEmpty(this.usuarioLogado) && !TSUtil.isEmpty(this.usuarioLogado.getId())) {
+
+			comentarioModel.setUsuarioModel(this.usuarioLogado);
+			comentarioModel.setDescricao(comentario);
+			comentarioModel.setFornecedorModel(this.fornecedorModel);
+
+			ComentarioModel coment = new ComentarioDAO().obterIndicacao(comentarioModel);
+
+			if (TSUtil.isEmpty(coment)) {
+				
+				new ComentarioDAO().inserir(comentarioModel);
+				
+				this.carregaDados();
+
+				super.addInfoMessage("Voto computado com sucesso!");
+					
+			} else {
+
+				super.addErrorMessage(this.usuarioLogado.getNome() + ": O Sr(a) já indicou essa promoção!");
+			}
+
+		} else {
+
+			super.addErrorMessage("Você precisa estar logado para realizar a operação!");
+		}
+			
+	}
+	
+	public String indicar() throws TSApplicationException{
+		
+		ComentarioModel comentarioModel = new ComentarioModel();
+
+		comentarioModel.setFlagIndica(Boolean.TRUE);
+		
+		this.executarIndicacao(comentarioModel);
+		
+		return null;
+		
+	}
+	
+	public String naoIndicar() throws TSApplicationException{
+		
+		ComentarioModel comentarioModel = new ComentarioModel();
+		
+		comentarioModel.setFlagNaoIndica(Boolean.TRUE);
+		
+		this.executarIndicacao(comentarioModel);
+		
+		return null;
+		
+	}
+	
 	@Override
 	protected Long getFornecedorId() {
 		return ZapeatUtil.getParamFormatado(super.getRequestParameter("id"));
@@ -99,14 +150,6 @@ public class EstabelecimentoFaces extends CarregaPromocaoFaces {
 
 	public List<FornecedorModel> obterEstabelecimentosLateral() {
 		return new FornecedorDAO().pesquisarHome((Long)TSFacesUtil.getObjectInSession("cidadeId"));
-	}
-
-	public List<ImagemFornecedorModel> getFotosEstabelecimento() {
-		return fotosEstabelecimento;
-	}
-
-	public void setFotosEstabelecimento(List<ImagemFornecedorModel> fotosEstabelecimento) {
-		this.fotosEstabelecimento = fotosEstabelecimento;
 	}
 
 	public FornecedorModel getFornecedorModel() {

@@ -1,6 +1,5 @@
-function indicar(categoriaId, estabelecimentoId){
+function nao_indicar(estabelecimentoId){
 	
-	$("#categoriaId").val(categoriaId);
 	$("#estabelecimentoId").val(estabelecimentoId);
 	
 }
@@ -22,4 +21,22 @@ function processarVoto(){
 	$("#idPagina").val(id);
 	$("#idCarroChefe").val(carroChefeId);
 	
+}
+
+function isEmpty(campos) {
+    var aux = false;
+    var retorno = false;
+    for (var i = 0; i < campos.length; i++) {
+    	if ($(campos[i]).val().trim() == "") {
+            $(campos[i]).css('border-color', 'red');
+            aux = true;
+        } else {
+            $(campos[i]).css('border-color', 'green');
+            aux = false;
+        }
+        if (aux == true) {
+            retorno = true;
+        }
+    }
+    return retorno;
 }
