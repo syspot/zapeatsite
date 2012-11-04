@@ -15,7 +15,7 @@ public class PromocaoDAO {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("promocaodao.pesquisarporindicacoes", tipoPromocao, categoriaId, page);
+		broker.setPropertySQL("promocaodao.pesquisarporindicacoes", tipoPromocao, categoriaId, cidadeId, page);
 
 		return broker.getCollectionBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.logoMarca", "fornecedorModel.telefone", "fornecedorModel.site", "fornecedorModel.latitude", "fornecedorModel.longitude", "fornecedorModel.categoriaPrincipal.id", "fornecedorModel.categoriaPrincipal.descricao", "fornecedorModel.categoriaPrincipal.imagem", "descricao", "titulo", "indicacoes", "fornecedorModel.numeroUnico");
 
@@ -26,7 +26,7 @@ public class PromocaoDAO {
 		
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		
-		broker.setPropertySQL("promocaodao.pesquisarporindicacoesmaisindicados", tipoPromocao, page);
+		broker.setPropertySQL("promocaodao.pesquisarporindicacoesmaisindicados", tipoPromocao, cidadeId, page);
 		
 		return broker.getCollectionBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.logoMarca", "fornecedorModel.telefone", "fornecedorModel.site", "fornecedorModel.latitude", "fornecedorModel.longitude", "fornecedorModel.categoriaPrincipal.id", "fornecedorModel.categoriaPrincipal.descricao", "fornecedorModel.categoriaPrincipal.imagem", "descricao", "titulo", "indicacoes", "fornecedorModel.numeroUnico");
 		
@@ -47,7 +47,7 @@ public class PromocaoDAO {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("promocaodao.pesquisarqtdpaginasporindicacoes", tipoPromocao, categoriaId);
+		broker.setPropertySQL("promocaodao.pesquisarqtdpaginasporindicacoes", tipoPromocao, categoriaId, cidadeId);
 
 		return (Model) broker.getObjectBean(Model.class, "value");
 
@@ -57,7 +57,7 @@ public class PromocaoDAO {
 		
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		
-		broker.setPropertySQL("promocaodao.pesquisarqtdpaginasporindicacoesmaisindicados", tipoPromocao);
+		broker.setPropertySQL("promocaodao.pesquisarqtdpaginasporindicacoesmaisindicados", cidadeId, tipoPromocao);
 		
 		return (Model) broker.getObjectBean(Model.class, "value");
 		

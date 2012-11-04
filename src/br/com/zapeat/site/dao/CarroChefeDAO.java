@@ -40,7 +40,7 @@ public class CarroChefeDAO {
 		
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("carrochefedao.pesquisaporcategoria", categoriaId, page);
+		broker.setPropertySQL("carrochefedao.pesquisaporcategoria", categoriaId, cidadeId, page);
 
 		return broker.getCollectionBean(CarroChefeModel.class, "id", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.logoMarca", "fornecedorModel.telefone", "fornecedorModel.site", "fornecedorModel.latitude", "fornecedorModel.longitude", "fornecedorModel.categoriaPrincipal.id", "fornecedorModel.categoriaPrincipal.descricao", "fornecedorModel.categoriaPrincipal.imagem", "descricao", "titulo", "fornecedorModel.numeroUnico");
 		
@@ -51,7 +51,7 @@ public class CarroChefeDAO {
 		
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		
-		broker.setPropertySQL("carrochefedao.pesquisaporcategoriamaisindicados", page);
+		broker.setPropertySQL("carrochefedao.pesquisaporcategoriamaisindicados", cidadeId, page);
 		
 		return broker.getCollectionBean(CarroChefeModel.class, "id", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.logoMarca", "fornecedorModel.telefone", "fornecedorModel.site", "fornecedorModel.latitude", "fornecedorModel.longitude", "fornecedorModel.categoriaPrincipal.id", "fornecedorModel.categoriaPrincipal.descricao", "fornecedorModel.categoriaPrincipal.imagem", "descricao", "titulo", "fornecedorModel.numeroUnico", "fornecedorModel.quantidadeIndicacoes");
 		
@@ -72,7 +72,7 @@ public class CarroChefeDAO {
 		
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		
-		broker.setPropertySQL("carrochefedao.pesquisarqtdpaginasporcategoria", categoriaId);
+		broker.setPropertySQL("carrochefedao.pesquisarqtdpaginasporcategoria", categoriaId, cidadeId);
 		
 		return (Model) broker.getObjectBean(Model.class, "value");
 		
@@ -82,7 +82,7 @@ public class CarroChefeDAO {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("carrochefedao.pesquisarqtdpaginasporcategoriamaisindicados");
+		broker.setPropertySQL("carrochefedao.pesquisarqtdpaginasporcategoriamaisindicados", cidadeId);
 
 		return (Model) broker.getObjectBean(Model.class, "value");
 

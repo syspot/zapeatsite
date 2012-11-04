@@ -69,7 +69,7 @@ public class FornecedorDAO {
 		
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		
-		broker.setPropertySQL("fornecedordao.pesquisarporcategoria", categoria, page);
+		broker.setPropertySQL("fornecedordao.pesquisarporcategoria", categoria, cidadeId, page);
 		
 		return broker.getCollectionBean(FornecedorModel.class, "id", "logoMarca", "nomeFantasia", "descricao", "telefone", "site", "latitude", "longitude", "categoriaPrincipal.id", "categoriaPrincipal.descricao", "categoriaPrincipal.imagem", "quantidadeIndicacoes", "numeroUnico");
 		
@@ -79,7 +79,7 @@ public class FornecedorDAO {
 		
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		
-		broker.setPropertySQL("fornecedordao.obterqtdpaginasporcategoria", categoria);
+		broker.setPropertySQL("fornecedordao.obterqtdpaginasporcategoria", categoria, cidadeId);
 		
 		return (Model) broker.getObjectBean(Model.class, "value");
 		
@@ -90,7 +90,7 @@ public class FornecedorDAO {
 		
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		
-		broker.setPropertySQL("fornecedordao.pesquisaporcategoriamaisindicadas", page);
+		broker.setPropertySQL("fornecedordao.pesquisaporcategoriamaisindicadas", cidadeId, page);
 		
 		return broker.getCollectionBean(FornecedorModel.class, "id", "logoMarca", "nomeFantasia", "descricao", "telefone", "site", "latitude", "longitude", "categoriaPrincipal.id", "categoriaPrincipal.descricao", "categoriaPrincipal.imagem", "quantidadeIndicacoes", "numeroUnico");
 		
@@ -111,7 +111,7 @@ public class FornecedorDAO {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("fornecedordao.pesquisarqtdpaginasporcategoriamaisindicados");
+		broker.setPropertySQL("fornecedordao.pesquisarqtdpaginasporcategoriamaisindicados", cidadeId);
 
 		return (Model) broker.getObjectBean(Model.class, "value");
 
