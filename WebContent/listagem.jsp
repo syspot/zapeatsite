@@ -20,14 +20,17 @@
 		<div id="id-Breadcrumb">
 	
 		    <span class="migalha"><a href="index.jsf?cidade=${cidadeFaces.cidadeSelecionada}" title="">Página Inicial</a></span>    »
-		    <span class="migalha">${listagemFaces.categoria.descricao}</span>
 		    
-		    <c:if test="${not empty listagemFaces.tipo}">
+		    <c:choose>
+		    	<c:when test="${empty listagemFaces.tipo}">
+		    		<span class="migalha">${listagemFaces.categoria.descricao}</span>
+		    	</c:when>
+		    	<c:otherwise>
+		    		<span class="migalha"><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${listagemFaces.categoria.id}" title="">${listagemFaces.categoria.descricao}</a></span> »
+		    		<span class="migalha">${listagemFaces.nomeTipo}</span>
+		    	</c:otherwise>
+		    </c:choose>
 		    
-				»  <span class="migalha">${listagemFaces.nomeTipo}</span>
-		    
-		    </c:if>
-	    
 		</div>
 
 <!-- COMECA CENTRAL -->
