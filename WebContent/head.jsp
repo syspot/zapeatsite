@@ -1,5 +1,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+
+<!--start Facebook Open Graph Protocol-->
+<meta property="og:site_name" content="Zapeat" />
+<meta property="og:title" content="Zapeat" />
+<meta property="og:url" content="http://www.zapeat.com.br"/>
+<meta property="og:image" content="http://www.tigurio.com.br/cliente/topsys/zapeat/final/img/marca.png"/>
+<meta property="og:description" content="O Zapeat é seu novo site de indicação de estabelecimentos"/>
+<!--end Facebook Open Graph Protocol-->
+
 <title>Zapeat</title>
 <link href="css/padrao.css" rel="stylesheet" type="text/css" />
 <link href="css/home.css" rel="stylesheet" type="text/css" />
@@ -33,7 +42,10 @@
  		jQuery(window).ready(function(){  
             jQuery("#btnInit").click(function(){
 				$('#cidade').val(initialize);
-				}); 			
+				
+				window.setInterval("$('#buscar').click()", 4000);
+					
+			}); 			
         })
 
 		//inicia o geolocation

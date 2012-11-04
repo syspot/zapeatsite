@@ -65,7 +65,7 @@ public class FornecedorDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<FornecedorModel> pesquisarPorCategoria(Long page, Long categoria) {
+	public List<FornecedorModel> pesquisarPorCategoria(Long cidadeId, Long page, Long categoria) {
 		
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		
@@ -75,7 +75,7 @@ public class FornecedorDAO {
 		
 	}
 	
-	public Model obterQtdPaginasPorCategoria(Long categoria) {
+	public Model obterQtdPaginasPorCategoria(Long cidadeId, Long categoria) {
 		
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		
@@ -86,7 +86,7 @@ public class FornecedorDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<FornecedorModel> pesquisarPorCategoriaMaisIndicados(Long page){
+	public List<FornecedorModel> pesquisarPorCategoriaMaisIndicados(Long cidadeId, Long page){
 		
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		
@@ -107,7 +107,7 @@ public class FornecedorDAO {
 		
 	}
 	
-	public Model obterQtdPaginasPorCategoriaMaisIndicados() {
+	public Model obterQtdPaginasPorCategoriaMaisIndicados(Long cidadeId) {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 

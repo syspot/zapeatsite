@@ -343,7 +343,7 @@ public class FornecedorModel {
 		StringBuilder retorno = new StringBuilder();
 		
 		retorno.append("['");
-		retorno.append(nomeFantasia).append("', ");
+		retorno.append(nomeFantasia.replaceAll("'", "")).append("', ");
 		retorno.append(latitude).append(", ");
 		retorno.append(longitude).append(", ");
 		retorno.append(numeroUnico);

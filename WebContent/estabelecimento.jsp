@@ -85,11 +85,10 @@
                     	<li>
                         	<p class="titOtherInfo">Redes sociais</p>
                         	<c:if test="${not empty estabelecimentoFaces.fornecedorModel.twitter}">
-                        	<p>@${estabelecimentoFaces.fornecedorModel.twitter}</p>
+                        		<p>${estabelecimentoFaces.fornecedorModel.twitter}</p>
                             </c:if>
                             <c:if test="${not empty estabelecimentoFaces.fornecedorModel.facebook}">
-                            <p><a href="http://facebook.com/${estabelecimentoFaces.fornecedorModel.facebook}" title="" target="_blank">facebook.com/${estabelecimentoFaces.fornecedorModel.facebook}</a></p>
-                            
+                            	<p><a href="http://facebook.com/${estabelecimentoFaces.fornecedorModel.facebook}" title="" target="_blank">facebook.com/${estabelecimentoFaces.fornecedorModel.facebook}</a></p>
                             </c:if>
                         </li>
                         </c:if>
@@ -107,7 +106,6 @@
 	                                </span>
 	                           	</c:forEach>
                            	</p>
-                            
                             
                         </li>
                     </ul>
@@ -128,8 +126,8 @@
 	                    		</c:if>
 		                		<div class="votacao">
 		                			
-						       		<h:commandLink action="#{estabelecimentoFaces.indicar}" styleClass="floatLeft"><span class="icons indicacao"></span>Indico</h:commandLink>
-						       		<a title="Não indicar" onclick="nao_indicar(${estabelecimentoFaces.fornecedorModel.id})" class="linkRanking floatRight"><span class="icons naoindicacaoRed"></span> Não indico</a>
+		                			<a href="estabelecimento.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${estabelecimentoFaces.fornecedorModel.id}&indicacao=true" class="floatLeft" ><span class="icons indicacao"></span>Indico</a>
+						       		<a id="teste" title="Não indicar" onclick="nao_indicar(${estabelecimentoFaces.fornecedorModel.id})" class="linkRanking floatRight"><span class="icons naoindicacaoRed"></span> Não indico</a>
 							       
 								</div>
 							

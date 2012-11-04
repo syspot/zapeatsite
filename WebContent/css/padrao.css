@@ -244,6 +244,7 @@ input:-moz-placeholder {    color:    #b5b5b5;}
 #signup2 .inputs label.terms {    float: left;    font-size: 14px;    font-style: italic;}
 
 #signup .inputs .submit,
+#signup2 .inputs a,
 #signup2 .inputs .submit {
     width: 100%;   margin-top: 20px;    padding: 15px 0;    color: #fff;    font-size: 14px;    font-weight: 500;
     letter-spacing: 1px;    text-align: center;    text-decoration: none;

@@ -24,9 +24,11 @@ public class BannerModel {
 	private Integer qdoCliques;
 
 	private Boolean flagAtivo;
+	
+	private String url;
 
 	public BannerModel() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public BannerModel(FornecedorModel fornecedorModel) {
@@ -106,6 +108,14 @@ public class BannerModel {
 		this.flagAtivo = flagAtivo;
 	}
 	
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
 	public String getImagemLateralView(){
 		return Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_BANNER_LATERAL + this.imagem;
 	}

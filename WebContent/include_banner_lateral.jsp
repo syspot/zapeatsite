@@ -2,6 +2,10 @@
 
 <c:if test="${not empty bannerFaces.bannerLateral}">
 	<div class="boxSubCat">
-		<div class="banner"><img src="${bannerFaces.bannerLateral.imagemLateralView}" alt="" title="" /></div>
+		<div class="banner">
+			<a href="${bannerFaces.bannerLateral.url}">
+				<img src="${bannerFaces.bannerLateral.imagemLateralView}" alt="" title="" />
+			</a>
+		</div>
 	</div>
 </c:if>

@@ -8,7 +8,9 @@ import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.faces.TSMainFaces;
 import br.com.topsys.web.util.TSFacesUtil;
 import br.com.zapeat.site.dao.BuscaDAO;
+import br.com.zapeat.site.dao.CidadeDAO;
 import br.com.zapeat.site.model.BuscaModel;
+import br.com.zapeat.site.model.CidadeModel;
 import br.com.zapeat.site.util.ZapeatUtil;
 
 @ManagedBean
@@ -44,7 +46,23 @@ public class BuscaFaces extends TSMainFaces {
 		
 	}
 
-	public String buscar(){
+	public String buscar(String cidade){
+		
+		if (TSUtil.isEmpty(termoBuscado)){
+			
+			if(!TSUtil.isEmpty(cidade)){
+				
+				//cidade = ZapeatUtil.tratarCidadeUTF8(cidade);
+				
+				CidadeModel cidadeModel = new CidadeDAO().obter(ZapeatUtil.getCidade(cidade), ZapeatUtil.getEstado(cidade));
+				
+				if(!TSUtil.isEmpty(cidadeModel)){
+					super.addObjectInSession("cidadeId", cidadeModel.getId());
+				}
+			}
+			
+			ZapeatUtil.redirect(cidade);
+		}
 		
 		this.init();
 		

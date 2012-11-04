@@ -102,16 +102,32 @@ ul#listagem:hover li:not(:hover) {
 
 
 #paginacao{ min-width:380px; margin: 20px auto; height:30px; padding:0px 5px;font-family: 'titilliumtext22l_ltmedium'; font-size:14px;}
-#paginacao .inicio,
-#paginacao .pagina,
-#paginacao .fim{ width:20px; height:20px; display:block; margin:5px; float:left; padding:5px; text-align:center; cursor:pointer;}
+#paginacao .inicio, #paginacao .pagina, #paginacao .fim {
+width: 20px;
+height: 20px;
+display: block;
+margin: 1px;
+margin-top: 1px;
+margin-right: 1px;
+margin-bottom: 1px;
+margin-left: 1px;
+float: left;
+padding: 5px;
+padding-top: 5px;
+padding-right: 5px;
+padding-bottom: 5px;
+padding-left: 5px;
+text-align: center;
+cursor: pointer;
+}
 
 #paginacao .pagina{ color:#5b5b5b;}
 
-#paginacao .inicio,
-#paginacao .fim{ background:#06c;}
-#paginacao .pagina{ background:#d6d6d6;}
-#paginacao .pagina:hover{background:#efefef;}
+#paginacao .inicio, #paginacao .fim {
+background: #FDFDFD;
+}
+#paginacao .pagina{ background: #FDFDFD;}
+#paginacao .pagina:hover{background: #FDFDFD;}
 
 #colunaMapa{position:relative; width:350px; float:right;}
 

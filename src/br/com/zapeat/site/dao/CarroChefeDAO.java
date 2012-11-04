@@ -36,7 +36,7 @@ public class CarroChefeDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<CarroChefeModel> pesquisarPorCategoria(Long categoriaId, Long page){
+	public List<CarroChefeModel> pesquisarPorCategoria(Long cidadeId, Long categoriaId, Long page){
 		
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
@@ -47,7 +47,7 @@ public class CarroChefeDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<CarroChefeModel> pesquisarPorCategoriaMaisIndicados(Long page){
+	public List<CarroChefeModel> pesquisarPorCategoriaMaisIndicados(Long cidadeId, Long page){
 		
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		
@@ -68,7 +68,7 @@ public class CarroChefeDAO {
 		
 	}
 	
-	public Model obterQtdPaginasPorCategoria(Long categoriaId) {
+	public Model obterQtdPaginasPorCategoria(Long cidadeId, Long categoriaId) {
 		
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		
@@ -78,7 +78,7 @@ public class CarroChefeDAO {
 		
 	}
 	
-	public Model obterQtdPaginasPorCategoriaMaisIndicados() {
+	public Model obterQtdPaginasPorCategoriaMaisIndicados(Long cidadeId) {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 

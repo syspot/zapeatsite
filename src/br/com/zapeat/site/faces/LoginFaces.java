@@ -75,12 +75,16 @@ public class LoginFaces extends TSMainFaces {
 				TSFacesUtil.addObjectInSession(Constantes.NOME_USUARIO_LOGADO, model.getNome());
 
 				TSFacesUtil.addObjectInSession(Constantes.LOGIN_APLICACAO, true);
-
+				
+				
 			} else {
 
 				TSFacesUtil.addErrorMessage("Dados inválidos.");
+				
 			}
 		}
+		
+		
 
 		return null;
 	}

@@ -1,6 +1,5 @@
 package br.com.zapeat.site.faces;
 
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -10,6 +9,7 @@ import br.com.topsys.web.faces.TSMainFaces;
 import br.com.topsys.web.util.TSFacesUtil;
 import br.com.zapeat.site.dao.CidadeDAO;
 import br.com.zapeat.site.model.CidadeModel;
+import br.com.zapeat.site.util.ZapeatUtil;
 
 @ManagedBean
 public class CidadeFaces extends TSMainFaces {
@@ -23,11 +23,9 @@ public class CidadeFaces extends TSMainFaces {
 		this.cidadeSelecionada = (String) super.getRequestParameter("cidade");
 		
 		if(!TSUtil.isEmpty(this.cidadeSelecionada)){
-			try {
-				this.cidadeSelecionada = new String (cidadeSelecionada.getBytes("ISO-8859-1"), "UTF-8");
-			} catch (UnsupportedEncodingException e) {
-				e.printStackTrace();
-			} 
+			
+			this.cidadeSelecionada = ZapeatUtil.tratarCidadeUTF8(this.cidadeSelecionada);
+			
 		} else {
 			
 			Long cidadeId = (Long)TSFacesUtil.getObjectInSession("cidadeId");
@@ -43,20 +41,12 @@ public class CidadeFaces extends TSMainFaces {
 			
 		}
 		
-		CidadeModel cidadeModel = new CidadeDAO().obter(getCidade(), getEstado());
+		CidadeModel cidadeModel = new CidadeDAO().obter(ZapeatUtil.getCidade(this.cidadeSelecionada), ZapeatUtil.getEstado(this.cidadeSelecionada));
 		
 		if(!TSUtil.isEmpty(cidadeModel)){
 			super.addObjectInSession("cidadeId", cidadeModel.getId());
 		}
 		
-	}
-	
-	private String getCidade(){
-		return TSUtil.isEmpty(cidadeSelecionada) ? cidadeSelecionada : cidadeSelecionada.split("-")[0]; 
-	}
-	
-	private String getEstado(){
-		return TSUtil.isEmpty(cidadeSelecionada) ? cidadeSelecionada : cidadeSelecionada.split("-").length < 2 ? cidadeSelecionada.split("-")[0] : cidadeSelecionada.split("-")[cidadeSelecionada.split("-").length-1]; 
 	}
 
 	public List<CidadeModel> getCidades() {

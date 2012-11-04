@@ -11,7 +11,7 @@ import br.com.zapeat.site.model.PromocaoModel;
 public class PromocaoDAO {
 
 	@SuppressWarnings("unchecked")
-	public List<PromocaoModel> pesquisarPorIndicacoes(Long page, Long tipoPromocao, Long categoriaId) {
+	public List<PromocaoModel> pesquisarPorIndicacoes(Long cidadeId, Long page, Long tipoPromocao, Long categoriaId) {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
@@ -22,7 +22,7 @@ public class PromocaoDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<PromocaoModel> pesquisarPorIndicacoesMaisIndicados(Long page, Long tipoPromocao) {
+	public List<PromocaoModel> pesquisarPorIndicacoesMaisIndicados(Long cidadeId, Long page, Long tipoPromocao) {
 		
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		
@@ -43,7 +43,7 @@ public class PromocaoDAO {
 		
 	}
 
-	public Model obterQtdPaginasPorIndicacoes(Long tipoPromocao, Long categoriaId) {
+	public Model obterQtdPaginasPorIndicacoes(Long cidadeId, Long tipoPromocao, Long categoriaId) {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
@@ -53,7 +53,7 @@ public class PromocaoDAO {
 
 	}
 	
-	public Model obterQtdPaginasPorIndicacoesMaisIndicados(Long tipoPromocao) {
+	public Model obterQtdPaginasPorIndicacoesMaisIndicados(Long cidadeId, Long tipoPromocao) {
 		
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		

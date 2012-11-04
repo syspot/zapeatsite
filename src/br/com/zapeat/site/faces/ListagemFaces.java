@@ -6,6 +6,7 @@ import javax.faces.bean.ManagedBean;
 
 import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.faces.TSMainFaces;
+import br.com.topsys.web.util.TSFacesUtil;
 import br.com.zapeat.site.dao.CarroChefeDAO;
 import br.com.zapeat.site.dao.CategoriaDAO;
 import br.com.zapeat.site.dao.FornecedorDAO;
@@ -38,25 +39,27 @@ public class ListagemFaces extends TSMainFaces {
 		this.tipo = ZapeatUtil.getParamFormatado(super.getRequestParameter("tipo"));
 		Long categoriaId = ZapeatUtil.getParamFormatado(super.getRequestParameter("categoriaId"));
 		
+		Long cidadeId = (Long) TSFacesUtil.getObjectInSession("cidadeId");
+		
 		if(!TSUtil.isEmpty(categoriaId) && Constantes.CATEGORIA_MAIS_INDICADOS.equals(categoriaId)){
 			
 			if(!TSUtil.isEmpty(tipo) && Constantes.TIPO_LISTAGEM_CARRO_CHEFE.equals(tipo)){
 				
 				CarroChefeDAO carroChefeDAO = new CarroChefeDAO();
-				this.carrosChefes = carroChefeDAO.pesquisarPorCategoriaMaisIndicados(this.page);
-				this.qtdPaginas = carroChefeDAO.obterQtdPaginasPorCategoriaMaisIndicados().getValue();
+				this.carrosChefes = carroChefeDAO.pesquisarPorCategoriaMaisIndicados(cidadeId, this.page);
+				this.qtdPaginas = carroChefeDAO.obterQtdPaginasPorCategoriaMaisIndicados(cidadeId).getValue();
 				
 			} else if(!TSUtil.isEmpty(tipo) && Constantes.TIPO_LISTAGEM_ESTABELECIMENTO.equals(tipo)){
 				
 				FornecedorDAO fornecedorDAO = new FornecedorDAO();
-				this.fornecedores = fornecedorDAO.pesquisarPorCategoriaMaisIndicados(this.page);
-				this.qtdPaginas = fornecedorDAO.obterQtdPaginasPorCategoriaMaisIndicados().getValue();
+				this.fornecedores = fornecedorDAO.pesquisarPorCategoriaMaisIndicados(cidadeId, this.page);
+				this.qtdPaginas = fornecedorDAO.obterQtdPaginasPorCategoriaMaisIndicados(cidadeId).getValue();
 				
 			} else{
 				
 				PromocaoDAO promocaoDAO = new PromocaoDAO();
-				this.promocoes = promocaoDAO.pesquisarPorIndicacoesMaisIndicados(this.page, tipo);
-				this.qtdPaginas = promocaoDAO.obterQtdPaginasPorIndicacoesMaisIndicados(tipo).getValue();
+				this.promocoes = promocaoDAO.pesquisarPorIndicacoesMaisIndicados(cidadeId, this.page, tipo);
+				this.qtdPaginas = promocaoDAO.obterQtdPaginasPorIndicacoesMaisIndicados(cidadeId, tipo).getValue();
 				
 			}
 			
@@ -65,20 +68,20 @@ public class ListagemFaces extends TSMainFaces {
 			if(!TSUtil.isEmpty(tipo) && Constantes.TIPO_LISTAGEM_CARRO_CHEFE.equals(tipo)){
 				
 				CarroChefeDAO carroChefeDAO = new CarroChefeDAO();
-				this.carrosChefes = carroChefeDAO.pesquisarPorCategoria(categoriaId, this.page);
-				this.qtdPaginas = carroChefeDAO.obterQtdPaginasPorCategoria(categoriaId).getValue();
+				this.carrosChefes = carroChefeDAO.pesquisarPorCategoria(cidadeId, categoriaId, this.page);
+				this.qtdPaginas = carroChefeDAO.obterQtdPaginasPorCategoria(cidadeId, categoriaId).getValue();
 				
 			} else if(!TSUtil.isEmpty(tipo) && Constantes.TIPO_LISTAGEM_ESTABELECIMENTO.equals(tipo)){
 				
 				FornecedorDAO fornecedorDAO = new FornecedorDAO();
-				this.fornecedores = fornecedorDAO.pesquisarPorCategoria(this.page, categoriaId);
-				this.qtdPaginas = fornecedorDAO.obterQtdPaginasPorCategoria(categoriaId).getValue();
+				this.fornecedores = fornecedorDAO.pesquisarPorCategoria(cidadeId, this.page, categoriaId);
+				this.qtdPaginas = fornecedorDAO.obterQtdPaginasPorCategoria(cidadeId,categoriaId).getValue();
 				
 			} else{
 				
 				PromocaoDAO promocaoDAO = new PromocaoDAO();
-				this.promocoes = promocaoDAO.pesquisarPorIndicacoes(this.page, tipo, categoriaId);
-				this.qtdPaginas = promocaoDAO.obterQtdPaginasPorIndicacoes(tipo, categoriaId).getValue();
+				this.promocoes = promocaoDAO.pesquisarPorIndicacoes(cidadeId, this.page, tipo, categoriaId);
+				this.qtdPaginas = promocaoDAO.obterQtdPaginasPorIndicacoes(cidadeId, tipo, categoriaId).getValue();
 				
 			}
 		

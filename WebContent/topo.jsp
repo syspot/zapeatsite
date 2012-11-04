@@ -23,9 +23,9 @@
 	<div class="barraBusca">
     	<h:form prependId="false">
 			<label>Buscar<h:inputText value="#{buscaFaces.termoBuscado}"/></label>
-		    <label>em<h:inputText id="cidade" value="#{cidadeFaces.cidadeSelecionada}"/><span id="btnInit" class="icons" ></span></label>
+		    <label>em<h:inputText id="cidade" value="#{cidadeFaces.cidadeSelecionada}" /><span id="btnInit" class="icons" ></span></label>
 		    <input type="hidden" name="cidade" value="${cidadeFaces.cidadeSelecionada}"></input>
-		    <h:commandButton value="" action="#{buscaFaces.buscar}" />
+		    <h:commandButton id="buscar" value="" action="#{buscaFaces.buscar(cidadeFaces.cidadeSelecionada)}" />
 		</h:form>
 		
 		<script src="js/jquery-1.8.2.js"></script>
@@ -179,19 +179,23 @@
 
         	<div class="inputs">
 
-				<h:inputText tabindex="100" required="true" id="nome" maxlength="100" value="#{cadastroFaces.usuarioModel.nome}"/>
+				<h:inputText tabindex="100" required="true" id="nome_div" maxlength="100" value="#{cadastroFaces.usuarioModel.nome}"/>
 
-				<h:inputText tabindex="101" required="true" id="email" maxlength="100" value="#{cadastroFaces.usuarioModel.email}"/>
+				<h:inputText tabindex="101" required="true" id="email_div" maxlength="100" value="#{cadastroFaces.usuarioModel.email}"/>
 
-				<h:inputSecret tabindex="102" required="true" id="senha" maxlength="100" value="#{cadastroFaces.usuarioModel.senha}" redisplay="true"/>
+				<h:inputSecret tabindex="102" required="true" id="senha_div" maxlength="100" value="#{cadastroFaces.usuarioModel.senha}" redisplay="true"/>
+				
+				<textarea name="comentario" rows="3" cols="41">Esse é o termo do contrato</textarea>
+				
+				<input type="checkbox" id="flag_aceito" /><p>Li e aceito</p>
 
 	             <script type="text/javascript">
-             		$('#nome').attr('placeholder','Nome').attr('autofocus','');
-             		$('#email').attr('placeholder','E-mail');
-             		$('#senha').attr('placeholder','Senha');
+             		$('#nome_div').attr('placeholder','Nome').attr('autofocus','');
+             		$('#email_div').attr('placeholder','E-mail');
+             		$('#senha_div').attr('placeholder','Senha');
              		
              		$('#btnCadastrarUsuario').live('click', function () {
-             	  	    return !isEmpty(new Array("#nome", "#email", "#senha"));
+             	  	    return !isEmpty(new Array("#nome_div", "#email_div", "#senha_div")) && $('#flag_aceito').is(':checked');
              	  	});
 	            </script>
 
@@ -199,7 +203,7 @@
 
         	<div class="inputs">
         	
-        		<h:commandButton id="btnCadastrarUsuario" tabindex="103" styleClass="submit"  value="CADASTRAR" action="#{cadastroFaces.insertEvent}"/>
+        		<h:commandButton id="btnCadastrarUsuario" tabindex="104" styleClass="submit"  value="CADASTRAR" action="#{cadastroFaces.insertEvent}"/>
             
         	</div>
         	

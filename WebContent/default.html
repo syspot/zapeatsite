@@ -1,17 +1,20 @@
 <html>
- 
+
 <head>
- 
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 
 <title>Zapeat</title>
- 
 
 
 
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"> </script>
+
+<script type="text/javascript"
+	src="http://maps.google.com/maps/api/js?sensor=true">
+	
+</script>
 
 <script src="js/jquery-latest.js"></script>
 
@@ -23,183 +26,149 @@
 
 
 
- 
 
 
 
-<!--=============GEOLOCATION=============--> 
- 
+
+<!--=============GEOLOCATION=============-->
+
 <script type="text/javascript">
- 
+	//inicia o geolocation
 
+	function initialize() {
 
+		// teste para a presença do geolocation
 
-//inicia o geolocation
- 
-function initialize() {
- 
-// teste para a presença do geolocation
- 
-if (navigator && navigator.geolocation) {
- 
-// faz a requisição da posição do usuário
- 
-navigator.geolocation.getCurrentPosition(geo_success, geo_error);
- 
-} else {
- 
-// use MaxMind IP to location API fallback
- 
-printAddress(geoip_latitude(), geoip_longitude(), true);
- 
-}
- 
-}
- 
+	    if (navigator && navigator.geolocation) {
 
+			// faz a requisição da posição do usuário
 
+			navigator.geolocation.getCurrentPosition(geo_success, geo_error);
 
+		} else {
 
+			// use MaxMind IP to location API fallback
 
+			printAddress(geoip_latitude(), geoip_longitude(), true);
 
+		}
 
+	}
 
+	function geo_success(position) {
 
-function geo_success(position) {
- 
-    printAddress(position.coords.latitude, position.coords.longitude);
- 
-}
- 
+		printAddress(position.coords.latitude, position.coords.longitude);
 
+	}
 
+	function geo_error(err) {
 
-function geo_error(err) {
- 
-    // instead of displaying an error, fall back to MaxMind IP to location library
- 
-    printAddress(geoip_latitude(), geoip_longitude(), true);
- 
-}
- 
+		// instead of displaying an error, fall back to MaxMind IP to location library
 
+		printAddress(geoip_latitude(), geoip_longitude(), true);
 
+	}
 
-// usa Google Maps API para reversão da sua localização do geocode
- 
-function printAddress(latitude, longitude, isMaxMind) {
- 
-// set up the Geocoder object
- 
-var geocoder = new google.maps.Geocoder();
- 
+	// usa Google Maps API para reversão da sua localização do geocode
 
+	function printAddress(latitude, longitude, isMaxMind) {
 
+		// set up the Geocoder object
 
-// turn coordinates into an object
- 
-var yourLocation = new google.maps.LatLng(latitude, longitude);
- 
+		var geocoder = new google.maps.Geocoder();
 
+		// turn coordinates into an object
 
+		var yourLocation = new google.maps.LatLng(latitude, longitude);
 
-// find out info about our location
- 
-geocoder.geocode({ 'latLng': yourLocation }, function (results, status) {
- 
-if (status == google.maps.GeocoderStatus.OK) {
- 
-if (results[0]) {
- 
+		// find out info about our location
 
+		geocoder
+				.geocode(
+						{
+							'latLng' : yourLocation
+						},
+						function(results, status) {
 
+							if (status == google.maps.GeocoderStatus.OK) {
 
-//--
- 
-//captura infomação requisitada do endereço
- 
-for (var i=0; i<results[0].address_components.length; i++) {
+								if (results[0]) {
 
- for (var b=0; b<results[0].address_components[i].types.length;b++) {
+									//--
 
+									//captura infomação requisitada do endereço
 
+									for ( var i = 0; i < results[0].address_components.length; i++) {
 
- 
-if (results[0].address_components[i].types[b] == "administrative_area_level_1") {
+										for ( var b = 0; b < results[0].address_components[i].types.length; b++) {
 
- state= results[0].address_components[i];
- 
-break;
- 
-}
- 
-else if (results[0].address_components[i].types[b] == "locality") {
+											if (results[0].address_components[i].types[b] == "administrative_area_level_1") {
 
- city= results[0].address_components[i];
- 
-break;
- 
-}
- 
+												state = results[0].address_components[i];
 
+												break;
 
+											}
 
-}
- 
-}
- 
+											else if (results[0].address_components[i].types[b] == "locality") {
 
+												city = results[0].address_components[i];
 
+												break;
 
-//---
- 
-//aplica dados no input
- 
-window.location.href="index.jsf?cidade="+city.long_name + "-" + state.short_name;
+											}
 
- //$('body').append('<p>Seu endereço:<br />' +
+										}
 
- // city.long_name + " / " + state.short_name + '</p>'); 
+									}
 
-} else {
- 
-error('Nenhum resultado foi encontrado.');
+									//---
 
- }
- 
-} else {
- 
-error("Reverse Geocoding failed due to: " + status);
- 
-}
- 
-});
- 
-if(isMaxMind){
- 
-$('body').append('<p>IP to Location Service Provided by MaxMind</p>');
+									//aplica dados no input
 
- }
- 
-}
- 
+									window.location.href = "index.jsf?cidade="
+											+ city.long_name + "-"
+											+ state.short_name;
 
+									//$('body').append('<p>Seu endereço:<br />ag_ag_' +
 
+									// city.long_name + " / " + state.short_name + '<$t_$tag__$ta'); 
 
-function error(msg){
- 
-alert(msg);
- 
-}
- 
+								} else {
 
+									error('Nenhum resultado foi encontrado.');
+
+								}
+
+							} else {
+
+								error("Reverse Geocoding failed due to: "
+										+ status);
+
+							}
+
+						});
+
+		if (isMaxMind) {
+
+			$('body')
+					.append(
+							'_$t_$tag__$ta_$tIP to Location Service Provided by MaxMind_$t_$tag__$ta_$t_$ta');
+
+		}
+		
+		
+
+	}
+	
+	window.location.href = "index.jsf";
 </script>
- 
+
 </head>
 
 
 <body onload="javascript:initialize()">
- 
+
 
 
 

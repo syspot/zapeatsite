@@ -31,6 +31,22 @@ public class EstabelecimentoFaces extends CarregaPromocaoFaces {
 		
 		this.carregaDados();
 		
+		this.processarIndicacao();
+		
+	}
+	
+	private void processarIndicacao(){
+		
+		String indicacao = super.getRequestParameter("indicacao");
+		
+		if(!TSUtil.isEmpty(indicacao)){
+			
+			if(indicacao.equals("true")){
+				this.indicar();
+			} else if(indicacao.equals("false")){
+				this.naoIndicar();
+			}
+		}
 	}
 	
 	private void carregaDados(){
@@ -87,7 +103,7 @@ public class EstabelecimentoFaces extends CarregaPromocaoFaces {
 		return null;
 	}
 	
-	private void executarIndicacao(ComentarioModel comentarioModel) throws TSApplicationException{
+	private void executarIndicacao(ComentarioModel comentarioModel){
 		
 		String comentario = super.getRequestParameter("comentario");
 
@@ -101,15 +117,19 @@ public class EstabelecimentoFaces extends CarregaPromocaoFaces {
 
 			if (TSUtil.isEmpty(coment)) {
 				
-				new ComentarioDAO().inserir(comentarioModel);
+				try {
+					new ComentarioDAO().inserir(comentarioModel);
+				} catch (TSApplicationException e) {
+					e.printStackTrace();
+				}
 				
 				this.carregaDados();
 
-				super.addInfoMessage("Voto computado com sucesso!");
+				super.addInfoMessage("Indicação realizada com sucesso!");
 					
 			} else {
 
-				super.addErrorMessage(this.usuarioLogado.getNome() + ": O Sr(a) já indicou essa promoção!");
+				super.addErrorMessage(this.usuarioLogado.getNome() + ": O Sr(a) já indicou esse estabelecimento!");
 			}
 
 		} else {
@@ -119,7 +139,7 @@ public class EstabelecimentoFaces extends CarregaPromocaoFaces {
 			
 	}
 	
-	public String indicar() throws TSApplicationException{
+	public String indicar(){
 		
 		ComentarioModel comentarioModel = new ComentarioModel();
 
@@ -131,13 +151,14 @@ public class EstabelecimentoFaces extends CarregaPromocaoFaces {
 		
 	}
 	
-	public String naoIndicar() throws TSApplicationException{
+	public String naoIndicar(){
 		
 		ComentarioModel comentarioModel = new ComentarioModel();
 		
 		comentarioModel.setFlagNaoIndica(Boolean.TRUE);
 		
 		this.executarIndicacao(comentarioModel);
+		
 		
 		return null;
 		

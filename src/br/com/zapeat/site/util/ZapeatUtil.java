@@ -3,6 +3,7 @@ package br.com.zapeat.site.util;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -127,11 +128,39 @@ public class ZapeatUtil {
 	}
 	
 	public static void redirect() {
+		redirect(null);
+	}
+	
+	public static void redirect(String cidade) {
+		
 		try {
-			TSFacesUtil.getFacesContext().getExternalContext().redirect("index.jsf?cidade=" + TSFacesUtil.getRequestParameter("cidade"));
+			if (TSUtil.isEmpty(cidade)){
+				TSFacesUtil.getFacesContext().getExternalContext().redirect("index.jsf?cidade=" + TSFacesUtil.getRequestParameter("cidade"));
+			}else{
+				TSFacesUtil.getFacesContext().getExternalContext().redirect("index.jsf?cidade=" +cidade);
+			}
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static String tratarCidadeUTF8(String cidade){
+		try {
+			return new String (cidade.getBytes("ISO-8859-1"), "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+			return cidade;
+		}
+	}
+	
+
+	public static String getCidade(String cidade){
+		return TSUtil.isEmpty(cidade) ? cidade : cidade.split("-")[0]; 
+	}
+	
+	public static String getEstado(String cidade){
+		return TSUtil.isEmpty(cidade) ? cidade : cidade.split("-").length < 2 ? cidade.split("-")[0] : cidade.split("-")[cidade.split("-").length-1]; 
 	}
 
 }
