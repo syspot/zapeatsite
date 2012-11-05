@@ -50,7 +50,11 @@
 				<h:graphicImage value="img/marca.png" />
 			</h:outputLink>	
 		</h1>
-		<div class="superbanner"><img src="${bannerFaces.bannerTopo.imagemSuperiorGrandeView}" alt="" title="" /></div>
+		<div class="superbanner">
+			<a href="${bannerFaces.bannerTopo.url}">
+				<img src="${bannerFaces.bannerTopo.imagemSuperiorGrandeView}" alt="" title="" />
+			</a>
+		</div>
     </div>
     <!-- TERMINA PUBLICIDADE/MARCA -->    
     <!-- COMECA MENU -->

@@ -1,7 +1,6 @@
 package br.com.zapeat.site.faces;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 
 import br.com.topsys.util.TSCryptoUtil;
 import br.com.topsys.util.TSUtil;
@@ -11,29 +10,13 @@ import br.com.zapeat.site.dao.UsuarioDAO;
 import br.com.zapeat.site.model.UsuarioModel;
 import br.com.zapeat.site.util.Constantes;
 
-@ViewScoped
-@ManagedBean(name = "loginFaces")
+@ManagedBean
 public class LoginFaces extends TSMainFaces {
 
 	private UsuarioModel usuarioModel;
-	private UsuarioDAO usuarioDAO;
 
 	public LoginFaces() {
-
-		this.initDAO();
-		this.initObejtos();
-
-	}
-
-	private void initDAO() {
-
-		this.usuarioDAO = new UsuarioDAO();
-	}
-
-	private void initObejtos() {
-
 		this.usuarioModel = new UsuarioModel();
-
 	}
 
 	private boolean validaCampos() {
@@ -67,7 +50,7 @@ public class LoginFaces extends TSMainFaces {
 
 		if (this.validaCampos()) {
 
-			UsuarioModel model = this.usuarioDAO.obter(this.usuarioModel);
+			UsuarioModel model = new UsuarioDAO().obter(this.usuarioModel);
 
 			if (!TSUtil.isEmpty(model) && !TSUtil.isEmpty(model.getSenha()) && model.getSenha().equals(TSCryptoUtil.gerarHash(this.usuarioModel.getSenha(), "MD5"))) {
 
@@ -95,14 +78,6 @@ public class LoginFaces extends TSMainFaces {
 
 	public void setUsuarioModel(UsuarioModel usuarioModel) {
 		this.usuarioModel = usuarioModel;
-	}
-
-	public UsuarioDAO getUsuarioDAO() {
-		return usuarioDAO;
-	}
-
-	public void setUsuarioDAO(UsuarioDAO usuarioDAO) {
-		this.usuarioDAO = usuarioDAO;
 	}
 
 }

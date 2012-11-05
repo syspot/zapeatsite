@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 
+import br.com.topsys.util.TSStringUtil;
 import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.faces.TSMainFaces;
 import br.com.topsys.web.util.TSFacesUtil;
@@ -24,7 +25,7 @@ public class CidadeFaces extends TSMainFaces {
 		
 		if(!TSUtil.isEmpty(this.cidadeSelecionada)){
 			
-			this.cidadeSelecionada = ZapeatUtil.tratarCidadeUTF8(this.cidadeSelecionada);
+			this.cidadeSelecionada = ZapeatUtil.tratarCidadeUTF8(TSStringUtil.removerAcentos(this.cidadeSelecionada));
 			
 		} else {
 			
