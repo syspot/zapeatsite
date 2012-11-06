@@ -1,7 +1,5 @@
 package br.com.zapeat.site.faces;
 
-import java.io.IOException;
-
 import javax.faces.bean.ManagedBean;
 
 import br.com.topsys.util.TSCryptoUtil;
@@ -10,6 +8,7 @@ import br.com.topsys.web.util.TSFacesUtil;
 import br.com.zapeat.site.dao.UsuarioDAO;
 import br.com.zapeat.site.model.UsuarioModel;
 import br.com.zapeat.site.util.Constantes;
+import br.com.zapeat.site.util.ZapeatUtil;
 
 @ManagedBean
 public class ConfirmacaoFaces {
@@ -53,11 +52,7 @@ public class ConfirmacaoFaces {
 			}
 		}
 
-		try {
-			TSFacesUtil.getFacesContext().getExternalContext().redirect("");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		ZapeatUtil.redirect();
 	}
 
 }

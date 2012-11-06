@@ -57,7 +57,7 @@ public class ZapeatUtil {
 	public static String tratarStringILike(String str) {
 		return (TSUtil.isEmpty(str)) ? null : "%" + str.toLowerCase() + "%";
 	}
-	
+
 	public static String tratarStringCidadeILike(String str) {
 		return (TSUtil.isEmpty(str)) ? null : str.split(",").length > 1 ? "%" + str.split(",")[0] + "%" : "%" + str.toLowerCase() + "%";
 	}
@@ -79,88 +79,101 @@ public class ZapeatUtil {
 	public static long gerarNumeroAleatorio() {
 		return (long) ((10000 * Math.random()) * (100 * Math.random()));
 	}
-	
-	public static Long getParamFormatado(String param){
-		
+
+	public static Long getParamFormatado(String param) {
+
 		Long inteiro = null;
-		
-		try{
+
+		try {
 			inteiro = Long.valueOf(param);
-		} catch(NumberFormatException e){}
-		
+		} catch (NumberFormatException e) {
+		}
+
 		return inteiro;
 	}
-	
-	public static Long getPageParamFormatado(String param){
-		
+
+	public static Long getPageParamFormatado(String param) {
+
 		Long inteiro = 1L;
-		
-		try{
+
+		try {
 			inteiro = Long.valueOf(param);
-		} catch(NumberFormatException e){}
-		
+		} catch (NumberFormatException e) {
+		}
+
 		return inteiro;
 	}
-	
-	public static String getValorFormatado(Double valor){
-		
+
+	public static String getValorFormatado(Double valor) {
+
 		String preco = valor.toString().replace(".", ",");
-		
-		if(preco.split(",")[1].equals("0")){
-			
+
+		if (preco.split(",")[1].equals("0")) {
+
 			preco = preco.split(",")[0] + ",00";
-			
-		} else{
-			
-			if(preco.split(",")[1].length() > 1){
+
+		} else {
+
+			if (preco.split(",")[1].length() > 1) {
 
 				preco = preco.split(",")[0] + "," + preco.split(",")[1];
-				
-			} else{
-				
+
+			} else {
+
 				preco = preco.split(",")[0] + "," + preco.split(",")[1] + "0";
-				
+
 			}
-			
+
 		}
-		
+
 		return preco;
 	}
-	
+
 	public static void redirect() {
 		redirect(null);
 	}
-	
+
 	public static void redirect(String cidade) {
-		
+
 		try {
-			if (TSUtil.isEmpty(cidade)){
+			if (TSUtil.isEmpty(cidade)) {
 				TSFacesUtil.getFacesContext().getExternalContext().redirect("index.jsf?cidade=" + TSFacesUtil.getRequestParameter("cidade"));
-			}else{
-				TSFacesUtil.getFacesContext().getExternalContext().redirect("index.jsf?cidade=" +cidade);
+			} else {
+				TSFacesUtil.getFacesContext().getExternalContext().redirect("index.jsf?cidade=" + cidade);
 			}
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
-	public static String tratarCidadeUTF8(String cidade){
+
+	public static void redirectTermoUso(String criptografado) {
+
 		try {
-			return new String (cidade.getBytes("ISO-8859-1"), "UTF-8");
+			
+			TSFacesUtil.getFacesContext().getExternalContext().redirect("termoUso.jsf?token="+criptografado);
+
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+	}
+
+	public static String tratarCidadeUTF8(String cidade) {
+		try {
+			return new String(cidade.getBytes("ISO-8859-1"), "UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 			return cidade;
 		}
 	}
-	
 
-	public static String getCidade(String cidade){
-		return TSUtil.isEmpty(cidade) ? cidade : cidade.split("-")[0]; 
+	public static String getCidade(String cidade) {
+		return TSUtil.isEmpty(cidade) ? cidade : cidade.split("-")[0];
 	}
-	
-	public static String getEstado(String cidade){
-		return TSUtil.isEmpty(cidade) ? cidade : cidade.split("-").length < 2 ? cidade.split("-")[0] : cidade.split("-")[cidade.split("-").length-1]; 
+
+	public static String getEstado(String cidade) {
+		return TSUtil.isEmpty(cidade) ? cidade : cidade.split("-").length < 2 ? cidade.split("-")[0] : cidade.split("-")[cidade.split("-").length - 1];
 	}
 
 }

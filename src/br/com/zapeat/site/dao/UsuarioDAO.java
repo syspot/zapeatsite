@@ -65,5 +65,15 @@ public class UsuarioDAO {
 		broker.execute();
 
 	}
+	
+	public void alterarFlagTermo(UsuarioModel model) throws TSApplicationException {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+		broker.setPropertySQL("usuariodao.alterarFlagTermo", model.getFlagAceitouTermo(), model.getId());
+
+		broker.execute();
+
+	}
 
 }
