@@ -1,5 +1,12 @@
 package br.com.zapeat.site.faces;
 
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.faces.bean.ManagedBean;
 
 import br.com.topsys.util.TSCryptoUtil;
@@ -9,6 +16,7 @@ import br.com.topsys.web.util.TSFacesUtil;
 import br.com.zapeat.site.dao.UsuarioDAO;
 import br.com.zapeat.site.model.UsuarioModel;
 import br.com.zapeat.site.util.Constantes;
+import br.com.zapeat.site.util.ZapeatUtil;
 
 @ManagedBean
 public class LoginFaces extends TSMainFaces {
@@ -46,7 +54,7 @@ public class LoginFaces extends TSMainFaces {
 		return validado;
 	}
 
-	public String autenticar() {
+	public String autenticar() throws InvalidKeyException, UnsupportedEncodingException, NoSuchPaddingException, BadPaddingException, NoSuchAlgorithmException, IllegalBlockSizeException {
 
 		if (this.validaCampos()) {
 
@@ -54,20 +62,34 @@ public class LoginFaces extends TSMainFaces {
 
 			if (!TSUtil.isEmpty(model) && !TSUtil.isEmpty(model.getSenha()) && model.getSenha().equals(TSCryptoUtil.gerarHash(this.usuarioModel.getSenha(), "MD5"))) {
 
-				TSFacesUtil.addObjectInSession(Constantes.ID_USUARIO_LOGADO, model.getId());
-				TSFacesUtil.addObjectInSession(Constantes.NOME_USUARIO_LOGADO, model.getNome());
+				if (!model.getFlagAtivo()) {
 
-				TSFacesUtil.addObjectInSession(Constantes.LOGIN_APLICACAO, true);
-				
-				
+					TSFacesUtil.addErrorMessage("Seu cadastro encontra-se inativo!");
+
+				} else {
+
+					if (!TSUtil.isEmpty(model.getFlagAceitouTermo()) && model.getFlagAceitouTermo()) {
+
+						TSFacesUtil.addObjectInSession(Constantes.ID_USUARIO_LOGADO, model.getId());
+						TSFacesUtil.addObjectInSession(Constantes.NOME_USUARIO_LOGADO, model.getNome());
+
+						TSFacesUtil.addObjectInSession(Constantes.LOGIN_APLICACAO, true);
+
+						ZapeatUtil.redirect();
+
+					} else {
+
+						ZapeatUtil.redirectTermoUso(TSCryptoUtil.criptografar(model.getId().toString()));
+					}
+
+				}
+
 			} else {
 
 				TSFacesUtil.addErrorMessage("Dados inválidos.");
-				
+
 			}
 		}
-		
-		
 
 		return null;
 	}
