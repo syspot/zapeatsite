@@ -16,7 +16,7 @@ public class UsuarioDAO {
 
 		broker.setPropertySQL("usuariodao.obter", model.getEmail());
 
-		return (UsuarioModel) broker.getObjectBean(UsuarioModel.class, "id", "nome", "email", "senha", "flagAtivo", "imagem");
+		return (UsuarioModel) broker.getObjectBean(UsuarioModel.class, "id", "nome", "email", "senha", "flagAtivo", "imagem", "flagAceitouTermo");
 
 	}
 	
@@ -26,7 +26,7 @@ public class UsuarioDAO {
 
 		broker.setPropertySQL("usuariodao.getById", model.getId());
 
-		return (UsuarioModel) broker.getObjectBean(UsuarioModel.class, "id", "nome", "email", "senha", "flagAtivo", "imagem");
+		return (UsuarioModel) broker.getObjectBean(UsuarioModel.class, "id", "nome", "email", "senha", "flagAtivo", "imagem", "flagAceitouTermo");
 
 	}
 
@@ -38,7 +38,7 @@ public class UsuarioDAO {
 		
 		model.setToken(TSCryptoUtil.gerarHash(model.getId().toString() + model.getNome(), TSConstant.CRIPTOGRAFIA_MD5));
 
-		broker.setPropertySQL("usuariodao.inserir", model.getId(), model.getNome(), model.getEmail().toLowerCase(), model.getSenha(), model.getFlagAtivo(), model.getImagem(), model.getToken(), model.getFlagFacebook());
+		broker.setPropertySQL("usuariodao.inserir", model.getId(), model.getNome(), model.getEmail().toLowerCase(), model.getSenha(), model.getFlagAtivo(), model.getImagem(), model.getToken(), model.getFlagFacebook(), model.getFlagAceitouTermo());
 
 		broker.execute();
 

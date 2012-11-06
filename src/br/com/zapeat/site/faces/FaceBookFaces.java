@@ -18,21 +18,21 @@ import br.com.zapeat.site.util.FacebookClient;
 import br.com.zapeat.site.util.UsuarioService;
 import br.com.zapeat.site.util.ZapeatUtil;
 
-@ManagedBean(name ="faceBookFaces")
+@ManagedBean(name = "faceBookFaces")
 public class FaceBookFaces {
 
 	private String url;
-	
+
 	private String logout;
 
 	public FaceBookFaces() throws MalformedURLException {
-		
+
 		this.url = FacebookClient.getLoginRedirectURL();
 
 		this.logout = FacebookClient.getLogoutUrl();
 
 		String code = TSFacesUtil.getRequestParameter("code");
-		
+
 		String erro = TSFacesUtil.getRequestParameter("error");
 
 		if (!TSUtil.isEmpty(code)) {
@@ -84,9 +84,9 @@ public class FaceBookFaces {
 						if (TSUtil.isEmpty(usuario)) {
 
 							try {
-								
+
 								model.setFlagAtivo(Boolean.TRUE);
-								
+
 								model.setFlagFacebook(Boolean.TRUE);
 
 								usuario = new UsuarioDAO().inserir(model);
@@ -116,6 +116,10 @@ public class FaceBookFaces {
 						TSFacesUtil.addObjectInSession(Constantes.NOME_USUARIO_LOGADO, model.getNome());
 
 						ZapeatUtil.redirect();
+
+					} else {
+
+						ZapeatUtil.redirect();
 					}
 
 				} else {
@@ -127,9 +131,9 @@ public class FaceBookFaces {
 
 				throw new RuntimeException(e);
 			}
-		
-		} else if(!TSUtil.isEmpty(TSUtil.tratarString(erro))){
-			
+
+		} else if (!TSUtil.isEmpty(TSUtil.tratarString(erro))) {
+
 			ZapeatUtil.redirect();
 		}
 

@@ -20,6 +20,8 @@ public class UsuarioModel {
 	private Boolean flagAtivo;
 	
 	private Boolean flagFacebook;
+	
+	private Boolean flagAceitouTermo;
 
 	private String imagem;
 
@@ -117,6 +119,14 @@ public class UsuarioModel {
 
 	public void setFlagFacebook(Boolean flagFacebook) {
 		this.flagFacebook = flagFacebook;
+	}
+
+	public Boolean getFlagAceitouTermo() {
+		return flagAceitouTermo;
+	}
+
+	public void setFlagAceitouTermo(Boolean flagAceitouTermo) {
+		this.flagAceitouTermo = flagAceitouTermo;
 	}
 
 }
