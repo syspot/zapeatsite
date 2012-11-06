@@ -55,6 +55,13 @@ public class CadastroFaces extends TSMainFaces {
 
 			super.addErrorMessage("Senha: campo obrigatório.");
 		}
+		
+		if (this.usuarioModel.getFlagAceitouTermo()) {
+
+			validado = false;
+
+			super.addErrorMessage("É necessário aceitar o termo.");
+		}
 
 		return validado;
 	}
@@ -100,9 +107,9 @@ public class CadastroFaces extends TSMainFaces {
 		
 		StringBuilder corpo = new StringBuilder();
 		
-		String marca = Constantes.URL_APLICACAO + "img/marca.png";
+		String marca = "http://saudelivre.com.br/zapeatsite/img/marca.png";
 		
-		corpo.append("<img src="+ marca +"/>");
+		corpo.append("<img src='"+ marca +"'/>");
 		
 		corpo.append("<br><br><br>");
 
@@ -116,7 +123,7 @@ public class CadastroFaces extends TSMainFaces {
 
 		try {
 			
-			corpo.append(Constantes.URL_APLICACAO + "confirmacao.jsf?token="+ TSCryptoUtil.criptografar(model.getId().toString()) + "");
+			corpo.append(Constantes.URL_APLICACAO + "confirmacao.jsf?cidade=" + super.getRequestParameter("cidade") + "&token="+ TSCryptoUtil.criptografar(model.getId().toString()) + "");
 			
 		} catch (Exception e) {
 			e.printStackTrace();

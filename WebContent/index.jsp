@@ -65,7 +65,7 @@
             
             <%@ include file="/include_estabelecimentos_lateral.jsp" %>
             
-            <%@ include file="/include_quem_indica_lateral.jsp" %>
+<%--             <%@ include file="/include_quem_indica_lateral.jsp" %> --%>
             
         </div>
     </div>

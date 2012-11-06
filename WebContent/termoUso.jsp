@@ -22,32 +22,31 @@
 	<%@ include file="/topo.jsp" %>
 	
 <!-- COMECA CENTRAL -->
-<div id="central">
+	<div id="central">
+		
+		<div align="center">
+		
+		<h:form>
+		 
+		<input type="hidden" name="cidade" value="${cidadeFaces.cidadeSelecionada}" />
+		<t:inputHidden value="#{termoUsoFaces.id}" id="token" forceId="true"/>
+		
+		<h:selectBooleanCheckbox value="#{termoUsoFaces.flagAceito}"/>
+		<h:outputText value="Li e aceito os " styleClass="header"/>
+		<a href="files/TermosCondicoesGeraisUsoSiteZapeat.pdf" target="_blank">Termos e Condições Gerais de Uso</a>
+		
+		<h:commandButton value="Confirmar" action="#{termoUsoFaces.confirmarTermo}" />
 	
-	<div align="center">
-	
-	<h:form>
-	 
-	<input type="hidden" name="cidade" value="${cidadeFaces.cidadeSelecionada}" />
-	<t:inputHidden value="#{termoUsoFaces.id}" id="token" forceId="true"/>
-	
-	<h:selectBooleanCheckbox value="#{termoUsoFaces.flagAceito}"/>
-	<h:outputText value="Li e aceito os " styleClass="header"/>
-	<a href="files/TermosCondicoesGeraisUsoSiteZapeat.pdf" target="_blank">Termos e Condições Gerais de Uso</a>
-	
-	<h:commandButton value="Confirmar" action="#{termoUsoFaces.confirmarTermo}" />
-	 
-	</h:form>
-	
-	</div>
-	
-	
-</div>
+		</h:form>
+		
+		
+		</div>
+		
+	</div>	
 <!-- TERMINA CENTRAL -->
 
 	<!-- COMECA RODAPE -->
 	<%@ include file="/rodape.jsp" %>
-
 	
 </body>
 

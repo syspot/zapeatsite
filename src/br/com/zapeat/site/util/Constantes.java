@@ -6,7 +6,7 @@ import br.com.topsys.web.util.TSFacesUtil;
 
 public final class Constantes {
 	
-	public static final String URL_APLICACAO = "http://" + TSFacesUtil.getRequest().getServerName() + ":"	+ TSFacesUtil.getRequest().getServerPort() + "/"+ TSFacesUtil.getRequest().getContextPath() + "/";
+	public static final String URL_APLICACAO = "http://" + TSFacesUtil.getRequest().getServerName() + ":"+ TSFacesUtil.getRequest().getServerPort() + TSFacesUtil.getRequest().getContextPath() + "/";
 
 	public static final String PASTA_UPLOAD_TEMP = "e:" + File.separator + "img_zapeat" + File.separator;
 	public static final String PASTA_UPLOAD = "e:" + File.separator + "img_zapeat" + File.separator;

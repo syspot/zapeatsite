@@ -40,6 +40,10 @@ public class BuscaFaces extends TSMainFaces {
 		this.buscaDAO = new BuscaDAO();
 		
 		Long cidadeId = (Long)TSFacesUtil.getObjectInSession("cidadeId");
+		
+		if(TSUtil.isEmpty(this.termoBuscado)){
+			this.termoBuscado = super.getRequestParameter("termoBuscado");
+		}
 			
 		this.listagem = this.buscaDAO.pesquisarPorTexto(this.termoBuscado, cidadeId, this.page);
 		
