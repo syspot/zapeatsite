@@ -5,10 +5,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.faces.bean.ManagedBean;
 
 import br.com.topsys.exception.TSApplicationException;
+import br.com.topsys.util.TSCryptoUtil;
 import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.util.TSFacesUtil;
 import br.com.zapeat.site.dao.UsuarioDAO;
@@ -18,21 +24,21 @@ import br.com.zapeat.site.util.FacebookClient;
 import br.com.zapeat.site.util.UsuarioService;
 import br.com.zapeat.site.util.ZapeatUtil;
 
-@ManagedBean(name ="faceBookFaces")
+@ManagedBean(name = "faceBookFaces")
 public class FaceBookFaces {
 
 	private String url;
-	
+
 	private String logout;
 
-	public FaceBookFaces() throws MalformedURLException {
-		
+	public FaceBookFaces() throws MalformedURLException, InvalidKeyException, NoSuchPaddingException, BadPaddingException, NoSuchAlgorithmException, IllegalBlockSizeException {
+
 		this.url = FacebookClient.getLoginRedirectURL();
 
 		this.logout = FacebookClient.getLogoutUrl();
 
 		String code = TSFacesUtil.getRequestParameter("code");
-		
+
 		String erro = TSFacesUtil.getRequestParameter("error");
 
 		if (!TSUtil.isEmpty(code)) {
@@ -84,9 +90,9 @@ public class FaceBookFaces {
 						if (TSUtil.isEmpty(usuario)) {
 
 							try {
-								
+
 								model.setFlagAtivo(Boolean.TRUE);
-								
+
 								model.setFlagFacebook(Boolean.TRUE);
 
 								usuario = new UsuarioDAO().inserir(model);
@@ -110,10 +116,21 @@ public class FaceBookFaces {
 							}
 						}
 
-						TSFacesUtil.addObjectInSession("accessToken", accessToken);
+						if (!TSUtil.isEmpty(usuario.getFlagAceitouTermo()) && usuario.getFlagAceitouTermo()) {
 
-						TSFacesUtil.addObjectInSession(Constantes.ID_USUARIO_LOGADO, usuario.getId());
-						TSFacesUtil.addObjectInSession(Constantes.NOME_USUARIO_LOGADO, model.getNome());
+							TSFacesUtil.addObjectInSession("accessToken", accessToken);
+
+							TSFacesUtil.addObjectInSession(Constantes.ID_USUARIO_LOGADO, usuario.getId());
+							TSFacesUtil.addObjectInSession(Constantes.NOME_USUARIO_LOGADO, model.getNome());
+
+							ZapeatUtil.redirect();
+
+						} else {
+
+							ZapeatUtil.redirectTermoUso(TSCryptoUtil.criptografar(usuario.getId().toString()));
+						}
+
+					} else {
 
 						ZapeatUtil.redirect();
 					}
@@ -127,9 +144,9 @@ public class FaceBookFaces {
 
 				throw new RuntimeException(e);
 			}
-		
-		} else if(!TSUtil.isEmpty(TSUtil.tratarString(erro))){
-			
+
+		} else if (!TSUtil.isEmpty(TSUtil.tratarString(erro))) {
+
 			ZapeatUtil.redirect();
 		}
 

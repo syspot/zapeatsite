@@ -83,17 +83,28 @@ ul#listagem:hover li:not(:hover) {
 /*.coluna .indico:hover a{color:#333;}
 .coluna .indico a span.indicacaoRed:hover{ background-position:-180px -120px;}
 .coluna .indico a span.naoindicacaoRed{ background-position:-284px -128px;}*/
-.coluna .position5,
-.coluna .position4,
-.coluna .position3,
-.coluna .position2,
-.coluna .position1{ display:block; position:absolute; top:5px; right:5px; width:32px; height:41px; background-image:url(../img/spriteIcons.png); background-repeat:no-repeat;}
+ .coluna .position10,
+ .coluna .position9,
+ .coluna .position8,
+ .coluna .position7,
+ .coluna .position6,
+ .coluna .position5,
+ .coluna .position4,
+ .coluna .position3,
+ .coluna .position2,
+ .coluna .position1{ display:block; position:absolute; top:5px; right:5px; width:32px; height:41px; background-image:url(../img/spriteIcons.png); background-repeat:no-repeat; z-index:999;}
 
-.coluna .position5{ background-position:-328px -125px;}
-.coluna .position4{ background-position:-360px -125px;}
-.coluna .position3{ background-position:-360px -84px;}
-.coluna .position2{ background-position:-360px -42px;}
-.coluna .position1{ background-position:-360px 0px;}
+.coluna .position10{ background-position:-424px -42px;    }
+ .coluna .position9    { background-position:-424px 0px;    }
+ .coluna .position8    { background-position:-392px -124px;}
+ .coluna .position7    { background-position:-392px -83px;    }
+ .coluna .position6    { background-position:-392px -42px;    }
+ .coluna .position5    { background-position:-392px 0px;    }
+ .coluna .position4    { background-position:-361px -124px;}
+ .coluna .position3    { background-position:-361px -83px;    }
+ .coluna .position2    { background-position:-361px -42px;    }
+ .coluna .position1    { background-position:-361px 0px;    }
+
 
 .boxSubCat .fontYi,
 .boxSubCat .categoria{color:#333;}
