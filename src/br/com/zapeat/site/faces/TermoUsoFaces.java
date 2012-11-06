@@ -33,7 +33,7 @@ public class TermoUsoFaces {
 
 	}
 
-	public void confirmarTermo() {
+	public String confirmarTermo() {
 
 		if (this.flagAceito) {
 
@@ -82,6 +82,8 @@ public class TermoUsoFaces {
 			
 			TSFacesUtil.addErrorMessage("É necessário aceitar o termo de uso.");
 		}
+		
+		return null;
 
 	}
 
