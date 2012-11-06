@@ -138,6 +138,8 @@ Todos os itens destes Termos e Condições Gerais estão regidos pelas leis vige
 				
 	 <h:selectBooleanCheckbox value="#{termoUsoFaces.flagAceito}"/>
 	 
+	 <input type="hidden" name="cidade" value="${cidadeFaces.cidadeSelecionada}" />
+	 
 	 <h:commandButton value="Confirmar" action="#{termoUsoFaces.confirmarTermo}" />
 	 
 	 </h:form>
