@@ -72,7 +72,7 @@
 					
 						<c:choose>
                				<c:when test="${not empty buscaFaces.page and buscaFaces.page != 1}">
-               					<li class="inicio"><a href="busca.jsf?cidade=${cidadeFaces.cidadeSelecionada}&page=${buscaFaces.page - 1}" title=""><span class="icons pagInicio"></span></a></li>
+               					<li class="inicio"><a href="busca.jsf?cidade=${cidadeFaces.cidadeSelecionada}&termoBuscado=${buscaFaces.termoBuscado}&page=${buscaFaces.page - 1}" title=""><span class="icons pagInicio"></span></a></li>
                				</c:when>
                				<c:otherwise>
                					<li class="inicio"><span class="icons pagInicio"></span></li>
@@ -80,12 +80,12 @@
                			</c:choose>
 						
 	               		<c:forEach begin="${buscaFaces.paginaInicial}" end="${buscaFaces.paginaFinal}" var="pagina">
-		                    <li class="pagina"><a href="busca.jsf?cidade=${cidadeFaces.cidadeSelecionada}&page=${pagina}" title="">${pagina}</a></li>
+		                    <li class="pagina"><a href="busca.jsf?cidade=${cidadeFaces.cidadeSelecionada}&termoBuscado=${buscaFaces.termoBuscado}&page=${pagina}" title="">${pagina}</a></li>
 		                </c:forEach>
 	                
 						<c:choose>
 	          				<c:when test="${buscaFaces.page != buscaFaces.qtdPaginas}">
-	          					<li class="fim"><a href="busca.jsf?cidade=${cidadeFaces.cidadeSelecionada}&page=${buscaFaces.page + 1}" title=""><span class="icons pagFim"></span></a></li>
+	          					<li class="fim"><a href="busca.jsf?cidade=${cidadeFaces.cidadeSelecionada}&termoBuscado=${buscaFaces.termoBuscado}&page=${buscaFaces.page + 1}" title=""><span class="icons pagFim"></span></a></li>
 	          				</c:when>
 	          				<c:otherwise>
 	          					<li class="inicio"><span class="icons pagFim"></span></li>

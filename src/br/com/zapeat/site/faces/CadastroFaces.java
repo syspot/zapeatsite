@@ -55,6 +55,13 @@ public class CadastroFaces extends TSMainFaces {
 
 			super.addErrorMessage("Senha: campo obrigatório.");
 		}
+		
+		if (this.usuarioModel.getFlagAceitouTermo()) {
+
+			validado = false;
+
+			super.addErrorMessage("É necessário aceitar o termo.");
+		}
 
 		return validado;
 	}
@@ -102,7 +109,7 @@ public class CadastroFaces extends TSMainFaces {
 		
 		String marca = "http://saudelivre.com.br/zapeatsite/img/marca.png";
 		
-		corpo.append("<img src="+ marca +"/>");
+		corpo.append("<img src='"+ marca +"'/>");
 		
 		corpo.append("<br><br><br>");
 

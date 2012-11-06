@@ -163,7 +163,7 @@ public class ZapeatUtil {
 
 	public static String tratarCidadeUTF8(String cidade) {
 		try {
-			return new String(cidade.getBytes("ISO-8859-1"), "UTF-8");
+			return new String(cidade.replaceAll("'", "").getBytes("ISO-8859-1"), "UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 			return cidade;
