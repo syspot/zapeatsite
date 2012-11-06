@@ -62,26 +62,17 @@ public class LoginFaces extends TSMainFaces {
 
 			if (!TSUtil.isEmpty(model) && !TSUtil.isEmpty(model.getSenha()) && model.getSenha().equals(TSCryptoUtil.gerarHash(this.usuarioModel.getSenha(), "MD5"))) {
 
-				if (!model.getFlagAtivo()) {
-
-					TSFacesUtil.addErrorMessage("Seu cadastro encontra-se inativo!");
-
-				} else {
-
-					if (!TSUtil.isEmpty(model.getFlagAceitouTermo()) && model.getFlagAceitouTermo()) {
-
-						TSFacesUtil.addObjectInSession(Constantes.ID_USUARIO_LOGADO, model.getId());
-						TSFacesUtil.addObjectInSession(Constantes.NOME_USUARIO_LOGADO, model.getNome());
-
-						TSFacesUtil.addObjectInSession(Constantes.LOGIN_APLICACAO, true);
-
-						ZapeatUtil.redirect();
-
-					} else {
-
-						ZapeatUtil.redirectTermoUso(TSCryptoUtil.criptografar(model.getId().toString()));
-					}
-
+				if(model.getFlagAceitouTermo()){
+					
+					TSFacesUtil.addObjectInSession(Constantes.ID_USUARIO_LOGADO, model.getId());
+					TSFacesUtil.addObjectInSession(Constantes.NOME_USUARIO_LOGADO, model.getNome());
+					TSFacesUtil.addObjectInSession(Constantes.LOGIN_APLICACAO, true);
+					
+				} else{
+					
+					super.addErrorMessage("Seu cadastro encontra-se inativo!");
+					ZapeatUtil.redirectTermoUso(model);
+					
 				}
 
 			} else {
