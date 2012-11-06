@@ -14,7 +14,6 @@ import javax.crypto.NoSuchPaddingException;
 import javax.faces.bean.ManagedBean;
 
 import br.com.topsys.exception.TSApplicationException;
-import br.com.topsys.util.TSCryptoUtil;
 import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.util.TSFacesUtil;
 import br.com.zapeat.site.dao.UsuarioDAO;
@@ -127,7 +126,7 @@ public class FaceBookFaces {
 
 						} else {
 
-							ZapeatUtil.redirectTermoUso(TSCryptoUtil.criptografar(usuario.getId().toString()));
+							ZapeatUtil.redirectTermoUso(usuario);
 						}
 
 					} else {

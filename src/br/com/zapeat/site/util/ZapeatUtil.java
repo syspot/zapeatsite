@@ -11,8 +11,10 @@ import javax.faces.context.FacesContext;
 import org.apache.commons.io.FileUtils;
 
 import br.com.topsys.exception.TSSystemException;
+import br.com.topsys.util.TSCryptoUtil;
 import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.util.TSFacesUtil;
+import br.com.zapeat.site.model.UsuarioModel;
 
 public class ZapeatUtil {
 
@@ -147,13 +149,13 @@ public class ZapeatUtil {
 		}
 	}
 
-	public static void redirectTermoUso(String criptografado) {
+	public static void redirectTermoUso(UsuarioModel model) {
 
 		try {
 			
-			TSFacesUtil.getFacesContext().getExternalContext().redirect("termoUso.jsf?token="+criptografado);
+			TSFacesUtil.getFacesContext().getExternalContext().redirect("termoUso.jsf?cidade=" + TSFacesUtil.getRequestParameter("cidade") + "&token="+TSCryptoUtil.criptografar(model.getId().toString()));
 
-		} catch (IOException e) {
+		} catch (Exception e) {
 			
 			e.printStackTrace();
 		}

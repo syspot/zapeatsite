@@ -122,7 +122,7 @@ public class UsuarioModel {
 	}
 
 	public Boolean getFlagAceitouTermo() {
-		return flagAceitouTermo;
+		return TSUtil.isEmpty(flagAceitouTermo) ? false : flagAceitouTermo;
 	}
 
 	public void setFlagAceitouTermo(Boolean flagAceitouTermo) {
