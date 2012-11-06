@@ -12,7 +12,7 @@ import br.com.zapeat.site.dao.CidadeDAO;
 import br.com.zapeat.site.model.CidadeModel;
 import br.com.zapeat.site.util.ZapeatUtil;
 
-@ManagedBean
+@ManagedBean(name = "cidadeFaces")
 public class CidadeFaces extends TSMainFaces {
 
 	private List<CidadeModel> cidades;

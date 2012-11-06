@@ -27,6 +27,8 @@
 	<div align="center">
 	 <h:form>
 	 
+	 <t:inputHidden value="#{cidadeFaces.cidadeSelecionada}" id="cidade" forceId="true"/>
+	 
 	 <t:inputHidden value="#{termoUsoFaces.id}" id="token" forceId="true"/>
 	 
 	 <textarea name="comentario" rows="3" cols="41">
