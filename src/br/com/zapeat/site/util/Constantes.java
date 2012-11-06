@@ -1,19 +1,12 @@
 package br.com.zapeat.site.util;
 
-import java.io.File;
-
 import br.com.topsys.web.util.TSFacesUtil;
 
 public final class Constantes {
 	
 	public static final String URL_APLICACAO = "http://" + TSFacesUtil.getRequest().getServerName() + ":"+ TSFacesUtil.getRequest().getServerPort() + TSFacesUtil.getRequest().getContextPath() + "/";
 
-	public static final String PASTA_UPLOAD_TEMP = "e:" + File.separator + "img_zapeat" + File.separator;
-	public static final String PASTA_UPLOAD = "e:" + File.separator + "img_zapeat" + File.separator;
-
-	public static final String PASTA_DOWNLOAD_TEMP = "http://"+TSFacesUtil.getRequest().getServerName() + ":" + TSFacesUtil.getRequest().getServerPort() + "/img_zapeat/";
 	public static final String PASTA_DOWNLOAD = "http://"+TSFacesUtil.getRequest().getServerName() + ":" + TSFacesUtil.getRequest().getServerPort() + "/img_zapeat/";
-	public static final String PASTA_DOWNLOAD_FORNECEDOR = "http://"+TSFacesUtil.getRequest().getServerName() + ":" + TSFacesUtil.getRequest().getServerPort() + "/img_zapeat/fornecedor/";
 	
 	public static final String PREFIXO_IMAGEM_CATEGORIA = "20x20_";
 	public static final String PREFIXO_IMAGEM_FORMA_PAGAMENTO = "25x18_";
