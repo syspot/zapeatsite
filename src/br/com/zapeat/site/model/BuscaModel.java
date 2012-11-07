@@ -113,7 +113,7 @@ public class BuscaModel {
 		switch (tipo) {
 			
 			case 1: imagem = Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_PROMOCAO_THUMB + imagem; break; 
-			case 2: imagem = Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_CARRO_CHEFE_THUMB + imagem; break; 
+			case 2: imagem = Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_FORNECEDOR_LOGOMARCA + imagem; break; 
 			case 3: imagem = Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_FORNECEDOR_LOGOMARCA + imagem; break; 
 
 			default: break;

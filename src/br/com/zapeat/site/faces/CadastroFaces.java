@@ -80,6 +80,8 @@ public class CadastroFaces extends TSMainFaces {
 			UsuarioModel model = usuarioDAO.obter(this.usuarioModel);
 
 			if (TSUtil.isEmpty(model)) {
+				
+				this.usuarioModel.setFlagAceitouTermo(Boolean.TRUE);
 
 				this.usuarioModel.setSenha(TSCryptoUtil.gerarHash(this.usuarioModel.getSenha(), TSConstant.CRIPTOGRAFIA_MD5));
 
