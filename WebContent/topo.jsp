@@ -84,7 +84,7 @@
                             <li><a href="listagem.jsf?categoriaId=7&tipo=5" title="carro-chefe">carro-chefe</a></li>
                             
                         </ul>
-                        </li>
+                    </li>
                 	<c:forEach items="${categoriaFaces.categorias}" var="item">
                     <li>
                         <span class="iconografia"><img src="${item.imagemView}" alt="" title="${item.descricao}" /></span>
