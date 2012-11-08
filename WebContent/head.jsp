@@ -42,9 +42,6 @@
  		jQuery(window).ready(function(){  
             jQuery("#btnInit").click(function(){
 				$('#cidade').val(initialize);
-				
-				window.setInterval("$('#buscar').click()", 4000);
-					
 			}); 			
         })
 
@@ -103,7 +100,7 @@
 
 					//---
 					//aplica dados no input
-					$('#cidade').val(city.long_name + "-" + state.short_name);
+					$('#cidade').val(city.long_name + "-" + state.long_name);
 					//$('body').append('<p>Seu endereço:<br />' +
 					//	city.long_name + " / " + state.long_name + '</p>');						
 				} else {
