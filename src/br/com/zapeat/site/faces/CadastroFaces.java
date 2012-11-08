@@ -1,12 +1,5 @@
 package br.com.zapeat.site.faces;
 
-import java.io.UnsupportedEncodingException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
 import javax.faces.bean.ManagedBean;
 
 import br.com.topsys.constant.TSConstant;
@@ -19,7 +12,6 @@ import br.com.zapeat.site.dao.UsuarioDAO;
 import br.com.zapeat.site.model.UsuarioModel;
 import br.com.zapeat.site.util.Constantes;
 import br.com.zapeat.site.util.EnviarEmail;
-
 
 @ManagedBean
 public class CadastroFaces extends TSMainFaces {
@@ -62,7 +54,7 @@ public class CadastroFaces extends TSMainFaces {
 
 			super.addErrorMessage("Senha: campo obrigatório.");
 		}
-		
+
 		if (this.usuarioModel.getFlagAceitouTermo()) {
 
 			validado = false;
@@ -79,15 +71,15 @@ public class CadastroFaces extends TSMainFaces {
 		super.setClearFields(false);
 
 		super.setDefaultMessage(false);
-		
+
 		if (this.validaCampos()) {
-			
+
 			UsuarioDAO usuarioDAO = new UsuarioDAO();
-			
+
 			UsuarioModel model = usuarioDAO.obter(this.usuarioModel);
 
 			if (TSUtil.isEmpty(model)) {
-				
+
 				this.usuarioModel.setFlagAceitouTermo(Boolean.TRUE);
 
 				this.usuarioModel.setSenha(TSCryptoUtil.gerarHash(this.usuarioModel.getSenha(), TSConstant.CRIPTOGRAFIA_MD5));
@@ -95,9 +87,9 @@ public class CadastroFaces extends TSMainFaces {
 				model = usuarioDAO.inserir(this.usuarioModel);
 
 				model.setNome(TSStringUtil.formatarNomeProprio(model.getNome()));
-				
+
 				this.enviarEmail(model);
-				
+
 				this.usuarioModel = new UsuarioModel();
 
 				super.addInfoMessage("Para efetivar seu cadastro é necessário acessar o e-mail informado e clicar no link de confirmação.");
@@ -111,61 +103,37 @@ public class CadastroFaces extends TSMainFaces {
 
 		return null;
 	}
-	
-	private void enviarEmail(UsuarioModel model){
-		
+
+	private void enviarEmail(UsuarioModel model) {
+
 		StringBuilder corpo = new StringBuilder();
-		
+
 		String marca = "http://saudelivre.com.br/zapeatsite/img/marca.png";
-		
-		corpo.append("<img src='"+ marca +"'/>");
-		
+
+		corpo.append("<img src='" + marca + "'/>");
+
 		corpo.append("<br><br><br>");
 
 		corpo.append("Olá " + model.getNome());
 
 		corpo.append("<br>");
 
-		corpo.append("Para confirmar seu cadastro no site ZAPEAT clique no link abaixo:");
-
-		corpo.append("<br><br>");
-		
-		String urlConfirmacao = null;
-		
 		try {
-			
-			urlConfirmacao = Constantes.URL_APLICACAO + "confirmacao.jsf?cidade=" + super.getRequestParameter("cidade") + "&token="+ TSCryptoUtil.criptografar(model.getId().toString());
-		} catch (InvalidKeyException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (NoSuchPaddingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (BadPaddingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalBlockSizeException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		corpo.append("<a href='"+urlConfirmacao+"'>Confirme Aqui</a>");
 
-		/*try {
-			
-			corpo.append(Constantes.URL_APLICACAO + "confirmacao.jsf?cidade=" + super.getRequestParameter("cidade") + "&token="+ TSCryptoUtil.criptografar(model.getId().toString()) + "");
-			
+			corpo.append("Para confirmar seu cadastro no site ZAPEAT clique <a href=\"")
+
+			.append(Constantes.URL_APLICACAO + "confirmacao.jsf?token=" + TSCryptoUtil.criptografar(model.getId().toString()))
+
+			.append("\"> aqui </a>");
+
+			EnviarEmail.enviar(Constantes.ZAPEAT_GMAIL, model.getEmail(), "Zapeat - Confirmação de Cadastro", corpo.toString());
+
 		} catch (Exception e) {
+
 			e.printStackTrace();
-		} */
-		
-		EnviarEmail.enviar(Constantes.ZAPEAT_GMAIL, model.getEmail(), "Zapeat - Confirmação de Cadastro", corpo.toString());
+
+		}
+
 	}
 
 	public UsuarioModel getUsuarioModel() {

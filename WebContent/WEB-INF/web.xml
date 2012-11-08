@@ -50,6 +50,21 @@
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.jsf</url-pattern>
 	</servlet-mapping>
+	
+	<error-page>
+        <error-code>400</error-code>
+        <location>/400.jsp</location>
+    </error-page>
+    
+    <error-page>
+        <error-code>404</error-code>
+        <location>/404.jsp</location>
+    </error-page>
+	
+	<error-page>
+        <error-code>500</error-code>
+        <location>/500.jsp</location>
+    </error-page>
 
 	<session-config>
 		<session-timeout>30</session-timeout>
