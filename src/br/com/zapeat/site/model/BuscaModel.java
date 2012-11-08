@@ -18,6 +18,8 @@ public class BuscaModel {
 	
 	private String categoria;
 	
+	private String imagemCategoria;
+	
 	private String telefone;
 	
 	private String site;
@@ -111,7 +113,7 @@ public class BuscaModel {
 		switch (tipo) {
 			
 			case 1: imagem = Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_PROMOCAO_THUMB + imagem; break; 
-			case 2: imagem = Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_CARRO_CHEFE_THUMB + imagem; break; 
+			case 2: imagem = Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_FORNECEDOR_LOGOMARCA + imagem; break; 
 			case 3: imagem = Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_FORNECEDOR_LOGOMARCA + imagem; break; 
 
 			default: break;
@@ -147,6 +149,18 @@ public class BuscaModel {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getImagemCategoria() {
+		return imagemCategoria;
+	}
+
+	public void setImagemCategoria(String imagemCategoria) {
+		this.imagemCategoria = imagemCategoria;
+	}
+	
+	public String getImagemCategoriaView() {
+		return Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_CATEGORIA + getImagemCategoria();
 	}
 
 	public String getLink() {

@@ -1,51 +1,28 @@
 package br.com.zapeat.site.faces;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
-
-import org.apache.myfaces.custom.fileupload.UploadedFile;
 
 import br.com.topsys.constant.TSConstant;
 import br.com.topsys.exception.TSApplicationException;
-import br.com.topsys.file.TSFile;
 import br.com.topsys.util.TSCryptoUtil;
 import br.com.topsys.util.TSStringUtil;
 import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.faces.TSMainFaces;
-import br.com.topsys.web.util.TSFacesUtil;
 import br.com.zapeat.site.dao.UsuarioDAO;
 import br.com.zapeat.site.model.UsuarioModel;
 import br.com.zapeat.site.util.Constantes;
+import br.com.zapeat.site.util.EnviarEmail;
 
-@ViewScoped
-@ManagedBean(name = "cadastroFaces")
+
+@ManagedBean
 public class CadastroFaces extends TSMainFaces {
 
 	private UsuarioModel usuarioModel;
-	private UsuarioDAO usuarioDAO;
-	private UploadedFile arquivo;
-	private boolean exibirDivMessagem;
 
 	public CadastroFaces() {
 
-		this.initDAO();
+		this.usuarioModel = new UsuarioModel();
 
-		this.initObjetos();
-
-	}
-
-	private void initObjetos() {
-
-		this.setUsuarioModel(new UsuarioModel());
-
-		this.getUsuarioModel().setFlagAtivo(Boolean.TRUE);
-
-		this.setExibirDivMessagem(false);
-	}
-
-	private void initDAO() {
-
-		this.setUsuarioDAO(new UsuarioDAO());
 	}
 
 	private boolean validaCampos() {
@@ -78,6 +55,13 @@ public class CadastroFaces extends TSMainFaces {
 
 			super.addErrorMessage("Senha: campo obrigatório.");
 		}
+		
+		if (this.usuarioModel.getFlagAceitouTermo()) {
+
+			validado = false;
+
+			super.addErrorMessage("É necessário aceitar o termo.");
+		}
 
 		return validado;
 	}
@@ -89,31 +73,27 @@ public class CadastroFaces extends TSMainFaces {
 
 		super.setDefaultMessage(false);
 		
-		this.setExibirDivMessagem(false);
-
 		if (this.validaCampos()) {
+			
+			UsuarioDAO usuarioDAO = new UsuarioDAO();
+			
+			UsuarioModel model = usuarioDAO.obter(this.usuarioModel);
 
-			if (!this.existeEmail()) {
-
-				this.criarArquivoDiretorio();
+			if (TSUtil.isEmpty(model)) {
+				
+				this.usuarioModel.setFlagAceitouTermo(Boolean.TRUE);
 
 				this.usuarioModel.setSenha(TSCryptoUtil.gerarHash(this.usuarioModel.getSenha(), TSConstant.CRIPTOGRAFIA_MD5));
 
-				UsuarioModel model = this.usuarioDAO.inserir(this.usuarioModel);
-
-				super.setDefaultMessage(true);
+				model = usuarioDAO.inserir(this.usuarioModel);
 
 				model.setNome(TSStringUtil.formatarNomeProprio(model.getNome()));
-
-				TSFacesUtil.addObjectInSession(Constantes.USUARIO_LOGADO, model);
 				
-				TSFacesUtil.addObjectInSession(Constantes.LOGIN_APLICACAO, true);
+				this.enviarEmail(model);
+				
+				this.usuarioModel = new UsuarioModel();
 
-				this.initObjetos();
-
-				super.setDefaultMessage(true);
-
-				return Constantes.INDEX;
+				super.addInfoMessage("Para efetivar seu cadastro é necessário acessar o e-mail informado e clicar no link de confirmação.");
 
 			} else {
 
@@ -124,40 +104,34 @@ public class CadastroFaces extends TSMainFaces {
 
 		return null;
 	}
+	
+	private void enviarEmail(UsuarioModel model){
+		
+		StringBuilder corpo = new StringBuilder();
+		
+		String marca = "http://saudelivre.com.br/zapeatsite/img/marca.png";
+		
+		corpo.append("<img src='"+ marca +"'/>");
+		
+		corpo.append("<br><br><br>");
 
-	private boolean existeEmail() {
+		corpo.append("Olá " + model.getNome());
 
-		UsuarioModel model = this.usuarioDAO.obter(this.usuarioModel);
+		corpo.append("<br>");
 
-		if (!TSUtil.isEmpty(model) && !TSUtil.isEmpty(model.getId())) {
+		corpo.append("Para confirmar seu cadastro no site ZAPEAT clique no link abaixo:");
 
-			return true;
-		}
-
-		return false;
-
-	}
-
-	private void criarArquivoDiretorio() {
+		corpo.append("<br><br>");
 
 		try {
-
-			if (!TSUtil.isEmpty(this.getArquivo())) {
-
-				this.usuarioModel.setImagem(TSUtil.gerarId() + TSFile.obterExtensaoArquivo(this.getArquivo().getName()));
-
-				TSFile.inputStreamToFile(this.getArquivo().getInputStream(), Constantes.PASTA_UPLOAD + this.usuarioModel.getImagem());
-
-			}
-
+			
+			corpo.append(Constantes.URL_APLICACAO + "confirmacao.jsf?cidade=" + super.getRequestParameter("cidade") + "&token="+ TSCryptoUtil.criptografar(model.getId().toString()) + "");
+			
 		} catch (Exception e) {
-
-			TSFacesUtil.addErrorMessage("Erro ao enviar o arquivo!");
-
 			e.printStackTrace();
-
-		}
-
+		} 
+		
+		EnviarEmail.enviar(Constantes.ZAPEAT_GMAIL, model.getEmail(), "Zapeat - Confirmação de Cadastro", corpo.toString());
 	}
 
 	public UsuarioModel getUsuarioModel() {
@@ -166,30 +140,6 @@ public class CadastroFaces extends TSMainFaces {
 
 	public void setUsuarioModel(UsuarioModel usuarioModel) {
 		this.usuarioModel = usuarioModel;
-	}
-
-	public UsuarioDAO getUsuarioDAO() {
-		return usuarioDAO;
-	}
-
-	public void setUsuarioDAO(UsuarioDAO usuarioDAO) {
-		this.usuarioDAO = usuarioDAO;
-	}
-
-	public UploadedFile getArquivo() {
-		return arquivo;
-	}
-
-	public void setArquivo(UploadedFile arquivo) {
-		this.arquivo = arquivo;
-	}
-
-	public boolean isExibirDivMessagem() {
-		return exibirDivMessagem;
-	}
-
-	public void setExibirDivMessagem(boolean exibirDivMessagem) {
-		this.exibirDivMessagem = exibirDivMessagem;
 	}
 
 }

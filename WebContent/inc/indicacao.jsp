@@ -87,7 +87,7 @@ $(document).ready( function() {
 
         <div class="inputs">  
         
-        	<h:commandButton value="CADASTRAR" id="submit" action="#{rankingFaces.indicarComida}"/>  
+        	<h:commandButton value="CADASTRAR" id="submit" action="#{rankingFaces.indicacaoNegativa}"/>  
            
         </div>
 		

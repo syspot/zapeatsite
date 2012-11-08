@@ -11,66 +11,98 @@ import br.com.zapeat.site.model.PromocaoModel;
 public class PromocaoDAO {
 
 	@SuppressWarnings("unchecked")
-	public List<PromocaoModel> pesquisarPorIndicacoes(Long page, Long tipoPromocao, Long categoriaId) {
+	public List<PromocaoModel> pesquisarPorIndicacoes(Long cidadeId, Long page, Long tipoPromocao, Long categoriaId) {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("promocaodao.pesquisarporindicacoes", tipoPromocao, categoriaId, page);
+		broker.setPropertySQL("promocaodao.pesquisarporindicacoes", tipoPromocao, categoriaId, cidadeId, page);
 
-		return broker.getCollectionBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.logoMarca", "fornecedorModel.telefone", "fornecedorModel.site", "fornecedorModel.latitude", "fornecedorModel.longitude", "fornecedorModel.categoriaPrincipal.id", "fornecedorModel.categoriaPrincipal.descricao", "descricao", "titulo", "indicacoes", "fornecedorModel.numeroUnico");
+		return broker.getCollectionBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.logoMarca", "fornecedorModel.telefone", "fornecedorModel.site", "fornecedorModel.latitude", "fornecedorModel.longitude", "fornecedorModel.categoriaPrincipal.id", "fornecedorModel.categoriaPrincipal.descricao", "fornecedorModel.categoriaPrincipal.imagem", "descricao", "titulo", "indicacoes", "fornecedorModel.numeroUnico");
 
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<PromocaoModel> pesquisarPorIndicacoesMaisIndicados(Long page, Long tipoPromocao) {
+	public List<PromocaoModel> pesquisarPorIndicacoesMaisIndicados(Long cidadeId, Long page, Long tipoPromocao) {
 		
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		
-		broker.setPropertySQL("promocaodao.pesquisarporindicacoesmaisindicados", tipoPromocao, page);
+		broker.setPropertySQL("promocaodao.pesquisarporindicacoesmaisindicados", tipoPromocao, cidadeId, page);
+		
+		return broker.getCollectionBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.logoMarca", "fornecedorModel.telefone", "fornecedorModel.site", "fornecedorModel.latitude", "fornecedorModel.longitude", "fornecedorModel.categoriaPrincipal.id", "fornecedorModel.categoriaPrincipal.descricao", "fornecedorModel.categoriaPrincipal.imagem", "descricao", "titulo", "indicacoes", "fornecedorModel.numeroUnico");
+		
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<PromocaoModel> pesquisarPorIndicacoesOutrasCategorias(Long page, Long tipoPromocao) {
+		
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		
+		broker.setPropertySQL("promocaodao.pesquisarporindicacoesoutrascategorias", tipoPromocao, page);
 		
 		return broker.getCollectionBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.logoMarca", "fornecedorModel.telefone", "fornecedorModel.site", "fornecedorModel.latitude", "fornecedorModel.longitude", "fornecedorModel.categoriaPrincipal.id", "fornecedorModel.categoriaPrincipal.descricao", "descricao", "titulo", "indicacoes", "fornecedorModel.numeroUnico");
 		
 	}
 
-	public Model obterQtdPaginasPorIndicacoes(Long tipoPromocao, Long categoriaId) {
+	public Model obterQtdPaginasPorIndicacoes(Long cidadeId, Long tipoPromocao, Long categoriaId) {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("promocaodao.pesquisarqtdpaginasporindicacoes", tipoPromocao, categoriaId);
+		broker.setPropertySQL("promocaodao.pesquisarqtdpaginasporindicacoes", tipoPromocao, categoriaId, cidadeId);
 
 		return (Model) broker.getObjectBean(Model.class, "value");
 
 	}
 	
-	public Model obterQtdPaginasPorIndicacoesMaisIndicados(Long tipoPromocao) {
+	public Model obterQtdPaginasPorIndicacoesMaisIndicados(Long cidadeId, Long tipoPromocao) {
 		
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		
-		broker.setPropertySQL("promocaodao.pesquisarqtdpaginasporindicacoesmaisindicados", tipoPromocao);
+		broker.setPropertySQL("promocaodao.pesquisarqtdpaginasporindicacoesmaisindicados", cidadeId, tipoPromocao);
+		
+		return (Model) broker.getObjectBean(Model.class, "value");
+		
+	}
+	
+	public Model obterQtdPaginasPorIndicacoesOutrasCategorias(Long tipoPromocao) {
+		
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		
+		broker.setPropertySQL("promocaodao.pesquisarqtdpaginasporindicacoesoutrascategorias", tipoPromocao);
 		
 		return (Model) broker.getObjectBean(Model.class, "value");
 		
 	}
 
-	public PromocaoModel obterPromocaoHora() {
+	public PromocaoModel obterPromocaoHora(Long cidadeId) {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("promocaodao.obterPromocaoHora");
+		broker.setPropertySQL("promocaodao.obterPromocaoHora", cidadeId);
 
 		return (PromocaoModel) broker.getObjectBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "descricao", "inicio", "fim", "precoOriginal", "precoPromocional", "titulo", "fornecedorModel.longitude", "fornecedorModel.latitude", "imagemPromocao", "fornecedorModel.logoMarca");
 
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<PromocaoModel> pesquisarPromocoesHora(PromocaoModel model) {
+	public List<PromocaoModel> pesquisarPromocoesHora(PromocaoModel model, Long cidadeId) {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("promocaodao.pesquisarPromocoesHora", model.getId());
+		broker.setPropertySQL("promocaodao.pesquisarPromocoesHora", model.getId(), cidadeId);
 
 		return broker.getCollectionBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "descricao", "inicio", "fim", "precoOriginal", "precoPromocional", "titulo", "fornecedorModel.longitude", "fornecedorModel.latitude", "fornecedorModel.site","indicacoes", "fornecedorModel.telefone", "imagemPromocao");
 
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<PromocaoModel> pesquisarPromocoesHora(Long id) {
+		
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		
+		broker.setPropertySQL("promocaodao.pesquisarPromocoesHora", id);
+		
+		return broker.getCollectionBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "descricao", "inicio", "fim", "precoOriginal", "precoPromocional", "titulo", "fornecedorModel.longitude", "fornecedorModel.latitude", "fornecedorModel.site","indicacoes", "fornecedorModel.telefone", "imagemPromocao");
+		
 	}
 
 	public PromocaoModel obterPromocaoDia(FornecedorModel model) {
@@ -81,6 +113,36 @@ public class PromocaoDAO {
 
 		return (PromocaoModel) broker.getObjectBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "descricao", "inicio", "fim", "precoOriginal", "precoPromocional", "titulo", "imagemPromocao", "fornecedorModel.longitude", "fornecedorModel.latitude");
 
+	}
+	
+	public PromocaoModel obterPromocaoHoraAleatoria(Long promocaoId, Long fornecedorId, Long cidadeId) {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+		broker.setPropertySQL("promocaodao.obterpromocaohoraaleatoria", fornecedorId, promocaoId, cidadeId);
+
+		return (PromocaoModel) broker.getObjectBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "descricao", "inicio", "fim", "precoOriginal", "precoPromocional", "titulo", "imagemPromocao", "fornecedorModel.longitude", "fornecedorModel.latitude");
+
+	}
+	
+	public PromocaoModel obterPromocaoDiaAleatoria(Long promocaoId, Long fornecedorId, Long cidadeId) {
+		
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		
+		broker.setPropertySQL("promocaodao.obterpromocaodiaaleatoria", fornecedorId, promocaoId, cidadeId);
+		
+		return (PromocaoModel) broker.getObjectBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "descricao", "inicio", "fim", "precoOriginal", "precoPromocional", "titulo", "imagemPromocao", "fornecedorModel.longitude", "fornecedorModel.latitude");
+		
+	}
+	
+	public PromocaoModel obterPromocaoSemanaAleatoria(Long promocaoId, Long fornecedorId, Long cidadeId) {
+		
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		
+		broker.setPropertySQL("promocaodao.obterpromocaosemanaaleatoria", fornecedorId, promocaoId, cidadeId);
+		
+		return (PromocaoModel) broker.getObjectBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "descricao", "inicio", "fim", "precoOriginal", "precoPromocional", "titulo", "imagemPromocao", "fornecedorModel.longitude", "fornecedorModel.latitude");
+		
 	}
 
 	public PromocaoModel obterPromocaoSemana(FornecedorModel model) {
@@ -93,13 +155,13 @@ public class PromocaoDAO {
 
 	}
 	
-	public PromocaoModel obter(Long id) {
+	public PromocaoModel obter(Long id, Long cidadeId) {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("promocaodao.obter", id);
+		broker.setPropertySQL("promocaodao.obter", id, cidadeId);
 
-		return (PromocaoModel) broker.getObjectBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.logoMarca", "fornecedorModel.horariosFuncionamento", "fornecedorModel.logradouro", "fornecedorModel.numero", "fornecedorModel.bairro", "fornecedorModel.telefone", "fornecedorModel.categoriaPrincipal.id", "fornecedorModel.categoriaPrincipal.descricao", "fornecedorModel.categoriaPrincipal.css", "imagemPromocao", "descricao", "inicio", "fim", "precoOriginal", "precoPromocional", "titulo", "fornecedorModel.longitude", "fornecedorModel.latitude");
+		return (PromocaoModel) broker.getObjectBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "fornecedorModel.logoMarca", "fornecedorModel.horariosFuncionamento", "fornecedorModel.logradouro", "fornecedorModel.numero", "fornecedorModel.bairro", "fornecedorModel.telefone", "fornecedorModel.categoriaPrincipal.id", "fornecedorModel.categoriaPrincipal.descricao", "fornecedorModel.categoriaPrincipal.imagem", "imagemPromocao", "descricao", "inicio", "fim", "precoOriginal", "precoPromocional", "titulo", "fornecedorModel.longitude", "fornecedorModel.latitude");
 
 	}
 

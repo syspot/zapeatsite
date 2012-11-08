@@ -1,7 +1,13 @@
 package br.com.zapeat.site.faces;
 
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 
 import br.com.topsys.util.TSCryptoUtil;
 import br.com.topsys.util.TSUtil;
@@ -10,30 +16,15 @@ import br.com.topsys.web.util.TSFacesUtil;
 import br.com.zapeat.site.dao.UsuarioDAO;
 import br.com.zapeat.site.model.UsuarioModel;
 import br.com.zapeat.site.util.Constantes;
+import br.com.zapeat.site.util.ZapeatUtil;
 
-@ViewScoped
-@ManagedBean(name = "loginFaces")
+@ManagedBean
 public class LoginFaces extends TSMainFaces {
 
 	private UsuarioModel usuarioModel;
-	private UsuarioDAO usuarioDAO;
 
 	public LoginFaces() {
-
-		this.initDAO();
-		this.initObejtos();
-
-	}
-
-	private void initDAO() {
-
-		this.usuarioDAO = new UsuarioDAO();
-	}
-
-	private void initObejtos() {
-
 		this.usuarioModel = new UsuarioModel();
-
 	}
 
 	private boolean validaCampos() {
@@ -63,28 +54,46 @@ public class LoginFaces extends TSMainFaces {
 		return validado;
 	}
 
-	public String autenticar() {
+	public String autenticar() throws InvalidKeyException, UnsupportedEncodingException, NoSuchPaddingException, BadPaddingException, NoSuchAlgorithmException, IllegalBlockSizeException {
 
 		if (this.validaCampos()) {
 
-			UsuarioModel model = this.usuarioDAO.obter(this.usuarioModel);
+			UsuarioModel model = new UsuarioDAO().obter(this.usuarioModel);
 
 			if (!TSUtil.isEmpty(model) && !TSUtil.isEmpty(model.getSenha()) && model.getSenha().equals(TSCryptoUtil.gerarHash(this.usuarioModel.getSenha(), "MD5"))) {
 
-				TSFacesUtil.addObjectInSession(Constantes.USUARIO_LOGADO, model);
+				if (!model.getFlagAtivo()) {
 
-				TSFacesUtil.addObjectInSession(Constantes.LOGIN_APLICACAO, true);
+					TSFacesUtil.addErrorMessage("Seu cadastro encontra-se inativo!");
 
-				return Constantes.INDEX;
+				} else {
+
+					if (!TSUtil.isEmpty(model.getFlagAceitouTermo()) && model.getFlagAceitouTermo()) {
+
+						TSFacesUtil.addObjectInSession(Constantes.ID_USUARIO_LOGADO, model.getId());
+						TSFacesUtil.addObjectInSession(Constantes.NOME_USUARIO_LOGADO, model.getNome());
+
+						TSFacesUtil.addObjectInSession(Constantes.LOGIN_APLICACAO, true);
+
+						ZapeatUtil.redirect();
+
+					} else {
+
+						ZapeatUtil.redirectTermoUso(model);
+					}
+
+				}
 
 			} else {
 
 				TSFacesUtil.addErrorMessage("Dados inválidos.");
+
 			}
 		}
 
 		return null;
 	}
+
 
 	public UsuarioModel getUsuarioModel() {
 		return usuarioModel;
@@ -92,14 +101,6 @@ public class LoginFaces extends TSMainFaces {
 
 	public void setUsuarioModel(UsuarioModel usuarioModel) {
 		this.usuarioModel = usuarioModel;
-	}
-
-	public UsuarioDAO getUsuarioDAO() {
-		return usuarioDAO;
-	}
-
-	public void setUsuarioDAO(UsuarioDAO usuarioDAO) {
-		this.usuarioDAO = usuarioDAO;
 	}
 
 }

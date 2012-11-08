@@ -4,24 +4,22 @@ import java.util.Date;
 
 import br.com.topsys.util.TSUtil;
 
-public class ComentarioModel{
+public class ComentarioModel {
 
 	private Long id;
 
 	private UsuarioModel usuarioModel;
 
 	private FornecedorModel fornecedorModel;
-	
+
 	private String descricao;
-	
+
 	private Date dataCadastro;
-	
-	private Boolean flagIndicaAtendimento;
-	
-	private Boolean flagIndicaPromocao;
-	
+
+	private Boolean flagIndica;
+
 	private Long posicao;
-	
+
 	private Boolean flagNaoIndica;
 
 	public Long getId() {
@@ -63,21 +61,29 @@ public class ComentarioModel{
 	public void setDataCadastro(Date dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
-
-	public Boolean getFlagIndicaAtendimento() {
-		return flagIndicaAtendimento;
+	
+	public Long getPosicao() {
+		return posicao;
 	}
 
-	public void setFlagIndicaAtendimento(Boolean flagIndicaAtendimento) {
-		this.flagIndicaAtendimento = flagIndicaAtendimento;
+	public void setPosicao(Long posicao) {
+		this.posicao = posicao;
 	}
 
-	public Boolean getFlagIndicaPromocao() {
-		return flagIndicaPromocao;
+	public Boolean getFlagIndica() {
+		return TSUtil.isEmpty(flagIndica) ? false : flagIndica;
 	}
 
-	public void setFlagIndicaPromocao(Boolean flagIndicaPromocao) {
-		this.flagIndicaPromocao = flagIndicaPromocao;
+	public void setFlagIndica(Boolean flagIndica) {
+		this.flagIndica = flagIndica;
+	}
+
+	public Boolean getFlagNaoIndica() {
+		return TSUtil.isEmpty(flagNaoIndica) ? false : flagNaoIndica;
+	}
+
+	public void setFlagNaoIndica(Boolean flagNaoIndica) {
+		this.flagNaoIndica = flagNaoIndica;
 	}
 
 	@Override
@@ -105,20 +111,4 @@ public class ComentarioModel{
 		return true;
 	}
 
-	public Long getPosicao() {
-		return posicao;
-	}
-
-	public void setPosicao(Long posicao) {
-		this.posicao = posicao;
-	}
-
-	public Boolean getFlagNaoIndica() {
-		return flagNaoIndica;
-	}
-
-	public void setFlagNaoIndica(Boolean flagNaoIndica) {
-		this.flagNaoIndica = flagNaoIndica;
-	}
-	
 }

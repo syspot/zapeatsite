@@ -6,23 +6,33 @@ import br.com.topsys.util.TSUtil;
 public class UsuarioModel {
 
 	private Long id;
-	
+
 	private String nome;
-	
+
 	private String login;
-	
-	private String senha;	
-	
+
+	private String senha;
+
 	private String email;
-	
+
 	private String confirmaSenha;
+
+	private Boolean flagAtivo;
 	
-	private Boolean flagAtivo;	
+	private Boolean flagFacebook;
 	
+	private Boolean flagAceitouTermo;
+
 	private String imagem;
-	
+
+	private String token;
+
 	public UsuarioModel() {
 
+	}
+	
+	public UsuarioModel(Long id) {
+		this.id = id;
 	}
 
 	public Long getId() {
@@ -34,12 +44,12 @@ public class UsuarioModel {
 	}
 
 	public String getNome() {
-		
-		if(!TSUtil.isEmpty(this.nome)){
-			
+
+		if (!TSUtil.isEmpty(this.nome)) {
+
 			this.nome = TSStringUtil.formatarNomeProprio(this.nome);
 		}
-		
+
 		return nome;
 	}
 
@@ -64,7 +74,7 @@ public class UsuarioModel {
 	}
 
 	public Boolean getFlagAtivo() {
-		return flagAtivo;
+		return TSUtil.isEmpty(flagAtivo) ? false : flagAtivo;
 	}
 
 	public void setFlagAtivo(Boolean flagAtivo) {
@@ -93,6 +103,30 @@ public class UsuarioModel {
 
 	public void setImagem(String imagem) {
 		this.imagem = imagem;
+	}
+
+	public String getToken() {
+		return TSUtil.tratarString(token);
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+	public Boolean getFlagFacebook() {
+		return TSUtil.isEmpty(flagFacebook) ? false : flagFacebook;
+	}
+
+	public void setFlagFacebook(Boolean flagFacebook) {
+		this.flagFacebook = flagFacebook;
+	}
+
+	public Boolean getFlagAceitouTermo() {
+		return TSUtil.isEmpty(flagAceitouTermo) ? false : flagAceitouTermo;
+	}
+
+	public void setFlagAceitouTermo(Boolean flagAceitouTermo) {
+		this.flagAceitouTermo = flagAceitouTermo;
 	}
 
 }

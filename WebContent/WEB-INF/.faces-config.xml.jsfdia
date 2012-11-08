@@ -6,10 +6,14 @@
     PATH="/index.jsp" TARGET="rules:#index.jsp" TITLE="index" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT ID="ranking::#ranking.jsp" NAME="output"
     PATH="/ranking.jsp" TARGET="rules:#ranking.jsp" TITLE="ranking" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="pesquisar::#busca.jsp" NAME="output1"
+    PATH="/busca.jsp" TARGET="rules:#busca.jsp" TITLE="pesquisar" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#index.jsp" PATH="/index.jsp"
   SHAPE="288,353,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#ranking.jsp" PATH="/ranking.jsp"
   SHAPE="256,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#busca.jsp" PATH="/busca.jsp"
+  SHAPE="272,209,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

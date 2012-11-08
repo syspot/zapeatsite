@@ -1,133 +1,176 @@
 package br.com.zapeat.site.faces;
 
-import java.io.IOException;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 
+import br.com.topsys.exception.TSApplicationException;
 import br.com.topsys.util.TSUtil;
-import br.com.topsys.web.faces.TSMainFaces;
 import br.com.topsys.web.util.TSFacesUtil;
 import br.com.zapeat.site.dao.ComentarioDAO;
+import br.com.zapeat.site.dao.FormaPagamentoDAO;
 import br.com.zapeat.site.dao.FornecedorDAO;
 import br.com.zapeat.site.dao.ImagemFornecedorDAO;
+import br.com.zapeat.site.dao.UsuarioDAO;
+import br.com.zapeat.site.model.ComentarioFornecedorModel;
 import br.com.zapeat.site.model.ComentarioModel;
 import br.com.zapeat.site.model.FornecedorModel;
-import br.com.zapeat.site.model.ImagemFornecedorModel;
+import br.com.zapeat.site.model.UsuarioModel;
+import br.com.zapeat.site.util.Constantes;
+import br.com.zapeat.site.util.ZapeatUtil;
 
-@ViewScoped
-@ManagedBean(name = "estabelecimentoFaces")
-public class EstabelecimentoFaces extends TSMainFaces {
+@ManagedBean
+public class EstabelecimentoFaces extends CarregaPromocaoFaces {
 
 	private FornecedorModel fornecedorModel;
-	private List<ImagemFornecedorModel> fotosEstabelecimento;
 	private ComentarioModel ranking;
-	private FornecedorDAO fornecedorDAO;
-	private ImagemFornecedorDAO imagemFornecedorDAO;
-	private ComentarioDAO comentarioDAO;
+	private ComentarioFornecedorModel comentarioFornecedorModel;
+	private UsuarioModel usuarioLogado;
 
 	public EstabelecimentoFaces() {
-
+		
 		this.carregaDados();
-
+		
+		this.processarIndicacao();
+		
 	}
-
-	private void carregaDados() {
-
+	
+	private void processarIndicacao(){
+		
+		String indicacao = super.getRequestParameter("indicacao");
+		
+		if(!TSUtil.isEmpty(indicacao)){
+			
+			if(indicacao.equals("true")){
+				this.indicar();
+			} else if(indicacao.equals("false")){
+				this.naoIndicar();
+			}
+		}
+	}
+	
+	private void carregaDados(){
+		
 		String fornecedorId = TSFacesUtil.getRequestParameter("id");
 
 		if (!TSUtil.isEmpty(fornecedorId) && TSUtil.isNumeric(fornecedorId)) {
 
-			this.initDAO();
-
-			this.fornecedorModel = this.fornecedorDAO.obter(new FornecedorModel(new Long(fornecedorId)));
+			this.fornecedorModel = new FornecedorDAO().obter(new FornecedorModel(new Long(fornecedorId)));
 
 			if (!TSUtil.isEmpty(this.fornecedorModel) && !TSUtil.isEmpty(this.fornecedorModel.getId())) {
 
-				this.fotosEstabelecimento = this.imagemFornecedorDAO.pesquisar(this.fornecedorModel);
+				this.ranking = new ComentarioDAO().rankingEstabelecimento(this.fornecedorModel);
 
-				this.ranking = this.comentarioDAO.rankingEstabelecimento(this.fornecedorModel);
+				this.fornecedorModel.setFormasPagamentos(new FormaPagamentoDAO().pesquisar(this.fornecedorModel));
+				this.fornecedorModel.setImagensFornecedorModel(new ImagemFornecedorDAO().pesquisar(this.fornecedorModel));
+				this.fornecedorModel.setComentarios(new ComentarioDAO().pesquisarComentarios(this.fornecedorModel));
 				
-				this.setarCssFotos();
+				this.comentarioFornecedorModel = new ComentarioFornecedorModel();
+				this.comentarioFornecedorModel.setFornecedorModel(this.fornecedorModel);
+				
+				Long idUsuarioLogado = (Long) TSFacesUtil.getObjectInSession(Constantes.ID_USUARIO_LOGADO);
+				
+				this.usuarioLogado = new UsuarioDAO().getById(new UsuarioModel(idUsuarioLogado));
+				
+				this.comentarioFornecedorModel.setUsuarioModel(this.usuarioLogado);
 
 			} else {
 
-				this.redirect();
+				ZapeatUtil.redirect();
 			}
 
 		} else {
 
-			this.redirect();
+			ZapeatUtil.redirect();
 		}
-
+		
 	}
 
-	private void setarCssFotos() {
+	public String comentar() throws TSApplicationException{
 
-		int count = 1;
-
-		for (ImagemFornecedorModel item : this.fotosEstabelecimento) {
-
-			if (count == 1) {
-
-				item.setCss("ftoGrande");
-
-			} else if (count == 2) {
-
-				item.setCss("ftoPeq floatLeft");
-
-			} else if (count == 3) {
-
-				item.setCss("ftoPeq floatRight");
-
-			}
-
-			count++;
+		if(!TSUtil.isEmpty(this.usuarioLogado) && !TSUtil.isEmpty(this.usuarioLogado.getId())){
+			
+			new ComentarioDAO().comentar(comentarioFornecedorModel);
+			
+			this.carregaDados();
+			
+		} else{
+			
+			addErrorMessage("É necessário estar logado para realizar essa operação");
+			
 		}
-	}
-
-	private void redirect() {
-
-		try {
-
-			TSFacesUtil.getFacesContext().getExternalContext().redirect("index.jsf");
-
-		} catch (IOException e) {
-
-			e.printStackTrace();
-		}
-	}
-
-	private void initDAO() {
-
-		this.fornecedorDAO = new FornecedorDAO();
-		this.imagemFornecedorDAO = new ImagemFornecedorDAO();
-		this.comentarioDAO = new ComentarioDAO();
-	}
-
-	public FornecedorDAO getFornecedorDAO() {
-		return fornecedorDAO;
-	}
-
-	public void setFornecedorDAO(FornecedorDAO fornecedorDAO) {
-		this.fornecedorDAO = fornecedorDAO;
+		
+		return null;
 	}
 	
-	public List<ImagemFornecedorModel> getFotosEstabelecimento() {
-		return fotosEstabelecimento;
+	private void executarIndicacao(ComentarioModel comentarioModel){
+		
+		String comentario = super.getRequestParameter("comentario");
+
+		if (!TSUtil.isEmpty(this.usuarioLogado) && !TSUtil.isEmpty(this.usuarioLogado.getId())) {
+
+			comentarioModel.setUsuarioModel(this.usuarioLogado);
+			comentarioModel.setDescricao(comentario);
+			comentarioModel.setFornecedorModel(this.fornecedorModel);
+
+			ComentarioModel coment = new ComentarioDAO().obterIndicacao(comentarioModel);
+
+			if (TSUtil.isEmpty(coment)) {
+				
+				try {
+					new ComentarioDAO().inserir(comentarioModel);
+				} catch (TSApplicationException e) {
+					e.printStackTrace();
+				}
+				
+				this.carregaDados();
+
+				super.addInfoMessage("Indicação realizada com sucesso!");
+					
+			} else {
+
+				super.addErrorMessage(this.usuarioLogado.getNome() + ": O Sr(a) já indicou esse estabelecimento!");
+			}
+
+		} else {
+
+			super.addErrorMessage("Você precisa estar logado para realizar a operação!");
+		}
+			
+	}
+	
+	public String indicar(){
+		
+		ComentarioModel comentarioModel = new ComentarioModel();
+
+		comentarioModel.setFlagIndica(Boolean.TRUE);
+		
+		this.executarIndicacao(comentarioModel);
+		
+		return null;
+		
+	}
+	
+	public String naoIndicar(){
+		
+		ComentarioModel comentarioModel = new ComentarioModel();
+		
+		comentarioModel.setFlagNaoIndica(Boolean.TRUE);
+		
+		this.executarIndicacao(comentarioModel);
+		
+		
+		return null;
+		
+	}
+	
+	@Override
+	protected Long getFornecedorId() {
+		return ZapeatUtil.getParamFormatado(super.getRequestParameter("id"));
 	}
 
-	public void setFotosEstabelecimento(List<ImagemFornecedorModel> fotosEstabelecimento) {
-		this.fotosEstabelecimento = fotosEstabelecimento;
-	}
-
-	public ImagemFornecedorDAO getImagemFornecedorDAO() {
-		return imagemFornecedorDAO;
-	}
-
-	public void setImagemFornecedorDAO(ImagemFornecedorDAO imagemFornecedorDAO) {
-		this.imagemFornecedorDAO = imagemFornecedorDAO;
+	public List<FornecedorModel> obterEstabelecimentosLateral() {
+		return new FornecedorDAO().pesquisarHome((Long)TSFacesUtil.getObjectInSession("cidadeId"));
 	}
 
 	public FornecedorModel getFornecedorModel() {
@@ -138,20 +181,28 @@ public class EstabelecimentoFaces extends TSMainFaces {
 		this.fornecedorModel = fornecedorModel;
 	}
 
-	public ComentarioDAO getComentarioDAO() {
-		return comentarioDAO;
-	}
-
-	public void setComentarioDAO(ComentarioDAO comentarioDAO) {
-		this.comentarioDAO = comentarioDAO;
-	}
-
 	public ComentarioModel getRanking() {
 		return ranking;
 	}
 
 	public void setRanking(ComentarioModel ranking) {
 		this.ranking = ranking;
+	}
+
+	public ComentarioFornecedorModel getComentarioFornecedorModel() {
+		return comentarioFornecedorModel;
+	}
+
+	public void setComentarioFornecedorModel(ComentarioFornecedorModel comentarioFornecedorModel) {
+		this.comentarioFornecedorModel = comentarioFornecedorModel;
+	}
+
+	public UsuarioModel getUsuarioLogado() {
+		return usuarioLogado;
+	}
+
+	public void setUsuarioLogado(UsuarioModel usuarioLogado) {
+		this.usuarioLogado = usuarioLogado;
 	}
 
 }

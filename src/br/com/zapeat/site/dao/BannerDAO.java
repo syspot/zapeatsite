@@ -37,7 +37,7 @@ public class BannerDAO {
 		
 		broker.setPropertySQL("bannerdao.obterbannerlateral");
 		
-		return (BannerModel) broker.getObjectBean(BannerModel.class, "id", "imagem");
+		return (BannerModel) broker.getObjectBean(BannerModel.class, "id", "imagem", "url");
 		
 	}
 	
@@ -47,7 +47,7 @@ public class BannerDAO {
 		
 		broker.setPropertySQL("bannerdao.obterbannersuperiorpequeno");
 		
-		return (BannerModel) broker.getObjectBean(BannerModel.class, "id", "imagem");
+		return (BannerModel) broker.getObjectBean(BannerModel.class, "id", "imagem", "url");
 		
 	}
 	
@@ -57,7 +57,7 @@ public class BannerDAO {
 		
 		broker.setPropertySQL("bannerdao.obterbannertopo");
 		
-		return (BannerModel) broker.getObjectBean(BannerModel.class, "id", "imagem");
+		return (BannerModel) broker.getObjectBean(BannerModel.class, "id", "imagem", "url");
 		
 	}
 

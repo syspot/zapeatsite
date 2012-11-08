@@ -1,7 +1,9 @@
 package br.com.zapeat.site.model;
 
 import java.io.Serializable;
+import java.util.List;
 
+import br.com.topsys.util.TSUtil;
 import br.com.zapeat.site.util.Constantes;
 
 @SuppressWarnings("serial")
@@ -20,6 +22,10 @@ public class CarroChefeModel implements Serializable {
 	private String imagem;
 	
 	private Integer numeroUnico;
+	
+	private List<ImagemCarroChefeModel> imagensCarroChefe;
+	
+	private List<ComentarioCarroChefeModel> comentarios;
 
 	public CarroChefeModel() {
 
@@ -74,6 +80,10 @@ public class CarroChefeModel implements Serializable {
 		return Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_CARRO_CHEFE_THUMB + this.imagem;
 	}
 	
+	public String getImagemFullView() {
+		return TSUtil.isEmpty(this.imagem) ? this.imagem : Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_CARRO_CHEFE_FULL + this.imagem;
+	}
+
 	public String getImagem() {
 		return imagem;
 	}
@@ -88,6 +98,22 @@ public class CarroChefeModel implements Serializable {
 
 	public void setNumeroUnico(Integer numeroUnico) {
 		this.numeroUnico = numeroUnico;
+	}
+
+	public List<ImagemCarroChefeModel> getImagensCarroChefe() {
+		return imagensCarroChefe;
+	}
+
+	public void setImagensCarroChefe(List<ImagemCarroChefeModel> imagensCarroChefe) {
+		this.imagensCarroChefe = imagensCarroChefe;
+	}
+
+	public List<ComentarioCarroChefeModel> getComentarios() {
+		return comentarios;
+	}
+
+	public void setComentarios(List<ComentarioCarroChefeModel> comentarios) {
+		this.comentarios = comentarios;
 	}
 
 	@Override

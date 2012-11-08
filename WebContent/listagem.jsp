@@ -8,218 +8,31 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-<title>Zapeat</title>
-<link href="css/padrao.css" rel="stylesheet" type="text/css" />
-<link href="css/interna.css" rel="stylesheet" type="text/css" />
-<link href="css/cssReset.css" rel="stylesheet" type="text/css" />
-<link href="css/fontface.css" rel="stylesheet" type="text/css" />
-
-<meta property="og:site_name" content="Zapeat">
-<meta property="og:image" content="http://img.zapeat.com/icon/icone-68px.png">
-<meta property="geo.position" content="-13.548547000;-38.638272000">
-<meta property="geo.position" conterty="ICBM" content="-13.548547000,-38.638272000">
-<meta property="geo.region" content="BR-BA">
-<meta property="geo.placename" content="Salvador">                                                                
-
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"> </script>
-<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
-<script src="js/jquery-latest.js"></script>
-<script type="text/javascript">
-      $(document).ready(function() {
-		$('#outrosDestaques > #listagem > li:even').css('background', '#CCE5FF');
-		$('#principal ul:eq(0)').css('left','-45px');
-		$('#principal ul:eq(1)').css('left','-120px');
-		$('#principal ul:eq(2)').css('left','-195px');
-		$('#principal ul:eq(3)').css('left','-270px');
-		$('#principal ul:eq(4)').css('right','-225px');
-		$('#principal ul:eq(5)').css('right','-150px');
-		$('#principal ul:eq(6)').css('right','-75px');
-		$('#principal ul:eq(7)').css('right','-0px');
-	  })
-</script>
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-
-<!--=============MODAL=============-->
-	<script type="text/javascript" src="http://fw2.atarde.com.br/fw/js/modal.js">
-    $(document).ready(function(){
-		$('a.modal').modal({
-			closeClickOut:true,
-			backgroundColor:"#fff"
-	});
-	</script>
-<!--=============GEOLOCATION=============--> 
-<script type="text/javascript">
-		//função para botão de acionar geolocation
-	$(document).ready(function () {
-		// wire up button click
-		$('#btnInit').click(function () {
-				// teste para a presença do geolocation
-			if (navigator && navigator.geolocation) {
-				navigator.geolocation.getCurrentPosition(geo_success, geo_error);
-			} else {
-				error('Geolocation is not supported.');
-			}
-		});
-	});	
-		
-
-	function geo_success(position) {
-    	printAddress(position.coords.latitude, position.coords.longitude);
-	}
-
-	function geo_error(err) {
-    	// instead of displaying an error, fall back to MaxMind IP to location library
-    	printAddress(geoip_latitude(), geoip_longitude(), true);
-	}
-
-	// usa Google Maps API para reversão da sua localização do geocode
-	function printAddress(latitude, longitude, isMaxMind) {
-		// set up the Geocoder object
-		var geocoder = new google.maps.Geocoder();
-	 
-		// turn coordinates into an object
-		var yourLocation = new google.maps.LatLng(latitude, longitude);
-		
-		// find out info about our location
-		geocoder.geocode({ 'latLng': yourLocation }, function (results, status) {
-			if (status == google.maps.GeocoderStatus.OK) {
-				if (results[0]) {
-					
-					//--
-					//captura infomação requisitada do endereço
-					for (var i=0; i<results[0].address_components.length; i++) {
-					for (var b=0; b<results[0].address_components[i].types.length;b++) {
-		
-						if (results[0].address_components[i].types[b] == "administrative_area_level_1") {
-							state= results[0].address_components[i];
-							break;
-						}
-						else if (results[0].address_components[i].types[b] == "locality") {
-							city= results[0].address_components[i];
-							break;
-						}
-						
-					}
-					}
-
-					//---
-					//aplica dados no input
-					$('#info').val(city.long_name + ", " + state.long_name);
-					//$('body').append('<p>Seu endereço:<br />' +
-					//	city.long_name + " / " + state.long_name + '</p>');						
-				} else {
-					error('Nenhum resultado foi encontrado.');
-				}
-			} else {
-				error("Reverse Geocoding failed due to: " + status);
-			}
-		});
-			if(isMaxMind){
-				$('body').append('<p>IP to Location Service Provided by MaxMind</p>');
-			}
-		}
-		
-		function error(msg){
-			alert(msg);
-		}
-</script> 
+	<%@ include file="/head.jsp" %>
 </head>
 <f:view>
-<body onload="initialize()">
+<body>
 
-<script type="text/javascript">
-	$(document).ready(function(e) {
-		$('.linkLogin').click(function(){
-			$('.formLogin').slideToggle().animate({opacity:1})
-		})
-		$('.linkCadastro,.close').click(function(){
-			$('#mascara').slideToggle();
-		})
-        });
-</script>
 
-<!-- COMECA TOPO -->
-		<%@ include file="/topo.jsp" %>
-<div id="id-Breadcrumb">
-<div class="formLogin">
-    	<h:form prependId="false" id="form1">
-    	<div class="inputs">
-        	Preencha os dados ao lado para acessar: 
-        	<h:inputText title="E-mail" id="emailLogin" value="#{loginFaces.usuarioModel.email}" required="false" requiredMessage="Email: Obrigatório" tabindex="1" maxlength="100"/>
-            <h:inputSecret required="false" id="senhaLogin" maxlength="100" value="#{loginFaces.usuarioModel.senha}" requiredMessage="Senha: Obrigatório" redisplay="true"/>
-			<h:commandButton styleClass="submit" action="#{loginFaces.autenticar}" id="submit2" value="ACESSAR"></h:commandButton>
-			<script type="text/javascript">
-	             		$('#emailLogin').attr('placeholder','E-mail').attr('autofocus','');
-	             		$('#senhaLogin').attr('placeholder','Senha');
-						
-	        </script>
-        </div>
-        </h:form>
-</div>
+	<!-- COMECA TOPO -->
+	<%@ include file="/topo.jsp" %>
+	
+		<div id="id-Breadcrumb">
+	
+		    <span class="migalha"><a href="index.jsf?cidade=${cidadeFaces.cidadeSelecionada}" title="">Página Inicial</a></span>    »
+		    
+		    <c:choose>
+		    	<c:when test="${empty listagemFaces.tipo}">
+		    		<span class="migalha">${listagemFaces.categoria.descricao}</span>
+		    	</c:when>
+		    	<c:otherwise>
+		    		<span class="migalha"><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${listagemFaces.categoria.id}" title="">${listagemFaces.categoria.descricao}</a></span> »
+		    		<span class="migalha">${listagemFaces.nomeTipo}</span>
+		    	</c:otherwise>
+		    </c:choose>
+		    
+		</div>
 
-<c:if test="${!empty sessionScope.usuarioLogado.id}">
-<span id="status">Olá, ${sessionScope.usuarioLogado.nome}</span>, temos ótimas promoções pra você!
-</c:if> 
-
-</div>
-
-<div align="center">
-	<h:messages errorClass="erros msg erro" infoClass="infos msg ok" fatalClass="erros msg erro" showDetail="true"/>
-</div>
-
-<div id="mascara">    
-<div class="container">
-<a href="#" class="close" rel="modalclose"><img src="img/btnFechar.png" alt="Botão Fechar" class="btnFechar"></a>
-
-	<h:form id="signup" enctype="multipart/form-data" prependId="false">
-    
-        <div class="header">
-        
-            <h3>Cadastro</h3>
-            
-            <p>Preencha os dados abaixo para cadastro</p>
-            
-        </div>
-        
-        <div class="sep"></div>
-
-        	<div class="inputs">
-				
-				<h:inputText required="false" id="nome" maxlength="100" value="#{cadastroFaces.usuarioModel.nome}"/>
-				
-				<h:inputText required="false" id="email" maxlength="100" value="#{cadastroFaces.usuarioModel.email}"/>
-				
-				<h:inputSecret required="false" id="senha" maxlength="100" value="#{cadastroFaces.usuarioModel.senha}" redisplay="true"/>
-				 
-	             <script type="text/javascript">
-	             		$('#nome').attr('placeholder','Nome').attr('autofocus','');
-	             		$('#email').attr('placeholder','E-mail');
-	             		$('#senha').attr('placeholder','Senha');
-						
-	            </script>
-	            
-        	</div>
-        	
-            
-            <div class="custom_file_upload">
-            	
-                <t:inputFileUpload storage="file" value="#{cadastroFaces.arquivo}" id="file"/>
-                
-            </div>
-
-        <div class="inputs">   
-        	
-        	<h:commandButton styleClass="submit" id="submit" value="CADASTRAR" action="#{cadastroFaces.insertEvent}"/>
-            
-        </div>
-
-    </h:form>
-
-</div>
-</div>
 <!-- COMECA CENTRAL -->
 <div id="central">
 	<!-- COMECA CONTEUDO -->
@@ -229,7 +42,7 @@
         <!-- COMECA COLUNA MEIO -->
         <div id="meio">
         	<div id="tituloSessao">
-            	<span class="${listagemFaces.categoria.css}"></span>
+            	<img src="${listagemFaces.categoria.imagemView}" class="floatLeftMargin4" />
             	<h2>${listagemFaces.categoria.descricao}</h2>
                 <!--==
                 <p>Promoção da hora</p>
@@ -243,7 +56,7 @@
             		<!-- SE LISTAGEM POR PROMOÇÃO -->
             		<c:forEach items="${listagemFaces.promocoes}" var="promocao">
 	                	<li>
-		                    <a href="promocao.jsf?id=${promocao.id}" title="">
+		                    <a href="promocao.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${promocao.id}" title="">
 		                    	<div class="marca floatLeft"><img src="${promocao.fornecedorModel.logoMarcaView}" alt="${promocao.titulo}" title="${promocao.fornecedorModel.nomeFantasia}" /></div>
 		                        <!-- SE PROMOÇÃO EM PRODUTO -->
 		                        <div class="info">
@@ -259,7 +72,7 @@
 	                        
 	                        <br clear="all" />
 	                        <div class="boxInfo">
-	                            <div class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: <c:out value="${promocao.fornecedorModel.categoriaPrincipal.descricao}" /></div>
+	                            <div class="floatLeft"><img src="${promocao.fornecedorModel.categoriaPrincipal.imagemView}" alt="" title="${promocao.fornecedorModel.categoriaPrincipal.descricao}" class="floatLeftMargin4" />Categoria: <c:out value="${promocao.fornecedorModel.categoriaPrincipal.descricao}" /></div>
 	                            <div class="floatLeft marginLeft"><span class="icons tel"></span><c:out value="${promocao.fornecedorModel.telefone}" /></div>
 	                            
 	                            <c:if test="${not empty promocao.fornecedorModel.site}">
@@ -271,9 +84,10 @@
 	                    </li>
                     </c:forEach>
                     
+                    <!-- SE LISTAGEM POR CARRO-CHEFE -->
             		<c:forEach items="${listagemFaces.carrosChefes}" var="carroChefe">
 	                	<li>
-		                    <a href="estabelecimento.jsf?id=${carroChefe.fornecedorModel.id}" title="">
+		                    <a href="estabelecimento.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${carroChefe.fornecedorModel.id}" title="">
 		                    	<div class="marca floatLeft"><img src="${carroChefe.fornecedorModel.logoMarcaView}" alt="Marca 80x80px" title="${carroChefe.fornecedorModel.nomeFantasia}" /></div>
 		                        <!-- SE PROMOÇÃO EM PRODUTO -->
 		                        <div class="info">
@@ -289,13 +103,41 @@
 	                        
 	                        <br clear="all" />
 	                        <div class="boxInfo">
-	                            <div class="floatLeft"><span class="icons iconRestaurante"></span>Categoria: <c:out value="${carroChefe.fornecedorModel.categoriaPrincipal.descricao}" /></div>
+	                            <div class="floatLeft"><img src="${carroChefe.fornecedorModel.categoriaPrincipal.imagemView}" alt="" title="${carroChefe.fornecedorModel.categoriaPrincipal.descricao}" class="floatLeftMargin4" />Categoria: <c:out value="${carroChefe.fornecedorModel.categoriaPrincipal.descricao}" /></div>
 	                            <div class="floatLeft marginLeft"><span class="icons tel"></span><c:out value="${carroChefe.fornecedorModel.telefone}" /></div>
 	                            
 	                            <c:if test="${not empty carroChefe.fornecedorModel.site}">
 	                            	<div class="floatLeft marginLeft"><span class="icons site"></span> <a href="${carroChefe.fornecedorModel.site}" target="_blank" title="${carroChefe.fornecedorModel.site}">Visite o site</a> </div>
 			           			</c:if>
 			           			
+	                        </div>
+	                    </li>
+                    </c:forEach>
+                    
+                    <!-- SE LISTAGEM POR FORNECEDOR -->
+            		<c:forEach items="${listagemFaces.fornecedores}" var="fornecedor">
+	                	<li>
+		                    <a href="estabelecimento.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${fornecedor.id}" title="">
+		                    	<div class="marca floatLeft"><img src="${fornecedor.logoMarcaView}" alt="${fornecedor.nomeFantasia}" title="${fornecedor.nomeFantasia}" /></div>
+		                        <!-- SE PROMOÇÃO EM PRODUTO -->
+		                        <div class="info">
+		                        	<p class="titulo"><c:out value="${fornecedor.nomeFantasia}"/>  </p>
+		                            <p class="resumo fontYi">
+		                            <c:out value="${fornecedor.descricao}"/>
+		                            </p>
+		                        </div>
+		                    </a>
+	                        
+	                        <br clear="all" />
+	                        <div class="boxInfo">
+	                            <div class="floatLeft"><img src="${fornecedor.categoriaPrincipal.imagemView}" alt="" title="${fornecedor.categoriaPrincipal.descricao}" class="floatLeftMargin4" />Categoria: <c:out value="${fornecedor.categoriaPrincipal.descricao}" /></div>
+	                            <div class="floatLeft marginLeft"><span class="icons tel"></span><c:out value="${fornecedor.telefone}" /></div>
+	                            
+	                            <c:if test="${not empty fornecedor.site}">
+	                            	<div class="floatLeft marginLeft"><span class="icons site"></span> <a href="${fornecedor.site}" target="_blank" title="${fornecedor.site}">Visite o site</a> </div>
+			           			</c:if>
+			           			
+	                            <div class="floatLeft marginLeft"><span class="icons indicacao"></span><c:out value="${fornecedor.quantidadeIndicacoes}"/> indicam</div>
 	                        </div>
 	                    </li>
                     </c:forEach>
@@ -307,43 +149,25 @@
            			
            				<c:choose>
                				<c:when test="${not empty buscaFaces.page and buscaFaces.page != 1}">
-               					<li class="inicio"><a href="listagem.jsf?page=${listagemFaces.page - 1}" title=""><span class="icons pagInicio"></span></a></li>
+               					<li class="inicio"><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${listagemFaces.categoria.id}&tipo=${listagemFaces.tipo}&page=${listagemFaces.page - 1}" title=""><span class="icons pagInicio"></span></a></li>
                				</c:when>
                				<c:otherwise>
                					<li class="inicio"><span class="icons pagInicio"></span></li>
                				</c:otherwise>
                			</c:choose>
                			
-           			</c:if>
-                
-                	<c:if test="${listagemFaces.qtdPaginas > 1}">
-           			
-	               		<c:forEach begin="1" end="${listagemFaces.qtdPaginas}" var="pagina">
-		                    <li class="pagina"><a href="listagem.jsf?page=${pagina}" title="">${pagina}</a></li>
+	               		<c:forEach begin="${listagemFaces.paginaInicial}" end="${listagemFaces.paginaFinal}" var="pagina">
+		                    <li class="pagina"><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${listagemFaces.categoria.id}&tipo=${listagemFaces.tipo}&page=${pagina}" title="">${pagina}</a></li>
 		                </c:forEach>
 	                
-	                </c:if>
-	                
-	                <c:if test="${listagemFaces.qtdPaginas > 1}">
-	                
-	           			<c:choose>
-								
-							<c:when test="${not empty listagemFaces.page}">
-								<c:choose>
-			          				<c:when test="${listagemFaces.page != listagemFaces.qtdPaginas}">
-			          					<li class="fim"><a href="listagem.jsf?page=${listagemFaces.page + 1}" title=""><span class="icons pagFim"></span></a></li>
-			          				</c:when>
-			          				<c:otherwise>
-			          					<li class="inicio"><span class="icons pagFim"></span></li>
-			          				</c:otherwise>
-	          					</c:choose>
-							</c:when>
-							
-							<c:otherwise>
-								<li class="fim"><a href="listagem.jsf?page=${listagemFaces.page + 1}" title=""><span class="icons pagFim"></span></a></li>
-							</c:otherwise>
-							
-						</c:choose>
+						<c:choose>
+	          				<c:when test="${listagemFaces.page != listagemFaces.qtdPaginas}">
+	          					<li class="fim"><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${listagemFaces.categoria.id}&tipo=${listagemFaces.tipo}&page=${listagemFaces.page + 1}" title=""><span class="icons pagFim"></span></a></li>
+	          				</c:when>
+	          				<c:otherwise>
+	          					<li class="inicio"><span class="icons pagFim"></span></li>
+	          				</c:otherwise>
+       					</c:choose>
 						
 	                </c:if>
 	                
@@ -396,18 +220,10 @@
     </div>
     <!-- TERMINA CONTEUDO -->
 </div>
-<!-- TERMINA CENTRAL -->
+
+	<!-- TERMINA CENTRAL -->
 	<%@ include file="/rodape.jsp" %>
-<!-- TERMINA RODAPE -->
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-</script>
+
 </body>
 </f:view>
 </html>

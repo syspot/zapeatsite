@@ -1,5 +1,7 @@
 package br.com.zapeat.site.model;
 
+import java.util.List;
+
 import br.com.topsys.util.TSUtil;
 import br.com.zapeat.site.util.Constantes;
 
@@ -52,6 +54,12 @@ public class FornecedorModel {
 	private String css;
 	
 	private Integer numeroUnico;
+	
+	private List<FormaPagamentoModel> formasPagamentos; 
+	
+	private List<ComentarioFornecedorModel> comentarios; 
+	
+	private List<ImagemFornecedorModel> imagensFornecedorModel; 
 
 	public FornecedorModel() {
 	}
@@ -263,6 +271,14 @@ public class FornecedorModel {
 		this.numeroUnico = numeroUnico;
 	}
 
+	public List<FormaPagamentoModel> getFormasPagamentos() {
+		return formasPagamentos;
+	}
+
+	public void setFormasPagamentos(List<FormaPagamentoModel> formasPagamentos) {
+		this.formasPagamentos = formasPagamentos;
+	}
+
 	public String getImagemThumbView() {
 		return Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_FORNECEDOR_THUMB + getImagemThumb();
 	}
@@ -277,6 +293,23 @@ public class FornecedorModel {
 	
 	public String getLogoMarca18079() {
 		return TSUtil.isEmpty(this.logoMarca) ? this.logoMarca : Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_FORNECEDOR_THUMB + this.logoMarca;
+	}
+
+	public List<ComentarioFornecedorModel> getComentarios() {
+		return comentarios;
+	}
+
+	public void setComentarios(List<ComentarioFornecedorModel> comentarios) {
+		this.comentarios = comentarios;
+	}
+
+	public List<ImagemFornecedorModel> getImagensFornecedorModel() {
+		return imagensFornecedorModel;
+	}
+
+	public void setImagensFornecedorModel(
+			List<ImagemFornecedorModel> imagensFornecedorModel) {
+		this.imagensFornecedorModel = imagensFornecedorModel;
 	}
 
 	@Override
@@ -310,7 +343,7 @@ public class FornecedorModel {
 		StringBuilder retorno = new StringBuilder();
 		
 		retorno.append("['");
-		retorno.append(nomeFantasia).append("', ");
+		retorno.append(nomeFantasia.replaceAll("'", "")).append("', ");
 		retorno.append(latitude).append(", ");
 		retorno.append(longitude).append(", ");
 		retorno.append(numeroUnico);

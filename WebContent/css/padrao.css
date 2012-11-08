@@ -36,7 +36,7 @@ li.ui-menu-item{background:#fff; max-width:150px; padding:5px;}
 #menu nav #cadastro #local{ width:174px; float:left; color:#fff; font-size:10px; height:30px; margin:5px 0px;}
 #menu nav#categorias ul#principal{ width:600px; float:right;} 
 
-#menu nav#categorias ul#principal > li{ float:left; width:80px; padding:0px 2px; height:62px; text-align:center; color:#fff; margin-left:1px;
+#menu nav#categorias ul#principal > li{ float:left; width:70px; padding:0px 2px; height:62px; text-align:center; color:#fff; margin-left:1px;
 						background-color:#FFBC00;
 						background-image:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #FFBC00), color-stop(0, #FF9900));
 						background-image:-moz-linear-gradient(top, #FFBC00, #FF9900);
@@ -44,6 +44,17 @@ li.ui-menu-item{background:#fff; max-width:150px; padding:5px;}
 						font-size:11px; font-family:Arial, Helvetica, sans-serif; font-weight:bold;
 						position:relative;
 						}
+#menu nav#categorias ul#principal > li a{ text-align:center; color:#fff;font-size:11px; font-family:Arial, Helvetica, sans-serif; font-weight:bold;}						
+						
+#outrasCategorias a { float:left; width:70px; padding:0px 2px; height:62px; text-align:center; color:#fff; margin-left:1px;
+						background-color:#FFBC00;
+						background-image:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #FFBC00), color-stop(0, #FF9900));
+						background-image:-moz-linear-gradient(top, #FFBC00, #FF9900);
+						background-image:-o-linear-gradient(top, #FFBC00, #FF9900);
+						font-size:11px; font-family:Arial, Helvetica, sans-serif; font-weight:bold;
+						position:relative;
+						}
+						
 #menu nav#categorias ul#principal > li:hover{ 
 						background-color:#7373E6; cursor:pointer;
 						background-image: url(../img/setaMenu.png), -webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #7373E6), color-stop(0, #0000F6));
@@ -116,6 +127,7 @@ ul#listagem  .precoPor{ font-family: 'titilliumtext22l_ltmedium'; font-size:16px
 /*--==OUTROS==--*/
 .clear{clear:both;}
 .floatLeft{ float:left;}
+.floatLeftMargin4{ float:left; margin-right: 8px;}
 .floatRight{ float:right;}
 .posRel{position:relative;}
 .marginLeft{margin-left:35px;}
@@ -131,6 +143,7 @@ li .info .titulo,
 li .info .resumo{ font-size:16px; color:#000;}
 ul#listagem li .dados{ float:right; width:130px;}
 .dados p{ margin-bottom:15px; font-size:10px; line-height:14px; color:#0066CC;font-family: 'titilliumtext22l_ltmedium';}
+.dados p a{ margin-bottom:15px; font-size:10px; line-height:14px; color:#0066CC;font-family: 'titilliumtext22l_ltmedium';}
 .dados a p{color:#0066CC;}
 .banner{ width:170px; height:260px; background:#666; margin:0 auto;}
 .titulo{ font-size:16px; font-weight:bold;}
@@ -175,24 +188,31 @@ ul#listagem li .dados{ float:right; width:130px;}
 .container {    width: 406px;    max-width: 406px;    margin: 0 auto; position:relative; margin-top:-203px; top:50%;}
 .btnFechar{width:15px; height:15px; position:absolute; top:10px; right:10px; cursor:pointer;}
 
-#signup {
+#signup,
+#signup2 {
     padding: 0px 25px 25px;    background: #fff;    box-shadow: 
         0px 0px 0px 5px rgba( 255,255,255,0.4 ), 
         0px 4px 20px rgba( 0,0,0,0.33 );
     -moz-border-radius: 5px;    -webkit-border-radius: 5px;    border-radius: 5px;    display: table;    position: static;
 }
 
-#signup .header {    margin-bottom: 20px;}
+#signup .header,
+#signup2 .header{    margin-bottom: 20px;}
 
-#signup .header h3 {    color: #333333;    font-size: 24px;    font-weight: bold;    margin: 15px 0px 5px 0px; font-family: 'titilliumtext22l_rgbold';}
+#signup .header h3,
+#signup2 .header h3{    color: #333333;    font-size: 24px;    font-weight: bold;    margin: 15px 0px 5px 0px; font-family: 'titilliumtext22l_rgbold';}
 
-#signup .header p {    color: #8f8f8f;    font-size: 14px;    font-weight: 300; font-family: 'titilliumtext22l_ltthin';}
+#signup .header p,
+#signup2 .header p {    color: #8f8f8f;    font-size: 14px;    font-weight: 300; font-family: 'titilliumtext22l_ltthin';}
 
-#signup .sep {    height: 1px;    background: #e8e8e8;    width: 406px;    margin: 0px -25px;}
+#signup .sep,
+#signup2 .sep {    height: 1px;    background: #e8e8e8;    width: 406px;    margin: 0px -25px;}
 
-#signup .inputs {    margin-top: 25px;}
+#signup .inputs,
+#signup2 .inputs {    margin-top: 25px;}
 
-#signup .inputs label {
+#signup .inputs label,
+#signup2 .inputs label {
     color: #8f8f8f;    font-size: 12px;    font-weight: 300;    letter-spacing: 1px;    margin-bottom: 7px;    display: block;
 }
 
@@ -200,25 +220,32 @@ input::-webkit-input-placeholder {    color:    #b5b5b5;}
 
 input:-moz-placeholder {    color:    #b5b5b5;}
 
-#signup .inputs input[type=email], #signup .inputs input[type=password],#signup .inputs input[type=text], #signup .inputs input[type=file] {
+#signup .inputs input[type=email], #signup .inputs input[type=password],#signup .inputs input[type=text], #signup .inputs input[type=file],
+#signup2 .inputs input[type=email], #signup2 .inputs input[type=password],#signup2 .inputs input[type=text], #signup2 .inputs input[type=file] {
     background: #f5f5f5;    font-size: 0.8rem;    -moz-border-radius: 3px;    -webkit-border-radius: 3px;
     border-radius: 3px;    border: none;    padding: 13px 10px;    width: 330px;    margin-bottom: 20px;
     box-shadow: inset 0px 2px 3px rgba( 0,0,0,0.1 );    clear: both;
 }
 
-#signup .inputs input[type=email]:focus, input[type=password]:focus, input[type=text]:focus {
+#signup .inputs input[type=email]:focus, input[type=password]:focus, input[type=text]:focus,
+#signup2 .inputs input[type=email]:focus, input[type=password]:focus, input[type=text]:focus {
     background: #fff;
     box-shadow: 0px 0px 0px 3px #fff38e, inset 0px 2px 3px rgba( 0,0,0,0.2 ), 0px 5px 5px rgba( 0,0,0,0.15 );
     outline: none;   
 }
 
-#signup .inputs .checkboxy {    display: block;    position: static;    height: 25px;    margin-top: 10px;    clear: both;}
+#signup .inputs .checkboxy,
+#signup2 .inputs .checkboxy {    display: block;    position: static;    height: 25px;    margin-top: 10px;    clear: both;}
 
-#signup .inputs input[type=checkbox] {    float: left;    margin-right: 10px;    margin-top: 3px;}
+#signup .inputs input[type=checkbox],
+#signup2 .inputs input[type=checkbox] {    float: left;    margin-right: 10px;    margin-top: 3px;}
 
-#signup .inputs label.terms {    float: left;    font-size: 14px;    font-style: italic;}
+#signup .inputs label.terms,
+#signup2 .inputs label.terms {    float: left;    font-size: 14px;    font-style: italic;}
 
-#signup .inputs #submit {
+#signup .inputs .submit,
+#signup2 .inputs a,
+#signup2 .inputs .submit {
     width: 100%;   margin-top: 20px;    padding: 15px 0;    color: #fff;    font-size: 14px;    font-weight: 500;
     letter-spacing: 1px;    text-align: center;    text-decoration: none;
         background: -moz-linear-gradient( top,  #b9c5dd 0%, #a4b0cb);
@@ -234,14 +261,15 @@ input:-moz-placeholder {    color:    #b5b5b5;}
 	display: table;  position: static;clear: both; font-family: 'titilliumtext22l_rgbold';
 }
 
-#signup .inputs #submit:hover {
+#signup .inputs .submit:hover,
+#signup2 .inputs .submit:hover {
     background: -moz-linear-gradient( top, #a4b0cb 0%, #b9c5dd);
     background: -webkit-gradient( linear, left top, left bottom,  from(#a4b0cb),  to(#b9c5dd));
 }
 .load 		{ position: absolute; top: 50%; left: 50%; width: 50px; height: 50px; margin: -39px 0 0 -44px; z-index: 99999999999;}
 .bg_modal 	{ position: absolute; top: 0; left: 0; z-index: 99999999998; }
 .view_modal { position: absolute; left: 50%; top: 50%; text-align: left; z-index: 99999999998; }
-.modal		{ visibility: hidden; cursor:pointer; }
+.modal		{ visibility: visible; cursor:pointer; }
 
 .erros {
 	max-width:550px; margin:0 auto; font-family: 'titilliumtext22l_ltmedium'; background:#F63;
@@ -282,6 +310,30 @@ a.linkLogin,a.linkCadastro{cursor:pointer;}
 .msg{ border:2px solid; border-radius:3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; padding:5px 15px; color:#fff;}
 .erro{ border-color:#C30;}
 .ok{ border-color: green;background-color: #80FF00;}
-#mascara{display:none; width:100%; height:100%; background:rgba(0,0,0,.5); position:fixed; z-index:9999999; top:0; left:0;}
+#mascara,
+#mascaraRanking{display:none; width:100%; height:100%; background:rgba(0,0,0,.5); position:fixed; z-index:9999999; top:0; left:0;}
 
-.iconografia{ display:block; width:20px; height:20px; margin:3px auto;}
+.iconografia{ display:block; width:20px; height:20px; margin:4px auto; overflow:hidden;}
+
+span#time{ display:block;}
+span#time b{background:#F30; color:#fff; padding:0px 5px; font-size:15px;font-family: 'titilliumtext22l_rgbold';}
+
+.timePromo{margin-top:25px; font-size:10px;font-family: 'titilliumtext22l_rgbold'; border-top: 1px dotted #666; padding-top:5px;}
+.boxTime{float:left; text-align:center; width:30px; margin:1px; font-size:9px;font-family: 'titilliumtext22l_rgbold';}
+.cd-time{display:block; background:#FF7100; color:#000; height:14px; padding:7px 5px; font-size:14px!important; font-weight:bold;}
+
+#menu nav #cadastro a.logout{ background:url(../img/sair.png) no-repeat left center; padding-left:25px; display:block; height:25px; margin-top:5px; line-height:25px; color: #993D00; font-family: 'titilliumtext22l_ltmedium'; font-size: 12px; text-transform: uppercase;}
+#menu nav #cadastro a.logout:hover{color:#cc0000;}
+
+#conteudo #contCategoria	 { float:left; width:790px; margin-right:20px;}
+.recomende{ float:left; width:89px; height:20px; margin-right:10px;}
+.linkRanking,
+.closeRanking{cursor:pointer;}
+.marginLeft{margin-left:25px;}
+
+#rodape .contRodape{ width:990px; height:auto; margin:0px auto; padding:20px 0px; font-family: 'titilliumtext22l_ltmedium'; overflow:hidden;}
+#rodape .contRodape .col{ width:255px; height:300px;}
+ #rodape .contRodape .col ul{margin:10px 0px 30px 0px; color:#fff; font-size:13px;}
+#rodape .contRodape .col ul li{margin:5px 0px;}
+#rodape .contRodape a{ color:#fff;}
+.marginLeft20{margin-left:20px;}

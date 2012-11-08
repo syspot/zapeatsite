@@ -5,9 +5,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 
 import br.com.topsys.exception.TSApplicationException;
 import br.com.topsys.util.TSUtil;
@@ -17,23 +21,23 @@ import br.com.zapeat.site.model.UsuarioModel;
 import br.com.zapeat.site.util.Constantes;
 import br.com.zapeat.site.util.FacebookClient;
 import br.com.zapeat.site.util.UsuarioService;
+import br.com.zapeat.site.util.ZapeatUtil;
 
-@RequestScoped
-@ManagedBean(name ="faceBookFaces")
+@ManagedBean(name = "faceBookFaces")
 public class FaceBookFaces {
 
 	private String url;
-	
+
 	private String logout;
 
-	public FaceBookFaces() throws MalformedURLException {
-		
+	public FaceBookFaces() throws MalformedURLException, InvalidKeyException, NoSuchPaddingException, BadPaddingException, NoSuchAlgorithmException, IllegalBlockSizeException {
+
 		this.url = FacebookClient.getLoginRedirectURL();
 
 		this.logout = FacebookClient.getLogoutUrl();
 
 		String code = TSFacesUtil.getRequestParameter("code");
-		
+
 		String erro = TSFacesUtil.getRequestParameter("error");
 
 		if (!TSUtil.isEmpty(code)) {
@@ -58,7 +62,7 @@ public class FaceBookFaces {
 
 					if (kv.length != 2) {
 
-						this.redirect();
+						ZapeatUtil.redirect();
 
 					} else {
 
@@ -86,7 +90,11 @@ public class FaceBookFaces {
 
 							try {
 
-								new UsuarioDAO().inserir(model);
+								model.setFlagAtivo(Boolean.TRUE);
+
+								model.setFlagFacebook(Boolean.TRUE);
+
+								usuario = new UsuarioDAO().inserir(model);
 
 							} catch (TSApplicationException e) {
 
@@ -107,26 +115,38 @@ public class FaceBookFaces {
 							}
 						}
 
-						TSFacesUtil.addObjectInSession("accessToken", accessToken);
+						if (!TSUtil.isEmpty(usuario.getFlagAceitouTermo()) && usuario.getFlagAceitouTermo()) {
 
-						TSFacesUtil.addObjectInSession(Constantes.USUARIO_LOGADO, usuario);
+							TSFacesUtil.addObjectInSession("accessToken", accessToken);
 
-						this.redirect();
+							TSFacesUtil.addObjectInSession(Constantes.ID_USUARIO_LOGADO, usuario.getId());
+							TSFacesUtil.addObjectInSession(Constantes.NOME_USUARIO_LOGADO, model.getNome());
+
+							ZapeatUtil.redirect();
+
+						} else {
+
+							ZapeatUtil.redirectTermoUso(usuario);
+						}
+
+					} else {
+
+						ZapeatUtil.redirect();
 					}
 
 				} else {
 
-					this.redirect();
+					ZapeatUtil.redirect();
 				}
 
 			} catch (IOException e) {
 
 				throw new RuntimeException(e);
 			}
-		
-		} else if(!TSUtil.isEmpty(TSUtil.tratarString(erro))){
-			
-			this.redirect();
+
+		} else if (!TSUtil.isEmpty(TSUtil.tratarString(erro))) {
+
+			ZapeatUtil.redirect();
 		}
 
 	}
@@ -145,19 +165,6 @@ public class FaceBookFaces {
 		}
 
 		return new String(baos.toByteArray());
-	}
-
-	@SuppressWarnings("static-access")
-	private void redirect() {
-
-		try {
-
-			TSFacesUtil.getFacesContext().getCurrentInstance().getExternalContext().redirect("index.jsf");
-
-		} catch (Exception e) {
-
-			e.printStackTrace();
-		}
 	}
 
 	public String getUrl() {
