@@ -1,5 +1,12 @@
 package br.com.zapeat.site.faces;
 
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.faces.bean.ManagedBean;
 
 import br.com.topsys.constant.TSConstant;
@@ -120,14 +127,41 @@ public class CadastroFaces extends TSMainFaces {
 		corpo.append("Para confirmar seu cadastro no site ZAPEAT clique no link abaixo:");
 
 		corpo.append("<br><br>");
-
+		
+		String urlConfirmacao = null;
+		
 		try {
+			
+			urlConfirmacao = Constantes.URL_APLICACAO + "confirmacao.jsf?cidade=" + super.getRequestParameter("cidade") + "&token="+ TSCryptoUtil.criptografar(model.getId().toString());
+		} catch (InvalidKeyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchPaddingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (BadPaddingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalBlockSizeException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		corpo.append("<a href='"+urlConfirmacao+"'>Confirme Aqui</a>");
+
+		/*try {
 			
 			corpo.append(Constantes.URL_APLICACAO + "confirmacao.jsf?cidade=" + super.getRequestParameter("cidade") + "&token="+ TSCryptoUtil.criptografar(model.getId().toString()) + "");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-		} 
+		} */
 		
 		EnviarEmail.enviar(Constantes.ZAPEAT_GMAIL, model.getEmail(), "Zapeat - Confirmação de Cadastro", corpo.toString());
 	}

@@ -27,10 +27,14 @@ public class Teste {
 		corpo.append("Para confirmar seu cadastro no nosso site clique no link abaixo:");
 
 		corpo.append("<br><br>");
+		
+		String urlConfirmacao = "http://www.saudelivre.com.br";
 
-		corpo.append("<a href='' >Confirme</a>");
+		corpo.append("<a href='"+urlConfirmacao+"'>Confirme Aqui</a>");
 
 		EnviarEmail.enviar(Constantes.ZAPEAT_GMAIL, "moisessrocha@gmail.com", "Zapeat - Confirmação de Cadastro", corpo.toString());
+		
+		
 
 	}
 
