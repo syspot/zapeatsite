@@ -48,4 +48,5 @@ public final class Constantes {
 	public static Long CATEGORIA_MAIS_INDICADOS = 7L;
 	public static Long CATEGORIA_OUTRAS_CATEGORIAS = 8L;
 	
+	
 }

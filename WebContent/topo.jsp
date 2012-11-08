@@ -204,7 +204,7 @@
         	</div>
 
         	<div class="inputs">
-        	
+        		
         		<h:commandButton id="btnCadastrarUsuario" tabindex="104" styleClass="submit"  value="CADASTRAR" action="#{cadastroFaces.insertEvent}"/>
             
         	</div>
@@ -212,7 +212,7 @@
         	<input type="hidden" name="cidade" value="${cidadeFaces.cidadeSelecionada}" />
 
     	</h:form>
-
+    	
 	</div>
 	
 </div>
