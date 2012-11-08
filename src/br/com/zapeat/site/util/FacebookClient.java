@@ -85,7 +85,7 @@ public final class FacebookClient {
 
 		if (!TSUtil.isEmpty(city)) {
 
-			cidade = city.trim().replaceAll(" ", "+");
+			cidade = city.trim().replaceAll(" ", "_");
 
 			return "https://www.facebook.com/logout.php?next=" + redirect_uri_logout + "?cidade=" + cidade + "&access_token=" + accessToken;
 
