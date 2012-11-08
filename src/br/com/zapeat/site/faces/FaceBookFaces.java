@@ -3,14 +3,8 @@ package br.com.zapeat.site.faces;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
 import javax.faces.bean.ManagedBean;
 
 import br.com.topsys.exception.TSApplicationException;
@@ -30,7 +24,7 @@ public class FaceBookFaces {
 
 	private String logout;
 
-	public FaceBookFaces() throws MalformedURLException, InvalidKeyException, NoSuchPaddingException, BadPaddingException, NoSuchAlgorithmException, IllegalBlockSizeException {
+	public FaceBookFaces() {
 
 		this.url = FacebookClient.getLoginRedirectURL();
 
@@ -42,11 +36,11 @@ public class FaceBookFaces {
 
 		if (!TSUtil.isEmpty(code)) {
 
-			String authURL = FacebookClient.getAuthURL(code);
-
-			URL url = new URL(authURL);
-
 			try {
+
+				String authURL = FacebookClient.getAuthURL(code);
+
+				URL url = new URL(authURL);
 
 				String result = readURL(url);
 
@@ -139,9 +133,10 @@ public class FaceBookFaces {
 					ZapeatUtil.redirect();
 				}
 
-			} catch (IOException e) {
+			} catch (Exception e) {
 
-				throw new RuntimeException(e);
+				e.printStackTrace();
+
 			}
 
 		} else if (!TSUtil.isEmpty(TSUtil.tratarString(erro))) {
