@@ -2,6 +2,7 @@
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 
 <!--start Facebook Open Graph Protocol-->
+<link rel="shortcut icon" href="img/favicon.ico" />
 <meta property="og:site_name" content="Zapeat" />
 <meta property="og:title" content="Zapeat" />
 <meta property="og:url" content="http://www.zapeat.com.br"/>
@@ -42,9 +43,6 @@
  		jQuery(window).ready(function(){  
             jQuery("#btnInit").click(function(){
 				$('#cidade').val(initialize);
-				
-				window.setInterval("$('#buscar').click()", 4000);
-					
 			}); 			
         })
 
@@ -103,7 +101,7 @@
 
 					//---
 					//aplica dados no input
-					$('#cidade').val(city.long_name + "-" + state.short_name);
+					$('#cidade').val(city.long_name + "-" + state.long_name);
 					//$('body').append('<p>Seu endereço:<br />' +
 					//	city.long_name + " / " + state.long_name + '</p>');						
 				} else {

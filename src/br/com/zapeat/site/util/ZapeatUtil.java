@@ -100,7 +100,13 @@ public class ZapeatUtil {
 
 		try {
 			inteiro = Long.valueOf(param);
-		} catch (NumberFormatException e) {
+			
+			if(TSUtil.isEmpty(TSUtil.tratarLong(inteiro))){
+				inteiro = 1L;
+			}
+			
+		} catch (Exception e) {
+			inteiro = 1L;
 		}
 
 		return inteiro;

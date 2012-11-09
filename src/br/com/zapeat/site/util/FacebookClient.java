@@ -23,71 +23,78 @@ public final class FacebookClient {
 
 	public static String getLoginRedirectURL() {
 
-		String cidade = TSFacesUtil.getRequestParameter("cidade");
-
-		if (!TSUtil.isEmpty(cidade)) {
-
-			cidade = cidade.trim().replaceAll(" ", "+");
-
-			return "https://graph.facebook.com/oauth/authorize?client_id=" + API_KEY + "&display=page&redirect_uri=" + redirect_uri + "?cidade=" + cidade + "&scope=" + com.restfb.util.StringUtils.join(perms);
-
-		} else {
-
-			return "https://graph.facebook.com/oauth/authorize?client_id=" + API_KEY + "&display=page&redirect_uri=" + redirect_uri + "&scope=" + com.restfb.util.StringUtils.join(perms);
-		}
+//		String city = TSFacesUtil.getRequestParameter("cidade");
+//
+//		if (!TSUtil.isEmpty(city)) {
+//
+//			cidade = city.trim().replaceAll(" ", "_");
+//
+//			return "https://graph.facebook.com/oauth/authorize?client_id=" + API_KEY + "&display=page&redirect_uri=" + redirect_uri + "?cidade=" + cidade + "&scope=" + com.restfb.util.StringUtils.join(perms);
+//
+//		} else {
+//
+//			return "https://graph.facebook.com/oauth/authorize?client_id=" + API_KEY + "&display=page&redirect_uri=" + redirect_uri + "&scope=" + com.restfb.util.StringUtils.join(perms);
+//		}
+		
+		return "https://graph.facebook.com/oauth/authorize?client_id=" + API_KEY + "&display=page&redirect_uri=" + redirect_uri + "&scope=" + com.restfb.util.StringUtils.join(perms);
 
 	}
 
 	public static String getAuthURL(String authCode) {
-
-		String cidade = TSFacesUtil.getRequestParameter("cidade");
-
-		if (!TSUtil.isEmpty(cidade)) {
-
-			cidade = cidade.trim().replaceAll(" ", "+");
-
-			return "https://graph.facebook.com/oauth/access_token?client_id=" + API_KEY + "&redirect_uri=" + redirect_uri + "?cidade=" + cidade + "&client_secret=" + SECRET + "&code=" + authCode;
-
-		} else {
-
-			return "https://graph.facebook.com/oauth/access_token?client_id=" + API_KEY + "&redirect_uri=" + redirect_uri + "&client_secret=" + SECRET + "&code=" + authCode;
-		}
+//
+//		String city = TSFacesUtil.getRequestParameter("cidade");
+//
+//		if (!TSUtil.isEmpty(city)) {
+//
+//			cidade = city.trim().replaceAll(" ", "_");
+//
+//			return "https://graph.facebook.com/oauth/access_token?client_id=" + API_KEY + "&redirect_uri=" + redirect_uri + "?cidade=" + cidade + "&client_secret=" + SECRET + "&code=" + authCode;
+//
+//		} else {
+//
+//			return "https://graph.facebook.com/oauth/access_token?client_id=" + API_KEY + "&redirect_uri=" + redirect_uri + "&client_secret=" + SECRET + "&code=" + authCode;
+//		}
+//		
+		return "https://graph.facebook.com/oauth/access_token?client_id=" + API_KEY + "&redirect_uri=" + redirect_uri + "&client_secret=" + SECRET + "&code=" + authCode;
 
 	}
 
 	public static String getAuthURL() {
 
-		String cidade = TSFacesUtil.getRequestParameter("cidade");
-
-		if (!TSUtil.isEmpty(cidade)) {
-
-			cidade = cidade.trim().replaceAll(" ", "+");
-
-			return "https://www.facebook.com/dialog/oauth?client_id=" + API_KEY + "&redirect_uri=" + redirect_uri + "?cidade=" + cidade + "&scope=" + com.restfb.util.StringUtils.join(perms);
-
-		} else {
-
-			return "https://www.facebook.com/dialog/oauth?client_id=" + API_KEY + "&redirect_uri=" + redirect_uri + "&scope=" + com.restfb.util.StringUtils.join(perms);
-		}
-
+//		String city = TSFacesUtil.getRequestParameter("cidade");
+//
+//		if (!TSUtil.isEmpty(city)) {
+//
+//			cidade = city.trim().replaceAll(" ", "_");
+//
+//			return "https://www.facebook.com/dialog/oauth?client_id=" + API_KEY + "&redirect_uri=" + redirect_uri + "?cidade=" + cidade + "&scope=" + com.restfb.util.StringUtils.join(perms);
+//
+//		} else {
+//
+//			return "https://www.facebook.com/dialog/oauth?client_id=" + API_KEY + "&redirect_uri=" + redirect_uri + "&scope=" + com.restfb.util.StringUtils.join(perms);
+//		}
+		
+		return "https://www.facebook.com/dialog/oauth?client_id=" + API_KEY + "&redirect_uri=" + redirect_uri + "&scope=" + com.restfb.util.StringUtils.join(perms);
 	}
 
 	public static String getLogoutUrl() {
 
-		String cidade = TSFacesUtil.getRequestParameter("cidade");
-
 		String accessToken = (String) TSFacesUtil.getObjectInSession("accessToken");
-
-		if (!TSUtil.isEmpty(cidade)) {
-
-			cidade = cidade.trim().replaceAll(" ", "+");
-
-			return "https://www.facebook.com/logout.php?next=" + redirect_uri_logout + "?cidade=" + cidade + "&access_token=" + accessToken;
-
-		} else {
-
-			return "https://www.facebook.com/logout.php?next=" + redirect_uri_logout + "&access_token=" + accessToken;
-		}
+		
+//		String city = TSFacesUtil.getRequestParameter("cidade");
+//
+//		if (!TSUtil.isEmpty(city)) {
+//
+//			cidade = city.trim().replaceAll(" ", "_");
+//
+//			return "https://www.facebook.com/logout.php?next=" + redirect_uri_logout + "?cidade=" + cidade + "&access_token=" + accessToken;
+//
+//		} else {
+//
+//			return "https://www.facebook.com/logout.php?next=" + redirect_uri_logout + "&access_token=" + accessToken;
+//		}
+		
+		return "https://www.facebook.com/logout.php?next=" + redirect_uri_logout + "&access_token=" + accessToken;
 
 	}
 

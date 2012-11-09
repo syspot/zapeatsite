@@ -40,3 +40,26 @@ function isEmpty(campos) {
     }
     return retorno;
 }
+
+function isChecked(campo){
+	
+	var retorno = $(campo).is(':checked');
+	
+	if(!retorno){
+		alert('\u00c9 necess\u00E1rio aceitar os termos e condi\u00E7\u00f5es gerais de uso');	
+	}
+	
+	return retorno;
+}
+
+function validarEmail(campo){
+	
+	var retorno = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,6}$/i.test($(campo).val());
+	 
+	 if (!retorno) {
+         alert('Email inv\u00E1lido');
+     }
+	 
+	 return retorno;
+	
+}
