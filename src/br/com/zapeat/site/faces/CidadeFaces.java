@@ -27,6 +27,14 @@ public class CidadeFaces extends TSMainFaces {
 			
 			this.cidadeSelecionada = ZapeatUtil.tratarCidadeUTF8(TSStringUtil.removerAcentos(this.cidadeSelecionada));
 			
+			super.addObjectInSession("cidadeEstado", this.cidadeSelecionada);
+			
+			CidadeModel cidadeModel = new CidadeDAO().obter(ZapeatUtil.getCidade(this.cidadeSelecionada), ZapeatUtil.getEstado(this.cidadeSelecionada));
+			
+			if(!TSUtil.isEmpty(cidadeModel)){
+				super.addObjectInSession("cidadeId", cidadeModel.getId());
+			}
+			
 		} else {
 			
 			Long cidadeId = (Long)TSFacesUtil.getObjectInSession("cidadeId");
@@ -40,12 +48,6 @@ public class CidadeFaces extends TSMainFaces {
 				}
 			}
 			
-		}
-		
-		CidadeModel cidadeModel = new CidadeDAO().obter(ZapeatUtil.getCidade(this.cidadeSelecionada), ZapeatUtil.getEstado(this.cidadeSelecionada));
-		
-		if(!TSUtil.isEmpty(cidadeModel)){
-			super.addObjectInSession("cidadeId", cidadeModel.getId());
 		}
 		
 	}

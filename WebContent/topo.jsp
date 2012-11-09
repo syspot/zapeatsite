@@ -185,21 +185,22 @@
 
 				<h:inputText tabindex="100" required="true" id="nome_div" maxlength="100" value="#{cadastroFaces.usuarioModel.nome}"/>
 
-				<h:inputText tabindex="101" required="true" id="email_div" maxlength="100" value="#{cadastroFaces.usuarioModel.email}"/>
+				<h:inputText tabindex="101" required="true" id="email_div" maxlength="100" value="#{cadastroFaces.usuarioModel.email}" />
 
 				<h:inputSecret tabindex="102" required="true" id="senha_div" maxlength="100" value="#{cadastroFaces.usuarioModel.senha}" redisplay="true"/>
 				
+				<span id="span_flag_aceito">
 				<input type="checkbox" id="flag_aceito" />
 				<h:outputText value="Li e aceito os " styleClass="header"/>
 				<a href="files/TermosCondicoesGeraisUsoSiteZapeat.pdf" target="_blank">Termos e Condições Gerais de Uso</a>
-
+				</span>
 	             <script type="text/javascript">
              		$('#nome_div').attr('placeholder','Nome').attr('autofocus','');
              		$('#email_div').attr('placeholder','E-mail');
              		$('#senha_div').attr('placeholder','Senha');
              		
              		$('#btnCadastrarUsuario').live('click', function () {
-             	  	    return !isEmpty(new Array("#nome_div", "#email_div", "#senha_div")) && $('#flag_aceito').is(':checked');
+             	  	    return !isEmpty(new Array("#nome_div", "#email_div", "#senha_div")) && isChecked("#flag_aceito") && validarEmail("#email_div");
              	  	});
 	            </script>
 

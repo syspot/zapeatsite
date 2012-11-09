@@ -2,6 +2,7 @@
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 
 <!--start Facebook Open Graph Protocol-->
+<link rel="shortcut icon" href="img/favicon.ico" />
 <meta property="og:site_name" content="Zapeat" />
 <meta property="og:title" content="Zapeat" />
 <meta property="og:url" content="http://www.zapeat.com.br"/>
