@@ -1,6 +1,7 @@
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
+<%@ taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>
 
 
 <script type="text/javascript">
@@ -15,6 +16,10 @@
 		$('.linkRanking,.closeRanking').click(function(){
 			$('#mascaraRanking').slideToggle();
 		})
+
+		$('.mensagem .btnFechar').click(function(){
+          $('.mensagem').fadeOut().css('display','none');
+        })
     });
 </script>
 
@@ -159,9 +164,25 @@
 
 </div>
 
+<t:div styleClass="mensagem alertRed" rendered="#{!empty facesContext.maximumSeverity && facesContext.maximumSeverity.ordinal==2}"><!---- SE MENSAGEM DE ERRO, alertRed ---->
+<span class="btnFechar">[X]</span>
+	<c:forEach items="#{facesContext.messageList}" var="message">
+    <p>${message.detail}</p>
+    </c:forEach>
+</t:div>
+
+<t:div styleClass="mensagem alertGreen" rendered="#{!empty facesContext.maximumSeverity && facesContext.maximumSeverity.ordinal==0}"><!---- SE MENSAGEM DE ERRO, alertRed ---->
+<span class="btnFechar">[X]</span>
+	<c:forEach items="#{facesContext.messageList}" var="message">
+    <p>${message.detail}</p>
+    </c:forEach>
+</t:div>
+
+<!-- 
 <div align="center">
 	<h:messages errorClass="erros msg erro" infoClass="infos msg ok" fatalClass="erros msg erro" showDetail="true"/>
 </div>
+ -->
 
 <div id="mascara">    
 	
