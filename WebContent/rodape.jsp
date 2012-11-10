@@ -31,7 +31,7 @@
              <div class="col floatLeft">
                 <p>Sobre o Zapeat</p>
                 <ul>
-                     <li>&raquo; <a href="" title="">Sobre</a></li>
+                     <li>&raquo; <a href="sobre.jsf?cidade=${cidadeFaces.cidadeSelecionada}" title="">Sobre</a></li>
                     <li>&raquo; <a href="" title="">Trabalhe no Zapeat</a></li>
                      <li>&raquo; <a href="" title="">Seja um Community Manager</a></li>
                     <li>&raquo; <a href="" title="">Zapeat na Mídia</a></li>
@@ -39,7 +39,7 @@
                 </ul>
                 <p>Usuário Zapeat</p>
                 <ul>
-                     <li>&raquo; <a href="" title="">Termos de Uso</a></li>
+                     <li>&raquo; <a href="termos.jsf?cidade=${cidadeFaces.cidadeSelecionada}" title="">Termos de Uso</a></li>
                     <li>&raquo; <a href="" title="">Política de Privacidade</a></li>
                      <li>&raquo; <a href="" title="">Como escrever opiniões construtivas?</a></li>
                     <li>&raquo; <a href="" title="">Perguntas Frequentes </a></li>

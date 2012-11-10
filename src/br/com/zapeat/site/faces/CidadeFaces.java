@@ -21,6 +21,7 @@ public class CidadeFaces extends TSMainFaces {
 	public CidadeFaces() {
 
 		this.cidades = new CidadeDAO().pesquisarTodos();
+		
 		this.cidadeSelecionada = (String) super.getRequestParameter("cidade");
 		
 		if(!TSUtil.isEmpty(this.cidadeSelecionada)){
@@ -32,6 +33,7 @@ public class CidadeFaces extends TSMainFaces {
 			CidadeModel cidadeModel = new CidadeDAO().obter(ZapeatUtil.getCidade(this.cidadeSelecionada), ZapeatUtil.getEstado(this.cidadeSelecionada));
 			
 			if(!TSUtil.isEmpty(cidadeModel)){
+				
 				super.addObjectInSession("cidadeId", cidadeModel.getId());
 			}
 			

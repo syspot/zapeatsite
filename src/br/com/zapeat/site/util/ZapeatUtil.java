@@ -145,7 +145,7 @@ public class ZapeatUtil {
 
 		try {
 			if (TSUtil.isEmpty(cidade)) {
-				TSFacesUtil.getFacesContext().getExternalContext().redirect("index.jsf?cidade=" + TSFacesUtil.getRequestParameter("cidade"));
+				TSFacesUtil.getFacesContext().getExternalContext().redirect("index.jsf?cidade=" + TSFacesUtil.getObjectInSession("cidadeEstado"));
 			} else {
 				TSFacesUtil.getFacesContext().getExternalContext().redirect("index.jsf?cidade=" + cidade);
 			}
@@ -159,7 +159,7 @@ public class ZapeatUtil {
 
 		try {
 			
-			TSFacesUtil.getFacesContext().getExternalContext().redirect("termoUso.jsf?cidade=" + TSFacesUtil.getRequestParameter("cidade") + "&token="+TSCryptoUtil.criptografar(model.getId().toString()));
+			TSFacesUtil.getFacesContext().getExternalContext().redirect("termoUso.jsf?cidade=" + TSFacesUtil.getObjectInSession("cidadeEstado") + "&token="+TSCryptoUtil.criptografar(model.getId().toString()));
 
 		} catch (Exception e) {
 			

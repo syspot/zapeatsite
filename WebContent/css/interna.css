@@ -167,3 +167,7 @@ ul#listagemCat li{ border-bottom:1px solid #ccc; overflow:hidden;margin-bottom:2
  p.autor{font-family: 'titilliumtext22l_ltmedium'!important; font-size:12px!important;}
 #comentarioFb textarea{width:100%; min-height:100px;}
 #comentarioFb input{font-family: 'titilliumtext22l_ltmedium'; text-transform:uppercase; color:#666; border:1px solid #CCC; margin-top:10px; padding:10px;}
+
+.conteudoSobre,.conteudoTermos{ padding:0px 20px;}
+.conteudoSobre p, .conteudoTermos p{margin-bottom:15px; line-height:30px; font-size:18px;font-family: 'microsoft_yi_baitiregular';}
+.conteudoTermos h5{font-family: 'titilliumtext22l_ltmedium'; text-transform:uppercase; margin:15px;}
