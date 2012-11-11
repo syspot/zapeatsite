@@ -7,6 +7,8 @@ public class EstadoModel {
 	private Long id;
 	
 	private String sigla;
+	
+	private String nome;
 
 	public Long getId() {
 		return TSUtil.tratarLong(id);
@@ -47,6 +49,14 @@ public class EstadoModel {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 }

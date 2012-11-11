@@ -133,8 +133,8 @@ public class EstabelecimentoFaces extends CarregaPromocaoFaces {
 			}
 
 		} else {
-
-			super.addErrorMessage("Você precisa estar logado para realizar a operação!");
+			
+			TSFacesUtil.addErrorMessage("Você precisa estar logado para realizar a operação!");
 		}
 			
 	}

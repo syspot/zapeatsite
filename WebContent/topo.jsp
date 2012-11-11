@@ -164,18 +164,14 @@
 
 </div>
 
-<t:div styleClass="mensagem alertRed" rendered="#{!empty facesContext.maximumSeverity && facesContext.maximumSeverity.ordinal==2}"><!---- SE MENSAGEM DE ERRO, alertRed ---->
+<t:div styleClass="mensagem alertRed" rendered="#{!empty facesContext.maximumSeverity && facesContext.maximumSeverity.ordinal==2}">
 <span class="btnFechar">[X]</span>
-	<c:forEach items="#{facesContext.messageList}" var="message">
-    <p>${message.detail}</p>
-    </c:forEach>
+	<p><h:messages showDetail="true" showSummary="false"/></p>
 </t:div>
 
-<t:div styleClass="mensagem alertGreen" rendered="#{!empty facesContext.maximumSeverity && facesContext.maximumSeverity.ordinal==0}"><!---- SE MENSAGEM DE ERRO, alertRed ---->
+<t:div styleClass="mensagem alertGreen" rendered="#{!empty facesContext.maximumSeverity && facesContext.maximumSeverity.ordinal==0}">
 <span class="btnFechar">[X]</span>
-	<c:forEach items="#{facesContext.messageList}" var="message">
-    <p>${message.detail}</p>
-    </c:forEach>
+	<p><h:messages showDetail="true" showSummary="false"/></p>
 </t:div>
 
 <!-- 
@@ -211,7 +207,7 @@
 				<h:inputSecret tabindex="102" required="true" id="senha_div" maxlength="100" value="#{cadastroFaces.usuarioModel.senha}" redisplay="true"/>
 				
 				<span id="span_flag_aceito">
-				<input type="checkbox" id="flag_aceito" />
+				<input type="checkbox" id="flag_aceito" tabindex="103"/>
 				<h:outputText value="Li e aceito os " styleClass="header"/>
 				<a href="files/TermosCondicoesGeraisUsoSiteZapeat.pdf" target="_blank">Termos e Condições Gerais de Uso</a>
 				</span>
