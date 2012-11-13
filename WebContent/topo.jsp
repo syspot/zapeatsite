@@ -28,9 +28,19 @@
 	<div class="barraBusca">
     	<h:form prependId="false">
 			<label>Buscar<h:inputText value="#{buscaFaces.termoBuscado}"/></label>
+			
+		    <c:if test="${not empty sessionScope.cidadeEstado}">
+		    	<label>em<h:inputText id="cidade" value="#{sessionScope.cidadeEstado}" /><span id="btnInit" class="icons" ></span></label>
+		    	<input type="hidden" name="cidade" value="${sessionScope.cidadeEstado}"></input>
+		    	<h:commandButton id="buscar" value="" action="#{buscaFaces.buscar(sessionScope.cidadeEstado)}" />
+		    </c:if>
+		    <c:if test="${empty sessionScope.cidadeEstado}">
 		    <label>em<h:inputText id="cidade" value="#{cidadeFaces.cidadeSelecionada}" /><span id="btnInit" class="icons" ></span></label>
 		    <input type="hidden" name="cidade" value="${cidadeFaces.cidadeSelecionada}"></input>
 		    <h:commandButton id="buscar" value="" action="#{buscaFaces.buscar(cidadeFaces.cidadeSelecionada)}" />
+		    </c:if>
+		    
+		    
 		</h:form>
 		
 		<script src="js/jquery-1.8.2.js"></script>
