@@ -26,7 +26,7 @@ public class CidadeModel {
 	}
 
 	public String getNome() {
-		return nome + "-" + getEstadoModel().getSigla().toUpperCase();
+		return nome + "-" + getEstadoModel().getNome();
 	}
 
 	public void setNome(String nome) {

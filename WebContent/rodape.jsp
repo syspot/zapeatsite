@@ -6,8 +6,19 @@
 	<div class="barraBusca">
     	<h:form prependId="false">
 			<label>Buscar<h:inputText value="#{buscaFaces.termoBuscado}"/></label>
-		    <label>em<h:inputText id="info2" value="#{cidadeFaces.cidadeSelecionada}"/><span id="btnInit" class="icons" ></span></label>
-		    <h:commandButton value="" action="#{buscaFaces.buscar}" />
+			
+		    <c:if test="${not empty sessionScope.cidadeEstado}">
+		    	<label>em<h:inputText id="cidade2" value="#{sessionScope.cidadeEstado}" /><span id="btnInit" class="icons" ></span></label>
+		    	<input type="hidden" name="cidade" value="${sessionScope.cidadeEstado}"></input>
+		    	<h:commandButton id="buscar2" value="" action="#{buscaFaces.buscar(sessionScope.cidadeEstado)}" />
+		    </c:if>
+		    <c:if test="${empty sessionScope.cidadeEstado}">
+		    <label>em<h:inputText id="cidade2" value="#{cidadeFaces.cidadeSelecionada}" /><span id="btnInit" class="icons" ></span></label>
+		    <input type="hidden" name="cidade" value="${cidadeFaces.cidadeSelecionada}"></input>
+		    <h:commandButton id="buscar2" value="" action="#{buscaFaces.buscar(cidadeFaces.cidadeSelecionada)}" />
+		    </c:if>
+		    
+		    
 		</h:form>
 		
 		<script src="js/jquery-1.8.2.js"></script>

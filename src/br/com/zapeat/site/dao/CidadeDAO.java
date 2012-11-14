@@ -15,7 +15,7 @@ public class CidadeDAO {
     	
     	broker.setPropertySQL("cidadedao.obterporcidadeestado", cidade, estado);
     	
-    	return (CidadeModel) broker.getObjectBean(CidadeModel.class, "id", "nome", "estadoModel.id", "estadoModel.sigla");
+    	return (CidadeModel) broker.getObjectBean(CidadeModel.class, "id", "nome", "estadoModel.id", "estadoModel.sigla", "estadoModel.nome");
     	
     }
     
@@ -26,7 +26,7 @@ public class CidadeDAO {
     	
     	broker.setPropertySQL("cidadedao.pesquisartodos");
     	
-    	return broker.getCollectionBean(CidadeModel.class, "id", "nome", "estadoModel.id", "estadoModel.sigla");
+    	return broker.getCollectionBean(CidadeModel.class, "id", "nome", "estadoModel.id", "estadoModel.sigla", "estadoModel.nome");
     	
     }
     
@@ -36,7 +36,7 @@ public class CidadeDAO {
     	
     	broker.setPropertySQL("cidadedao.obter", cidade.getId());
     	
-    	return (CidadeModel) broker.getObjectBean(CidadeModel.class, "id", "nome", "estadoModel.id", "estadoModel.sigla");
+    	return (CidadeModel) broker.getObjectBean(CidadeModel.class, "id", "nome", "estadoModel.id", "estadoModel.sigla", "estadoModel.nome");
     	
     }
 }

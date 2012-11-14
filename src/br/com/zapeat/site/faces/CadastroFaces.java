@@ -88,11 +88,11 @@ public class CadastroFaces extends TSMainFaces {
 
 				model.setNome(TSStringUtil.formatarNomeProprio(model.getNome()));
 
-				this.enviarEmail(model);
-
 				this.usuarioModel = new UsuarioModel();
 
 				super.addInfoMessage("Para efetivar seu cadastro é necessário acessar o e-mail informado e clicar no link de confirmação.");
+				
+				this.enviarEmail(model);
 
 			} else {
 
@@ -108,7 +108,7 @@ public class CadastroFaces extends TSMainFaces {
 
 		StringBuilder corpo = new StringBuilder();
 
-		String marca = "http://saudelivre.com.br/zapeatsite/img/marca.png";
+		String marca = Constantes.URL_SITE_PRODUCAO + "img/marca.png";
 
 		corpo.append("<img src='" + marca + "'/>");
 

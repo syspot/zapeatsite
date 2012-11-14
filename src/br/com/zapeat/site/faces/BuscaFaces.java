@@ -62,7 +62,12 @@ public class BuscaFaces extends TSMainFaces {
 				CidadeModel cidadeModel = new CidadeDAO().obter(ZapeatUtil.getCidade(cidade), ZapeatUtil.getEstado(cidade));
 				
 				if(!TSUtil.isEmpty(cidadeModel)){
+					
 					super.addObjectInSession("cidadeId", cidadeModel.getId());
+				
+				} else {
+					
+					super.addObjectInSession("cidadeId", 0L);
 				}
 			}
 			
