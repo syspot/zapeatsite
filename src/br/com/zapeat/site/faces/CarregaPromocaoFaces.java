@@ -1,12 +1,15 @@
 package br.com.zapeat.site.faces;
 
+import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.faces.TSMainFaces;
 import br.com.topsys.web.util.TSFacesUtil;
 import br.com.zapeat.site.dao.CarroChefeDAO;
 import br.com.zapeat.site.dao.ComentarioDAO;
+import br.com.zapeat.site.dao.ImagemFornecedorDAO;
 import br.com.zapeat.site.dao.PromocaoDAO;
 import br.com.zapeat.site.model.CarroChefeModel;
 import br.com.zapeat.site.model.ComentarioModel;
+import br.com.zapeat.site.model.ImagemModel;
 import br.com.zapeat.site.model.PromocaoModel;
 
 public class CarregaPromocaoFaces extends TSMainFaces{
@@ -19,12 +22,50 @@ public class CarregaPromocaoFaces extends TSMainFaces{
 
 	public CarregaPromocaoFaces() {
 
+		ImagemFornecedorDAO imagemFornecedorDAO = new ImagemFornecedorDAO();
+		
 		PromocaoDAO promocaoDAO = new PromocaoDAO();
 		
 		this.promocaoDaHora = promocaoDAO.obterPromocaoHoraAleatoria(getPromocaoId(), getFornecedorId(), (Long)TSFacesUtil.getObjectInSession("cidadeId"));
+		
+		if(!TSUtil.isEmpty(this.promocaoDaHora) && TSUtil.isEmpty(this.promocaoDaHora.getImagemPromocao())){
+			
+			ImagemModel imagemModel = imagemFornecedorDAO.obterAleatorio(this.promocaoDaHora.getFornecedorModel());
+			
+			this.promocaoDaHora.setImagemPromocao(imagemModel.getImagem());
+			
+		}
+		
 		this.promocaoDoDia = promocaoDAO.obterPromocaoDiaAleatoria(getPromocaoId(), getFornecedorId(), (Long)TSFacesUtil.getObjectInSession("cidadeId"));
+		
+		if(!TSUtil.isEmpty(this.promocaoDoDia) && TSUtil.isEmpty(this.promocaoDoDia.getImagemPromocao())){
+			
+			ImagemModel imagemModel = imagemFornecedorDAO.obterAleatorio(this.promocaoDoDia.getFornecedorModel());
+			
+			this.promocaoDoDia.setImagemPromocao(imagemModel.getImagem());
+			
+		}
+		
 		this.promocaoDaSemana = promocaoDAO.obterPromocaoSemanaAleatoria(getPromocaoId(), getFornecedorId(), (Long)TSFacesUtil.getObjectInSession("cidadeId"));
+		
+		if(!TSUtil.isEmpty(this.promocaoDaSemana) && TSUtil.isEmpty(this.promocaoDaSemana.getImagemPromocao())){
+			
+			ImagemModel imagemModel = imagemFornecedorDAO.obterAleatorio(this.promocaoDaSemana.getFornecedorModel());
+			
+			this.promocaoDaSemana.setImagemPromocao(imagemModel.getImagem());
+			
+		}
+		
 		this.carroChefeModel = new CarroChefeDAO().obterCarroChefeAleatorio(getFornecedorId(), (Long)TSFacesUtil.getObjectInSession("cidadeId"));
+		
+		if(!TSUtil.isEmpty(this.carroChefeModel) && TSUtil.isEmpty(this.carroChefeModel.getImagem())){
+			
+			ImagemModel imagemModel = imagemFornecedorDAO.obterAleatorio(this.carroChefeModel.getFornecedorModel());
+			
+			this.carroChefeModel.setImagem(imagemModel.getImagem());
+			
+		}
+
 		this.comentarioModel = new ComentarioDAO().obterIndicacao(getFornecedorId(), (Long)TSFacesUtil.getObjectInSession("cidadeId"));
 		
 	}

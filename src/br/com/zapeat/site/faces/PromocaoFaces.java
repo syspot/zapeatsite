@@ -9,11 +9,13 @@ import br.com.zapeat.site.dao.CarroChefeDAO;
 import br.com.zapeat.site.dao.ComentarioDAO;
 import br.com.zapeat.site.dao.FormaPagamentoDAO;
 import br.com.zapeat.site.dao.ImagemCarroChefeDAO;
+import br.com.zapeat.site.dao.ImagemFornecedorDAO;
 import br.com.zapeat.site.dao.ImagemPromocaoDAO;
 import br.com.zapeat.site.dao.PromocaoDAO;
 import br.com.zapeat.site.model.CarroChefeModel;
 import br.com.zapeat.site.model.ComentarioCarroChefeModel;
 import br.com.zapeat.site.model.ComentarioPromocaoModel;
+import br.com.zapeat.site.model.ImagemModel;
 import br.com.zapeat.site.model.PromocaoModel;
 import br.com.zapeat.site.model.UsuarioModel;
 import br.com.zapeat.site.util.Constantes;
@@ -74,6 +76,17 @@ public class PromocaoFaces extends CarregaPromocaoFaces {
 			this.promocao.setImagensPromocoes(new ImagemPromocaoDAO().pesquisar(this.promocao));
 			this.promocao.setComentarios(new ComentarioDAO().pesquisarComentarios(this.promocao));
 			
+			if(TSUtil.isEmpty(this.promocao.getImagensPromocoes())){
+				
+				ImagemModel imagemModel = new ImagemFornecedorDAO().obterAleatorio(this.promocao.getFornecedorModel());
+				
+				if(!TSUtil.isEmpty(imagemModel)){
+					
+					this.promocao.setImagemPromocao(imagemModel.getImagem());
+					
+				}
+			}
+			
 			Long idUsuarioLogado = (Long) TSFacesUtil.getObjectInSession(Constantes.ID_USUARIO_LOGADO);
 			
 			this.usuarioLogado = new UsuarioModel(idUsuarioLogado);
@@ -101,6 +114,18 @@ public class PromocaoFaces extends CarregaPromocaoFaces {
 			this.carroChefe.getFornecedorModel().setFormasPagamentos(new FormaPagamentoDAO().pesquisar(this.carroChefe.getFornecedorModel()));
 			this.carroChefe.setImagensCarroChefe(new ImagemCarroChefeDAO().pesquisar(this.carroChefe));
 			this.carroChefe.setComentarios(new ComentarioDAO().pesquisarComentarios(this.carroChefe));
+			
+			if(TSUtil.isEmpty(this.carroChefe.getImagensCarroChefe())){
+				
+				ImagemModel imagemModel = new ImagemFornecedorDAO().obterAleatorio(this.carroChefe.getFornecedorModel());
+				
+				if(!TSUtil.isEmpty(imagemModel)){
+					
+					this.carroChefe.setImagem(imagemModel.getImagem());
+					
+				}
+				
+			}
 			
 			Long idUsuarioLogado = (Long) TSFacesUtil.getObjectInSession(Constantes.ID_USUARIO_LOGADO);
 			

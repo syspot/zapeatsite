@@ -59,7 +59,7 @@ public class FornecedorModel {
 	
 	private List<ComentarioFornecedorModel> comentarios; 
 	
-	private List<ImagemFornecedorModel> imagensFornecedorModel; 
+	private List<ImagemModel> imagensFornecedorModel; 
 
 	public FornecedorModel() {
 	}
@@ -303,12 +303,11 @@ public class FornecedorModel {
 		this.comentarios = comentarios;
 	}
 
-	public List<ImagemFornecedorModel> getImagensFornecedorModel() {
+	public List<ImagemModel> getImagensFornecedorModel() {
 		return imagensFornecedorModel;
 	}
 
-	public void setImagensFornecedorModel(
-			List<ImagemFornecedorModel> imagensFornecedorModel) {
+	public void setImagensFornecedorModel(List<ImagemModel> imagensFornecedorModel) {
 		this.imagensFornecedorModel = imagensFornecedorModel;
 	}
 

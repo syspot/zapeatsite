@@ -7,8 +7,10 @@ import javax.faces.bean.ManagedBean;
 import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.util.TSFacesUtil;
 import br.com.zapeat.site.dao.FornecedorDAO;
+import br.com.zapeat.site.dao.ImagemFornecedorDAO;
 import br.com.zapeat.site.dao.PromocaoDAO;
 import br.com.zapeat.site.model.FornecedorModel;
+import br.com.zapeat.site.model.ImagemModel;
 import br.com.zapeat.site.model.PromocaoModel;
 
 @ManagedBean
@@ -27,8 +29,16 @@ public class IndexFaces extends CarregaPromocaoFaces {
 
 		if (!TSUtil.isEmpty(this.promocaoHora) && !TSUtil.isEmpty(this.promocaoHora.getId())) {
 			
-			this.promocoesHora = promocaoDAO.pesquisarPromocoesHora(this.promocaoHora, (Long)TSFacesUtil.getObjectInSession("cidadeId"));
+			if(TSUtil.isEmpty(this.promocaoHora.getImagemPromocao())){
 				
+				ImagemModel imagemModel = new ImagemFornecedorDAO().obterAleatorio(this.promocaoHora.getFornecedorModel());
+				
+				this.promocaoHora.setImagemPromocao(imagemModel.getImagem());
+				
+			}
+			
+			this.promocoesHora = promocaoDAO.pesquisarPromocoesHora(this.promocaoHora, (Long)TSFacesUtil.getObjectInSession("cidadeId"));
+			
 		}
 		
 		this.topGeral = new FornecedorDAO().pesquisarTopGeral((Long)TSFacesUtil.getObjectInSession("cidadeId"));

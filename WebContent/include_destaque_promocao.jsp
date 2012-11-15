@@ -93,7 +93,7 @@
 					<li>
 						<a href="promocao.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${promocao.id}&estabelecimento_id=${promocao.fornecedorModel.id}" title="">
 							<div class="marca floatLeft">
-                   				<img src="${promocao.imagemPromocaoThumbView}" alt="" title="${promocao.fornecedorModel.nomeFantasia}" />
+                   				<img src="${promocao.imagemThumbView}" alt="" title="${promocao.fornecedorModel.nomeFantasia}" />
                   			</div>
 							<!-- SE PROMOÇÃO EM PRODUTO -->
 		                   <div class="info">

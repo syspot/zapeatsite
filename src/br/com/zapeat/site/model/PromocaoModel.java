@@ -32,7 +32,7 @@ public class PromocaoModel {
 
 	private Double precoPromocional;
 
-	private List<ImagemPromocaoModel> imagensPromocoes;
+	private List<ImagemModel> imagensPromocoes;
 
 	private Integer indicacoes;
 
@@ -116,11 +116,11 @@ public class PromocaoModel {
 		this.precoPromocional = precoPromocional;
 	}
 
-	public List<ImagemPromocaoModel> getImagensPromocoes() {
+	public List<ImagemModel> getImagensPromocoes() {
 		return imagensPromocoes;
 	}
 
-	public void setImagensPromocoes(List<ImagemPromocaoModel> imagensPromocoes) {
+	public void setImagensPromocoes(List<ImagemModel> imagensPromocoes) {
 		this.imagensPromocoes = imagensPromocoes;
 	}
 
