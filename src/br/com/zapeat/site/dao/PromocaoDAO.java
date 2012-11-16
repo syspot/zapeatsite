@@ -84,11 +84,11 @@ public class PromocaoDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<PromocaoModel> pesquisarPromocoesHora(PromocaoModel model, Long cidadeId) {
+	public List<PromocaoModel> pesquisarPromocoes(PromocaoModel model, Long cidadeId) {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("promocaodao.pesquisarPromocoesHora", model.getId(), cidadeId);
+		broker.setPropertySQL("promocaodao.pesquisarPromocoes", model.getId(), model.getTipoPromocaoModel().getId(), cidadeId);
 
 		return broker.getCollectionBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "descricao", "inicio", "fim", "precoOriginal", "precoPromocional", "titulo", "fornecedorModel.longitude", "fornecedorModel.latitude", "fornecedorModel.site","indicacoes", "fornecedorModel.telefone", "imagemThumb");
 

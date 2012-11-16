@@ -3,35 +3,35 @@
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 
 
-<c:if test="${not empty indexFaces.promocaoHora}">
+<c:if test="${not empty indexFaces.promocao}">
 
 	<div id="destaque">
 	        	
 	   	<div id="fotoDestaque">
 	   	
-	        <a href="promocao.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${indexFaces.promocaoHora.id}&estabelecimento_id=${indexFaces.promocaoHora.fornecedorModel.id}">
-	        	<img src="${indexFaces.promocaoHora.imagemPromocaoFullView}" alt="" title="" />
+	        <a href="promocao.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${indexFaces.promocao.id}&estabelecimento_id=${indexFaces.promocao.fornecedorModel.id}">
+	        	<img src="${indexFaces.promocao.imagemPromocaoFullView}" alt="" title="" />
 	        </a>
             
             <div class="tituloPromo">
            		<p><span class="tipoPromo">Promoção da hora</span></p>
-				<p><span class="nomePromo"><c:out value="${indexFaces.promocaoHora.titulo}"/>/${indexFaces.promocaoHora.fornecedorModel.nomeFantasia}</span></p>
+				<p><span class="nomePromo"><c:out value="${indexFaces.promocao.titulo}"/>/${indexFaces.promocao.fornecedorModel.nomeFantasia}</span></p>
 			</div>
 			
 		</div>
 	       
 		<div id="faixa">
 	        <div class="marca">
-	        	<a href="estabelecimento.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${indexFaces.promocaoHora.fornecedorModel.id}">
-	        		<img src="${indexFaces.promocaoHora.fornecedorModel.logoMarcaView}" alt="" title="${indexFaces.promocaoHora.fornecedorModel.nomeFantasia}" />
+	        	<a href="estabelecimento.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${indexFaces.promocao.fornecedorModel.id}">
+	        		<img src="${indexFaces.promocao.fornecedorModel.logoMarcaView}" alt="" title="${indexFaces.promocao.fornecedorModel.nomeFantasia}" />
 	        	</a>
 	        </div>
-			<p class="percentual">${indexFaces.promocaoHora.percentualDesconto}%</p>
+			<p class="percentual">${indexFaces.promocao.percentualDesconto}%</p>
 			<p class="fontYi font10px">desconto</p>
 		</div>
 	       
 		<blockquote class="fontYi">
-			<p>${indexFaces.promocaoHora.descricao}</p>
+			<p>${indexFaces.promocao.descricao}</p>
 			<p class="timePromo">Tempo restante:</p>
 			<p id="tempo" class="time"></p>
 		</blockquote>
@@ -44,8 +44,8 @@
 				
 				 function initializeMap() {
 				// Creating a map
-				var lat = ${indexFaces.promocaoHora.fornecedorModel.latitude}
-				var lng = ${indexFaces.promocaoHora.fornecedorModel.longitude}
+				var lat = ${indexFaces.promocao.fornecedorModel.latitude}
+				var lng = ${indexFaces.promocao.fornecedorModel.longitude}
 				var latlng = new google.maps.LatLng(lat, lng); 
 				var map = new google.maps.Map(document.getElementById('map_canvas'), {  
 				  zoom: 17,
@@ -82,14 +82,14 @@
 	            
 	</div>
 
-	<c:if test="${not empty indexFaces.promocoesHora}">
+	<c:if test="${not empty indexFaces.promocoes}">
 	
 		<div id="outrosDestaques">
 		
 			<h2>Outras Promoções da Hora</h2>
    		
 			<ul id="listagem">
-				<c:forEach var="promocao" items="${indexFaces.promocoesHora}">
+				<c:forEach var="promocao" items="${indexFaces.promocoes}">
 					<li>
 						<a href="promocao.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${promocao.id}&estabelecimento_id=${promocao.fornecedorModel.id}" title="">
 							<div class="marca floatLeft">

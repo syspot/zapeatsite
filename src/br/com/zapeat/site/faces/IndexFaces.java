@@ -16,28 +16,38 @@ import br.com.zapeat.site.model.PromocaoModel;
 @ManagedBean
 public class IndexFaces extends CarregaPromocaoFaces {
 
-	private PromocaoModel promocaoHora;
+	private PromocaoModel promocao;
 	
-	private List<PromocaoModel> promocoesHora;
+	private List<PromocaoModel> promocoes;
 	private List<FornecedorModel> topGeral;
 
 	public IndexFaces() {
 
 		PromocaoDAO promocaoDAO = new PromocaoDAO();
 		
-		this.promocaoHora = promocaoDAO.obterPromocaoHora((Long)TSFacesUtil.getObjectInSession("cidadeId"));
+		Long cidadeId = (Long)TSFacesUtil.getObjectInSession("cidadeId");
+		
+		this.promocao = promocaoDAO.obterPromocaoHoraAleatoria(null, null, cidadeId);
 
-		if (!TSUtil.isEmpty(this.promocaoHora) && !TSUtil.isEmpty(this.promocaoHora.getId())) {
+		if(TSUtil.isEmpty(this.promocao)){
+			this.promocao = promocaoDAO.obterPromocaoDiaAleatoria(null, null, cidadeId);
+		} 
+		
+		if(TSUtil.isEmpty(this.promocao)){
+			this.promocao = promocaoDAO.obterPromocaoSemanaAleatoria(null, null, cidadeId);
+		} 
+		
+		if (!TSUtil.isEmpty(this.promocao) && !TSUtil.isEmpty(this.promocao.getId())) {
 			
-			if(TSUtil.isEmpty(this.promocaoHora.getImagemPromocao())){
+			if(TSUtil.isEmpty(this.promocao.getImagemPromocao())){
 				
-				ImagemModel imagemModel = new ImagemFornecedorDAO().obterAleatorio(this.promocaoHora.getFornecedorModel());
+				ImagemModel imagemModel = new ImagemFornecedorDAO().obterAleatorio(this.promocao.getFornecedorModel());
 				
-				this.promocaoHora.setImagemPromocao(imagemModel.getImagem());
+				this.promocao.setImagemPromocao(imagemModel.getImagem());
 				
 			}
 			
-			this.promocoesHora = promocaoDAO.pesquisarPromocoesHora(this.promocaoHora, (Long)TSFacesUtil.getObjectInSession("cidadeId"));
+			this.promocoes = promocaoDAO.pesquisarPromocoes(this.promocao, (Long)TSFacesUtil.getObjectInSession("cidadeId"));
 			
 		}
 		
@@ -55,14 +65,6 @@ public class IndexFaces extends CarregaPromocaoFaces {
 		return new PromocaoDAO().pesquisarPromocoesHora(id);
 	}
 
-	public List<PromocaoModel> getPromocoesHora() {
-		return promocoesHora;
-	}
-
-	public void setPromocoesHora(List<PromocaoModel> promocoesHora) {
-		this.promocoesHora = promocoesHora;
-	}
-
 	public List<FornecedorModel> getTopGeral() {
 		return topGeral;
 	}
@@ -71,12 +73,20 @@ public class IndexFaces extends CarregaPromocaoFaces {
 		this.topGeral = topGeral;
 	}
 
-	public PromocaoModel getPromocaoHora() {
-		return promocaoHora;
+	public PromocaoModel getPromocao() {
+		return promocao;
 	}
 
-	public void setPromocaoHora(PromocaoModel promocaoHora) {
-		this.promocaoHora = promocaoHora;
+	public void setPromocao(PromocaoModel promocao) {
+		this.promocao = promocao;
+	}
+
+	public List<PromocaoModel> getPromocoes() {
+		return promocoes;
+	}
+
+	public void setPromocoes(List<PromocaoModel> promocoes) {
+		this.promocoes = promocoes;
 	}
 
 }
