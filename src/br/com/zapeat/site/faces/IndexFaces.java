@@ -1,5 +1,7 @@
 package br.com.zapeat.site.faces;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -7,10 +9,8 @@ import javax.faces.bean.ManagedBean;
 import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.util.TSFacesUtil;
 import br.com.zapeat.site.dao.FornecedorDAO;
-import br.com.zapeat.site.dao.ImagemFornecedorDAO;
 import br.com.zapeat.site.dao.PromocaoDAO;
 import br.com.zapeat.site.model.FornecedorModel;
-import br.com.zapeat.site.model.ImagemModel;
 import br.com.zapeat.site.model.PromocaoModel;
 
 @ManagedBean
@@ -20,6 +20,7 @@ public class IndexFaces extends CarregaPromocaoFaces {
 	
 	private List<PromocaoModel> promocoes;
 	private List<FornecedorModel> topGeral;
+	private Date dataAtual;
 
 	public IndexFaces() {
 
@@ -38,17 +39,7 @@ public class IndexFaces extends CarregaPromocaoFaces {
 		} 
 		
 		if (!TSUtil.isEmpty(this.promocao) && !TSUtil.isEmpty(this.promocao.getId())) {
-			
-			if(TSUtil.isEmpty(this.promocao.getImagemPromocao())){
-				
-				ImagemModel imagemModel = new ImagemFornecedorDAO().obterAleatorio(this.promocao.getFornecedorModel());
-				
-				this.promocao.setImagemPromocao(imagemModel.getImagem());
-				
-			}
-			
 			this.promocoes = promocaoDAO.pesquisarPromocoes(this.promocao, (Long)TSFacesUtil.getObjectInSession("cidadeId"));
-			
 		}
 		
 		this.topGeral = new FornecedorDAO().pesquisarTopGeral((Long)TSFacesUtil.getObjectInSession("cidadeId"));
@@ -58,7 +49,18 @@ public class IndexFaces extends CarregaPromocaoFaces {
 		for (FornecedorModel item : this.topGeral) {
 			item.setCss("top" + count++);
 		}
+		
+		dataAtual = new Date();
 
+	}
+	
+	public Date getDataAtual(){
+		
+		Calendar c = Calendar.getInstance();
+		
+		c.add(Calendar.HOUR, -2);
+				
+		return c.getTime();
 	}
 
 	public List<PromocaoModel> pesquisarPromocoesHora(Long id) {

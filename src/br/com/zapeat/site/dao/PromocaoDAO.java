@@ -121,7 +121,7 @@ public class PromocaoDAO {
 
 		broker.setPropertySQL("promocaodao.obterpromocaohoraaleatoria", fornecedorId, promocaoId, cidadeId);
 
-		return (PromocaoModel) broker.getObjectBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "descricao", "inicio", "fim", "precoOriginal", "precoPromocional", "titulo", "imagemPromocao", "fornecedorModel.longitude", "fornecedorModel.latitude");
+		return (PromocaoModel) broker.getObjectBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "descricao", "inicio", "fim", "precoOriginal", "precoPromocional", "titulo", "imagemPromocao", "fornecedorModel.longitude", "fornecedorModel.latitude", "fornecedorModel.logoMarca");
 
 	}
 	
@@ -131,7 +131,7 @@ public class PromocaoDAO {
 		
 		broker.setPropertySQL("promocaodao.obterpromocaodiaaleatoria", fornecedorId, promocaoId, cidadeId);
 		
-		return (PromocaoModel) broker.getObjectBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "descricao", "inicio", "fim", "precoOriginal", "precoPromocional", "titulo", "imagemPromocao", "fornecedorModel.longitude", "fornecedorModel.latitude");
+		return (PromocaoModel) broker.getObjectBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "descricao", "inicio", "fim", "precoOriginal", "precoPromocional", "titulo", "imagemPromocao", "fornecedorModel.longitude", "fornecedorModel.latitude", "fornecedorModel.logoMarca");
 		
 	}
 	
@@ -141,7 +141,7 @@ public class PromocaoDAO {
 		
 		broker.setPropertySQL("promocaodao.obterpromocaosemanaaleatoria", fornecedorId, promocaoId, cidadeId);
 		
-		return (PromocaoModel) broker.getObjectBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "descricao", "inicio", "fim", "precoOriginal", "precoPromocional", "titulo", "imagemPromocao", "fornecedorModel.longitude", "fornecedorModel.latitude");
+		return (PromocaoModel) broker.getObjectBean(PromocaoModel.class, "id", "tipoPromocaoModel.id", "tipoPromocaoModel.descricao", "fornecedorModel.id", "fornecedorModel.nomeFantasia", "descricao", "inicio", "fim", "precoOriginal", "precoPromocional", "titulo", "imagemPromocao", "fornecedorModel.longitude", "fornecedorModel.latitude", "fornecedorModel.logoMarca");
 		
 	}
 

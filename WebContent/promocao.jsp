@@ -375,7 +375,7 @@
             
 			<%@ include file="/include_promocao_da_semana_promocao_lateral.jsp" %>
 			
-            <%@ include file="/include_quem_indica_promocao_lateral.jsp" %>
+<%--             <%@ include file="/include_quem_indica_promocao_lateral.jsp" %> --%>
 
            	<%@ include file="/include_banner_lateral.jsp" %>
             
