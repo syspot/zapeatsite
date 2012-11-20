@@ -19,7 +19,8 @@
 				onPause: null,
 				leadingZero: false,
 				offset: null,
-				direction: 'down'
+				direction: 'down',
+				dataSistema: new Date()
 			},
 			slice = [].slice,
 			floor = Math.floor,
@@ -41,7 +42,7 @@
 				currentHours = tempDate.getTime() - ( ( -tempDate.getTimezoneOffset() / 60 ) * msPerHour );
 				dateMS = tempDate.setTime( currentHours + hoursOffset );
 				
-				return (new Date( dateMS ));
+				return settings.dataSistema;
 			},			
 			timerFunc = function() {
 
@@ -207,6 +208,7 @@
 						settings.onComplete = opts.onComplete;
 						settings.onResume = opts.onResume;
 						settings.onPause = opts.onPause;
+						settings.dataSistema = opts.dataSistema;
 						
 						if( !settings.hasCompleted ) {
 							func = $.proxy( timerFunc, $this );

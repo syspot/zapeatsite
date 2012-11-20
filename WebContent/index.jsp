@@ -77,7 +77,7 @@
 	<%@ include file="/rodape.jsp" %>
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script src="http://pluginjquery.com.br/labs/countdown1.3/script/jquery.jcountdown1.3.js" type="text/javascript"></script>
+	<script src="js/jquery.jcountdown1.3.js" type="text/javascript"></script>
 
 	
 	<script type="text/javascript">
@@ -86,6 +86,8 @@
 			$("#tempo").countdown({
 				date: "${indexFaces.promocao.dataFormatada}", //Counting TO a date
 				htmlTemplate: "%{h} <span class='time'>:</span> %{m} <span class='time'>:</span> %{s} <span class='time'></span>",
+				
+				dataSistema: "${indexFaces.promocao.dataSistema}",
 				
 				onChange: function( event, timer ){
 		

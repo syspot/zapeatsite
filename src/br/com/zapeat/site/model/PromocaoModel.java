@@ -245,5 +245,21 @@ public class PromocaoModel {
 
 		return null;
 	}
+	
+	public String getDataSistema() {
+		
+		StringBuilder str = new StringBuilder();
+		
+		Calendar c = Calendar.getInstance();
+		
+		str.append(Utilitarios.getMes(c.get(Calendar.MONTH)));
+		str.append(c.get(Calendar.DAY_OF_MONTH));
+		str.append(", ");
+		str.append(c.get(Calendar.YEAR));
+		str.append(" ");
+		str.append(TSParseUtil.dateToString(c.getTime(), TSDateUtil.HH_MM_SS));
+		
+		return str.toString();
+	}
 
 }
