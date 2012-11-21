@@ -22,6 +22,7 @@
 				direction: 'down',
 				dataInicialJavaScript: new Date(),
 				dataInicialServidor: new Date(),
+				dataAux: new Date(),
 			},
 			slice = [].slice,
 			floor = Math.floor,
@@ -36,7 +37,7 @@
 			
 				var hoursOffset = setting.offset || 0,
 					currentHours = 0,
-					tempDate = getDataTratada( setting.dataInicialJavaScript, setting.dataInicialServidor ),
+					tempDate = getDataTratada( setting.dataInicialJavaScript, setting.dataInicialServidor, setting.dataAux ),
 					dateMS;
 				
 				hoursOffset = hoursOffset * msPerHour;
@@ -45,15 +46,11 @@
 				
 				return (new Date( dateMS ));
 			},			
-			getDataTratada = function(data1, data2) {
+			getDataTratada = function(data1, data2, dataAux) {
 				
+				dataAux.setTime(dataAux.getTime() + 1000);
 				
-				var tempoDiferenca = new Date().getTime() - data1.getTime();
-				
-				horasDiferenca = new Date().getHours() - data1.getHours();
-				minutosDiferenca = new Date().getMinutes() - data1.getMinutes();
-				segundosDiferenca = new Date().getSeconds() - data1.getSeconds();
-				millisegundosDiferenca = new Date().getMilliseconds() - data1.getMilliseconds();
+				var tempoDiferenca = dataAux.getTime() - data1.getTime();
 				
 				dateMS = data2.getTime() + tempoDiferenca;
 				
@@ -83,7 +80,7 @@
 				
 				template = settings.htmlTemplate;
 				
-				todaysDate = ( settings.offset === null ) ? getDataTratada(settings.dataInicialJavaScript, settings.dataInicialServidor) : getTimezoneDate( settings );
+				todaysDate = ( settings.offset === null ) ? getDataTratada(settings.dataInicialJavaScript, settings.dataInicialServidor, settings.dataAux) : getTimezoneDate( settings );
 					
 				countdownDate = new Date( settings.date );
 				
@@ -148,7 +145,7 @@
 					return this.each(function() {
 						var $this = $(this),
 							settings = {},
-							todaysDate = ( opts.offset === null ) ? getDataTratada(opts.dataInicialJavaScript, opts.dataInicialServidor) : getTimezoneDate( opts ),
+							todaysDate = ( opts.offset === null ) ? getDataTratada(opts.dataInicialJavaScript, opts.dataInicialServidor, opts.dataAux) : getTimezoneDate( opts ),
 							countdownDate = new Date( opts.date ),
 							timeLeft = ( opts.direction === 'down' ) ? countdownDate.getTime() - todaysDate.getTime() :
 								todaysDate.getTime() - countdownDate.getTime(),
@@ -226,6 +223,7 @@
 						settings.onPause = opts.onPause;
 						settings.dataInicialServidor = opts.dataInicialServidor;
 						settings.dataInicialJavaScript = opts.dataInicialJavaScript;
+						settings.dataAux = opts.dataAux;
 						
 						if( !settings.hasCompleted ) {
 							func = $.proxy( timerFunc, $this );
@@ -274,7 +272,7 @@
 						
 						template = settings.htmlTemplate;
 
-						todaysDate = ( settings.offset === null ) ? getDataTratada(settings.dataInicialJavaScript, settings.dataInicialServidor) : getTimezoneDate( settings );
+						todaysDate = ( settings.offset === null ) ? getDataTratada(settings.dataInicialJavaScript, settings.dataInicialServidor, settings.dataAux) : getTimezoneDate( settings );
 						countdownDate = new Date( settings.date );						
 						timeLeft = ( settings.direction === 'down' ) ? countdownDate.getTime() - todaysDate.getTime() :
 							todaysDate.getTime() - countdownDate.getTime();
@@ -358,7 +356,7 @@
 						
 						template = settings.htmlTemplate;
 
-						todaysDate = ( settings.offset === null ) ? getDataTratada(settings.dataInicialJavaScript, settings.dataInicialServidor) : getTimezoneDate( settings );
+						todaysDate = ( settings.offset === null ) ? getDataTratada(settings.dataInicialJavaScript, settings.dataInicialServidor, settings.dataAux) : getTimezoneDate( settings );
 						countdownDate = new Date( settings.date );						
 						timeLeft = ( settings.direction === 'down' ) ? countdownDate.getTime() - todaysDate.getTime() :
 							todaysDate.getTime() - countdownDate.getTime();
@@ -479,3 +477,13 @@
 	};
 	
 })(jQuery);
+
+function serverTime(){
+    var time = null;
+    $.ajax({url: 'http://localhost/zapeatsite/TimeServlet',
+        async: false, dataType: 'text',
+        success: function(text){time = new Date(text);},
+        error: function(http, message, exc){time = new Date();}
+    });
+    return time;
+}
