@@ -20,7 +20,8 @@
 				leadingZero: false,
 				offset: null,
 				direction: 'down',
-				dataSistema: new Date()
+				dataInicialJavaScript: new Date(),
+				dataInicialServidor: new Date(),
 			},
 			slice = [].slice,
 			floor = Math.floor,
@@ -31,19 +32,34 @@
 			rHours = /%\{h\}/,
 			rMins = /%\{m\}/,
 			rSecs = /%\{s\}/,
-			getTimezoneDate = function( offset ) {
+			getTimezoneDate = function( setting) {
 			
-				var hoursOffset = offset || 0,
+				var hoursOffset = setting.offset || 0,
 					currentHours = 0,
-					tempDate = new Date(),
+					tempDate = getDataTratada( setting.dataInicialJavaScript, setting.dataInicialServidor ),
 					dateMS;
 				
 				hoursOffset = hoursOffset * msPerHour;
 				currentHours = tempDate.getTime() - ( ( -tempDate.getTimezoneOffset() / 60 ) * msPerHour );
 				dateMS = tempDate.setTime( currentHours + hoursOffset );
 				
-				return settings.dataSistema;
+				return (new Date( dateMS ));
 			},			
+			getDataTratada = function(data1, data2) {
+				
+				
+				var tempoDiferenca = new Date().getTime() - data1.getTime();
+				
+				horasDiferenca = new Date().getHours() - data1.getHours();
+				minutosDiferenca = new Date().getMinutes() - data1.getMinutes();
+				segundosDiferenca = new Date().getSeconds() - data1.getSeconds();
+				millisegundosDiferenca = new Date().getMilliseconds() - data1.getMilliseconds();
+				
+				dateMS = data2.getTime() + tempoDiferenca;
+				
+				return (new Date( dateMS ));
+				
+			},
 			timerFunc = function() {
 
 				var $this = this,
@@ -67,7 +83,7 @@
 				
 				template = settings.htmlTemplate;
 				
-				todaysDate = ( settings.offset === null ) ? new Date() : getTimezoneDate( settings.offset );
+				todaysDate = ( settings.offset === null ) ? getDataTratada(settings.dataInicialJavaScript, settings.dataInicialServidor) : getTimezoneDate( settings );
 					
 				countdownDate = new Date( settings.date );
 				
@@ -132,7 +148,7 @@
 					return this.each(function() {
 						var $this = $(this),
 							settings = {},
-							todaysDate = ( opts.offset === null ) ? new Date() : getTimezoneDate( opts.offset ),
+							todaysDate = ( opts.offset === null ) ? getDataTratada(opts.dataInicialJavaScript, opts.dataInicialServidor) : getTimezoneDate( opts ),
 							countdownDate = new Date( opts.date ),
 							timeLeft = ( opts.direction === 'down' ) ? countdownDate.getTime() - todaysDate.getTime() :
 								todaysDate.getTime() - countdownDate.getTime(),
@@ -208,7 +224,8 @@
 						settings.onComplete = opts.onComplete;
 						settings.onResume = opts.onResume;
 						settings.onPause = opts.onPause;
-						settings.dataSistema = opts.dataSistema;
+						settings.dataInicialServidor = opts.dataInicialServidor;
+						settings.dataInicialJavaScript = opts.dataInicialJavaScript;
 						
 						if( !settings.hasCompleted ) {
 							func = $.proxy( timerFunc, $this );
@@ -257,7 +274,7 @@
 						
 						template = settings.htmlTemplate;
 
-						todaysDate = ( settings.offset === null ) ? new Date() : getTimezoneDate( settings.offset );
+						todaysDate = ( settings.offset === null ) ? getDataTratada(settings.dataInicialJavaScript, settings.dataInicialServidor) : getTimezoneDate( settings );
 						countdownDate = new Date( settings.date );						
 						timeLeft = ( settings.direction === 'down' ) ? countdownDate.getTime() - todaysDate.getTime() :
 							todaysDate.getTime() - countdownDate.getTime();
@@ -341,7 +358,7 @@
 						
 						template = settings.htmlTemplate;
 
-						todaysDate = ( settings.offset === null ) ? new Date() : getTimezoneDate( settings.offset );
+						todaysDate = ( settings.offset === null ) ? getDataTratada(settings.dataInicialJavaScript, settings.dataInicialServidor) : getTimezoneDate( settings );
 						countdownDate = new Date( settings.date );						
 						timeLeft = ( settings.direction === 'down' ) ? countdownDate.getTime() - todaysDate.getTime() :
 							todaysDate.getTime() - countdownDate.getTime();

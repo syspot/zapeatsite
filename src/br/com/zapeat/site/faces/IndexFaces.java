@@ -1,17 +1,19 @@
 package br.com.zapeat.site.faces;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 
+import br.com.topsys.util.TSDateUtil;
+import br.com.topsys.util.TSParseUtil;
 import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.util.TSFacesUtil;
 import br.com.zapeat.site.dao.FornecedorDAO;
 import br.com.zapeat.site.dao.PromocaoDAO;
 import br.com.zapeat.site.model.FornecedorModel;
 import br.com.zapeat.site.model.PromocaoModel;
+import br.com.zapeat.site.util.Utilitarios;
 
 @ManagedBean
 public class IndexFaces extends CarregaPromocaoFaces {
@@ -20,7 +22,6 @@ public class IndexFaces extends CarregaPromocaoFaces {
 	
 	private List<PromocaoModel> promocoes;
 	private List<FornecedorModel> topGeral;
-	private Date dataAtual;
 
 	public IndexFaces() {
 
@@ -50,17 +51,22 @@ public class IndexFaces extends CarregaPromocaoFaces {
 			item.setCss("top" + count++);
 		}
 		
-		dataAtual = new Date();
-
 	}
 	
-	public Date getDataAtual(){
+	public String getDataSistema() {
+		
+		StringBuilder str = new StringBuilder();
 		
 		Calendar c = Calendar.getInstance();
 		
-		c.add(Calendar.HOUR, -2);
-				
-		return c.getTime();
+		str.append(Utilitarios.getMes(c.get(Calendar.MONTH)));
+		str.append(c.get(Calendar.DAY_OF_MONTH));
+		str.append(", ");
+		str.append(c.get(Calendar.YEAR));
+		str.append(" ");
+		str.append(TSParseUtil.dateToString(c.getTime(), TSDateUtil.HH_MM_SS));
+		
+		return str.toString();
 	}
 
 	public List<PromocaoModel> pesquisarPromocoesHora(Long id) {

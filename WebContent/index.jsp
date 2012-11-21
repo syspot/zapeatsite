@@ -87,7 +87,7 @@
 				date: "${indexFaces.promocao.dataFormatada}", //Counting TO a date
 				htmlTemplate: "%{h} <span class='time'>:</span> %{m} <span class='time'>:</span> %{s} <span class='time'></span>",
 				
-				dataSistema: "${indexFaces.promocao.dataSistema}",
+				dataInicialServidor: new Date("${indexFaces.dataSistema}"),
 				
 				onChange: function( event, timer ){
 		
