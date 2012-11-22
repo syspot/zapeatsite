@@ -14,7 +14,7 @@
 	        </a>
             
             <div class="tituloPromo">
-           		<p><span class="tipoPromo">Promoção da hora</span></p>
+           		<p><span class="tipoPromo"><c:out value="${indexFaces.promocao.tipoPromocaoModel.descricao}" /></span></p>
 				<p><span class="nomePromo"><c:out value="${indexFaces.promocao.titulo}"/>/${indexFaces.promocao.fornecedorModel.nomeFantasia}</span></p>
 			</div>
 			

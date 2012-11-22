@@ -98,7 +98,7 @@
 			
 			$("#tempo").countdown({
 				date: "${indexFaces.promocao.dataFormatada}", //Counting TO a date
-				htmlTemplate: "%{h} <span class='time'>:</span> %{m} <span class='time'>:</span> %{s} <span class='time'></span>",
+				htmlTemplate: "%{h} <span class='time'>:</span> %{m} ",
 				
 				dataInicialServidor: new Date("${indexFaces.dataSistema}"),
 				
