@@ -123,12 +123,14 @@
 		                        <p><span class="nomePromo">${promocaoFaces.promocao.titulo}</span></p>
 		                    </div>
 		                </div>
-		                <div id="faixa">
-		                	<p class="precoDe">De: R$ ${promocaoFaces.promocao.precoOriginalFormatado}</p>
-		                    <p class="precoPor">Por: R$ ${promocaoFaces.promocao.precoPromocionalFormatado}</p>
-		                   	<p class="percentual">${promocaoFaces.promocao.percentualDesconto}%</p>
-		                   	<p class="fontYi font10px">desconto</p>
-		                </div>
+		                <c:if test="${not empty promocaoFaces.promocao.precoOriginal and not empty promocaoFaces.promocao.precoPromocional}">
+			                <div id="faixa">
+			                	<p class="precoDe">De: R$ ${promocaoFaces.promocao.precoOriginalFormatado}</p>
+			                    <p class="precoPor">Por: R$ ${promocaoFaces.promocao.precoPromocionalFormatado}</p>
+			                   	<p class="percentual">${promocaoFaces.promocao.percentualDesconto}%</p>
+			                   	<p class="fontYi font10px">desconto</p>
+			                </div>
+		                </c:if>
 		                <div class="boxInfo">
 		                	<a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.id}" title="" class="floatLeft"><div class="floatLeft"><img src="${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.imagemView}" alt="" title="${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.descricao}" class="floatLeftMargin4" />Categoria: <c:out value="${promocaoFaces.promocao.fornecedorModel.categoriaPrincipal.descricao}" /></div></a>
 		                </div>

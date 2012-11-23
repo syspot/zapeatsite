@@ -101,7 +101,7 @@ public class PromocaoModel {
 	}
 
 	public Double getPrecoOriginal() {
-		return precoOriginal;
+		return ZapeatUtil.tratarDouble(precoOriginal);
 	}
 
 	public void setPrecoOriginal(Double precoOriginal) {
@@ -109,7 +109,7 @@ public class PromocaoModel {
 	}
 
 	public Double getPrecoPromocional() {
-		return precoPromocional;
+		return ZapeatUtil.tratarDouble(precoPromocional);
 	}
 
 	public void setPrecoPromocional(Double precoPromocional) {

@@ -191,5 +191,9 @@ public class ZapeatUtil {
 	public static String getEstado(String cidade) {
 		return TSUtil.isEmpty(cidade) ? cidade : cidade.split("-").length < 2 ? cidade.split("-")[0] : cidade.split("-")[cidade.split("-").length - 1];
 	}
+	
+	public static Double tratarDouble(Double valor){
+		return valor == null ? null : valor == 0.0 ? null : valor;
+	}
 
 }
