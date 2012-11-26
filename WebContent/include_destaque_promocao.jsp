@@ -26,14 +26,18 @@
 	        		<img src="${indexFaces.promocao.fornecedorModel.logoMarcaView}" alt="" title="${indexFaces.promocao.fornecedorModel.nomeFantasia}" />
 	        	</a>
 	        </div>
-			<p class="percentual">${indexFaces.promocao.percentualDesconto}%</p>
-			<p class="fontYi font10px">desconto</p>
+	        <c:if test="${not empty indexFaces.promocao.precoPromocional and not empty indexFaces.promocao.precoOriginal}">
+				<p class="percentual">${indexFaces.promocao.percentualDesconto}%</p>
+				<p class="fontYi font10px">desconto</p>
+			</c:if>
 		</div>
-	       
+	    
 		<blockquote class="fontYi">
 			<p>${indexFaces.promocao.descricao}</p>
-			<p class="timePromo">Tempo restante:</p>
-			<p id="tempo" class="time"></p>
+		    <c:if test="${indexFaces.promocao.tipoPromocaoModel.id == 1}">
+				<p class="timePromo">Tempo restante:</p>
+				<p id="tempo" class="time"></p>
+			</c:if>
 		</blockquote>
 	
 		<div class="map">
