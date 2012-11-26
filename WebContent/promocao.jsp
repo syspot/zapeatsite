@@ -173,7 +173,7 @@
 	    				<div id="outroDados">
 		                	<ul>
 		                    	<li>
-		                        	<p class="titOtherInfo">horário da promoção</p>
+		                        	<p class="titOtherInfo">Hora de funcionamento</p>
 		                            <p>${promocaoFaces.promocao.fornecedorModel.horariosFuncionamento}</p>
 		                        </li>
 		                    	<li>
