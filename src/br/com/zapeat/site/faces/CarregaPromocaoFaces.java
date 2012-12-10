@@ -25,6 +25,7 @@ public class CarregaPromocaoFaces extends TSMainFaces{
 		this.promocaoDoDia = promocaoDAO.obterPromocaoDiaAleatoria(getPromocaoId(), getFornecedorId(), (Long)TSFacesUtil.getObjectInSession("cidadeId"));
 		this.promocaoDaSemana = promocaoDAO.obterPromocaoSemanaAleatoria(getPromocaoId(), getFornecedorId(), (Long)TSFacesUtil.getObjectInSession("cidadeId"));
 		this.carroChefeModel = new CarroChefeDAO().obterCarroChefeAleatorio(getFornecedorId(), (Long)TSFacesUtil.getObjectInSession("cidadeId"));
+		
 		this.comentarioModel = new ComentarioDAO().obterIndicacao(getFornecedorId(), (Long)TSFacesUtil.getObjectInSession("cidadeId"));
 		
 	}

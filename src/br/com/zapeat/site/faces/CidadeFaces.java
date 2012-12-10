@@ -17,39 +17,57 @@ public class CidadeFaces extends TSMainFaces {
 
 	private List<CidadeModel> cidades;
 	private String cidadeSelecionada;
-	
+
 	public CidadeFaces() {
 
 		this.cidades = new CidadeDAO().pesquisarTodos();
+
 		this.cidadeSelecionada = (String) super.getRequestParameter("cidade");
-		
-		if(!TSUtil.isEmpty(this.cidadeSelecionada)){
-			
+
+		if (!TSUtil.isEmpty(this.cidadeSelecionada)) {
+
 			this.cidadeSelecionada = ZapeatUtil.tratarCidadeUTF8(TSStringUtil.removerAcentos(this.cidadeSelecionada));
-			
+
 			super.addObjectInSession("cidadeEstado", this.cidadeSelecionada);
-			
+
 			CidadeModel cidadeModel = new CidadeDAO().obter(ZapeatUtil.getCidade(this.cidadeSelecionada), ZapeatUtil.getEstado(this.cidadeSelecionada));
-			
-			if(!TSUtil.isEmpty(cidadeModel)){
+
+			if (!TSUtil.isEmpty(cidadeModel)) {
+
 				super.addObjectInSession("cidadeId", cidadeModel.getId());
 			}
-			
+
+		} else if (!TSUtil.isEmpty(TSFacesUtil.getObjectInSession("cidadeEstado"))) {
+
+			this.cidadeSelecionada = ZapeatUtil.tratarCidadeUTF8(TSStringUtil.removerAcentos((String) TSFacesUtil.getObjectInSession("cidadeEstado")));
+
+			super.addObjectInSession("cidadeEstado", this.cidadeSelecionada);
+
+			CidadeModel cidadeModel = new CidadeDAO().obter(ZapeatUtil.getCidade(this.cidadeSelecionada), ZapeatUtil.getEstado(this.cidadeSelecionada));
+
+			if (!TSUtil.isEmpty(cidadeModel)) {
+
+				super.addObjectInSession("cidadeId", cidadeModel.getId());
+			}
+
 		} else {
-			
-			Long cidadeId = (Long)TSFacesUtil.getObjectInSession("cidadeId");
-			
-			if(!TSUtil.isEmpty(cidadeId)){
-				
+
+			Long cidadeId = (Long) TSFacesUtil.getObjectInSession("cidadeId");
+
+			if (!TSUtil.isEmpty(cidadeId)) {
+
 				CidadeModel cidade = new CidadeDAO().obter(new CidadeModel(cidadeId));
-				
-				if(!TSUtil.isEmpty(cidade)){
+
+				if (!TSUtil.isEmpty(cidade)) {
+
 					this.cidadeSelecionada = cidade.toString();
+
+					super.addObjectInSession("cidadeEstado", cidade.getNome() + "-" + cidade.getEstadoModel().getNome());
 				}
 			}
-			
+
 		}
-		
+
 	}
 
 	public List<CidadeModel> getCidades() {

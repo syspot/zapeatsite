@@ -27,12 +27,12 @@
         	<div id="tituloSessao">
 
             	<img src="${rankingFaces.categoriaModel.imagemView}" class="floatLeftMargin4" />
-            	<h2>Sobre o Zapeat</h2>
-                <p>Sobre</p>
+            	<h2>Zapeat na Mídia</h2>
+                <!-- <p>Promova-se</p> -->
             </div>
             
             <div class="conteudoSobre">
-                <p>No ZAPEAT você encontra promoções de bares, restaurantes e baladas em tempo real. Acesse nosso site e aproveite as promoções da hora, do dia ou da semana. Veja qual a comida carro chefe de seu restaurante favorito, ou saiba qual a posição de cada estabelecimento no ranking das promoções. Opine e acesse comentários de outros zapeatianos. Curta e faça parte desta tribo. Baixe o aplicativo e zapeat nas promoções pelo seu smartphone.</p>
+                <p>Faça parte da tribo dos zapeatianos. Acesse nossa Fan Page no Facebook e fique por dentro de todos nossos movimentos, lançamentos, atualizações e comentários do grupo.</p>
             
             </div>
             

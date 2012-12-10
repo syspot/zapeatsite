@@ -9,16 +9,20 @@
 	       <a href="promocao.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${indexFaces.promocaoDaSemana.id}&estabelecimento_id=${indexFaces.promocaoDaSemana.fornecedorModel.id}" title="${indexFaces.promocaoDaSemana.fornecedorModel.nomeFantasia}">
 	    	<img src="${indexFaces.promocaoDaSemana.imagemPromocaoThumbView}" alt="${indexFaces.promocaoDaSemana.fornecedorModel.nomeFantasia}" title="${indexFaces.promocaoDaSemana.fornecedorModel.nomeFantasia}" />
 	        <p class="titulo">${indexFaces.promocaoDaSemana.fornecedorModel.nomeFantasia}</p>
-	        <p><span class="precoDe">
-	        De: <h:outputText value="#{indexFaces.promocaoDaSemana.precoOriginal}">
-	        		<f:convertNumber type="currency" currencySymbol="R$"/>
-	        	</h:outputText></span>&nbsp;&nbsp;
+	        <c:if test="${not empty indexFaces.promocaoDaSemana.precoOriginal}">
+		        <span class="precoDe">
+		        	De: 
+		        	<h:outputText value="#{indexFaces.promocaoDaSemana.precoOriginal}">
+		        		<f:convertNumber type="currency" currencySymbol="R$"/>
+		        	</h:outputText></span>&nbsp;&nbsp;
+        	</c:if>
+        	<c:if test="${not empty indexFaces.promocaoDaSemana.precoPromocional}">
 	        	<span class="precoPor">
-	        Por: 
-	        	<h:outputText value="#{indexFaces.promocaoDaSemana.precoPromocional}">
-	        		<f:convertNumber type="currency" currencySymbol="R$"/>
-	        	</h:outputText></span>
-	        	
+	        		Por: 
+		        	<h:outputText value="#{indexFaces.promocaoDaSemana.precoPromocional}">
+		        		<f:convertNumber type="currency" currencySymbol="R$"/>
+		        	</h:outputText></span>
+        	</c:if>
 	        	<p><span class="fontYi">${indexFaces.promocaoDaSemana.descricao}</span></p>
 	      </a>   
 	</div>

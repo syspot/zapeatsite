@@ -337,3 +337,9 @@ span#time b{background:#F30; color:#fff; padding:0px 5px; font-size:15px;font-fa
 #rodape .contRodape .col ul li{margin:5px 0px;}
 #rodape .contRodape a{ color:#fff;}
 .marginLeft20{margin-left:20px;}
+
+.mensagem{position:relative; display:block; padding:25px; border-radius:5px; -moz-border-radius:5px;; -webkit-border-radius:5px; border :5px solid; color:#fff; position:fixed; width:350px; height:auto; top:150px; left:50%; margin-left:-175px; z-index:99999999; font-family: 'titilliumtext22l_rgbold'; font-size:18px;}
+.mensagem p{ margin:5px 0px;}
+.mensagem .btnFechar{font-size:10px; color:#fff;}
+.alertRed{border-color:#C00; background:#F00;}
+.alertGreen{border-color:#090; background:#0C0;}

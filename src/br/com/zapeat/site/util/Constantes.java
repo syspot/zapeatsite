@@ -4,13 +4,17 @@ import br.com.topsys.web.util.TSFacesUtil;
 
 public final class Constantes {
 	
+	public static final String URL_SITE_PRODUCAO = "http://www.zapeat.com/demo/";
+	
 	public static final String URL_APLICACAO = "http://" + TSFacesUtil.getRequest().getServerName() + ":"+ TSFacesUtil.getRequest().getServerPort() + TSFacesUtil.getRequest().getContextPath() + "/";
 
 	public static final String PASTA_DOWNLOAD = "http://"+TSFacesUtil.getRequest().getServerName() + ":" + TSFacesUtil.getRequest().getServerPort() + "/img_zapeat/";
 	
 	public static final String PREFIXO_IMAGEM_CATEGORIA = "20x20_";
 	public static final String PREFIXO_IMAGEM_FORMA_PAGAMENTO = "25x18_";
+	public static final String PREFIXO_IMAGEM_FULL = "590x260_";
 	public static final String PREFIXO_IMAGEM_PROMOCAO_FULL = "590x260_";
+	public static final String PREFIXO_IMAGEM_THUMB = "180x79_";
 	public static final String PREFIXO_IMAGEM_PROMOCAO_THUMB = "180x79_";
 	public static final String PREFIXO_PROMOCAO_THUMB = "80x80_";
 	public static final String PREFIXO_IMAGEM_FORNECEDOR_FULL = "590x260_";

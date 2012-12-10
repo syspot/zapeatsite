@@ -1,6 +1,7 @@
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
+<%@ taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>
 
 
 <script type="text/javascript">
@@ -15,6 +16,10 @@
 		$('.linkRanking,.closeRanking').click(function(){
 			$('#mascaraRanking').slideToggle();
 		})
+
+		$('.mensagem .btnFechar').click(function(){
+          $('.mensagem').fadeOut().css('display','none');
+        })
     });
 </script>
 
@@ -23,9 +28,19 @@
 	<div class="barraBusca">
     	<h:form prependId="false">
 			<label>Buscar<h:inputText value="#{buscaFaces.termoBuscado}"/></label>
+			
+		    <c:if test="${not empty sessionScope.cidadeEstado}">
+		    	<label>em<h:inputText id="cidade" value="#{sessionScope.cidadeEstado}" /><span id="btnInit" class="icons" ></span></label>
+		    	<input type="hidden" name="cidade" value="${sessionScope.cidadeEstado}"></input>
+		    	<h:commandButton id="buscar" value="" action="#{buscaFaces.buscar(sessionScope.cidadeEstado)}" />
+		    </c:if>
+		    <c:if test="${empty sessionScope.cidadeEstado}">
 		    <label>em<h:inputText id="cidade" value="#{cidadeFaces.cidadeSelecionada}" /><span id="btnInit" class="icons" ></span></label>
 		    <input type="hidden" name="cidade" value="${cidadeFaces.cidadeSelecionada}"></input>
 		    <h:commandButton id="buscar" value="" action="#{buscaFaces.buscar(cidadeFaces.cidadeSelecionada)}" />
+		    </c:if>
+		    
+		    
 		</h:form>
 		
 		<script src="js/jquery-1.8.2.js"></script>
@@ -157,9 +172,21 @@
 
 </div>
 
+<t:div styleClass="mensagem alertRed" rendered="#{!empty facesContext.maximumSeverity && facesContext.maximumSeverity.ordinal==2}">
+<span class="btnFechar">[X]</span>
+	<p><h:messages showDetail="true" showSummary="false"/></p>
+</t:div>
+
+<t:div styleClass="mensagem alertGreen" rendered="#{!empty facesContext.maximumSeverity && facesContext.maximumSeverity.ordinal==0}">
+<span class="btnFechar">[X]</span>
+	<p><h:messages showDetail="true" showSummary="false"/></p>
+</t:div>
+
+<!-- 
 <div align="center">
 	<h:messages errorClass="erros msg erro" infoClass="infos msg ok" fatalClass="erros msg erro" showDetail="true"/>
 </div>
+ -->
 
 <div id="mascara">    
 	
@@ -188,7 +215,7 @@
 				<h:inputSecret tabindex="102" required="true" id="senha_div" maxlength="100" value="#{cadastroFaces.usuarioModel.senha}" redisplay="true"/>
 				
 				<span id="span_flag_aceito">
-				<input type="checkbox" id="flag_aceito" />
+				<input type="checkbox" id="flag_aceito" tabindex="103"/>
 				<h:outputText value="Li e aceito os " styleClass="header"/>
 				<a href="files/TermosCondicoesGeraisUsoSiteZapeat.pdf" target="_blank">Termos e Condições Gerais de Uso</a>
 				</span>

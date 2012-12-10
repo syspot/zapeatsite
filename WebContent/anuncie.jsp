@@ -27,12 +27,16 @@
         	<div id="tituloSessao">
 
             	<img src="${rankingFaces.categoriaModel.imagemView}" class="floatLeftMargin4" />
-            	<h2>Sobre o Zapeat</h2>
-                <p>Sobre</p>
+            	<h2>Anuncie no site</h2>
+                <!-- <p>Promova-se</p> -->
             </div>
             
             <div class="conteudoSobre">
-                <p>No ZAPEAT você encontra promoções de bares, restaurantes e baladas em tempo real. Acesse nosso site e aproveite as promoções da hora, do dia ou da semana. Veja qual a comida carro chefe de seu restaurante favorito, ou saiba qual a posição de cada estabelecimento no ranking das promoções. Opine e acesse comentários de outros zapeatianos. Curta e faça parte desta tribo. Baixe o aplicativo e zapeat nas promoções pelo seu smartphone.</p>
+                <p>Anuncie em nosso site! Milhões de pessoas acessando promoções em sua cidade. Sua empresa pode ser em outro ramo de atividade, não importa. O que vale é sua visibilidade. Entre em contato conosco para negociação. Não perca esta oportunidade!
+
+				<p>Fale com o zapeat:</p>
+
+				<p>Mande sua mensagem, tire suas dúvidas e entre em contato conosco pelo e-mail: contato@zapeat.com</p>
             
             </div>
             

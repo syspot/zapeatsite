@@ -100,11 +100,11 @@ public class ZapeatUtil {
 
 		try {
 			inteiro = Long.valueOf(param);
-			
-			if(TSUtil.isEmpty(TSUtil.tratarLong(inteiro))){
+
+			if (TSUtil.isEmpty(TSUtil.tratarLong(inteiro))) {
 				inteiro = 1L;
 			}
-			
+
 		} catch (Exception e) {
 			inteiro = 1L;
 		}
@@ -144,10 +144,18 @@ public class ZapeatUtil {
 	public static void redirect(String cidade) {
 
 		try {
-			if (TSUtil.isEmpty(cidade)) {
-				TSFacesUtil.getFacesContext().getExternalContext().redirect("index.jsf?cidade=" + TSFacesUtil.getRequestParameter("cidade"));
-			} else {
+
+			if (!TSUtil.isEmpty(cidade)) {
+
 				TSFacesUtil.getFacesContext().getExternalContext().redirect("index.jsf?cidade=" + cidade);
+
+			} else if (!TSUtil.isEmpty(TSFacesUtil.getObjectInSession("cidadeEstado"))) {
+
+				TSFacesUtil.getFacesContext().getExternalContext().redirect("index.jsf?cidade=" + TSFacesUtil.getObjectInSession("cidadeEstado"));
+
+			} else {
+
+				TSFacesUtil.getFacesContext().getExternalContext().redirect("index.jsf");
 			}
 
 		} catch (IOException e) {
@@ -158,11 +166,11 @@ public class ZapeatUtil {
 	public static void redirectTermoUso(UsuarioModel model) {
 
 		try {
-			
-			TSFacesUtil.getFacesContext().getExternalContext().redirect("termoUso.jsf?cidade=" + TSFacesUtil.getRequestParameter("cidade") + "&token="+TSCryptoUtil.criptografar(model.getId().toString()));
+
+			TSFacesUtil.getFacesContext().getExternalContext().redirect("termoUso.jsf?cidade=" + TSFacesUtil.getObjectInSession("cidadeEstado") + "&token=" + TSCryptoUtil.criptografar(model.getId().toString()));
 
 		} catch (Exception e) {
-			
+
 			e.printStackTrace();
 		}
 	}
@@ -182,6 +190,10 @@ public class ZapeatUtil {
 
 	public static String getEstado(String cidade) {
 		return TSUtil.isEmpty(cidade) ? cidade : cidade.split("-").length < 2 ? cidade.split("-")[0] : cidade.split("-")[cidade.split("-").length - 1];
+	}
+	
+	public static Double tratarDouble(Double valor){
+		return valor == null ? null : valor == 0.0 ? null : valor;
 	}
 
 }

@@ -1,29 +1,36 @@
 package br.com.zapeat.site.model;
 
-import br.com.topsys.util.TSUtil;
+import br.com.zapeat.site.util.Constantes;
 
-public class EstadoModel {
 
+public class ImagemModel{
+	
 	private Long id;
 	
-	private String sigla;
-	
-	private String nome;
+	private String imagem;
 
 	public Long getId() {
-		return TSUtil.tratarLong(id);
+		return id;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public String getSigla() {
-		return sigla;
+	public String getImagem() {
+		return imagem;
 	}
 
-	public void setSigla(String sigla) {
-		this.sigla = sigla;
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
+	}
+	
+	public String getImagemFullView(){
+		return Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_FULL + getImagem();
+	}
+	
+	public String getImagemThumbView(){
+		return Constantes.PASTA_DOWNLOAD + Constantes.PREFIXO_IMAGEM_THUMB + getImagem();
 	}
 
 	@Override
@@ -42,7 +49,7 @@ public class EstadoModel {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		EstadoModel other = (EstadoModel) obj;
+		ImagemModel other = (ImagemModel) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -50,13 +57,5 @@ public class EstadoModel {
 			return false;
 		return true;
 	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
+	
 }

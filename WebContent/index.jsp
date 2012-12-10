@@ -15,77 +15,92 @@
 
 </head>
 
-<body onload="initialize()">
+<body>
 
 <!-- COMECA TOPO -->
 
 	<%@ include file="/topo.jsp" %>
 	
+
 <!-- COMECA CENTRAL -->
-<div id="central">
-	<!-- COMECA CONTEUDO -->
-	<div id="conteudo">
-    			
-    	<!-- COMECA COLUNA ESQUERDA -->
-    	<div id="esq">
-    		
-    		<%@ include file="/include_promocao_do_dia_lateral.jsp" %>
-            
-            <%@ include file="/include_promocao_da_semana_lateral.jsp" %>
-            
-            <%@ include file="/include_carro_chefe_lateral.jsp" %>
-            
-        </div>
-        
-        <!-- COMECA COLUNA MEIO -->
-        <div id="meio">
-        
-        	<%@ include file="/include_destaque_promocao.jsp" %>
-        
-        </div>
-        
-        <!-- COMECA COLUNA DIREITA -->
-        <div id="dir">
-        	<c:if test="${!empty indexFaces.topGeral}">
-        	<div class="boxSubCat">
-            	<h2>Top Geral</h2>
-                <ul id="topGeral">
-                	<c:forEach items="${indexFaces.topGeral}" var="top">
-                    <li class="${top.css}">
-                    	<a href="estabelecimento.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${top.id}" title="${top.nomeFantasia}">
-                            <p class="titulo">${top.nomeFantasia}</p>
-                        </a>
-                    </li>
-                    </c:forEach>
-                </ul>
-            </div>
-            </c:if>
-            
-           	<%@ include file="/include_banner_lateral.jsp" %>
-            
-            <%@ include file="/include_estabelecimentos_lateral.jsp" %>
-            
-<%--             <%@ include file="/include_quem_indica_lateral.jsp" %> --%>
-            
-        </div>
-    </div>
-    <!-- TERMINA CONTEUDO -->
-</div>
+		<div id="central">
+			<!-- COMECA CONTEUDO -->
+			<div id="conteudo">
+		    			
+				<c:choose>
+		
+					<c:when test="${not empty indexFaces.promocao}">
+	
+				    	<!-- COMECA COLUNA ESQUERDA -->
+				    	<div id="esq">
+				    		
+				    		<%@ include file="/include_promocao_do_dia_lateral.jsp" %>
+				            
+				            <%@ include file="/include_promocao_da_semana_lateral.jsp" %>
+				            
+				            <%@ include file="/include_carro_chefe_lateral.jsp" %>
+				            
+				        </div>
+		        
+				        <!-- COMECA COLUNA MEIO -->
+				        <div id="meio">
+				        
+				        	<%@ include file="/include_destaque_promocao.jsp" %>
+				        
+				        </div>
+		        
+				        <!-- COMECA COLUNA DIREITA -->
+				        <div id="dir">
+				        	<c:if test="${!empty indexFaces.topGeral}">
+				        	<div class="boxSubCat">
+				            	<h2>Top Geral</h2>
+				                <ul id="topGeral">
+				                	<c:forEach items="${indexFaces.topGeral}" var="top">
+				                    <li class="${top.css}">
+				                    	<a href="estabelecimento.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${top.id}" title="${top.nomeFantasia}">
+				                            <p class="titulo">${top.nomeFantasia}</p>
+				                        </a>
+				                    </li>
+				                    </c:forEach>
+				                </ul>
+				            </div>
+				            </c:if>
+				            
+				           	<%@ include file="/include_banner_lateral.jsp" %>
+				            
+				            <%@ include file="/include_estabelecimentos_lateral.jsp" %>
+				            
+				        </div>
+		        
+					</c:when>
+					
+					<c:otherwise>
+						
+						<div style="width:100%; height:500px; background:url(img/ops.jpg) no-repeat center center;"></div>
+						
+					</c:otherwise>
+		
+				</c:choose>
+		    </div>
+		    <!-- TERMINA CONTEUDO -->
+		</div>
 <!-- TERMINA CENTRAL -->
 
 	<!-- COMECA RODAPE -->
 	<%@ include file="/rodape.jsp" %>
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script src="http://pluginjquery.com.br/labs/countdown1.3/script/jquery.jcountdown1.3.js" type="text/javascript"></script>
+	<script src="js/jquery.jcountdown1.3.js" type="text/javascript"></script>
 
 	
 	<script type="text/javascript">
 		$(document).ready(function() {
 			
 			$("#tempo").countdown({
-				date: "${indexFaces.promocaoHora.dataFormatada}", //Counting TO a date
-				htmlTemplate: "%{h} <span class='time'>:</span> %{m} <span class='time'>:</span> %{s} <span class='time'></span>",
+				date: "${indexFaces.promocao.dataFormatada}", //Counting TO a date
+				htmlTemplate: "%{h} <span class='time'>:</span> %{m} ",
+				
+				dataInicialServidor: new Date("${indexFaces.dataSistema}"),
 				
 				onChange: function( event, timer ){
 		
