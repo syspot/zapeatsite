@@ -26,7 +26,6 @@
     	<div id="conteudoRanking">
         	<div id="tituloSessao">
 
-            	<img src="${rankingFaces.categoriaModel.imagemView}" class="floatLeftMargin4" />
             	<h2>Sobre o Zapeat</h2>
                 <p>Sobre</p>
             </div>
