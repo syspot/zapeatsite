@@ -5,7 +5,7 @@
 <c:if test="${not empty indexFaces.promocaoDoDia}">
 
 	<div class="boxSubCat">
-	   	<h2>Promoção do dia</h2>
+	   	<h2>Zapeat do dia</h2>
 	       <a href="promocao.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${indexFaces.promocaoDoDia.id}&estabelecimento_id=${indexFaces.promocaoDoDia.fornecedorModel.id}" title="${indexFaces.promocaoDoDia.fornecedorModel.nomeFantasia}">
 	    	<img src="${indexFaces.promocaoDoDia.imagemPromocaoThumbView}" alt="${indexFaces.promocaoDoDia.fornecedorModel.nomeFantasia}" title="${indexFaces.promocaoDoDia.fornecedorModel.nomeFantasia}" />
 	        <p class="titulo">${indexFaces.promocaoDoDia.fornecedorModel.nomeFantasia}</p>

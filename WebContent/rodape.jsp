@@ -57,7 +57,7 @@
                 <p>Donos de Negócios</p>
                 <ul>
                     <li>&raquo; <a href="divulgue.jsf?cidade=${cidadeFaces.cidadeSelecionada}" title="Divulgue sua empresa">Divulgue sua empresa </a></li>
-                    <li>&raquo; <a href="" title="">Anuncie no site</a></li>
+                    <li>&raquo; <a href="anuncie.jsf?cidade=${cidadeFaces.cidadeSelecionada}" title="">Anuncie no site</a></li>
                 </ul>
             </div>
             <div class="col floatRight">

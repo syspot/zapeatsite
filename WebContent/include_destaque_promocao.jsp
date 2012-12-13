@@ -90,7 +90,7 @@
 	
 		<div id="outrosDestaques">
 		
-			<h2>Outras Promoções da Hora</h2>
+			<h2>Outros Zapeat da Hora</h2>
    		
 			<ul id="listagem">
 				<c:forEach var="promocao" items="${indexFaces.promocoes}">

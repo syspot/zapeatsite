@@ -26,7 +26,6 @@
     	<div id="conteudoRanking">
         	<div id="tituloSessao">
 
-            	<img src="${rankingFaces.categoriaModel.imagemView}" class="floatLeftMargin4" />
             	<h2>Anuncie no site</h2>
                 <!-- <p>Promova-se</p> -->
             </div>
@@ -34,9 +33,9 @@
             <div class="conteudoSobre">
                 <p>Anuncie em nosso site! Milhões de pessoas acessando promoções em sua cidade. Sua empresa pode ser em outro ramo de atividade, não importa. O que vale é sua visibilidade. Entre em contato conosco para negociação. Não perca esta oportunidade!
 
-				<p>Fale com o zapeat:</p>
+				<p>Fale com o Zapeat:</p>
 
-				<p>Mande sua mensagem, tire suas dúvidas e entre em contato conosco pelo e-mail: contato@zapeat.com</p>
+				<p>Mande sua mensagem, tire suas dúvidas e entre em contato conosco pelo e-mail: comercial@zapeat.com ou pelo tel: 71 9677-9056</p>
             
             </div>
             
