@@ -28,6 +28,10 @@ public class CidadeFaces extends TSMainFaces {
 
 			this.cidadeSelecionada = ZapeatUtil.tratarCidadeUTF8(TSStringUtil.removerAcentos(this.cidadeSelecionada));
 
+			if(TSUtil.isEmpty(cidadeSelecionada.replaceAll("-", ""))){
+				this.cidadeSelecionada = "Salvador-Bahia";
+			}
+			
 			super.addObjectInSession("cidadeEstado", this.cidadeSelecionada);
 
 			CidadeModel cidadeModel = new CidadeDAO().obter(ZapeatUtil.getCidade(this.cidadeSelecionada), ZapeatUtil.getEstado(this.cidadeSelecionada));

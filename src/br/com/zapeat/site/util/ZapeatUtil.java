@@ -185,7 +185,7 @@ public class ZapeatUtil {
 	}
 
 	public static String getCidade(String cidade) {
-		return TSUtil.isEmpty(cidade) || TSUtil.isEmpty(cidade.replaceAll("-", "")) ? "Salvador-Bahia" : cidade.split("-")[0];
+		return TSUtil.isEmpty(cidade) ? cidade : cidade.split("-")[0];
 	}
 
 	public static String getEstado(String cidade) {
