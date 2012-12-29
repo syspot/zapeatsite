@@ -52,5 +52,10 @@ public final class Constantes {
 	public static Long CATEGORIA_MAIS_INDICADOS = 7L;
 	public static Long CATEGORIA_OUTRAS_CATEGORIAS = 8L;
 	
+	public static final String ZAPEAT_HORA = "Zapeat da hora";
+	public static final String ZAPEAT_DIA = "Zapeat do dia";
+	public static final String ZAPEAT_SEMANA = "Zapeat da semana";
+	
+	
 	
 }

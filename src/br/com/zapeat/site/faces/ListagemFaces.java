@@ -119,9 +119,9 @@ public class ListagemFaces extends TSMainFaces {
 			
 			switch(this.tipo.intValue()){
 			
-				case(1): nomeTipo = "Promoção da Hora"; break; 
-				case(2): nomeTipo = "Promoção do Dia"; break; 
-				case(3): nomeTipo = "Promoção da Semana"; break; 
+				case(1): nomeTipo = Constantes.ZAPEAT_HORA; break; 
+				case(2): nomeTipo = Constantes.ZAPEAT_DIA; break; 
+				case(3): nomeTipo = Constantes.ZAPEAT_SEMANA; break; 
 				case(5): nomeTipo = "Carro Chefe"; break;
 				default: break;
 				
