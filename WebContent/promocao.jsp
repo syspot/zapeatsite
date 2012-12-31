@@ -163,10 +163,19 @@
                 <div class="clear"></div>
                 <div class="barraCompartilhamento">
 	                <div class="recomende">
-	                	<a href="http://www.facebook.com/sharer.php?u=http://www.zapeat.com" target="_blank" title="Facebook">
-	                		<img src="img/btnFb.jpg" title="Recomendar" />
-                		</a>
-               		</div>
+	                	<c:choose>
+           					<c:when test="${promocaoFaces.tipoPromocao}">
+            					<a href="http://www.facebook.com/sharer.php?u=http://www.zapeat.com/site/promocao?id=${promocaoFaces.promocao.id}" target="_blank" title="Facebook">
+			                		<img src="img/btnFb.jpg" title="Recomendar" />
+			                	</a>
+           					</c:when>
+           					<c:otherwise>
+           						<a href="http://www.facebook.com/sharer.php?u=http://www.zapeat.com/site/carrochefe?id=${promocaoFaces.carroChefe.id}" target="_blank" title="Facebook">
+			                		<img src="img/btnFb.jpg" title="Recomendar" />
+			                	</a>
+           					</c:otherwise>
+           				</c:choose>
+                	</div>
                     <div class="fb-like" data-href="http://www.zapeat.com.br" data-send="false" data-layout="button_count" data-width="200" data-show-faces="false"></div>
                 </div> 
                 
