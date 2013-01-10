@@ -69,7 +69,7 @@
 		            </div>
 		            <c:if test="${not empty promocaoFaces.promocao.imagensPromocoes}">
 			            <div class="boxSubCat ftoLocal">
-			            	<h2>Fotos da promoção</h2>
+			            	<h2>Fotos do Zapeat</h2>
 			            	<c:forEach items="${promocaoFaces.promocao.imagensPromocoes}" var="item">
 				            	<span class="floatLeft">
 				            		<a class="fotoEstab" href="${item.imagemFullView}">

@@ -36,9 +36,9 @@
                     	<div class="boxInfoCat">
                    			<p class="titulo"><img src="${categoria.imagemView}" alt="${categoria.descricao}" title="${categoria.descricao}" class="floatLeftMargin4" />${categoria.descricao}</p>
                            	<ul>
-                           		<li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${categoria.id}&tipo=3" title="promoção da semana">zapeat da semana</a></li>
-                            	<li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${categoria.id}&tipo=2" title="promoção do dia">zapeat do dia</a></li>
-	                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${categoria.id}&tipo=1" title="promoção da hora">zapeat da hora</a></li>
+                           		<li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${categoria.id}&tipo=3" title="Zapeat da semana">zapeat da semana</a></li>
+                            	<li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${categoria.id}&tipo=2" title="Zapeat do dia">zapeat do dia</a></li>
+	                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${categoria.id}&tipo=1" title="Zapeat da hora">zapeat da hora</a></li>
 	                            <li><a href="ranking.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${categoria.id}" title="ranking">ranking</a></li>
 	                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${categoria.id}&tipo=5" title="carro-chefe">carro-chefe</a></li>
                             	<li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${categoria.id}&tipo=6" title="estabelecimento">estabelecimento</a></li>

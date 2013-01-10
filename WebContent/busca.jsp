@@ -31,20 +31,20 @@
                 <p>${buscaFaces.termoBuscado}</p>
             </div>
             <ul id="listagem">
-            		<!-- SE LISTAGEM POR PROMOÇÃO -->
+            		<!-- SE LISTAGEM POR Zapeat -->
             		
             		<c:forEach items="${buscaFaces.listagem}" var="result">
             		
 	                	<li>
 	                    <a href="${result.link}" title="">
 	                    	<div class="marca floatLeft"><img src="${result.imagemView}" alt="" title="${result.titulo}" /></div>
-	                        <!-- SE PROMOÇÃO EM PRODUTO -->
+	                        <!-- SE Zapeat EM PRODUTO -->
 	                        <div class="info">
 	                        	<p class="titulo">${result.titulo}</p>
 	                            <!-- SE ESTABELECIMENTO, ENDEREÇO -->
 	                            <p class="item">${result.nome}</p>                            
-	                            <!-- SE PROMOÇÃO OU CARRO-CHEFE
-	                            <p class="item">NOME DA PROMOÇÃO OU CARRO-CHEFE</p>
+	                            <!-- SE Zapeat OU CARRO-CHEFE
+	                            <p class="item">NOME DA Zapeat OU CARRO-CHEFE</p>
 	                            -->
 	                            <p class="resumo fontYi">${result.descricao}</p>
 	                        </div>

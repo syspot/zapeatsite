@@ -66,9 +66,9 @@ vinculando as partes.</p>
 				
 				<p>Usuário: qualquer pessoa física devidamente cadastrada.</p>
 				
-				<p>Promoção da Hora: promoção publicada pelo estabelecimento por período de 01 hora, devidamente registrado o inicio da publicação.</p>
-				<p>Promoção do Dia: promoção publicada pelo estabelecimento por período de 01 dia, devidamente registrado o inicio da publicação.</p>
-				<p>Promoção da Semana: promoção publicada pelo estabelecimento por período de 01 semana, devidamente registrado o inicio da publicação.</p>
+				<p>Zapeat da Hora: Zapeat publicada pelo estabelecimento por período de 01 hora, devidamente registrado o inicio da publicação.</p>
+				<p>Zapeat do Dia: Zapeat publicada pelo estabelecimento por período de 01 dia, devidamente registrado o inicio da publicação.</p>
+				<p>Zapeat da Semana: Zapeat publicada pelo estabelecimento por período de 01 semana, devidamente registrado o inicio da publicação.</p>
 				<p>Carro Chefe: publicação de prato típico ou destaque do estabelecimento.</p>
 				<p>Ranking: posicionamento do estabelecimento conforme avaliações dos usuários.</p>
 
@@ -86,7 +86,7 @@ vinculando as partes.</p>
 				sujeito à interferência de fatores externos. Da mesma forma, nas situações de contratação dos serviços de mensagem por celular, não garantimos o completo envio das mensagens, sendo de inteira
 				responsabilidade das concessionárias telefônicas este serviço.</p>
 				
-				<p>A promoção será garantida pelo estabelecimento durante o período discriminado da promoção, contando desde sua publicação no sistema até o término do prazo pré-estabelecido.</p>
+				<p>A Zapeat será garantida pelo estabelecimento durante o período discriminado da Zapeat, contando desde sua publicação no sistema até o término do prazo pré-estabelecido.</p>
 				
 				<p>O layout do sistema, bem como supressão ou acréscimo de categorias e produtos ou quaisquer alterações que o ZAPEAT achar necessário será realizado sem prévia alteração dos usuários, bastando
 				apenas que ocorra um comunicado no site num período de 15 dias anterior a modificação implantada.</p>

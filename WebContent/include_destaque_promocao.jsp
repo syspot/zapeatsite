@@ -99,7 +99,7 @@
 							<div class="marca floatLeft">
                    				<img src="${promocao.imagemThumbView}" alt="" title="${promocao.fornecedorModel.nomeFantasia}" />
                   			</div>
-							<!-- SE PROMOÇÃO EM PRODUTO -->
+							<!-- SE Zapeat EM PRODUTO -->
 		                   <div class="info">
 		                       <p class="titulo">${promocao.titulo}</p>
 		                       <p class="resumo fontYi">

@@ -45,20 +45,20 @@
             	<img src="${listagemFaces.categoria.imagemView}" class="floatLeftMargin4" />
             	<h2>${listagemFaces.categoria.descricao}</h2>
                 <!--==
-                <p>Promoção da hora</p>
-                <p>Promoção do dia</p>
-                <p>Promoção da semana</p>                
+                <p>Zapeat da hora</p>
+                <p>Zapeat do dia</p>
+                <p>Zapeat da semana</p>                
                 <p>Carro-chefe</p>
                 ==-->
                 <p>${listagemFaces.nomeTipo}</p>
             </div>
             <ul id="listagem">
-            		<!-- SE LISTAGEM POR PROMOÇÃO -->
+            		<!-- SE LISTAGEM POR Zapeat -->
             		<c:forEach items="${listagemFaces.promocoes}" var="promocao">
 	                	<li>
 		                    <a href="promocao.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${promocao.id}" title="">
 		                    	<div class="marca floatLeft"><img src="${promocao.fornecedorModel.logoMarcaView}" alt="${promocao.titulo}" title="${promocao.fornecedorModel.nomeFantasia}" /></div>
-		                        <!-- SE PROMOÇÃO EM PRODUTO -->
+		                        <!-- SE Zapeat EM PRODUTO -->
 		                        <div class="info">
 		                        	<p class="titulo"><c:out value="${promocao.fornecedorModel.nomeFantasia}"/>  </p>
 		                            <p class="item"><c:out value="${promocao.titulo}" /></p>                            
@@ -67,7 +67,7 @@
 		                            </p>
 		                        </div>
 		                    </a>
-	                        <!-- SE LISTAGEM POR PROMOÇÃO, RETIRA DIV A SEGUIR -->
+	                        <!-- SE LISTAGEM POR Zapeat, RETIRA DIV A SEGUIR -->
 	                        <div class="sessao"><span class="${promocao.cssSessao}"></span><c:out value="${promocao.tipoPromocaoModel.descricao}" /></div>
 	                        
 	                        <br clear="all" />
@@ -89,7 +89,7 @@
 	                	<li>
 		                    <a href="estabelecimento.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${carroChefe.fornecedorModel.id}" title="">
 		                    	<div class="marca floatLeft"><img src="${carroChefe.fornecedorModel.logoMarcaView}" alt="Marca 80x80px" title="${carroChefe.fornecedorModel.nomeFantasia}" /></div>
-		                        <!-- SE PROMOÇÃO EM PRODUTO -->
+		                        <!-- SE Zapeat EM PRODUTO -->
 		                        <div class="info">
 		                        	<p class="titulo"><c:out value="${carroChefe.fornecedorModel.nomeFantasia}"/>  </p>
 		                            <p class="item"><c:out value="${carroChefe.titulo}" /></p>                            
@@ -98,7 +98,7 @@
 		                            </p>
 		                        </div>
 		                    </a>
-	                        <!-- SE LISTAGEM POR PROMOÇÃO, RETIRA DIV A SEGUIR -->
+	                        <!-- SE LISTAGEM POR Zapeat, RETIRA DIV A SEGUIR -->
 	                        <!-- <div class="sessao"><span class="${promocao.cssSessao}"></span><c:out value="${promocao.tipoPromocaoModel.descricao}" /></div> -->
 	                        
 	                        <br clear="all" />
@@ -119,7 +119,7 @@
 	                	<li>
 		                    <a href="estabelecimento.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${fornecedor.id}" title="">
 		                    	<div class="marca floatLeft"><img src="${fornecedor.logoMarcaView}" alt="${fornecedor.nomeFantasia}" title="${fornecedor.nomeFantasia}" /></div>
-		                        <!-- SE PROMOÇÃO EM PRODUTO -->
+		                        <!-- SE Zapeat EM PRODUTO -->
 		                        <div class="info">
 		                        	<p class="titulo"><c:out value="${fornecedor.nomeFantasia}"/>  </p>
 		                            <p class="resumo fontYi">
