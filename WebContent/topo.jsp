@@ -167,7 +167,7 @@
 	</div>
 
 <c:if test="${!empty sessionScope.idUsuarioLogado}">
-	<span id="status">Olá, ${sessionScope.nomeUsuarioLogado}</span>, temos ótimas dicas pra você!
+	<span id="status">Olá, ${sessionScope.nomeUsuarioLogado}</span>, temos ótimas dicas para você.
 </c:if> 
 
 </div>
