@@ -40,8 +40,8 @@ POSTERIOR UTILIZAÇÃO DO SITE ZAPEAT.COM.BR E DE SEUS SERVIÇOS.</p>
                 
                 <h5>OBJETO</h5>
                 
-                <p>O serviço objeto do presente Termos e Condições Gerais de Uso consistem em ofertar ao Usuário uma plataforma desenvolvida exclusivamente como um instrumento de busca de promoções e divulgação de
-restaurantes, bares, shows e similares. O ZAPEAT, portanto, possibilita aos usuários receberem ou buscarem de forma ativa promoções divulgadas exclusivamente por responsabilidade dos
+                <p>O serviço objeto do presente Termos e Condições Gerais de Uso consistem em ofertar ao Usuário uma plataforma desenvolvida exclusivamente como um instrumento de busca de publicidades e divulgação de
+restaurantes, bares, shows e similares. O ZAPEAT, portanto, possibilita aos usuários receberem ou buscarem de forma ativa publicidades divulgadas exclusivamente por responsabilidade dos
 estabelecimentos cadastrados, funcionando independentemente, agindo o site como um facilitador na divulgação, permitindo que eles negociem entre si diretamente, sem sua intervenção na finalização das
 vendas, não participando da realização comercial dos mesmos.</p>
 
@@ -75,10 +75,10 @@ vinculando as partes.</p>
 
 				<h5>CONDIÇÕES GERAIS.</h5>
 
-				<p>O ZAPEAT é uma plataforma criada para facilitar a divulgação de promoções de estabelecimentos de alimentos, como restaurantes e bares, para o público em geral. O site não se responsabiliza por
-				substituição, promoções, intermediação de venda, capacidade logística, estoque, envio, recebimento, pagamento ou qualquer negócio que fuja do objeto deste termo de contrato.</p>
+				<p>O ZAPEAT é uma plataforma criada para facilitar a divulgação de publicidades de estabelecimentos de alimentos, como restaurantes e bares, para o público em geral. O site não se responsabiliza por
+				substituição, publicidades, intermediação de venda, capacidade logística, estoque, envio, recebimento, pagamento ou qualquer negócio que fuja do objeto deste termo de contrato.</p>
 				
-				<p>A publicação das promoções é de inteira responsabilidade dos estabelecimentos alimentícios, não tendo o ZAPEAT qualquer responsabilidade sobre efetivação da venda, entrega do produto ou publicação
+				<p>A publicação das publicidades é de inteira responsabilidade dos estabelecimentos alimentícios, não tendo o ZAPEAT qualquer responsabilidade sobre efetivação da venda, entrega do produto ou publicação
 				enganosa ao consumidor.</p>
 				
 				<p>Não nos responsabilizamos, sob quaisquer circunstâncias, por eventuais prejuízos decorrentes de falhas técnicas, operacionais, de estrutura de comunicação ou de acesso ao sistema, que impossibilitem ou
@@ -97,10 +97,10 @@ vinculando as partes.</p>
 				instalam no disco rígido, comum a duração limitada de tempo que ajudam a personalizar os serviços. Também serão ofertadas algumas funcionalidades que só estarão disponíveis pelo emprego dos cookies.
 				Os cookies são utilizados com o fim de conhecer os interesses, o comportamento e a demografia de quem visita ou é utilizador do site, e dessa forma, compreender melhor suas necessidades e interesses e
 				dar-lhes um melhor serviço ou prover-lhes informação relacionada. Também será usada a informação obtida por intermédio dos cookies para analisar as páginas navegadas pelo visitante ou utilizador, as
-				buscas realizadas, melhorar as iniciativas comerciais e promocionais, mostrar publicidade ou promoções, banners de interesse, notícias sobre o ZAPEAT, aperfeiçoar a oferta de conteúdos e bens, personalizar
+				buscas realizadas, melhorar as iniciativas comerciais e promocionais, mostrar publicidade ou publicidades, banners de interesse, notícias sobre o ZAPEAT, aperfeiçoar a oferta de conteúdos e bens, personalizar
 				esses conteúdos.</p>
 				
-				<p>O ZAPEAT poderá adicionar cookies nos e-mails que envia para medir a efetividade das promoções. Utiliza-se adicionalmente os cookies para que o utilizador não tenha que introduzir sua senha tão
+				<p>O ZAPEAT poderá adicionar cookies nos e-mails que envia para medir a efetividade das publicidades. Utiliza-se adicionalmente os cookies para que o utilizador não tenha que introduzir sua senha tão
 				freqüentemente durante uma seção de navegação, também para contabilizar e corroborar os registros, a atividade do utilizador e outros fins relacionados. A instalação, permanência e existência dos cookies no
 				computador do utilizador dependem de sua exclusiva vontade e pode ser eliminado de seu computador quando o utilizador assim o deseje. Para saber como retirar os cookies do sistema é necessário revisar a
 				seção Ajuda (Help) do navegador. Adicionalmente, podem ser encontrados cookies ou outros sistemas similares instalados por terceiros em certas páginas do website do ZAPEAT. Por exemplo, ao navegar por
@@ -122,17 +122,17 @@ vinculando as partes.</p>
 				<h5>RESPONSABILIDADES</h5>
 				
 				<p>O ZAPEAT não é intermediador de vendas, não possui quadro de profissionais a ofertar serviços e não possui qualquer vínculo trabalhista com os usuários cadastrados. De forma que funciona somente com a
-				disponibilização de um novo canal para divulgação das promoções dos estabelecimentos de alimentos.</p>
+				disponibilização de um novo canal para divulgação das publicidades dos estabelecimentos de alimentos.</p>
 				
 				<p>O ZAPEAT não será responsável pelo efetivo cumprimento das obrigações assumidas pelos estabelecimentos. O Usuário reconhece e aceita que ao realizar negociações com os fornecedores ou
 				terceiros faz por sua conta e risco. Em nenhum caso ZAPEAT será responsável por qualquer dano e/ou prejuízo que o Usuário possa sofrer devido às negociações realizadas ou não realizadas após o processo
-				de divulgação das promoções através do site e decorrentes da conduta dos estabelecimentos.</p>
+				de divulgação das publicidades através do site e decorrentes da conduta dos estabelecimentos.</p>
 				
 				<p>Estes Termos e Condições Gerais não geram nenhum contrato de sociedade, de mandato, franquia ou relação de trabalho entre ZAPEAT e o Usuário. O Usuário manifesta ciência de que ZAPEAT não é parte
 				de nenhuma transação, nem possui controle algum sobre a qualidade, segurança ou legalidade dos serviços dos fornecedores. ZAPEAT sempre buscará o registro de atividade dos fornecedores e se as
 				empresas se apresentam ativas. ZAPEAT não pode assegurar o êxito de qualquer transação.</p>
 				
-				<p>Caso seja identificado qualquer descumprimento da regra estabelecida entre o ZAPEAT e o estabelecimento, este será excluído imediatamente do quadro de parceiros para promoções no
+				<p>Caso seja identificado qualquer descumprimento da regra estabelecida entre o ZAPEAT e o estabelecimento, este será excluído imediatamente do quadro de parceiros para publicidades no
 				ZAPEAT.COM.</p>
 				
 				<p>ZAPEAT não será responsável pela correspondência ou acordos que o Usuário realize com terceiros.</p>

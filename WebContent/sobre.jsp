@@ -27,11 +27,13 @@
         	<div id="tituloSessao">
 
             	<h2>Sobre o Zapeat</h2>
-                <p>Sobre</p>
+                
             </div>
             
             <div class="conteudoSobre">
-                <p>No ZAPEAT você encontra promoções de bares, restaurantes e baladas em tempo real. Acesse nosso site e aproveite as promoções da hora, do dia ou da semana. Veja qual a comida carro chefe de seu restaurante favorito, ou saiba qual a posição de cada estabelecimento no ranking das promoções. Opine e acesse comentários de outros zapeatianos. Curta e faça parte desta tribo. Baixe o aplicativo e zapeat nas promoções pelo seu smartphone.</p>
+                <p>Zap é o ato de mudar rapidamente o canal a procura de algo interessante para assistir, geralmente com um controle remoto. Agora imagine você com um smartphone procurando rapidamente algo interessante para comer ou se divertir? Este é o ZAP+EAT!
+Aqui você encontra os melhores restaurantes, bares, baladas e afins tão rápido quanto sua vontade, e à distância de suas mãos. Veja qual a comida carro chefe de seu restaurante favorito, ou saiba qual a posição de cada estabelecimento no ranking das indicações. Opine e acesse comentários de outros zapeatianos. Curta e faça parte desta tribo. Baixe o aplicativo e zapeat pelo seu smartphone.
+</p>
             
             </div>
             
