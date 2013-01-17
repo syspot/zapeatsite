@@ -7,7 +7,7 @@
 	<div class="boxSubCat">
 	   	<h2>Zapeat do dia</h2>
 	       <a href="promocao.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${estabelecimentoFaces.promocaoDoDia.id}&estabelecimento_id=${estabelecimentoFaces.promocaoDoDia.fornecedorModel.id}" title="${estabelecimentoFaces.promocaoDoDia.fornecedorModel.nomeFantasia}">
-	    	<img src="${estabelecimentoFaces.promocaoDoDia.imagemPromocaoThumbView}" alt="${estabelecimentoFaces.promocaoDoDia.fornecedorModel.nomeFantasia}" title="${estabelecimentoFaces.promocaoDoDia.fornecedorModel.nomeFantasia}" />
+	    	<img src="${estabelecimentoFaces.promocaoDoDia.imagemPromocaoThumbView}" alt="${estabelecimentoFaces.promocaoDoDia.fornecedorModel.nomeFantasia}" title="${estabelecimentoFaces.promocaoDoDia.fornecedorModel.nomeFantasia}" width="180" height="109" />
 	        <p class="titulo">${estabelecimentoFaces.promocaoDoDia.fornecedorModel.nomeFantasia}</p>
 	        <c:if test="${not empty estabelecimentoFaces.promocaoDoDia.precoOriginal}">
 		        <span class="precoDe">

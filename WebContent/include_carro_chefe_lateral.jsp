@@ -11,7 +11,7 @@
 		<div class="boxSubCat">
 			<a href="promocao.jsf?cidade=${cidadeFaces.cidadeSelecionada}&carroChefeId=${indexFaces.carroChefeModel.id}&estabelecimento_id=${indexFaces.carroChefeModel.fornecedorModel.id}">
 				<h2>Carro-chefe</h2>
-				<img src="${indexFaces.carroChefeModel.imagemThumbView}" alt="" title="" />
+				<img src="${indexFaces.carroChefeModel.imagemThumbView}" width="180" height="109" />
 				<p class="titulo">${indexFaces.carroChefeModel.fornecedorModel.nomeFantasia}</p>
 				<p class="categoria">${indexFaces.carroChefeModel.fornecedorModel.categoriaPrincipal.descricao}</p>
 				<p class="item">${indexFaces.carroChefeModel.titulo}</p>

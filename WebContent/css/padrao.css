@@ -106,7 +106,7 @@ ul#listagem  .precoPor{ font-family: 'titilliumtext22l_ltmedium'; font-size:16px
 #conteudo #dir	{ float:right; width:180px;}
 
 #destaque{ width:590px; height:auto; position:relative; margin-bottom:25px;}
-#fotoDestaque{ position:relative; border:2px solid #f2f2f2; width:586px; height:240px; overflow:hidden; background:#ebebeb; position:relative; margin-bottom:5px;}
+#fotoDestaque{ position:relative; border:2px solid #f2f2f2; width:586px; height:340px; overflow:hidden; background:#ebebeb; position:relative; margin-bottom:5px;}
 #fotoDestaque .tituloPromo{ position:absolute; bottom:10px; left:0;}
 #fotoDestaque .tituloPromo span.tipoPromo,
 #fotoDestaque .tituloPromo span.nomePromo{color:#fff; background:rgba(0,0,0,.7); padding:0px 15px 10px 15px; display:block;}

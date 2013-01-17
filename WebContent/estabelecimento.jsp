@@ -48,7 +48,7 @@
 	            	<c:forEach items="${estabelecimentoFaces.fornecedorModel.imagensFornecedorModel}" var="item">
 	            		<span class="floatLeft">
 	            			<a class="fotoEstab" href="${item.imagemFullView}">
-	            				<img src="${item.imagemThumbView}" alt="" title="" />
+	            				<img src="${item.imagemThumbView}" width="180" height="109" />
 	            			</a>
 	            		</span>
 	            	</c:forEach>
@@ -61,7 +61,7 @@
         <div id="meio">
         	<div id="destaque">
             	<div id="fotoDestaque">
-	                <img src="${estabelecimentoFaces.fornecedorModel.imagemFullView}" alt="" title="${estabelecimentoFaces.fornecedorModel.nomeFantasia}" />
+	                <img src="${estabelecimentoFaces.fornecedorModel.imagemFullView}" alt="" title="${estabelecimentoFaces.fornecedorModel.nomeFantasia}" width="590" height="360" />
                     <div class="tituloPromo">
                         <p><span class="nomePromo">${estabelecimentoFaces.fornecedorModel.nomeFantasia}</span></p>
                     </div>

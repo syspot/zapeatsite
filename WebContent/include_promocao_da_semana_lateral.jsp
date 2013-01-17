@@ -7,7 +7,7 @@
 	<div class="boxSubCat">
 	   	<h2>Zapeat da semana</h2>
 	       <a href="promocao.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${indexFaces.promocaoDaSemana.id}&estabelecimento_id=${indexFaces.promocaoDaSemana.fornecedorModel.id}" title="${indexFaces.promocaoDaSemana.fornecedorModel.nomeFantasia}">
-	    	<img src="${indexFaces.promocaoDaSemana.imagemPromocaoThumbView}" alt="${indexFaces.promocaoDaSemana.fornecedorModel.nomeFantasia}" title="${indexFaces.promocaoDaSemana.fornecedorModel.nomeFantasia}" />
+	    	<img src="${indexFaces.promocaoDaSemana.imagemPromocaoThumbView}" alt="${indexFaces.promocaoDaSemana.fornecedorModel.nomeFantasia}" title="${indexFaces.promocaoDaSemana.fornecedorModel.nomeFantasia}" width="180" height="109" />
 	        <p class="titulo">${indexFaces.promocaoDaSemana.fornecedorModel.nomeFantasia}</p>
 	        <c:if test="${not empty indexFaces.promocaoDaSemana.precoOriginal}">
 		        <span class="precoDe">

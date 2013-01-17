@@ -5,7 +5,7 @@
    	   <h2>Quem Indica</h2>
        <span class="imgDestaque-peq posRel">
        	   <a href="estabelecimento.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${estabelecimentoFaces.comentarioModel.fornecedorModel.id}" title="">
-               <img src="${estabelecimentoFaces.comentarioModel.fornecedorModel.imagemThumbView}" alt="" title="" />
+               <img src="${estabelecimentoFaces.comentarioModel.fornecedorModel.imagemThumbView}" width="180" height="109" />
                <p class="tituloIndica">${estabelecimentoFaces.comentarioModel.fornecedorModel.nomeFantasia}</p>
            </a>
        </span>

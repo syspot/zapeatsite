@@ -73,7 +73,7 @@
 			            	<c:forEach items="${promocaoFaces.promocao.imagensPromocoes}" var="item">
 				            	<span class="floatLeft">
 				            		<a class="fotoEstab" href="${item.imagemFullView}">
-				            			<img src="${item.imagemThumbView}" alt="" title="" />
+				            			<img src="${item.imagemThumbView}" width="180" height="109" />
 			            			</a>
 				            	</span>
 			            	</c:forEach>
@@ -97,7 +97,7 @@
 			            	<c:forEach items="${promocaoFaces.carroChefe.imagensCarroChefe}" var="item">
 				            	<span class="floatLeft">
 				            		<a class="fotoEstab" href="${item.imagemFullView}">
-				            			<img src="${item.imagemThumbView}" alt="" title="" />
+				            			<img src="${item.imagemThumbView}" width="180" height="109" />
 			            			</a>
 				            	</span>
 			            	</c:forEach>
@@ -117,7 +117,7 @@
 	    			<c:when test="${promocaoFaces.tipoPromocao}">
 	    			
 	    				<div id="fotoDestaque">
-			                <a href=""><img src="${promocaoFaces.promocao.imagemPromocaoFullView}" alt="${promocaoFaces.promocao.fornecedorModel.nomeFantasia}" title="${promocaoFaces.promocao.fornecedorModel.nomeFantasia}" /></a>
+			                <a href=""><img src="${promocaoFaces.promocao.imagemPromocaoFullView}" alt="${promocaoFaces.promocao.fornecedorModel.nomeFantasia}" title="${promocaoFaces.promocao.fornecedorModel.nomeFantasia}" width="590" height="360" /></a>
 		                    <div class="tituloPromo">
 		                    	<p><span class="tipoPromo">${promocaoFaces.promocao.tipoPromocaoModel.descricao}</span></p>
 		                        <p><span class="nomePromo">${promocaoFaces.promocao.titulo}</span></p>
@@ -143,7 +143,7 @@
 	    			<c:otherwise>
 	    			
 	    				<div id="fotoDestaque">
-			                <a href=""><img src="${promocaoFaces.carroChefe.imagemFullView}" alt="${promocaoFaces.carroChefe.fornecedorModel.nomeFantasia}" title="${promocaoFaces.carroChefe.fornecedorModel.nomeFantasia}" /></a>
+			                <a href=""><img src="${promocaoFaces.carroChefe.imagemFullView}" alt="${promocaoFaces.carroChefe.fornecedorModel.nomeFantasia}" title="${promocaoFaces.carroChefe.fornecedorModel.nomeFantasia}" width="590" height="360" /></a>
 		                    <div class="tituloPromo">
 		                    	<p><span class="tipoPromo">Carro chefe</span></p>
 		                        <p><span class="nomePromo">${promocaoFaces.carroChefe.titulo}</span></p>

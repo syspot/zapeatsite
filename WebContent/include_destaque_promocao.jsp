@@ -10,7 +10,7 @@
 	   	<div id="fotoDestaque">
 	   	
 	        <a href="promocao.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${indexFaces.promocao.id}&estabelecimento_id=${indexFaces.promocao.fornecedorModel.id}">
-	        	<img src="${indexFaces.promocao.imagemPromocaoFullView}" alt="" title="" />
+	        	<img src="${indexFaces.promocao.imagemPromocaoFullView}" width="590" height="360" />
 	        </a>
             
             <div class="tituloPromo">
@@ -97,7 +97,7 @@
 					<li>
 						<a href="promocao.jsf?cidade=${cidadeFaces.cidadeSelecionada}&id=${promocao.id}&estabelecimento_id=${promocao.fornecedorModel.id}" title="">
 							<div class="marca floatLeft">
-                   				<img src="${promocao.imagemThumbView}" alt="" title="${promocao.fornecedorModel.nomeFantasia}" />
+                   				<img src="${promocao.imagemThumbView}" alt="" title="${promocao.fornecedorModel.nomeFantasia}" width="180" height="109" />
                   			</div>
 							<!-- SE Zapeat EM PRODUTO -->
 		                   <div class="info">
