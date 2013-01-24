@@ -1,6 +1,5 @@
 package br.com.zapeat.site.util;
 
-import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.util.TSFacesUtil;
 
 public final class FacebookClient {

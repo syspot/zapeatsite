@@ -19,6 +19,7 @@ import br.com.zapeat.site.model.ImagemModel;
 import br.com.zapeat.site.model.PromocaoModel;
 import br.com.zapeat.site.model.UsuarioModel;
 import br.com.zapeat.site.util.Constantes;
+import br.com.zapeat.site.util.FacebookClient;
 import br.com.zapeat.site.util.ZapeatUtil;
 
 @ManagedBean
@@ -172,6 +173,22 @@ public class PromocaoFaces extends CarregaPromocaoFaces {
 	@Override
 	protected Long getFornecedorId() {
 		return ZapeatUtil.getParamFormatado(super.getRequestParameter("estabelecimento_id"));
+	}
+	
+	public String getTitulo(){
+		return this.isTipoPromocao() ? TSUtil.isEmpty(this.promocao) ? "" : this.promocao.getTitulo() : TSUtil.isEmpty(this.carroChefe) ? "" : this.carroChefe.getTitulo();
+	}
+	
+	public String getDescricao(){
+		return this.isTipoPromocao() ? TSUtil.isEmpty(this.promocao) ? "" : this.promocao.getDescricao() : TSUtil.isEmpty(this.carroChefe) ? "" : this.carroChefe.getDescricao();
+	}
+	
+	public String getUrl(){
+		return this.isTipoPromocao() ? TSUtil.isEmpty(this.promocao) ? "" : "http://www.zapeat.com/site/promocao?id=" + this.promocao.getId() : TSUtil.isEmpty(this.carroChefe) ? "" : "http://www.zapeat.com/site/carrochefe?id=" + this.carroChefe.getId();
+	}
+	
+	public String getFacebookId(){
+		return FacebookClient.getClientId();
 	}
 
 	public PromocaoModel getPromocao() {

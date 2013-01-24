@@ -17,6 +17,7 @@ import br.com.zapeat.site.model.ComentarioModel;
 import br.com.zapeat.site.model.FornecedorModel;
 import br.com.zapeat.site.model.UsuarioModel;
 import br.com.zapeat.site.util.Constantes;
+import br.com.zapeat.site.util.FacebookClient;
 import br.com.zapeat.site.util.ZapeatUtil;
 
 @ManagedBean
@@ -162,6 +163,22 @@ public class EstabelecimentoFaces extends CarregaPromocaoFaces {
 		
 		return null;
 		
+	}
+	
+	public String getTitulo(){
+		return TSUtil.isEmpty(this.fornecedorModel) ? "" : this.fornecedorModel.getNomeFantasia();
+	}
+	
+	public String getDescricao(){
+		return TSUtil.isEmpty(this.fornecedorModel) ? "" : this.fornecedorModel.getDescricao();
+	}
+	
+	public String getUrl(){
+		return TSUtil.isEmpty(this.fornecedorModel) ? "" : "http://www.zapeat.com/site/estabelecimento?id=" + this.fornecedorModel.getId();
+	}
+	
+	public String getFacebookId(){
+		return FacebookClient.getClientId();
 	}
 	
 	@Override

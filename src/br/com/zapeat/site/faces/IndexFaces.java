@@ -13,6 +13,7 @@ import br.com.zapeat.site.dao.FornecedorDAO;
 import br.com.zapeat.site.dao.PromocaoDAO;
 import br.com.zapeat.site.model.FornecedorModel;
 import br.com.zapeat.site.model.PromocaoModel;
+import br.com.zapeat.site.util.FacebookClient;
 import br.com.zapeat.site.util.Utilitarios;
 
 @ManagedBean
@@ -67,6 +68,22 @@ public class IndexFaces extends CarregaPromocaoFaces {
 		str.append(TSParseUtil.dateToString(c.getTime(), TSDateUtil.HH_MM_SS));
 		
 		return str.toString();
+	}
+	
+	public String getTitulo(){
+		return TSUtil.isEmpty(this.promocao) ? "" : this.promocao.getTitulo();
+	}
+	
+	public String getDescricao(){
+		return TSUtil.isEmpty(this.promocao) ? "" : this.promocao.getDescricao();
+	}
+	
+	public String getUrl(){
+		return TSUtil.isEmpty(this.promocao) ? "" : "http://www.zapeat.com/site/promocao?id=" + this.promocao.getId();
+	}
+	
+	public String getFacebookId(){
+		return FacebookClient.getClientId();
 	}
 
 	public List<PromocaoModel> pesquisarPromocoesHora(Long id) {

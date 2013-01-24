@@ -80,7 +80,7 @@
 	           
 		<div class="clear"></div>
 		<div class="barraCompartilhamento">
-			<div class="recomende"><a href="http://www.facebook.com/sharer.php?u=http://www.zapeat.com" target="_blank" title="Facebook"><img src="img/btnFb.jpg" title="Recomendar" /></a></div>
+			<div class="recomende"><a href="http://www.facebook.com/sharer.php?u=${indexFaces.url}" target="_blank" title="Facebook"><img src="img/btnFb.jpg" title="Recomendar" /></a></div>
 	                    <div class="fb-like" data-href="http://www.zapeat.com.br" data-send="false" data-layout="button_count" data-width="200" data-show-faces="false"></div>
 		</div>
 	            
