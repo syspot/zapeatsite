@@ -52,10 +52,7 @@
         <script src="js/jquery.ui.autocomplete.js"></script>
 
         <script type="text/javascript">
-									var availableTags = $
-									{
-										cidadeFaces.cidades
-									};
+									var availableTags = ${cidadeFaces.cidades};
 									$("#cidade").autocomplete({
 										source : availableTags
 									});
