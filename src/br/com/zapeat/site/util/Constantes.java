@@ -44,10 +44,10 @@ public final class Constantes {
 	public static final String MIME_TYPE_TEXT = "text/plain";
 	public static final String MIME_TYPE_HTML = "text/html";
 	
-	public static final String SMTP_GMAIL = "smtp.gmail.com";
+	public static final String SMTP_GMAIL = "imap.gmail.com";
 	public static final String PORTAL_GMAIL = "465";
-	public static final String ZAPEAT_GMAIL = "zapeatx@gmail.com";
-	public static final String ZAPEAT_SENHA_GMAIL = "zapeat123";
+	public static final String ZAPEAT_GMAIL = "cadastro@grupointermedia.com.br";
+	public static final String ZAPEAT_SENHA_GMAIL = "enviar!1";
 	
 	public static Long CATEGORIA_MAIS_INDICADOS = 7L;
 	public static Long CATEGORIA_OUTRAS_CATEGORIAS = 8L;
