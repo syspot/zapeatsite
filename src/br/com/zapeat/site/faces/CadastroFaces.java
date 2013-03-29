@@ -8,6 +8,7 @@ import br.com.topsys.util.TSCryptoUtil;
 import br.com.topsys.util.TSStringUtil;
 import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.faces.TSMainFaces;
+import br.com.topsys.web.util.TSFacesUtil;
 import br.com.zapeat.site.dao.UsuarioDAO;
 import br.com.zapeat.site.model.UsuarioModel;
 import br.com.zapeat.site.util.Constantes;
@@ -92,7 +93,7 @@ public class CadastroFaces extends TSMainFaces {
 
 				super.addInfoMessage("Para efetivar seu cadastro é necessário acessar o e-mail informado e clicar no link de confirmação.");
 				
-				this.enviarEmail(model);
+				this.enviarEmail(model, "Para confirmar seu cadastro no site ZAPEAT clique <a href=\"" + Constantes.URL_APLICACAO + "confirmacao.jsf?cidade=" + TSFacesUtil.getObjectInSession("cidadeEstado") + "&token=", "Zapeat - Confirmação de Cadastro");
 
 			} else {
 
@@ -103,8 +104,32 @@ public class CadastroFaces extends TSMainFaces {
 
 		return null;
 	}
+	
+	public String recuperarSenha(){
+		
+		if(TSUtil.isEmpty(usuarioModel.getEmail())){
+			super.addErrorMessage("Email: Campo obrigatório");
+			return null;
+		}
+		
+		this.usuarioModel = new UsuarioDAO().obter(usuarioModel);
+		
+		if(TSUtil.isEmpty(usuarioModel)){
+			super.addErrorMessage("Usuário não localizado na base de dados");
+			return null;
+		}
+		
+		String msg1 = "Você está recebendo este e-mail pois clicou no link 'esqueci senha' no site do zapeat. <br/> Caso não tenha feito isso, favor desconsiderar este e-mail. <br/> Caso contrário clique <a href=\"" + Constantes.URL_APLICACAO + "redefinirSenha.jsf?cidade=" + TSFacesUtil.getObjectInSession("cidadeEstado") + "&token=";
+		
+		this.enviarEmail(usuarioModel, msg1, "Zapeat - Alteração de Senha");
+		
+		super.addInfoMessage("As instruções para recuperação de senha foram enviadas para o email");
+		
+		return null;
+		
+	}
 
-	private void enviarEmail(UsuarioModel model) {
+	private void enviarEmail(UsuarioModel model, String msg1, String msg2) {
 
 		StringBuilder corpo = new StringBuilder();
 
@@ -120,13 +145,13 @@ public class CadastroFaces extends TSMainFaces {
 
 		try {
 
-			corpo.append("Para confirmar seu cadastro no site ZAPEAT clique <a href=\"")
+			corpo.append(msg1)
 
-			.append(Constantes.URL_APLICACAO + "confirmacao.jsf?token=" + TSCryptoUtil.criptografar(model.getId().toString()))
+			.append(model.getToken())
 
 			.append("\"> aqui </a>");
 
-			EnviarEmail.enviar(Constantes.ZAPEAT_GMAIL, model.getEmail(), "Zapeat - Confirmação de Cadastro", corpo.toString());
+			EnviarEmail.enviar(Constantes.ZAPEAT_GMAIL, model.getEmail(), msg2, corpo.toString());
 
 		} catch (Exception e) {
 

@@ -10,6 +10,7 @@
 <body>
 <f:view>
 <h:inputHidden value="#{confirmacaoFaces}"/>
+<h:inputHidden value="#{cidadeFaces.cidadeSelecionada}"/>
 </f:view>
 </body>
 </html>

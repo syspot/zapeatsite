@@ -2,7 +2,7 @@ package br.com.zapeat.site.faces;
 
 import javax.faces.bean.ManagedBean;
 
-import br.com.topsys.util.TSCryptoUtil;
+import br.com.topsys.exception.TSApplicationException;
 import br.com.topsys.util.TSUtil;
 import br.com.topsys.web.util.TSFacesUtil;
 import br.com.zapeat.site.dao.UsuarioDAO;
@@ -19,37 +19,33 @@ public class ConfirmacaoFaces {
 
 		if (!TSUtil.isEmpty(token)) {
 
-			try {
+			UsuarioModel model = new UsuarioModel();
 
-				String tokenDescriptografado = TSCryptoUtil.desCriptografar(token);
+			UsuarioDAO usuarioDAO = new UsuarioDAO();
 
-				if (!TSUtil.isEmpty(tokenDescriptografado) && TSUtil.isNumeric(tokenDescriptografado)) {
+			model.setToken(token);
 
-					UsuarioModel model = new UsuarioModel();
+			model = usuarioDAO.getByToken(model);
 
-					UsuarioDAO usuarioDAO = new UsuarioDAO();
+			if (!TSUtil.isEmpty(model) && !TSUtil.isEmpty(model.getId())) {
 
-					model.setId(new Long(tokenDescriptografado));
+				model.setFlagAtivo(Boolean.TRUE);
 
-					model = usuarioDAO.getById(model);
-
-					if (!TSUtil.isEmpty(model) && !TSUtil.isEmpty(model.getId())) {
-
-						model.setFlagAtivo(Boolean.TRUE);
-
-						usuarioDAO.alterarStatus(model);
-
-						TSFacesUtil.addObjectInSession(Constantes.ID_USUARIO_LOGADO, model.getId());
-						TSFacesUtil.addObjectInSession(Constantes.NOME_USUARIO_LOGADO, model.getNome());
-
-						TSFacesUtil.addObjectInSession(Constantes.LOGIN_APLICACAO, true);
-					}
-
+				try {
+					
+					usuarioDAO.alterarStatus(model);
+					
+				} catch (TSApplicationException e) {
+					
+					e.printStackTrace();
+					
 				}
 
-			} catch (Exception e) {
-				e.printStackTrace();
+				TSFacesUtil.addObjectInSession(Constantes.ID_USUARIO_LOGADO, model.getId());
+				TSFacesUtil.addObjectInSession(Constantes.NOME_USUARIO_LOGADO, model.getNome());
+				TSFacesUtil.addObjectInSession(Constantes.LOGIN_APLICACAO, true);
 			}
+
 		}
 
 		ZapeatUtil.redirect();

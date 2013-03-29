@@ -189,7 +189,8 @@ ul#listagem li .dados{ float:right; width:130px;}
 .btnFechar{width:15px; height:15px; position:absolute; top:10px; right:10px; cursor:pointer;}
 
 #signup,
-#signup2 {
+#signup2,
+#signup3 {
     padding: 0px 25px 25px;    background: #fff;    box-shadow: 
         0px 0px 0px 5px rgba( 255,255,255,0.4 ), 
         0px 4px 20px rgba( 0,0,0,0.33 );
@@ -197,22 +198,30 @@ ul#listagem li .dados{ float:right; width:130px;}
 }
 
 #signup .header,
-#signup2 .header{    margin-bottom: 20px;}
+#signup2 .header,
+#signup3 .header{    margin-bottom: 20px;}
 
 #signup .header h3,
-#signup2 .header h3{    color: #333333;    font-size: 24px;    font-weight: bold;    margin: 15px 0px 5px 0px; font-family: 'titilliumtext22l_rgbold';}
+#signup2 .header h3,
+#signup3 .header h3{    color: #333333;    font-size: 24px;    font-weight: bold;    margin: 15px 0px 5px 0px; font-family: 'titilliumtext22l_rgbold';}
 
 #signup .header p,
-#signup2 .header p {    color: #8f8f8f;    font-size: 14px;    font-weight: 300; font-family: 'titilliumtext22l_ltthin';}
+#signup2 .header p,
+#signup3 .header p {    color: #8f8f8f;    font-size: 14px;    font-weight: 300; font-family: 'titilliumtext22l_ltthin';}
 
 #signup .sep,
-#signup2 .sep {    height: 1px;    background: #e8e8e8;    width: 406px;    margin: 0px -25px;}
+#signup2 .sep,
+#signup3 .sep {    height: 1px;    background: #e8e8e8;    width: 406px;    margin: 0px -25px;}
 
 #signup .inputs,
-#signup2 .inputs {    margin-top: 25px;}
+#signup2 .inputs,
+#signup3 .inputs,
+#signup4 .inputs {    margin-top: 25px;}
 
 #signup .inputs label,
-#signup2 .inputs label {
+#signup2 .inputs label,
+#signup3 .inputs label,
+#signup4 .inputs label {
     color: #8f8f8f;    font-size: 12px;    font-weight: 300;    letter-spacing: 1px;    margin-bottom: 7px;    display: block;
 }
 
@@ -221,14 +230,18 @@ input::-webkit-input-placeholder {    color:    #b5b5b5;}
 input:-moz-placeholder {    color:    #b5b5b5;}
 
 #signup .inputs input[type=email], #signup .inputs input[type=password],#signup .inputs input[type=text], #signup .inputs input[type=file],
-#signup2 .inputs input[type=email], #signup2 .inputs input[type=password],#signup2 .inputs input[type=text], #signup2 .inputs input[type=file] {
+#signup2 .inputs input[type=email], #signup2 .inputs input[type=password],#signup2 .inputs input[type=text], #signup2 .inputs input[type=file],
+#signup3 .inputs input[type=email], #signup3 .inputs input[type=password],#signup3 .inputs input[type=text], #signup3 .inputs input[type=file],
+#signup4 .inputs input[type=email], #signup4 .inputs input[type=password],#signup4 .inputs input[type=text], #signup4 .inputs input[type=file] {
     background: #f5f5f5;    font-size: 0.8rem;    -moz-border-radius: 3px;    -webkit-border-radius: 3px;
     border-radius: 3px;    border: 1px solid;    padding: 13px 10px;    width: 330px;    margin-bottom: 20px;
     box-shadow: inset 0px 2px 3px rgba( 0,0,0,0.1 );    clear: both;
 }
 
 #signup .inputs input[type=email]:focus, input[type=password]:focus, input[type=text]:focus,
-#signup2 .inputs input[type=email]:focus, input[type=password]:focus, input[type=text]:focus {
+#signup2 .inputs input[type=email]:focus, input[type=password]:focus, input[type=text]:focus,
+#signup3 .inputs input[type=email]:focus, input[type=password]:focus, input[type=text]:focus,
+#signup4 .inputs input[type=email]:focus, input[type=password]:focus, input[type=text]:focus {
     background: #fff;
     box-shadow: 0px 0px 0px 3px #fff38e, inset 0px 2px 3px rgba( 0,0,0,0.2 ), 0px 5px 5px rgba( 0,0,0,0.15 );
     outline: none;   
@@ -245,7 +258,9 @@ input:-moz-placeholder {    color:    #b5b5b5;}
 
 #signup .inputs .submit,
 #signup2 .inputs a,
-#signup2 .inputs .submit {
+#signup2 .inputs .submit,
+#signup3 .inputs .submit,
+#signup4 .inputs .submit {
     width: 100%;   margin-top: 20px;    padding: 15px 0;    color: #fff;    font-size: 14px;    font-weight: 500;
     letter-spacing: 1px;    text-align: center;    text-decoration: none;
         background: -moz-linear-gradient( top,  #b9c5dd 0%, #a4b0cb);
@@ -262,7 +277,9 @@ input:-moz-placeholder {    color:    #b5b5b5;}
 }
 
 #signup .inputs .submit:hover,
-#signup2 .inputs .submit:hover {
+#signup2 .inputs .submit:hover,
+#signup3 .inputs .submit:hover,
+#signup4 .inputs .submit:hover {
     background: -moz-linear-gradient( top, #a4b0cb 0%, #b9c5dd);
     background: -webkit-gradient( linear, left top, left bottom,  from(#a4b0cb),  to(#b9c5dd));
 }
@@ -301,7 +318,7 @@ input:-moz-placeholder {    color:    #b5b5b5;}
 }
 .formLogin .inputs input[type=email], .formLogin .inputs input[type=password], .formLogin .inputs input[type=text], .formLogin .inputs input[type=file] {
     background: #f5f5f5;    font-size: 0.8rem;    -moz-border-radius: 3px;    -webkit-border-radius: 3px;
-    border-radius: 3px;    border: none;    padding: 5px 10px;    width: 200px; 
+    border-radius: 3px;    border: none;    padding: 5px 10px;    width: 200px; margin-right:10px;  
     box-shadow: inset 0px 2px 3px rgba( 0,0,0,0.1 );    clear: both; border: 1px solid #BBB;
 }
 
@@ -311,7 +328,8 @@ a.linkLogin,a.linkCadastro{cursor:pointer;}
 .erro{ border-color:#C30;}
 .ok{ border-color: green;background-color: #80FF00;}
 #mascara,
-#mascaraRanking{display:none; width:100%; height:100%; background:rgba(0,0,0,.5); position:fixed; z-index:9999999; top:0; left:0;}
+#mascaraRanking,
+#mascaraLembrete{display:none; width:100%; height:100%; background:rgba(0,0,0,.5); position:fixed; z-index:9999999; top:0; left:0;}
 
 .iconografia{ display:block; width:20px; height:20px; margin:4px auto; overflow:hidden;}
 
@@ -343,3 +361,5 @@ span#time b{background:#F30; color:#fff; padding:0px 5px; font-size:15px;font-fa
 .mensagem .btnFechar{font-size:10px; color:#fff;}
 .alertRed{border-color:#C00; background:#F00;}
 .alertGreen{border-color:#090; background:#0C0;}
+
+.lembrete{margin-left:10px; font-size:10px; cursor:point;}

@@ -16,7 +16,7 @@ public class UsuarioDAO {
 
 		broker.setPropertySQL("usuariodao.obter", model.getEmail());
 
-		return (UsuarioModel) broker.getObjectBean(UsuarioModel.class, "id", "nome", "email", "senha", "flagAtivo", "imagem", "flagAceitouTermo");
+		return (UsuarioModel) broker.getObjectBean(UsuarioModel.class, "id", "nome", "email", "senha", "flagAtivo", "imagem", "flagAceitouTermo", "token");
 
 	}
 	
@@ -28,6 +28,16 @@ public class UsuarioDAO {
 
 		return (UsuarioModel) broker.getObjectBean(UsuarioModel.class, "id", "nome", "email", "senha", "flagAtivo", "imagem", "flagAceitouTermo");
 
+	}
+	
+	public UsuarioModel getByToken(UsuarioModel model) {
+		
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		
+		broker.setPropertySQL("usuariodao.getByToken", model.getToken());
+		
+		return (UsuarioModel) broker.getObjectBean(UsuarioModel.class, "id", "nome", "token");
+		
 	}
 
 	public UsuarioModel inserir(UsuarioModel model) throws TSApplicationException {
@@ -64,6 +74,16 @@ public class UsuarioDAO {
 
 		broker.execute();
 
+	}
+	
+	public void alterarSenha(UsuarioModel model) throws TSApplicationException {
+		
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		
+		broker.setPropertySQL("usuariodao.alterarSenha", model.getSenha(), model.getId());
+		
+		broker.execute();
+		
 	}
 	
 	public void alterarFlagTermo(UsuarioModel model) throws TSApplicationException {
