@@ -115,9 +115,9 @@
                 		<span class="icons maisIndicados"></span>
                         <span class="titMenu">mais indicados</span>
                         <ul id="sub">
-                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=7&tipo=3" title="promoção da semana">promoção da semana</a></li>
-                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=7&tipo=2" title="promoção do dia">promoção do dia</a></li>
-                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=7&tipo=1" title="promoção da hora">promoção da hora</a></li>
+                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=7&tipo=3" title="zapeat da semana">zapeat da semana</a></li>
+                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=7&tipo=2" title="zapeat do dia">zapeat do dia</a></li>
+                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=7&tipo=1" title="zapeat da hora">zapeat da hora</a></li>
                             <li><a href="ranking.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=7" title="ranking">ranking</a></li>
                             <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=7&tipo=5" title="carro-chefe">carro-chefe</a></li>
                             <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=7&tipo=6" title="estabelecimento">estabelecimento</a></li>
@@ -130,9 +130,9 @@
 	                        <span class="iconografia"><img src="${item.imagemView}" alt="" title="${item.descricao}" /></span>
 	                        <span class="titMenu">${item.descricao}</span>
 	                        <ul id="sub">
-	                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${item.id}&tipo=3" title="promoção da semana">promoção da semana</a></li>
-	                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${item.id}&tipo=2" title="promoção do dia">promoção do dia</a></li>
-	                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${item.id}&tipo=1" title="promoção da hora">promoção da hora</a></li>
+	                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${item.id}&tipo=3" title="zapeat da semana">zapeat da semana</a></li>
+	                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${item.id}&tipo=2" title="zapeat do dia">zapeat do dia</a></li>
+	                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${item.id}&tipo=1" title="zapeat da hora">zapeat da hora</a></li>
 	                            <li><a href="ranking.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${item.id}" title="ranking">ranking</a></li>
 	                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${item.id}&tipo=5" title="carro-chefe">carro-chefe</a></li>
 	                            <li><a href="listagem.jsf?cidade=${cidadeFaces.cidadeSelecionada}&categoriaId=${item.id}&tipo=6" title="estabelecimento">estabelecimento</a></li>
